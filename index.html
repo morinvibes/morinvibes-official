@@ -10,7 +10,9 @@
 <body>
   <!-- Navbar -->
   <header id="navbar">
-    <div class="logo">MorinVibes</div>
+    <div class="logo">
+      <img src="assets/logo-small.png" alt="MorinVibes Small Logo">
+    </div>
     <nav id="nav-links">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
@@ -22,31 +24,65 @@
       <a href="terms.html">Terms</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <div class="lang-switch">
-      <button onclick="setLang('en')">EN</button>
-      <button onclick="setLang('ms')">BM</button>
-      <button onclick="setLang('zh-cn')">简</button>
-      <button onclick="setLang('zh-tw')">繁</button>
-    </div>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-content">
+    <div class="hero-overlay">
+      <img src="assets/logo-full.png" alt="MorinVibes Full Logo" class="hero-logo">
       <h1 id="title">Welcome to MorinVibes Moringa</h1>
       <p id="subtitle">Natural Wellness from Penang, Malaysia</p>
       <a href="shop.html" class="btn">Shop Now</a>
     </div>
+    <div class="hero-product">
+      <img src="assets/product-bottle.jpg" alt="Moringa Leaf Powder Bottle">
+    </div>
   </section>
 
-  <!-- Product Preview -->
+  <!-- Products Section -->
   <section class="products">
     <h2>Our Products</h2>
     <div class="grid">
       <div class="card">Moringa Leaf Powder</div>
       <div class="card">Moringa Tea</div>
       <div class="card">Wellness Pack</div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="blog">
+    <h2>Latest Blog Posts</h2>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <img src="assets/hero-bg.jpg" alt="Blog Image">
+        <h3>5 Benefits of Moringa</h3>
+      </div>
+      <div class="blog-card">
+        <img src="assets/product-bottle.jpg" alt="Blog Image">
+        <h3>Behind the Scenes at Our Farm</h3>
+      </div>
+      <div class="blog-card">
+        <img src="assets/logo-full.png" alt="Blog Image">
+        <h3>MorinVibes Wellness Journey</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-question">What is Moringa?</div>
+      <div class="faq-answer">Moringa is a nutrient-rich plant known as the "miracle tree".</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Is MorinVibes organic?</div>
+      <div class="faq-answer">Yes, all our products are 100% organic and certified.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How do I order?</div>
+      <div class="faq-answer">You can order directly via our online shop or Orderla.my form below.</div>
     </div>
   </section>
 
