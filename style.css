@@ -83,17 +83,18 @@
   }
 }
 .hero-logo {
-  max-width: 140px;   /* 縮細 logo */
-  margin-bottom: 20px;
+  max-width: 110px;   /* 縮到 110px，剛好 */
+  margin-bottom: 15px;
   animation: fadeIn 2s ease-in;
 }
 
 .hero h1 {
-  font-size: 42px;    /* 字體稍微縮細，避免壓過 logo */
-  margin-bottom: 20px;
+  font-size: 36px;    /* 字體縮細，避免壓過 logo */
+  margin-bottom: 15px;
 }
 
 .hero p {
-  font-size: 18px;
-  margin-bottom: 30px;
+  font-size: 16px;
+  margin-bottom: 25px;
 }
+
