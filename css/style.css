@@ -133,4 +133,7 @@ footer{
     nav{padding:15px 5%;}
     .menu{display:none;}
     .hamburger{display:flex;}
-    .hero h1{font-size:2rem
+    .hero h1{font-size:2rem;}
+    .stats{flex-direction:column;gap:50px;}
+    .order{margin:40px 5%;padding:80px 20px;}
+}
