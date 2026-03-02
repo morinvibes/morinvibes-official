@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MorinVibes | Benefits of Moringa</title>
 
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="assets/logo.png" alt="MorinVibes Logo">
+  </div>
+
+  <div class="menu" id="menu">
+    <a href="index.html" data-translate="nav_home">Home</a>
+    <a href="benefits.html" data-translate="nav_benefits">Benefits</a>
+    <a href="science.html" data-translate="nav_science">Science</a>
+    <a href="reviews.html" data-translate="nav_reviews">Reviews</a>
+    <a href="faq.html" data-translate="nav_faq">FAQ</a>
+  </div>
+
+  <div class="lang-switch">
+    <select onchange="setLanguage(this.value)">
+      <option value="en" selected>English</option>
+      <option value="bm">Bahasa Melayu</option>
+      <option value="zh-cn">简体中文</option>
+      <option value="zh-tw">繁體中文</option>
+    </select>
+  </div>
+
+  <a href="index.html#order" class="cta-btn" data-translate="nav_order">Order Now</a>
+
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<header class="hero hidden">
+  <h1 data-translate="benefits_title">Discover the Benefits of Moringa</h1>
+  <p data-translate="benefits_intro">Moringa is known as the 'Miracle Tree' for its rich nutrients and natural healing properties.</p>
+</header>
+
+<section class="content hidden">
+  <div class="benefit">
+    <h2 data-translate="benefit_energy">Boosts Energy</h2>
+    <p data-translate="benefit_energy_desc">Packed with vitamins and minerals, Moringa helps fight fatigue and keeps you energized throughout the day.</p>
+  </div>
+
+  <div class="benefit">
+    <h2 data-translate="benefit_immunity">Strengthens Immunity</h2>
+    <p data-translate="benefit_immunity_desc">Rich in antioxidants, Moringa supports your immune system and protects against free radicals.</p>
+  </div>
+
+  <div class="benefit">
+    <h2 data-translate="benefit_skin">Improves Skin Health</h2>
+    <p data-translate="benefit_skin_desc">Moringa’s anti-inflammatory properties promote healthy, glowing skin.</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 MorinVibes | Made in Penang, Malaysia
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
