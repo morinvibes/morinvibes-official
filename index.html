@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>MorinVibes Moringa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -10,7 +11,7 @@
   <!-- Navbar -->
   <header>
     <div class="logo">MorinVibes</div>
-    <nav>
+    <nav id="nav-links">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
       <a href="benefits.html">Moringa Benefits</a>
@@ -27,13 +28,19 @@
       <button onclick="setLang('zh-cn')">简</button>
       <button onclick="setLang('zh-tw')">繁</button>
     </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1 id="title">Welcome to MorinVibes Moringa</h1>
-    <p id="subtitle">Natural Wellness from Penang, Malaysia</p>
-    <img src="assets/bottle.jpg" alt="Moringa Bottle" class="fade-in">
+    <div class="hero-text">
+      <h1 id="title">Welcome to MorinVibes Moringa</h1>
+      <p id="subtitle">Natural Wellness from Penang, Malaysia</p>
+      <a href="shop.html" class="btn">Shop Now</a>
+    </div>
+    <div class="hero-img">
+      <img src="assets/bottle.jpg" alt="Moringa Bottle">
+    </div>
   </section>
 
   <!-- Order Form -->
