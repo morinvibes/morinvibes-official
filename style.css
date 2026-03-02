@@ -84,16 +84,17 @@
 }
 /* Navbar logo */
 .logo img {
-  height: 35px;   /* 小 logo，適合 Navbar */
-  width: auto;
+  height: 30px;   /* 固定高度 30px */
+  width: auto;    /* 保持比例 */
+  display: block; /* 確保唔會被 margin 撐大 */
 }
 
 /* Hero logo */
 .hero-logo {
-  max-width: 90px;   /* 縮到 90px，唔會太大 */
-  margin-bottom: 15px;
-  animation: fadeIn 2s ease-in;
+  max-width: 100px;  /* Hero logo 縮細到 100px */
+  height: auto;
 }
+
 
 .hero h1 {
   font-size: 32px;   /* 字體再縮細，保持平衡 */
