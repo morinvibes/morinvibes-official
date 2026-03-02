@@ -74,6 +74,43 @@ function setLanguage(lang) {
 }
 
 // =========================
+// TYPING ANIMATION
+// =========================
+const typingElement = document.querySelector(".hero h1");
+const typingTexts = [
+  "Elevate Your Wellness with MorinVibes",
+  "Premium Moringa Capsules",
+  "Made in Penang, Malaysia"
+];
+let typingIndex = 0;
+let charIndex = 0;
+
+function typeEffect() {
+  if (charIndex < typingTexts[typingIndex].length) {
+    typingElement.textContent += typingTexts[typingIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(typeEffect, 100);
+  } else {
+    setTimeout(eraseEffect, 2000);
+  }
+}
+
+function eraseEffect() {
+  if (charIndex > 0) {
+    typingElement.textContent = typingTexts[typingIndex].substring(0, charIndex - 1);
+    charIndex--;
+    setTimeout(eraseEffect, 50);
+  } else {
+    typingIndex = (typingIndex + 1) % typingTexts.length;
+    setTimeout(typeEffect, 500);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (typingTexts.length) typeEffect();
+});
+
+// =========================
 // HAMBURGER MENU TOGGLE
 // =========================
 const hamburger = document.getElementById("hamburger");
