@@ -111,6 +111,56 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =========================
+// COUNTER ANIMATION
+// =========================
+const counters = document.querySelectorAll(".counter");
+
+const animateCounter = (counter) => {
+  const target = +counter.getAttribute("data-target");
+  const speed = 200;
+  const updateCount = () => {
+    const count = +counter.innerText;
+    const increment = target / speed;
+    if (count < target) {
+      counter.innerText = Math.ceil(count + increment);
+      setTimeout(updateCount, 20);
+    } else {
+      counter.innerText = target;
+    }
+  };
+  updateCount();
+};
+
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.6 });
+
+counters.forEach(counter => {
+  counterObserver.observe(counter);
+});
+
+// =========================
+// SCROLL FADE-IN ANIMATION
+// =========================
+const hiddenElements = document.querySelectorAll(".hidden");
+
+const fadeObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+hiddenElements.forEach(el => fadeObserver.observe(el));
+
+// =========================
 // HAMBURGER MENU TOGGLE
 // =========================
 const hamburger = document.getElementById("hamburger");
