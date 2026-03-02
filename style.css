@@ -3,7 +3,7 @@ body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #f4f9fb; /* 淺灰藍背景 */
+  background: #f4f9fb;
   color: #333;
   line-height: 1.6;
 }
@@ -13,7 +13,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #0097b2; /* 主色 */
+  background: #0097b2;
   padding: 15px 30px;
   position: sticky;
   top: 0;
@@ -22,7 +22,7 @@ header {
 }
 
 header.scrolled {
-  background: #007a8a; /* 滾動時深色 */
+  background: #007a8a;
 }
 
 header .logo {
@@ -44,31 +44,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #a0e7f0; /* hover 淺色 */
-}
-
-/* 語言切換 */
-.lang-switch button {
-  margin-left: 5px;
-  padding: 6px 10px;
-  border: none;
-  background: #00bcd4; /* 輔色 */
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.lang-switch button:hover {
-  background: #007a8a;
-}
-
-/* Menu Toggle for Mobile */
-.menu-toggle {
-  display: none;
-  font-size: 24px;
-  color: white;
-  cursor: pointer;
+  color: #a0e7f0;
 }
 
 /* Hero Section */
@@ -82,7 +58,6 @@ nav a:hover {
               url('assets/moringa.jpg') center/cover no-repeat;
   text-align: center;
   color: #fff;
-  animation: fadeIn 2s ease-in;
 }
 
 .hero h1 {
@@ -142,15 +117,77 @@ nav a:hover {
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* Order Section */
-.order {
+/* Blog Section */
+.blog {
   padding: 60px 20px;
   text-align: center;
 }
 
-.order h2 {
+.blog h2 {
+  color: #0097b2;
+  margin-bottom: 40px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.blog-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.blog-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.blog-card h3 {
+  padding: 15px;
+  color: #0097b2;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* FAQ Section */
+.faq {
+  padding: 60px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.faq h2 {
   color: #0097b2;
   margin-bottom: 20px;
+}
+
+.faq-item {
+  background: #fff;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.faq-question {
+  padding: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #0097b2;
+}
+
+.faq-answer {
+  padding: 15px;
+  display: none;
+  border-top: 1px solid #eee;
 }
 
 /* Footer */
@@ -162,11 +199,6 @@ footer {
 }
 
 /* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 @keyframes slideInDown {
   from { transform: translateY(-50px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
