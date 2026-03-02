@@ -1,104 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MorinVibes Moringa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MorinVibes | Premium Moringa Capsules</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f8f9f6;
+    color:#1e1e1e;
+    scroll-behavior:smooth;
+}
+
+h1,h2{
+    font-family:'Playfair Display',serif;
+}
+
+section{
+    padding:100px 10%;
+}
+
+.btn{
+    background:#1b5e20;
+    color:white;
+    padding:14px 30px;
+    border-radius:50px;
+    text-decoration:none;
+    display:inline-block;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#0d3b12;
+    transform:translateY(-3px);
+}
+
+/* NAV */
+nav{
+    position:fixed;
+    width:100%;
+    padding:20px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
+
+.logo{
+    font-weight:600;
+    font-size:20px;
+    color:#1b5e20;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+    url('https://images.unsplash.com/photo-1604908177522-4297b2f7b29d?auto=format&fit=crop&w=1600&q=80') center/cover;
+    color:white;
+}
+
+.hero h1{
+    font-size:3rem;
+    max-width:700px;
+}
+
+.hero p{
+    margin:20px 0;
+    max-width:600px;
+    font-weight:300;
+}
+
+/* PRODUCT */
+.product{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:50px;
+}
+
+.product img{
+    width:350px;
+    border-radius:20px;
+}
+
+.product-text{
+    flex:1;
+}
+
+/* BENEFITS */
+.benefits{
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+    justify-content:center;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    width:280px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+/* ORDER */
+.order{
+    background:#1b5e20;
+    color:white;
+    text-align:center;
+    border-radius:30px;
+    padding:80px 20px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:40px;
+    background:#111;
+    color:#aaa;
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:2rem;
+    }
+    .product{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+</style>
 </head>
+
 <body>
-  <!-- Navbar -->
-<header id="navbar">
-  <div class="logo">
-    <!-- 點擊 logo 返回首頁 -->
-    <a href="index.html">
-      <img src="assets/logo-small.png" alt="MorinVibes Small Logo">
-    </a>
-  </div>
-  <nav id="nav-links">
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="benefits.html">Benefits</a>
-    <a href="farm.html">Our Farm</a>
-    <a href="about.html">About Us</a>
-    <a href="blog.html">Blog</a>
-    <a href="faq.html">FAQ</a>
-    <a href="terms.html">Terms</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-</header>
 
+<nav>
+    <div class="logo">MorinVibes</div>
+</nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-overlay">
-      <img src="assets/logo-full.png" alt="MorinVibes Full Logo" class="hero-logo">
-      <h1 id="title">Welcome to MorinVibes Moringa</h1>
-      <p id="subtitle">Natural Wellness from Penang, Malaysia</p>
-      <a href="shop.html" class="btn">Shop Now</a>
-    </div>
-    <div class="hero-product">
-      <img src="assets/product-bottle.jpg" alt="Moringa Leaf Powder Bottle">
-    </div>
-  </section>
+<div class="hero">
+    <h1>Premium Moringa Capsules for Modern Wellness</h1>
+    <p>Clean. Powerful. Scientifically processed moringa designed to support immunity, energy and total vitality.</p>
+    <a href="#order" class="btn">Order Now</a>
+</div>
 
-  <!-- Products Section -->
-  <section class="products">
-    <h2>Our Products</h2>
-    <div class="grid">
-      <div class="card">Moringa Leaf Powder</div>
-      <div class="card">Moringa Tea</div>
-      <div class="card">Wellness Pack</div>
+<section>
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=600&q=80">
+        <div class="product-text">
+            <h2>Pure Moringa. Maximum Potency.</h2>
+            <p>MorinVibes capsules are made from carefully selected moringa leaves, processed to preserve antioxidants and essential nutrients.</p>
+            <br>
+            <a href="#order" class="btn">Buy Now</a>
+        </div>
     </div>
-  </section>
+</section>
 
-  <!-- Blog Section -->
-  <section class="blog">
-    <h2>Latest Blog Posts</h2>
-    <div class="blog-grid">
-      <div class="blog-card">
-        <img src="assets/hero-bg.jpg" alt="Blog Image">
-        <h3>5 Benefits of Moringa</h3>
-      </div>
-      <div class="blog-card">
-        <img src="assets/product-bottle.jpg" alt="Blog Image">
-        <h3>Behind the Scenes at Our Farm</h3>
-      </div>
-      <div class="blog-card">
-        <img src="assets/logo-full.png" alt="Blog Image">
-        <h3>MorinVibes Wellness Journey</h3>
-      </div>
+<section>
+    <h2 style="text-align:center;margin-bottom:50px;">Why Choose MorinVibes?</h2>
+    <div class="benefits">
+        <div class="card">
+            <h3>Boost Immunity</h3>
+            <p>Rich in vitamins, minerals and antioxidants.</p>
+        </div>
+        <div class="card">
+            <h3>Natural Energy</h3>
+            <p>Stay productive without caffeine crashes.</p>
+        </div>
+        <div class="card">
+            <h3>Daily Detox</h3>
+            <p>Supports overall internal balance.</p>
+        </div>
     </div>
-  </section>
+</section>
 
-  <!-- FAQ Section -->
-  <section class="faq">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <div class="faq-question">What is Moringa?</div>
-      <div class="faq-answer">Moringa is a nutrient-rich plant known as the "miracle tree".</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Is MorinVibes organic?</div>
-      <div class="faq-answer">Yes, all our products are 100% organic and certified.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">How do I order?</div>
-      <div class="faq-answer">You can order directly via our online shop or Orderla.my form below.</div>
-    </div>
-  </section>
+<section id="order">
+    <div class="order">
+        <h2>Start Your Wellness Journey Today</h2>
+        <p>Secure checkout. Fast delivery. Premium quality guaranteed.</p>
+        <br><br>
 
-  <!-- Order Form -->
-  <section class="order">
-    <h2>Order Now</h2>
-    <iframe src="https://orderla.my/yourformlink" width="100%" height="600"></iframe>
-  </section>
+        <!-- PASTE YOUR ORDERLA EMBED CODE BELOW -->
+        <div>
+            <!-- Example -->
+            <!-- <script src="YOUR_ORDERLA_SCRIPT"></script> -->
+        </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 MorinVibes. All rights reserved.</p>
-  </footer>
+    </div>
+</section>
+
+<footer>
+    © 2026 MorinVibes. All rights reserved.
+</footer>
+
 </body>
 </html>
