@@ -5,8 +5,8 @@
 
 body{
     font-family:'Poppins', sans-serif;
-    background:#ffffff;
-    color:#333333;
+    background:#ffffff;   /* 白色背景 */
+    color:#333333;        /* 深灰字色 */
     scroll-behavior:smooth;
     overflow-x:hidden;
 }
@@ -104,12 +104,6 @@ footer{
     padding:40px;text-align:center;background:#f2f2f2;color:#666;
     border-top:1px solid rgba(0,0,0,0.1);
 }
-
-/* =========================
-   SCROLL ANIMATION
-========================= */
-.hidden{opacity:0;transform:translateY(40px);transition:all 0.8s ease;}
-.show{opacity:1;transform:translateY(0);}
 
 /* =========================
    HAMBURGER MENU
