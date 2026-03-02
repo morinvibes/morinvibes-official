@@ -1,7 +1,6 @@
 /* =========================
    GLOBAL RESET
 ========================= */
-
 *{
     margin:0;
     padding:0;
@@ -10,8 +9,8 @@
 
 body{
     font-family:'Poppins', sans-serif;
-    background:#ffffff; /* 改成白色背景 */
-    color:#333333;      /* 字體用深灰色，簡潔易讀 */
+    background:#ffffff; /* 白色背景 */
+    color:#333333;      /* 深灰字體 */
     scroll-behavior:smooth;
     overflow-x:hidden;
 }
@@ -24,7 +23,6 @@ a{
 /* =========================
    NAVBAR
 ========================= */
-
 nav{
     position:fixed;
     top:0;
@@ -33,7 +31,7 @@ nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(255,255,255,0.9); /* 白色透明背景 */
+    background:rgba(255,255,255,0.95); /* 白色透明背景 */
     backdrop-filter:blur(14px);
     z-index:1000;
     transition:0.3s ease;
@@ -74,7 +72,6 @@ nav{
 /* =========================
    LANGUAGE SWITCH
 ========================= */
-
 .lang-switch select{
     padding:6px 10px;
     border-radius:4px;
@@ -92,7 +89,6 @@ nav{
 /* =========================
    CTA BUTTON
 ========================= */
-
 .cta-btn{
     background:linear-gradient(90deg,#1FB5A8,#6C8BCB);
     padding:10px 24px;
@@ -111,7 +107,6 @@ nav{
 /* =========================
    HERO SECTION
 ========================= */
-
 .hero{
     height:100vh;
     display:flex;
@@ -155,14 +150,13 @@ nav{
 /* =========================
    STATS SECTION
 ========================= */
-
 .stats{
     display:flex;
     justify-content:center;
     gap:120px;
     padding:100px 10%;
     text-align:center;
-    background:#f9f9f9; /* 淺灰背景，分隔區塊 */
+    background:#f9f9f9; /* 淺灰背景 */
 }
 
 .stats h2{
@@ -178,7 +172,6 @@ nav{
 /* =========================
    ORDER SECTION
 ========================= */
-
 .order{
     padding:120px 10%;
     text-align:center;
@@ -197,11 +190,10 @@ nav{
 /* =========================
    FOOTER
 ========================= */
-
 footer{
     padding:40px;
     text-align:center;
-    background:#f2f2f2;
+    background:#f2f2f2; /* 淺灰背景 */
     color:#666666;
     border-top:1px solid rgba(0,0,0,0.1);
 }
@@ -209,7 +201,6 @@ footer{
 /* =========================
    SCROLL ANIMATION
 ========================= */
-
 .hidden{
     opacity:0;
     transform:translateY(40px);
@@ -222,9 +213,43 @@ footer{
 }
 
 /* =========================
+   HAMBURGER MENU
+========================= */
+.hamburger {
+    display:none;
+    flex-direction:column;
+    justify-content:space-between;
+    width:25px;
+    height:20px;
+    cursor:pointer;
+    z-index:1100;
+}
+
+.hamburger span {
+    display:block;
+    height:3px;
+    background:#1FB5A8;
+    border-radius:2px;
+    transition:0.3s;
+}
+
+.menu.active {
+    display:flex;
+    flex-direction:column;
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#fff;
+    padding:20px;
+    gap:20px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* =========================
    MOBILE RESPONSIVE
 ========================= */
-
 @media(max-width:1024px){
     .stats{
         gap:60px;
@@ -232,27 +257,56 @@ footer{
 }
 
 @media(max-width:768px){
-
     nav{
         padding:15px 5%;
     }
-
     .menu{
         display:none;
     }
-
+    .hamburger{
+        display:flex;
+    }
     .hero h1{
         font-size:2rem;
     }
-
     .stats{
         flex-direction:column;
         gap:50px;
     }
-
     .order{
         margin:40px 5%;
         padding:80px 20px;
     }
+}
+/* =========================
+   LANGUAGE SWITCH
+========================= */
+.lang-switch select {
+    padding:6px 10px;
+    border-radius:4px;
+    border:1px solid #ccc;
+    font-family:'Poppins', sans-serif;
+    background-color:#fff;
+    color:#333; /* 預設字色深灰 */
+    cursor:pointer;
+    transition:0.3s;
+}
 
+/* hover 效果 */
+.lang-switch select:hover {
+    border-color:#1FB5A8;
+    color:#1FB5A8; /* hover 時字色變 MorinVibes 綠色 */
+}
+
+/* focus 效果 */
+.lang-switch select:focus {
+    outline:none;
+    border-color:#6C8BCB; /* 藍色邊框 */
+    color:#6C8BCB;        /* 藍色字色 */
+}
+
+/* option 顏色 */
+.lang-switch select option {
+    color:#333; /* option 預設字色 */
+    background:#fff; /* option 背景白色 */
 }
