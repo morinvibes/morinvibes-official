@@ -15,8 +15,16 @@ function toggleMenu() {
 window.addEventListener("scroll", () => {
   const navbar = document.getElementById("navbar");
   if (window.scrollY > 50) {
-    navbar.style.background = "#007a8a"; // darker shade
+    navbar.classList.add("scrolled");
   } else {
-    navbar.style.background = "#0097b2";
+    navbar.classList.remove("scrolled");
   }
+});
+
+// FAQ 手風琴效果
+document.querySelectorAll(".faq-question").forEach(item => {
+  item.addEventListener("click", () => {
+    const answer = item.nextElementSibling;
+    answer.style.display = answer.style.display === "block" ? "none" : "block";
+  });
 });
