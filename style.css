@@ -3,8 +3,9 @@ body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #f9fdfd;
+  background: #f4f9fb; /* 淺灰藍背景 */
   color: #333;
+  line-height: 1.6;
 }
 
 /* Navbar */
@@ -12,32 +13,38 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #40E0D0; /* Tiffany Blue */
+  background: #0097b2; /* 主色 */
   padding: 15px 30px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+header.scrolled {
+  background: #007a8a; /* 滾動時深色 */
 }
 
 header .logo {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
   color: white;
 }
 
 nav {
   display: flex;
-  gap: 15px;
+  gap: 20px;
 }
 
 nav a {
   text-decoration: none;
   color: white;
   font-weight: 500;
+  transition: color 0.3s;
 }
 
 nav a:hover {
-  color: #B2EBF2; /* Light Blue */
+  color: #a0e7f0; /* hover 淺色 */
 }
 
 /* 語言切換 */
@@ -45,15 +52,15 @@ nav a:hover {
   margin-left: 5px;
   padding: 6px 10px;
   border: none;
-  background: #A8E6CF;
-  color: #333;
+  background: #00bcd4; /* 輔色 */
+  color: white;
   border-radius: 4px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 .lang-switch button:hover {
-  background: #1b5e20;
-  color: white;
+  background: #007a8a;
 }
 
 /* Menu Toggle for Mobile */
@@ -67,34 +74,33 @@ nav a:hover {
 /* Hero Section */
 .hero {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-around;
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #40E0D0, #B2EBF2);
-  color: #333;
-}
-
-.hero-text {
-  max-width: 500px;
+  height: 90vh;
+  background: linear-gradient(rgba(0,151,178,0.7), rgba(0,151,178,0.7)), 
+              url('assets/moringa.jpg') center/cover no-repeat;
+  text-align: center;
+  color: #fff;
+  animation: fadeIn 2s ease-in;
 }
 
 .hero h1 {
-  color: #fff;
-  font-size: 40px;
+  font-size: 48px;
+  margin-bottom: 20px;
+  animation: slideInDown 1.5s ease;
 }
 
 .hero p {
-  color: #f0f0f0;
-  font-size: 18px;
+  font-size: 20px;
+  margin-bottom: 30px;
+  animation: slideInUp 1.5s ease;
 }
 
 .hero .btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 20px;
+  padding: 14px 24px;
   background: #fff;
-  color: #40E0D0;
+  color: #0097b2;
   font-weight: bold;
   text-decoration: none;
   border-radius: 6px;
@@ -102,32 +108,73 @@ nav a:hover {
 }
 
 .hero .btn:hover {
-  background: #A8E6CF;
-  color: #333;
+  background: #00bcd4;
+  color: #fff;
 }
 
-.hero-img img {
-  max-width: 300px;
+/* Products Section */
+.products {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.products h2 {
+  color: #0097b2;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 /* Order Section */
 .order {
-  padding: 40px;
+  padding: 60px 20px;
   text-align: center;
 }
 
 .order h2 {
-  color: #40E0D0;
+  color: #0097b2;
+  margin-bottom: 20px;
 }
 
 /* Footer */
 footer {
-  background: #40E0D0;
+  background: #007a8a;
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 /* Responsive */
@@ -135,7 +182,7 @@ footer {
   nav {
     display: none;
     flex-direction: column;
-    background: #40E0D0;
+    background: #0097b2;
     position: absolute;
     top: 60px;
     right: 0;
@@ -151,12 +198,11 @@ footer {
     display: block;
   }
 
-  .hero {
-    flex-direction: column;
-    text-align: center;
+  .hero h1 {
+    font-size: 36px;
   }
 
-  .hero-img img {
-    margin-top: 20px;
+  .hero p {
+    font-size: 16px;
   }
 }
