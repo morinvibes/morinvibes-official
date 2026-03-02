@@ -1,29 +1,94 @@
+/* 全局設定 */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
-  padding: 20px;
-  background: #f5f9f6;
+  padding: 0;
+  background: #ffffff;
   color: #333;
 }
 
-h1 {
-  color: #2e7d32;
+/* Navbar */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #40E0D0; /* Tiffany Blue */
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.lang-switch {
-  margin-bottom: 20px;
-}
-
-.lang-switch button {
-  margin-right: 10px;
-  padding: 8px 12px;
-  border: none;
-  background: #2e7d32;
+header .logo {
+  font-size: 22px;
+  font-weight: bold;
   color: white;
-  cursor: pointer;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #B2EBF2; /* Light Blue */
+}
+
+/* 語言切換 */
+.lang-switch button {
+  margin-left: 5px;
+  padding: 6px 10px;
+  border: none;
+  background: #A8E6CF;
+  color: #333;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .lang-switch button:hover {
   background: #1b5e20;
+  color: white;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: #B2EBF2;
+}
+
+.hero h1 {
+  color: #40E0D0;
+  font-size: 36px;
+}
+
+.hero img {
+  max-width: 300px;
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 2s ease-in;
+}
+
+.hero img.fade-in {
+  opacity: 1;
+}
+
+/* Order Section */
+.order {
+  padding: 40px;
+  text-align: center;
+}
+
+.order h2 {
+  color: #40E0D0;
+}
+
+/* Footer */
+footer {
+  background: #40E0D0;
+  color: white;
+  text-align: center;
+  padding: 15px;
 }
