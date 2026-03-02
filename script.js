@@ -1,35 +1,51 @@
-// 語言切換
-const translations = {
-  en: { title: "Welcome to MorinVibes Moringa", subtitle: "Natural Wellness from Penang, Malaysia" },
-  ms: { title: "Selamat datang ke MorinVibes Moringa", subtitle: "Kesihatan semula jadi dari Pulau Pinang, Malaysia" },
-  "zh-cn": { title: "欢迎来到 MorinVibes Moringa", subtitle: "来自马来西亚槟城的天然健康" },
-  "zh-tw": { title: "歡迎來到 MorinVibes Moringa", subtitle: "來自馬來西亞檳城的天然健康" }
-};
+<script>
+/* =========================
+   SCROLL REVEAL ANIMATION
+========================= */
 
-function setLang(lang) {
-  document.getElementById("title").innerText = translations[lang].title;
-  document.getElementById("subtitle").innerText = translations[lang].subtitle;
-}
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.15 });
 
-// Mobile Menu Toggle
-function toggleMenu() {
-  document.getElementById("nav-links").classList.toggle("show");
-}
+document.querySelectorAll('section, .card, .hero h1, .hero p')
+    .forEach(el => {
+        el.classList.add('hidden');
+        observer.observe(el);
+    });
 
-// Navbar scroll effect
-window.addEventListener("scroll", () => {
-  const navbar = document.getElementById("navbar");
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
+/* =========================
+   NAVBAR SCROLL EFFECT
+========================= */
+
+window.addEventListener('scroll', function(){
+    const nav = document.querySelector('nav');
+    if(window.scrollY > 50){
+        nav.style.background = "rgba(10,15,20,0.95)";
+        nav.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
+    } else {
+        nav.style.background = "rgba(10,15,20,0.8)";
+        nav.style.boxShadow = "none";
+    }
 });
 
-// FAQ 手風琴效果
-document.querySelectorAll(".faq-question").forEach(item => {
-  item.addEventListener("click", () => {
-    const answer = item.nextElementSibling;
-    answer.style.display = answer.style.display === "block" ? "none" : "block";
-  });
+/* =========================
+   BUTTON RIPPLE EFFECT
+========================= */
+
+document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', function(e){
+        const circle = document.createElement('span');
+        circle.classList.add('ripple');
+        const rect = button.getBoundingClientRect();
+        circle.style.left = e.clientX - rect.left + 'px';
+        circle.style.top = e.clientY - rect.top + 'px';
+        this.appendChild(circle);
+
+        setTimeout(() => circle.remove(), 600);
+    });
 });
+</script>
