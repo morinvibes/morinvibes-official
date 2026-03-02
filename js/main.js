@@ -61,6 +61,16 @@ function setLanguage(lang) {
     const key = el.getAttribute("data-translate");
     el.textContent = translations[lang][key];
   });
+
+  // 語言選單顏色互動
+  const langSelect = document.querySelector(".lang-switch select");
+  if (lang === "bm") {
+    langSelect.style.color = "#1FB5A8"; // 綠色
+  } else if (lang === "zh-cn" || lang === "zh-tw") {
+    langSelect.style.color = "#6C8BCB"; // 藍色
+  } else {
+    langSelect.style.color = "#333"; // 英文深灰
+  }
 }
 
 // =========================
@@ -149,48 +159,14 @@ const fadeObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 
 hiddenElements.forEach(el => fadeObserver.observe(el));
-/* =========================
-   HAMBURGER MENU
-========================= */
-.hamburger {
-    display:none;
-    flex-direction:column;
-    justify-content:space-between;
-    width:25px;
-    height:20px;
-    cursor:pointer;
-    z-index:1100;
-}
 
-.hamburger span {
-    display:block;
-    height:3px;
-    background:#1FB5A8;
-    border-radius:2px;
-    transition:0.3s;
-}
+// =========================
+// HAMBURGER MENU TOGGLE
+// =========================
+const hamburger = document.getElementById("hamburger");
+const menu = document.getElementById("menu");
 
-/* Mobile menu overlay */
-.menu.active {
-    display:flex;
-    flex-direction:column;
-    position:absolute;
-    top:70px;
-    left:0;
-    width:100%;
-    background:#fff;
-    padding:20px;
-    gap:20px;
-    text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,0.1);
-}
-
-/* Responsive */
-@media(max-width:768px){
-    .menu{
-        display:none;
-    }
-    .hamburger{
-        display:flex;
-    }
-}
+hamburger.addEventListener("click", () => {
+  menu.classList.toggle("active");
+  hamburger.classList.toggle("open");
+});
