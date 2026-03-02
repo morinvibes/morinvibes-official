@@ -23,12 +23,7 @@ function setLang(lang) {
   document.getElementById("subtitle").innerText = translations[lang].subtitle;
 }
 
-// 滾動動畫效果
-window.addEventListener("scroll", function() {
-  const heroImg = document.querySelector(".hero img");
-  const position = heroImg.getBoundingClientRect().top;
-  const screenHeight = window.innerHeight;
-  if (position < screenHeight) {
-    heroImg.classList.add("fade-in");
-  }
-});
+// Mobile Menu Toggle
+function toggleMenu() {
+  document.getElementById("nav-links").classList.toggle("show");
+}
