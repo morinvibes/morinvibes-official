@@ -21,20 +21,115 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "MorinVibes",
+        "image": "https://morinvibes.github.io/morinvibes-official/assets/images/logo-full.svg",
+        "description": "Farm-direct Moringa capsules from Penang, Malaysia. Established 2019.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Penang",
+            "addressCountry": "MY"
+        },
+        "foundingDate": "2019",
+        "url": "https://morinvibes.github.io/morinvibes-official/",
+        "sameAs": [
+            "https://shopee.com.my/morinvibes",
+            "https://shopee.com.my/moringa_morinvibes"
+        ]
+    }
+    </script>
+    
+    <style>
+        .story-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        .story-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #0097b2, #61cad8);
+            opacity: 0.3;
+        }
+        .story-milestone {
+            position: relative;
+            margin-bottom: var(--space-xl);
+        }
+        .story-milestone::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--primary-soft);
+            z-index: 2;
+        }
+        .story-milestone:last-child {
+            margin-bottom: 0;
+        }
+        .story-milestone .v-icon-small {
+            position: absolute;
+            left: -38px;
+            top: 0;
+            opacity: 0.5;
+        }
+        .quote-card {
+            background: var(--gradient-subtle);
+            border-radius: 32px;
+            padding: var(--space-xl);
+            position: relative;
+            border-left: 4px solid var(--primary);
+        }
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 100px;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        .founder-image {
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+        .founder-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,151,178,0.2), rgba(97,202,216,0.2));
+            pointer-events: none;
+        }
+    </style>
 </head>
-<body>
+<body class="v-pattern">
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <div class="nav-left">
-                <a href="index.html" class="logo-link">
-                    <div class="logo">
-                        <img src="assets/images/logo.png" alt="MorinVibes®" width="180" height="48">
-                    </div>
+                <a href="index.html" class="logo logo-full">
+                    <img src="assets/images/logo-full.svg" alt="MorinVibes®" width="180" height="40">
                 </a>
                 
                 <div class="nav-links">
@@ -59,7 +154,10 @@
                     </div>
                 </div>
                 
-                <a href="shop.html#buy" class="nav-cta" data-i18n="nav_cta">Secure Fresh Supply</a>
+                <a href="shop.html#buy" class="nav-cta" data-i18n="nav_cta">
+                    <span class="v-icon"></span>
+                    <span>Secure Fresh Supply</span>
+                </a>
             </div>
             
             <button class="mobile-toggle" aria-label="Menu">☰</button>
@@ -68,20 +166,32 @@
     
     <!-- Mobile Bottom Bar -->
     <div class="mobile-bottom">
-        <a href="farm.html" data-i18n="mobile_learn">Learn</a>
-        <a href="shop.html#buy" data-i18n="mobile_buy">Buy Fresh Supply</a>
+        <a href="farm.html">
+            <span class="v-icon"></span>
+            <span data-i18n="mobile_learn">Learn</span>
+        </a>
+        <a href="shop.html#buy">
+            <span class="v-icon"></span>
+            <span data-i18n="mobile_buy">Buy Fresh Supply</span>
+        </a>
     </div>
 
     <main>
         <!-- ===== HERO MINI SECTION ===== -->
-        <section class="section-compact" style="background: var(--primary-soft);">
+        <section class="section-compact" style="background: var(--gradient-subtle); position: relative; overflow: hidden;">
             <div class="container">
-                <div class="text-center" style="max-width: 800px; margin: 0 auto;">
-                    <span class="clinical-label reveal" data-i18n="story_label">FOUNDED 2019</span>
-                    <h1 class="reveal" style="color: var(--primary);" data-i18n="story_title">From personal need to farm-direct purpose.</h1>
-                    <p class="reveal" style="max-width: 600px; margin: 0 auto; opacity: 0.8;">A journey that began with family and grew into a mission to share farm-direct moringa with others.</p>
+                <div class="text-center" style="max-width: 800px; margin: 0 auto; position: relative; z-index: 2;">
+                    <div class="clinical-label" style="justify-content: center;">
+                        <span class="v-icon"></span>
+                        <span data-i18n="story_label">FOUNDED 2019</span>
+                    </div>
+                    <h1 class="gradient-text" data-i18n="story_title">From personal need to farm-direct purpose.</h1>
+                    <p style="max-width: 600px; margin: 0 auto; opacity: 0.8;">A journey that began with family and grew into a mission to share farm-direct moringa with others.</p>
                 </div>
             </div>
+            <!-- Floating V elements -->
+            <span class="v-icon" style="position: absolute; top: 20%; right: 10%; opacity: 0.05; width: 100px; height: 100px;"></span>
+            <span class="v-icon" style="position: absolute; bottom: 10%; left: 5%; opacity: 0.05; width: 80px; height: 80px; transform: rotate(45deg);"></span>
         </section>
 
         <!-- ===== MAIN STORY SECTION ===== -->
@@ -89,23 +199,43 @@
             <div class="container">
                 <div class="grid-2">
                     <div class="reveal">
-                        <div style="background: var(--primary-soft); border-radius: 32px; height: 500px; overflow: hidden; box-shadow: var(--shadow-md);">
+                        <div class="founder-image" style="height: 600px;">
                             <img src="assets/images/founder.webp" alt="MorinVibes founder in Penang" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                     </div>
                     
                     <div class="reveal">
-                        <span class="clinical-label" style="color: var(--primary);">THE BEGINNING</span>
-                        <h2 style="color: var(--primary);">2019: A Nurse Mother's Wisdom</h2>
+                        <div class="clinical-label">
+                            <span class="v-icon"></span>
+                            <span>THE BEGINNING</span>
+                        </div>
+                        <h2 class="gradient-text">2019: A Nurse Mother's Wisdom</h2>
                         
-                        <p style="margin-bottom: var(--space-md);">In difficult years, my mother — a nurse — introduced me to moringa. She had seen its traditional use in the community and believed in its gentle daily support.</p>
+                        <p style="margin-bottom: var(--space-md); font-size: 1.1rem;">In difficult years, my mother — a nurse — introduced me to moringa. She had seen its traditional use in the community and believed in its gentle daily support.</p>
                         
                         <p style="margin-bottom: var(--space-md);">What began as a simple family remedy grew into something larger. Friends started asking. Then strangers. We were harvesting from our small garden, but the demand kept growing.</p>
                         
-                        <div style="background: var(--primary-soft); padding: var(--space-lg); border-radius: 24px; margin-top: var(--space-lg);">
-                            <div style="font-size: 2rem; margin-bottom: var(--space-sm);">"</div>
-                            <p style="font-style: italic; font-size: 1.2rem;">We started small, with one harvest and a simple goal — prepare moringa the way it deserves.</p>
-                            <div style="margin-top: var(--space-sm);">— Founder, MorinVibes</div>
+                        <div class="quote-card">
+                            <p style="font-size: 1.2rem; font-style: italic; margin-bottom: var(--space-sm);">"We started small, with one harvest and a simple goal — prepare moringa the way it deserves."</p>
+                            <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                                <span class="v-icon"></span>
+                                <span>— Founder, MorinVibes</span>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; gap: var(--space-xl); margin-top: var(--space-xl);">
+                            <div>
+                                <div class="stat-number">2019</div>
+                                <div style="font-size: 0.9rem;">First Harvest</div>
+                            </div>
+                            <div>
+                                <div class="stat-number">5+</div>
+                                <div style="font-size: 0.9rem;">Partner Farms</div>
+                            </div>
+                            <div>
+                                <div class="stat-number">6+</div>
+                                <div style="font-size: 0.9rem;">Years Trusted</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -117,123 +247,208 @@
             <div class="container">
                 <div class="grid-2">
                     <div class="reveal">
-                        <span class="clinical-label" style="color: var(--primary);">THE JOURNEY</span>
-                        <h2 style="color: var(--primary);">From Garden to Farm</h2>
+                        <div class="clinical-label">
+                            <span class="v-icon"></span>
+                            <span>THE JOURNEY</span>
+                        </div>
+                        <h2 class="gradient-text">From Garden to Farm</h2>
                         
                         <p style="margin-bottom: var(--space-md);">By 2020, we had partnered with local farmers in Penang who shared our philosophy: grow naturally, harvest respectfully, process minimally.</p>
                         
                         <p style="margin-bottom: var(--space-md);">Today, our network includes small family farms across Penang. We work directly with farmers, ensuring fair partnership and consistent quality.</p>
                         
-                        <div style="display: flex; gap: var(--space-xl); margin-top: var(--space-lg);">
-                            <div>
-                                <div style="font-size: 2rem; font-weight: 700; color: var(--primary);">2019</div>
-                                <div style="font-size: 0.9rem;">First Harvest</div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-xl);">
+                            <div style="background: white; padding: var(--space-lg); border-radius: 24px; text-align: center;">
+                                <span class="v-icon-large"></span>
+                                <div style="font-weight: 600; margin-top: var(--space-sm);">5 Family Farms</div>
                             </div>
-                            <div>
-                                <div style="font-size: 2rem; font-weight: 700; color: var(--primary);">5</div>
-                                <div style="font-size: 0.9rem;">Partner Farms</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 2rem; font-weight: 700; color: var(--primary);">100%</div>
-                                <div style="font-size: 0.9rem;">Pure Promise</div>
+                            <div style="background: white; padding: var(--space-lg); border-radius: 24px; text-align: center;">
+                                <span class="v-icon-large"></span>
+                                <div style="font-weight: 600; margin-top: var(--space-sm);">100% Direct Trade</div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="reveal">
-                        <div style="background: white; border-radius: 32px; height: 450px; overflow: hidden; box-shadow: var(--shadow-md);">
+                        <div style="background: white; border-radius: 32px; height: 500px; overflow: hidden; box-shadow: var(--shadow-lg); position: relative;">
                             <img src="assets/images/farm-partners.webp" alt="Partner farms in Penang" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 20px; right: 20px; background: white; padding: 12px; border-radius: 50%; box-shadow: var(--shadow-md);">
+                                <span class="v-icon"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== TIMELINE SECTION ===== -->
+        <!-- ===== SHOPEE JOURNEY ===== -->
+        <section class="section">
+            <div class="container">
+                <div style="background: var(--gradient-primary); border-radius: 48px; padding: var(--space-2xl); color: white; position: relative; overflow: hidden;">
+                    <span class="v-icon" style="position: absolute; top: 20px; right: 20px; width: 100px; height: 100px; background: white; opacity: 0.1;"></span>
+                    <span class="v-icon" style="position: absolute; bottom: 20px; left: 20px; width: 80px; height: 80px; background: white; opacity: 0.1; transform: rotate(45deg);"></span>
+                    
+                    <div class="grid-2" style="align-items: center;">
+                        <div>
+                            <div class="clinical-label" style="color: white; border-color: white;">
+                                <span class="v-icon" style="background: white;"></span>
+                                <span>6 YEARS ON SHOPEE</span>
+                            </div>
+                            <h2 style="color: white; margin: var(--space-md) 0;">From Shopee to Our Own Website</h2>
+                            <p style="color: white; opacity: 0.9; margin-bottom: var(--space-lg);">After half a decade serving you on Shopee, we built our own website to give you fresher batches and better prices. Same trusted brand, now with direct farm access.</p>
+                            
+                            <div style="display: flex; gap: var(--space-lg); flex-wrap: wrap;">
+                                <div>
+                                    <div style="font-size: 2.5rem; font-weight: 700;">2019</div>
+                                    <div style="opacity: 0.8;">First on Shopee</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 2.5rem; font-weight: 700;">2024</div>
+                                    <div style="opacity: 0.8;">KKM Registration</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 2.5rem; font-weight: 700;">2026</div>
+                                    <div style="opacity: 0.8;">Official Website</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="background: white; border-radius: 32px; padding: var(--space-xl); display: inline-block;">
+                                <div class="stars" style="font-size: 2rem; color: #FFB800; margin-bottom: var(--space-sm);">★★★★★</div>
+                                <div style="font-size: 2rem; font-weight: 700; color: var(--primary);">1000+</div>
+                                <div style="color: var(--text-dark);">5-Star Reviews</div>
+                                <div style="margin-top: var(--space-md); display: flex; gap: var(--space-sm); justify-content: center;">
+                                    <span class="store-id" style="background: var(--primary-soft);">MorinVibes</span>
+                                    <span class="store-id" style="background: var(--primary-soft);">moringa_morinvibes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MILESTONES TIMELINE ===== -->
         <section class="section">
             <div class="container">
                 <div class="text-center" style="max-width: 600px; margin: 0 auto var(--space-2xl);">
-                    <span class="clinical-label reveal" style="color: var(--primary);">OUR TIMELINE</span>
-                    <h2 class="reveal" style="color: var(--primary);">Five Years of Growth</h2>
+                    <div class="clinical-label" style="justify-content: center;">
+                        <span class="v-icon"></span>
+                        <span>OUR MILESTONES</span>
+                    </div>
+                    <h2 class="gradient-text">Six Years of Growth</h2>
                 </div>
                 
-                <div class="reveal" style="max-width: 800px; margin: 0 auto;">
-                    <div style="position: relative; padding-left: 40px;">
-                        <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--primary), var(--primary-light));"></div>
-                        
-                        <div style="position: relative; margin-bottom: var(--space-xl);">
-                            <div style="position: absolute; left: -44px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--primary); border: 2px solid white; box-shadow: 0 0 0 2px var(--primary-soft);"></div>
-                            <div style="font-family: var(--font-mono); color: var(--primary); margin-bottom: var(--space-xs);">2019</div>
-                            <div style="font-weight: 600; font-size: 1.3rem; margin-bottom: var(--space-xs);">The First Harvest</div>
-                            <p>Started with a small garden harvest. Word spread through family and friends.</p>
+                <div class="grid-2" style="align-items: start;">
+                    <div class="reveal">
+                        <div class="story-timeline">
+                            <div class="story-milestone">
+                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0;"></span>
+                                <div style="font-family: monospace; color: var(--primary); margin-bottom: var(--space-xs);">2019</div>
+                                <h3 style="margin-bottom: var(--space-xs);">The First Harvest</h3>
+                                <p>Started with a small garden harvest. Word spread through family and friends. First Shopee store opened.</p>
+                            </div>
+                            
+                            <div class="story-milestone">
+                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0;"></span>
+                                <div style="font-family: monospace; color: var(--primary); margin-bottom: var(--space-xs);">2020</div>
+                                <h3 style="margin-bottom: var(--space-xs);">First Partner Farm</h3>
+                                <p>Partnered with a local farm in Penang to meet growing demand while maintaining quality.</p>
+                            </div>
+                            
+                            <div class="story-milestone">
+                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0;"></span>
+                                <div style="font-family: monospace; color: var(--primary); margin-bottom: var(--space-xs);">2022</div>
+                                <h3 style="margin-bottom: var(--space-xs);">GMP Certification</h3>
+                                <p>Facility upgraded to meet Good Manufacturing Practice standards. 1000+ reviews on Shopee.</p>
+                            </div>
+                            
+                            <div class="story-milestone">
+                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0;"></span>
+                                <div style="font-family: monospace; color: var(--primary); margin-bottom: var(--space-xs);">2024</div>
+                                <h3 style="margin-bottom: var(--space-xs);">Five Partner Farms</h3>
+                                <p>Network expanded to five family farms across Penang. 5000+ sales achieved.</p>
+                            </div>
+                            
+                            <div class="story-milestone">
+                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0;"></span>
+                                <div style="font-family: monospace; color: var(--primary); margin-bottom: var(--space-xs);">2026</div>
+                                <h3 style="margin-bottom: var(--space-xs);">Official Website Launch</h3>
+                                <p>KKM registration in progress. New website launched to serve you directly with fresher batches.</p>
+                            </div>
                         </div>
-                        
-                        <div style="position: relative; margin-bottom: var(--space-xl);">
-                            <div style="position: absolute; left: -44px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--primary); border: 2px solid white; box-shadow: 0 0 0 2px var(--primary-soft);"></div>
-                            <div style="font-family: var(--font-mono); color: var(--primary); margin-bottom: var(--space-xs);">2020</div>
-                            <div style="font-weight: 600; font-size: 1.3rem; margin-bottom: var(--space-xs);">First Partner Farm</div>
-                            <p>Partnered with a local farm in Penang to meet growing demand while maintaining quality.</p>
-                        </div>
-                        
-                        <div style="position: relative; margin-bottom: var(--space-xl);">
-                            <div style="position: absolute; left: -44px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--primary); border: 2px solid white; box-shadow: 0 0 0 2px var(--primary-soft);"></div>
-                            <div style="font-family: var(--font-mono); color: var(--primary); margin-bottom: var(--space-xs);">2022</div>
-                            <div style="font-weight: 600; font-size: 1.3rem; margin-bottom: var(--space-xs);">GMP Certification</div>
-                            <p>Facility upgraded to meet Good Manufacturing Practice standards.</p>
-                        </div>
-                        
-                        <div style="position: relative; margin-bottom: var(--space-xl);">
-                            <div style="position: absolute; left: -44px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--primary); border: 2px solid white; box-shadow: 0 0 0 2px var(--primary-soft);"></div>
-                            <div style="font-family: var(--font-mono); color: var(--primary); margin-bottom: var(--space-xs);">2024</div>
-                            <div style="font-weight: 600; font-size: 1.3rem; margin-bottom: var(--space-xs);">Five Partner Farms</div>
-                            <p>Network expanded to five family farms across Penang.</p>
-                        </div>
-                        
-                        <div style="position: relative;">
-                            <div style="position: absolute; left: -44px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--primary-light); border: 2px solid white; box-shadow: 0 0 0 2px var(--primary-soft);"></div>
-                            <div style="font-family: var(--font-mono); color: var(--primary); margin-bottom: var(--space-xs);">2026</div>
-                            <div style="font-weight: 600; font-size: 1.3rem; margin-bottom: var(--space-xs);">Looking Forward</div>
-                            <p>Preparing for KKM registration and new product development, including moringa tea.</p>
+                    </div>
+                    
+                    <div class="reveal">
+                        <div style="background: white; border-radius: 32px; padding: var(--space-xl); box-shadow: var(--shadow-lg);">
+                            <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-xl);">
+                                <span class="v-icon-large"></span>
+                                <h3 style="color: var(--primary);">Our Philosophy</h3>
+                            </div>
+                            
+                            <div style="margin-bottom: var(--space-lg);">
+                                <div style="display: flex; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                                    <span class="v-icon-gradient"></span>
+                                    <div>
+                                        <strong>Simple</strong>
+                                        <p style="font-size: 0.9rem; opacity: 0.7;">No complexity, just pure moringa</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                                    <span class="v-icon-gradient"></span>
+                                    <div>
+                                        <strong>Pure</strong>
+                                        <p style="font-size: 0.9rem; opacity: 0.7;">No additives, no fillers</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: var(--space-sm);">
+                                    <span class="v-icon-gradient"></span>
+                                    <div>
+                                        <strong>Transparent</strong>
+                                        <p style="font-size: 0.9rem; opacity: 0.7;">Full traceability, honest practices</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="background: var(--gradient-subtle); padding: var(--space-lg); border-radius: 24px; margin-top: var(--space-xl);">
+                                <p style="font-style: italic;">"Every harvest reminds us why we started — to share something real, grown with care, prepared with purpose."</p>
+                                <div style="display: flex; align-items: center; gap: var(--space-sm); margin-top: var(--space-md);">
+                                    <span class="v-icon-small"></span>
+                                    <span>— Founder</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== PHILOSOPHY SECTION ===== -->
+        <!-- ===== FAMILY CONNECTION ===== -->
         <section class="section section-mint">
             <div class="container">
-                <div class="grid-2">
-                    <div class="reveal">
-                        <span class="clinical-label" style="color: var(--primary);">OUR PHILOSOPHY</span>
-                        <h2 style="color: var(--primary);">Simple. Pure. Transparent.</h2>
-                        <p style="margin-bottom: var(--space-md);">We believe nature provides what we need. Our role is not to improve upon it, but to prepare it carefully and share it honestly.</p>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-lg);">
-                            <div style="background: white; padding: var(--space-lg); border-radius: 16px;">
-                                <div style="font-size: 2rem; margin-bottom: var(--space-xs);">🌱</div>
-                                <div style="font-weight: 600;">Farm Direct</div>
+                <div style="background: white; border-radius: 48px; padding: var(--space-2xl);">
+                    <div class="grid-2" style="align-items: center;">
+                        <div>
+                            <div class="clinical-label">
+                                <span class="v-icon"></span>
+                                <span>THE NURSE BEHIND IT ALL</span>
                             </div>
-                            <div style="background: white; padding: var(--space-lg); border-radius: 16px;">
-                                <div style="font-size: 2rem; margin-bottom: var(--space-xs);">🧪</div>
-                                <div style="font-weight: 600;">Lab Tested</div>
-                            </div>
-                            <div style="background: white; padding: var(--space-lg); border-radius: 16px;">
-                                <div style="font-size: 2rem; margin-bottom: var(--space-xs);">📦</div>
-                                <div style="font-weight: 600;">Fresh Batch</div>
-                            </div>
-                            <div style="background: white; padding: var(--space-lg); border-radius: 16px;">
-                                <div style="font-size: 2rem; margin-bottom: var(--space-xs);">🤝</div>
-                                <div style="font-weight: 600;">Fair Partnership</div>
+                            <h2 class="gradient-text">My Mother, The Nurse</h2>
+                            <p style="margin: var(--space-lg) 0;">My mother, a nurse for over 30 years, first introduced me to moringa. She saw its potential not as medicine, but as daily nutritional support. Her wisdom and care shape everything we do.</p>
+                            <div style="display: flex; align-items: center; gap: var(--space-md);">
+                                <span class="v-icon-large"></span>
+                                <div>
+                                    <div style="font-weight: 600;">30+ Years</div>
+                                    <div style="font-size: 0.9rem;">Nursing experience</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="reveal" style="display: flex; align-items: center; justify-content: center;">
-                        <div style="background: var(--gradient-primary); border-radius: 32px; padding: var(--space-2xl); color: white; text-align: center;">
-                            <div style="font-size: 3rem; margin-bottom: var(--space-md);">"</div>
-                            <p style="font-size: 1.3rem; font-style: italic; margin-bottom: var(--space-md);">Every harvest reminds us why we started — to share something real, grown with care, prepared with purpose.</p>
-                            <div>— Founder</div>
+                        <div style="text-align: center;">
+                            <div style="background: var(--gradient-primary); border-radius: 32px; padding: var(--space-xl); color: white;">
+                                <span class="v-icon-large" style="background: white;"></span>
+                                <p style="margin-top: var(--space-md); font-style: italic;">"Nature provides what we need. Our role is to prepare it with respect."</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -243,11 +458,16 @@
         <!-- ===== CTA SECTION ===== -->
         <section class="section">
             <div class="container">
-                <div class="text-center" style="max-width: 600px; margin: 0 auto;">
-                    <span class="clinical-label reveal" data-i18n="buy_label">SECURE YOUR BATCH</span>
-                    <h2 class="reveal" style="color: var(--primary);" data-i18n="buy_title">Fresh Supply Available Now</h2>
-                    <p class="reveal" data-i18n="buy_text" style="margin-bottom: var(--space-lg);">Each batch prepared upon order to ensure maximum freshness.</p>
-                    <a href="shop.html#buy" class="btn btn-primary btn-large pulse" data-i18n="product_buy">Buy Fresh Supply</a>
+                <div class="whatsapp-section reveal" style="background: var(--gradient-primary); color: white;">
+                    <div class="whatsapp-header">
+                        <span class="v-icon-large" style="background: white;"></span>
+                        <h3 style="color: white;" data-i18n="whatsapp_title">We're Here for You! 🎉</h3>
+                    </div>
+                    <p style="color: white; opacity: 0.9;" data-i18n="whatsapp_text">Reach out to us on WhatsApp for quick responses, order support, or any questions.</p>
+                    <a href="#" class="btn btn-whatsapp">
+                        <span class="v-icon"></span>
+                        <span data-i18n="whatsapp_btn">WhatsApp Us</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -258,46 +478,86 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <div class="footer-brand" data-i18n="footer_brand">MorinVibes®</div>
+                    <div class="footer-brand">
+                        <span class="v-icon-large"></span>
+                        <span class="gradient-text" style="font-size: 1.8rem; color: white; -webkit-text-fill-color: white;" data-i18n="footer_brand">MorinVibes®</span>
+                    </div>
                     <p class="footer-description" data-i18n="footer_desc">Farm-direct botanical nutrition, prepared in Penang since 2019.</p>
+                    
+                    <div style="display: flex; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap;">
+                        <span style="display: flex; align-items: center; gap: 4px;">
+                            <span>🛒</span>
+                            <span>MorinVibes</span>
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 4px;">
+                            <span>🛒</span>
+                            <span>moringa_morinvibes</span>
+                        </span>
+                    </div>
                 </div>
                 
                 <div>
                     <h4 class="footer-heading" data-i18n="footer_shop">Shop</h4>
                     <ul class="footer-links">
-                        <li><a href="shop.html" data-i18n="product_name">Moringa Capsules</a></li>
-                        <li><a href="shop.html#buy" data-i18n="product_buy">Secure Supply</a></li>
+                        <li><a href="shop.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="product_name">Moringa Capsules</span>
+                        </a></li>
+                        <li><a href="shop.html#buy">
+                            <span class="v-icon"></span>
+                            <span data-i18n="product_buy">Secure Supply</span>
+                        </a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="footer-heading" data-i18n="footer_quality">Quality</h4>
                     <ul class="footer-links">
-                        <li><a href="quality.html" data-i18n="clinical_gmp">GMP Standards</a></li>
-                        <li><a href="quality.html" data-i18n="clinical_100">Purity Promise</a></li>
+                        <li><a href="quality.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="clinical_gmp">GMP Standards</span>
+                        </a></li>
+                        <li><a href="quality.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="clinical_100">Purity Promise</span>
+                        </a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="footer-heading" data-i18n="footer_connect">Connect</h4>
                     <ul class="footer-links">
-                        <li><a href="story.html" class="active" data-i18n="nav_story">Our Story</a></li>
-                        <li><a href="faq.html" data-i18n="nav_faq">FAQ</a></li>
-                        <li><a href="#">Instagram</a></li>
+                        <li><a href="story.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="nav_story">Our Story</span>
+                        </a></li>
+                        <li><a href="faq.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="nav_faq">FAQ</span>
+                        </a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="footer-heading" data-i18n="footer_legal">Legal</h4>
                     <ul class="footer-links">
-                        <li><a href="#" data-i18n="footer_privacy">Privacy Policy</a></li>
-                        <li><a href="#" data-i18n="footer_terms">Terms</a></li>
+                        <li><a href="#">
+                            <span class="v-icon"></span>
+                            <span data-i18n="footer_privacy">Privacy Policy</span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="v-icon"></span>
+                            <span data-i18n="footer_terms">Terms</span>
+                        </a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <div data-i18n="footer_copyright">© <span class="current-year">2026</span> MorinVibes®. All rights reserved.</div>
+                <div>
+                    <span class="v-icon-small"></span>
+                    <span data-i18n="footer_copyright">© <span class="current-year">2026</span> MorinVibes®. All rights reserved.</span>
+                </div>
                 <div data-i18n="footer_kkm">KKM: Registration in progress</div>
             </div>
             
@@ -307,10 +567,60 @@
         </div>
     </footer>
 
+    <!-- Back to top button -->
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <span class="v-icon"></span>
+    </button>
+
     <!-- Scripts -->
     <script src="assets/js/main.js" defer></script>
     <script src="assets/js/animations.js" defer></script>
     <script src="assets/js/language.js" defer></script>
     <script src="assets/js/pixel.js" defer></script>
+    
+    <style>
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition);
+            z-index: 99;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top .v-icon {
+            background: white;
+            -webkit-mask: url('assets/images/icons/v-icon.svg') no-repeat center;
+            mask: url('assets/images/icons/v-icon.svg') no-repeat center;
+            transform: rotate(-90deg);
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+    
+    <script>
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+    </script>
 </body>
 </html>
