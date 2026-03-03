@@ -5,84 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Title & Meta -->
-    <title>MorinVibes® | Farm-Direct Moringa Malaysia</title>
-    <meta name="description" content="Farm-direct Moringa capsules from Penang, Malaysia. Fresh from farm since 2019. GMP certified, 100% pure leaf powder.">
+    <title>MorinVibes® | 100% Fresh From Farm • Penang, Malaysia</title>
+    <meta name="description" content="100% Fresh From Farm Moringa. Origin From Penang, Malaysia. 90+ NUTRIENTS | 46 ANTIOXIDANTS | 18 AMINO ACID. Trusted Since 2019.">
     
-    <!-- Fonts (Preconnect for speed) -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Fonts - Playfair for headings, Inter for body -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- CSS (Optimized) -->
+    <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
-    <!-- No JS in head - all deferred -->
 </head>
 <body>
-    <!-- ===== NAVIGATION (Sticky, premium) ===== -->
+    <!-- Language Switcher (will be injected by JS) -->
+    
+    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <!-- Logo with gradient (your request) -->
-            <a href="index.html" class="logo">MorinVibes®</a>
+            <a href="index.html" class="logo">MorinVibes</a>
             
-            <!-- Desktop Navigation -->
             <div class="nav-links">
-                <a href="farm.html">Our Farm</a>
-                <a href="quality.html">Quality</a>
-                <a href="story.html">Story</a>
-                <a href="shop.html">Shop</a>
-                <a href="faq.html">FAQ</a>
-                <a href="shop.html#buy" class="nav-cta">Secure Fresh Supply</a>
+                <a href="farm.html" data-i18n="nav_farm">Our Farm</a>
+                <a href="quality.html" data-i18n="nav_quality">Quality</a>
+                <a href="story.html" data-i18n="nav_story">Story</a>
+                <a href="shop.html" data-i18n="nav_shop">Shop</a>
+                <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+                <a href="shop.html#buy" class="nav-cta" data-i18n="nav_cta">Secure Fresh Supply</a>
             </div>
             
-            <!-- Mobile Toggle (simple) -->
             <button class="mobile-toggle" aria-label="Menu">☰</button>
         </div>
     </nav>
     
-    <!-- ===== MOBILE BOTTOM BAR (Fixed, premium) ===== -->
+    <!-- Mobile Bottom Bar -->
     <div class="mobile-bottom">
-        <a href="farm.html" style="font-weight: 500;">Learn</a>
-        <a href="shop.html#buy" style="background: #007A71; color: white; padding: 8px 24px; border-radius: 40px; font-weight: 600;">Buy</a>
+        <a href="farm.html" data-i18n="mobile_learn">Learn</a>
+        <a href="shop.html#buy" style="background: var(--gradient-primary); color: white; padding: 8px 24px; border-radius: 40px; font-weight: 600;" data-i18n="mobile_buy">Buy</a>
     </div>
 
     <main>
-        <!-- ===== HERO SECTION (Premium) ===== -->
+        <!-- ===== HERO SECTION ===== -->
         <section class="section">
             <div class="container">
                 <div class="hero">
-                    <!-- Left Content -->
                     <div class="hero-content">
-                        <span class="clinical-label">SINCE 2019 • PENANG</span>
-                        <h1>Fresh From Farm.<br>Made for Everyday Resilience.</h1>
-                        <p class="hero-subhead">Farm-to-capsule moringa grown and prepared in Penang since 2019.</p>
+                        <!-- Badges -->
+                        <div class="hero-badge-wrapper">
+                            <span class="brand-badge" data-i18n="hero_badge1">NO Preservative</span>
+                            <span class="rating-badge">
+                                <span data-i18n="hero_badge2">Over 1000+ 5-Star Rated</span>
+                                <span class="rating-stars">★★★★★</span>
+                            </span>
+                        </div>
                         
+                        <!-- Main headline from your image -->
+                        <h1 data-i18n="hero_title">MorinVibes® Moringa</h1>
+                        <h3 style="margin-bottom: 1.5rem; color: var(--brand-teal);" data-i18n="hero_sub">From Farm to Capsules</h3>
+                        
+                        <!-- Stats from your image -->
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="90" data-suffix="+">90+</div>
+                                <div class="stat-label" data-i18n="stat_nutrients">NUTRIENTS</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="46" data-suffix="">46</div>
+                                <div class="stat-label" data-i18n="stat_antioxidants">ANTIOXIDANTS</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="18" data-suffix="">18</div>
+                                <div class="stat-label" data-i18n="stat_amino">AMINO ACID</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Farm origin from your image -->
+                        <div style="margin: 2rem 0;">
+                            <div style="font-size: 1.2rem; font-weight: 600; color: var(--brand-teal);" data-i18n="farm_origin">100% Fresh From Farm</div>
+                            <div style="font-size: 1rem; opacity: 0.8;" data-i18n="farm_location">Origin From Penang, Malaysia</div>
+                        </div>
+                        
+                        <!-- CTA Buttons -->
                         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                            <a href="shop.html#buy" class="btn btn-primary pulse">Secure Fresh Supply</a>
-                            <a href="farm.html" class="btn btn-secondary">Discover Our Farm</a>
+                            <a href="shop.html" class="btn btn-primary" data-i18n="hero_btn1">Shop Now</a>
+                            <a href="farm.html" class="btn btn-secondary" data-i18n="hero_btn2">Learn More</a>
                         </div>
                     </div>
                     
-                    <!-- Right Visual - Product with your exact label design -->
+                    <!-- Hero Visual - Product with your branding -->
                     <div class="hero-visual">
-                        <div class="hero-product float">
-                            <!-- Your product design from product.png -->
-                            <div style="width: 320px; height: 420px; background: linear-gradient(145deg, #E0F7F6 0%, #c4eae7 100%); border-radius: 180px 180px 80px 80px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; box-shadow: 0 30px 40px rgba(0,122,113,0.2);">
-                                <div style="font-family: 'Playfair Display'; font-size: 2.5rem; font-weight: 700; line-height: 1.1; margin-bottom: 1rem; color: #007A71;">MORIN<br>VIBES</div>
-                                <div style="font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; color: #007A71;">MORINGA</div>
-                                <div style="font-size: 1.2rem; letter-spacing: 0.2em; margin-bottom: 1.5rem; color: #007A71;">LEAF POWDER</div>
+                        <div class="hero-product-card float">
+                            <div style="text-align: center;">
+                                <div style="font-family: 'Playfair Display'; font-size: 2.8rem; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;">MORIN<br>VIBES</div>
+                                <div style="font-size: 1.4rem; font-weight: 600; color: var(--brand-teal); margin-bottom: 1rem;" data-i18n="product_title">Premium Organic Moringa</div>
                                 
-                                <div style="font-size: 1rem; font-weight: 600; background: rgba(255,255,255,0.5); padding: 0.5rem 1rem; border-radius: 40px; margin-bottom: 1rem;">100% ORGANIC</div>
-                                
-                                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1rem;">
-                                    <span style="font-size: 0.7rem; background: white; padding: 0.3rem 0.8rem; border-radius: 40px;">CAFFEINE-FREE</span>
-                                    <span style="font-size: 0.7rem; background: white; padding: 0.3rem 0.8rem; border-radius: 40px;">GLUTEN-FREE</span>
+                                <!-- Stats badge -->
+                                <div style="background: white; padding: 1rem; border-radius: 60px; margin: 1.5rem 0; box-shadow: var(--shadow-md);">
+                                    <div style="font-weight: 700; font-size: 1rem;" data-i18n="product_stats">90+ NUTRIENTS | 46 ANTIOXIDANTS | 18 AMINO ACID</div>
                                 </div>
                                 
-                                <div style="font-size: 1.2rem; font-weight: 600; margin-top: 0.5rem;">90 CAPSULES</div>
-                                <div style="font-size: 0.9rem;">(500mg per capsule)</div>
+                                <!-- Product image placeholder -->
+                                <div style="width: 200px; height: 200px; margin: 0 auto; background: var(--gradient-hero); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg);">
+                                    <span style="font-size: 5rem;">🌿</span>
+                                </div>
+                                
+                                <!-- Price -->
+                                <div class="product-price" style="margin-top: 1.5rem;" data-i18n="product_price">RM89</div>
                             </div>
                         </div>
                     </div>
@@ -90,236 +117,160 @@
             </div>
         </section>
         
-        <!-- ===== TRUST BAR (Premium) ===== -->
+        <!-- ===== TRUST BAR (with your Shopee/Lazada badges) ===== -->
         <div class="container">
             <div class="trust-bar">
-                <span class="trust-item">Since 2019</span>
-                <span class="trust-item">Farm Direct</span>
-                <span class="trust-item">GMP</span>
-                <span class="trust-item">KKM</span>
-                <span class="trust-item">Vegan</span>
-                <span class="trust-item">Malaysia</span>
+                <span class="trust-item">🌱 <span data-i18n="farm_origin">100% Fresh From Farm</span></span>
+                <span class="trust-item">⭐ <span data-i18n="hero_badge2">1000+ 5-Star</span></span>
+                <span class="trust-item">🏭 <span data-i18n="quality_label">NO Preservative</span></span>
+                <span class="trust-badge" data-i18n="seller_since">Trusted Since 2019</span>
             </div>
         </div>
         
-        <!-- ===== FARM DIFFERENCE SECTION (Premium) ===== -->
-        <section class="section">
+        <!-- ===== SELLER BADGES SECTION (Your Shopee/Lazada presence) ===== -->
+        <section class="section-compact">
+            <div class="container">
+                <div class="seller-badges">
+                    <div class="seller-badge">
+                        <span>🛒 Shopee</span>
+                        <span class="seller-id" data-i18n="seller_shopee1">MorinVibes</span>
+                    </div>
+                    <div class="seller-badge">
+                        <span>🛒 Shopee</span>
+                        <span class="seller-id" data-i18n="seller_shopee2">moringa_morinvibes</span>
+                    </div>
+                    <div class="seller-badge">
+                        <span>📦 Lazada</span>
+                        <span class="seller-id" data-i18n="seller_lazada">Lazada</span>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <span class="trust-item" style="font-size: 1rem;" data-i18n="seller_official">MorinVibes Official Store Only</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== FARM ORIGIN SECTION ===== -->
+        <section class="section section-gradient">
             <div class="container">
                 <div class="grid-2">
                     <div>
-                        <span class="clinical-label">THE ORIGIN</span>
-                        <h2>Not Warehouse Stock.<br>Real Harvest.</h2>
-                        <p style="margin-bottom: 2rem; opacity: 0.8; font-size: 1.1rem;">Our moringa comes from small farms in Penang, not industrial warehouses. Each batch follows the natural rhythm of the land — harvested at peak, dried with care.</p>
+                        <span class="nutrient-label" data-i18n="farm_origin">100% Fresh From Farm</span>
+                        <h2 data-i18n="farm_location">Origin From Penang, Malaysia</h2>
+                        <p style="margin: 2rem 0; font-size: 1.1rem;" data-i18n="farm_premium">Premium Organic Moringa grown in the rich soil of Penang, harvested at peak freshness.</p>
                         
-                        <!-- Timeline style list -->
-                        <div style="margin-top: 2rem;">
-                            <div style="display: flex; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--border-light);">
-                                <span style="font-family: monospace; color: #007A71; font-size: 0.85rem; font-weight: 600; min-width: 80px;">HARVEST</span>
-                                <span>Morning-picked leaves, same-day processing</span>
+                        <!-- Stats row -->
+                        <div style="display: flex; gap: 2rem; margin: 2rem 0;">
+                            <div>
+                                <div style="font-size: 2rem; font-weight: 800; color: var(--brand-teal);">2019</div>
+                                <div style="font-size: 0.9rem;" data-i18n="seller_since">Trusted Since</div>
                             </div>
-                            <div style="display: flex; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--border-light);">
-                                <span style="font-family: monospace; color: #007A71; font-size: 0.85rem; font-weight: 600; min-width: 80px;">DRY</span>
-                                <span>Low-temperature shade drying, nutrient protected</span>
-                            </div>
-                            <div style="display: flex; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--border-light);">
-                                <span style="font-family: monospace; color: #007A71; font-size: 0.85rem; font-weight: 600; min-width: 80px;">MILL</span>
-                                <span>Gentle milling into fine powder</span>
-                            </div>
-                            <div style="display: flex; gap: 1.5rem; padding: 1rem 0;">
-                                <span style="font-family: monospace; color: #007A71; font-size: 0.85rem; font-weight: 600; min-width: 80px;">CAPSULE</span>
-                                <span>Vegetarian capsules, nothing added</span>
+                            <div>
+                                <div style="font-size: 2rem; font-weight: 800; color: var(--brand-teal);">100%</div>
+                                <div style="font-size: 0.9rem;" data-i18n="clinical_100">Pure Leaf Powder</div>
                             </div>
                         </div>
                         
-                        <a href="farm.html" class="btn btn-secondary" style="margin-top: 2rem;">Visit Our Farm →</a>
+                        <a href="farm.html" class="btn btn-primary" data-i18n="farm_link">Visit Our Farm →</a>
                     </div>
-                    
-                    <!-- Farm image placeholder -->
-                    <div style="background: var(--mint-bg); border-radius: 32px; height: 500px; display: flex; align-items: center; justify-content: center; color: #007A71; font-size: 1.2rem; box-shadow: 0 20px 40px rgba(0,122,113,0.1);">
+                    <div style="background: var(--gradient-hero); border-radius: 48px; height: 500px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg);">
                         <div style="text-align: center;">
-                            <div style="font-size: 3rem; margin-bottom: 1rem;">🌱</div>
-                            <div>Penang Farm • Morning Harvest</div>
+                            <div style="font-size: 5rem;">🌱</div>
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--brand-teal);" data-i18n="farm_location">Penang, Malaysia</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- ===== WHY MORINGA (Premium cards) ===== -->
-        <section class="section section-mint">
+        <!-- ===== PRODUCT SHOWCASE (with your exact stats) ===== -->
+        <section class="section">
             <div class="container">
-                <div class="text-center" style="max-width: 600px; margin: 0 auto 3rem;">
-                    <span class="clinical-label">TRADITIONAL WISDOM</span>
-                    <h2>Why Moringa?</h2>
-                    <p style="opacity: 0.8;">Known as the "miracle tree" in traditional practices, moringa has been part of daily wellness for generations.</p>
+                <div class="text-center" style="max-width: 700px; margin: 0 auto 3rem;">
+                    <span class="nutrient-label" data-i18n="product_title">Premium Organic Moringa</span>
+                    <h2 data-i18n="farm_origin">100% Fresh From Farm</h2>
                 </div>
                 
-                <div class="grid-3">
-                    <div class="card">
-                        <div class="card-icon">🌿</div>
-                        <h3 style="margin-bottom: 0.5rem;">Traditionally Used</h3>
-                        <p style="opacity: 0.7;">Used in traditional practices across South Asia for daily nutritional support.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">🍃</div>
-                        <h3 style="margin-bottom: 0.5rem;">Nutrient Dense</h3>
-                        <p style="opacity: 0.7;">Each leaf contains a complex profile of naturally occurring nutrients.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">✨</div>
-                        <h3 style="margin-bottom: 0.5rem;">Gentle Support</h3>
-                        <p style="opacity: 0.7;">Easy to incorporate into daily routines — simply two capsules with water.</p>
+                <div class="product-showcase">
+                    <div class="product-header">
+                        <div class="logo" style="font-size: 2.5rem; margin-bottom: 1rem;">MorinVibes®</div>
+                        
+                        <!-- Your exact badges -->
+                        <div class="product-badge-row">
+                            <span class="product-badge" data-i18n="hero_badge1">NO Preservative</span>
+                            <span class="product-badge product-badge-gold" data-i18n="hero_badge2">1000+ 5-Star</span>
+                        </div>
+                        
+                        <!-- Your exact stats grid -->
+                        <div class="product-stats-grid">
+                            <div class="product-stat pulse-glow">
+                                <div class="product-stat-value">90+</div>
+                                <div class="product-stat-label" data-i18n="stat_nutrients">NUTRIENTS</div>
+                            </div>
+                            <div class="product-stat pulse-glow">
+                                <div class="product-stat-value">46</div>
+                                <div class="product-stat-label" data-i18n="stat_antioxidants">ANTIOXIDANTS</div>
+                            </div>
+                            <div class="product-stat pulse-glow">
+                                <div class="product-stat-value">18</div>
+                                <div class="product-stat-label" data-i18n="stat_amino">AMINO ACID</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Your farm origin line -->
+                        <div style="margin: 1.5rem 0;">
+                            <div style="font-weight: 700; color: var(--brand-teal);" data-i18n="farm_origin">100% Fresh From Farm</div>
+                            <div style="opacity: 0.7;" data-i18n="farm_location">Origin From Penang, Malaysia</div>
+                        </div>
+                        
+                        <!-- Your seller IDs -->
+                        <div style="background: var(--brand-soft-mint); padding: 1rem; border-radius: 16px; margin: 1.5rem 0;">
+                            <div style="font-weight: 700; margin-bottom: 0.5rem;" data-i18n="seller_only">THE ONLY SELLER</div>
+                            <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                                <span style="font-family: monospace;">Shopee: MorinVibes</span>
+                                <span style="font-family: monospace;">Shopee: moringa_morinvibes</span>
+                                <span style="font-family: monospace;">Lazada</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Price and CTA -->
+                        <div class="product-price" data-i18n="product_price">RM89</div>
+                        <a href="shop.html#buy" class="btn btn-primary" style="width: 100%;" data-i18n="product_cta">Buy Now</a>
+                        
+                        <!-- Official store note -->
+                        <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--brand-teal);" data-i18n="seller_official">MorinVibes Official Store Only</div>
+                        <div style="font-size: 0.8rem; opacity: 0.6;" data-i18n="seller_since">Trusted Since 2019</div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- ===== CLINICAL TRANSPARENCY ===== -->
-        <section class="section">
+        <!-- ===== QUALITY SECTION ===== -->
+        <section class="section section-cream">
             <div class="container">
                 <div class="grid-2">
-                    <div>
-                        <span class="clinical-label">PURE & TRANSPARENT</span>
-                        <h2>What's inside is all you need.</h2>
-                        <p style="margin-bottom: 2rem; opacity: 0.8;">No hidden ingredients, no fillers, no additives. Just pure moringa leaf powder in vegetarian capsules.</p>
+                    <div style="order: 2;">
+                        <span class="nutrient-label" data-i18n="quality_label">PURE & NATURAL</span>
+                        <h2 data-i18n="quality_title">No Preservatives • No Additives</h2>
+                        <p style="margin: 2rem 0;" data-i18n="quality_text">100% pure moringa leaf powder, nothing else. Just nature, carefully prepared.</p>
                         
-                        <!-- Grid of checks -->
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                             <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span style="color: #007A71; font-size: 1.2rem;">✓</span>
-                                <span>100% Leaf Powder</span>
+                                <span style="color: var(--brand-teal);">✓</span> <span data-i18n="clinical_100">100% Leaf Powder</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span style="color: #007A71; font-size: 1.2rem;">✓</span>
-                                <span>No Fillers</span>
+                                <span style="color: var(--brand-teal);">✓</span> <span data-i18n="clinical_fillers">No Fillers</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span style="color: #007A71; font-size: 1.2rem;">✓</span>
-                                <span>No Additives</span>
+                                <span style="color: var(--brand-teal);">✓</span> <span data-i18n="clinical_additives">No Additives</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span style="color: #007A71; font-size: 1.2rem;">✓</span>
-                                <span>GMP Manufacturing</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span style="color: #007A71; font-size: 1.2rem;">✓</span>
-                                <span>KKM Registration</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span style="color: #007A71; font-size: 1.2rem;">✓</span>
-                                <span>Vegetarian</span>
+                                <span style="color: var(--brand-teal);">✓</span> <span data-i18n="clinical_gmp">GMP Certified</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Lab style visual -->
-                    <div style="background: var(--mint-bg); border-radius: 32px; padding: 3rem; box-shadow: 0 20px 40px rgba(0,122,113,0.1);">
-                        <div style="font-family: monospace; font-size: 0.9rem; color: #007A71; margin-bottom: 2rem; letter-spacing: 0.1em;">CERTIFICATE OF ANALYSIS</div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-                            <div>
-                                <div style="font-size: 0.8rem; opacity: 0.6;">Product</div>
-                                <div style="font-weight: 600;">Moringa Leaf Powder</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 0.8rem; opacity: 0.6;">Batch</div>
-                                <div style="font-weight: 600;">MV-0326</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 0.8rem; opacity: 0.6;">Purity</div>
-                                <div style="font-weight: 600;">100%</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 0.8rem; opacity: 0.6;">Additives</div>
-                                <div style="font-weight: 600;">None</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- ===== FOUNDER STORY PREVIEW ===== -->
-        <section class="section section-mint">
-            <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-                    <div>
-                        <span class="clinical-label">FOUNDED 2019</span>
-                        <h2>From personal need to farm-direct purpose.</h2>
-                        <p style="margin-bottom: 1.5rem;">In difficult years, my mother — a nurse — introduced me to moringa. What began as family support grew into something larger.</p>
-                        <div style="font-style: italic; color: #007A71; margin-bottom: 2rem;">"We started small, with one harvest and a simple goal — prepare moringa the way it deserves."</div>
-                        <a href="story.html" class="btn btn-secondary">Read Full Story →</a>
-                    </div>
-                    <div style="background: white; border-radius: 32px; height: 400px; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,122,113,0.1);">
-                        <div style="text-align: center; color: #007A71;">
-                            <div style="font-size: 4rem; margin-bottom: 1rem;">👩‍🌾</div>
-                            <div>Founder • Penang 2019</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- ===== PRODUCT SPOTLIGHT (Your exact product design) ===== -->
-        <section class="section">
-            <div class="container">
-                <div class="product-card">
-                    <!-- Product image with your label -->
-                    <div class="product-image">
-                        <div style="font-family: 'Playfair Display'; font-size: 2rem; font-weight: 700; line-height: 1.2; color: #007A71;">MORIN<br>VIBES</div>
-                        <div style="font-size: 1rem; margin-top: 0.5rem; color: #007A71;">MORINGA LEAF POWDER</div>
-                    </div>
-                    
-                    <!-- Badges -->
-                    <div style="display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
-                        <span class="product-badge">100% ORGANIC</span>
-                        <span class="product-badge">RAW</span>
-                        <span class="product-badge">ORGANIC</span>
-                        <span class="product-badge">SUPERFOOD</span>
-                    </div>
-                    
-                    <!-- Features -->
-                    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
-                        <span style="font-size: 0.8rem; background: var(--mint-bg); padding: 0.3rem 1rem; border-radius: 40px;">CAFFEINE-FREE</span>
-                        <span style="font-size: 0.8rem; background: var(--mint-bg); padding: 0.3rem 1rem; border-radius: 40px;">GLUTEN-FREE</span>
-                        <span style="font-size: 0.8rem; background: var(--mint-bg); padding: 0.3rem 1rem; border-radius: 40px;">NON-ADDITIVE</span>
-                        <span style="font-size: 0.8rem; background: var(--mint-bg); padding: 0.3rem 1rem; border-radius: 40px;">NON-GMO</span>
-                    </div>
-                    
-                    <!-- Capsules info -->
-                    <div style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">90 CAPSULES (500mg per capsule)</div>
-                    
-                    <!-- Price -->
-                    <div class="product-price">RM89</div>
-                    
-                    <!-- CTA -->
-                    <a href="shop.html#buy" class="btn btn-primary" style="width: 100%;">Secure Fresh Supply</a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- ===== WEBSITE ADVANTAGES ===== -->
-        <section class="section section-mint">
-            <div class="container">
-                <div class="text-center" style="max-width: 600px; margin: 0 auto 3rem;">
-                    <span class="clinical-label">OFFICIAL WEBSITE BENEFITS</span>
-                    <h2>Why buy from our farm channel</h2>
-                </div>
-                
-                <div class="grid-3">
-                    <div class="card">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌱</div>
-                        <h3 style="margin-bottom: 0.5rem;">Freshest Batch</h3>
-                        <p style="opacity: 0.7;">Direct from harvest, not warehouse storage</p>
-                    </div>
-                    <div class="card">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🤝</div>
-                        <h3 style="margin-bottom: 0.5rem;">Founder Support</h3>
-                        <p style="opacity: 0.7;">Direct access to our team</p>
-                    </div>
-                    <div class="card">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🍵</div>
-                        <h3 style="margin-bottom: 0.5rem;">Early Access</h3>
-                        <p style="opacity: 0.7;">Future tea products first</p>
+                    <div style="background: var(--gradient-gold); border-radius: 48px; height: 400px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-gold);">
+                        <div style="font-size: 4rem;">✨</div>
                     </div>
                 </div>
             </div>
@@ -329,75 +280,84 @@
         <section class="section" id="buy">
             <div class="container">
                 <div class="text-center" style="max-width: 600px; margin: 0 auto;">
-                    <span class="clinical-label">SECURE YOUR BATCH</span>
-                    <h2>Fresh Supply Available Now</h2>
-                    <p style="margin-bottom: 2rem;">Each batch prepared upon order to ensure maximum freshness.</p>
+                    <span class="nutrient-label" data-i18n="buy_label">SECURE YOUR BATCH</span>
+                    <h2 data-i18n="buy_title">Fresh Supply Available Now</h2>
+                    <p data-i18n="buy_text" style="margin-bottom: 2rem;">Each batch prepared upon order to ensure maximum freshness.</p>
                     
-                    <!-- Orderla embed placeholder -->
                     <div class="orderla-container">
                         <div style="font-size: 3rem; margin-bottom: 1rem;">📦</div>
-                        <h3 style="margin-bottom: 1rem;">Orderla.my Checkout</h3>
-                        <p style="opacity: 0.7; margin-bottom: 1.5rem;">RM30+ package purchased separately</p>
-                        <div style="background: var(--mint-bg); padding: 1rem; border-radius: 8px; font-family: monospace; font-size: 0.9rem;">
-                            ⚡ Insert Orderla embed code here
+                        <h3 data-i18n="orderla_placeholder">Orderla.my Checkout</h3>
+                        <p style="opacity: 0.7; margin: 1rem 0;" data-i18n="orderla_note">RM30+ package purchased separately</p>
+                        <!-- INSERT ORDERLA EMBED CODE HERE -->
+                        <div style="background: var(--brand-soft-mint); padding: 1rem; border-radius: 8px;">
+                            Orderla embed will appear here
                         </div>
                     </div>
                     
-                    <!-- Trust badges -->
-                    <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
-                        <span style="background: var(--mint-bg); padding: 0.5rem 1.5rem; border-radius: 40px; font-size: 0.9rem;">Secure Checkout</span>
-                        <span style="background: var(--mint-bg); padding: 0.5rem 1.5rem; border-radius: 40px; font-size: 0.9rem;">Bank Transfer</span>
-                        <span style="background: var(--mint-bg); padding: 0.5rem 1.5rem; border-radius: 40px; font-size: 0.9rem;">FPX</span>
+                    <!-- Seller badges again for trust -->
+                    <div class="seller-badges" style="margin-top: 2rem;">
+                        <span class="seller-badge">🛒 MorinVibes</span>
+                        <span class="seller-badge">🛒 moringa_morinvibes</span>
+                        <span class="seller-badge">📦 Lazada</span>
                     </div>
                 </div>
             </div>
         </section>
         
         <!-- ===== FAQ PREVIEW ===== -->
-        <section class="section section-mint">
+        <section class="section section-gradient">
             <div class="container">
                 <div class="text-center" style="max-width: 600px; margin: 0 auto 3rem;">
-                    <span class="clinical-label">COMMON QUESTIONS</span>
-                    <h2>Quick Answers</h2>
+                    <span class="nutrient-label" data-i18n="faq_label">COMMON QUESTIONS</span>
+                    <h2 data-i18n="faq_title">Quick Answers</h2>
                 </div>
                 
                 <div style="max-width: 800px; margin: 0 auto;">
-                    <!-- FAQ Item 1 -->
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>Is MorinVibes registered with KKM?</span>
+                            <span data-i18n="faq_q1">Is MorinVibes registered with KKM?</span>
                             <span class="faq-toggle">+</span>
                         </div>
-                        <div class="faq-answer">
+                        <div class="faq-answer" data-i18n="faq_a1">
                             Registration is currently in progress. Our facility follows GMP standards.
                         </div>
                     </div>
                     
-                    <!-- FAQ Item 2 -->
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>Who is moringa suitable for?</span>
+                            <span data-i18n="faq_q2">Who is moringa suitable for?</span>
                             <span class="faq-toggle">+</span>
                         </div>
-                        <div class="faq-answer">
+                        <div class="faq-answer" data-i18n="faq_a2">
                             Generally suitable for adults. If pregnant or nursing, consult your healthcare provider.
                         </div>
                     </div>
                     
-                    <!-- FAQ Item 3 -->
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>How is this different from Shopee?</span>
+                            <span data-i18n="faq_q3">How is this different from Shopee?</span>
                             <span class="faq-toggle">+</span>
                         </div>
-                        <div class="faq-answer">
+                        <div class="faq-answer" data-i18n="faq_a3">
                             We are the original farm source since 2019. Buying direct ensures freshest batch.
                         </div>
                     </div>
                     
                     <div style="text-align: center; margin-top: 2rem;">
-                        <a href="faq.html" class="btn btn-secondary">View All FAQs →</a>
+                        <a href="faq.html" class="btn btn-secondary" data-i18n="faq_link">View All FAQs →</a>
                     </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== WHATSAPP SECTION (from your image) ===== -->
+        <section class="section-compact">
+            <div class="container">
+                <div style="background: var(--gradient-gold); border-radius: 60px; padding: 3rem; text-align: center; color: white;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🐝</div>
+                    <h2 style="color: white; -webkit-text-fill-color: white;">for You!</h2>
+                    <p style="font-size: 1.3rem; margin: 1rem 0;" data-i18n="whatsapp_text">Reach out to us on WhatsApp for any questions</p>
+                    <a href="https://wa.me/60123456789" class="btn" style="background: white; color: var(--brand-teal); font-weight: 700; padding: 1rem 3rem;">WhatsApp Us</a>
                 </div>
             </div>
         </section>
@@ -408,53 +368,54 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <div class="logo" style="color: white; background: none; -webkit-text-fill-color: white; margin-bottom: 1rem;">MorinVibes®</div>
-                    <p style="opacity: 0.8; margin-bottom: 1.5rem;">Farm-direct botanical nutrition, prepared in Penang since 2019.</p>
+                    <div class="logo" style="color: white; -webkit-text-fill-color: white; margin-bottom: 1rem;">MorinVibes®</div>
+                    <p style="opacity: 0.9;" data-i18n="footer_desc">100% Fresh From Farm • Penang, Malaysia • Since 2019</p>
                 </div>
                 
                 <div>
-                    <h4 style="margin-bottom: 1rem; color: white;">Shop</h4>
+                    <h4 style="color: white; margin-bottom: 1rem;" data-i18n="footer_shop">Shop</h4>
                     <ul style="list-style: none;">
-                        <li style="margin-bottom: 0.5rem;"><a href="shop.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">Moringa Capsules</a></li>
+                        <li><a href="shop.html" data-i18n="product_title">Moringa Capsules</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 style="margin-bottom: 1rem; color: white;">Quality</h4>
+                    <h4 style="color: white; margin-bottom: 1rem;" data-i18n="footer_quality">Quality</h4>
                     <ul style="list-style: none;">
-                        <li style="margin-bottom: 0.5rem;"><a href="quality.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">GMP Standards</a></li>
+                        <li><a href="quality.html" data-i18n="clinical_gmp">GMP Standards</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 style="margin-bottom: 1rem; color: white;">Connect</h4>
+                    <h4 style="color: white; margin-bottom: 1rem;" data-i18n="footer_connect">Connect</h4>
                     <ul style="list-style: none;">
-                        <li style="margin-bottom: 0.5rem;"><a href="story.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">Our Story</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="faq.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">FAQ</a></li>
+                        <li><a href="story.html" data-i18n="nav_story">Our Story</a></li>
+                        <li><a href="faq.html" data-i18n="nav_faq">FAQ</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 style="margin-bottom: 1rem; color: white;">Legal</h4>
+                    <h4 style="color: white; margin-bottom: 1rem;" data-i18n="footer_legal">Legal</h4>
                     <ul style="list-style: none;">
-                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">Privacy</a></li>
+                        <li><a href="#" data-i18n="footer_privacy">Privacy</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <div>© <span class="current-year">2026</span> MorinVibes®. All rights reserved.</div>
-                <div>KKM Registration in Progress</div>
+                <div data-i18n="footer_copyright">© <span class="current-year">2026</span> MorinVibes®. All rights reserved.</div>
+                <div data-i18n="footer_kkm">KKM Registration in Progress</div>
             </div>
             
-            <div class="footer-disclaimer">
-                These statements have not been evaluated by the Ministry of Health Malaysia. This product is not intended to diagnose, treat, cure, or prevent any disease.
+            <div class="footer-disclaimer" data-i18n="footer_disclaimer">
+                These statements have not been evaluated by the Ministry of Health Malaysia.
             </div>
         </div>
     </footer>
     
-    <!-- ===== SCRIPTS (Deferred, no blocking) ===== -->
+    <!-- Scripts -->
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/language.js" defer></script>
     <script src="assets/js/pixel.js" defer></script>
 </body>
 </html>
