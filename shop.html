@@ -617,4 +617,156 @@
                         <span style="display: flex; align-items: center; gap: 4px;">
                             <span>🛒</span>
                             <span>moringa_morinvibes</span>
-                        </span
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading" data-i18n="footer_shop">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="product_name">Moringa Capsules</span>
+                        </a></li>
+                        <li><a href="#buy">
+                            <span class="v-icon"></span>
+                            <span data-i18n="product_buy">Secure Supply</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading" data-i18n="footer_quality">Quality</h4>
+                    <ul class="footer-links">
+                        <li><a href="quality.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="clinical_gmp">GMP Standards</span>
+                        </a></li>
+                        <li><a href="quality.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="clinical_100">Purity Promise</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading" data-i18n="footer_connect">Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="story.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="nav_story">Our Story</span>
+                        </a></li>
+                        <li><a href="faq.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="nav_faq">FAQ</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading" data-i18n="footer_legal">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">
+                            <span class="v-icon"></span>
+                            <span data-i18n="footer_privacy">Privacy Policy</span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="v-icon"></span>
+                            <span data-i18n="footer_terms">Terms</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>
+                    <span class="v-icon-small"></span>
+                    <span data-i18n="footer_copyright">© <span class="current-year">2026</span> MorinVibes®. All rights reserved.</span>
+                </div>
+                <div data-i18n="footer_kkm">KKM: Registration in progress</div>
+            </div>
+            
+            <div class="footer-disclaimer" data-i18n="footer_disclaimer">
+                These statements have not been evaluated by the Ministry of Health Malaysia. This product is not intended to diagnose, treat, cure, or prevent any disease.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <span class="v-icon"></span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/language.js" defer></script>
+    <script src="assets/js/pixel.js" defer></script>
+    
+    <!-- Tab switching script -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+            
+            // Highlight clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+    
+    <style>
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition);
+            z-index: 99;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top .v-icon {
+            background: white;
+            -webkit-mask: url('assets/images/icons/v-icon.svg') no-repeat center;
+            mask: url('assets/images/icons/v-icon.svg') no-repeat center;
+            transform: rotate(-90deg);
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+    
+    <script>
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>
