@@ -1,89 +1,37 @@
 /* =========================================
-   MORINVIBES – PREMIUM MAIN JS
-   Language Engine + Effects + Commerce
+   MORINVIBES MAIN JS
+   Stable Production Version
 ========================================= */
 
+console.log("MorinVibes JS Loaded");
+
 /* =========================================
-   1. LANGUAGE ENGINE
+   1. SAFE LANGUAGE SYSTEM
 ========================================= */
 
 const translations = {
   en: {
-    nav_home: "Home",
-    nav_about: "About Us",
-    nav_mission: "Mission & Vision",
-    nav_blog: "Blog",
-    nav_faq: "FAQ",
-    nav_contact: "Contact",
-    nav_terms: "Terms",
-
-    hero_title: "Penang’s Purest Moringa.",
-    hero_desc:
-      "Farm-grown. GMP-certified. Officially registered with KKM (MAL).",
     hero_btn: "Shop Now",
-
     footer_rights: "All rights reserved."
   },
-
   bm: {
-    nav_home: "Utama",
-    nav_about: "Tentang Kami",
-    nav_mission: "Misi & Visi",
-    nav_blog: "Blog",
-    nav_faq: "Soalan Lazim",
-    nav_contact: "Hubungi",
-    nav_terms: "Terma",
-
-    hero_title: "Moringa Paling Tulen di Pulau Pinang.",
-    hero_desc:
-      "Ditanam sendiri. Kilang GMP. Berdaftar rasmi dengan KKM (MAL).",
     hero_btn: "Beli Sekarang",
-
     footer_rights: "Hak cipta terpelihara."
   },
-
   zh: {
-    nav_home: "首页",
-    nav_about: "关于我们",
-    nav_mission: "使命与愿景",
-    nav_blog: "博客",
-    nav_faq: "常见问题",
-    nav_contact: "联系我们",
-    nav_terms: "条款",
-
-    hero_title: "槟城最纯正的辣木。",
-    hero_desc:
-      "自家农场种植。GMP认证。马来西亚卫生部注册。",
     hero_btn: "立即购买",
-
     footer_rights: "版权所有。"
   },
-
   zht: {
-    nav_home: "首頁",
-    nav_about: "關於我們",
-    nav_mission: "使命與願景",
-    nav_blog: "部落格",
-    nav_faq: "常見問題",
-    nav_contact: "聯絡我們",
-    nav_terms: "條款",
-
-    hero_title: "檳城最純正的辣木。",
-    hero_desc:
-      "自家農場種植。GMP認證。馬來西亞衛生部註冊。",
     hero_btn: "立即購買",
-
     footer_rights: "版權所有。"
   }
 };
 
-/* =========================================
-   APPLY TRANSLATION
-========================================= */
-
 function setLanguage(lang) {
-  const elements = document.querySelectorAll("[data-i18n]");
+  if (!translations[lang]) return;
 
+  const elements = document.querySelectorAll("[data-i18n]");
   elements.forEach(el => {
     const key = el.getAttribute("data-i18n");
     if (translations[lang][key]) {
@@ -91,111 +39,91 @@ function setLanguage(lang) {
     }
   });
 
-  localStorage.setItem("language", lang);
+  localStorage.setItem("mv_lang", lang);
 }
 
-/* =========================================
-   LANGUAGE SWITCHER INIT
-========================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-  const savedLang = localStorage.getItem("language") || "en";
+document.addEventListener("DOMContentLoaded", function () {
+  const savedLang = localStorage.getItem("mv_lang") || "en";
   setLanguage(savedLang);
-
-  const switcher = document.querySelectorAll(".lang-option");
-
-  switcher.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const selectedLang = btn.getAttribute("data-lang");
-      setLanguage(selectedLang);
-    });
-  });
 });
 
 
 /* =========================================
-   2. SCROLL REVEAL EFFECT
+   2. SAFE SCROLL REVEAL
 ========================================= */
 
-const revealElements = document.querySelectorAll(".reveal");
-
-const revealOnScroll = () => {
-  const windowHeight = window.innerHeight;
-
-  revealElements.forEach(el => {
-    const elementTop = el.getBoundingClientRect().top;
-
-    if (elementTop < windowHeight - 80) {
+function revealOnScroll() {
+  const reveals = document.querySelectorAll(".reveal");
+  reveals.forEach(function (el) {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 80) {
       el.classList.add("active");
     }
   });
-};
+}
 
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 
 
 /* =========================================
-   3. NAVBAR SCROLL EFFECT
+   3. SAFE SMOOTH ANCHOR SCROLL
 ========================================= */
 
-const navbar = document.querySelector(".navbar");
+document.addEventListener("DOMContentLoaded", function () {
+  const links = document.querySelectorAll('a[href^="#"]');
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
+  links.forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      const targetId = this.getAttribute("href");
+
+      if (targetId.length > 1) {
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    });
+  });
 });
 
 
 /* =========================================
-   4. SMOOTH SCROLL
-========================================= */
-
-function scrollToSection(id) {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({
-      behavior: "smooth"
-    });
-  }
-}
-
-
-/* =========================================
-   5. ADD TO CART TRIGGER (Shopee Ready)
+   4. ADD TO CART (Shopee Redirect)
 ========================================= */
 
 function addToCart() {
-  // Future: integrate Meta Pixel, TikTok Pixel here
-
-  console.log("Add to cart triggered");
-
-  // Replace with your Shopee link
+  console.log("Redirecting to Shopee...");
   window.location.href = "https://shopee.com.my/YOUR_PRODUCT_LINK";
 }
 
 
 /* =========================================
-   6. HERO CTA SCROLL
+   5. HERO SCROLL BUTTON
 ========================================= */
 
 function scrollToOrder() {
-  scrollToSection("order");
+  const order = document.getElementById("order");
+  if (order) {
+    order.scrollIntoView({ behavior: "smooth" });
+  }
 }
 
 
 /* =========================================
-   7. MOBILE MENU TOGGLE
+   6. OPTIONAL NAVBAR SCROLL EFFECT
 ========================================= */
 
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
+window.addEventListener("scroll", function () {
+  const header = document.querySelector(".header");
+  if (!header) return;
 
-if (menuToggle) {
-  menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-  });
-}
+  if (window.scrollY > 50) {
+    header.style.background = "rgba(255,255,255,0.95)";
+    header.style.boxShadow = "0 2px 20px rgba(0,0,0,0.05)";
+  } else {
+    header.style.background = "rgba(255,255,255,0.75)";
+    header.style.boxShadow = "none";
+  }
+});
