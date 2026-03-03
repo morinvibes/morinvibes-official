@@ -20,7 +20,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -28,35 +28,124 @@
     <style>
         .faq-category {
             margin-bottom: var(--space-2xl);
+            background: white;
+            border-radius: 32px;
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+        .faq-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-primary);
         }
         .faq-category h3 {
             color: var(--primary);
             margin-bottom: var(--space-lg);
             padding-bottom: var(--space-sm);
             border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border-light);
+            padding: var(--space-lg) 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary);
+            transition: color var(--transition);
+        }
+        .faq-question:hover {
+            color: var(--primary-light);
+        }
+        .faq-question .v-icon {
+            transition: transform var(--transition);
+            width: 24px;
+            height: 24px;
+        }
+        .faq-question.open .v-icon {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 0.8;
+            padding-right: var(--space-xl);
+        }
+        .faq-answer.open {
+            max-height: 300px;
+            margin-top: var(--space-md);
         }
         .expand-all {
             cursor: pointer;
             color: var(--primary);
-            font-size: 14px;
+            font-size: 0.95rem;
             font-weight: 500;
-            margin-bottom: var(--space-lg);
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 8px 20px;
+            background: var(--primary-soft);
+            border-radius: 40px;
+            transition: all var(--transition);
         }
         .expand-all:hover {
-            text-decoration: underline;
+            background: var(--primary);
+            color: white;
+        }
+        .expand-all:hover .v-icon {
+            background: white;
+        }
+        .contact-card {
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 48px;
+            padding: var(--space-2xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-card .v-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            background: white;
+            opacity: 0.1;
+        }
+        .contact-card .v-icon:nth-child(2) {
+            bottom: 20px;
+            left: 20px;
+            top: auto;
+            right: auto;
+            transform: rotate(45deg);
         }
     </style>
 </head>
-<body>
+<body class="v-pattern">
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <div class="nav-left">
-                <a href="index.html" class="logo-link">
-                    <div class="logo">
-                        <img src="assets/images/logo.png" alt="MorinVibes®" width="180" height="48">
-                    </div>
+                <a href="index.html" class="logo logo-full">
+                    <img src="assets/images/logo-full.svg" alt="MorinVibes®" width="180" height="40">
                 </a>
                 
                 <div class="nav-links">
@@ -81,7 +170,10 @@
                     </div>
                 </div>
                 
-                <a href="shop.html#buy" class="nav-cta" data-i18n="nav_cta">Secure Fresh Supply</a>
+                <a href="shop.html#buy" class="nav-cta" data-i18n="nav_cta">
+                    <span class="v-icon"></span>
+                    <span>Secure Fresh Supply</span>
+                </a>
             </div>
             
             <button class="mobile-toggle" aria-label="Menu">☰</button>
@@ -90,278 +182,369 @@
     
     <!-- Mobile Bottom Bar -->
     <div class="mobile-bottom">
-        <a href="farm.html" data-i18n="mobile_learn">Learn</a>
-        <a href="shop.html#buy" data-i18n="mobile_buy">Buy Fresh Supply</a>
+        <a href="farm.html">
+            <span class="v-icon"></span>
+            <span data-i18n="mobile_learn">Learn</span>
+        </a>
+        <a href="shop.html#buy">
+            <span class="v-icon"></span>
+            <span data-i18n="mobile_buy">Buy Fresh Supply</span>
+        </a>
     </div>
 
     <main>
         <!-- ===== HERO MINI SECTION ===== -->
-        <section class="section-compact" style="background: var(--primary-soft);">
+        <section class="section-compact" style="background: var(--gradient-subtle); position: relative; overflow: hidden;">
             <div class="container">
-                <div class="text-center" style="max-width: 800px; margin: 0 auto;">
-                    <span class="clinical-label reveal" data-i18n="faq_label">COMMON QUESTIONS</span>
-                    <h1 class="reveal" style="color: var(--primary);" data-i18n="faq_title">Quick Answers</h1>
-                    <p class="reveal" style="max-width: 600px; margin: 0 auto; opacity: 0.8;">Find answers to the most common questions about MorinVibes, our moringa, and your order.</p>
+                <div class="text-center" style="max-width: 800px; margin: 0 auto; position: relative; z-index: 2;">
+                    <div class="clinical-label" style="justify-content: center;">
+                        <span class="v-icon"></span>
+                        <span data-i18n="faq_label">COMMON QUESTIONS</span>
+                    </div>
+                    <h1 class="gradient-text" data-i18n="faq_title">Quick Answers</h1>
+                    <p style="max-width: 600px; margin: 0 auto; opacity: 0.8;">Find answers to the most common questions about MorinVibes, our moringa, and your order.</p>
                 </div>
             </div>
+            <!-- Floating V elements -->
+            <span class="v-icon" style="position: absolute; top: 20%; right: 10%; opacity: 0.05; width: 100px; height: 100px;"></span>
+            <span class="v-icon" style="position: absolute; bottom: 10%; left: 5%; opacity: 0.05; width: 80px; height: 80px; transform: rotate(45deg);"></span>
         </section>
 
         <!-- ===== FAQ SECTION ===== -->
         <section class="section">
             <div class="container">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <!-- Expand/Collapse All Button -->
-                    <div class="text-right" style="text-align: right; margin-bottom: var(--space-lg);">
-                        <span class="expand-all" onclick="toggleAllFaqs()">Expand All</span>
-                    </div>
+                <!-- Expand/Collapse All Button -->
+                <div style="text-align: right; margin-bottom: var(--space-lg);">
+                    <span class="expand-all" onclick="toggleAllFaqs()">
+                        <span class="v-icon-small"></span>
+                        <span id="expandAllText">Expand All</span>
+                    </span>
+                </div>
 
-                    <!-- Category 1: Product & Registration -->
-                    <div class="faq-category">
-                        <h3>Product & Registration</h3>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span data-i18n="faq_q1">Is MorinVibes registered with KKM?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer" data-i18n="faq_a1">
-                                Registration is currently in progress. Our facility follows GMP standards and we maintain full transparency about our process. We are working closely with NPRA to complete the registration.
-                            </div>
+                <!-- Category 1: Product & Registration -->
+                <div class="faq-category reveal">
+                    <h3>
+                        <span class="v-icon"></span>
+                        <span>Product & Registration</span>
+                    </h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span data-i18n="faq_q1">Is MorinVibes registered with KKM?</span>
+                            <span class="v-icon"></span>
                         </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>What is GMP certification?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                Good Manufacturing Practice (GMP) ensures our products are consistently produced and controlled according to quality standards. It covers all aspects of production from raw materials to finished products.
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Are your capsules halal?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                Our capsules are vegetarian (plant-based) and contain no animal products. We are in the process of obtaining halal certification.
-                            </div>
+                        <div class="faq-answer" data-i18n="faq_a1">
+                            Registration is currently in progress. Our facility follows GMP standards and we maintain full transparency about our process. We are working closely with NPRA to complete the registration.
                         </div>
                     </div>
-
-                    <!-- Category 2: Suitability & Usage -->
-                    <div class="faq-category">
-                        <h3>Suitability & Usage</h3>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span data-i18n="faq_q2">Who is moringa suitable for?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer" data-i18n="faq_a2">
-                                Moringa is generally suitable for adults seeking daily nutritional support. If you are pregnant, nursing, taking medication, or have medical conditions, please consult your healthcare provider before use.
-                            </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What is GMP certification?</span>
+                            <span class="v-icon"></span>
                         </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>How many capsules per day?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                The recommended daily intake is 2 capsules (1g) with water. This can be taken at any time of day, with or without food.
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Can children take moringa?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                We recommend moringa for adults. For children, please consult a pediatrician before use.
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>What is the shelf life?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                Our capsules have a shelf life of 24 months from the production date. Each package shows the batch number and preparation date.
-                            </div>
+                        <div class="faq-answer">
+                            Good Manufacturing Practice (GMP) ensures our products are consistently produced and controlled according to quality standards. It covers all aspects of production from raw materials to finished products.
                         </div>
                     </div>
-
-                    <!-- Category 3: Shipping & Delivery -->
-                    <div class="faq-category">
-                        <h3>Shipping & Delivery</h3>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span data-i18n="faq_q4">Shipping to East Malaysia?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer" data-i18n="faq_a4">
-                                Yes, we ship to Sabah and Sarawak. Delivery typically takes 3-5 business days for West Malaysia, 5-7 days for East Malaysia.
-                            </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Are your capsules halal?</span>
+                            <span class="v-icon"></span>
                         </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>How much is shipping?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                Shipping is free for West Malaysia. For East Malaysia (Sabah/Sarawak), shipping is RM15.
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>How soon do you ship?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                We prepare fresh batches upon order. Shipping within 24-48 hours of order confirmation.
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Do you ship internationally?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                Currently, we only ship within Malaysia. We hope to offer international shipping in the future.
-                            </div>
+                        <div class="faq-answer">
+                            Our capsules are vegetarian (plant-based) and contain no animal products. We are in the process of obtaining halal certification.
                         </div>
                     </div>
-
-                    <!-- Category 4: Shopee & Official Store -->
-                    <div class="faq-category">
-                        <h3>Shopee & Official Store</h3>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span data-i18n="faq_q3">How is this different from Shopee sellers?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer" data-i18n="faq_a3">
-                                We are the original farm source since 2019. Shopee resellers purchase from us or others — buying directly ensures you receive the freshest batch with full traceability. Our official website offers fresher batches and direct founder support.
-                            </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Is your moringa organic?</span>
+                            <span class="v-icon"></span>
                         </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>What are your Shopee store IDs?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                Our official Shopee stores are: <strong>MorinVibes</strong> and <strong>moringa_morinvibes</strong>. We also have a presence on Lazada.
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Why buy from your website instead of Shopee?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                Buying from our official website guarantees the freshest batch (prepared after your order), direct founder support, and early access to new products like our upcoming moringa tea.
-                            </div>
+                        <div class="faq-answer">
+                            Our moringa is grown naturally without synthetic pesticides or fertilizers. We follow traditional farming practices that align with organic principles.
                         </div>
                     </div>
+                </div>
 
-                    <!-- Category 5: Orders & Returns -->
-                    <div class="faq-category">
-                        <h3>Orders & Returns</h3>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>What payment methods do you accept?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                We accept bank transfers, credit/debit cards, and FPX through our secure Orderla.my checkout.
-                            </div>
+                <!-- Category 2: Suitability & Usage -->
+                <div class="faq-category reveal">
+                    <h3>
+                        <span class="v-icon"></span>
+                        <span>Suitability & Usage</span>
+                    </h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span data-i18n="faq_q2">Who is moringa suitable for?</span>
+                            <span class="v-icon"></span>
                         </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Can I cancel or change my order?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                Please contact us within 2 hours of placing your order if you need to make changes. Once preparation begins, changes may not be possible.
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>What is your return policy?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                Due to the nature of our fresh preparation process, we cannot accept returns. However, if you receive a damaged product, please contact us within 48 hours with photos, and we will make it right.
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>How can I track my order?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                After your order ships, you will receive a tracking number via WhatsApp or email, depending on your contact preference during checkout.
-                            </div>
+                        <div class="faq-answer" data-i18n="faq_a2">
+                            Moringa is generally suitable for adults seeking daily nutritional support. If you are pregnant, nursing, taking medication, or have medical conditions, please consult your healthcare provider before use.
                         </div>
                     </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How many capsules per day?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            The recommended daily intake is 2 capsules (1g) with water. This can be taken at any time of day, with or without food.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can children take moringa?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            We recommend moringa for adults. For children, please consult a pediatrician before use.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What is the shelf life?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            Our capsules have a shelf life of 24 months from the production date. Each package shows the batch number and preparation date.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I take moringa with other supplements?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, moringa can generally be taken alongside other supplements. However, we recommend consulting your healthcare provider for personalized advice.
+                        </div>
+                    </div>
+                </div>
 
-                    <!-- Category 6: Product Details -->
-                    <div class="faq-category">
-                        <h3>Product Details</h3>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>What are the ingredients?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                100% Moringa oleifera leaf powder in vegetarian capsules. No fillers, no additives, no preservatives.
-                            </div>
+                <!-- Category 3: Shipping & Delivery -->
+                <div class="faq-category reveal">
+                    <h3>
+                        <span class="v-icon"></span>
+                        <span>Shipping & Delivery</span>
+                    </h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span data-i18n="faq_q4">Shipping to East Malaysia?</span>
+                            <span class="v-icon"></span>
                         </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>How many capsules per bottle?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                Each bottle contains 60 vegetarian capsules, with 500mg of pure moringa powder per capsule — a one-month supply at the recommended daily intake of 2 capsules.
-                            </div>
+                        <div class="faq-answer" data-i18n="faq_a4">
+                            Yes, we ship to Sabah and Sarawak. Delivery typically takes 3-5 business days for West Malaysia, 5-7 days for East Malaysia.
                         </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Is it organic?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                Our moringa is grown naturally without synthetic pesticides or fertilizers. We follow traditional farming practices that align with organic principles.
-                            </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How much is shipping?</span>
+                            <span class="v-icon"></span>
                         </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>Is it caffeine-free?</span>
-                                <span class="faq-toggle">+</span>
-                            </div>
-                            <div class="faq-answer">
-                                Yes, moringa is naturally caffeine-free. It's suitable for any time of day.
-                            </div>
+                        <div class="faq-answer">
+                            Shipping is free for West Malaysia. For East Malaysia (Sabah/Sarawak), shipping is RM15.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How soon do you ship?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            We prepare fresh batches upon order. Shipping within 24-48 hours of order confirmation.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do you ship internationally?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            Currently, we only ship within Malaysia. We hope to offer international shipping in the future.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I track my order?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, you will receive a tracking number via WhatsApp or email once your order ships.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 4: Shopee & Official Store -->
+                <div class="faq-category reveal">
+                    <h3>
+                        <span class="v-icon"></span>
+                        <span>Shopee & Official Store</span>
+                    </h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span data-i18n="faq_q3">Is this the same brand as on Shopee?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer" data-i18n="faq_a3">
+                            Yes! We are the same MorinVibes brand you've trusted on Shopee since 2019. Our website offers the same quality with fresher batches and better prices.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What are your Shopee store IDs?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            Our official Shopee stores are: <strong>MorinVibes</strong> and <strong>moringa_morinvibes</strong>. We also have a presence on Lazada.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Why is the price different on your website?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            Shopee charges a 20% commission, which increases the price. On our website, we pass the savings directly to you — same quality, better price.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Are the batches fresher on your website?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! Website orders are prepared after you order, ensuring maximum freshness. Shopee orders come from warehouse stock.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I still buy from Shopee?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            Absolutely! We maintain our Shopee stores for your convenience. However, for the freshest batches and best prices, we recommend our website.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 5: Orders & Returns -->
+                <div class="faq-category reveal">
+                    <h3>
+                        <span class="v-icon"></span>
+                        <span>Orders & Returns</span>
+                    </h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What payment methods do you accept?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            We accept bank transfers, credit/debit cards, and FPX through our secure Orderla.my checkout.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I cancel or change my order?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            Please contact us within 2 hours of placing your order if you need to make changes. Once preparation begins, changes may not be possible.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What is your return policy?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            Due to the nature of our fresh preparation process, we cannot accept returns. However, if you receive a damaged product, please contact us within 48 hours with photos, and we will make it right.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How can I contact support?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            You can reach us via WhatsApp (fastest), email, or Instagram DM. Our founder personally responds to all inquiries.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 6: Product Details -->
+                <div class="faq-category reveal">
+                    <h3>
+                        <span class="v-icon"></span>
+                        <span>Product Details</span>
+                    </h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What are the ingredients?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            100% Moringa oleifera leaf powder in vegetarian capsules. No fillers, no additives, no preservatives.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How many capsules per bottle?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            Each bottle contains 60 vegetarian capsules, with 500mg of pure moringa powder per capsule — a one-month supply at the recommended daily intake of 2 capsules.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What are the 90+ nutrients?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            Moringa contains over 90 nutrients including vitamins A, B, C, E, calcium, potassium, iron, and protein. It's one of the most nutrient-dense plants on earth.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Is it caffeine-free?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, moringa is naturally caffeine-free. It's suitable for any time of day.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What's the difference between powder and capsules?</span>
+                            <span class="v-icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            We offer capsules for convenience. The powder is the same pure moringa — capsules just make it easier to take daily.
                         </div>
                     </div>
                 </div>
@@ -369,36 +552,53 @@
         </section>
 
         <!-- ===== STILL HAVE QUESTIONS ===== -->
-        <section class="section section-mint">
+        <section class="section">
             <div class="container">
-                <div class="text-center" style="max-width: 600px; margin: 0 auto;">
-                    <span class="clinical-label reveal">STILL HAVE QUESTIONS?</span>
-                    <h2 class="reveal" style="color: var(--primary);">We're Here to Help</h2>
-                    <p class="reveal" style="margin-bottom: var(--space-lg);">Can't find the answer you're looking for? Reach out to us directly.</p>
+                <div class="contact-card">
+                    <span class="v-icon"></span>
+                    <span class="v-icon"></span>
+                    
+                    <span class="v-icon-large" style="background: white; margin: 0 auto;"></span>
+                    <h2 style="color: white; margin: var(--space-md) 0;">Still Have Questions?</h2>
+                    <p style="color: white; opacity: 0.9; max-width: 500px; margin: 0 auto var(--space-lg);">We're here to help! Reach out to us directly for personalized support.</p>
                     
                     <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
-                        <a href="#" class="btn btn-primary">WhatsApp Us</a>
-                        <a href="#" class="btn btn-secondary">Email Us</a>
+                        <a href="#" class="btn" style="background: white; color: var(--primary);">
+                            <span class="v-icon" style="background: var(--primary);"></span>
+                            <span>WhatsApp Us</span>
+                        </a>
+                        <a href="#" class="btn" style="background: white; color: var(--primary);">
+                            <span class="v-icon" style="background: var(--primary);"></span>
+                            <span>Email Us</span>
+                        </a>
                     </div>
                     
                     <!-- WhatsApp section from your image -->
-                    <div style="margin-top: var(--space-xl); background: white; border-radius: 60px; padding: var(--space-lg);">
-                        <div style="font-size: 2rem; margin-bottom: var(--space-xs);">🐝</div>
-                        <p style="font-size: 1.2rem; font-weight: 500;">for You!</p>
-                        <p style="opacity: 0.7;">Reach out to us on WhatsApp for quick responses</p>
+                    <div style="margin-top: var(--space-xl); background: rgba(255,255,255,0.1); border-radius: 60px; padding: var(--space-lg); backdrop-filter: blur(10px);">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-sm);">
+                            <span class="v-icon" style="background: white;"></span>
+                            <span style="font-size: 1.5rem;">We're Here for You! 🎉</span>
+                        </div>
+                        <p style="margin-top: var(--space-sm);">Reach out to us on WhatsApp for quick responses</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ===== CTA SECTION ===== -->
-        <section class="section">
+        <section class="section section-mint">
             <div class="container">
-                <div class="text-center" style="max-width: 600px; margin: 0 auto;">
-                    <span class="clinical-label reveal" data-i18n="buy_label">SECURE YOUR BATCH</span>
-                    <h2 class="reveal" style="color: var(--primary);" data-i18n="buy_title">Fresh Supply Available Now</h2>
-                    <p class="reveal" data-i18n="buy_text" style="margin-bottom: var(--space-lg);">Each batch prepared upon order to ensure maximum freshness.</p>
-                    <a href="shop.html#buy" class="btn btn-primary btn-large pulse" data-i18n="product_buy">Buy Fresh Supply</a>
+                <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                    <div class="clinical-label" style="justify-content: center;">
+                        <span class="v-icon"></span>
+                        <span data-i18n="buy_label">SECURE YOUR BATCH</span>
+                    </div>
+                    <h2 class="gradient-text" data-i18n="buy_title">Fresh Supply Available Now</h2>
+                    <p data-i18n="buy_text" style="margin-bottom: var(--space-lg);">Each batch prepared upon order to ensure maximum freshness.</p>
+                    <a href="shop.html#buy" class="btn btn-primary btn-large pulse">
+                        <span class="v-icon"></span>
+                        <span data-i18n="product_buy">Buy Fresh Supply</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -409,46 +609,86 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <div class="footer-brand" data-i18n="footer_brand">MorinVibes®</div>
+                    <div class="footer-brand">
+                        <span class="v-icon-large"></span>
+                        <span class="gradient-text" style="font-size: 1.8rem; color: white; -webkit-text-fill-color: white;" data-i18n="footer_brand">MorinVibes®</span>
+                    </div>
                     <p class="footer-description" data-i18n="footer_desc">Farm-direct botanical nutrition, prepared in Penang since 2019.</p>
+                    
+                    <div style="display: flex; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap;">
+                        <span style="display: flex; align-items: center; gap: 4px;">
+                            <span>🛒</span>
+                            <span>MorinVibes</span>
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 4px;">
+                            <span>🛒</span>
+                            <span>moringa_morinvibes</span>
+                        </span>
+                    </div>
                 </div>
                 
                 <div>
                     <h4 class="footer-heading" data-i18n="footer_shop">Shop</h4>
                     <ul class="footer-links">
-                        <li><a href="shop.html" data-i18n="product_name">Moringa Capsules</a></li>
-                        <li><a href="shop.html#buy" data-i18n="product_buy">Secure Supply</a></li>
+                        <li><a href="shop.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="product_name">Moringa Capsules</span>
+                        </a></li>
+                        <li><a href="shop.html#buy">
+                            <span class="v-icon"></span>
+                            <span data-i18n="product_buy">Secure Supply</span>
+                        </a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="footer-heading" data-i18n="footer_quality">Quality</h4>
                     <ul class="footer-links">
-                        <li><a href="quality.html" data-i18n="clinical_gmp">GMP Standards</a></li>
-                        <li><a href="quality.html" data-i18n="clinical_100">Purity Promise</a></li>
+                        <li><a href="quality.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="clinical_gmp">GMP Standards</span>
+                        </a></li>
+                        <li><a href="quality.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="clinical_100">Purity Promise</span>
+                        </a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="footer-heading" data-i18n="footer_connect">Connect</h4>
                     <ul class="footer-links">
-                        <li><a href="story.html" data-i18n="nav_story">Our Story</a></li>
-                        <li><a href="faq.html" class="active" data-i18n="nav_faq">FAQ</a></li>
-                        <li><a href="#">Instagram</a></li>
+                        <li><a href="story.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="nav_story">Our Story</span>
+                        </a></li>
+                        <li><a href="faq.html">
+                            <span class="v-icon"></span>
+                            <span data-i18n="nav_faq">FAQ</span>
+                        </a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="footer-heading" data-i18n="footer_legal">Legal</h4>
                     <ul class="footer-links">
-                        <li><a href="#" data-i18n="footer_privacy">Privacy Policy</a></li>
-                        <li><a href="#" data-i18n="footer_terms">Terms</a></li>
+                        <li><a href="#">
+                            <span class="v-icon"></span>
+                            <span data-i18n="footer_privacy">Privacy Policy</span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="v-icon"></span>
+                            <span data-i18n="footer_terms">Terms</span>
+                        </a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <div data-i18n="footer_copyright">© <span class="current-year">2026</span> MorinVibes®. All rights reserved.</div>
+                <div>
+                    <span class="v-icon-small"></span>
+                    <span data-i18n="footer_copyright">© <span class="current-year">2026</span> MorinVibes®. All rights reserved.</span>
+                </div>
                 <div data-i18n="footer_kkm">KKM: Registration in progress</div>
             </div>
             
@@ -458,28 +698,33 @@
         </div>
     </footer>
 
+    <!-- Back to top button -->
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <span class="v-icon"></span>
+    </button>
+
     <!-- Scripts -->
     <script src="assets/js/main.js" defer></script>
     <script src="assets/js/animations.js" defer></script>
     <script src="assets/js/language.js" defer></script>
     <script src="assets/js/pixel.js" defer></script>
     
-    <!-- FAQ Toggle Script (Lightweight) -->
+    <!-- FAQ Toggle Script -->
     <script>
         // Toggle individual FAQ
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', function() {
                 const answer = this.nextElementSibling;
-                const toggle = this.querySelector('.faq-toggle');
+                const icon = this.querySelector('.v-icon');
                 
                 if (answer.classList.contains('open')) {
                     answer.classList.remove('open');
                     answer.style.maxHeight = null;
-                    toggle.textContent = '+';
+                    icon.classList.remove('open');
                 } else {
                     answer.classList.add('open');
                     answer.style.maxHeight = answer.scrollHeight + 'px';
-                    toggle.textContent = '−';
+                    icon.classList.add('open');
                 }
             });
         });
@@ -487,8 +732,8 @@
         // Toggle all FAQs
         function toggleAllFaqs() {
             const allAnswers = document.querySelectorAll('.faq-answer');
-            const allToggles = document.querySelectorAll('.faq-toggle');
-            const expandBtn = document.querySelector('.expand-all');
+            const allIcons = document.querySelectorAll('.faq-question .v-icon');
+            const expandText = document.getElementById('expandAllText');
             
             const anyClosed = Array.from(allAnswers).some(answer => !answer.classList.contains('open'));
             
@@ -497,17 +742,62 @@
                     // Open all
                     answer.classList.add('open');
                     answer.style.maxHeight = answer.scrollHeight + 'px';
-                    allToggles[index].textContent = '−';
-                    expandBtn.textContent = 'Collapse All';
+                    allIcons[index].classList.add('open');
+                    expandText.textContent = 'Collapse All';
                 } else {
                     // Close all
                     answer.classList.remove('open');
                     answer.style.maxHeight = null;
-                    allToggles[index].textContent = '+';
-                    expandBtn.textContent = 'Expand All';
+                    allIcons[index].classList.remove('open');
+                    expandText.textContent = 'Expand All';
                 }
             });
         }
+    </script>
+    
+    <style>
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition);
+            z-index: 99;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top .v-icon {
+            background: white;
+            -webkit-mask: url('assets/images/icons/v-icon.svg') no-repeat center;
+            mask: url('assets/images/icons/v-icon.svg') no-repeat center;
+            transform: rotate(-90deg);
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+    
+    <script>
+        window.addEventListener('scroll', function() {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
     </script>
 </body>
 </html>
