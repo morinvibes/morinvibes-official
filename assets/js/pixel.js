@@ -1,13 +1,12 @@
 /**
- * MORINVIBES® - META PIXEL (Performance Optimized)
- * Version: 3.0 - Lightweight, no lag
+ * MORINVIBES® - META PIXEL (Vivid Brand)
+ * Version: 3.0 - Lightweight Tracking
  * 
- * Features:
- * - Simple initialization
- * - Button click tracking
- * - Orderla success detection (minimal)
- * - NO MutationObserver
- * - NO scroll listeners
+ * Tracks:
+ * - Page views
+ * - Button clicks
+ * - Purchases from Orderla
+ * - Product views
  */
 
 (function() {
@@ -18,12 +17,13 @@
         pixelId: 'PIXEL_ID', // REPLACE WITH YOUR ACTUAL ID
         price: 89.00,
         currency: 'MYR',
-        productName: 'MorinVibes Moringa Capsules'
+        productName: 'MorinVibes Moringa Capsules',
+        productId: 'MV001'
     };
 
     // Skip if no pixel ID
     if (config.pixelId === 'PIXEL_ID') {
-        console.warn('Meta Pixel: Please set your Pixel ID');
+        console.log('Meta Pixel: Please set your Pixel ID');
         return;
     }
 
@@ -43,11 +43,24 @@
 
     // ===== TRACK BUTTON CLICKS (One listener) =====
     document.addEventListener('click', function(e) {
-        // Check if clicked element or parent is a buy button
-        const isBuyButton = e.target.closest('.btn-primary, [href*="#buy"], .nav-cta, .mobile-bottom a:last-child');
+        // Buy buttons
+        const buyButton = e.target.closest('.btn-primary, [href*="#buy"], .nav-cta, .mobile-bottom a:last-child, .product-card .btn');
         
-        if (isBuyButton) {
+        if (buyButton) {
             fbq('track', 'InitiateCheckout', {
+                value: config.price,
+                currency: config.currency,
+                content_name: config.productName,
+                content_type: 'product',
+                content_ids: [config.productId]
+            });
+            console.log('Pixel: Checkout tracked');
+        }
+        
+        // View product details
+        const productView = e.target.closest('.product-stat, .product-showcase, [data-track="view"]');
+        if (productView) {
+            fbq('track', 'ViewContent', {
                 value: config.price,
                 currency: config.currency,
                 content_name: config.productName,
@@ -56,30 +69,64 @@
         }
     });
 
-    // ===== TRACK PAGE VIEWS (Simple) =====
-    if (window.location.pathname.includes('shop.html')) {
+    // ===== TRACK PAGE VIEWS =====
+    if (window.location.pathname.includes('shop.html') || 
+        window.location.pathname.includes('product')) {
+        
         setTimeout(() => {
             fbq('track', 'ViewContent', {
                 value: config.price,
                 currency: config.currency,
-                content_name: config.productName
+                content_name: config.productName,
+                content_type: 'product'
             });
         }, 2000);
     }
 
-    // ===== ORDERLA SUCCESS DETECTION (Simple check, no observer) =====
+    // ===== TRACK FARM/QUALITY INTEREST =====
+    if (window.location.pathname.includes('farm.html') || 
+        window.location.pathname.includes('quality.html')) {
+        
+        setTimeout(() => {
+            fbq('track', 'Lead', {
+                content_name: 'Farm Quality Page',
+                content_category: 'Education'
+            });
+        }, 30000); // 30 seconds = interested
+    }
+
+    // ===== ORDERLA SUCCESS DETECTION (Simple) =====
     let attempts = 0;
-    const maxAttempts = 15; // Check 15 times max
+    const maxAttempts = 20;
     
     const checkOrderla = setInterval(() => {
         attempts++;
         
-        // Simple text check
+        // Check for success indicators
         const bodyText = document.body.innerText || '';
-        if (bodyText.includes('Thank you') || 
-            bodyText.includes('Terima kasih') || 
-            bodyText.includes('success') ||
-            bodyText.includes('Order Complete')) {
+        const successWords = [
+            'Thank you', 'Terima kasih', '谢谢', 
+            'success', 'berjaya', '成功',
+            'Order Complete', 'Pesanan Berjaya',
+            'payment successful', 'pembayaran berjaya'
+        ];
+        
+        if (successWords.some(word => bodyText.includes(word))) {
+            fbq('track', 'Purchase', {
+                value: config.price,
+                currency: config.currency,
+                content_name: config.productName,
+                content_type: 'product',
+                content_ids: [config.productId]
+            });
+            
+            console.log('🎉 Pixel: Purchase tracked from Orderla');
+            clearInterval(checkOrderla);
+        }
+        
+        // Also check URL for success parameters
+        if (window.location.href.includes('success') || 
+            window.location.href.includes('complete')) {
             
             fbq('track', 'Purchase', {
                 value: config.price,
@@ -95,7 +142,24 @@
         if (attempts >= maxAttempts) {
             clearInterval(checkOrderla);
         }
-    }, 1000); // Check every second
+    }, 1000); // Check every second for 20 seconds
 
-    console.log('✅ Meta Pixel: Active');
+    // ===== TRACK CUSTOM EVENTS =====
+    window.MorinVibesPixel = {
+        trackPurchase: (value = config.price) => {
+            fbq('track', 'Purchase', {
+                value: value,
+                currency: config.currency,
+                content_name: config.productName
+            });
+        },
+        trackCheckout: () => {
+            fbq('track', 'InitiateCheckout', {
+                value: config.price,
+                currency: config.currency
+            });
+        }
+    };
+
+    console.log('✅ Meta Pixel: Active for MorinVibes');
 })();
