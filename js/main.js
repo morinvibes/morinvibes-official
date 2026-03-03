@@ -1,106 +1,121 @@
-/* =====================================
-   MORINVIBES® BOTANICAL AUTHORITY JS
-   v6.0 Minimal Performance Build
-===================================== */
+/* ========================================
+   MORINVIBES WEBSITE SCRIPT
+   Clean Professional Build
+======================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
+/* ========= 1. MOBILE NAVIGATION TOGGLE ========= */
+const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+const navMenu = document.querySelector(".nav-menu");
 
-    /* ==========================
-       LANGUAGE DETECTION
-    ========================== */
-    const getCurrentLanguage = () => {
-        const path = window.location.pathname;
-        if (path.includes("/bm/")) return "bm";
-        if (path.includes("/zh/")) return "zh";
-        return "en";
-    };
-
-    const currentLang = getCurrentLanguage();
-    console.log("Current Language:", currentLang);
-
-    /* ==========================
-       SCROLL REVEAL (SUBTLE)
-    ========================== */
-    const revealElements = document.querySelectorAll(".section, .social-proof, .cta");
-
-    const revealOnScroll = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0px)";
-                observer.unobserve(entry.target);
-            }
-        });
-    };
-
-    const revealObserver = new IntersectionObserver(revealOnScroll, {
-        threshold: 0.15
+if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+        mobileMenuBtn.classList.toggle("open");
     });
+}
 
-    revealElements.forEach(el => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(20px)";
-        el.style.transition = "all 0.8s ease";
-        revealObserver.observe(el);
-    });
+/* ========= 2. SMOOTH SCROLL FOR NAV LINKS ========= */
+const navLinks = document.querySelectorAll("a[href^='#']");
 
-    /* ==========================
-       META PIXEL: AddToCart Trigger
-       Fires when #order enters viewport
-    ========================== */
-    const orderSection = document.getElementById("order");
+navLinks.forEach(link => {
+    link.addEventListener("click", function (e) {
+        e.preventDefault();
 
-    if (orderSection) {
-        const orderObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
+        const targetId = this.getAttribute("href");
+        const targetSection = document.querySelector(targetId);
 
-                    console.log("Meta Pixel: AddToCart", currentLang);
-
-                    if (typeof fbq !== "undefined") {
-                        fbq('track', 'AddToCart', {
-                            content_language: currentLang
-                        });
-                    }
-
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        orderObserver.observe(orderSection);
-    }
-
-    /* ==========================
-       GA4 PAGE VIEW
-    ========================== */
-    if (typeof gtag !== "undefined") {
-        gtag('event', 'page_view', {
-            page_language: currentLang
-        });
-    }
-
-    /* ==========================
-       PURCHASE DETECTION
-       Trigger only on thank-you.html
-    ========================== */
-    if (window.location.pathname.includes("thank-you.html")) {
-
-        console.log("Purchase Event Triggered");
-
-        if (typeof fbq !== "undefined") {
-            fbq('track', 'Purchase', {
-                currency: "MYR",
-                value: 0
+        if (targetSection) {
+            window.scrollTo({
+                top: targetSection.offsetTop - 70,
+                behavior: "smooth"
             });
         }
 
-        if (typeof gtag !== "undefined") {
-            gtag('event', 'purchase', {
-                currency: "MYR",
-                value: 0
-            });
+        // Close mobile menu after click
+        if (navMenu.classList.contains("active")) {
+            navMenu.classList.remove("active");
         }
-    }
-
+    });
 });
+
+/* ========= 3. STICKY HEADER ON SCROLL ========= */
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+});
+
+/* ========= 4. SCROLL REVEAL ANIMATION ========= */
+const revealElements = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+    const windowHeight = window.innerHeight;
+    const revealPoint = 150;
+
+    revealElements.forEach(element => {
+        const revealTop = element.getBoundingClientRect().top;
+
+        if (revealTop < windowHeight - revealPoint) {
+            element.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+
+
+/* ========= 5. PRODUCT QUANTITY SELECTOR ========= */
+const minusBtn = document.querySelector(".qty-minus");
+const plusBtn = document.querySelector(".qty-plus");
+const qtyInput = document.querySelector(".qty-input");
+
+if (minusBtn && plusBtn && qtyInput) {
+    minusBtn.addEventListener("click", () => {
+        let currentValue = parseInt(qtyInput.value);
+        if (currentValue > 1) {
+            qtyInput.value = currentValue - 1;
+        }
+    });
+
+    plusBtn.addEventListener("click", () => {
+        let currentValue = parseInt(qtyInput.value);
+        qtyInput.value = currentValue + 1;
+    });
+}
+
+
+/* ========= 6. CONTACT FORM VALIDATION ========= */
+const contactForm = document.querySelector(".contact-form");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.querySelector("#name").value.trim();
+        const email = document.querySelector("#email").value.trim();
+        const message = document.querySelector("#message").value.trim();
+
+        if (name === "" || email === "" || message === "") {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        alert("Thank you for contacting Morinvibes. We will get back to you soon!");
+        contactForm.reset();
+    });
+}
+
+/* ========= EMAIL VALIDATION FUNCTION ========= */
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
