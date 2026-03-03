@@ -1,13 +1,14 @@
 /**
  * MORINVIBES® - MAIN JS (Core Functionality)
- * Colors: #0097b2 (Primary) | #61cad8 (Secondary)
- * Version: 1.0 - Zero Lag, Optimized
+ * With special V element support
+ * Version: 3.0 - Zero Lag, Optimized
  * 
  * Features:
- * - Mobile menu toggle
+ * - Mobile menu with V icons
  * - Active navigation highlight
- * - FAQ accordion
- * - Smooth scroll (passive)
+ * - FAQ accordion with V toggles
+ * - Smooth scroll
+ * - Back to top button with V
  * - Copyright year update
  * - Touch device detection
  * - No memory leaks
@@ -16,7 +17,7 @@
 (function() {
     'use strict';
 
-    // ===== CACHE DOM ELEMENTS (once for performance) =====
+    // ===== CACHE DOM ELEMENTS =====
     const dom = {
         // Navigation
         mobileToggle: document.querySelector('.mobile-toggle'),
@@ -27,6 +28,9 @@
         // FAQ
         faqItems: document.querySelectorAll('.faq-item'),
         
+        // Back to top
+        backToTop: document.querySelector('.back-to-top'),
+        
         // Year
         yearElements: document.querySelectorAll('.current-year'),
         
@@ -34,7 +38,7 @@
         body: document.body
     };
 
-    // ===== MOBILE MENU (Lightweight) =====
+    // ===== MOBILE MENU with V icons =====
     if (dom.mobileToggle && dom.navLinks && dom.navRight) {
         // Create mobile menu container if not exists
         let mobileMenu = document.querySelector('.mobile-menu');
@@ -56,13 +60,32 @@
                 gap: 24px;
                 overflow-y: auto;
                 border-top: 1px solid var(--border-light);
+                backdrop-filter: blur(10px);
             `;
             
-            // Clone navigation links and CTA
+            // Clone navigation links and add V icons
             const linksClone = dom.navLinks.cloneNode(true);
-            const ctaClone = dom.navRight.cloneNode(true);
             
-            // Remove language dropdown from mobile menu (keep in top bar)
+            // Add V icons to each link in mobile menu
+            linksClone.querySelectorAll('a').forEach(link => {
+                const vIcon = document.createElement('span');
+                vIcon.className = 'v-icon-small';
+                vIcon.style.marginRight = '12px';
+                link.prepend(vIcon);
+            });
+            
+            // Clone CTA and add V icon
+            const ctaClone = dom.navRight.cloneNode(true);
+            const ctaButton = ctaClone.querySelector('.nav-cta');
+            if (ctaButton) {
+                const vIcon = document.createElement('span');
+                vIcon.className = 'v-icon-small';
+                vIcon.style.background = 'white';
+                vIcon.style.marginRight = '8px';
+                ctaButton.prepend(vIcon);
+            }
+            
+            // Remove language dropdown from mobile menu
             const langDropdown = ctaClone.querySelector('.lang-dropdown');
             if (langDropdown) langDropdown.remove();
             
@@ -80,14 +103,12 @@
             if (!isOpen) {
                 // Open menu
                 mobileMenu.style.display = 'flex';
-                dom.mobileToggle.textContent = '✕';
-                dom.mobileToggle.style.fontSize = '24px';
-                dom.body.style.overflow = 'hidden'; // Prevent background scroll
+                dom.mobileToggle.innerHTML = '<span class="v-icon"></span>';
+                dom.body.style.overflow = 'hidden';
             } else {
                 // Close menu
                 mobileMenu.style.display = 'none';
-                dom.mobileToggle.textContent = '☰';
-                dom.mobileToggle.style.fontSize = '24px';
+                dom.mobileToggle.innerHTML = '☰';
                 dom.body.style.overflow = '';
             }
         });
@@ -96,7 +117,7 @@
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.style.display = 'none';
-                dom.mobileToggle.textContent = '☰';
+                dom.mobileToggle.innerHTML = '☰';
                 dom.body.style.overflow = '';
             });
         });
@@ -105,7 +126,7 @@
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768 && mobileMenu.style.display === 'flex') {
                 mobileMenu.style.display = 'none';
-                dom.mobileToggle.textContent = '☰';
+                dom.mobileToggle.innerHTML = '☰';
                 dom.body.style.overflow = '';
             }
         });
@@ -136,12 +157,12 @@
     
     setActiveNav();
 
-    // ===== FAQ ACCORDION (Lightweight) =====
+    // ===== FAQ ACCORDION with V toggles =====
     if (dom.faqItems.length) {
         dom.faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             const answer = item.querySelector('.faq-answer');
-            const toggle = item.querySelector('.faq-toggle');
+            const vIcon = question?.querySelector('.v-icon');
             
             if (question && answer) {
                 question.addEventListener('click', function() {
@@ -151,13 +172,13 @@
                     dom.faqItems.forEach(otherItem => {
                         if (otherItem !== item) {
                             const otherAnswer = otherItem.querySelector('.faq-answer');
-                            const otherToggle = otherItem.querySelector('.faq-toggle');
+                            const otherIcon = otherItem.querySelector('.faq-question .v-icon');
                             if (otherAnswer) {
                                 otherAnswer.classList.remove('open');
                                 otherAnswer.style.maxHeight = null;
                             }
-                            if (otherToggle) {
-                                otherToggle.textContent = '+';
+                            if (otherIcon) {
+                                otherIcon.style.transform = 'rotate(0deg)';
                             }
                         }
                     });
@@ -166,18 +187,40 @@
                     if (isOpen) {
                         answer.classList.remove('open');
                         answer.style.maxHeight = null;
-                        if (toggle) toggle.textContent = '+';
+                        if (vIcon) {
+                            vIcon.style.transform = 'rotate(0deg)';
+                        }
                     } else {
                         answer.classList.add('open');
                         answer.style.maxHeight = answer.scrollHeight + 'px';
-                        if (toggle) toggle.textContent = '−';
+                        if (vIcon) {
+                            vIcon.style.transform = 'rotate(45deg)';
+                        }
                     }
                 });
             }
         });
     }
 
-    // ===== SMOOTH SCROLL (Passive, for anchor links) =====
+    // ===== BACK TO TOP BUTTON with V icon =====
+    if (dom.backToTop) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                dom.backToTop.classList.add('visible');
+            } else {
+                dom.backToTop.classList.remove('visible');
+            }
+        });
+
+        dom.backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // ===== SMOOTH SCROLL for anchor links =====
     document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
@@ -191,7 +234,7 @@
                 if (mobileMenu && mobileMenu.style.display === 'flex') {
                     mobileMenu.style.display = 'none';
                     if (dom.mobileToggle) {
-                        dom.mobileToggle.textContent = '☰';
+                        dom.mobileToggle.innerHTML = '☰';
                     }
                     dom.body.style.overflow = '';
                 }
@@ -218,7 +261,7 @@
         dom.body.classList.add('touch-device');
         
         // Add touch feedback for buttons
-        document.querySelectorAll('.btn, .nav-links a, .mobile-bottom a').forEach(el => {
+        document.querySelectorAll('.btn, .nav-links a, .mobile-bottom a, .stat-card').forEach(el => {
             el.addEventListener('touchstart', function() {
                 this.style.opacity = '0.8';
             }, { passive: true });
@@ -229,7 +272,7 @@
         });
     }
 
-    // ===== LAZY LOAD IMAGES (Only if IntersectionObserver exists) =====
+    // ===== LAZY LOAD IMAGES =====
     if ('IntersectionObserver' in window) {
         const lazyImages = document.querySelectorAll('img[data-src]');
         
@@ -252,7 +295,7 @@
         }
     }
 
-    // ===== DROPDOWN CLOSE ON ESC KEY (Accessibility) =====
+    // ===== DROPDOWN CLOSE ON ESC KEY =====
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             // Close language dropdown
@@ -266,27 +309,70 @@
             if (mobileMenu && mobileMenu.style.display === 'flex') {
                 mobileMenu.style.display = 'none';
                 if (dom.mobileToggle) {
-                    dom.mobileToggle.textContent = '☰';
+                    dom.mobileToggle.innerHTML = '☰';
                 }
                 dom.body.style.overflow = '';
             }
         }
     });
 
-    // ===== PREVENT BODY SCROLL WHEN MOBILE MENU OPEN (for touch devices) =====
+    // ===== STAT COUNTERS for Shopee stats =====
+    if ('IntersectionObserver' in window) {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        if (statNumbers.length) {
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const text = element.textContent;
+                        const number = parseInt(text.replace(/[^0-9]/g, ''));
+                        
+                        if (!isNaN(number)) {
+                            let current = 0;
+                            const increment = number / 50;
+                            const suffix = text.replace(/[0-9]/g, '');
+                            
+                            const updateCounter = () => {
+                                current += increment;
+                                if (current < number) {
+                                    element.textContent = Math.floor(current) + suffix;
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    element.textContent = number + suffix;
+                                }
+                            };
+                            
+                            updateCounter();
+                        }
+                        
+                        counterObserver.unobserve(element);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            statNumbers.forEach(stat => counterObserver.observe(stat));
+        }
+    }
+
+    // ===== PREVENT BODY SCROLL WHEN MOBILE MENU OPEN =====
     dom.body.addEventListener('touchmove', (e) => {
         if (document.querySelector('.mobile-menu')?.style.display === 'flex') {
             e.preventDefault();
         }
     }, { passive: false });
 
-    // ===== CLEANUP on page unload (prevent memory leaks) =====
+    // ===== CLEANUP on page unload =====
     window.addEventListener('beforeunload', () => {
-        // Remove any pending observers
         if (window.imageObserver) {
             window.imageObserver.disconnect();
         }
+        if (window.counterObserver) {
+            window.counterObserver.disconnect();
+        }
     });
 
-    console.log('✅ MorinVibes® - Core functionality ready');
+    console.log('✅ MorinVibes® - Core functionality ready with V element');
 })();
