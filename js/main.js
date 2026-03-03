@@ -1,149 +1,106 @@
-/* =====================================================
-   MORINVIBES® BOTANICAL AUTHORITY SCRIPT
-   Brand Locked v5.0
-   Minimal • Clean • Performance Safe
-   ===================================================== */
+/* =====================================
+   MORINVIBES® BOTANICAL AUTHORITY JS
+   v6.0 Minimal Performance Build
+===================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-  /* =====================================================
-     LANGUAGE DETECTION
-     Detect folder: /, /bm/, /zh/
-  ===================================================== */
+    /* ==========================
+       LANGUAGE DETECTION
+    ========================== */
+    const getCurrentLanguage = () => {
+        const path = window.location.pathname;
+        if (path.includes("/bm/")) return "bm";
+        if (path.includes("/zh/")) return "zh";
+        return "en";
+    };
 
-  const path = window.location.pathname;
-  let currentLang = "en";
+    const currentLang = getCurrentLanguage();
+    console.log("Current Language:", currentLang);
 
-  if (path.includes("/bm/")) {
-    currentLang = "bm";
-  } else if (path.includes("/zh/")) {
-    currentLang = "zh";
-  }
+    /* ==========================
+       SCROLL REVEAL (SUBTLE)
+    ========================== */
+    const revealElements = document.querySelectorAll(".section, .social-proof, .cta");
 
-  /* =====================================================
-     LANGUAGE SWITCHER
-     Switch to same page in selected folder
-  ===================================================== */
-
-  const switcher = document.getElementById("languageSwitcher");
-
-  if (switcher) {
-    switcher.value = currentLang === "en" ? "/" : `/${currentLang}/`;
-
-    switcher.addEventListener("change", function () {
-      const selected = this.value;
-
-      let cleanPath = path
-        .replace("/bm/", "/")
-        .replace("/zh/", "/");
-
-      if (selected === "/") {
-        window.location.href = cleanPath;
-      } else {
-        window.location.href = selected + cleanPath.replace("/", "");
-      }
-    });
-  }
-
-  /* =====================================================
-     SCROLL REVEAL (Subtle Only)
-  ===================================================== */
-
-  const revealElements = document.querySelectorAll(".fade-in");
-
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
-  revealElements.forEach(el => {
-    revealObserver.observe(el);
-  });
-
-  /* =====================================================
-     META PIXEL TRACKING
-  ===================================================== */
-
-  if (typeof fbq === "function") {
-    fbq("track", "PageView", {
-      page_path: path,
-      language: currentLang
-    });
-  }
-
-  /* =====================================================
-     GA4 PAGE VIEW
-  ===================================================== */
-
-  if (typeof gtag === "function") {
-    gtag("event", "page_view", {
-      page_path: path,
-      language: currentLang
-    });
-  }
-
-  /* =====================================================
-     ADD TO CART TRIGGER
-     Fires when #order section enters viewport
-  ===================================================== */
-
-  const orderSection = document.getElementById("order");
-  let addToCartFired = false;
-
-  if (orderSection) {
-    const orderObserver = new IntersectionObserver(
-      (entries) => {
+    const revealOnScroll = (entries, observer) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting && !addToCartFired) {
-
-            if (typeof fbq === "function") {
-              fbq("track", "AddToCart");
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0px)";
+                observer.unobserve(entry.target);
             }
-
-            addToCartFired = true;
-          }
         });
-      },
-      { threshold: 0.4 }
-    );
+    };
 
-    orderObserver.observe(orderSection);
-  }
-
-  /* =====================================================
-     PURCHASE TRIGGER (THANK YOU PAGE ONLY)
-  ===================================================== */
-
-  if (path.includes("thank-you.html")) {
-
-    if (typeof fbq === "function") {
-      fbq("track", "Purchase");
-    }
-
-    if (typeof gtag === "function") {
-      gtag("event", "purchase");
-    }
-
-  }
-
-  /* =====================================================
-     MOBILE NAV TOGGLE (If Implemented Later)
-  ===================================================== */
-
-  const menuToggle = document.getElementById("menuToggle");
-  const mobileNav = document.getElementById("mobileNav");
-
-  if (menuToggle && mobileNav) {
-    menuToggle.addEventListener("click", function () {
-      mobileNav.classList.toggle("active");
-      document.body.classList.toggle("nav-open");
+    const revealObserver = new IntersectionObserver(revealOnScroll, {
+        threshold: 0.15
     });
-  }
+
+    revealElements.forEach(el => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(20px)";
+        el.style.transition = "all 0.8s ease";
+        revealObserver.observe(el);
+    });
+
+    /* ==========================
+       META PIXEL: AddToCart Trigger
+       Fires when #order enters viewport
+    ========================== */
+    const orderSection = document.getElementById("order");
+
+    if (orderSection) {
+        const orderObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+
+                    console.log("Meta Pixel: AddToCart", currentLang);
+
+                    if (typeof fbq !== "undefined") {
+                        fbq('track', 'AddToCart', {
+                            content_language: currentLang
+                        });
+                    }
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        orderObserver.observe(orderSection);
+    }
+
+    /* ==========================
+       GA4 PAGE VIEW
+    ========================== */
+    if (typeof gtag !== "undefined") {
+        gtag('event', 'page_view', {
+            page_language: currentLang
+        });
+    }
+
+    /* ==========================
+       PURCHASE DETECTION
+       Trigger only on thank-you.html
+    ========================== */
+    if (window.location.pathname.includes("thank-you.html")) {
+
+        console.log("Purchase Event Triggered");
+
+        if (typeof fbq !== "undefined") {
+            fbq('track', 'Purchase', {
+                currency: "MYR",
+                value: 0
+            });
+        }
+
+        if (typeof gtag !== "undefined") {
+            gtag('event', 'purchase', {
+                currency: "MYR",
+                value: 0
+            });
+        }
+    }
 
 });
