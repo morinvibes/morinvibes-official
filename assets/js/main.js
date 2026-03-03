@@ -1,68 +1,86 @@
 /**
- * MORINVIBES® - LIGHTWEIGHT MAIN JS
- * Version: 2.0 - Optimized for Performance
+ * MORINVIBES® - MAIN JS (Performance Optimized)
+ * Version: 3.0 - No lag, smooth performance
  * 
- * Only essential functionality:
- * - Mobile menu
+ * Features:
+ * - Mobile menu (simple)
  * - Smooth scroll (passive)
+ * - FAQ accordion (lightweight)
  * - Active nav highlight
- * - No heavy observers
- * - No scroll listeners
+ * - NO scroll listeners
+ * - NO heavy observers
+ * - NO animation frame loops
  */
 
 (function() {
     'use strict';
 
-    // ===== DOM ELEMENTS =====
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    const mobileBottomBar = document.querySelector('.mobile-bottom-bar');
-    const yearElement = document.querySelector('.current-year');
-    
-    // ===== MOBILE MENU TOGGLE (Simple) =====
-    if (mobileBtn && navLinks) {
-        mobileBtn.addEventListener('click', function(e) {
+    // ===== CACHE DOM ELEMENTS (once) =====
+    const dom = {
+        mobileToggle: document.querySelector('.mobile-toggle'),
+        navLinks: document.querySelector('.nav-links'),
+        mobileBottom: document.querySelector('.mobile-bottom'),
+        faqItems: document.querySelectorAll('.faq-item'),
+        yearElements: document.querySelectorAll('.current-year'),
+        buyButtons: document.querySelectorAll('.btn-primary, [href*="#buy"], .nav-cta')
+    };
+
+    // ===== MOBILE MENU (Simple, no animations) =====
+    if (dom.mobileToggle && dom.navLinks) {
+        dom.mobileToggle.addEventListener('click', function(e) {
             e.stopPropagation();
             
-            // Simple toggle
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
+            const isVisible = dom.navLinks.style.display === 'flex';
+            
+            if (!isVisible) {
+                // Show menu
+                dom.navLinks.style.display = 'flex';
+                dom.navLinks.style.flexDirection = 'column';
+                dom.navLinks.style.position = 'absolute';
+                dom.navLinks.style.top = '70px';
+                dom.navLinks.style.left = '0';
+                dom.navLinks.style.right = '0';
+                dom.navLinks.style.background = 'white';
+                dom.navLinks.style.padding = '24px';
+                dom.navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                dom.navLinks.style.zIndex = '1000';
+                dom.navLinks.style.gap = '16px';
+                
+                dom.mobileToggle.textContent = '✕';
             } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '70px';
-                navLinks.style.left = '0';
-                navLinks.style.right = '0';
-                navLinks.style.background = 'white';
-                navLinks.style.padding = '2rem';
-                navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-                navLinks.style.zIndex = '1000';
+                // Hide menu
+                dom.navLinks.style.display = 'none';
+                dom.mobileToggle.textContent = '☰';
             }
         });
 
-        // Close on outside click
+        // Close on outside click (passive)
         document.addEventListener('click', function(e) {
-            if (!navLinks.contains(e.target) && !mobileBtn.contains(e.target)) {
-                navLinks.style.display = 'none';
+            if (dom.navLinks.style.display === 'flex' && 
+                !dom.navLinks.contains(e.target) && 
+                !dom.mobileToggle.contains(e.target)) {
+                dom.navLinks.style.display = 'none';
+                dom.mobileToggle.textContent = '☰';
             }
         });
     }
 
-    // ===== SMOOTH SCROLL (Only for anchor links - passive) =====
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    // ===== SMOOTH SCROLL (Passive, only for anchor links) =====
+    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === '#') return;
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
             
-            const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
                 
                 // Close mobile menu if open
-                if (navLinks) navLinks.style.display = 'none';
+                if (dom.navLinks && dom.navLinks.style.display === 'flex') {
+                    dom.navLinks.style.display = 'none';
+                    if (dom.mobileToggle) dom.mobileToggle.textContent = '☰';
+                }
                 
-                // Simple smooth scroll - no complex easing
+                // Simple scroll - browser handles smoothness
                 target.scrollIntoView({ 
                     behavior: 'smooth', 
                     block: 'start' 
@@ -71,22 +89,40 @@
         }, { passive: true });
     });
 
-    // ===== ACTIVE NAVIGATION (Simple) =====
+    // ===== FAQ ACCORDION (Lightweight) =====
+    if (dom.faqItems.length) {
+        dom.faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            
+            if (question && answer) {
+                question.addEventListener('click', function() {
+                    // Toggle current
+                    if (answer.classList.contains('open')) {
+                        answer.classList.remove('open');
+                        answer.style.maxHeight = null;
+                    } else {
+                        answer.classList.add('open');
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }
+                });
+            }
+        });
+    }
+
+    // ===== ACTIVE NAVIGATION (Run once) =====
     const setActiveNav = () => {
         const currentPath = window.location.pathname;
-        const navItems = document.querySelectorAll('.nav-links a');
+        const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
         
-        navItems.forEach(link => {
+        navLinks.forEach(link => {
             const href = link.getAttribute('href');
-            
-            // Remove all active classes
             link.classList.remove('active');
             
-            // Check if current page matches link
-            if (currentPath.includes(href) && href !== 'index.html') {
+            if (currentPath.includes(href) && href !== 'index.html' && href) {
                 link.classList.add('active');
             } else if (currentPath.endsWith('/') || currentPath.endsWith('index.html')) {
-                if (href === 'index.html') {
+                if (href === 'index.html' || href === './') {
                     link.classList.add('active');
                 }
             }
@@ -96,15 +132,18 @@
     setActiveNav();
 
     // ===== UPDATE COPYRIGHT YEAR (Once) =====
-    if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
+    if (dom.yearElements.length) {
+        const year = new Date().getFullYear();
+        dom.yearElements.forEach(el => {
+            el.textContent = year;
+        });
     }
 
-    // ===== SIMPLE IMAGE LAZY LOAD (Only if IntersectionObserver exists) =====
+    // ===== SIMPLE INTERSECTION OBSERVER (Only for images, lightweight) =====
     if ('IntersectionObserver' in window) {
         const lazyImages = document.querySelectorAll('img[data-src]');
         
-        if (lazyImages.length > 0) {
+        if (lazyImages.length) {
             const imageObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -115,51 +154,19 @@
                     }
                 });
             }, {
-                rootMargin: '50px'
+                rootMargin: '100px',
+                threshold: 0.1
             });
 
             lazyImages.forEach(img => imageObserver.observe(img));
         }
     }
 
-    // ===== FAQ TOGGLE (Only if FAQ items exist) =====
-    const faqItems = document.querySelectorAll('.faq-item');
-    
-    if (faqItems.length > 0) {
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
-            if (question) {
-                question.addEventListener('click', function() {
-                    const answer = this.nextElementSibling;
-                    const toggle = this.querySelector('.faq-toggle');
-                    
-                    // Simple toggle
-                    if (answer && answer.style.maxHeight) {
-                        answer.style.maxHeight = null;
-                        if (toggle) toggle.textContent = '+';
-                    } else {
-                        if (answer) {
-                            answer.style.maxHeight = answer.scrollHeight + 'px';
-                            if (toggle) toggle.textContent = '−';
-                        }
-                    }
-                });
-            }
-        });
+    // ===== TRUST BAR SCROLL (Mobile only, minimal) =====
+    const trustBar = document.querySelector('.trust-bar');
+    if (trustBar && window.innerWidth <= 768) {
+        // No JS needed, just CSS overflow
     }
 
-    // ===== TOUCH DEVICE DETECTION (For mobile optimizations) =====
-    if ('ontouchstart' in window) {
-        document.documentElement.classList.add('touch');
-    }
-
-    // ===== SIMPLE FLOAT ANIMATION (Only one element) =====
-    // Only apply to hero product if exists - no heavy animation loops
-    const heroProduct = document.querySelector('.hero-image img, .hero-product');
-    if (heroProduct && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        heroProduct.classList.add('float');
-    }
-
-    console.log('MorinVibes® - Ready (Lightweight Mode)');
+    console.log('✅ MorinVibes: Running smoothly');
 })();
