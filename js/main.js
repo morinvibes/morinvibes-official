@@ -1,128 +1,221 @@
-/* ==============================
-   DOM READY
-============================== */
+/* =====================================================
+   ENTERPRISE UX + TRACKING SCRIPT
+   Premium Production Version
+   ===================================================== */
+
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* ==============================
-     MOBILE MENU TOGGLE
-  ============================== */
-  const hamburger = document.getElementById("hamburger");
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener("click", function () {
-      mobileMenu.classList.toggle("active");
-      document.body.classList.toggle("no-scroll");
+    /* ==============================
+       SMOOTH SCROLL NAVIGATION
+    ============================== */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        });
     });
-  }
 
-  /* ==============================
-     SCROLL REVEAL (INTERSECTION OBSERVER)
-  ============================== */
-  const revealElements = document.querySelectorAll(".reveal");
 
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("active");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
+    /* ==============================
+       STICKY NAVBAR SHADOW EFFECT
+    ============================== */
+    const navbar = document.querySelector(".navbar");
 
-  revealElements.forEach(el => revealObserver.observe(el));
+    if (navbar) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = "0 10px 30px rgba(0,0,0,0.1)";
+                navbar.style.transition = "0.3s ease";
+            } else {
+                navbar.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
+            }
+        });
+    }
 
-  /* ==============================
-     ADD TO CART EVENT (When #order visible)
-  ============================== */
-  const orderSection = document.getElementById("order");
-  let addToCartFired = false;
 
-  if (orderSection) {
-    const orderObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !addToCartFired) {
-          addToCartFired = true;
+    /* ==============================
+       FADE-IN SCROLL ANIMATION
+    ============================== */
+    const fadeElements = document.querySelectorAll(".fade-in");
 
-          if (typeof fbq !== "undefined") {
-            fbq('track', 'AddToCart', {
-              content_name: 'MorinVibes Moringa',
-              content_category: 'Moringa Supplement',
-              currency: 'MYR'
-            });
-          }
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    }, { threshold: 0.2 });
 
-          if (typeof gtag !== "undefined") {
-            gtag('event', 'add_to_cart', {
-              currency: 'MYR',
-              value: 0
-            });
-          }
+    fadeElements.forEach(el => observer.observe(el));
+
+
+    /* ==============================
+       CONTACT FORM VALIDATION
+    ============================== */
+    const form = document.querySelector("#contactForm");
+
+    if (form) {
+
+        const nameInput = document.querySelector("#name");
+        const emailInput = document.querySelector("#email");
+        const messageInput = document.querySelector("#message");
+        const submitBtn = form.querySelector("button[type='submit']");
+
+        function showError(input, message) {
+            const formGroup = input.parentElement;
+            const error = formGroup.querySelector(".error-message");
+
+            if (error) {
+                error.innerText = message;
+                error.style.display = "block";
+            }
+
+            input.style.borderColor = "#dc3545";
         }
-      });
-    }, { threshold: 0.5 });
 
-    orderObserver.observe(orderSection);
-  }
+        function clearError(input) {
+            const formGroup = input.parentElement;
+            const error = formGroup.querySelector(".error-message");
 
-  /* ==============================
-     PURCHASE EVENT (Thank You Page)
-  ============================== */
-  if (window.location.pathname.includes("thank-you.html")) {
+            if (error) {
+                error.innerText = "";
+                error.style.display = "none";
+            }
 
-    if (typeof fbq !== "undefined") {
-      fbq('track', 'Purchase', {
-        currency: 'MYR',
-        value: 0
-      });
+            input.style.borderColor = "#ced4da";
+        }
+
+        function validateEmail(email) {
+            const regex =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email.toLowerCase());
+        }
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let valid = true;
+
+            // Name validation
+            if (nameInput.value.trim() === "") {
+                showError(nameInput, "Please enter your full name.");
+                valid = false;
+            } else {
+                clearError(nameInput);
+            }
+
+            // Email validation
+            if (emailInput.value.trim() === "") {
+                showError(emailInput, "Please enter your email address.");
+                valid = false;
+            } else if (!validateEmail(emailInput.value)) {
+                showError(emailInput, "Please enter a valid email address.");
+                valid = false;
+            } else {
+                clearError(emailInput);
+            }
+
+            // Message validation
+            if (messageInput.value.trim().length < 10) {
+                showError(messageInput, "Message must be at least 10 characters.");
+                valid = false;
+            } else {
+                clearError(messageInput);
+            }
+
+            if (!valid) return;
+
+            /* ==============================
+               BUTTON LOADING STATE
+            ============================== */
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Sending...";
+            submitBtn.style.opacity = "0.7";
+
+
+            /* ==============================
+               TRACKING EVENTS
+            ============================== */
+
+            // Google Analytics 4
+            if (typeof gtag === "function") {
+                gtag("event", "contact_form_submit", {
+                    event_category: "engagement",
+                    event_label: "Contact Form",
+                    value: 1
+                });
+            }
+
+            // Meta Pixel
+            if (typeof fbq === "function") {
+                fbq("track", "Lead");
+            }
+
+
+            /* ==============================
+               SIMULATED SUBMISSION
+               (Replace with real backend)
+            ============================== */
+            setTimeout(() => {
+
+                alert("Thank you! Your message has been sent successfully.");
+
+                form.reset();
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Send Message";
+                submitBtn.style.opacity = "1";
+
+            }, 1500);
+        });
     }
 
-    if (typeof gtag !== "undefined") {
-      gtag('event', 'purchase', {
-        currency: 'MYR',
-        value: 0
-      });
-    }
-  }
 
-  /* ==============================
-     LANGUAGE SWITCHER (Subfolder Logic)
-     Structure:
-     /index.html
-     /bm/index.html
-     /zh/index.html
-  ============================== */
-  const languageSwitcher = document.getElementById("languageSwitcher");
+    /* ==============================
+       BUTTON CLICK TRACKING
+    ============================== */
+    document.querySelectorAll(".btn-primary").forEach(button => {
+        button.addEventListener("click", function () {
 
-  if (languageSwitcher) {
+            if (typeof gtag === "function") {
+                gtag("event", "cta_click", {
+                    event_category: "conversion",
+                    event_label: this.innerText
+                });
+            }
 
-    languageSwitcher.addEventListener("change", function () {
-
-      const selectedLang = this.value;
-      const currentPath = window.location.pathname;
-
-      // Remove leading slash
-      let path = currentPath.replace(/^\/+/, "");
-
-      // Detect if currently in subfolder
-      const segments = path.split("/");
-
-      if (segments[0] === "bm" || segments[0] === "zh") {
-        segments.shift();
-      }
-
-      const cleanPath = segments.join("/");
-
-      let newPath = "";
-
-      if (selectedLang === "en") {
-        newPath = "/" + cleanPath;
-      } else {
-        newPath = "/" + selectedLang + "/" + cleanPath;
-      }
-
-      window.location.href = newPath;
+            if (typeof fbq === "function") {
+                fbq("trackCustom", "CTA_Click");
+            }
+        });
     });
-  }
+
+
+    /* ==============================
+       SCROLL DEPTH TRACKING
+    ============================== */
+    let scrollTracked = false;
+
+    window.addEventListener("scroll", () => {
+        const scrollPercent =
+            (window.scrollY + window.innerHeight) /
+            document.documentElement.scrollHeight;
+
+        if (scrollPercent > 0.75 && !scrollTracked) {
+
+            if (typeof gtag === "function") {
+                gtag("event", "scroll_75_percent", {
+                    event_category: "engagement"
+                });
+            }
+
+            scrollTracked = true;
+        }
+    });
 
 });
