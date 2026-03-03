@@ -1,121 +1,90 @@
-/* ========================================
-   MORINVIBES WEBSITE SCRIPT
-   Clean Professional Build
-======================================== */
+/* ===========================
+   main.js — MorinVibes®
+   Premium Botanical Authority Infrastructure
+=========================== */
 
-/* ========= 1. MOBILE NAVIGATION TOGGLE ========= */
-const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
-const navMenu = document.querySelector(".nav-menu");
+// ✅ Scroll Reveal (fade + translateY)
+document.addEventListener("DOMContentLoaded", () => {
+  const revealElements = document.querySelectorAll("section, .hero-image img");
 
-if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-        mobileMenuBtn.classList.toggle("open");
-    });
-}
-
-/* ========= 2. SMOOTH SCROLL FOR NAV LINKS ========= */
-const navLinks = document.querySelectorAll("a[href^='#']");
-
-navLinks.forEach(link => {
-    link.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        const targetId = this.getAttribute("href");
-        const targetSection = document.querySelector(targetId);
-
-        if (targetSection) {
-            window.scrollTo({
-                top: targetSection.offsetTop - 70,
-                behavior: "smooth"
-            });
-        }
-
-        // Close mobile menu after click
-        if (navMenu.classList.contains("active")) {
-            navMenu.classList.remove("active");
-        }
-    });
-});
-
-/* ========= 3. STICKY HEADER ON SCROLL ========= */
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-        header.classList.add("scrolled");
-    } else {
-        header.classList.remove("scrolled");
-    }
-});
-
-/* ========= 4. SCROLL REVEAL ANIMATION ========= */
-const revealElements = document.querySelectorAll(".reveal");
-
-function revealOnScroll() {
+  const revealOnScroll = () => {
     const windowHeight = window.innerHeight;
-    const revealPoint = 150;
-
-    revealElements.forEach(element => {
-        const revealTop = element.getBoundingClientRect().top;
-
-        if (revealTop < windowHeight - revealPoint) {
-            element.classList.add("active");
-        }
+    revealElements.forEach(el => {
+      const position = el.getBoundingClientRect().top;
+      if (position < windowHeight - 100) {
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+        el.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+      }
     });
+  };
+
+  // Initial state
+  revealElements.forEach(el => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(20px)";
+  });
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
+});
+
+// ✅ Language Switcher (folder-based)
+document.querySelectorAll(".lang-switch a").forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const target = e.target.getAttribute("href");
+    window.location.href = target;
+  });
+});
+
+// ✅ Tracking: Meta Pixel & GA4
+// Meta Pixel stub
+window.fbq = window.fbq || function() {
+  (window.fbq.q = window.fbq.q || []).push(arguments);
+};
+window.fbq('init', 'YOUR_PIXEL_ID'); // Replace with actual Pixel ID
+window.fbq('track', 'PageView', { language: document.documentElement.lang });
+
+// Track AddToCart when #order enters viewport
+const orderSection = document.querySelector("#order");
+if (orderSection) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        window.fbq('track', 'AddToCart');
+        gtag('event', 'add_to_cart');
+      }
+    });
+  }, { threshold: 0.5 });
+  observer.observe(orderSection);
 }
 
-window.addEventListener("scroll", revealOnScroll);
-
-
-/* ========= 5. PRODUCT QUANTITY SELECTOR ========= */
-const minusBtn = document.querySelector(".qty-minus");
-const plusBtn = document.querySelector(".qty-plus");
-const qtyInput = document.querySelector(".qty-input");
-
-if (minusBtn && plusBtn && qtyInput) {
-    minusBtn.addEventListener("click", () => {
-        let currentValue = parseInt(qtyInput.value);
-        if (currentValue > 1) {
-            qtyInput.value = currentValue - 1;
-        }
-    });
-
-    plusBtn.addEventListener("click", () => {
-        let currentValue = parseInt(qtyInput.value);
-        qtyInput.value = currentValue + 1;
-    });
+// Track Purchase on thank-you.html
+if (window.location.pathname.includes("thank-you.html")) {
+  window.fbq('track', 'Purchase');
+  gtag('event', 'purchase');
 }
 
+// ✅ GA4 stub
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'YOUR_GA4_ID'); // Replace with actual GA4 ID
 
-/* ========= 6. CONTACT FORM VALIDATION ========= */
-const contactForm = document.querySelector(".contact-form");
+// ✅ Mobile Navigation (hamburger)
+const navToggle = document.createElement("button");
+navToggle.className = "nav-toggle";
+navToggle.innerHTML = "☰";
+document.querySelector(".header").appendChild(navToggle);
 
-if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const name = document.querySelector("#name").value.trim();
-        const email = document.querySelector("#email").value.trim();
-        const message = document.querySelector("#message").value.trim();
-
-        if (name === "" || email === "" || message === "") {
-            alert("Please fill in all required fields.");
-            return;
-        }
-
-        if (!validateEmail(email)) {
-            alert("Please enter a valid email address.");
-            return;
-        }
-
-        alert("Thank you for contacting Morinvibes. We will get back to you soon!");
-        contactForm.reset();
-    });
-}
-
-/* ========= EMAIL VALIDATION FUNCTION ========= */
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-}
+navToggle.addEventListener("click", () => {
+  const nav = document.querySelector(".nav ul");
+  if (nav.style.display === "flex") {
+    nav.style.display = "none";
+  } else {
+    nav.style.display = "flex";
+    nav.style.flexDirection = "column";
+    nav.style.gap = "1rem";
+  }
+});
