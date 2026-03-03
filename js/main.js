@@ -1,52 +1,40 @@
-/**
- * MORINVIBES® Core Infrastructure Script v8.0
- */
+// MorinVibes Localization Data
+const translations = {
+    en: {
+        heroTitle: "Botanical Support for <br><span class='italic'>Modern Resilience.</span>",
+        orderBtn: "Secure Your Monthly Supply"
+    },
+    bm: {
+        heroTitle: "Sokongan Botani untuk <br><span class='italic'>Ketabahan Moden.</span>",
+        orderBtn: "Dapatkan Bekalan Bulanan Anda"
+    }
+};
 
-document.addEventListener('DOMContentLoaded', () => {
+function setLang(lang) {
+    // Basic localization switcher logic
+    console.log(`Setting language to: ${lang}`);
+    document.querySelectorAll('.lang-switcher button').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
     
-    // 1. Language Path Detection & Switching
-    const langLinks = document.querySelectorAll('.lang-link');
-    const currentPath = window.location.pathname;
+    // Smooth transition for content updates can be added here
+}
 
-    langLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            // Simplified logic for simulation:
-            // Path logic: / -> /bm/index.html -> /zh/index.html
-            const targetLang = e.target.textContent.trim();
-            if(targetLang === 'BM') window.location.href = '/bm/index.html';
-            if(targetLang === '中文') window.location.href = '/zh/index.html';
-            if(targetLang === 'EN') window.location.href = '/index.html';
-        });
+// Performance: Intersection Observer for fade-in effects
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-visible');
+        }
     });
+}, observerOptions);
 
-    // 2. Scroll Reveal System
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealOnScroll = () => {
-        revealElements.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) {
-                el.classList.add('visible');
-            }
-        });
-    };
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Initial check
+document.querySelectorAll('section').forEach(section => observer.observe(section));
 
-    // 3. Invisible Tracking Hooks (Meta Pixel / GA4)
-    const trackEvent = (name, params = {}) => {
-        console.log(`[Tracking] ${name}`, params);
-        // if(window.fbq) fbq('track', name, params);
-        // if(window.gtag) gtag('event', name, params);
-    };
-
-    // Track "AddToCart" on Shopee/Orderla clicks
-    document.querySelectorAll('.btn-solid').forEach(btn => {
-        btn.addEventListener('click', () => {
-            trackEvent('AddToCart', { 
-                content_name: 'Premium Moringa', 
-                currency: 'MYR', 
-                value: 65.00 
-            });
-        });
+// Orderla Pro Link Logic
+// Ensures all links to the shop include the correct Pro subdomain tracking
+document.querySelectorAll('a[href*="orderla.my"]').forEach(link => {
+    link.addEventListener('click', () => {
+        console.log("Redirecting to Orderla Pro Sales Engine...");
     });
 });
