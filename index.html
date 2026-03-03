@@ -1,73 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MorinVibes | Premium Moringa Capsules</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MorinVibes® | Premium Penang Moringa - Farm to Capsules</title>
+    
+    <meta name="description" content="MorinVibes® Moringa Capsules (90s). 100% Fresh from our Penang Farm & GMP Factory. KKM Certified (2026). Trusted by 5,000+ Malaysians.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID_HERE'); // <-- REPLACE WITH YOUR ACTUAL PIXEL ID
+        fbq('track', 'PageView');
+    </script>
+
+    <style>
+        :root {
+            --primary-teal: #00A99D;
+            --deep-teal: #007A71;
+            --mint-bg: #F0F9F8;
+            --white: #FFFFFF;
+            --text-main: #2C3E50;
+            --text-light: #5A6C7D;
+            --gold-accent: #B8860B;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-main); line-height: 1.6; background-color: var(--white); overflow-x: hidden; }
+
+        /* --- Components --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .btn { display: inline-block; padding: 16px 35px; background: var(--primary-teal); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: 0.3s; border: none; cursor: pointer; }
+        .btn:hover { background: var(--deep-teal); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,169,157,0.2); }
+
+        /* --- Navigation --- */
+        nav { position: fixed; top: 0; width: 100%; padding: 20px 0; background: rgba(255,255,255,0.8); backdrop-filter: blur(15px); z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo-text { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--primary-teal); font-weight: 700; letter-spacing: -0.5px; }
+
+        /* --- Hero Section --- */
+        .hero { height: 100vh; display: flex; align-items: center; background: radial-gradient(circle at 80% 20%, var(--mint-bg) 0%, var(--white) 100%); padding-top: 80px; }
+        .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+        .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 4rem; line-height: 1.1; margin-bottom: 24px; color: var(--deep-teal); }
+        .hero-text p { font-size: 1.25rem; color: var(--text-light); margin-bottom: 35px; max-width: 500px; }
+        
+        .hero-image { position: relative; text-align: center; }
+        .main-bottle { width: 85%; filter: drop-shadow(0 30px 50px rgba(0,0,0,0.1)); animation: float 6s ease-in-out infinite; }
+        .kkm-badge { position: absolute; bottom: 10%; right: 5%; background: var(--white); padding: 15px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid var(--mint-bg); transform: rotate(5deg); }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        /* --- Trust Bar --- */
+        .trust-bar { background: var(--deep-teal); color: white; padding: 20px 0; text-align: center; }
+        .trust-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+        .trust-item { font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* --- Features (The "Farm" Story) --- */
+        .features { padding: 100px 0; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--deep-teal); }
+        .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .feature-card { padding: 40px; background: var(--mint-bg); border-radius: 30px; transition: 0.3s; border: 1px solid transparent; }
+        .feature-card:hover { border-color: var(--primary-teal); background: var(--white); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .feature-card h3 { margin: 20px 0 10px; color: var(--primary-teal); }
+
+        /* --- Order Section --- */
+        .order-section { padding: 100px 0; background-color: #fcfcfc; }
+        .order-wrapper { max-width: 900px; margin: 0 auto; background: var(--white); border-radius: 40px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.08); border: 1px solid rgba(0,169,157,0.1); }
+        
+        /* --- Mobile Responsive --- */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .hero-text p { margin: 0 auto 30px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .hero { height: auto; padding: 120px 0 60px; }
+        }
+
+        /* Scroll Reveal Effect */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">
-    <img src="assets/logo.png" alt="MorinVibes Logo">
-  </div>
+    <nav>
+        <div class="container nav-content">
+            <div class="logo-text">MorinVibes®</div>
+            <a href="#order" class="btn">Order Now</a>
+        </div>
+    </nav>
 
-  <div class="menu" id="menu">
-    <a href="index.html" data-translate="nav_home">Home</a>
-    <a href="benefits.html" data-translate="nav_benefits">Benefits</a>
-    <a href="science.html" data-translate="nav_science">Science</a>
-    <a href="reviews.html" data-translate="nav_reviews">Reviews</a>
-    <a href="faq.html" data-translate="nav_faq">FAQ</a>
-  </div>
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1>Penang's Purest<br>Moringa Miracle.</h1>
+                <p>100% Raw Organic Moringa Leaf Powder. Freshly harvested from our family farm in Penang to your doorstep.</p>
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <a href="#order" class="btn">Start Your Journey</a>
+                    <span style="font-size: 0.9rem; color: var(--gold-accent); font-weight: 700;">★ 5,000+ Happy Users</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="moringa-bottle-new.png" alt="MorinVibes Moringa Capsules" class="main-bottle">
+                <div class="kkm-badge">
+                    <p style="font-size: 0.7rem; font-weight: 700; color: #666;">CERTIFIED AUTHORITY</p>
+                    <p style="font-size: 1rem; font-weight: 800; color: var(--primary-teal);">KKM / GMP 2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="lang-switch">
-    <select onchange="setLanguage(this.value)">
-      <option value="en" selected>English</option>
-      <option value="bm">Bahasa Melayu</option>
-      <option value="zh-cn">简体中文</option>
-      <option value="zh-tw">繁體中文</option>
-    </select>
-  </div>
+    <div class="trust-bar">
+        <div class="container trust-grid">
+            <div class="trust-item">✓ 100% ORGANIC</div>
+            <div class="trust-item">✓ NO PRESERVATIVES</div>
+            <div class="trust-item">✓ OWN PENANG FARM</div>
+            <div class="trust-item">✓ GMP FACTORY PRODUCED</div>
+        </div>
+    </div>
 
-  <a href="#order" class="cta-btn" data-translate="nav_order">Order Now</a>
+    <section class="features">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Why MorinVibes® is Different</h2>
+                <p>We don't just sell. We grow, we process, we care.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card reveal">
+                    <div style="font-size: 2rem;">🌿</div>
+                    <h3>Our Penang Farm</h3>
+                    <p>Harvested daily in the tropical sun of Penang. No pesticides, just pure nature.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div style="font-size: 2rem;">🏭</div>
+                    <h3>Own GMP Factory</h3>
+                    <p>Processed immediately after harvest to lock in 90+ essential nutrients and 46 antioxidants.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div style="font-size: 2rem;">🛡️</div>
+                    <h3>KKM Certified</h3>
+                    <p>Your safety is our priority. Fully certified by the Ministry of Health Malaysia (2026).</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Hamburger Icon -->
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</nav>
+    <section id="order" class="order-section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Order Your Health Today</h2>
+                <p>Secure Checkout via Orderla (Official Partner)</p>
+            </div>
+            <div class="order-wrapper reveal" id="orderla-container">
+                <iframe 
+                    src="https://orderla.my/YOUR_CUSTOM_LINK_HERE" 
+                    width="100%" 
+                    height="850px" 
+                    frameborder="0" 
+                    style="border:0;" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
 
-<header class="hero">
-  <h1>Elevate Your Wellness with MorinVibes</h1>
-  <p data-translate="hero_desc">Premium Moringa Capsules for Wellness</p>
-  <a href="#order" class="main-btn" data-translate="hero_btn">Shop Now</a>
-</header>
+    <footer style="padding: 60px 0; text-align: center; background: #f4f4f4;">
+        <div class="logo-text" style="margin-bottom: 20px;">MorinVibes®</div>
+        <p style="color: #999; font-size: 0.9rem;">From Farm to Capsules. Trusted since 2019.<br>Bayan Lepas, Penang, Malaysia.</p>
+    </footer>
 
-<section class="stats">
-  <div>
-    <h2>10,000+</h2>
-    <p data-translate="stat_customers">Happy Customers</p>
-  </div>
-  <div>
-    <h2>98%</h2>
-    <p data-translate="stat_satisfaction">Satisfaction Rate</p>
-  </div>
-</section>
+    <script>
+        // 1. Scroll Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Run once on load
 
-<section id="order" class="order">
-  <h2 data-translate="order_title">Place Your Order</h2>
-  <p>Orderla embed will go here.</p>
-</section>
+        // 2. Meta Pixel AddToCart Tracking
+        // This detects when the user starts interacting with the Orderla form
+        const orderContainer = document.getElementById('orderla-container');
+        let pixelFired = false;
 
-<footer>
-  © 2026 MorinVibes | Made in Penang, Malaysia
-</footer>
-
-<script src="js/main.js"></script>
+        orderContainer.addEventListener('mousedown', function() {
+            if (!pixelFired) {
+                fbq('track', 'AddToCart', {
+                    content_name: 'Moringa Capsules 90s',
+                    content_category: 'Health Supplement',
+                    value: 0,
+                    currency: 'MYR'
+                });
+                console.log('Meta Pixel: AddToCart Sent');
+                pixelFired = true; // Prevents multiple fires
+            }
+        });
+    </script>
 </body>
 </html>
