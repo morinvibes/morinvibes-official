@@ -1,77 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MorinVibes® | The Gold Standard of Moringa</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script>
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-        document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', 'YOUR_PIXEL_ID'); 
-        fbq('track', 'PageView');
-    </script>
+<title>MorinVibes® | Moringa Malaysia | KKM Certified</title>
+<meta name="description" content="MorinVibes® Moringa from Penang. Farm-grown, GMP manufactured, KKM certified (MAL). Over 5,000 bottles sold in Malaysia.">
+
+<link rel="icon" href="assets/logo.png" type="image/png">
+
+<!-- Preload Hero Image -->
+<link rel="preload" href="assets/product.png" as="image">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'YOUR_PIXEL_ID');
+fbq('track', 'PageView');
+</script>
 </head>
+
 <body>
 
-    <div class="announcement-bar">
-        <p data-i18n="promo">FREE SHIPPING ACROSS MALAYSIA FOR ORDERS ABOVE RM150</p>
-    </div>
+<header class="header">
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      <img src="assets/logo-full.png" alt="MorinVibes Logo">
+    </a>
 
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="assets/logo.png" alt="MorinVibes" onerror="this.style.display='none'">
-                <span class="logo-text">MorinVibes®</span>
-            </a>
-
-            <ul class="nav-links">
-                <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-                <li><a href="benefits.html" data-i18n="nav_benefits">Benefits</a></li>
-                <li><a href="#farm" data-i18n="nav_farm">The Farm</a></li>
-                <li><a href="shop.html" class="nav-btn" data-i18n="nav_shop">Shop Now</a></li>
-            </ul>
-
-            <div class="lang-switcher">
-                <button onclick="setLanguage('en')">EN</button>
-                <button onclick="setLanguage('bm')">BM</button>
-                <button onclick="setLanguage('zh')">ZH</button>
-            </div>
-        </div>
+    <nav class="desktop-menu">
+      <a href="#farm">Our Farm</a>
+      <a href="#science">KKM / Science</a>
+      <a href="#order">Order</a>
     </nav>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content scroll-reveal">
-                <h4 class="hero-tag" data-i18n="hero_tagline">PENANG'S PRIDE</h4>
-                <h1 data-i18n="hero_h1">Pure Moringa.<br><em>Grown for You.</em></h1>
-                <p data-i18n="hero_desc">Harvested from our GMP-certified farm in Penang. High-potency nutrition in every capsule.</p>
-                <div class="hero-btns">
-                    <a href="#order" class="btn-main" data-i18n="nav_shop">Get Started</a>
-                    <a href="benefits.html" class="btn-sub" data-i18n="nav_benefits">The Science</a>
-                </div>
-            </div>
-            <div class="hero-image-wrapper">
-                <img src="assets/logo-full.png" alt="MorinVibes Moringa" class="floating-img">
-                <div class="glass-badge">KKM MAL2026</div>
-            </div>
-        </section>
+    <select id="languageSwitcher">
+      <option value="en">ENG</option>
+      <option value="bm">BM</option>
+      <option value="zh">中文</option>
+    </select>
 
-        <section id="order" class="order-section scroll-reveal">
-            <h2 data-i18n="order_title">Order Your Fresh Batch</h2>
-            <div class="orderla-container">
-                <iframe src="https://orderla.my/morinvibes/moringa?mode=iframe" width="100%" height="800px" frameborder="0"></iframe>
-            </div>
-        </section>
-    </main>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
 
-    <script src="js/main.js"></script>
+<!-- HERO -->
+<section class="hero reveal">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <h1 data-key="heroTitle">Penang’s Purest Moringa</h1>
+      <p data-key="heroDesc">
+        Farm-grown in Penang. Manufactured in our GMP-certified facility.
+        Officially registered with KKM (MAL).
+      </p>
+      <button class="primary-btn" onclick="scrollToOrder()">Order Now</button>
+    </div>
+
+    <div class="hero-image">
+      <img src="assets/product.png" alt="MorinVibes Moringa Bottle" loading="lazy" class="floating">
+      <div class="kkm-badge glass">
+        KKM Certified<br>MAL No: XXXXX
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust-bar">
+  <div>KKM Certified</div>
+  <div>GMP Factory</div>
+  <div>5,000+ Bottles Sold</div>
+</section>
+
+<!-- FARM SECTION -->
+<section id="farm" class="section reveal">
+  <div class="container three-col">
+    <div>
+      <h3>Our Penang Farm</h3>
+      <p>We own and cultivate our moringa trees locally.</p>
+    </div>
+    <div>
+      <h3>Our GMP Factory</h3>
+      <p>Manufactured under strict Malaysian GMP standards.</p>
+    </div>
+    <div>
+      <h3>90 High-Potency Capsules</h3>
+      <p>Premium grade leaf extract for daily vitality.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCIENCE SECTION -->
+<section id="science" class="section reveal">
+  <div class="container glass science-box">
+    <h2>2026 KKM Registration</h2>
+    <p>
+      Registered with Malaysia Ministry of Health (KKM).
+      Tested for safety and quality compliance.
+    </p>
+  </div>
+</section>
+
+<!-- ORDER SECTION -->
+<section id="order" class="section reveal">
+  <div class="container order-box">
+    <h2>Secure Your Bottle Today</h2>
+
+    <iframe 
+      src="https://orderla.my/YOUR_FORM_LINK" 
+      width="100%" 
+      height="600" 
+      frameborder="0"
+      loading="lazy">
+    </iframe>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <img src="assets/logo-full.png" alt="MorinVibes Logo">
+      <p>Farm-to-Capsule Moringa Authority in Malaysia.</p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#farm">Our Farm</a>
+      <a href="#science">KKM</a>
+      <a href="#order">Order</a>
+    </div>
+
+    <div>
+      <h4>Location</h4>
+      <p>Bayan Lepas, Penang, Malaysia</p>
+    </div>
+  </div>
+
+  <div class="copyright">
+    © 2026 MorinVibes®. All Rights Reserved.
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
