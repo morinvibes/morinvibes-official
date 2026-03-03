@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     
     <!-- Title & Meta -->
     <title>MorinVibes® | Quality & GMP - Purity Standards</title>
@@ -16,12 +16,12 @@
     <meta property="og:url" content="https://morinvibes.github.io/morinvibes-official/quality.html">
     <meta property="og:title" content="MorinVibes® | Quality & GMP - Purity Standards">
     <meta property="og:description" content="GMP manufacturing, 100% pure moringa, no fillers. Laboratory-tested quality.">
-    <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/assets/images/gmp-lab.webp">
+    <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/assets/images/trust/gmp-lab.webp">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -50,6 +50,42 @@
     </script>
     
     <style>
+        .metric-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: var(--gradient-botanical);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+        .metric-circle::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            opacity: 0.2;
+            z-index: -1;
+        }
+        .certificate-seal {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-forest);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+        }
         .lab-card {
             background: white;
             border-radius: 32px;
@@ -68,52 +104,36 @@
             height: 4px;
             background: var(--gradient-primary);
         }
-        .lab-card .v-corner {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            opacity: 0.1;
-            width: 60px;
-            height: 60px;
-        }
-        .metric-circle {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: var(--gradient-subtle);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
+        .quality-timeline {
             position: relative;
+            padding-left: 40px;
         }
-        .metric-circle::after {
+        .quality-timeline::before {
             content: '';
             position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--forest));
+            opacity: 0.3;
+        }
+        .quality-step {
+            position: relative;
+            margin-bottom: var(--space-xl);
+        }
+        .quality-step::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 0;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             background: var(--gradient-primary);
-            opacity: 0.2;
-            z-index: -1;
-        }
-        .certificate-seal {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-        }
-        .certificate-seal .v-icon {
-            width: 40px;
-            height: 40px;
-            background: white;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--primary-soft);
+            z-index: 2;
         }
     </style>
 </head>
@@ -172,7 +192,7 @@
 
     <main>
         <!-- ===== HERO MINI SECTION ===== -->
-        <section class="section-compact" style="background: var(--gradient-subtle); position: relative; overflow: hidden;">
+        <section class="section-compact" style="background: var(--gradient-hero); position: relative; overflow: hidden;">
             <div class="container">
                 <div class="text-center" style="max-width: 800px; margin: 0 auto; position: relative; z-index: 2;">
                     <div class="clinical-label" style="justify-content: center;">
@@ -184,21 +204,21 @@
                 </div>
             </div>
             <!-- Floating V elements -->
-            <span class="v-icon" style="position: absolute; top: 20%; right: 10%; opacity: 0.05; width: 100px; height: 100px; transform: rotate(15deg);"></span>
-            <span class="v-icon" style="position: absolute; bottom: 10%; left: 5%; opacity: 0.05; width: 80px; height: 80px; transform: rotate(-15deg);"></span>
+            <span class="v-icon" style="position: absolute; top: 20%; right: 10%; opacity: 0.05; width: 100px; height: 100px;"></span>
+            <span class="v-icon" style="position: absolute; bottom: 10%; left: 5%; opacity: 0.05; width: 80px; height: 80px; transform: rotate(45deg);"></span>
         </section>
 
         <!-- ===== QUALITY METRICS ===== -->
         <section class="section-compact">
             <div class="container">
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg);">
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xl);">
                     <div class="reveal" style="text-align: center;">
                         <div class="metric-circle">
                             <span class="v-icon-large"></span>
                             <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary);">100%</div>
                         </div>
                         <div style="margin-top: var(--space-md);">
-                            <div style="font-weight: 600;" data-i18n="clinical_100">Pure Leaf Powder</div>
+                            <div style="font-weight: 600; font-size: 1.1rem;" data-i18n="clinical_100">Pure Leaf Powder</div>
                         </div>
                     </div>
                     <div class="reveal" style="text-align: center;">
@@ -207,7 +227,7 @@
                             <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary);">0</div>
                         </div>
                         <div style="margin-top: var(--space-md);">
-                            <div style="font-weight: 600;" data-i18n="clinical_fillers">Fillers</div>
+                            <div style="font-weight: 600; font-size: 1.1rem;" data-i18n="clinical_fillers">Fillers</div>
                         </div>
                     </div>
                     <div class="reveal" style="text-align: center;">
@@ -216,7 +236,7 @@
                             <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary);">0</div>
                         </div>
                         <div style="margin-top: var(--space-md);">
-                            <div style="font-weight: 600;" data-i18n="clinical_additives">Additives</div>
+                            <div style="font-weight: 600; font-size: 1.1rem;" data-i18n="clinical_additives">Additives</div>
                         </div>
                     </div>
                     <div class="reveal" style="text-align: center;">
@@ -225,7 +245,7 @@
                             <div style="font-size: 2rem; font-weight: 700; color: var(--primary);">GMP</div>
                         </div>
                         <div style="margin-top: var(--space-md);">
-                            <div style="font-weight: 600;" data-i18n="clinical_gmp">Certified</div>
+                            <div style="font-weight: 600; font-size: 1.1rem;" data-i18n="clinical_gmp">Certified</div>
                         </div>
                     </div>
                 </div>
@@ -244,49 +264,43 @@
                         <h2 class="gradient-text">Good Manufacturing Practice</h2>
                         <p style="margin-bottom: var(--space-lg); opacity: 0.8;">Our facility follows strict GMP guidelines to ensure every batch meets the highest standards of quality, consistency, and safety.</p>
                         
-                        <div style="display: grid; gap: var(--space-md);">
-                            <div style="display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); background: var(--gradient-subtle); border-radius: 16px;">
-                                <span class="v-icon-large"></span>
-                                <div>
-                                    <strong>Controlled Environment</strong>
-                                    <p style="font-size: 0.9rem; opacity: 0.7;">Temperature and humidity monitored 24/7</p>
-                                </div>
+                        <div class="quality-timeline">
+                            <div class="quality-step">
+                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0;"></span>
+                                <h4 style="color: var(--primary); margin-bottom: var(--space-xs);">Controlled Environment</h4>
+                                <p style="opacity: 0.7;">Temperature and humidity monitored 24/7</p>
                             </div>
-                            <div style="display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); background: var(--gradient-subtle); border-radius: 16px;">
-                                <span class="v-icon-large"></span>
-                                <div>
-                                    <strong>Batch Traceability</strong>
-                                    <p style="font-size: 0.9rem; opacity: 0.7;">Every batch numbered and recorded</p>
-                                </div>
+                            
+                            <div class="quality-step">
+                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0;"></span>
+                                <h4 style="color: var(--primary); margin-bottom: var(--space-xs);">Batch Traceability</h4>
+                                <p style="opacity: 0.7;">Every batch numbered and recorded</p>
                             </div>
-                            <div style="display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); background: var(--gradient-subtle); border-radius: 16px;">
-                                <span class="v-icon-large"></span>
-                                <div>
-                                    <strong>Equipment Sanitation</strong>
-                                    <p style="font-size: 0.9rem; opacity: 0.7;">Regular cleaning protocols</p>
-                                </div>
+                            
+                            <div class="quality-step">
+                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0;"></span>
+                                <h4 style="color: var(--primary); margin-bottom: var(--space-xs);">Equipment Sanitation</h4>
+                                <p style="opacity: 0.7;">Regular cleaning protocols</p>
                             </div>
-                            <div style="display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); background: var(--gradient-subtle); border-radius: 16px;">
-                                <span class="v-icon-large"></span>
-                                <div>
-                                    <strong>Staff Training</strong>
-                                    <p style="font-size: 0.9rem; opacity: 0.7;">Qualified personnel at every step</p>
-                                </div>
+                            
+                            <div class="quality-step">
+                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0;"></span>
+                                <h4 style="color: var(--primary); margin-bottom: var(--space-xs);">Staff Training</h4>
+                                <p style="opacity: 0.7;">Qualified personnel at every step</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="reveal">
                         <div class="lab-card">
-                            <span class="v-icon v-corner"></span>
                             <div style="text-align: center; margin-bottom: var(--space-lg);">
                                 <div class="certificate-seal">
-                                    <span class="v-icon"></span>
+                                    <span class="v-icon" style="background: white; width: 50px; height: 50px;"></span>
                                 </div>
-                                <h3 style="margin-top: var(--space-md);">GMP Certified Facility</h3>
+                                <h3 style="margin-top: var(--space-md); color: var(--forest);">GMP Certified Facility</h3>
                                 <p style="opacity: 0.7;">Penang, Malaysia</p>
                             </div>
-                            <div style="background: var(--primary-soft); border-radius: 24px; padding: var(--space-lg);">
+                            <div style="background: var(--gradient-botanical); border-radius: 24px; padding: var(--space-lg);">
                                 <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-sm);">
                                     <span>Certificate No:</span>
                                     <span style="font-weight: 600;">GMP-MY-2026-089</span>
@@ -296,7 +310,7 @@
                                     <span style="font-weight: 600;">2028</span>
                                 </div>
                             </div>
-                            <img src="assets/images/gmp-lab.webp" alt="GMP facility" style="width: 100%; height: 250px; object-fit: cover; border-radius: 24px; margin-top: var(--space-lg);">
+                            <img src="assets/images/trust/gmp-lab.webp" alt="GMP facility" style="width: 100%; height: 250px; object-fit: cover; border-radius: 24px; margin-top: var(--space-lg);" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -304,36 +318,36 @@
         </section>
 
         <!-- ===== PURITY PROMISE ===== -->
-        <section class="section section-mint">
+        <section class="section" style="background: var(--gradient-botanical);">
             <div class="container">
                 <div class="text-center" style="max-width: 600px; margin: 0 auto var(--space-2xl);">
                     <div class="clinical-label" style="justify-content: center;">
                         <span class="v-icon"></span>
                         <span>PURITY PROMISE</span>
                     </div>
-                    <h2 class="gradient-text">What's Inside Is All You Need</h2>
+                    <h2 class="gradient-text" style="color: var(--forest);">What's Inside Is All You Need</h2>
                 </div>
                 
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl);">
-                    <div class="card reveal">
+                    <div class="card reveal" style="background: white;">
                         <div class="card-icon">
                             <span class="v-icon-large"></span>
                         </div>
-                        <h3 class="card-title" data-i18n="clinical_100">100% Moringa Leaf Powder</h3>
+                        <h3 class="card-title" style="color: var(--forest);" data-i18n="clinical_100">100% Moringa Leaf Powder</h3>
                         <p class="card-text">No stems, no branches — only the nutrient-rich leaf, finely milled.</p>
                     </div>
-                    <div class="card reveal">
+                    <div class="card reveal" style="background: white;">
                         <div class="card-icon">
                             <span class="v-icon-large"></span>
                         </div>
-                        <h3 class="card-title" data-i18n="clinical_fillers">No Fillers</h3>
+                        <h3 class="card-title" style="color: var(--forest);" data-i18n="clinical_fillers">No Fillers</h3>
                         <p class="card-text">No rice flour, maltodextrin, or flow agents. Just pure moringa.</p>
                     </div>
-                    <div class="card reveal">
+                    <div class="card reveal" style="background: white;">
                         <div class="card-icon">
                             <span class="v-icon-large"></span>
                         </div>
-                        <h3 class="card-title" data-i18n="clinical_additives">No Additives</h3>
+                        <h3 class="card-title" style="color: var(--forest);" data-i18n="clinical_additives">No Additives</h3>
                         <p class="card-text">No preservatives, no artificial colors, no binders.</p>
                     </div>
                 </div>
@@ -352,10 +366,10 @@
                         <h2 class="gradient-text">Tested for Purity</h2>
                         <p style="margin-bottom: var(--space-lg); opacity: 0.8;">Each batch is sampled and tested to verify identity and purity. We maintain records of every production run.</p>
                         
-                        <div class="lab-card" style="padding: var(--space-lg);">
+                        <div class="lab-card" style="padding: var(--space-xl);">
                             <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-lg);">
                                 <span class="v-icon"></span>
-                                <span style="font-weight: 600;">Batch Analysis Report</span>
+                                <span style="font-weight: 600; font-size: 1.1rem;">Current Batch Analysis</span>
                             </div>
                             <div style="display: grid; gap: var(--space-md);">
                                 <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-light);">
@@ -380,21 +394,20 @@
                     
                     <div class="reveal" style="order: 1;">
                         <div class="lab-card">
-                            <span class="v-icon v-corner"></span>
                             <div style="text-align: center; margin-bottom: var(--space-lg);">
-                                <div class="certificate-seal">
-                                    <span class="v-icon"></span>
+                                <div class="certificate-seal" style="background: var(--gradient-primary);">
+                                    <span class="v-icon" style="background: white; width: 50px; height: 50px;"></span>
                                 </div>
-                                <h3 style="margin-top: var(--space-md);">CERTIFICATE OF ANALYSIS</h3>
+                                <h3 style="margin-top: var(--space-md); color: var(--primary);">CERTIFICATE OF ANALYSIS</h3>
                             </div>
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg);">
                                 <div>
-                                    <div style="font-size: 0.8rem; opacity: 0.6;">Batch No.</div>
-                                    <div style="font-weight: 600;">MV-0326</div>
+                                    <div style="font-size: 0.8rem; opacity: 0.6;">Batch</div>
+                                    <div style="font-weight: 600;">Current Fresh Batch</div>
                                 </div>
                                 <div>
                                     <div style="font-size: 0.8rem; opacity: 0.6;">Date</div>
-                                    <div style="font-weight: 600;">March 2026</div>
+                                    <div style="font-weight: 600;">Updated Weekly</div>
                                 </div>
                                 <div>
                                     <div style="font-size: 0.8rem; opacity: 0.6;">Product</div>
@@ -405,9 +418,9 @@
                                     <div style="font-weight: 600; color: var(--primary);">100%</div>
                                 </div>
                             </div>
-                            <div style="margin-top: var(--space-lg); background: var(--primary-soft); border-radius: 16px; padding: var(--space-md); text-align: center;">
+                            <div style="margin-top: var(--space-lg); background: var(--gradient-botanical); border-radius: 16px; padding: var(--space-md); text-align: center;">
                                 <span class="v-icon-small"></span>
-                                <span style="margin-left: var(--space-xs);">Verified by第三方实验室</span>
+                                <span style="margin-left: var(--space-xs);">Verified by Independent Laboratory</span>
                             </div>
                         </div>
                     </div>
@@ -416,13 +429,13 @@
         </section>
 
         <!-- ===== KKM REGISTRATION STATUS ===== -->
-        <section class="section section-mint">
+        <section class="section" style="background: var(--gradient-forest); color: white;">
             <div class="container">
                 <div class="lab-card" style="background: white; max-width: 800px; margin: 0 auto;">
                     <div class="grid-2" style="align-items: center;">
                         <div style="text-align: center;">
-                            <div class="certificate-seal" style="width: 100px; height: 100px;">
-                                <span class="v-icon" style="width: 50px; height: 50px;"></span>
+                            <div class="certificate-seal" style="width: 120px; height: 120px; background: var(--gradient-primary);">
+                                <span class="v-icon" style="background: white; width: 60px; height: 60px;"></span>
                             </div>
                         </div>
                         <div>
@@ -430,12 +443,12 @@
                                 <span class="v-icon"></span>
                                 <span>REGULATORY COMPLIANCE</span>
                             </div>
-                            <h2 class="gradient-text">KKM Registration In Progress</h2>
+                            <h2 class="gradient-text" style="margin: var(--space-md) 0;">KKM Registration In Progress</h2>
                             <p style="margin: var(--space-md) 0;">We are currently in the process of registering with the Ministry of Health Malaysia (KKM). Our facility and processes are designed to meet all regulatory requirements.</p>
                             <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
-                                <span style="background: var(--primary-soft); padding: 6px 16px; border-radius: 40px; font-size: 0.9rem;">NPRA Guidelines</span>
-                                <span style="background: var(--primary-soft); padding: 6px 16px; border-radius: 40px; font-size: 0.9rem;">GMP Compliant</span>
-                                <span style="background: var(--primary-soft); padding: 6px 16px; border-radius: 40px; font-size: 0.9rem;">KKM Submission 2026</span>
+                                <span style="background: var(--gradient-botanical); padding: 6px 16px; border-radius: 40px; font-size: 0.9rem; color: var(--forest);">NPRA Guidelines</span>
+                                <span style="background: var(--gradient-botanical); padding: 6px 16px; border-radius: 40px; font-size: 0.9rem; color: var(--forest);">GMP Compliant</span>
+                                <span style="background: var(--gradient-botanical); padding: 6px 16px; border-radius: 40px; font-size: 0.9rem; color: var(--forest);">KKM Submission 2026</span>
                             </div>
                         </div>
                     </div>
@@ -456,33 +469,33 @@
                         <p style="margin-bottom: var(--space-lg);">We use vegetarian capsules made from plant-based materials. No gelatin, no animal products.</p>
                         
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
-                            <div style="background: var(--gradient-subtle); padding: var(--space-lg); border-radius: 24px; text-align: center;">
-                                <span class="v-icon-large"></span>
-                                <h4 style="margin: var(--space-sm) 0;">Vegetarian</h4>
+                            <div style="background: var(--gradient-botanical); padding: var(--space-xl); border-radius: 24px; text-align: center;">
+                                <span class="v-icon-large" style="background: var(--forest);"></span>
+                                <h4 style="margin: var(--space-sm) 0; color: var(--forest);">Vegetarian</h4>
                                 <p style="font-size: 0.9rem;">Plant-based shells</p>
                             </div>
-                            <div style="background: var(--gradient-subtle); padding: var(--space-lg); border-radius: 24px; text-align: center;">
-                                <span class="v-icon-large"></span>
-                                <h4 style="margin: var(--space-sm) 0;">500mg Each</h4>
+                            <div style="background: var(--gradient-botanical); padding: var(--space-xl); border-radius: 24px; text-align: center;">
+                                <span class="v-icon-large" style="background: var(--forest);"></span>
+                                <h4 style="margin: var(--space-sm) 0; color: var(--forest);">500mg Each</h4>
                                 <p style="font-size: 0.9rem;">Consistent dosage</p>
                             </div>
-                            <div style="background: var(--gradient-subtle); padding: var(--space-lg); border-radius: 24px; text-align: center;">
-                                <span class="v-icon-large"></span>
-                                <h4 style="margin: var(--space-sm) 0;">Sterile Filling</h4>
+                            <div style="background: var(--gradient-botanical); padding: var(--space-xl); border-radius: 24px; text-align: center;">
+                                <span class="v-icon-large" style="background: var(--forest);"></span>
+                                <h4 style="margin: var(--space-sm) 0; color: var(--forest);">Sterile Filling</h4>
                                 <p style="font-size: 0.9rem;">Clean room environment</p>
                             </div>
-                            <div style="background: var(--gradient-subtle); padding: var(--space-lg); border-radius: 24px; text-align: center;">
-                                <span class="v-icon-large"></span>
-                                <h4 style="margin: var(--space-sm) 0;">60 Capsules</h4>
+                            <div style="background: var(--gradient-botanical); padding: var(--space-xl); border-radius: 24px; text-align: center;">
+                                <span class="v-icon-large" style="background: var(--forest);"></span>
+                                <h4 style="margin: var(--space-sm) 0; color: var(--forest);">90 Capsules</h4>
                                 <p style="font-size: 0.9rem;">One month supply</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="reveal" style="display: flex; align-items: center; justify-content: center;">
-                        <div style="background: var(--gradient-primary); border-radius: 50%; width: 350px; height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; box-shadow: var(--shadow-xl); position: relative;">
-                            <span class="v-icon" style="position: absolute; top: 20px; right: 20px; width: 30px; height: 30px; background: white; opacity: 0.3;"></span>
-                            <span class="v-icon" style="position: absolute; bottom: 20px; left: 20px; width: 30px; height: 30px; background: white; opacity: 0.3; transform: rotate(45deg);"></span>
+                        <div style="background: var(--gradient-forest); border-radius: 50%; width: 400px; height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; box-shadow: var(--shadow-2xl); position: relative;">
+                            <span class="v-icon" style="position: absolute; top: 30px; right: 30px; width: 40px; height: 40px; background: white; opacity: 0.2;"></span>
+                            <span class="v-icon" style="position: absolute; bottom: 30px; left: 30px; width: 40px; height: 40px; background: white; opacity: 0.2; transform: rotate(45deg);"></span>
                             <span class="v-icon-large" style="background: white; width: 80px; height: 80px; margin-bottom: var(--space-md);"></span>
                             <div style="font-size: 3rem; font-weight: 700;">100%</div>
                             <div style="font-size: 1.2rem; opacity: 0.9;">Pure Moringa</div>
@@ -493,21 +506,25 @@
         </section>
 
         <!-- ===== SHOPEE QUALITY CONNECTION ===== -->
-        <section class="section section-mint">
+        <section class="section" style="background: var(--gradient-botanical);">
             <div class="container">
-                <div style="background: white; border-radius: 48px; padding: var(--space-2xl); text-align: center;">
+                <div style="background: white; border-radius: 48px; padding: var(--space-2xl); text-align: center; box-shadow: var(--shadow-xl);">
                     <span class="v-icon-large" style="margin: 0 auto;"></span>
                     <h2 class="gradient-text" style="margin: var(--space-md) 0;">Same Quality, Trusted Since 2019</h2>
                     <p style="max-width: 600px; margin: 0 auto var(--space-lg);">The same rigorous quality standards apply to every batch — whether sold on Shopee or our official website. Now with better freshness and prices.</p>
                     <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
-                        <div class="store-id">
+                        <div class="store-id" style="background: var(--gradient-botanical);">
                             <span class="v-icon"></span>
                             <span>MorinVibes</span>
                         </div>
-                        <div class="store-id">
+                        <div class="store-id" style="background: var(--gradient-botanical);">
                             <span class="v-icon"></span>
                             <span>moringa_morinvibes</span>
                         </div>
+                    </div>
+                    <div style="margin-top: var(--space-lg);">
+                        <span class="stars" style="color: #FFB800; font-size: 2rem;">★★★★★</span>
+                        <div style="font-size: 1.2rem; font-weight: 600; margin-top: var(--space-xs);">1000+ 5-Star Reviews</div>
                     </div>
                 </div>
             </div>
@@ -516,13 +533,16 @@
         <!-- ===== CTA SECTION ===== -->
         <section class="section">
             <div class="container">
-                <div class="whatsapp-section reveal" style="background: var(--gradient-primary); color: white;">
+                <div class="whatsapp-section reveal" style="background: var(--gradient-primary);">
+                    <span class="v-icon" style="position: absolute; top: 20px; right: 20px; width: 60px; height: 60px; background: white; opacity: 0.1;"></span>
+                    <span class="v-icon" style="position: absolute; bottom: 20px; left: 20px; width: 60px; height: 60px; background: white; opacity: 0.1; transform: rotate(45deg);"></span>
+                    
                     <div class="whatsapp-header">
                         <span class="v-icon-large" style="background: white;"></span>
                         <h3 style="color: white;" data-i18n="buy_title">Fresh Supply Available Now</h3>
                     </div>
-                    <p style="color: white; opacity: 0.9;" data-i18n="buy_text">Each batch prepared upon order to ensure maximum freshness.</p>
-                    <a href="shop.html#buy" class="btn" style="background: white; color: var(--primary);">
+                    <p style="color: white; opacity: 0.9; font-size: 1.2rem;" data-i18n="buy_text">Each batch prepared upon order to ensure maximum freshness.</p>
+                    <a href="shop.html#buy" class="btn" style="background: white; color: var(--primary); margin-top: var(--space-lg);">
                         <span class="v-icon" style="background: var(--primary);"></span>
                         <span data-i18n="product_buy">Buy Fresh Supply</span>
                     </a>
@@ -537,8 +557,8 @@
             <div class="footer-grid">
                 <div>
                     <div class="footer-brand">
-                        <span class="v-icon-large"></span>
-                        <span class="gradient-text" style="font-size: 1.8rem; color: white; -webkit-text-fill-color: white;" data-i18n="footer_brand">MorinVibes®</span>
+                        <span class="v-icon-large" style="background: white;"></span>
+                        <span style="font-size: 1.8rem; font-family: var(--font-heading); color: white;" data-i18n="footer_brand">MorinVibes®</span>
                     </div>
                     <p class="footer-description" data-i18n="footer_desc">Farm-direct botanical nutrition, prepared in Penang since 2019.</p>
                     
@@ -611,15 +631,15 @@
                 </div>
             </div>
             
-            <div class="footer-bottom">
+            <div class="footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: var(--space-xl); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-md);">
                 <div>
-                    <span class="v-icon-small"></span>
+                    <span class="v-icon-small" style="background: white;"></span>
                     <span data-i18n="footer_copyright">© <span class="current-year">2026</span> MorinVibes®. All rights reserved.</span>
                 </div>
                 <div data-i18n="footer_kkm">KKM: Registration in progress</div>
             </div>
             
-            <div class="footer-disclaimer" data-i18n="footer_disclaimer">
+            <div class="footer-disclaimer" style="font-size: 0.8rem; opacity: 0.6; margin-top: var(--space-xl); text-align: center; font-style: italic;" data-i18n="footer_disclaimer">
                 These statements have not been evaluated by the Ministry of Health Malaysia. This product is not intended to diagnose, treat, cure, or prevent any disease.
             </div>
         </div>
@@ -636,41 +656,8 @@
     <script src="assets/js/language.js" defer></script>
     <script src="assets/js/pixel.js" defer></script>
     
-    <style>
-        .back-to-top {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-lg);
-            opacity: 0;
-            visibility: hidden;
-            transition: all var(--transition);
-            z-index: 99;
-        }
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        .back-to-top .v-icon {
-            background: white;
-            -webkit-mask: url('assets/images/icons/v-icon.svg') no-repeat center;
-            mask: url('assets/images/icons/v-icon.svg') no-repeat center;
-            transform: rotate(-90deg);
-            width: 24px;
-            height: 24px;
-        }
-    </style>
-    
     <script>
+        // Show back to top button
         window.addEventListener('scroll', function() {
             const btn = document.querySelector('.back-to-top');
             if (window.scrollY > 300) {
@@ -678,6 +665,11 @@
             } else {
                 btn.classList.remove('visible');
             }
+        });
+        
+        // Update current year
+        document.querySelectorAll('.current-year').forEach(el => {
+            el.textContent = new Date().getFullYear();
         });
     </script>
 </body>
