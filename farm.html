@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     
     <!-- Title & Meta -->
-    <title>MorinVibes® | Our Farm - Penang, Malaysia</title>
-    <meta name="description" content="Visit our Penang farm where MorinVibes moringa is grown. See our harvesting process, drying methods, and commitment to farm-direct freshness since 2019.">
+    <title>MorinVibes® | Our Farm - Balik Pulau, Penang</title>
+    <meta name="description" content="Visit our family farm in the hills of Balik Pulau, Penang where MorinVibes moringa is grown. See our harvesting process, drying methods, and commitment to farm-direct freshness since 2019.">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://morinvibes.github.io/morinvibes-official/farm.html">
@@ -14,14 +14,14 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://morinvibes.github.io/morinvibes-official/farm.html">
-    <meta property="og:title" content="MorinVibes® | Our Farm - Penang, Malaysia">
-    <meta property="og:description" content="Visit our Penang farm where MorinVibes moringa is grown since 2019.">
+    <meta property="og:title" content="MorinVibes® | Our Farm - Balik Pulau, Penang">
+    <meta property="og:description" content="Our family farm in the hills of Balik Pulau, Penang where MorinVibes moringa is grown since 2019.">
     <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/assets/images/farm/farm-hero.webp">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -32,10 +32,10 @@
         "@context": "https://schema.org",
         "@type": "Farm",
         "name": "MorinVibes Farm",
-        "description": "Farm-direct Moringa cultivation in Penang, Malaysia since 2019.",
+        "description": "Family-owned moringa farm in the hills of Balik Pulau, Penang, Malaysia since 2019.",
         "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Penang",
+            "addressLocality": "Balik Pulau, Penang",
             "addressCountry": "MY"
         }
     }
@@ -52,9 +52,9 @@
             left: 0;
             top: 0;
             bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--primary), var(--forest));
-            opacity: 0.3;
+            width: 1px;
+            background: var(--primary);
+            opacity: 0.2;
         }
         .timeline-item {
             position: relative;
@@ -65,77 +65,49 @@
             position: absolute;
             left: -44px;
             top: 0;
-            width: 16px;
-            height: 16px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            background: var(--gradient-primary);
+            background: var(--primary);
             border: 2px solid white;
-            box-shadow: 0 0 0 2px var(--primary-soft);
-            z-index: 2;
+        }
+        .farm-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
         }
         .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 24px;
             aspect-ratio: 1/1;
-            cursor: pointer;
-            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            border-radius: 16px;
         }
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.4s ease;
         }
         .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        .gallery-item .v-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(0,151,178,0.2), rgba(42,90,74,0.2));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .gallery-item:hover .v-overlay {
-            opacity: 1;
-        }
-        .farm-stat {
-            background: var(--gradient-botanical);
-            border-radius: 32px;
-            padding: var(--space-xl);
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-        }
-        .farm-stat .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--forest);
-            line-height: 1;
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body class="v-pattern">
+<body>
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <div class="nav-left">
-                <a href="index.html" class="logo logo-full">
-                    <img src="assets/images/logo-full.svg" alt="MorinVibes®" width="180" height="40">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo-full.svg" alt="MorinVibes®" width="160" height="36">
                 </a>
                 
                 <div class="nav-links">
-                    <a href="farm.html" class="active" data-i18n="nav_farm">Our Farm</a>
-                    <a href="quality.html" data-i18n="nav_quality">Quality</a>
-                    <a href="story.html" data-i18n="nav_story">Story</a>
-                    <a href="shop.html" data-i18n="nav_shop">Shop</a>
-                    <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+                    <a href="farm.html" class="active">Our Farm</a>
+                    <a href="quality.html">Quality</a>
+                    <a href="story.html">Story</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="faq.html">FAQ</a>
                 </div>
             </div>
             
@@ -152,10 +124,7 @@
                     </div>
                 </div>
                 
-                <a href="shop.html#buy" class="nav-cta" data-i18n="nav_cta">
-                    <span class="v-icon"></span>
-                    <span>Secure Fresh Supply</span>
-                </a>
+                <a href="shop.html#buy" class="nav-cta">Secure Fresh Supply</a>
             </div>
             
             <button class="mobile-toggle" aria-label="Menu">☰</button>
@@ -164,275 +133,177 @@
     
     <!-- Mobile Bottom Bar -->
     <div class="mobile-bottom">
-        <a href="farm.html">
-            <span class="v-icon"></span>
-            <span data-i18n="mobile_learn">Learn</span>
-        </a>
-        <a href="shop.html#buy">
-            <span class="v-icon"></span>
-            <span data-i18n="mobile_buy">Buy Fresh Supply</span>
-        </a>
+        <a href="farm.html">Learn</a>
+        <a href="shop.html#buy">Buy Fresh Supply</a>
     </div>
 
     <main>
-        <!-- ===== HERO MINI SECTION ===== -->
-        <section class="section-compact" style="background: var(--gradient-hero); position: relative; overflow: hidden;">
-            <div class="container">
-                <div class="text-center" style="max-width: 800px; margin: 0 auto; position: relative; z-index: 2;">
-                    <div class="clinical-label" style="justify-content: center;">
-                        <span class="v-icon"></span>
-                        <span data-i18n="farm_label">THE ORIGIN</span>
-                    </div>
-                    <h1 class="gradient-text" data-i18n="farm_title">Not Warehouse Stock.<br>Real Harvest.</h1>
-                    <p style="max-width: 600px; margin: 0 auto; opacity: 0.8;" data-i18n="farm_text">Our moringa comes from small farms in Penang, not industrial warehouses. Each batch follows the natural rhythm of the land — harvested at peak, dried with care.</p>
-                </div>
-            </div>
-            <!-- Floating V elements -->
-            <span class="v-icon" style="position: absolute; top: 20%; right: 10%; opacity: 0.05; width: 100px; height: 100px;"></span>
-            <span class="v-icon" style="position: absolute; bottom: 10%; left: 5%; opacity: 0.05; width: 80px; height: 80px; transform: rotate(45deg);"></span>
-        </section>
-
-        <!-- ===== FARM STATS ===== -->
+        <!-- ===== HERO MINI ===== -->
         <section class="section-compact">
             <div class="container">
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl);">
-                    <div class="farm-stat reveal">
-                        <span class="v-icon-large" style="background: var(--forest);"></span>
-                        <div class="stat-number">2019</div>
-                        <div style="font-size: 1.1rem; font-weight: 500;">Established</div>
-                    </div>
-                    <div class="farm-stat reveal">
-                        <span class="v-icon-large" style="background: var(--forest);"></span>
-                        <div class="stat-number">5+</div>
-                        <div style="font-size: 1.1rem; font-weight: 500;">Partner Farms</div>
-                    </div>
-                    <div class="farm-stat reveal">
-                        <span class="v-icon-large" style="background: var(--forest);"></span>
-                        <div class="stat-number">5</div>
-                        <div style="font-size: 1.1rem; font-weight: 500;">Acres</div>
-                    </div>
+                <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                    <span class="section-title">THE ORIGIN</span>
+                    <h1>Not Warehouse Stock.<br>Real Harvest.</h1>
+                    <p style="max-width: 600px; margin: 0 auto; opacity: 0.7;">Our moringa comes from our family farm in the hills of Balik Pulau, Penang. No middlemen, no industrial warehouses — just our land, harvested with care.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ===== FARM STORY SECTION 1: HARVEST ===== -->
+        <!-- ===== FARM STORY: HARVEST ===== -->
         <section class="section">
             <div class="container">
-                <div class="grid-2">
-                    <div class="reveal">
-                        <div class="clinical-label">
-                            <span class="v-icon"></span>
-                            <span>01 — HARVEST</span>
-                        </div>
-                        <h2 class="gradient-text">Morning-Picked.<br>Same-Day Processing.</h2>
-                        <p style="margin-bottom: var(--space-xl); opacity: 0.8;">Our harvest begins at sunrise when the leaves are at their peak nutritional density. Within hours, they begin their gentle transformation — no long storage, no warehouse delays.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: center;">
+                    <div>
+                        <span class="section-title">01 — HARVEST</span>
+                        <h2>Morning-Picked.<br>Same-Day Processing.</h2>
+                        <p style="margin-bottom: var(--space-xl); opacity: 0.7;">Our harvest begins at sunrise when the leaves are at their peak. Within hours, they begin their gentle transformation — no long storage, no warehouse delays.</p>
                         
-                        <div style="background: var(--gradient-botanical); padding: var(--space-xl); border-radius: 32px; margin-top: var(--space-lg);">
+                        <div style="background: var(--mint-soft); padding: var(--space-xl); border-radius: 24px;">
                             <div style="display: flex; gap: var(--space-xl); flex-wrap: wrap;">
                                 <div>
-                                    <div style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs);">
-                                        <span class="v-icon-small"></span>
-                                        <span style="font-family: monospace; color: var(--forest);">HARVEST TIME</span>
-                                    </div>
-                                    <div style="font-size: 28px; font-weight: 700; color: var(--forest);">6:00 AM</div>
+                                    <div style="font-size: 0.8rem; text-transform: uppercase; opacity: 0.5; margin-bottom: 4px;">Harvest Time</div>
+                                    <div style="font-size: 1.8rem; font-weight: 500; color: var(--primary);">6:00 AM</div>
                                 </div>
                                 <div>
-                                    <div style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs);">
-                                        <span class="v-icon-small"></span>
-                                        <span style="font-family: monospace; color: var(--forest);">PROCESSING</span>
-                                    </div>
-                                    <div style="font-size: 28px; font-weight: 700; color: var(--forest);">Same Day</div>
-                                </div>
-                                <div>
-                                    <div style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs);">
-                                        <span class="v-icon-small"></span>
-                                        <span style="font-family: monospace; color: var(--forest);">FARM AREA</span>
-                                    </div>
-                                    <div style="font-size: 28px; font-weight: 700; color: var(--forest);">5 Acres</div>
+                                    <div style="font-size: 0.8rem; text-transform: uppercase; opacity: 0.5; margin-bottom: 4px;">Processing</div>
+                                    <div style="font-size: 1.8rem; font-weight: 500; color: var(--primary);">Same Day</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="reveal">
-                        <div style="background: var(--gradient-botanical); border-radius: 32px; height: 550px; overflow: hidden; box-shadow: var(--shadow-xl); position: relative;">
-                            <img src="assets/images/farm/farm-harvest.webp" alt="Morning harvest at MorinVibes farm" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-                            <div style="position: absolute; top: 20px; right: 20px; background: white; padding: 12px; border-radius: 50%; box-shadow: var(--shadow-md);">
-                                <span class="v-icon" style="background: var(--primary);"></span>
-                            </div>
+                    <div>
+                        <div style="background: var(--mint-soft); border-radius: 24px; height: 500px; overflow: hidden;">
+                            <img src="assets/images/farm/farm-harvest.webp" alt="Morning harvest at our Balik Pulau farm" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== FARM STORY SECTION 2: DRYING ===== -->
-        <section class="section" style="background: var(--gradient-botanical);">
+        <!-- ===== FARM STORY: DRYING ===== -->
+        <section class="section" style="background: var(--mint-soft);">
             <div class="container">
-                <div class="grid-2">
-                    <div class="reveal" style="order: 2;">
-                        <div class="clinical-label">
-                            <span class="v-icon"></span>
-                            <span>02 — DRYING</span>
-                        </div>
-                        <h2 class="gradient-text">Shade-Dried.<br>Nutrient Protected.</h2>
-                        <p style="margin-bottom: var(--space-xl); opacity: 0.8;">We never use heat drying. Leaves rest in shaded, ventilated racks — a slower process that preserves the natural compounds. Drying takes 3-5 days, depending on the weather.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: center;">
+                    <div style="order: 2;">
+                        <span class="section-title">02 — DRYING</span>
+                        <h2>Shade-Dried.<br>Nutrient Protected.</h2>
+                        <p style="margin-bottom: var(--space-xl); opacity: 0.7;">We never use heat drying. Leaves rest in shaded, ventilated racks — a slower process that preserves the natural compounds. Drying takes 3-5 days, depending on the weather.</p>
                         
-                        <div style="background: white; border-radius: 32px; padding: var(--space-xl); box-shadow: var(--shadow-lg);">
-                            <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-lg);">
-                                <span class="v-icon-large" style="background: var(--forest);"></span>
-                                <span style="font-size: 1.2rem; font-weight: 600; color: var(--forest);">Why shade drying matters</span>
+                        <div style="background: white; padding: var(--space-xl); border-radius: 24px;">
+                            <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                                <span style="color: var(--primary); font-size: 1.2rem;">✓</span>
+                                <span>Preserves nutrients — No heat damage</span>
                             </div>
-                            <ul style="list-style: none;">
-                                <li style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
-                                    <span class="v-icon-gradient"></span>
-                                    <span><strong>Preserves nutrients</strong> — No heat damage</span>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
-                                    <span class="v-icon-gradient"></span>
-                                    <span><strong>Natural process</strong> — 3-5 days slow drying</span>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: var(--space-sm);">
-                                    <span class="v-icon-gradient"></span>
-                                    <span><strong>Temperature</strong> — Never exceeds 35°C</span>
-                                </li>
-                            </ul>
+                            <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                                <span style="color: var(--primary); font-size: 1.2rem;">✓</span>
+                                <span>Natural process — 3-5 days slow drying</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: var(--space-md);">
+                                <span style="color: var(--primary); font-size: 1.2rem;">✓</span>
+                                <span>Temperature — Never exceeds 35°C</span>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="reveal" style="order: 1;">
-                        <div style="background: white; border-radius: 32px; height: 550px; overflow: hidden; box-shadow: var(--shadow-xl); position: relative;">
-                            <img src="assets/images/farm/farm-drying.webp" alt="Shade drying process" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-                            <div style="position: absolute; bottom: 20px; left: 20px; background: white; padding: 12px; border-radius: 50%; box-shadow: var(--shadow-md);">
-                                <span class="v-icon" style="background: var(--primary);"></span>
-                            </div>
+                    <div style="order: 1;">
+                        <div style="background: white; border-radius: 24px; height: 500px; overflow: hidden;">
+                            <img src="assets/images/farm/farm-drying.webp" alt="Shade drying process at our farm" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== FARM STORY SECTION 3: MILLING ===== -->
+        <!-- ===== FARM STORY: MILLING ===== -->
         <section class="section">
             <div class="container">
-                <div class="grid-2">
-                    <div class="reveal">
-                        <div class="clinical-label">
-                            <span class="v-icon"></span>
-                            <span>03 — MILLING</span>
-                        </div>
-                        <h2 class="gradient-text">Gentle Milling.<br>Nothing Added.</h2>
-                        <p style="margin-bottom: var(--space-xl); opacity: 0.8;">Dried leaves are milled at low speed to preserve texture and purity. The powder is then encapsulated — no fillers, no flow agents, just pure moringa.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: center;">
+                    <div>
+                        <span class="section-title">03 — MILLING</span>
+                        <h2>Gentle Milling.<br>Nothing Added.</h2>
+                        <p style="margin-bottom: var(--space-xl); opacity: 0.7;">Dried leaves are milled at low speed to preserve texture and purity. The powder is then encapsulated — no fillers, no flow agents, just pure moringa from our family farm.</p>
                         
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
-                            <div style="background: var(--gradient-botanical); padding: var(--space-xl); border-radius: 24px; text-align: center;">
-                                <span class="v-icon-large" style="background: var(--forest);"></span>
-                                <h4 style="margin: var(--space-sm) 0; color: var(--forest);">100% Pure</h4>
-                                <p style="font-size: 0.9rem;">No additives</p>
+                            <div style="background: var(--mint-soft); padding: var(--space-lg); border-radius: 16px; text-align: center;">
+                                <div style="font-size: 1.5rem; font-weight: 500; color: var(--primary);">100%</div>
+                                <div style="font-size: 0.9rem;">Pure</div>
                             </div>
-                            <div style="background: var(--gradient-botanical); padding: var(--space-xl); border-radius: 24px; text-align: center;">
-                                <span class="v-icon-large" style="background: var(--forest);"></span>
-                                <h4 style="margin: var(--space-sm) 0; color: var(--forest);">Low Speed</h4>
-                                <p style="font-size: 0.9rem;">Gentle milling</p>
+                            <div style="background: var(--mint-soft); padding: var(--space-lg); border-radius: 16px; text-align: center;">
+                                <div style="font-size: 1.5rem; font-weight: 500; color: var(--primary);">Low</div>
+                                <div style="font-size: 0.9rem;">Speed Milling</div>
                             </div>
-                            <div style="background: var(--gradient-botanical); padding: var(--space-xl); border-radius: 24px; text-align: center;">
-                                <span class="v-icon-large" style="background: var(--forest);"></span>
-                                <h4 style="margin: var(--space-sm) 0; color: var(--forest);">Fine Powder</h4>
-                                <p style="font-size: 0.9rem;">Perfect texture</p>
+                            <div style="background: var(--mint-soft); padding: var(--space-lg); border-radius: 16px; text-align: center;">
+                                <div style="font-size: 1.5rem; font-weight: 500; color: var(--primary);">Fine</div>
+                                <div style="font-size: 0.9rem;">Powder</div>
                             </div>
-                            <div style="background: var(--gradient-botanical); padding: var(--space-xl); border-radius: 24px; text-align: center;">
-                                <span class="v-icon-large" style="background: var(--forest);"></span>
-                                <h4 style="margin: var(--space-sm) 0; color: var(--forest);">Vegetarian</h4>
-                                <p style="font-size: 0.9rem;">Plant-based capsules</p>
+                            <div style="background: var(--mint-soft); padding: var(--space-lg); border-radius: 16px; text-align: center;">
+                                <div style="font-size: 1.5rem; font-weight: 500; color: var(--primary);">Vegan</div>
+                                <div style="font-size: 0.9rem;">Capsules</div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="reveal">
-                        <div style="background: var(--gradient-botanical); border-radius: 32px; height: 550px; overflow: hidden; box-shadow: var(--shadow-xl); position: relative;">
+                    <div>
+                        <div style="background: var(--mint-soft); border-radius: 24px; height: 500px; overflow: hidden;">
                             <img src="assets/images/farm/farm-preparation.webp" alt="Gentle milling process" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-                            <div style="position: absolute; top: 20px; right: 20px; background: white; padding: 12px; border-radius: 50%; box-shadow: var(--shadow-md);">
-                                <span class="v-icon" style="background: var(--primary);"></span>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- V Divider -->
-        <div class="v-divider">
-            <span class="v-icon"></span>
-            <span class="v-icon"></span>
-            <span class="v-icon"></span>
-        </div>
 
         <!-- ===== FRESHNESS TIMELINE ===== -->
-        <section class="section" style="background: var(--gradient-forest); color: white;">
+        <section class="section" style="background: var(--mint-soft);">
             <div class="container">
                 <div class="text-center" style="max-width: 600px; margin: 0 auto var(--space-2xl);">
-                    <div class="clinical-label" style="justify-content: center; color: white;">
-                        <span class="v-icon" style="background: white;"></span>
-                        <span>FROM FARM TO YOU</span>
-                    </div>
-                    <h2 style="color: white;">The Freshness Timeline</h2>
-                    <p style="color: white; opacity: 0.9;">No warehouses. No long storage. Each step is intentional and transparent.</p>
+                    <span class="section-title">FROM FARM TO YOU</span>
+                    <h2>Freshness Timeline</h2>
+                    <p style="opacity: 0.7;">No warehouses. No long storage. Each step is intentional and transparent.</p>
                 </div>
                 
-                <div class="grid-2" style="align-items: start;">
-                    <div class="reveal">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: start;">
+                    <div>
                         <div class="farm-timeline">
                             <div class="timeline-item">
-                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0; background: white;"></span>
-                                <div style="font-family: monospace; color: white; margin-bottom: var(--space-xs);">DAY 1 • 6:00 AM</div>
-                                <h3 style="color: white; margin-bottom: var(--space-xs);">Morning Harvest</h3>
-                                <p style="color: white; opacity: 0.9;">Leaves picked at peak, transported immediately to drying facility.</p>
+                                <div style="font-family: monospace; color: var(--primary); margin-bottom: var(--space-xs);">DAY 1 • 6:00 AM</div>
+                                <h3 style="margin-bottom: var(--space-xs);">Morning Harvest</h3>
+                                <p style="opacity: 0.7;">Leaves picked at peak, transported immediately to drying facility.</p>
                             </div>
                             
                             <div class="timeline-item">
-                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0; background: white;"></span>
-                                <div style="font-family: monospace; color: white; margin-bottom: var(--space-xs);">DAY 1-5</div>
-                                <h3 style="color: white; margin-bottom: var(--space-xs);">Shade Drying</h3>
-                                <p style="color: white; opacity: 0.9;">Gentle air-drying in controlled conditions. Moisture reduced naturally.</p>
+                                <div style="font-family: monospace; color: var(--primary); margin-bottom: var(--space-xs);">DAY 1-5</div>
+                                <h3 style="margin-bottom: var(--space-xs);">Shade Drying</h3>
+                                <p style="opacity: 0.7;">Gentle air-drying in controlled conditions. Moisture reduced naturally.</p>
                             </div>
                             
                             <div class="timeline-item">
-                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0; background: white;"></span>
-                                <div style="font-family: monospace; color: white; margin-bottom: var(--space-xs);">DAY 5-6</div>
-                                <h3 style="color: white; margin-bottom: var(--space-xs);">Milling & Encapsulation</h3>
-                                <p style="color: white; opacity: 0.9;">Low-speed milling, vegetarian capsule filling. No additives.</p>
+                                <div style="font-family: monospace; color: var(--primary); margin-bottom: var(--space-xs);">DAY 5-6</div>
+                                <h3 style="margin-bottom: var(--space-xs);">Milling & Encapsulation</h3>
+                                <p style="opacity: 0.7;">Low-speed milling, vegetarian capsule filling. No additives.</p>
                             </div>
                             
                             <div class="timeline-item">
-                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0; background: white;"></span>
-                                <div style="font-family: monospace; color: white; margin-bottom: var(--space-xs);">DAY 7</div>
-                                <h3 style="color: white; margin-bottom: var(--space-xs);">Quality Check</h3>
-                                <p style="color: white; opacity: 0.9;">Batch sampling, purity verification, preparation for dispatch.</p>
+                                <div style="font-family: monospace; color: var(--primary); margin-bottom: var(--space-xs);">DAY 7</div>
+                                <h3 style="margin-bottom: var(--space-xs);">Quality Check</h3>
+                                <p style="opacity: 0.7;">Batch sampling, purity verification, preparation for dispatch.</p>
                             </div>
                             
                             <div class="timeline-item">
-                                <span class="v-icon-small" style="position: absolute; left: -38px; top: 0; background: white;"></span>
-                                <div style="font-family: monospace; color: white; margin-bottom: var(--space-xs);">DAY 8-10</div>
-                                <h3 style="color: white; margin-bottom: var(--space-xs);">Shipped to You</h3>
-                                <p style="color: white; opacity: 0.9;">Fresh batch arrives at your door within days of preparation.</p>
+                                <div style="font-family: monospace; color: var(--primary); margin-bottom: var(--space-xs);">DAY 8-10</div>
+                                <h3 style="margin-bottom: var(--space-xs);">Shipped to You</h3>
+                                <p style="opacity: 0.7;">Fresh batch arrives at your door within days of preparation.</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="reveal">
-                        <div style="background: white; border-radius: 32px; padding: var(--space-xl); box-shadow: var(--shadow-xl);">
-                            <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-lg);">
-                                <span class="v-icon-large" style="background: var(--forest);"></span>
-                                <h3 style="color: var(--forest);">Freshness Guarantee</h3>
-                            </div>
-                            <p style="margin-bottom: var(--space-lg);">Unlike mass-produced supplements that sit in warehouses for months, our batches are prepared after your order. The average time from farm to your door is 7-10 days.</p>
+                    <div>
+                        <div style="background: white; border-radius: 24px; padding: var(--space-xl);">
+                            <h3 style="color: var(--primary); margin-bottom: var(--space-md);">Freshness Guarantee</h3>
+                            <p style="margin-bottom: var(--space-lg);">Unlike mass-produced supplements that sit in warehouses for months, our batches are prepared after your order. The average time from our farm to your door is 7-10 days.</p>
                             
-                            <div style="background: var(--gradient-botanical); padding: var(--space-lg); border-radius: 24px; display: flex; gap: var(--space-md); align-items: center;">
-                                <span class="v-icon-large" style="background: var(--forest);"></span>
-                                <div>
-                                    <div style="font-weight: 600; margin-bottom: 4px; color: var(--forest);">Batch Freshness Guarantee</div>
-                                    <div style="font-size: 14px; opacity: 0.7;">Every package shows preparation date</div>
-                                </div>
+                            <div style="background: var(--mint-soft); padding: var(--space-lg); border-radius: 16px;">
+                                <p style="font-weight: 500;">Every package shows preparation date</p>
                             </div>
                         </div>
                     </div>
@@ -440,90 +311,61 @@
             </div>
         </section>
 
-        <!-- ===== GALLERY SECTION ===== -->
+        <!-- ===== GALLERY ===== -->
         <section class="section">
             <div class="container">
                 <div class="text-center" style="margin-bottom: var(--space-2xl);">
-                    <div class="clinical-label" style="justify-content: center;">
-                        <span class="v-icon"></span>
-                        <span>FARM LIFE</span>
-                    </div>
-                    <h2 class="gradient-text">Moments from Penang</h2>
+                    <span class="section-title">FARM LIFE</span>
+                    <h2>Moments from Balik Pulau</h2>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md);">
-                    <div class="gallery-item reveal">
-                        <img src="assets/images/farm/farm-gallery-1.webp" alt="Morning light at farm" loading="lazy">
-                        <div class="v-overlay">
-                            <span class="v-icon" style="background: white; width: 40px; height: 40px;"></span>
-                        </div>
+                <div class="farm-gallery">
+                    <div class="gallery-item">
+                        <img src="assets/images/farm/farm-gallery-1.webp" alt="Morning light at our farm" loading="lazy">
                     </div>
-                    <div class="gallery-item reveal">
+                    <div class="gallery-item">
                         <img src="assets/images/farm/farm-gallery-2.webp" alt="Harvest day" loading="lazy">
-                        <div class="v-overlay">
-                            <span class="v-icon" style="background: white; width: 40px; height: 40px;"></span>
-                        </div>
                     </div>
-                    <div class="gallery-item reveal">
+                    <div class="gallery-item">
                         <img src="assets/images/farm/farm-gallery-3.webp" alt="Shade drying racks" loading="lazy">
-                        <div class="v-overlay">
-                            <span class="v-icon" style="background: white; width: 40px; height: 40px;"></span>
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== SHOPEE FARM CONNECTION ===== -->
-        <section class="section" style="background: var(--gradient-botanical);">
+        <!-- ===== FARM DETAILS ===== -->
+        <section class="section" style="background: var(--mint-soft);">
             <div class="container">
-                <div style="background: white; border-radius: 48px; padding: var(--space-2xl); box-shadow: var(--shadow-xl);">
-                    <div class="grid-2" style="align-items: center;">
-                        <div>
-                            <div class="clinical-label">
-                                <span class="v-icon"></span>
-                                <span>SAME FARM, SAME BRAND</span>
-                            </div>
-                            <h2 class="gradient-text">Trusted on Shopee Since 2019</h2>
-                            <p style="margin: var(--space-lg) 0;">The same moringa you've loved on Shopee for 6+ years now comes directly from our farm through our official website. Fresher batches, better prices, same quality.</p>
-                            
-                            <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
-                                <div class="store-id" style="background: var(--gradient-botanical);">
-                                    <span class="v-icon"></span>
-                                    <span>MorinVibes</span>
-                                </div>
-                                <div class="store-id" style="background: var(--gradient-botanical);">
-                                    <span class="v-icon"></span>
-                                    <span>moringa_morinvibes</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="text-align: center;">
-                            <div class="stars" style="font-size: 3rem; color: #FFB800; margin-bottom: var(--space-md);">★★★★★</div>
-                            <div class="stat-number" style="font-size: 3rem;">1000+</div>
-                            <div class="stat-label" style="font-size: 1.1rem;">5-Star Reviews</div>
-                        </div>
-                    </div>
+                <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+                    <span class="section-title">OUR LAND</span>
+                    <h2>In the hills of Balik Pulau</h2>
+                    <p style="margin: var(--space-lg) 0;">Our family farm sits in the hills of Balik Pulau, Penang — a region known for its rich soil and traditional farming practices. Here, we grow moringa the way it's been done for generations: naturally, patiently, with respect for the land.</p>
+                    <p style="opacity: 0.7;">No middlemen. No industrial farming. Just our family, our land, and our commitment to purity.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ===== CTA SECTION ===== -->
+        <!-- ===== SHOPEE CONNECTION ===== -->
         <section class="section">
             <div class="container">
-                <div class="whatsapp-section reveal" style="background: var(--gradient-primary);">
-                    <span class="v-icon" style="position: absolute; top: 20px; right: 20px; width: 60px; height: 60px; background: white; opacity: 0.1;"></span>
-                    <span class="v-icon" style="position: absolute; bottom: 20px; left: 20px; width: 60px; height: 60px; background: white; opacity: 0.1; transform: rotate(45deg);"></span>
-                    
-                    <div class="whatsapp-header">
-                        <span class="v-icon-large" style="background: white;"></span>
-                        <h3 style="color: white;" data-i18n="buy_title">Fresh Supply Available Now</h3>
+                <div style="background: var(--primary); color: white; border-radius: 32px; padding: var(--space-2xl); text-align: center;">
+                    <h2 style="color: white; margin-bottom: var(--space-md);">Trusted on Shopee Since 2019</h2>
+                    <p style="color: white; opacity: 0.9; max-width: 600px; margin: 0 auto var(--space-lg);">The same moringa from our family farm, now available directly through our website. Fresher batches, better prices.</p>
+                    <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+                        <span style="background: white; color: var(--primary); padding: 8px 20px; border-radius: 40px;">MorinVibes</span>
+                        <span style="background: white; color: var(--primary); padding: 8px 20px; border-radius: 40px;">moringa_morinvibes</span>
                     </div>
-                    <p style="color: white; opacity: 0.9; font-size: 1.2rem;" data-i18n="buy_text">Each batch prepared upon order to ensure maximum freshness.</p>
-                    <a href="shop.html#buy" class="btn" style="background: white; color: var(--primary); margin-top: var(--space-lg);">
-                        <span class="v-icon" style="background: var(--primary);"></span>
-                        <span data-i18n="product_buy">Buy Fresh Supply</span>
-                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA ===== -->
+        <section class="section">
+            <div class="container">
+                <div class="whatsapp-section" style="background: var(--primary);">
+                    <h2 class="whatsapp-title">Fresh Supply Available Now</h2>
+                    <p class="whatsapp-text">Each batch prepared upon order to ensure maximum freshness.</p>
+                    <a href="shop.html#buy" class="whatsapp-btn">Buy Fresh Supply</a>
                 </div>
             </div>
         </section>
@@ -534,118 +376,56 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <div class="footer-brand">
-                        <span class="v-icon-large" style="background: white;"></span>
-                        <span style="font-size: 1.8rem; font-family: var(--font-heading); color: white;" data-i18n="footer_brand">MorinVibes®</span>
-                    </div>
-                    <p class="footer-description" data-i18n="footer_desc">Farm-direct botanical nutrition, prepared in Penang since 2019.</p>
-                    
-                    <div style="display: flex; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap;">
-                        <span style="display: flex; align-items: center; gap: 4px;">
-                            <span>🛒</span>
-                            <span>MorinVibes</span>
-                        </span>
-                        <span style="display: flex; align-items: center; gap: 4px;">
-                            <span>🛒</span>
-                            <span>moringa_morinvibes</span>
-                        </span>
-                    </div>
+                    <div class="footer-brand">MorinVibes®</div>
+                    <p style="opacity: 0.8;">Our family farm in Balik Pulau, Penang • Since 2019</p>
                 </div>
                 
                 <div>
-                    <h4 class="footer-heading" data-i18n="footer_shop">Shop</h4>
+                    <h4 style="color: white; margin-bottom: var(--space-md);">Shop</h4>
                     <ul class="footer-links">
-                        <li><a href="shop.html">
-                            <span class="v-icon"></span>
-                            <span data-i18n="product_name">Moringa Capsules</span>
-                        </a></li>
-                        <li><a href="shop.html#buy">
-                            <span class="v-icon"></span>
-                            <span data-i18n="product_buy">Secure Supply</span>
-                        </a></li>
+                        <li><a href="shop.html">Moringa Capsules</a></li>
+                        <li><a href="shop.html#buy">Secure Supply</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="footer-heading" data-i18n="footer_quality">Quality</h4>
+                    <h4 style="color: white; margin-bottom: var(--space-md);">Quality</h4>
                     <ul class="footer-links">
-                        <li><a href="quality.html">
-                            <span class="v-icon"></span>
-                            <span data-i18n="clinical_gmp">GMP Standards</span>
-                        </a></li>
-                        <li><a href="quality.html">
-                            <span class="v-icon"></span>
-                            <span data-i18n="clinical_100">Purity Promise</span>
-                        </a></li>
+                        <li><a href="quality.html">GMP Standards</a></li>
+                        <li><a href="quality.html">Purity Promise</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="footer-heading" data-i18n="footer_connect">Connect</h4>
+                    <h4 style="color: white; margin-bottom: var(--space-md);">Connect</h4>
                     <ul class="footer-links">
-                        <li><a href="story.html">
-                            <span class="v-icon"></span>
-                            <span data-i18n="nav_story">Our Story</span>
-                        </a></li>
-                        <li><a href="faq.html">
-                            <span class="v-icon"></span>
-                            <span data-i18n="nav_faq">FAQ</span>
-                        </a></li>
+                        <li><a href="story.html">Our Story</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="footer-heading" data-i18n="footer_legal">Legal</h4>
+                    <h4 style="color: white; margin-bottom: var(--space-md);">Legal</h4>
                     <ul class="footer-links">
-                        <li><a href="#">
-                            <span class="v-icon"></span>
-                            <span data-i18n="footer_privacy">Privacy Policy</span>
-                        </a></li>
-                        <li><a href="#">
-                            <span class="v-icon"></span>
-                            <span data-i18n="footer_terms">Terms</span>
-                        </a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: var(--space-xl); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-md);">
-                <div>
-                    <span class="v-icon-small" style="background: white;"></span>
-                    <span data-i18n="footer_copyright">© <span class="current-year">2026</span> MorinVibes®. All rights reserved.</span>
-                </div>
-                <div data-i18n="footer_kkm">KKM: Registration in progress</div>
-            </div>
-            
-            <div class="footer-disclaimer" style="font-size: 0.8rem; opacity: 0.6; margin-top: var(--space-xl); text-align: center; font-style: italic;" data-i18n="footer_disclaimer">
-                These statements have not been evaluated by the Ministry of Health Malaysia. This product is not intended to diagnose, treat, cure, or prevent any disease.
+            <div class="footer-bottom">
+                <div>© <span class="current-year">2026</span> MorinVibes®. All rights reserved.</div>
+                <div>KKM: Registration in progress</div>
             </div>
         </div>
     </footer>
 
-    <!-- Back to top button -->
-    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-        <span class="v-icon"></span>
-    </button>
-
     <!-- Scripts -->
     <script src="assets/js/main.js" defer></script>
-    <script src="assets/js/animations.js" defer></script>
     <script src="assets/js/language.js" defer></script>
     <script src="assets/js/pixel.js" defer></script>
     
     <script>
-        // Show back to top button
-        window.addEventListener('scroll', function() {
-            const btn = document.querySelector('.back-to-top');
-            if (window.scrollY > 300) {
-                btn.classList.add('visible');
-            } else {
-                btn.classList.remove('visible');
-            }
-        });
-        
-        // Update current year
         document.querySelectorAll('.current-year').forEach(el => {
             el.textContent = new Date().getFullYear();
         });
