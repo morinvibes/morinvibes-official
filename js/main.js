@@ -1,221 +1,149 @@
 /* =====================================================
-   ENTERPRISE UX + TRACKING SCRIPT
-   Premium Production Version
+   MORINVIBES® BOTANICAL AUTHORITY SCRIPT
+   Brand Locked v5.0
+   Minimal • Clean • Performance Safe
    ===================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* ==============================
-       SMOOTH SCROLL NAVIGATION
-    ============================== */
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-            }
-        });
+  /* =====================================================
+     LANGUAGE DETECTION
+     Detect folder: /, /bm/, /zh/
+  ===================================================== */
+
+  const path = window.location.pathname;
+  let currentLang = "en";
+
+  if (path.includes("/bm/")) {
+    currentLang = "bm";
+  } else if (path.includes("/zh/")) {
+    currentLang = "zh";
+  }
+
+  /* =====================================================
+     LANGUAGE SWITCHER
+     Switch to same page in selected folder
+  ===================================================== */
+
+  const switcher = document.getElementById("languageSwitcher");
+
+  if (switcher) {
+    switcher.value = currentLang === "en" ? "/" : `/${currentLang}/`;
+
+    switcher.addEventListener("change", function () {
+      const selected = this.value;
+
+      let cleanPath = path
+        .replace("/bm/", "/")
+        .replace("/zh/", "/");
+
+      if (selected === "/") {
+        window.location.href = cleanPath;
+      } else {
+        window.location.href = selected + cleanPath.replace("/", "");
+      }
     });
+  }
 
+  /* =====================================================
+     SCROLL REVEAL (Subtle Only)
+  ===================================================== */
 
-    /* ==============================
-       STICKY NAVBAR SHADOW EFFECT
-    ============================== */
-    const navbar = document.querySelector(".navbar");
+  const revealElements = document.querySelectorAll(".fade-in");
 
-    if (navbar) {
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 50) {
-                navbar.style.boxShadow = "0 10px 30px rgba(0,0,0,0.1)";
-                navbar.style.transition = "0.3s ease";
-            } else {
-                navbar.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
-            }
-        });
-    }
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
 
+  revealElements.forEach(el => {
+    revealObserver.observe(el);
+  });
 
-    /* ==============================
-       FADE-IN SCROLL ANIMATION
-    ============================== */
-    const fadeElements = document.querySelectorAll(".fade-in");
+  /* =====================================================
+     META PIXEL TRACKING
+  ===================================================== */
 
-    const observer = new IntersectionObserver((entries) => {
+  if (typeof fbq === "function") {
+    fbq("track", "PageView", {
+      page_path: path,
+      language: currentLang
+    });
+  }
+
+  /* =====================================================
+     GA4 PAGE VIEW
+  ===================================================== */
+
+  if (typeof gtag === "function") {
+    gtag("event", "page_view", {
+      page_path: path,
+      language: currentLang
+    });
+  }
+
+  /* =====================================================
+     ADD TO CART TRIGGER
+     Fires when #order section enters viewport
+  ===================================================== */
+
+  const orderSection = document.getElementById("order");
+  let addToCartFired = false;
+
+  if (orderSection) {
+    const orderObserver = new IntersectionObserver(
+      (entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-            }
-        });
-    }, { threshold: 0.2 });
+          if (entry.isIntersecting && !addToCartFired) {
 
-    fadeElements.forEach(el => observer.observe(el));
-
-
-    /* ==============================
-       CONTACT FORM VALIDATION
-    ============================== */
-    const form = document.querySelector("#contactForm");
-
-    if (form) {
-
-        const nameInput = document.querySelector("#name");
-        const emailInput = document.querySelector("#email");
-        const messageInput = document.querySelector("#message");
-        const submitBtn = form.querySelector("button[type='submit']");
-
-        function showError(input, message) {
-            const formGroup = input.parentElement;
-            const error = formGroup.querySelector(".error-message");
-
-            if (error) {
-                error.innerText = message;
-                error.style.display = "block";
-            }
-
-            input.style.borderColor = "#dc3545";
-        }
-
-        function clearError(input) {
-            const formGroup = input.parentElement;
-            const error = formGroup.querySelector(".error-message");
-
-            if (error) {
-                error.innerText = "";
-                error.style.display = "none";
-            }
-
-            input.style.borderColor = "#ced4da";
-        }
-
-        function validateEmail(email) {
-            const regex =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return regex.test(email.toLowerCase());
-        }
-
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            let valid = true;
-
-            // Name validation
-            if (nameInput.value.trim() === "") {
-                showError(nameInput, "Please enter your full name.");
-                valid = false;
-            } else {
-                clearError(nameInput);
-            }
-
-            // Email validation
-            if (emailInput.value.trim() === "") {
-                showError(emailInput, "Please enter your email address.");
-                valid = false;
-            } else if (!validateEmail(emailInput.value)) {
-                showError(emailInput, "Please enter a valid email address.");
-                valid = false;
-            } else {
-                clearError(emailInput);
-            }
-
-            // Message validation
-            if (messageInput.value.trim().length < 10) {
-                showError(messageInput, "Message must be at least 10 characters.");
-                valid = false;
-            } else {
-                clearError(messageInput);
-            }
-
-            if (!valid) return;
-
-            /* ==============================
-               BUTTON LOADING STATE
-            ============================== */
-            submitBtn.disabled = true;
-            submitBtn.innerText = "Sending...";
-            submitBtn.style.opacity = "0.7";
-
-
-            /* ==============================
-               TRACKING EVENTS
-            ============================== */
-
-            // Google Analytics 4
-            if (typeof gtag === "function") {
-                gtag("event", "contact_form_submit", {
-                    event_category: "engagement",
-                    event_label: "Contact Form",
-                    value: 1
-                });
-            }
-
-            // Meta Pixel
             if (typeof fbq === "function") {
-                fbq("track", "Lead");
+              fbq("track", "AddToCart");
             }
 
-
-            /* ==============================
-               SIMULATED SUBMISSION
-               (Replace with real backend)
-            ============================== */
-            setTimeout(() => {
-
-                alert("Thank you! Your message has been sent successfully.");
-
-                form.reset();
-                submitBtn.disabled = false;
-                submitBtn.innerText = "Send Message";
-                submitBtn.style.opacity = "1";
-
-            }, 1500);
+            addToCartFired = true;
+          }
         });
+      },
+      { threshold: 0.4 }
+    );
+
+    orderObserver.observe(orderSection);
+  }
+
+  /* =====================================================
+     PURCHASE TRIGGER (THANK YOU PAGE ONLY)
+  ===================================================== */
+
+  if (path.includes("thank-you.html")) {
+
+    if (typeof fbq === "function") {
+      fbq("track", "Purchase");
     }
 
+    if (typeof gtag === "function") {
+      gtag("event", "purchase");
+    }
 
-    /* ==============================
-       BUTTON CLICK TRACKING
-    ============================== */
-    document.querySelectorAll(".btn-primary").forEach(button => {
-        button.addEventListener("click", function () {
+  }
 
-            if (typeof gtag === "function") {
-                gtag("event", "cta_click", {
-                    event_category: "conversion",
-                    event_label: this.innerText
-                });
-            }
+  /* =====================================================
+     MOBILE NAV TOGGLE (If Implemented Later)
+  ===================================================== */
 
-            if (typeof fbq === "function") {
-                fbq("trackCustom", "CTA_Click");
-            }
-        });
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileNav = document.getElementById("mobileNav");
+
+  if (menuToggle && mobileNav) {
+    menuToggle.addEventListener("click", function () {
+      mobileNav.classList.toggle("active");
+      document.body.classList.toggle("nav-open");
     });
-
-
-    /* ==============================
-       SCROLL DEPTH TRACKING
-    ============================== */
-    let scrollTracked = false;
-
-    window.addEventListener("scroll", () => {
-        const scrollPercent =
-            (window.scrollY + window.innerHeight) /
-            document.documentElement.scrollHeight;
-
-        if (scrollPercent > 0.75 && !scrollTracked) {
-
-            if (typeof gtag === "function") {
-                gtag("event", "scroll_75_percent", {
-                    event_category: "engagement"
-                });
-            }
-
-            scrollTracked = true;
-        }
-    });
+  }
 
 });
