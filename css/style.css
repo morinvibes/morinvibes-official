@@ -320,3 +320,6 @@ img {
     grid-template-columns: 1fr;
   }
 }
+.no-scroll {
+  overflow: hidden;
+}
