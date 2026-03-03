@@ -1,145 +1,127 @@
-// =========================
-// LANGUAGE SWITCH
-// =========================
-const translations = { /* 同之前版本，省略翻譯字典 */ };
+/**
+ * MorinVibes® Premium Brand Logic v1.0
+ * Architect: Gemini x MorinVibes
+ * Features: High-Performance Scroll Reveals, Meta Event Tracking, Dynamic Urgency
+ */
 
-function setLanguage(lang) {
-  document.querySelectorAll("[data-translate]").forEach(el => {
-    const key = el.getAttribute("data-translate");
-    el.textContent = translations[lang][key];
-  });
-
-  const langSelect = document.querySelector(".lang-switch select");
-  if (lang === "bm") langSelect.style.color = "#1FB5A8";
-  else if (lang === "zh-cn" || lang === "zh-tw") langSelect.style.color = "#6C8BCB";
-  else langSelect.style.color = "#333";
-}
-
-// =========================
-// TYPING ANIMATION (首頁 Hero)
-// =========================
-const typingElement = document.querySelector(".typing");
-if (typingElement) {
-  const typingTexts = [
-    "Elevate Your Wellness with MorinVibes",
-    "Premium Moringa Capsules",
-    "Made in Penang, Malaysia"
-  ];
-  let typingIndex = 0, charIndex = 0;
-
-  function typeEffect() {
-    if (charIndex < typingTexts[typingIndex].length) {
-      typingElement.textContent += typingTexts[typingIndex].charAt(charIndex);
-      charIndex++;
-      setTimeout(typeEffect, 100);
-    } else setTimeout(eraseEffect, 2000);
-  }
-  function eraseEffect() {
-    if (charIndex > 0) {
-      typingElement.textContent = typingTexts[typingIndex].substring(0, charIndex - 1);
-      charIndex--;
-      setTimeout(eraseEffect, 50);
-    } else {
-      typingIndex = (typingIndex + 1) % typingTexts.length;
-      setTimeout(typeEffect, 500);
-    }
-  }
-  typeEffect();
-}
-
-// =========================
-// COUNTER ANIMATION (Stats)
-// =========================
-document.querySelectorAll(".counter").forEach(counter => {
-  const animateCounter = () => {
-    const target = +counter.getAttribute("data-target");
-    const speed = 200;
-    const updateCount = () => {
-      const count = +counter.innerText;
-      const increment = target / speed;
-      if (count < target) {
-        counter.innerText = Math.ceil(count + increment);
-        setTimeout(updateCount, 20);
-      } else counter.innerText = target;
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- 1. SMART REVEAL ON SCROLL (The Treelogy Look) ---
+    // Uses IntersectionObserver for better performance than 'window.onscroll'
+    const revealOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
     };
-    updateCount();
-  };
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) { animateCounter(); observer.unobserve(counter); }
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Optional: Stop observing once revealed
+                // revealObserver.unobserve(entry.target);
+            }
+        });
+    }, revealOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+    // --- 2. META ADS TRACKING (The "Money" Logic) ---
+    // We track every high-intent action to train your RM 50/day Meta Ads
+    const trackEvent = (eventName, params = {}) => {
+        if (typeof fbq !== 'undefined') {
+            fbq('track', eventName, params);
+            console.log(`[Meta Tracking] ${eventName} fired`, params);
+        } else {
+            console.warn(`[Meta Tracking] Pixel not loaded for ${eventName}`);
+        }
+    };
+
+    // Tracking: Clicks on "Order Now" buttons across the page
+    document.querySelectorAll('a[href="#order"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            trackEvent('InitiateCheckout', { content_name: 'Moringa 90s Bottle' });
+        });
     });
-  }, { threshold: 0.6 });
-  observer.observe(counter);
-});
 
-// =========================
-// SCROLL FADE-IN (通用)
-// =========================
-document.querySelectorAll(".hidden").forEach(el => {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add("show"); observer.unobserve(el); }
+    // Tracking: Interaction with the Orderla Iframe
+    // Because we can't see inside an Iframe, we detect when the container is clicked
+    const orderContainer = document.getElementById('orderla-container');
+    let hasInteractedWithForm = false;
+
+    if (orderContainer) {
+        orderContainer.addEventListener('mousedown', () => {
+            if (!hasInteractedWithForm) {
+                trackEvent('AddToCart', { 
+                    content_name: 'Moringa 90s', 
+                    currency: 'MYR', 
+                    value: 120.00 // Adjust based on your pricing
+                });
+                hasInteractedWithForm = true; // Only fire once per session
+            }
+        });
+    }
+
+
+    // --- 3. DYNAMIC PARALLAX (Product Bottle) ---
+    // Makes the bottle image react to mouse movement (Desktop Only)
+    const heroImage = document.querySelector('.main-bottle');
+    if (heroImage && window.innerWidth > 1024) {
+        window.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            heroImage.style.transform = `translate(${moveX}px, ${moveY}px) translateY(0px)`;
+            // Note: Keep the floating animation active via CSS, this just adds an extra layer
+        });
+    }
+
+
+    // --- 4. THE "TRUST & URGENCY" ENGINE ---
+    // Simulates a "Live Stock" feel to encourage conversion
+    const updateUrgency = () => {
+        const stockElement = document.getElementById('stock-count');
+        if (stockElement) {
+            let currentStock = 14; // Start with a random small number
+            const interval = setInterval(() => {
+                if (currentStock > 3) {
+                    currentStock -= Math.floor(Math.random() * 2);
+                    stockElement.innerText = currentStock;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 15000); // Reduce every 15 seconds
+        }
+    };
+    updateUrgency();
+
+
+    // --- 5. SMOOTH ANCHOR SCROLLING ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80, // Offset for the fixed nav
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
-  }, { threshold: 0.2 });
-  observer.observe(el);
-});
 
-// =========================
-// HAMBURGER MENU
-// =========================
-const hamburger = document.getElementById("hamburger");
-const menu = document.getElementById("menu");
-if (hamburger) {
-  hamburger.addEventListener("click", () => {
-    menu.classList.toggle("active");
-    hamburger.classList.toggle("open");
-  });
-}
 
-// =========================
-// HOVER FLIP CARD (Benefits 頁)
-// =========================
-document.querySelectorAll(".flip-card").forEach(card => {
-  card.addEventListener("mouseenter", () => card.classList.add("flipped"));
-  card.addEventListener("mouseleave", () => card.classList.remove("flipped"));
-});
+    // --- 6. NAVIGATION SCROLL EFFECT ---
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.style.padding = "10px 0";
+            nav.style.background = "rgba(255, 255, 255, 0.95)";
+            nav.style.boxShadow = "0 4px 20px rgba(0,0,0,0.08)";
+        } else {
+            nav.style.padding = "20px 0";
+            nav.style.background = "rgba(255, 255, 255, 0.8)";
+            nav.style.boxShadow = "none";
+        }
+    });
 
-// =========================
-// PARALLAX SCROLL (Science 頁)
-// =========================
-window.addEventListener("scroll", () => {
-  document.querySelectorAll(".parallax").forEach(bg => {
-    let offset = window.pageYOffset;
-    bg.style.backgroundPositionY = (offset * 0.5) + "px";
-  });
-});
-
-// =========================
-// ACCORDION FAQ
-// =========================
-document.querySelectorAll(".accordion-item").forEach(item => {
-  const header = item.querySelector(".accordion-header");
-  header.addEventListener("click", () => {
-    item.classList.toggle("open");
-    const body = item.querySelector(".accordion-body");
-    if (item.classList.contains("open")) body.style.maxHeight = body.scrollHeight + "px";
-    else body.style.maxHeight = null;
-  });
-});
-
-// =========================
-// CAROUSEL SLIDER (Reviews 頁)
-// =========================
-const sliders = document.querySelectorAll(".carousel");
-sliders.forEach(slider => {
-  let index = 0;
-  const items = slider.querySelectorAll(".carousel-item");
-  function showSlide(i) {
-    items.forEach((item, idx) => item.style.display = idx === i ? "block" : "none");
-  }
-  showSlide(index);
-  setInterval(() => {
-    index = (index + 1) % items.length;
-    showSlide(index);
-  }, 4000);
 });
