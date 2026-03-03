@@ -1,40 +1,134 @@
-// MorinVibes Localization Data
-const translations = {
-    en: {
-        heroTitle: "Botanical Support for <br><span class='italic'>Modern Resilience.</span>",
-        orderBtn: "Secure Your Monthly Supply"
-    },
-    bm: {
-        heroTitle: "Sokongan Botani untuk <br><span class='italic'>Ketabahan Moden.</span>",
-        orderBtn: "Dapatkan Bekalan Bulanan Anda"
+/* =======================================
+   MORINVIBES® INTERACTION + META SYSTEM
+   ======================================= */
+
+
+/* ================================
+   1️⃣ SCROLL REVEAL (Calm Luxury)
+   ================================ */
+
+const revealElements = document.querySelectorAll('.section, .hero');
+
+const revealOnScroll = () => {
+  revealElements.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (elementTop < windowHeight - 100) {
+      el.style.opacity = "1";
+      el.style.transform = "translateY(0)";
     }
+  });
 };
 
-function setLang(lang) {
-    // Basic localization switcher logic
-    console.log(`Setting language to: ${lang}`);
-    document.querySelectorAll('.lang-switcher button').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    
-    // Smooth transition for content updates can be added here
-}
+revealElements.forEach(el => {
+  el.style.opacity = "0";
+  el.style.transform = "translateY(24px)";
+  el.style.transition = "all 0.6s ease";
+});
 
-// Performance: Intersection Observer for fade-in effects
-const observerOptions = { threshold: 0.1 };
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in-visible');
-        }
-    });
-}, observerOptions);
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
 
-document.querySelectorAll('section').forEach(section => observer.observe(section));
 
-// Orderla Pro Link Logic
-// Ensures all links to the shop include the correct Pro subdomain tracking
-document.querySelectorAll('a[href*="orderla.my"]').forEach(link => {
-    link.addEventListener('click', () => {
-        console.log("Redirecting to Orderla Pro Sales Engine...");
-    });
+
+/* ================================
+   2️⃣ CTA PULSE EVERY 8 SECONDS
+   ================================ */
+
+const primaryButtons = document.querySelectorAll('.btn-primary');
+
+setInterval(() => {
+  primaryButtons.forEach(btn => {
+    btn.style.transition = "transform 0.4s ease";
+    btn.style.transform = "scale(1.03)";
+    setTimeout(() => {
+      btn.style.transform = "scale(1)";
+    }, 400);
+  });
+}, 8000);
+
+
+
+/* ================================
+   3️⃣ INITIATE CHECKOUT TRACKING
+   ================================ */
+
+document.querySelectorAll('.btn-primary').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'InitiateCheckout');
+    }
+  });
+});
+
+
+
+/* ==========================================
+   4️⃣ ORDERLA PURCHASE EVENT BRIDGE (CRITICAL)
+   ========================================== */
+
+/*
+  Detect Orderla success message dynamically.
+  Adjust successText if needed based on Orderla's final message.
+*/
+
+const successText = "Thank you"; // update if Orderla shows different message
+
+const observer = new MutationObserver(() => {
+
+  if (document.body.innerText.includes(successText)) {
+
+    if (typeof fbq !== 'undefined') {
+
+      fbq('track', 'Purchase', {
+        value: 78.99,
+        currency: 'MYR'
+      });
+
+      console.log("Meta Purchase Event Fired");
+    }
+
+    observer.disconnect(); // prevent duplicate firing
+  }
+
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+
+
+
+/* ================================
+   5️⃣ SCROLL DEPTH TRACKING (Optional Boost)
+   ================================ */
+
+let scroll25 = false;
+let scroll50 = false;
+let scroll75 = false;
+
+window.addEventListener("scroll", () => {
+
+  const scrollPosition = window.scrollY + window.innerHeight;
+  const pageHeight = document.body.offsetHeight;
+
+  const scrollPercent = (scrollPosition / pageHeight) * 100;
+
+  if (scrollPercent > 25 && !scroll25) {
+    scroll25 = true;
+    if (typeof fbq !== 'undefined') fbq('trackCustom', 'Scroll25');
+  }
+
+  if (scrollPercent > 50 && !scroll50) {
+    scroll50 = true;
+    if (typeof fbq !== 'undefined') fbq('trackCustom', 'Scroll50');
+  }
+
+  if (scrollPercent > 75 && !scroll75) {
+    scroll75 = true;
+    if (typeof fbq !== 'undefined') fbq('trackCustom', 'Scroll75');
+  }
+
 });
