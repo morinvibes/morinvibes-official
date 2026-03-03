@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MorinVibes® | Penang's Premium Moringa Authority</title>
+    <title>MorinVibes® | The Gold Standard of Moringa</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/style.css">
 
@@ -22,67 +22,52 @@
 <body>
 
     <div class="announcement-bar">
-        <p data-i18n="promo">FREE SHIPPING MALAYSIA-WIDE ON ORDERS ABOVE RM150</p>
+        <p data-i18n="promo">FREE SHIPPING ACROSS MALAYSIA FOR ORDERS ABOVE RM150</p>
     </div>
 
     <nav id="navbar">
-        <div class="nav-inner">
+        <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="assets/logo.png" alt="MorinVibes Logo">
+                <img src="assets/logo.png" alt="MorinVibes" onerror="this.style.display='none'">
+                <span class="logo-text">MorinVibes®</span>
             </a>
 
             <ul class="nav-links">
                 <li><a href="index.html" data-i18n="nav_home">Home</a></li>
                 <li><a href="benefits.html" data-i18n="nav_benefits">Benefits</a></li>
                 <li><a href="#farm" data-i18n="nav_farm">The Farm</a></li>
-                <li><a href="#authority" data-i18n="nav_science">Science & KKM</a></li>
                 <li><a href="shop.html" class="nav-btn" data-i18n="nav_shop">Shop Now</a></li>
             </ul>
 
-            <div class="lang-toggle">
-                <span onclick="setLanguage('en')">EN</span>
-                <span onclick="setLanguage('bm')">BM</span>
-                <span onclick="setLanguage('zh')">中文</span>
+            <div class="lang-switcher">
+                <button onclick="setLanguage('en')">EN</button>
+                <button onclick="setLanguage('bm')">BM</button>
+                <button onclick="setLanguage('zh')">ZH</button>
             </div>
-
-            <div class="mobile-menu-icon"><span></span><span></span></div>
         </div>
     </nav>
 
     <main>
         <section class="hero">
-            <div class="hero-text scroll-reveal">
-                <h4 class="overline" data-i18n="hero_overline">EST. 2019 • PENANG, MALAYSIA</h4>
-                <h1 data-i18n="hero_h1">Pure Moringa.<br><em>Grown by Us.</em></h1>
-                <p data-i18n="hero_p">Direct from our GMP-certified farm in Penang to your wellness ritual. High-potency nutrition with total transparency.</p>
-                <div class="hero-actions">
-                    <a href="#order" class="btn-solid" data-i18n="btn_cta">Start My Journey</a>
-                    <a href="benefits.html" class="btn-outline" data-i18n="btn_secondary">Why Moringa?</a>
+            <div class="hero-content scroll-reveal">
+                <h4 class="hero-tag" data-i18n="hero_tagline">PENANG'S PRIDE</h4>
+                <h1 data-i18n="hero_h1">Pure Moringa.<br><em>Grown for You.</em></h1>
+                <p data-i18n="hero_desc">Harvested from our GMP-certified farm in Penang. High-potency nutrition in every capsule.</p>
+                <div class="hero-btns">
+                    <a href="#order" class="btn-main" data-i18n="nav_shop">Get Started</a>
+                    <a href="benefits.html" class="btn-sub" data-i18n="nav_benefits">The Science</a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <img src="assets/product-hero.png" alt="MorinVibes Bottle" class="float-animation">
-                <div class="kkm-glass-badge">
-                    <p>KKM CERTIFIED</p>
-                    <strong>MAL2026</strong>
-                </div>
+            <div class="hero-image-wrapper">
+                <img src="assets/logo-full.png" alt="MorinVibes Moringa" class="floating-img">
+                <div class="glass-badge">KKM MAL2026</div>
             </div>
-        </section>
-
-        <section class="trust-icons">
-            <div class="icon-item"><span>5,000+ Units Sold</span></div>
-            <div class="icon-item"><span>Lab Tested</span></div>
-            <div class="icon-item"><span>GMP Certified</span></div>
-            <div class="icon-item"><span>100% Organic</span></div>
         </section>
 
         <section id="order" class="order-section scroll-reveal">
-            <div class="section-title">
-                <h2 data-i18n="order_h2">Select Your Bundle</h2>
-                <p data-i18n="order_p">Safe, secure checkout via Orderla.my</p>
-            </div>
-            <div class="iframe-container">
-                <iframe src="https://orderla.my/morinvibes/moringa?mode=iframe" id="orderla-iframe" width="100%" height="800px" frameborder="0"></iframe>
+            <h2 data-i18n="order_title">Order Your Fresh Batch</h2>
+            <div class="orderla-container">
+                <iframe src="https://orderla.my/morinvibes/moringa?mode=iframe" width="100%" height="800px" frameborder="0"></iframe>
             </div>
         </section>
     </main>
