@@ -1,14 +1,16 @@
 /**
- * MORINVIBES® - META PIXEL + ORDERLA BRIDGE
- * Colors: #0097b2 (Primary) | #61cad8 (Secondary)
- * Version: 1.0 - Zero Lag, Memory Efficient
+ * MORINVIBES® - ANIMATIONS JS
+ * With special V element animations
+ * Version: 3.0 - Subtle, Smooth, Zero Lag
  * 
  * Features:
- * - Meta Pixel installation
- * - Event tracking (PageView, ViewContent, InitiateCheckout, Purchase)
- * - Orderla purchase detection (with cleanup)
- * - Scroll depth tracking (optional)
- * - No memory leaks
+ * - Scroll reveal animations
+ * - V element floating effects
+ * - Gradient text reveal
+ * - Product float animation
+ * - CTA pulse animation
+ * - Respects prefers-reduced-motion
+ * - No animation frame loops
  */
 
 (function() {
@@ -16,299 +18,361 @@
 
     // ===== CONFIGURATION =====
     const config = {
-        pixelId: 'PIXEL_ID', // REPLACE WITH YOUR ACTUAL PIXEL ID
-        price: 89.00,
-        currency: 'MYR',
-        productName: 'MorinVibes Moringa Capsules',
-        productId: 'MV001',
-        debug: false // Set to false in production
+        revealThreshold: 0.2,
+        revealRootMargin: '0px 0px -50px 0px',
+        floatDuration: 6000,
+        pulseDuration: 8000,
+        vFloatDuration: 4000
     };
 
-    // Skip if no pixel ID (development)
-    if (config.pixelId === 'PIXEL_ID') {
-        if (config.debug) {
-            console.log('Meta Pixel: Please set your Pixel ID in pixel.js');
-        }
-        return;
-    }
-
-    // ===== DEBUG LOGGER =====
-    const log = (...args) => {
-        if (config.debug) {
-            console.log('[Meta Pixel]', ...args);
-        }
+    // ===== CHECK FOR REDUCED MOTION =====
+    const prefersReducedMotion = () => {
+        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     };
 
-    // ===== LOAD META PIXEL =====
-    const loadPixel = () => {
-        // Standard Facebook Pixel code
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-
-        // Initialize
-        fbq('init', config.pixelId);
-        fbq('track', 'PageView');
+    // ===== ADD V ELEMENT ANIMATION KEYFRAMES =====
+    const addVKeyframes = () => {
+        if (document.querySelector('#v-animations')) return;
         
-        log('Pixel initialized');
-    };
-
-    // ===== TRACK PAGE VIEWS =====
-    const trackPageView = () => {
-        if (!window.fbq) return;
-        
-        fbq('track', 'PageView');
-        log('PageView tracked');
-    };
-
-    // ===== TRACK VIEW CONTENT =====
-    const trackViewContent = () => {
-        if (!window.fbq) return;
-        
-        // Track on product pages
-        if (window.location.pathname.includes('shop.html')) {
-            setTimeout(() => {
-                fbq('track', 'ViewContent', {
-                    content_name: config.productName,
-                    content_category: 'Moringa Capsules',
-                    content_ids: [config.productId],
-                    content_type: 'product',
-                    value: config.price,
-                    currency: config.currency
-                });
-                log('ViewContent tracked');
-            }, 2000);
-        }
-    };
-
-    // ===== TRACK INITIATE CHECKOUT =====
-    const trackInitiateCheckout = () => {
-        if (!window.fbq) return;
-        
-        // Track when user clicks any buy button
-        document.addEventListener('click', (e) => {
-            const buyButton = e.target.closest(
-                '.btn-primary, .nav-cta, [href*="#buy"], .mobile-bottom a:last-child, .product-card .btn'
-            );
+        const style = document.createElement('style');
+        style.id = 'v-animations';
+        style.textContent = `
+            @keyframes vFloat {
+                0%, 100% { 
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 0.8;
+                }
+                50% { 
+                    transform: translateY(-5px) rotate(5deg);
+                    opacity: 1;
+                }
+            }
             
-            if (buyButton) {
-                fbq('track', 'InitiateCheckout', {
-                    content_name: config.productName,
-                    content_category: 'Moringa Capsules',
-                    content_ids: [config.productId],
-                    content_type: 'product',
-                    value: config.price,
-                    currency: config.currency
+            @keyframes vPulse {
+                0%, 100% { 
+                    transform: scale(1);
+                    filter: brightness(1);
+                }
+                50% { 
+                    transform: scale(1.1);
+                    filter: brightness(1.2);
+                }
+            }
+            
+            @keyframes vSpin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            
+            @keyframes vGlow {
+                0%, 100% { 
+                    box-shadow: 0 0 5px rgba(0,151,178,0.3);
+                }
+                50% { 
+                    box-shadow: 0 0 20px rgba(0,151,178,0.6);
+                }
+            }
+            
+            @keyframes gradientShift {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            
+            .v-float {
+                animation: vFloat ${config.vFloatDuration}ms ease-in-out infinite;
+            }
+            
+            .v-pulse {
+                animation: vPulse ${config.pulseDuration}ms ease-in-out infinite;
+            }
+            
+            .v-spin {
+                animation: vSpin 10s linear infinite;
+            }
+            
+            .v-glow {
+                animation: vGlow 3s ease-in-out infinite;
+            }
+            
+            .gradient-shift {
+                background: linear-gradient(270deg, #0097b2, #61cad8, #0097b2);
+                background-size: 200% 200%;
+                animation: gradientShift 6s ease infinite;
+            }
+        `;
+        document.head.appendChild(style);
+    };
+
+    // ===== SCROLL REVEAL ANIMATIONS =====
+    const initScrollReveal = () => {
+        // Skip if reduced motion is preferred
+        if (prefersReducedMotion()) {
+            document.querySelectorAll('.reveal').forEach(el => {
+                el.classList.add('visible');
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+            return;
+        }
+
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        if (!revealElements.length) return;
+
+        // Set initial styles
+        revealElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+        });
+
+        // Create observer
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    
+                    // Add a little V icon pop when element reveals
+                    const vIcons = entry.target.querySelectorAll('.v-icon, .v-icon-large, .v-icon-small');
+                    vIcons.forEach((icon, index) => {
+                        icon.style.transition = `transform 0.3s ease ${index * 0.1}s`;
+                        icon.style.transform = 'scale(1)';
+                    });
+                    
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: config.revealThreshold,
+            rootMargin: config.revealRootMargin
+        });
+
+        // Observe each element
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Store observer for cleanup
+        window.revealObserver = revealObserver;
+    };
+
+    // ===== V ELEMENT DECORATIVE ANIMATIONS =====
+    const initVAnimations = () => {
+        if (prefersReducedMotion()) return;
+
+        // Animate V icons in headings
+        document.querySelectorAll('.clinical-label .v-icon').forEach((icon, index) => {
+            icon.style.animation = `vFloat ${config.vFloatDuration}ms ease-in-out infinite`;
+            icon.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Animate V dividers
+        document.querySelectorAll('.v-divider .v-icon').forEach((icon, index) => {
+            icon.style.animation = `vPulse ${config.pulseDuration}ms ease-in-out infinite`;
+            icon.style.animationDelay = `${index * 0.3}s`;
+        });
+
+        // Animate stat card V icons
+        document.querySelectorAll('.stat-card .v-icon').forEach(icon => {
+            icon.style.animation = 'vSpin 20s linear infinite';
+        });
+
+        // Animate footer V icons
+        document.querySelectorAll('.footer-links .v-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.style.animation = 'vPulse 0.5s ease';
+            });
+            icon.addEventListener('mouseleave', function() {
+                this.style.animation = '';
+            });
+        });
+
+        // Background V pattern animation (very subtle)
+        const vPattern = document.querySelector('.v-pattern');
+        if (vPattern) {
+            vPattern.style.transition = 'opacity 0.5s ease';
+        }
+    };
+
+    // ===== PRODUCT FLOAT ANIMATION =====
+    const initFloatAnimation = () => {
+        if (prefersReducedMotion()) return;
+
+        const floatElements = document.querySelectorAll('.float, .hero-product, .product-image');
+        
+        floatElements.forEach(el => {
+            el.style.animation = `float ${config.floatDuration}ms ease-in-out infinite`;
+        });
+
+        // Add floating V elements around product
+        const heroVisual = document.querySelector('.hero-visual');
+        if (heroVisual && !heroVisual.querySelector('.floating-v')) {
+            for (let i = 0; i < 3; i++) {
+                const v = document.createElement('span');
+                v.className = 'v-icon floating-v';
+                v.style.position = 'absolute';
+                v.style.width = '20px';
+                v.style.height = '20px';
+                v.style.opacity = '0.2';
+                v.style.animation = `vFloat ${config.vFloatDuration}ms ease-in-out infinite`;
+                v.style.animationDelay = `${i * 0.5}s`;
+                
+                // Position randomly around product
+                const positions = [
+                    { top: '10%', left: '10%' },
+                    { bottom: '20%', right: '15%' },
+                    { top: '30%', right: '25%' }
+                ];
+                
+                Object.assign(v.style, positions[i]);
+                heroVisual.appendChild(v);
+            }
+        }
+    };
+
+    // ===== CTA PULSE ANIMATION =====
+    const initPulseAnimation = () => {
+        if (prefersReducedMotion()) return;
+
+        const pulseElements = document.querySelectorAll('.pulse, .btn-primary, .nav-cta');
+        
+        pulseElements.forEach(el => {
+            el.style.animation = `pulse ${config.pulseDuration}ms ease-in-out infinite`;
+            
+            // Add V icon pulse on hover
+            const vIcon = el.querySelector('.v-icon');
+            if (vIcon) {
+                el.addEventListener('mouseenter', () => {
+                    vIcon.style.animation = 'vPulse 0.5s ease';
                 });
-                log('InitiateCheckout tracked');
+                el.addEventListener('mouseleave', () => {
+                    vIcon.style.animation = '';
+                });
             }
         });
     };
 
-    // ===== TRACK LEAD (Interest on farm/quality pages) =====
-    const trackLead = () => {
-        if (!window.fbq) return;
+    // ===== GRADIENT TEXT SHIMMER =====
+    const initGradientShimmer = () => {
+        if (prefersReducedMotion()) return;
+
+        const gradientTexts = document.querySelectorAll('h1.gradient-text, h2.gradient-text, .gradient-text');
         
-        // Track if user spends 30+ seconds on farm or quality pages
-        if (window.location.pathname.includes('farm.html') || 
-            window.location.pathname.includes('quality.html')) {
+        gradientTexts.forEach(el => {
+            el.style.backgroundSize = '200% auto';
+            el.style.animation = 'gradientShift 6s ease infinite';
+        });
+    };
+
+    // ===== STAT COUNTERS ENHANCEMENT =====
+    const initStatEnhancements = () => {
+        const statCards = document.querySelectorAll('.stat-card');
+        
+        statCards.forEach(card => {
+            // Add V icon to each stat card if not present
+            if (!card.querySelector('.v-icon')) {
+                const vIcon = document.createElement('span');
+                vIcon.className = 'v-icon-small';
+                vIcon.style.margin = '0 auto 12px';
+                card.prepend(vIcon);
+            }
             
-            let leadTracked = false;
+            // Hover effect
+            card.addEventListener('mouseenter', function() {
+                const vIcon = this.querySelector('.v-icon');
+                if (vIcon) {
+                    vIcon.style.animation = 'vPulse 0.5s ease';
+                }
+            });
             
-            setTimeout(() => {
-                if (!leadTracked) {
-                    fbq('track', 'Lead', {
-                        content_name: window.location.pathname.replace('.html', ''),
-                        content_category: 'Education'
+            card.addEventListener('mouseleave', function() {
+                const vIcon = this.querySelector('.v-icon');
+                if (vIcon) {
+                    vIcon.style.animation = '';
+                }
+            });
+        });
+    };
+
+    // ===== SHOPEE SECTION ANIMATIONS =====
+    const initShopeeAnimations = () => {
+        const shopeeSection = document.querySelector('.shopee-proof');
+        if (!shopeeSection || prefersReducedMotion()) return;
+
+        // Animate the background gradient
+        shopeeSection.style.animation = 'gradientShift 10s ease infinite';
+        
+        // Animate store IDs
+        document.querySelectorAll('.store-id').forEach((el, index) => {
+            el.style.animation = `vFloat ${config.vFloatDuration}ms ease-in-out infinite`;
+            el.style.animationDelay = `${index * 0.2}s`;
+        });
+    };
+
+    // ===== OBSERVE DYNAMIC CONTENT =====
+    const observeContentChanges = () => {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.addedNodes.length) {
+                    // Check for new V icons that need animation
+                    mutation.addedNodes.forEach(node => {
+                        if (node.nodeType === 1) {
+                            if (node.classList && node.classList.contains('v-icon')) {
+                                node.style.animation = `vFloat ${config.vFloatDuration}ms ease-in-out infinite`;
+                            }
+                            
+                            // Check for new reveal elements
+                            if (node.classList && node.classList.contains('reveal')) {
+                                initScrollReveal();
+                            }
+                        }
                     });
-                    leadTracked = true;
-                    log('Lead tracked (30s on page)');
                 }
-            }, 30000);
-        }
-    };
+            });
+        });
 
-    // ===== ORDERLA PURCHASE BRIDGE (CRITICAL) =====
-    const setupOrderlaBridge = () => {
-        if (!window.fbq) return;
-        
-        log('Setting up Orderla purchase bridge...');
-        
-        // Success indicators in multiple languages
-        const successIndicators = [
-            'Thank you', 'Terima kasih', '谢谢', '成功',
-            'Order Complete', 'Pesanan Berjaya', '订单成功',
-            'success', 'berjaya', 'complete'
-        ];
-        
-        let purchaseTracked = false;
-        let checkCount = 0;
-        const MAX_CHECKS = 20; // Stop after 20 checks (prevents memory leaks)
-        
-        // Check for success message
-        const checkForSuccess = setInterval(() => {
-            checkCount++;
-            
-            // Check body text
-            const bodyText = document.body.innerText || '';
-            if (!purchaseTracked && successIndicators.some(word => bodyText.includes(word))) {
-                trackPurchase();
-            }
-            
-            // Check URL parameters
-            if (!purchaseTracked && (
-                window.location.href.includes('success') ||
-                window.location.href.includes('complete') ||
-                window.location.href.includes('thankyou')
-            )) {
-                trackPurchase();
-            }
-            
-            // Check for Orderla iframe (if exists)
-            const orderlaIframe = document.querySelector('#orderla-embed iframe');
-            if (!purchaseTracked && orderlaIframe) {
-                try {
-                    // Try to access iframe content (if same origin)
-                    if (orderlaIframe.contentDocument) {
-                        const iframeText = orderlaIframe.contentDocument.body.innerText || '';
-                        if (successIndicators.some(word => iframeText.includes(word))) {
-                            trackPurchase();
-                        }
-                    }
-                } catch (e) {
-                    // Cross-origin iframe - can't access content
-                    // Check iframe src instead
-                    if (orderlaIframe.src && (
-                        orderlaIframe.src.includes('success') ||
-                        orderlaIframe.src.includes('complete')
-                    )) {
-                        trackPurchase();
-                    }
-                }
-            }
-            
-            // Stop after max checks
-            if (checkCount >= MAX_CHECKS || purchaseTracked) {
-                clearInterval(checkForSuccess);
-                log('Orderla bridge stopped after ' + checkCount + ' checks');
-            }
-        }, 1000); // Check every second
-        
-        // Track purchase event
-        function trackPurchase() {
-            if (purchaseTracked) return;
-            
-            purchaseTracked = true;
-            
-            fbq('track', 'Purchase', {
-                value: config.price,
-                currency: config.currency,
-                content_name: config.productName,
-                content_type: 'product',
-                content_ids: [config.productId],
-                transaction_id: generateTransactionId()
-            });
-            
-            log('🎉 Purchase tracked from Orderla!');
-            clearInterval(checkForSuccess);
-        }
-        
-        // Generate unique transaction ID
-        function generateTransactionId() {
-            return 'MV_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-        }
-    };
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
 
-    // ===== SCROLL DEPTH TRACKING (Optional) =====
-    const setupScrollTracking = () => {
-        if (!window.fbq) return;
-        
-        let trackedDepths = {
-            25: false,
-            50: false,
-            75: false,
-            100: false
-        };
-        
-        // Use Intersection Observer for scroll depth (more efficient than scroll listener)
-        if ('IntersectionObserver' in window) {
-            const sentinels = {};
-            
-            // Create sentinel elements
-            [25, 50, 75, 100].forEach(depth => {
-                const sentinel = document.createElement('div');
-                sentinel.className = 'scroll-sentinel';
-                sentinel.dataset.depth = depth;
-                sentinel.style.cssText = 'position: absolute; height: 1px; width: 100%; pointer-events: none;';
-                
-                // Position based on depth
-                if (depth < 100) {
-                    sentinel.style.top = depth + '%';
-                } else {
-                    sentinel.style.bottom = '0';
-                }
-                
-                document.body.appendChild(sentinel);
-                sentinels[depth] = sentinel;
-            });
-            
-            // Observe sentinels
-            const scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const depth = entry.target.dataset.depth;
-                        
-                        if (!trackedDepths[depth]) {
-                            trackedDepths[depth] = true;
-                            
-                            fbq('trackCustom', 'ScrollDepth', {
-                                depth: parseInt(depth),
-                                page: window.location.pathname
-                            });
-                            
-                            log(`Scroll depth ${depth}% tracked`);
-                        }
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            Object.values(sentinels).forEach(sentinel => {
-                scrollObserver.observe(sentinel);
-            });
-            
-            // Store observer for cleanup
-            window.scrollObserver = scrollObserver;
-        }
+        window.contentObserver = observer;
     };
 
     // ===== CLEANUP =====
     const cleanup = () => {
         window.addEventListener('beforeunload', () => {
-            if (window.scrollObserver) {
-                window.scrollObserver.disconnect();
+            if (window.revealObserver) {
+                window.revealObserver.disconnect();
+            }
+            if (window.contentObserver) {
+                window.contentObserver.disconnect();
             }
         });
     };
 
-    // ===== INITIALIZE =====
+    // ===== INITIALIZE ALL ANIMATIONS =====
     const init = () => {
-        loadPixel();
-        trackPageView();
-        trackViewContent();
-        trackInitiateCheckout();
-        trackLead();
-        setupOrderlaBridge();
-        setupScrollTracking();
-        cleanup();
+        // Add keyframes first
+        addVKeyframes();
         
-        log('Meta Pixel fully initialized');
+        // Initialize all animations
+        initScrollReveal();
+        initVAnimations();
+        initFloatAnimation();
+        initPulseAnimation();
+        initGradientShimmer();
+        initStatEnhancements();
+        initShopeeAnimations();
+        
+        // Watch for content changes
+        observeContentChanges();
+        
+        // Setup cleanup
+        cleanup();
+
+        console.log('✅ MorinVibes® - V animations ready');
     };
 
     // Run when DOM is ready
@@ -317,5 +381,23 @@
     } else {
         init();
     }
+
+    // ===== RESPOND TO REDUCED MOTION CHANGES =====
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    
+    motionQuery.addEventListener('change', (e) => {
+        if (e.matches) {
+            // User now prefers reduced motion
+            document.querySelectorAll('.v-icon, .float, .pulse, .reveal, .gradient-text').forEach(el => {
+                el.style.animation = 'none';
+                el.style.transition = 'none';
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+        } else {
+            // User no longer prefers reduced motion - reinitialize
+            init();
+        }
+    });
 
 })();
