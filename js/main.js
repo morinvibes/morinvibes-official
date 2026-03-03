@@ -1,55 +1,201 @@
-// Scroll to order
-function scrollToOrder(){
-  document.getElementById('order').scrollIntoView({behavior:'smooth'});
-  fbq('track','AddToCart');
-}
+/* =========================================
+   MORINVIBES – PREMIUM MAIN JS
+   Language Engine + Effects + Commerce
+========================================= */
 
-// Scroll Reveal
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('active');
-    }
-  });
-});
+/* =========================================
+   1. LANGUAGE ENGINE
+========================================= */
 
-document.querySelectorAll('.reveal').forEach(el=>{
-  observer.observe(el);
-});
-
-// Fire AddToCart when order section visible
-const orderSection = document.getElementById('order');
-const orderObserver = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      fbq('track','AddToCart');
-    }
-  });
-},{threshold:0.6});
-
-orderObserver.observe(orderSection);
-
-// Translation Engine
 const translations = {
   en: {
-    heroTitle: "Penang’s Purest Moringa",
-    heroDesc: "Farm-grown in Penang. GMP manufactured. KKM registered."
+    nav_home: "Home",
+    nav_about: "About Us",
+    nav_mission: "Mission & Vision",
+    nav_blog: "Blog",
+    nav_faq: "FAQ",
+    nav_contact: "Contact",
+    nav_terms: "Terms",
+
+    hero_title: "Penang’s Purest Moringa.",
+    hero_desc:
+      "Farm-grown. GMP-certified. Officially registered with KKM (MAL).",
+    hero_btn: "Shop Now",
+
+    footer_rights: "All rights reserved."
   },
+
   bm: {
-    heroTitle: "Moringa Paling Tulen dari Pulau Pinang",
-    heroDesc: "Ditanam sendiri dan diproses di kilang GMP."
+    nav_home: "Utama",
+    nav_about: "Tentang Kami",
+    nav_mission: "Misi & Visi",
+    nav_blog: "Blog",
+    nav_faq: "Soalan Lazim",
+    nav_contact: "Hubungi",
+    nav_terms: "Terma",
+
+    hero_title: "Moringa Paling Tulen di Pulau Pinang.",
+    hero_desc:
+      "Ditanam sendiri. Kilang GMP. Berdaftar rasmi dengan KKM (MAL).",
+    hero_btn: "Beli Sekarang",
+
+    footer_rights: "Hak cipta terpelihara."
   },
+
   zh: {
-    heroTitle: "槟城最纯正的辣木精华",
-    heroDesc: "自家农场种植，GMP工厂生产，KKM认证。"
+    nav_home: "首页",
+    nav_about: "关于我们",
+    nav_mission: "使命与愿景",
+    nav_blog: "博客",
+    nav_faq: "常见问题",
+    nav_contact: "联系我们",
+    nav_terms: "条款",
+
+    hero_title: "槟城最纯正的辣木。",
+    hero_desc:
+      "自家农场种植。GMP认证。马来西亚卫生部注册。",
+    hero_btn: "立即购买",
+
+    footer_rights: "版权所有。"
+  },
+
+  zht: {
+    nav_home: "首頁",
+    nav_about: "關於我們",
+    nav_mission: "使命與願景",
+    nav_blog: "部落格",
+    nav_faq: "常見問題",
+    nav_contact: "聯絡我們",
+    nav_terms: "條款",
+
+    hero_title: "檳城最純正的辣木。",
+    hero_desc:
+      "自家農場種植。GMP認證。馬來西亞衛生部註冊。",
+    hero_btn: "立即購買",
+
+    footer_rights: "版權所有。"
   }
 };
 
-document.getElementById('languageSwitcher')
-.addEventListener('change', function(){
-  const lang = this.value;
-  document.querySelectorAll('[data-key]').forEach(el=>{
-    el.innerText = translations[lang][el.dataset.key];
+/* =========================================
+   APPLY TRANSLATION
+========================================= */
+
+function setLanguage(lang) {
+  const elements = document.querySelectorAll("[data-i18n]");
+
+  elements.forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang][key]) {
+      el.innerText = translations[lang][key];
+    }
   });
-  fbq('trackCustom','LanguageSwitch',{language:lang});
+
+  localStorage.setItem("language", lang);
+}
+
+/* =========================================
+   LANGUAGE SWITCHER INIT
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const savedLang = localStorage.getItem("language") || "en";
+  setLanguage(savedLang);
+
+  const switcher = document.querySelectorAll(".lang-option");
+
+  switcher.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const selectedLang = btn.getAttribute("data-lang");
+      setLanguage(selectedLang);
+    });
+  });
 });
+
+
+/* =========================================
+   2. SCROLL REVEAL EFFECT
+========================================= */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealOnScroll = () => {
+  const windowHeight = window.innerHeight;
+
+  revealElements.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 80) {
+      el.classList.add("active");
+    }
+  });
+};
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+
+/* =========================================
+   3. NAVBAR SCROLL EFFECT
+========================================= */
+
+const navbar = document.querySelector(".navbar");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
+
+
+/* =========================================
+   4. SMOOTH SCROLL
+========================================= */
+
+function scrollToSection(id) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+}
+
+
+/* =========================================
+   5. ADD TO CART TRIGGER (Shopee Ready)
+========================================= */
+
+function addToCart() {
+  // Future: integrate Meta Pixel, TikTok Pixel here
+
+  console.log("Add to cart triggered");
+
+  // Replace with your Shopee link
+  window.location.href = "https://shopee.com.my/YOUR_PRODUCT_LINK";
+}
+
+
+/* =========================================
+   6. HERO CTA SCROLL
+========================================= */
+
+function scrollToOrder() {
+  scrollToSection("order");
+}
+
+
+/* =========================================
+   7. MOBILE MENU TOGGLE
+========================================= */
+
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+  });
+}
