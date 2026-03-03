@@ -1,24 +1,33 @@
 /**
- * MORINVIBES® - LANGUAGE SWITCHER
- * Colors: #0097b2 (Primary) | #61cad8 (Secondary)
- * Premium EN/BM/ZH with Dropdown - Zero Lag
- * Version: 2.0
+ * MORINVIBES® - COMPLETE LANGUAGE SWITCHER
+ * With special V element and full EN/BM/ZH translations
+ * Version: 3.0 - Every single text element translated
  * 
- * Features:
- * - Smooth dropdown (CSS transitions)
- * - localStorage persistence
- * - No page reload
- * - Complete translations
- * - Zero performance impact
+ * Translations cover:
+ * - Navigation (all links, buttons)
+ * - Hero section (badges, headings, CTAs)
+ * - Trust bars (micro and main)
+ * - Shopee social proof (store IDs, stats, reviews)
+ * - Comparison table (all rows)
+ * - Farm difference (labels, descriptions)
+ * - Why moringa cards
+ * - Clinical transparency
+ * - Founder story
+ * - Product details
+ * - Website advantages
+ * - Buy section
+ * - WhatsApp section
+ * - FAQ (all questions and answers)
+ * - Footer (all links and disclaimers)
  */
 
 (function() {
     'use strict';
 
-    // ===== COMPLETE TRANSLATIONS (EN/BM/ZH) =====
+    // ===== COMPLETE TRANSLATIONS =====
     const translations = {
         en: {
-            // Navigation
+            // ===== NAVIGATION =====
             'nav_farm': 'Our Farm',
             'nav_quality': 'Quality',
             'nav_story': 'Story',
@@ -26,18 +35,18 @@
             'nav_faq': 'FAQ',
             'nav_cta': 'Secure Fresh Supply',
             
-            // Mobile bottom
+            // ===== MOBILE BOTTOM =====
             'mobile_learn': 'Learn',
             'mobile_buy': 'Buy Fresh Supply',
             
-            // Hero
+            // ===== HERO SECTION =====
             'hero_badge': 'SINCE 2019 • PENANG',
             'hero_title': 'Fresh From Farm.<br>Made for Everyday Resilience.',
             'hero_sub': 'Farm-to-capsule moringa grown and prepared in Penang since 2019.',
             'hero_btn1': 'Secure Fresh Supply',
             'hero_btn2': 'Discover Our Farm',
             
-            // Trust micro
+            // ===== TRUST MICRO =====
             'trust_since': 'Since 2019',
             'trust_farm': 'Farm Direct',
             'trust_gmp': 'GMP',
@@ -45,7 +54,7 @@
             'trust_vegan': 'Vegan Friendly',
             'trust_msia': 'Malaysia',
             
-            // Trust strip
+            // ===== TRUST STRIP =====
             'trust_item_since': 'Since 2019',
             'trust_item_farm': 'Farm Direct',
             'trust_item_gmp': 'GMP',
@@ -53,7 +62,37 @@
             'trust_item_vegan': 'Vegan Friendly',
             'trust_item_msia': 'Malaysia Brand',
             
-            // Farm difference
+            // ===== SHOPEE SOCIAL PROOF =====
+            'shopee_official': 'Official Shopee Stores Since 2019',
+            'shopee_reviews': '1000+ 5-Star Reviews',
+            'shopee_sales': 'Sales',
+            'shopee_years': 'Years Trusted',
+            'shopee_kkm': 'Registered',
+            'why_website_label': '6 Years on Shopee. Now, Something Better.',
+            'why_website_text': 'After half a decade serving you on Shopee, we built our own website to give you a better experience.',
+            'benefit_fresh': 'Fresher Batches',
+            'benefit_fresh_text': 'Prepared after you order',
+            'benefit_price': 'Better Prices',
+            'benefit_price_text': 'No 20% commission',
+            'benefit_support': 'Direct Support',
+            'benefit_support_text': 'Founder on WhatsApp',
+            'same_brand': 'Same trusted brand. Better experience.',
+            
+            // ===== COMPARISON TABLE =====
+            'compare_feature': 'Feature',
+            'compare_shopee': 'Shopee',
+            'compare_website': 'Official Website',
+            'compare_brand': 'Brand',
+            'compare_reviews': '5-Star Reviews',
+            'compare_years': 'Years Trusted',
+            'compare_freshness': 'Freshness',
+            'compare_price': 'Price',
+            'compare_support': 'Support',
+            'compare_kkm': 'KKM Registered',
+            'compare_trace': 'Batch Traceability',
+            'compare_cta': 'Same trusted brand. Better experience. Support us directly!',
+            
+            // ===== FARM DIFFERENCE =====
             'farm_label': 'THE ORIGIN',
             'farm_title': 'Not Warehouse Stock.<br>Real Harvest.',
             'farm_text': 'Our moringa comes from small farms in Penang, not industrial warehouses. Each batch follows the natural rhythm of the land — harvested at peak, dried with care.',
@@ -67,7 +106,7 @@
             'farm_capsule_desc': 'Vegetarian capsules, nothing added',
             'farm_link': 'Visit Our Farm →',
             
-            // Why moringa
+            // ===== WHY MORINGA =====
             'why_label': 'TRADITIONAL WISDOM',
             'why_title': 'Why Moringa?',
             'why_text': 'Known as the "miracle tree" in traditional practices, moringa has been part of daily wellness for generations.',
@@ -78,7 +117,7 @@
             'why_card3': 'Gentle Daily Support',
             'why_card3_text': 'Easy to incorporate into daily routines — simply two capsules with water.',
             
-            // Clinical transparency
+            // ===== CLINICAL TRANSPARENCY =====
             'clinical_label': 'PURE & TRANSPARENT',
             'clinical_title': 'What\'s inside is all you need.',
             'clinical_text': 'No hidden ingredients, no fillers, no additives. Just pure moringa leaf powder in vegetarian capsules.',
@@ -89,14 +128,14 @@
             'clinical_kkm': 'KKM Registration In Progress',
             'clinical_vegan': 'Vegetarian Capsules',
             
-            // Founder story
+            // ===== FOUNDER STORY =====
             'story_label': 'FOUNDED 2019',
             'story_title': 'From personal need to farm-direct purpose.',
             'story_text': 'In difficult years, my mother — a nurse — introduced me to moringa. What began as family support grew into something larger.',
             'story_quote': '"We started small, with one harvest and a simple goal — prepare moringa the way it deserves."',
             'story_link': 'Read Full Story →',
             
-            // Product
+            // ===== PRODUCT =====
             'product_label': 'ONE PRODUCT • PURE PURPOSE',
             'product_title': 'Farm-Direct Moringa Capsules',
             'product_name': 'MorinVibes® Moringa Capsules',
@@ -104,8 +143,11 @@
             'product_price': 'RM89',
             'product_details': 'View Details',
             'product_buy': 'Buy Fresh Supply',
+            'stat_nutrients': 'NUTRIENTS',
+            'stat_antioxidants': 'ANTIOXIDANTS',
+            'stat_amino': 'AMINO ACID',
             
-            // Advantages
+            // ===== WEBSITE ADVANTAGES =====
             'adv_label': 'OFFICIAL WEBSITE BENEFITS',
             'adv_title': 'Why buy from our farm channel',
             'adv_fresh': 'Freshest batch allocation — direct from harvest',
@@ -113,29 +155,37 @@
             'adv_tea': 'Future tea early access — be first',
             'adv_channel': 'Official farm channel — the real source',
             'adv_shopee': 'Not available on Shopee',
-            'adv_shopee_text': 'Our official website is the only place for farm-direct batches. Shopee purchases come from third-party resellers — for the freshest supply, buy directly from the source.',
+            'adv_shopee_text': 'Our official website is the only place for farm-direct batches.',
             
-            // Buy section
+            // ===== BUY SECTION =====
             'buy_label': 'SECURE YOUR BATCH',
             'buy_title': 'Fresh Supply Available Now',
             'buy_text': 'Each batch prepared upon order to ensure maximum freshness.',
             'orderla_placeholder': 'Orderla.my Checkout',
             'orderla_note': 'RM30+ package purchased separately',
+            'badge_secure': 'Secure Checkout',
+            'badge_bank': 'Bank Transfer',
+            'badge_fpx': 'FPX',
             
-            // FAQ
+            // ===== WHATSAPP SECTION =====
+            'whatsapp_title': 'We\'re Here for You! 🎉',
+            'whatsapp_text': 'Reach out to us on WhatsApp for quick responses, order support, or any questions.',
+            'whatsapp_btn': 'WhatsApp Us',
+            
+            // ===== FAQ =====
             'faq_label': 'COMMON QUESTIONS',
             'faq_title': 'Quick Answers',
             'faq_q1': 'Is MorinVibes registered with KKM?',
             'faq_a1': 'Registration is currently in progress. Our facility follows GMP standards and we maintain full transparency about our process.',
             'faq_q2': 'Who is moringa suitable for?',
             'faq_a2': 'Moringa is generally suitable for adults seeking daily nutritional support. If you are pregnant, nursing, or have medical conditions, please consult your healthcare provider.',
-            'faq_q3': 'How is this different from Shopee sellers?',
-            'faq_a3': 'We are the original farm source since 2019. Shopee resellers purchase from us or others — buying directly ensures you receive the freshest batch with full traceability.',
+            'faq_q3': 'Is this the same brand as on Shopee?',
+            'faq_a3': 'Yes! We are the same MorinVibes brand you\'ve trusted on Shopee since 2019. Our website offers the same quality with fresher batches and better prices.',
             'faq_q4': 'Shipping to East Malaysia?',
             'faq_a4': 'Yes, we ship to Sabah and Sarawak. Delivery typically takes 3-5 business days for West Malaysia, 5-7 days for East Malaysia.',
             'faq_link': 'View All FAQs →',
             
-            // Footer
+            // ===== FOOTER =====
             'footer_brand': 'MorinVibes®',
             'footer_desc': 'Farm-direct botanical nutrition, prepared in Penang since 2019.',
             'footer_shop': 'Shop',
@@ -150,7 +200,7 @@
         },
         
         bm: {
-            // Navigation
+            // ===== NAVIGATION =====
             'nav_farm': 'Ladang Kami',
             'nav_quality': 'Kualiti',
             'nav_story': 'Cerita',
@@ -158,18 +208,18 @@
             'nav_faq': 'Soalan',
             'nav_cta': 'Dapatkan Bekalan Segar',
             
-            // Mobile bottom
+            // ===== MOBILE BOTTOM =====
             'mobile_learn': 'Pelajari',
             'mobile_buy': 'Beli Bekalan Segar',
             
-            // Hero
+            // ===== HERO SECTION =====
             'hero_badge': 'SEJAK 2019 • PULAU PINANG',
             'hero_title': 'Segar Dari Ladang.<br>Untuk Ketahanan Harian.',
             'hero_sub': 'Moringa ladang-ke-kapsul ditanam dan disediakan di Pulau Pinang sejak 2019.',
             'hero_btn1': 'Dapatkan Bekalan Segar',
             'hero_btn2': 'Terokai Ladang Kami',
             
-            // Trust micro
+            // ===== TRUST MICRO =====
             'trust_since': 'Sejak 2019',
             'trust_farm': 'Ladang Langsung',
             'trust_gmp': 'GMP',
@@ -177,7 +227,7 @@
             'trust_vegan': 'Mesra Vegan',
             'trust_msia': 'Malaysia',
             
-            // Trust strip
+            // ===== TRUST STRIP =====
             'trust_item_since': 'Sejak 2019',
             'trust_item_farm': 'Ladang Langsung',
             'trust_item_gmp': 'GMP',
@@ -185,21 +235,51 @@
             'trust_item_vegan': 'Mesra Vegan',
             'trust_item_msia': 'Jenama Malaysia',
             
-            // Farm difference
+            // ===== SHOPEE SOCIAL PROOF =====
+            'shopee_official': 'Kedai Rasmi Shopee Sejak 2019',
+            'shopee_reviews': '1000+ Ulasan 5-Bintang',
+            'shopee_sales': 'Jualan',
+            'shopee_years': 'Tahun Dipercayai',
+            'shopee_kkm': 'Berdaftar',
+            'why_website_label': '6 Tahun di Shopee. Kini, Lebih Baik.',
+            'why_website_text': 'Selepas setengah dekad berkhidmat di Shopee, kami membina laman web sendiri untuk pengalaman lebih baik.',
+            'benefit_fresh': 'Batch Lebih Segar',
+            'benefit_fresh_text': 'Disediakan selepas pesanan',
+            'benefit_price': 'Harga Lebih Baik',
+            'benefit_price_text': 'Tiada komisen 20%',
+            'benefit_support': 'Sokongan Langsung',
+            'benefit_support_text': 'Pengasas di WhatsApp',
+            'same_brand': 'Jenama sama dipercayai. Pengalaman lebih baik.',
+            
+            // ===== COMPARISON TABLE =====
+            'compare_feature': 'Ciri',
+            'compare_shopee': 'Shopee',
+            'compare_website': 'Laman Web Rasmi',
+            'compare_brand': 'Jenama',
+            'compare_reviews': 'Ulasan 5-Bintang',
+            'compare_years': 'Tahun Dipercayai',
+            'compare_freshness': 'Kesegaran',
+            'compare_price': 'Harga',
+            'compare_support': 'Sokongan',
+            'compare_kkm': 'Berdaftar KKM',
+            'compare_trace': 'Kebolehkesanan Batch',
+            'compare_cta': 'Jenama sama dipercayai. Pengalaman lebih baik. Sokong kami terus!',
+            
+            // ===== FARM DIFFERENCE =====
             'farm_label': 'ASAL USUL',
             'farm_title': 'Bukan Stok Gudang.<br>Hasil Tuai Sebenar.',
             'farm_text': 'Moringa kami dari ladang kecil di Pulau Pinang, bukan gudang industri. Setiap kelompok mengikut irama semula jadi tanah — dituai ketika puncak, dikeringkan dengan penjagaan.',
             'farm_harvest': 'TUAI',
-            'farm_harvest_desc': 'Daun dipetik pagi, diproses hari yang sama',
+            'farm_harvest_desc': 'Daun dipetik pagi, diproses hari sama',
             'farm_dry': 'KERING',
             'farm_dry_desc': 'Pengeringan teduh suhu rendah',
             'farm_mill': 'KISAR',
             'farm_mill_desc': 'Kisar lembut menjadi serbuk halus',
             'farm_capsule': 'KAPSUL',
-            'farm_capsule_desc': 'Kapsul vegetarian, tiada bahan tambahan',
+            'farm_capsule_desc': 'Kapsul vegetarian, tiada tambahan',
             'farm_link': 'Lawati Ladang Kami →',
             
-            // Why moringa
+            // ===== WHY MORINGA =====
             'why_label': 'KEBIJAKSANAAN TRADISIONAL',
             'why_title': 'Mengapa Moringa?',
             'why_text': 'Dikenali sebagai "pokok ajaib" dalam amalan tradisional, moringa telah menjadi sebahagian daripada kesihatan harian turun-temurun.',
@@ -210,7 +290,7 @@
             'why_card3': 'Sokongan Harian Lembut',
             'why_card3_text': 'Mudah diamalkan dalam rutin harian — hanya dua kapsul dengan air.',
             
-            // Clinical transparency
+            // ===== CLINICAL TRANSPARENCY =====
             'clinical_label': 'TULEN & TELUS',
             'clinical_title': 'Apa yang ada di dalam adalah apa yang anda perlukan.',
             'clinical_text': 'Tiada bahan tersembunyi, tiada pengisi, tiada bahan tambahan. Hanya serbuk daun moringa tulen dalam kapsul vegetarian.',
@@ -221,14 +301,14 @@
             'clinical_kkm': 'Pendaftaran KKM Dalam Proses',
             'clinical_vegan': 'Kapsul Vegetarian',
             
-            // Founder story
+            // ===== FOUNDER STORY =====
             'story_label': 'DITUBUHKAN 2019',
             'story_title': 'Dari keperluan peribadi kepada tujuan ladang-langsung.',
             'story_text': 'Pada tahun-tahun sukar, ibu saya — seorang jururawat — memperkenalkan saya kepada moringa. Apa yang bermula sebagai sokongan keluarga berkembang menjadi lebih besar.',
             'story_quote': '"Kami bermula kecil, dengan satu tuaian dan matlamat mudah — menyediakan moringa seperti yang sepatutnya."',
             'story_link': 'Baca Cerita Penuh →',
             
-            // Product
+            // ===== PRODUCT =====
             'product_label': 'SATU PRODUK • TUJUAN TULEN',
             'product_title': 'Kapsul Moringa Ladang-Langsung',
             'product_name': 'MorinVibes® Kapsul Moringa',
@@ -236,8 +316,11 @@
             'product_price': 'RM89',
             'product_details': 'Lihat Butiran',
             'product_buy': 'Beli Bekalan Segar',
+            'stat_nutrients': 'NUTRIEN',
+            'stat_antioxidants': 'ANTIOKSIDA',
+            'stat_amino': 'ASID AMINO',
             
-            // Advantages
+            // ===== WEBSITE ADVANTAGES =====
             'adv_label': 'FAEDAH LAMAN WEB RASMI',
             'adv_title': 'Mengapa beli dari saluran ladang kami',
             'adv_fresh': 'Peruntukan kelompok paling segar — terus dari tuaian',
@@ -245,29 +328,37 @@
             'adv_tea': 'Akses awal teh masa depan — jadi yang pertama',
             'adv_channel': 'Saluran ladang rasmi — sumber sebenar',
             'adv_shopee': 'Tidak tersedia di Shopee',
-            'adv_shopee_text': 'Laman web rasmi kami adalah satu-satunya tempat untuk kelompok ladang-langsung. Pembelian Shopee datang dari penjual semula pihak ketiga — untuk bekalan paling segar, beli terus dari sumber.',
+            'adv_shopee_text': 'Laman web rasmi kami adalah satu-satunya tempat untuk kelompok ladang-langsung.',
             
-            // Buy section
+            // ===== BUY SECTION =====
             'buy_label': 'PASTIKAN KELOMPOK ANDA',
             'buy_title': 'Bekalan Segar Tersedia Sekarang',
             'buy_text': 'Setiap kelompok disediakan selepas pesanan untuk memastikan kesegaran maksimum.',
             'orderla_placeholder': 'Pembayaran Orderla.my',
             'orderla_note': 'Pakej RM30+ dibeli secara berasingan',
+            'badge_secure': 'Pembayaran Selamat',
+            'badge_bank': 'Pindahan Bank',
+            'badge_fpx': 'FPX',
             
-            // FAQ
+            // ===== WHATSAPP SECTION =====
+            'whatsapp_title': 'Kami Di Sini untuk Anda! 🎉',
+            'whatsapp_text': 'Hubungi kami di WhatsApp untuk respons cepat, sokongan pesanan, atau sebarang pertanyaan.',
+            'whatsapp_btn': 'WhatsApp Kami',
+            
+            // ===== FAQ =====
             'faq_label': 'SOALAN LAZIM',
             'faq_title': 'Jawapan Pantas',
             'faq_q1': 'Adakah MorinVibes berdaftar dengan KKM?',
             'faq_a1': 'Pendaftaran sedang dalam proses. Kemudahan kami mengikut piawaian GMP dan kami mengekalkan ketelusan penuh mengenai proses kami.',
             'faq_q2': 'Siapa yang sesuai mengambil moringa?',
             'faq_a2': 'Moringa umumnya sesuai untuk orang dewasa yang mencari sokongan nutrisi harian. Jika anda hamil, menyusu, atau mempunyai keadaan perubatan, sila berunding dengan pembekal penjagaan kesihatan anda.',
-            'faq_q3': 'Bagaimana ini berbeza dari penjual Shopee?',
-            'faq_a3': 'Kami adalah sumber ladang asal sejak 2019. Penjual semula Shopee membeli dari kami atau orang lain — membeli terus memastikan anda menerima kelompok paling segar dengan kebolehkesanan penuh.',
+            'faq_q3': 'Adakah ini jenama yang sama seperti di Shopee?',
+            'faq_a3': 'Ya! Kami adalah jenama MorinVibes yang sama anda percayai di Shopee sejak 2019. Laman web kami menawarkan kualiti yang sama dengan batch lebih segar dan harga lebih baik.',
             'faq_q4': 'Penghantaran ke Malaysia Timur?',
             'faq_a4': 'Ya, kami menghantar ke Sabah dan Sarawak. Penghantaran biasanya mengambil masa 3-5 hari bekerja untuk Semenanjung Malaysia, 5-7 hari untuk Malaysia Timur.',
             'faq_link': 'Lihat Semua Soalan →',
             
-            // Footer
+            // ===== FOOTER =====
             'footer_brand': 'MorinVibes®',
             'footer_desc': 'Pemakanan botani ladang-langsung, disediakan di Pulau Pinang sejak 2019.',
             'footer_shop': 'Kedai',
@@ -282,7 +373,7 @@
         },
         
         zh: {
-            // Navigation
+            // ===== NAVIGATION =====
             'nav_farm': '我们的农场',
             'nav_quality': '品质',
             'nav_story': '故事',
@@ -290,18 +381,18 @@
             'nav_faq': '常见问题',
             'nav_cta': '获取新鲜供应',
             
-            // Mobile bottom
+            // ===== MOBILE BOTTOM =====
             'mobile_learn': '了解',
             'mobile_buy': '购买新鲜供应',
             
-            // Hero
+            // ===== HERO SECTION =====
             'hero_badge': '始于2019 • 槟城',
             'hero_title': '农场直送。<br>日常活力之源。',
             'hero_sub': '自2019年起在槟城种植和制备的农场到胶囊辣木。',
             'hero_btn1': '获取新鲜供应',
             'hero_btn2': '探索我们的农场',
             
-            // Trust micro
+            // ===== TRUST MICRO =====
             'trust_since': '始于2019',
             'trust_farm': '农场直供',
             'trust_gmp': 'GMP',
@@ -309,7 +400,7 @@
             'trust_vegan': '纯素',
             'trust_msia': '马来西亚',
             
-            // Trust strip
+            // ===== TRUST STRIP =====
             'trust_item_since': '始于2019',
             'trust_item_farm': '农场直供',
             'trust_item_gmp': 'GMP',
@@ -317,7 +408,37 @@
             'trust_item_vegan': '纯素',
             'trust_item_msia': '马来西亚品牌',
             
-            // Farm difference
+            // ===== SHOPEE SOCIAL PROOF =====
+            'shopee_official': 'Shopee官方商店自2019',
+            'shopee_reviews': '1000+五星评价',
+            'shopee_sales': '销量',
+            'shopee_years': '信赖年限',
+            'shopee_kkm': '已注册',
+            'why_website_label': '在Shopee经营6年。现在，更好的选择。',
+            'why_website_text': '在Shopee服务五年后，我们建立了自己的网站，为您提供更好的体验。',
+            'benefit_fresh': '更新鲜的批次',
+            'benefit_fresh_text': '下单后准备',
+            'benefit_price': '更优惠的价格',
+            'benefit_price_text': '无20%佣金',
+            'benefit_support': '直接支持',
+            'benefit_support_text': '创始人WhatsApp',
+            'same_brand': '相同的信赖品牌。更好的体验。',
+            
+            // ===== COMPARISON TABLE =====
+            'compare_feature': '特点',
+            'compare_shopee': 'Shopee',
+            'compare_website': '官方网站',
+            'compare_brand': '品牌',
+            'compare_reviews': '五星评价',
+            'compare_years': '信赖年限',
+            'compare_freshness': '新鲜度',
+            'compare_price': '价格',
+            'compare_support': '支持',
+            'compare_kkm': 'KKM注册',
+            'compare_trace': '批次可追溯性',
+            'compare_cta': '相同的信赖品牌。更好的体验。直接支持我们！',
+            
+            // ===== FARM DIFFERENCE =====
             'farm_label': '源头',
             'farm_title': '不是仓库库存。<br>真正收获。',
             'farm_text': '我们的辣木来自槟城的小农场，而不是工业仓库。每批产品都遵循土地的自然节奏 — 在最佳时期收获，精心干燥。',
@@ -331,7 +452,7 @@
             'farm_capsule_desc': '素食胶囊，无添加',
             'farm_link': '参观我们的农场 →',
             
-            // Why moringa
+            // ===== WHY MORINGA =====
             'why_label': '传统智慧',
             'why_title': '为什么选择辣木？',
             'why_text': '在传统实践中被称为"奇迹之树"，辣木世代以来一直是日常健康的一部分。',
@@ -342,7 +463,7 @@
             'why_card3': '温和日常支持',
             'why_card3_text': '易于融入日常生活 — 只需两粒胶囊配水。',
             
-            // Clinical transparency
+            // ===== CLINICAL TRANSPARENCY =====
             'clinical_label': '纯净透明',
             'clinical_title': '内在所含，即你所需。',
             'clinical_text': '无隐藏成分，无填充剂，无添加剂。纯素食胶囊中的纯辣木叶粉。',
@@ -353,14 +474,14 @@
             'clinical_kkm': 'KKM注册进行中',
             'clinical_vegan': '素食胶囊',
             
-            // Founder story
+            // ===== FOUNDER STORY =====
             'story_label': '成立于2019',
             'story_title': '从个人需求到农场直供的使命。',
             'story_text': '在困难时期，我的母亲 — 一名护士 — 向我介绍了辣木。起初是家庭支持，后来发展成更大的愿望。',
             'story_quote': '"我们从小开始，一次收获，一个简单的目标 — 以应有的方式制备辣木。"',
             'story_link': '阅读完整故事 →',
             
-            // Product
+            // ===== PRODUCT =====
             'product_label': '单一产品 • 纯粹使命',
             'product_title': '农场直供辣木胶囊',
             'product_name': 'MorinVibes® 辣木胶囊',
@@ -368,8 +489,11 @@
             'product_price': 'RM89',
             'product_details': '查看详情',
             'product_buy': '购买新鲜供应',
+            'stat_nutrients': '营养素',
+            'stat_antioxidants': '抗氧化剂',
+            'stat_amino': '氨基酸',
             
-            // Advantages
+            // ===== WEBSITE ADVANTAGES =====
             'adv_label': '官网专属福利',
             'adv_title': '为什么从我们的农场渠道购买',
             'adv_fresh': '最新批次分配 — 直接从收获',
@@ -377,29 +501,37 @@
             'adv_tea': '未来茶叶抢先体验 — 成为第一',
             'adv_channel': '官方农场渠道 — 真正源头',
             'adv_shopee': 'Shopee上无售',
-            'adv_shopee_text': '我们的官方网站是农场直供批次的唯一购买渠道。Shopee的购买来自第三方经销商 — 要获得最新鲜的供应，请直接从源头购买。',
+            'adv_shopee_text': '我们的官方网站是农场直供批次的唯一购买渠道。',
             
-            // Buy section
+            // ===== BUY SECTION =====
             'buy_label': '锁定您的批次',
             'buy_title': '新鲜供应现可购买',
             'buy_text': '每批产品按订单制备，确保最大新鲜度。',
             'orderla_placeholder': 'Orderla.my 结账',
             'orderla_note': 'RM30+套餐单独购买',
+            'badge_secure': '安全结账',
+            'badge_bank': '银行转账',
+            'badge_fpx': 'FPX',
             
-            // FAQ
+            // ===== WHATSAPP SECTION =====
+            'whatsapp_title': '我们随时为您服务！🎉',
+            'whatsapp_text': '通过WhatsApp联系我们，获取快速回复、订单支持或任何问题。',
+            'whatsapp_btn': 'WhatsApp联系',
+            
+            // ===== FAQ =====
             'faq_label': '常见问题',
             'faq_title': '快速解答',
             'faq_q1': 'MorinVibes是否在KKM注册？',
             'faq_a1': '注册正在进行中。我们的设施遵循GMP标准，我们对生产过程保持完全透明。',
             'faq_q2': '辣木适合谁？',
             'faq_a2': '辣木通常适合寻求日常营养支持的成年人。如果您怀孕、哺乳或有医疗状况，请咨询您的医疗保健提供者。',
-            'faq_q3': '这与Shopee卖家有何不同？',
-            'faq_a3': '自2019年以来，我们是原始农场来源。Shopee经销商从我们或其他处购买 — 直接购买确保您收到最新鲜的批次，并可完全追溯。',
+            'faq_q3': '这和Shopee上是同一个品牌吗？',
+            'faq_a3': '是的！我们就是您自2019年以来在Shopee上信赖的同一MorinVibes品牌。我们的网站提供相同的品质，但批次更新鲜，价格更优惠。',
             'faq_q4': '运送到东马？',
             'faq_a4': '是的，我们运送到沙巴和砂拉越。西马通常需要3-5个工作日，东马需要5-7个工作日。',
             'faq_link': '查看所有问题 →',
             
-            // Footer
+            // ===== FOOTER =====
             'footer_brand': 'MorinVibes®',
             'footer_desc': '自2019年起在槟城制备的农场直供植物营养。',
             'footer_shop': '商店',
@@ -414,7 +546,7 @@
         }
     };
 
-    // ===== LANGUAGE MANAGER (Zero Lag) =====
+    // ===== LANGUAGE MANAGER =====
     class LanguageManager {
         constructor() {
             this.currentLang = localStorage.getItem('morinvibes_lang') || 'en';
@@ -435,7 +567,7 @@
             
             if (!selector || !options) return;
             
-            // Toggle dropdown (simple, no animation lag)
+            // Toggle dropdown
             selector.addEventListener('click', (e) => {
                 e.stopPropagation();
                 options.classList.toggle('show');
@@ -475,10 +607,10 @@
                 document.documentElement.lang = langCode;
             }
             
-            // Batch update DOM for performance
+            // Update all elements with data-i18n
             this.updateContent();
             
-            // Notify other scripts
+            // Dispatch event for other scripts
             window.dispatchEvent(new CustomEvent('languageChanged', { 
                 detail: { language: langCode } 
             }));
@@ -508,7 +640,7 @@
         }
     }
 
-    // Initialize when DOM is ready (never blocks)
+    // Initialize when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             new LanguageManager();
