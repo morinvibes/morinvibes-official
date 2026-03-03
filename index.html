@@ -1,193 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MorinVibes® Moringa | Farm-to-Capsule Wellness Malaysia</title>
-  <meta name="description" content="MorinVibes® Moringa - Farm-to-Capsule premium moringa supplement from Penang, Malaysia. 10,000+ bottles sold. Hybrid Shopee + Official Store.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MorinVibes® Moringa | Premium Farm-to-Capsule Botanical Authority</title>
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://yourdomain.com/">
+    <!-- SEO -->
+    <meta name="description" content="MorinVibes® Moringa Leaf Powder Capsules. Premium farm-to-capsule botanical supplement from Penang, Malaysia. Traditionally used and supports general wellness." />
+    <meta name="keywords" content="MorinVibes, Moringa Malaysia, Moringa Capsule Penang, Organic Moringa, Farm to Capsule" />
+    <meta name="author" content="MorinVibes Sdn Bhd" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Open Graph -->
+    <meta property="og:title" content="MorinVibes® Moringa" />
+    <meta property="og:description" content="Premium Farm-to-Capsule Botanical Authority Brand from Malaysia." />
+    <meta property="og:image" content="assets/hero-product.webp" />
+    <meta property="og:type" content="website" />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="MorinVibes® Moringa Malaysia">
-  <meta property="og:description" content="Farm-to-Capsule premium moringa supplement.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/product.png">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Meta Pixel Placeholder -->
+    <script>
+        // Meta Pixel Placeholder
+        function trackPageView() {
+            const lang = window.location.pathname.includes('/bm/') ? 'bm' :
+                         window.location.pathname.includes('/zh/') ? 'zh' : 'en';
+            console.log("Meta Pixel PageView:", lang);
+        }
+        document.addEventListener("DOMContentLoaded", trackPageView);
+    </script>
+
 </head>
-
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="header">
-  <div class="container nav-wrapper">
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>Botanical Wellness.<br>Farm to Capsule.</h1>
+                <p class="hero-sub">
+                    Premium Moringa leaf powder capsules traditionally used and 
+                    commonly consumed as a nutrient-rich supplement.
+                </p>
 
-    <div class="logo">
-      <img src="assets/logo-full.png" alt="MorinVibes Logo" loading="lazy">
-    </div>
+                <div class="hero-buttons">
+                    <a href="#order" class="btn-primary">Order Direct</a>
+                    <a href="#transparency" class="btn-outline">Learn More</a>
+                </div>
+            </div>
 
-    <nav class="nav">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="mission-vision.html">Mission & Vision</a></li>
-        <li><a href="our-farm.html">Our Farm</a></li>
-        <li><a href="kkm-science.html">KKM / Science</a></li>
-        <li><a href="benefits.html">Benefits</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="shop.html" class="cta">Shop Now</a></li>
-      </ul>
-    </nav>
+            <div class="hero-image">
+                <img 
+                    src="assets/hero-product.webp" 
+                    alt="MorinVibes Moringa Leaf Powder Capsules"
+                    loading="lazy"
+                    class="floating-product"
+                />
+            </div>
+        </div>
+    </section>
 
-    <div class="lang-switch">
-      <select id="languageSwitcher">
-        <option value="/">ENG</option>
-        <option value="/bm/">BM</option>
-        <option value="/zh/">简体中文</option>
-      </select>
-    </div>
+    <!-- SOCIAL PROOF -->
+    <section class="social-proof">
+        <div class="container proof-grid">
+            <div>
+                <h3>10,000+</h3>
+                <p>Bottles Sold</p>
+            </div>
+            <div>
+                <h3>1,000+</h3>
+                <p>5-Star Reviews</p>
+            </div>
+            <div>
+                <h3>Since 2019</h3>
+                <p>Farm-to-Capsule Commitment</p>
+            </div>
+        </div>
+    </section>
 
-  </div>
-</header>
+    <!-- FARM SECTION -->
+    <section class="section">
+        <div class="container split-grid">
+            <div class="image-block">
+                <img src="assets/farm.webp" alt="MorinVibes Moringa Farm" loading="lazy">
+            </div>
+            <div class="text-block">
+                <h2>Grown in Penang</h2>
+                <p>
+                    Our Moringa is cultivated and harvested from our own farm 
+                    in Bayan Lepas, Malaysia. Carefully dried and processed 
+                    to preserve its natural nutrient profile.
+                </p>
+            </div>
+        </div>
+    </section>
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="container hero-grid">
+    <!-- GMP SECTION -->
+    <section class="section soft-bg">
+        <div class="container split-grid reverse">
+            <div class="image-block">
+                <img src="assets/gmp.webp" alt="GMP Controlled Manufacturing" loading="lazy">
+            </div>
+            <div class="text-block">
+                <h2>GMP Controlled Manufacturing</h2>
+                <p>
+                    Manufactured under controlled conditions aligned with 
+                    Malaysian regulatory expectations. Focused on quality, 
+                    hygiene, and transparency.
+                </p>
+                <p>
+                    2026 KKM MAL registration initiative in progress.
+                </p>
+            </div>
+        </div>
+    </section>
 
-    <div class="hero-content fade-in">
-      <h1>Farm-to-Capsule<br>Premium Moringa Wellness</h1>
-      <p>
-        MorinVibes® delivers carefully sourced moringa from Penang,
-        processed under GMP-controlled manufacturing standards,
-        designed for everyday nutritional support.
-      </p>
+    <!-- INGREDIENT SECTION -->
+    <section class="section">
+        <div class="container split-grid">
+            <div class="image-block">
+                <img src="assets/ingredient.webp" alt="Moringa Leaf Texture" loading="lazy">
+            </div>
+            <div class="text-block">
+                <h2>100% Pure Moringa Leaf</h2>
+                <p>
+                    No additives. No artificial colouring. No synthetic fillers.
+                    Simply dried Moringa oleifera leaf powder encapsulated 
+                    for convenient daily consumption.
+                </p>
+            </div>
+        </div>
+    </section>
 
-      <div class="hero-buttons">
-        <a href="shop.html" class="btn-primary">Shop Now</a>
-        <a href="about.html" class="btn-secondary">Our Story</a>
-      </div>
-    </div>
+    <!-- HYBRID MODEL SECTION -->
+    <section id="transparency" class="section soft-bg">
+        <div class="container split-grid reverse">
+            <div class="image-block">
+                <img src="assets/lifestyle.webp" alt="MorinVibes Lifestyle" loading="lazy">
+            </div>
+            <div class="text-block">
+                <h2>Available Online & Direct</h2>
+                <p>
+                    Available on Shopee and via our official direct-to-consumer
+                    website checkout for authenticity and convenience.
+                </p>
+                <div id="order" class="order-placeholder">
+                    Orderla Checkout Placeholder
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="hero-image">
-      <img src="assets/product.png" alt="MorinVibes Moringa Bottle" loading="lazy" class="floating-product">
-    </div>
+    <!-- STRONG CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Experience Botanical Calm</h2>
+            <a href="#order" class="btn-primary large">Shop Now</a>
+        </div>
+    </section>
 
-  </div>
-</section>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>© 2026 MorinVibes® Moringa. Bayan Lepas, Penang, Malaysia.</p>
+            <p>Traditionally used. Supports general wellness.</p>
+        </div>
+    </footer>
 
-<!-- ================= AUTHORITY ================= -->
-<section class="authority">
-  <div class="container authority-grid fade-in">
-
-    <div class="stat">
-      <h2>10,000+</h2>
-      <p>Bottles Sold</p>
-    </div>
-
-    <div class="stat">
-      <h2>1,000+</h2>
-      <p>Verified 5-Star Reviews</p>
-    </div>
-
-    <div class="stat">
-      <h2>Farm Owned</h2>
-      <p>Direct Sourcing Transparency</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= QUALITY ================= -->
-<section class="quality">
-  <div class="container fade-in">
-
-    <h2>Quality Without Compromise</h2>
-    <p>
-      From cultivation to encapsulation, MorinVibes® follows a controlled
-      production workflow in collaboration with GMP-certified manufacturing partners.
-      Our focus remains on ingredient integrity, transparency, and regulatory compliance.
-    </p>
-
-    <div class="badges">
-      <div class="badge">GMP Controlled Manufacturing</div>
-      <div class="badge">2026 KKM MAL Registration Focus</div>
-      <div class="badge">Hybrid Shopee + Official Website</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= HYBRID TRANSPARENCY ================= -->
-<section class="hybrid">
-  <div class="container fade-in">
-
-    <h2>Available on Shopee & Official Store</h2>
-    <p>
-      MorinVibes® operates on a hybrid model —
-      ensuring marketplace accessibility while building direct customer relationships
-      through our official website.
-    </p>
-
-    <div class="hybrid-buttons">
-      <a href="https://shopee.com.my/" target="_blank" class="btn-outline">Visit Shopee</a>
-      <a href="shop.html#order" class="btn-primary">Order Direct</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer class="footer">
-
-  <div class="container footer-grid">
-
-    <div class="footer-col">
-      <img src="assets/logo.png" alt="MorinVibes Logo" loading="lazy">
-      <p>
-        Farm-to-Capsule botanical wellness brand based in Bayan Lepas, Penang.
-        Dedicated to transparency, quality control and responsible supplementation.
-      </p>
-    </div>
-
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <a href="about.html">About</a>
-      <a href="blog.html">Blog</a>
-      <a href="faq.html">FAQ</a>
-      <a href="shop.html">Shop</a>
-    </div>
-
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="terms.html">Terms</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="disclaimer.html">Disclaimer</a>
-    </div>
-
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <p>Bayan Lepas, Penang, Malaysia</p>
-      <p>Email: support@morinvibes.com</p>
-      <p>WhatsApp: +60-XXX-XXXX</p>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 MorinVibes® Moringa. All rights reserved.
-  </div>
-
-</footer>
-
-<!-- JS -->
-<script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 </html>
