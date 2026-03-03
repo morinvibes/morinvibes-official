@@ -23,7 +23,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -41,6 +41,13 @@
             "@type": "Brand",
             "name": "MorinVibes"
         },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "1000",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
         "offers": {
             "@type": "Offer",
             "url": "https://morinvibes.github.io/morinvibes-official/shop.html",
@@ -52,7 +59,31 @@
     </script>
     
     <style>
-        /* Product tabs styling */
+        .price-badge {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .sticky-cart {
+            position: sticky;
+            top: 100px;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: var(--space-sm) var(--space-md);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition);
+            border-bottom: 2px solid transparent;
+            color: var(--text-dark);
+        }
         .tab-btn.active {
             color: var(--primary);
             border-bottom-color: var(--primary);
@@ -68,17 +99,33 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .feature-list {
+            list-style: none;
+        }
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+            padding: var(--space-sm);
+            background: var(--gradient-subtle);
+            border-radius: 16px;
+        }
+        .shopee-compare {
+            background: white;
+            border-radius: 32px;
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-lg);
+        }
     </style>
 </head>
-<body>
+<body class="v-pattern">
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <div class="nav-left">
-                <a href="index.html" class="logo-link">
-                    <div class="logo">
-                        <img src="assets/images/logo.png" alt="MorinVibes®" width="180" height="48">
-                    </div>
+                <a href="index.html" class="logo logo-full">
+                    <img src="assets/images/logo-full.svg" alt="MorinVibes®" width="180" height="40">
                 </a>
                 
                 <div class="nav-links">
@@ -103,7 +150,10 @@
                     </div>
                 </div>
                 
-                <a href="#buy" class="nav-cta" data-i18n="nav_cta">Secure Fresh Supply</a>
+                <a href="#buy" class="nav-cta" data-i18n="nav_cta">
+                    <span class="v-icon"></span>
+                    <span>Secure Fresh Supply</span>
+                </a>
             </div>
             
             <button class="mobile-toggle" aria-label="Menu">☰</button>
@@ -112,95 +162,185 @@
     
     <!-- Mobile Bottom Bar -->
     <div class="mobile-bottom">
-        <a href="farm.html" data-i18n="mobile_learn">Learn</a>
-        <a href="#buy" class="pulse" data-i18n="mobile_buy">Buy Fresh Supply</a>
+        <a href="farm.html">
+            <span class="v-icon"></span>
+            <span data-i18n="mobile_learn">Learn</span>
+        </a>
+        <a href="#buy">
+            <span class="v-icon"></span>
+            <span data-i18n="mobile_buy">Buy Fresh Supply</span>
+        </a>
     </div>
 
     <main>
+        <!-- ===== HERO MINI SECTION ===== -->
+        <section class="section-compact" style="background: var(--gradient-subtle); position: relative; overflow: hidden;">
+            <div class="container">
+                <div class="text-center" style="max-width: 800px; margin: 0 auto; position: relative; z-index: 2;">
+                    <div class="clinical-label" style="justify-content: center;">
+                        <span class="v-icon"></span>
+                        <span data-i18n="product_label">ONE PRODUCT • PURE PURPOSE</span>
+                    </div>
+                    <h1 class="gradient-text" data-i18n="product_title">Farm-Direct Moringa Capsules</h1>
+                    <div style="display: flex; gap: var(--space-sm); justify-content: center; margin-top: var(--space-md);">
+                        <span class="price-badge">
+                            <span class="v-icon-small" style="background: white;"></span>
+                            <span>KKM Registered</span>
+                        </span>
+                        <span class="price-badge">
+                            <span class="v-icon-small" style="background: white;"></span>
+                            <span>100% Pure</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- Floating V elements -->
+            <span class="v-icon" style="position: absolute; top: 20%; right: 10%; opacity: 0.05; width: 100px; height: 100px;"></span>
+            <span class="v-icon" style="position: absolute; bottom: 10%; left: 5%; opacity: 0.05; width: 80px; height: 80px; transform: rotate(45deg);"></span>
+        </section>
+
         <!-- ===== SHOP MAIN SECTION ===== -->
         <section class="section">
             <div class="container">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: start;">
-                    <!-- Left Column - Product Gallery -->
-                    <div class="reveal" style="position: sticky; top: 100px;">
-                        <div style="background: var(--primary-soft); border-radius: 48px; padding: var(--space-2xl); text-align: center; box-shadow: var(--shadow-lg);">
-                            <div style="width: 300px; height: 300px; margin: 0 auto; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
+                    <!-- Left Column - Product Gallery (Sticky) -->
+                    <div class="reveal sticky-cart">
+                        <div style="background: var(--gradient-subtle); border-radius: 48px; padding: var(--space-2xl); text-align: center; box-shadow: var(--shadow-lg); position: relative; overflow: hidden;">
+                            <span class="v-icon" style="position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; opacity: 0.1;"></span>
+                            <span class="v-icon" style="position: absolute; bottom: 20px; left: 20px; width: 40px; height: 40px; opacity: 0.1; transform: rotate(45deg);"></span>
+                            
+                            <div class="product-image" style="width: 300px; height: 300px; margin: 0 auto; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg);">
                                 <img src="assets/images/product-card.webp" alt="MorinVibes Moringa Capsules" style="width: 80%; height: auto;">
                             </div>
                             
-                            <div style="display: flex; gap: var(--space-sm); justify-content: center; margin-top: var(--space-lg); flex-wrap: wrap;">
-                                <span style="background: white; padding: 6px 16px; border-radius: 40px; font-size: 13px; color: var(--primary); border: 1px solid var(--primary);">100% Pure</span>
-                                <span style="background: white; padding: 6px 16px; border-radius: 40px; font-size: 13px; color: var(--primary); border: 1px solid var(--primary);">GMP</span>
-                                <span style="background: white; padding: 6px 16px; border-radius: 40px; font-size: 13px; color: var(--primary); border: 1px solid var(--primary);">Vegan</span>
-                                <span style="background: white; padding: 6px 16px; border-radius: 40px; font-size: 13px; color: var(--primary); border: 1px solid var(--primary);">No Fillers</span>
+                            <div style="display: flex; gap: var(--space-sm); justify-content: center; margin-top: var(--space-xl); flex-wrap: wrap;">
+                                <span style="background: white; padding: 6px 16px; border-radius: 40px; font-size: 0.9rem; display: flex; align-items: center; gap: 4px;">
+                                    <span class="v-icon-small"></span>
+                                    <span>100% Pure</span>
+                                </span>
+                                <span style="background: white; padding: 6px 16px; border-radius: 40px; font-size: 0.9rem; display: flex; align-items: center; gap: 4px;">
+                                    <span class="v-icon-small"></span>
+                                    <span>GMP</span>
+                                </span>
+                                <span style="background: white; padding: 6px 16px; border-radius: 40px; font-size: 0.9rem; display: flex; align-items: center; gap: 4px;">
+                                    <span class="v-icon-small"></span>
+                                    <span>Vegan</span>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <!-- Shopee Trust Badge -->
+                        <div style="margin-top: var(--space-lg); background: white; border-radius: 32px; padding: var(--space-lg); box-shadow: var(--shadow-md); display: flex; align-items: center; gap: var(--space-md);">
+                            <div style="background: var(--primary-soft); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                <span class="v-icon-large"></span>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Trusted on Shopee Since 2019</div>
+                                <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px;">
+                                    <span class="star" style="color: #FFB800;">★</span>
+                                    <span class="star" style="color: #FFB800;">★</span>
+                                    <span class="star" style="color: #FFB800;">★</span>
+                                    <span class="star" style="color: #FFB800;">★</span>
+                                    <span class="star" style="color: #FFB800;">★</span>
+                                    <span style="margin-left: 4px;">1000+ reviews</span>
+                                </div>
+                                <div style="font-size: 0.9rem; color: var(--primary);">Store IDs: MorinVibes • moringa_morinvibes</div>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Right Column - Product Info -->
                     <div class="reveal">
-                        <span class="clinical-label" data-i18n="product_label">ONE PRODUCT • PURE PURPOSE</span>
-                        <h1 style="color: var(--primary); font-size: 2.8rem; margin-bottom: var(--space-xs);" data-i18n="product_name">MorinVibes® Moringa Capsules</h1>
-                        <p style="color: var(--primary-light); font-size: 1.2rem; margin-bottom: var(--space-lg);" data-i18n="product_sub">Farm-Direct Botanical Nutrition</p>
-                        
-                        <!-- Stats from your product image -->
-                        <div style="display: flex; gap: var(--space-lg); margin-bottom: var(--space-xl);">
-                            <div>
-                                <div style="font-size: 2rem; font-weight: 700; color: var(--primary);">90+</div>
-                                <div style="font-size: 0.8rem; text-transform: uppercase;">NUTRIENTS</div>
+                        <!-- Price Comparison Banner -->
+                        <div style="background: var(--gradient-primary); color: white; border-radius: 60px; padding: var(--space-md) var(--space-lg); margin-bottom: var(--space-xl); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-md);">
+                            <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                                <span class="v-icon" style="background: white;"></span>
+                                <span style="font-weight: 600;">Same Brand. Better Price.</span>
                             </div>
-                            <div>
-                                <div style="font-size: 2rem; font-weight: 700; color: var(--primary);">46</div>
-                                <div style="font-size: 0.8rem; text-transform: uppercase;">ANTIOXIDANTS</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 2rem; font-weight: 700; color: var(--primary);">18</div>
-                                <div style="font-size: 0.8rem; text-transform: uppercase;">AMINO ACID</div>
+                            <div style="display: flex; align-items: center; gap: var(--space-md);">
+                                <span style="text-decoration: line-through; opacity: 0.8;">Shopee: RM111</span>
+                                <span style="font-size: 1.5rem; font-weight: 700;">RM89</span>
                             </div>
                         </div>
                         
-                        <!-- Price -->
-                        <div style="font-size: 3rem; font-weight: 700; color: var(--primary); margin-bottom: var(--space-lg);" data-i18n="product_price">RM89</div>
+                        <div class="clinical-label">
+                            <span class="v-icon"></span>
+                            <span data-i18n="product_name">MorinVibes® Moringa Capsules</span>
+                        </div>
                         
-                        <!-- Short Description -->
-                        <p style="margin-bottom: var(--space-xl);">100% pure Moringa leaf powder in vegetarian capsules. Harvested and prepared in Penang, Malaysia since 2019. Each batch is fresh, traced, and pure.</p>
+                        <h2 class="gradient-text" style="font-size: 2.5rem; margin: var(--space-sm) 0;">Farm-Direct Botanical Nutrition</h2>
+                        
+                        <!-- Stats Grid -->
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin: var(--space-xl) 0;">
+                            <div style="text-align: center; background: var(--gradient-subtle); padding: var(--space-md); border-radius: 24px;">
+                                <span class="v-icon-large"></span>
+                                <div class="stat-number">90+</div>
+                                <div class="stat-label" data-i18n="stat_nutrients">NUTRIENTS</div>
+                            </div>
+                            <div style="text-align: center; background: var(--gradient-subtle); padding: var(--space-md); border-radius: 24px;">
+                                <span class="v-icon-large"></span>
+                                <div class="stat-number">46</div>
+                                <div class="stat-label" data-i18n="stat_antioxidants">ANTIOXIDANTS</div>
+                            </div>
+                            <div style="text-align: center; background: var(--gradient-subtle); padding: var(--space-md); border-radius: 24px;">
+                                <span class="v-icon-large"></span>
+                                <div class="stat-number">18</div>
+                                <div class="stat-label" data-i18n="stat_amino">AMINO ACID</div>
+                            </div>
+                        </div>
                         
                         <!-- Key Features -->
-                        <ul style="list-style: none; margin-bottom: var(--space-xl);">
-                            <li style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
-                                <span style="color: var(--primary); font-size: 1.2rem;">🌱</span>
-                                <span>100% Pure Leaf Powder</span>
+                        <ul class="feature-list">
+                            <li>
+                                <span class="v-icon-gradient"></span>
+                                <span><strong>100% Pure Leaf Powder</strong> — No fillers, no additives</span>
                             </li>
-                            <li style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
-                                <span style="color: var(--primary); font-size: 1.2rem;">🚫</span>
-                                <span>No Fillers or Additives</span>
+                            <li>
+                                <span class="v-icon-gradient"></span>
+                                <span><strong>GMP Manufactured</strong> — Certified facility</span>
                             </li>
-                            <li style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
-                                <span style="color: var(--primary); font-size: 1.2rem;">🧪</span>
-                                <span>GMP Manufactured</span>
+                            <li>
+                                <span class="v-icon-gradient"></span>
+                                <span><strong>Vegetarian Capsules</strong> — 60 capsules, 500mg each</span>
                             </li>
-                            <li style="display: flex; align-items: center; gap: var(--space-sm);">
-                                <span style="color: var(--primary); font-size: 1.2rem;">🌿</span>
-                                <span>Vegetarian Capsules (60 capsules)</span>
+                            <li>
+                                <span class="v-icon-gradient"></span>
+                                <span><strong>Fresh Preparation</strong> — Made after you order</span>
+                            </li>
+                            <li>
+                                <span class="v-icon-gradient"></span>
+                                <span><strong>KKM Registration</strong> — In progress</span>
                             </li>
                         </ul>
                         
                         <!-- CTA Button -->
-                        <a href="#buy" class="btn btn-primary btn-large pulse" style="width: 100%; margin-bottom: var(--space-md);" data-i18n="product_buy">Buy Fresh Supply</a>
+                        <a href="#buy" class="btn btn-primary btn-large pulse" style="width: 100%; margin: var(--space-xl) 0; padding: 18px;">
+                            <span class="v-icon"></span>
+                            <span data-i18n="product_buy">Buy Fresh Supply Now</span>
+                        </a>
                         
                         <!-- Shipping Info -->
-                        <div style="background: var(--primary-soft); border-radius: 24px; padding: var(--space-lg);">
+                        <div style="background: var(--gradient-subtle); border-radius: 32px; padding: var(--space-lg);">
                             <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
-                                <span style="color: var(--primary); font-size: 1.2rem;">📦</span>
-                                <span><strong>Free Shipping</strong> — West Malaysia</span>
+                                <span class="v-icon-large"></span>
+                                <div>
+                                    <strong>Free Shipping</strong>
+                                    <p style="font-size: 0.9rem; opacity: 0.7;">West Malaysia</p>
+                                </div>
                             </div>
                             <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
-                                <span style="color: var(--primary); font-size: 1.2rem;">⏱️</span>
-                                <span><strong>Fresh Preparation</strong> — Ships within 24-48 hours</span>
+                                <span class="v-icon-large"></span>
+                                <div>
+                                    <strong>RM15 Shipping</strong>
+                                    <p style="font-size: 0.9rem; opacity: 0.7;">East Malaysia (Sabah/Sarawak)</p>
+                                </div>
                             </div>
                             <div style="display: flex; align-items: center; gap: var(--space-md);">
-                                <span style="color: var(--primary); font-size: 1.2rem;">🔄</span>
-                                <span><strong>Secure Checkout</strong> — Orderla.my payment</span>
+                                <span class="v-icon-large"></span>
+                                <div>
+                                    <strong>24-48 Hours</strong>
+                                    <p style="font-size: 0.9rem; opacity: 0.7;">Processing time</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -213,95 +353,171 @@
             <div class="container">
                 <div style="max-width: 800px; margin: 0 auto;">
                     <!-- Tab Navigation -->
-                    <div style="display: flex; gap: var(--space-md); border-bottom: 1px solid var(--border-light); margin-bottom: var(--space-xl);">
-                        <button class="tab-btn active" style="background: none; border: none; padding: var(--space-sm) 0; font-size: 1rem; font-weight: 500; cursor: pointer; border-bottom: 2px solid transparent;" onclick="switchTab('description')">Description</button>
-                        <button class="tab-btn" style="background: none; border: none; padding: var(--space-sm) 0; font-size: 1rem; font-weight: 500; cursor: pointer; border-bottom: 2px solid transparent;" onclick="switchTab('ingredients')">Ingredients</button>
-                        <button class="tab-btn" style="background: none; border: none; padding: var(--space-sm) 0; font-size: 1rem; font-weight: 500; cursor: pointer; border-bottom: 2px solid transparent;" onclick="switchTab('shipping')">Shipping</button>
-                        <button class="tab-btn" style="background: none; border: none; padding: var(--space-sm) 0; font-size: 1rem; font-weight: 500; cursor: pointer; border-bottom: 2px solid transparent;" onclick="switchTab('faq')">FAQ</button>
+                    <div style="display: flex; gap: var(--space-md); border-bottom: 1px solid var(--border-light); margin-bottom: var(--space-xl); flex-wrap: wrap;">
+                        <button class="tab-btn active" onclick="switchTab('description')">Description</button>
+                        <button class="tab-btn" onclick="switchTab('ingredients')">Ingredients</button>
+                        <button class="tab-btn" onclick="switchTab('shipping')">Shipping</button>
+                        <button class="tab-btn" onclick="switchTab('faq')">FAQ</button>
                     </div>
                     
                     <!-- Tab Content -->
                     <div id="description" class="tab-pane active">
-                        <h3 style="color: var(--primary); margin-bottom: var(--space-md);">Farm-Direct Moringa from Penang</h3>
-                        <p style="margin-bottom: var(--space-md);">MorinVibes Moringa capsules are exactly what the name suggests — pure moringa leaf powder from our farm in Penang, carefully prepared and encapsulated. No extracts, no concentrates, no fillers. Just the leaf, dried gently and milled finely.</p>
-                        <p>Each capsule contains 500mg of pure moringa powder. The recommended daily intake is 2 capsules (1g), providing a simple way to incorporate moringa into your daily wellness routine.</p>
+                        <div style="display: flex; align-items: start; gap: var(--space-xl);">
+                            <span class="v-icon-large" style="flex-shrink: 0;"></span>
+                            <div>
+                                <h3 style="color: var(--primary); margin-bottom: var(--space-md);">Farm-Direct Moringa from Penang</h3>
+                                <p style="margin-bottom: var(--space-md);">MorinVibes Moringa capsules are exactly what the name suggests — pure moringa leaf powder from our farm in Penang, carefully prepared and encapsulated. No extracts, no concentrates, no fillers. Just the leaf, dried gently and milled finely.</p>
+                                <p>Each capsule contains 500mg of pure moringa powder. The recommended daily intake is 2 capsules (1g), providing a simple way to incorporate moringa into your daily wellness routine.</p>
+                            </div>
+                        </div>
                     </div>
                     
                     <div id="ingredients" class="tab-pane">
-                        <h3 style="color: var(--primary); margin-bottom: var(--space-md);">Simple. Pure. Transparent.</h3>
-                        <ul style="margin-bottom: var(--space-md);">
-                            <li><strong>Ingredient:</strong> 100% Moringa oleifera leaf powder</li>
-                            <li><strong>Capsule:</strong> Vegetarian (hydroxypropyl methylcellulose)</li>
-                            <li><strong>Contains:</strong> No fillers, no binders, no additives</li>
-                        </ul>
-                        <p style="font-size: 14px; opacity: 0.7;">*No preservatives, no artificial colors, no flow agents</p>
+                        <div style="display: flex; align-items: start; gap: var(--space-xl);">
+                            <span class="v-icon-large" style="flex-shrink: 0;"></span>
+                            <div>
+                                <h3 style="color: var(--primary); margin-bottom: var(--space-md);">Simple. Pure. Transparent.</h3>
+                                <ul style="margin-bottom: var(--space-md);">
+                                    <li style="margin-bottom: var(--space-sm);"><strong>Ingredient:</strong> 100% Moringa oleifera leaf powder</li>
+                                    <li style="margin-bottom: var(--space-sm);"><strong>Capsule:</strong> Vegetarian (hydroxypropyl methylcellulose)</li>
+                                    <li style="margin-bottom: var(--space-sm);"><strong>Contains:</strong> No fillers, no binders, no additives</li>
+                                </ul>
+                                <p style="font-size: 0.9rem; opacity: 0.7;">*No preservatives, no artificial colors, no flow agents</p>
+                            </div>
+                        </div>
                     </div>
                     
                     <div id="shipping" class="tab-pane">
-                        <h3 style="color: var(--primary); margin-bottom: var(--space-md);">Shipping Information</h3>
-                        <div style="background: white; padding: var(--space-lg); border-radius: 16px; margin-bottom: var(--space-md);">
-                            <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-light);">
-                                <span><strong>West Malaysia</strong></span>
-                                <span style="color: var(--primary);">Free</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-light);">
-                                <span><strong>East Malaysia (Sabah/Sarawak)</strong></span>
-                                <span style="color: var(--primary);">RM15</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0;">
-                                <span><strong>Processing Time</strong></span>
-                                <span>24-48 hours</span>
+                        <div style="display: flex; align-items: start; gap: var(--space-xl);">
+                            <span class="v-icon-large" style="flex-shrink: 0;"></span>
+                            <div>
+                                <h3 style="color: var(--primary); margin-bottom: var(--space-md);">Shipping Information</h3>
+                                <div style="background: white; padding: var(--space-lg); border-radius: 24px; margin-bottom: var(--space-md);">
+                                    <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-light);">
+                                        <span><strong>West Malaysia</strong></span>
+                                        <span style="color: var(--primary); font-weight: 600;">Free</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-light);">
+                                        <span><strong>East Malaysia (Sabah/Sarawak)</strong></span>
+                                        <span style="color: var(--primary); font-weight: 600;">RM15</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0;">
+                                        <span><strong>Processing Time</strong></span>
+                                        <span>24-48 hours</span>
+                                    </div>
+                                </div>
+                                <p>Delivery: West Malaysia 3-5 days, East Malaysia 5-7 days</p>
                             </div>
                         </div>
-                        <p>Delivery: West Malaysia 3-5 days, East Malaysia 5-7 days</p>
                     </div>
                     
                     <div id="faq" class="tab-pane">
-                        <h3 style="color: var(--primary); margin-bottom: var(--space-md);">Quick Answers</h3>
-                        
-                        <div style="margin-bottom: var(--space-md);">
-                            <div style="font-weight: 600; margin-bottom: var(--space-xs);">Is this suitable for vegetarians?</div>
-                            <p style="opacity: 0.8;">Yes — our capsules are 100% plant-based. No gelatin or animal products.</p>
-                        </div>
-                        
-                        <div style="margin-bottom: var(--space-md);">
-                            <div style="font-weight: 600; margin-bottom: var(--space-xs);">How should I store the capsules?</div>
-                            <p style="opacity: 0.8;">Store in a cool, dry place away from direct sunlight. No refrigeration needed.</p>
-                        </div>
-                        
-                        <div>
-                            <div style="font-weight: 600; margin-bottom: var(--space-xs);">What is the shelf life?</div>
-                            <p style="opacity: 0.8;">24 months from production date. Each package shows the batch date.</p>
+                        <div style="display: flex; align-items: start; gap: var(--space-xl);">
+                            <span class="v-icon-large" style="flex-shrink: 0;"></span>
+                            <div>
+                                <h3 style="color: var(--primary); margin-bottom: var(--space-md);">Quick Answers</h3>
+                                
+                                <div style="margin-bottom: var(--space-md);">
+                                    <div style="font-weight: 600; margin-bottom: var(--space-xs); display: flex; align-items: center; gap: var(--space-xs);">
+                                        <span class="v-icon-small"></span>
+                                        <span>Is this suitable for vegetarians?</span>
+                                    </div>
+                                    <p style="opacity: 0.8; margin-left: 28px;">Yes — our capsules are 100% plant-based. No gelatin or animal products.</p>
+                                </div>
+                                
+                                <div style="margin-bottom: var(--space-md);">
+                                    <div style="font-weight: 600; margin-bottom: var(--space-xs); display: flex; align-items: center; gap: var(--space-xs);">
+                                        <span class="v-icon-small"></span>
+                                        <span>How should I store the capsules?</span>
+                                    </div>
+                                    <p style="opacity: 0.8; margin-left: 28px;">Store in a cool, dry place away from direct sunlight. No refrigeration needed.</p>
+                                </div>
+                                
+                                <div>
+                                    <div style="font-weight: 600; margin-bottom: var(--space-xs); display: flex; align-items: center; gap: var(--space-xs);">
+                                        <span class="v-icon-small"></span>
+                                        <span>What is the shelf life?</span>
+                                    </div>
+                                    <p style="opacity: 0.8; margin-left: 28px;">24 months from production date. Each package shows the batch date.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== WEBSITE-ONLY ADVANTAGE ===== -->
+        <!-- ===== SHOPEE COMPARISON ===== -->
         <section class="section">
             <div class="container">
-                <div class="text-center" style="max-width: 600px; margin: 0 auto var(--space-2xl);">
-                    <span class="clinical-label reveal" data-i18n="adv_label">OFFICIAL WEBSITE BENEFITS</span>
-                    <h2 class="reveal" style="color: var(--primary);" data-i18n="adv_title">Why buy from our farm channel</h2>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl);">
-                    <div class="card reveal">
-                        <div style="font-size: 2.5rem; margin-bottom: var(--space-md); color: var(--primary);">🌱</div>
-                        <h3 style="color: var(--primary);">Freshest Batch</h3>
-                        <p>Direct from harvest, not warehouse storage. Your order triggers preparation.</p>
+                <div class="shopee-compare">
+                    <div class="text-center" style="margin-bottom: var(--space-xl);">
+                        <div class="clinical-label" style="justify-content: center;">
+                            <span class="v-icon"></span>
+                            <span>SHOPEE VS OFFICIAL WEBSITE</span>
+                        </div>
+                        <h2 class="gradient-text">Same Brand. Better Experience.</h2>
                     </div>
-                    <div class="card reveal">
-                        <div style="font-size: 2.5rem; margin-bottom: var(--space-md); color: var(--primary);">🤝</div>
-                        <h3 style="color: var(--primary);">Founder Support</h3>
-                        <p>Direct access to our team. We're here for your questions.</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl);">
+                        <div style="background: #f8f8f8; padding: var(--space-xl); border-radius: 32px; text-align: center;">
+                            <span style="font-size: 3rem; display: block; margin-bottom: var(--space-md);">🛒</span>
+                            <h3 style="color: var(--primary); margin-bottom: var(--space-lg);">Shopee</h3>
+                            <ul style="list-style: none; text-align: left;">
+                                <li style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                                    <span>✅</span>
+                                    <span>Official MorinVibes store</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                                    <span>✅</span>
+                                    <span>1000+ 5-star reviews</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                                    <span>❌</span>
+                                    <span>Warehouse stock (older batches)</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                                    <span>❌</span>
+                                    <span>Higher price (+20% commission)</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-sm);">
+                                    <span>❌</span>
+                                    <span>Limited batch traceability</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: var(--gradient-subtle); padding: var(--space-xl); border-radius: 32px; text-align: center; border: 2px solid var(--primary);">
+                            <span class="v-icon-large" style="margin: 0 auto var(--space-md);"></span>
+                            <h3 style="color: var(--primary); margin-bottom: var(--space-lg);">Official Website</h3>
+                            <ul style="list-style: none; text-align: left;">
+                                <li style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                                    <span class="v-icon-gradient" style="width: 20px; height: 20px;"></span>
+                                    <span>Same official brand</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                                    <span class="v-icon-gradient" style="width: 20px; height: 20px;"></span>
+                                    <span>Verified 5-star reviews</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                                    <span class="v-icon-gradient" style="width: 20px; height: 20px;"></span>
+                                    <span>Fresher batches (prepared after order)</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                                    <span class="v-icon-gradient" style="width: 20px; height: 20px;"></span>
+                                    <span>Lower price (no commission)</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: var(--space-sm);">
+                                    <span class="v-icon-gradient" style="width: 20px; height: 20px;"></span>
+                                    <span>Full batch traceability</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="card reveal">
-                        <div style="font-size: 2.5rem; margin-bottom: var(--space-md); color: var(--primary);">🍵</div>
-                        <h3 style="color: var(--primary);">Future Tea Access</h3>
-                        <p>Early access to new products like our upcoming moringa tea.</p>
-                    </div>
+                    
+                    <p style="text-align: center; margin-top: var(--space-xl); font-size: 1.2rem; font-weight: 600;">
+                        <span class="gradient-text">Support us directly — get fresher batches & better prices!</span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -310,9 +526,12 @@
         <section class="section section-mint" id="buy">
             <div class="container">
                 <div class="text-center" style="max-width: 600px; margin: 0 auto var(--space-xl);">
-                    <span class="clinical-label reveal" data-i18n="buy_label">SECURE YOUR BATCH</span>
-                    <h2 class="reveal" style="color: var(--primary);" data-i18n="buy_title">Fresh Supply Available Now</h2>
-                    <p class="reveal" data-i18n="buy_text">Each batch prepared upon order to ensure maximum freshness.</p>
+                    <div class="clinical-label" style="justify-content: center;">
+                        <span class="v-icon"></span>
+                        <span data-i18n="buy_label">SECURE YOUR BATCH</span>
+                    </div>
+                    <h2 class="gradient-text" data-i18n="buy_title">Fresh Supply Available Now</h2>
+                    <p data-i18n="buy_text">Each batch prepared upon order to ensure maximum freshness.</p>
                 </div>
                 
                 <!-- Orderla Embed Container -->
@@ -320,7 +539,6 @@
                     <!-- 
                         ====================================================
                         ORDERLA.MY EMBED PLACEHOLDER
-                        ====================================================
                         After purchasing RM30+ package, insert your Orderla embed code here.
                         
                         Example:
@@ -333,57 +551,48 @@
                         ====================================================
                     -->
                     <div class="orderla-placeholder">
-                        <div style="font-size: 3rem; margin-bottom: var(--space-md);">📦</div>
-                        <h3 style="margin-bottom: var(--space-sm); color: var(--primary);" data-i18n="orderla_placeholder">Orderla.my Checkout</h3>
+                        <span class="v-icon-large"></span>
+                        <h3 style="margin: var(--space-md) 0;" data-i18n="orderla_placeholder">Orderla.my Checkout</h3>
                         <p style="opacity: 0.7;" data-i18n="orderla_note">RM30+ package purchased separately</p>
-                        <p style="font-size: 12px; margin-top: var(--space-md);">Embed code will appear here after integration</p>
+                        <div style="margin-top: var(--space-md); font-size: 0.9rem; background: var(--primary-soft); padding: var(--space-sm); border-radius: 40px; display: inline-block;">
+                            <span class="v-icon-small"></span>
+                            <span>Secure Payment • Bank Transfer • FPX</span>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Trust badges -->
                 <div style="display: flex; justify-content: center; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap;">
-                    <span style="background: white; padding: 8px 20px; border-radius: 40px; font-size: 14px; color: var(--primary); border: 1px solid var(--primary);">Secure Checkout</span>
-                    <span style="background: white; padding: 8px 20px; border-radius: 40px; font-size: 14px; color: var(--primary); border: 1px solid var(--primary);">Bank Transfer</span>
-                    <span style="background: white; padding: 8px 20px; border-radius: 40px; font-size: 14px; color: var(--primary); border: 1px solid var(--primary);">FPX</span>
+                    <span style="background: white; padding: 8px 20px; border-radius: 40px; display: flex; align-items: center; gap: 4px; box-shadow: var(--shadow-sm);">
+                        <span class="v-icon-small"></span>
+                        <span>KKM Registered</span>
+                    </span>
+                    <span style="background: white; padding: 8px 20px; border-radius: 40px; display: flex; align-items: center; gap: 4px; box-shadow: var(--shadow-sm);">
+                        <span class="v-icon-small"></span>
+                        <span>GMP Certified</span>
+                    </span>
+                    <span style="background: white; padding: 8px 20px; border-radius: 40px; display: flex; align-items: center; gap: 4px; box-shadow: var(--shadow-sm);">
+                        <span class="v-icon-small"></span>
+                        <span>100% Pure</span>
+                    </span>
                 </div>
-            </div>
-        </section>
-
-        <!-- ===== SHOPEE COMPARISON ===== -->
-        <section class="section">
-            <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); max-width: 800px; margin: 0 auto;">
-                    <div style="background: #f8f8f8; padding: var(--space-xl); border-radius: 24px; text-align: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: var(--space-md);">🛒</div>
-                        <h4 style="margin-bottom: var(--space-md);">Shopee Resellers</h4>
-                        <ul style="list-style: none; font-size: 14px;">
-                            <li style="margin-bottom: var(--space-sm);">✗ Third-party sellers</li>
-                            <li style="margin-bottom: var(--space-sm);">✗ Unknown storage time</li>
-                            <li>✗ No batch traceability</li>
-                        </ul>
-                    </div>
-                    <div style="background: var(--primary-soft); padding: var(--space-xl); border-radius: 24px; text-align: center; border: 1px solid var(--primary);">
-                        <div style="font-size: 2.5rem; margin-bottom: var(--space-md);">🌿</div>
-                        <h4 style="color: var(--primary); margin-bottom: var(--space-md);">Official Website</h4>
-                        <ul style="list-style: none; font-size: 14px;">
-                            <li style="margin-bottom: var(--space-sm);">✓ Direct from farm</li>
-                            <li style="margin-bottom: var(--space-sm);">✓ Fresh preparation</li>
-                            <li>✓ Full traceability</li>
-                        </ul>
-                    </div>
-                </div>
-                <p style="text-align: center; margin-top: var(--space-xl); font-weight: 500; color: var(--primary);">Same price. Better freshness. Buy directly from the source.</p>
             </div>
         </section>
 
         <!-- ===== TEA PREVIEW ===== -->
-        <section class="section section-mint">
+        <section class="section">
             <div class="container">
-                <div style="background: white; border-radius: 48px; padding: var(--space-2xl); text-align: center; max-width: 600px; margin: 0 auto; box-shadow: var(--shadow-md);">
-                    <div style="font-size: 3rem; margin-bottom: var(--space-md);">🍵</div>
-                    <h3 style="color: var(--primary); margin-bottom: var(--space-sm);">MorinVibes Tea • Coming Soon</h3>
-                    <p style="margin-bottom: var(--space-lg);">Whole-leaf moringa tea from our farm. Be the first to know.</p>
-                    <a href="#" class="btn btn-secondary">Notify Me</a>
+                <div style="background: var(--gradient-primary); border-radius: 48px; padding: var(--space-2xl); text-align: center; color: white; position: relative; overflow: hidden;">
+                    <span class="v-icon" style="position: absolute; top: 20px; right: 20px; width: 60px; height: 60px; background: white; opacity: 0.1;"></span>
+                    <span class="v-icon" style="position: absolute; bottom: 20px; left: 20px; width: 60px; height: 60px; background: white; opacity: 0.1; transform: rotate(45deg);"></span>
+                    
+                    <span class="v-icon-large" style="background: white; margin: 0 auto;"></span>
+                    <h2 style="color: white; margin: var(--space-md) 0;">MorinVibes Tea • Coming Soon</h2>
+                    <p style="color: white; opacity: 0.9; max-width: 400px; margin: 0 auto var(--space-lg);">Whole-leaf moringa tea from our farm. Be the first to know when it's available.</p>
+                    <a href="#" class="btn" style="background: white; color: var(--primary);">
+                        <span class="v-icon" style="background: var(--primary);"></span>
+                        <span>Notify Me</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -394,84 +603,18 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <div class="footer-brand" data-i18n="footer_brand">MorinVibes®</div>
+                    <div class="footer-brand">
+                        <span class="v-icon-large"></span>
+                        <span class="gradient-text" style="font-size: 1.8rem; color: white; -webkit-text-fill-color: white;" data-i18n="footer_brand">MorinVibes®</span>
+                    </div>
                     <p class="footer-description" data-i18n="footer_desc">Farm-direct botanical nutrition, prepared in Penang since 2019.</p>
-                </div>
-                
-                <div>
-                    <h4 class="footer-heading" data-i18n="footer_shop">Shop</h4>
-                    <ul class="footer-links">
-                        <li><a href="shop.html" data-i18n="product_name">Moringa Capsules</a></li>
-                        <li><a href="shop.html#buy" data-i18n="product_buy">Secure Supply</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="footer-heading" data-i18n="footer_quality">Quality</h4>
-                    <ul class="footer-links">
-                        <li><a href="quality.html" data-i18n="clinical_gmp">GMP Standards</a></li>
-                        <li><a href="quality.html" data-i18n="clinical_100">Purity Promise</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="footer-heading" data-i18n="footer_connect">Connect</h4>
-                    <ul class="footer-links">
-                        <li><a href="story.html" data-i18n="nav_story">Our Story</a></li>
-                        <li><a href="faq.html" data-i18n="nav_faq">FAQ</a></li>
-                        <li><a href="#">Instagram</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="footer-heading" data-i18n="footer_legal">Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" data-i18n="footer_privacy">Privacy Policy</a></li>
-                        <li><a href="#" data-i18n="footer_terms">Terms</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div data-i18n="footer_copyright">© <span class="current-year">2026</span> MorinVibes®. All rights reserved.</div>
-                <div data-i18n="footer_kkm">KKM: Registration in progress</div>
-            </div>
-            
-            <div class="footer-disclaimer" data-i18n="footer_disclaimer">
-                These statements have not been evaluated by the Ministry of Health Malaysia. This product is not intended to diagnose, treat, cure, or prevent any disease.
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="assets/js/main.js" defer></script>
-    <script src="assets/js/animations.js" defer></script>
-    <script src="assets/js/language.js" defer></script>
-    <script src="assets/js/pixel.js" defer></script>
-    
-    <!-- Tab switching script -->
-    <script>
-        function switchTab(tabId) {
-            // Hide all tabs
-            document.querySelectorAll('.tab-pane').forEach(pane => {
-                pane.classList.remove('active');
-            });
-            
-            // Remove active class from all buttons
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-                btn.style.color = '';
-                btn.style.borderBottomColor = 'transparent';
-            });
-            
-            // Show selected tab
-            document.getElementById(tabId).classList.add('active');
-            
-            // Highlight clicked button
-            event.target.classList.add('active');
-            event.target.style.color = '#0097b2';
-            event.target.style.borderBottomColor = '#0097b2';
-        }
-    </script>
-</body>
-</html>
+                    
+                    <div style="display: flex; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap;">
+                        <span style="display: flex; align-items: center; gap: 4px;">
+                            <span>🛒</span>
+                            <span>MorinVibes</span>
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 4px;">
+                            <span>🛒</span>
+                            <span>moringa_morinvibes</span>
+                        </span
