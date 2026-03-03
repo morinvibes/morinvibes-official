@@ -1,129 +1,128 @@
-/* =========================================
-   MORINVIBES MAIN JS
-   Stable Production Version
-========================================= */
+/* ==============================
+   DOM READY
+============================== */
+document.addEventListener("DOMContentLoaded", function () {
 
-console.log("MorinVibes JS Loaded");
+  /* ==============================
+     MOBILE MENU TOGGLE
+  ============================== */
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
 
-/* =========================================
-   1. SAFE LANGUAGE SYSTEM
-========================================= */
-
-const translations = {
-  en: {
-    hero_btn: "Shop Now",
-    footer_rights: "All rights reserved."
-  },
-  bm: {
-    hero_btn: "Beli Sekarang",
-    footer_rights: "Hak cipta terpelihara."
-  },
-  zh: {
-    hero_btn: "立即购买",
-    footer_rights: "版权所有。"
-  },
-  zht: {
-    hero_btn: "立即購買",
-    footer_rights: "版權所有。"
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener("click", function () {
+      mobileMenu.classList.toggle("active");
+      document.body.classList.toggle("no-scroll");
+    });
   }
-};
 
-function setLanguage(lang) {
-  if (!translations[lang]) return;
+  /* ==============================
+     SCROLL REVEAL (INTERSECTION OBSERVER)
+  ============================== */
+  const revealElements = document.querySelectorAll(".reveal");
 
-  const elements = document.querySelectorAll("[data-i18n]");
-  elements.forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (translations[lang][key]) {
-      el.innerText = translations[lang][key];
-    }
-  });
-
-  localStorage.setItem("mv_lang", lang);
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  const savedLang = localStorage.getItem("mv_lang") || "en";
-  setLanguage(savedLang);
-});
-
-
-/* =========================================
-   2. SAFE SCROLL REVEAL
-========================================= */
-
-function revealOnScroll() {
-  const reveals = document.querySelectorAll(".reveal");
-  reveals.forEach(function (el) {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 80) {
-      el.classList.add("active");
-    }
-  });
-}
-
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
-
-
-/* =========================================
-   3. SAFE SMOOTH ANCHOR SCROLL
-========================================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-  const links = document.querySelectorAll('a[href^="#"]');
-
-  links.forEach(function (link) {
-    link.addEventListener("click", function (e) {
-      const targetId = this.getAttribute("href");
-
-      if (targetId.length > 1) {
-        const target = document.querySelector(targetId);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: "smooth" });
-        }
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+        revealObserver.unobserve(entry.target);
       }
     });
-  });
-});
+  }, { threshold: 0.15 });
 
+  revealElements.forEach(el => revealObserver.observe(el));
 
-/* =========================================
-   4. ADD TO CART (Shopee Redirect)
-========================================= */
+  /* ==============================
+     ADD TO CART EVENT (When #order visible)
+  ============================== */
+  const orderSection = document.getElementById("order");
+  let addToCartFired = false;
 
-function addToCart() {
-  console.log("Redirecting to Shopee...");
-  window.location.href = "https://shopee.com.my/YOUR_PRODUCT_LINK";
-}
+  if (orderSection) {
+    const orderObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !addToCartFired) {
+          addToCartFired = true;
 
+          if (typeof fbq !== "undefined") {
+            fbq('track', 'AddToCart', {
+              content_name: 'MorinVibes Moringa',
+              content_category: 'Moringa Supplement',
+              currency: 'MYR'
+            });
+          }
 
-/* =========================================
-   5. HERO SCROLL BUTTON
-========================================= */
+          if (typeof gtag !== "undefined") {
+            gtag('event', 'add_to_cart', {
+              currency: 'MYR',
+              value: 0
+            });
+          }
+        }
+      });
+    }, { threshold: 0.5 });
 
-function scrollToOrder() {
-  const order = document.getElementById("order");
-  if (order) {
-    order.scrollIntoView({ behavior: "smooth" });
+    orderObserver.observe(orderSection);
   }
-}
 
+  /* ==============================
+     PURCHASE EVENT (Thank You Page)
+  ============================== */
+  if (window.location.pathname.includes("thank-you.html")) {
 
-/* =========================================
-   6. OPTIONAL NAVBAR SCROLL EFFECT
-========================================= */
+    if (typeof fbq !== "undefined") {
+      fbq('track', 'Purchase', {
+        currency: 'MYR',
+        value: 0
+      });
+    }
 
-window.addEventListener("scroll", function () {
-  const header = document.querySelector(".header");
-  if (!header) return;
-
-  if (window.scrollY > 50) {
-    header.style.background = "rgba(255,255,255,0.95)";
-    header.style.boxShadow = "0 2px 20px rgba(0,0,0,0.05)";
-  } else {
-    header.style.background = "rgba(255,255,255,0.75)";
-    header.style.boxShadow = "none";
+    if (typeof gtag !== "undefined") {
+      gtag('event', 'purchase', {
+        currency: 'MYR',
+        value: 0
+      });
+    }
   }
+
+  /* ==============================
+     LANGUAGE SWITCHER (Subfolder Logic)
+     Structure:
+     /index.html
+     /bm/index.html
+     /zh/index.html
+  ============================== */
+  const languageSwitcher = document.getElementById("languageSwitcher");
+
+  if (languageSwitcher) {
+
+    languageSwitcher.addEventListener("change", function () {
+
+      const selectedLang = this.value;
+      const currentPath = window.location.pathname;
+
+      // Remove leading slash
+      let path = currentPath.replace(/^\/+/, "");
+
+      // Detect if currently in subfolder
+      const segments = path.split("/");
+
+      if (segments[0] === "bm" || segments[0] === "zh") {
+        segments.shift();
+      }
+
+      const cleanPath = segments.join("/");
+
+      let newPath = "";
+
+      if (selectedLang === "en") {
+        newPath = "/" + cleanPath;
+      } else {
+        newPath = "/" + selectedLang + "/" + cleanPath;
+      }
+
+      window.location.href = newPath;
+    });
+  }
+
 });
