@@ -1,20 +1,21 @@
 /**
  * MORINVIBES® - LANGUAGE SWITCHER
+ * Colors: #0097b2 (Primary) | #61cad8 (Secondary)
  * Premium EN/BM/ZH with Dropdown - Zero Lag
  * Version: 2.0
  * 
  * Features:
- * - Smooth dropdown animation (CSS, not JS)
+ * - Smooth dropdown (CSS transitions)
  * - localStorage persistence
  * - No page reload
- * - All text translated
+ * - Complete translations
  * - Zero performance impact
  */
 
 (function() {
     'use strict';
 
-    // ===== COMPLETE TRANSLATIONS =====
+    // ===== COMPLETE TRANSLATIONS (EN/BM/ZH) =====
     const translations = {
         en: {
             // Navigation
@@ -421,13 +422,8 @@
         }
         
         init() {
-            // Set up dropdown
             this.setupDropdown();
-            
-            // Apply initial language
             this.setLanguage(this.currentLang, false);
-            
-            // Update HTML lang attribute
             document.documentElement.lang = this.currentLang;
         }
         
@@ -439,13 +435,13 @@
             
             if (!selector || !options) return;
             
-            // Toggle dropdown on click (simple, no animation lag)
+            // Toggle dropdown (simple, no animation lag)
             selector.addEventListener('click', (e) => {
                 e.stopPropagation();
                 options.classList.toggle('show');
             });
             
-            // Close dropdown when clicking outside
+            // Close when clicking outside
             document.addEventListener('click', () => {
                 options.classList.remove('show');
             });
@@ -456,19 +452,14 @@
                     e.stopPropagation();
                     const lang = option.dataset.lang;
                     
-                    // Update current language display
                     if (currentSpan) {
                         currentSpan.textContent = lang.toUpperCase();
                     }
                     
-                    // Update active class
                     optionItems.forEach(opt => opt.classList.remove('active'));
                     option.classList.add('active');
                     
-                    // Set language
                     this.setLanguage(lang, true);
-                    
-                    // Close dropdown
                     options.classList.remove('show');
                 });
             });
@@ -484,17 +475,16 @@
                 document.documentElement.lang = langCode;
             }
             
-            // Update all elements with data-i18n
+            // Batch update DOM for performance
             this.updateContent();
             
-            // Dispatch event for other scripts (pixel, etc)
+            // Notify other scripts
             window.dispatchEvent(new CustomEvent('languageChanged', { 
                 detail: { language: langCode } 
             }));
         }
         
         updateContent() {
-            // Batch DOM updates for performance
             const elements = document.querySelectorAll('[data-i18n]');
             
             elements.forEach(el => {
