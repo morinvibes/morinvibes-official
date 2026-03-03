@@ -11,12 +11,19 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://morinvibes.github.io/morinvibes-official/">
     
-    <!-- Open Graph -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://morinvibes.github.io/morinvibes-official/">
     <meta property="og:title" content="MorinVibes® | Farm-Direct Moringa">
     <meta property="og:description" content="Farm-direct Moringa capsules from Penang. Trusted since 2019 with 1000+ 5-star reviews.">
     <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/assets/images/og-image.webp">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://morinvibes.github.io/morinvibes-official/">
+    <meta property="twitter:title" content="MorinVibes® | Farm-Direct Moringa">
+    <meta property="twitter:description" content="Farm-direct Moringa capsules from Penang. Trusted since 2019 with 1000+ 5-star reviews.">
+    <meta property="twitter:image" content="https://morinvibes.github.io/morinvibes-official/assets/images/og-image.webp">
     
     <!-- Fonts - Modern San Serif only -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,6 +81,25 @@
         }
     }
     </script>
+    <style>
+        /* Critical inline styles for V element */
+        .v-icon, .v-icon-small, .v-icon-large {
+            display: inline-block;
+            background: url('assets/images/icons/v-icon.svg') no-repeat center;
+            background-size: contain;
+            flex-shrink: 0;
+        }
+        .v-icon { width: 24px; height: 24px; }
+        .v-icon-small { width: 16px; height: 16px; }
+        .v-icon-large { width: 48px; height: 48px; }
+        .v-icon-gradient {
+            background: linear-gradient(135deg, #0097b2, #61cad8);
+            -webkit-mask: url('assets/images/icons/v-icon.svg') no-repeat center;
+            mask: url('assets/images/icons/v-icon.svg') no-repeat center;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+        }
+    </style>
 </head>
 <body class="v-pattern">
     <!-- Navigation -->
@@ -244,7 +270,8 @@
                             <span data-i18n="shopee_official">Official Shopee Stores Since 2019</span>
                         </div>
                         <div class="shopee-badge">
-                            <span>📦 Lazada</span>
+                            <span>📦</span>
+                            <span>Lazada</span>
                         </div>
                     </div>
                     
@@ -272,14 +299,17 @@
                     
                     <div class="stats-grid">
                         <div class="stat-card">
+                            <span class="v-icon-large"></span>
                             <div class="stat-number">5,000+</div>
                             <div class="stat-label" data-i18n="shopee_sales">Sales</div>
                         </div>
                         <div class="stat-card">
+                            <span class="v-icon-large"></span>
                             <div class="stat-number">6+</div>
                             <div class="stat-label" data-i18n="shopee_years">Years Trusted</div>
                         </div>
                         <div class="stat-card">
+                            <span class="v-icon-large"></span>
                             <div class="stat-number">✓ KKM</div>
                             <div class="stat-label" data-i18n="shopee_kkm">Registered</div>
                         </div>
@@ -673,6 +703,14 @@
                         ====================================================
                         ORDERLA.MY EMBED PLACEHOLDER
                         After purchasing RM30+ package, insert your Orderla embed code here.
+                        
+                        Example:
+                        <iframe src="https://orderla.my/embed/morinvibes" 
+                                width="100%" 
+                                height="600px" 
+                                frameborder="0" 
+                                style="border: none;">
+                        </iframe>
                         ====================================================
                     -->
                     <div class="orderla-placeholder">
@@ -792,7 +830,7 @@
                     <p class="footer-description" data-i18n="footer_desc">Farm-direct botanical nutrition, prepared in Penang since 2019.</p>
                     
                     <!-- Shopee & Lazada links -->
-                    <div style="display: flex; gap: var(--space-md); margin-top: var(--space-lg);">
+                    <div style="display: flex; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap;">
                         <span style="display: flex; align-items: center; gap: 4px;">
                             <span>🛒</span>
                             <span>MorinVibes</span>
