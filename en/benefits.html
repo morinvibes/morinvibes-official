@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benefits — MorinVibes® · Moringa Wellness</title>
+  <meta name="description" content="Discover the benefits of moringa: 90+ nutrients, 46 antioxidants, 18 amino acids. Traditional wellness support for daily energy." />
+  <meta property="og:title" content="Benefits — MorinVibes®" />
+  <meta property="og:description" content="Discover the benefits of moringa for daily wellness and energy." />
+  <meta property="og:image" content="/morinvibes-official/images/hero-main.svg" />
+  <meta property="og:url" content="https://morinvibes.github.io/morinvibes-official/en/benefits.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href="/morinvibes-official/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/global.css" />
+  <style>
+    /* Benefits page specific styles */
+    .benefits-hero {
+      background: linear-gradient(135deg, var(--paper), white);
+      padding: var(--sp-64) 0;
+      text-align: center;
+    }
+    
+    .disclaimer-box {
+      background: var(--teal-ghost);
+      border: 1px solid var(--teal-soft);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 40px auto;
+      max-width: 800px;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+    
+    .disclaimer-box strong {
+      color: var(--teal);
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    
+    .nutrients-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin: 60px 0;
+    }
+    
+    .nutrient-card {
+      background: white;
+      padding: 48px 32px;
+      border-radius: 32px;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all 0.3s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nutrient-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      transform: scaleX(0);
+      transition: transform 0.3s var(--ease);
+    }
+    
+    .nutrient-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .nutrient-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .nutrient-number {
+      font-family: var(--serif);
+      font-size: 4rem;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+    
+    .nutrient-label {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .nutrient-desc {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin: 48px 0;
+    }
+    
+    .benefit-item {
+      background: var(--paper);
+      padding: 40px;
+      border-radius: 32px;
+      border: 1px solid var(--border);
+      transition: all 0.3s var(--ease);
+    }
+    
+    .benefit-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal-soft);
+      background: white;
+    }
+    
+    .benefit-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .benefit-item h3 {
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    
+    .benefit-item p {
+      color: var(--ink-soft);
+      margin-bottom: 0;
+    }
+    
+    .traditional-section {
+      background: var(--teal-ghost);
+      border-radius: 32px;
+      padding: 60px;
+      margin: 60px 0;
+      text-align: center;
+    }
+    
+    .traditional-quote {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--ink);
+      max-width: 700px;
+      margin: 0 auto 24px;
+      line-height: 1.5;
+    }
+    
+    .stats-showcase {
+      display: flex;
+      justify-content: space-around;
+      margin: 48px 0;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    
+    .stat-item {
+      text-align: center;
+      flex: 1;
+      min-width: 150px;
+    }
+    
+    .stat-item .stat-number {
+      font-family: var(--serif);
+      font-size: 3rem;
+      color: var(--teal);
+      line-height: 1;
+    }
+    
+    .stat-item .stat-label {
+      color: var(--ink-soft);
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 900px) {
+      .nutrients-grid {
+        grid-template-columns: 1fr;
+      }
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      .traditional-section {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation - Consistent across all pages -->
+  <nav class="nav">
+    <div class="nav__container">
+      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      
+      <a href="/morinvibes-official/en/" class="nav__logo">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
+      </a>
+      
+      <div class="nav__right">
+        <div class="lang-dropdown">
+          <button class="lang-btn">EN <span>▼</span></button>
+          <div class="lang-options">
+            <a href="/morinvibes-official/en/benefits.html" class="lang-option active">English</a>
+            <a href="/morinvibes-official/bm/benefits.html" class="lang-option">Bahasa Malaysia</a>
+            <a href="/morinvibes-official/zh/benefits.html" class="lang-option">中文</a>
+          </div>
+        </div>
+        <a href="/morinvibes-official/en/checkout.html" class="btn btn--small">Buy Now — RM89</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav__mobile" id="mobile-menu">
+    <div class="nav__mobile-left">
+      <div class="nav__mobile-logo">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
+      </div>
+      <button class="nav__mobile-close" aria-label="Close menu">✕</button>
+      
+      <div class="nav__mobile-lang">
+        <a href="/morinvibes-official/en/">EN</a>
+        <a href="/morinvibes-official/bm/">BM</a>
+        <a href="/morinvibes-official/zh/">中文</a>
+      </div>
+      
+      <a href="/morinvibes-official/en/" class="nav__mobile-link">Home</a>
+      <a href="/morinvibes-official/en/farm.html" class="nav__mobile-link">The Farm</a>
+      <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link">Quality</a>
+      <a href="/morinvibes-official/en/benefits.html" class="nav__mobile-link active">Benefits</a>
+      <a href="/morinvibes-official/en/shop.html" class="nav__mobile-link">Shop</a>
+      <a href="/morinvibes-official/en/story.html" class="nav__mobile-link">Our Story</a>
+      <a href="/morinvibes-official/en/authentic.html" class="nav__mobile-link">Authenticity</a>
+      <a href="/morinvibes-official/en/ethics.html" class="nav__mobile-link">Ethics</a>
+      <a href="/morinvibes-official/en/faq.html" class="nav__mobile-link">FAQ</a>
+      <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="nav__mobile-link" style="color: var(--teal);">WhatsApp</a>
+    </div>
+    
+    <div class="nav__mobile-right">
+      <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="nav__mobile-right-img" />
+      <div class="nav__mobile-right-price">RM89 <span>/ bottle</span></div>
+      <div class="nav__mobile-right-sub">90 capsules · 500mg pure moringa</div>
+      <a href="/morinvibes-official/en/checkout.html" class="btn">Buy Now — RM89</a>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="progressBar"></div>
+
+  <main>
+    <!-- Benefits Hero -->
+    <section class="benefits-hero">
+      <div class="container">
+        <span class="eyebrow">NATURE'S NOURISHMENT</span>
+        <h1 style="max-width: 800px; margin: 0 auto 24px;">The Benefits of Moringa</h1>
+        <p class="lead" style="max-width: 600px; margin: 0 auto;">
+          Known as the "miracle tree" in traditional practices, moringa has been part of daily wellness for generations.
+        </p>
+      </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+      <div class="trust-bar__track">
+        <span>SINCE 2019</span><span class="dot">•</span>
+        <span>FARM DIRECT</span><span class="dot">•</span>
+        <span>GMP CERTIFIED</span><span class="dot">•</span>
+        <span>KKM APPROVED</span><span class="dot">•</span>
+        <span>VEGAN</span><span class="dot">•</span>
+        <span>MALAYSIA</span><span class="dot">•</span>
+        <span>90 CAPSULES</span><span class="dot">•</span>
+        <span>500MG EACH</span><span class="dot">•</span>
+        <!-- Duplicate for seamless loop -->
+        <span>SINCE 2019</span><span class="dot">•</span>
+        <span>FARM DIRECT</span><span class="dot">•</span>
+        <span>GMP CERTIFIED</span><span class="dot">•</span>
+        <span>KKM APPROVED</span><span class="dot">•</span>
+        <span>VEGAN</span><span class="dot">•</span>
+        <span>MALAYSIA</span><span class="dot">•</span>
+        <span>90 CAPSULES</span><span class="dot">•</span>
+        <span>500MG EACH</span><span class="dot">•</span>
+      </div>
+    </div>
+
+    <!-- Important Disclaimer -->
+    <div class="container">
+      <div class="disclaimer-box fade-up">
+        <strong>Important Notice</strong>
+        <p>These statements have not been evaluated by the Ministry of Health Malaysia. This product is not intended to diagnose, treat, cure, or prevent any disease. Moringa is a traditional food source meant for daily nutritional support.</p>
+      </div>
+    </div>
+
+    <!-- Key Nutrients (90+ nutrients, 46 antioxidants, 18 amino acids) -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center" style="margin-bottom: 24px;">
+          <span class="eyebrow">NUTRIENT PROFILE</span>
+          <h2>Packed with Goodness</h2>
+        </div>
+        
+        <div class="nutrients-grid">
+          <div class="nutrient-card fade-up">
+            <div class="nutrient-number">90+</div>
+            <div class="nutrient-label">Nutrients</div>
+            <p class="nutrient-desc">Including vitamins A, B, C, E, calcium, potassium, iron, and protein. One of the most nutrient-dense plants on earth.</p>
+          </div>
+          <div class="nutrient-card fade-up" data-delay="1">
+            <div class="nutrient-number">46</div>
+            <div class="nutrient-label">Antioxidants</div>
+            <p class="nutrient-desc">Rich in antioxidants that help protect cells from daily oxidative stress and support overall wellness.</p>
+          </div>
+          <div class="nutrient-card fade-up" data-delay="2">
+            <div class="nutrient-number">18</div>
+            <div class="nutrient-label">Amino Acids</div>
+            <p class="nutrient-desc">Contains all 9 essential amino acids that the body cannot produce on its own, making it a complete protein source.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Showcase -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="stats-showcase">
+          <div class="stat-item fade-up">
+            <div class="stat-number">2x</div>
+            <div class="stat-label">Iron vs Spinach</div>
+          </div>
+          <div class="stat-item fade-up" data-delay="1">
+            <div class="stat-number">4x</div>
+            <div class="stat-label">Calcium vs Milk</div>
+          </div>
+          <div class="stat-item fade-up" data-delay="2">
+            <div class="stat-number">7x</div>
+            <div class="stat-label">Vitamin C vs Oranges</div>
+          </div>
+          <div class="stat-item fade-up" data-delay="3">
+            <div class="stat-number">3x</div>
+            <div class="stat-label">Potassium vs Bananas</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Traditional Wisdom -->
+    <section class="section">
+      <div class="container">
+        <div class="traditional-section">
+          <span class="eyebrow">TRADITIONAL WISDOM</span>
+          <div class="traditional-quote">
+            "In traditional practices across South Asia, moringa has been valued for generations as a daily nutritional support."
+          </div>
+          <p style="color: var(--ink-soft); max-width: 600px; margin: 0 auto;">
+            Used in traditional wellness practices for centuries, moringa continues to be embraced by those seeking natural daily nourishment.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Daily Wellness Benefits -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center" style="margin-bottom: 48px;">
+          <span class="eyebrow">DAILY WELLNESS</span>
+          <h2>Supporting Your Everyday</h2>
+        </div>
+        
+        <div class="benefits-grid">
+          <div class="benefit-item fade-up">
+            <div class="benefit-icon">⚡</div>
+            <h3>Daily Energy</h3>
+            <p>Many people incorporate moringa into their daily routine for natural, gentle energy support throughout the day.</p>
+          </div>
+          <div class="benefit-item fade-up" data-delay="1">
+            <div class="benefit-icon">🛡️</div>
+            <h3>Antioxidant Support</h3>
+            <p>Rich in antioxidants that help combat daily oxidative stress and support overall cellular health.</p>
+          </div>
+          <div class="benefit-item fade-up" data-delay="2">
+            <div class="benefit-icon">💪</div>
+            <h3>Nutritional Foundation</h3>
+            <p>Packed with essential vitamins, minerals, and amino acids to support your body's daily nutritional needs.</p>
+          </div>
+          <div class="benefit-item fade-up" data-delay="3">
+            <div class="benefit-icon">🌿</div>
+            <h3>Gentle & Natural</h3>
+            <p>Pure leaf powder, nothing added. Easy to incorporate into your daily wellness routine.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to Use -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="grid-2">
+          <div class="fade-up">
+            <span class="eyebrow">SIMPLE & EASY</span>
+            <h2>How to Take Moringa</h2>
+            <p class="lead">2 capsules daily with water — that's all it takes to incorporate moringa into your routine.</p>
+            
+            <div class="process-list" style="margin-top: 32px;">
+              <div class="process-item">
+                <span class="process-label">STEP 1</span>
+                <span class="process-desc">Take 2 capsules with a glass of water</span>
+              </div>
+              <div class="process-item">
+                <span class="process-label">STEP 2</span>
+                <span class="process-desc">Can be taken any time of day, with or without food</span>
+              </div>
+              <div class="process-item">
+                <span class="process-label">STEP 3</span>
+                <span class="process-desc">Make it part of your daily wellness routine</span>
+              </div>
+            </div>
+            
+            <div style="margin-top: 32px;">
+              <span class="process-badge">90 capsules · 45 day supply</span>
+            </div>
+          </div>
+          
+          <div class="fade-up" data-delay="2">
+            <div class="cert-image">
+              <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" style="width: 100%;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quality Connection -->
+    <section class="section">
+      <div class="container">
+        <div class="shopee-proof fade-up">
+          <span class="eyebrow">FROM MY FARM TO YOU</span>
+          <h2 style="margin-bottom: 16px;">The Same Trusted Quality</h2>
+          <p class="lead" style="max-width: 600px; margin: 0 auto;">
+            Every capsule contains the same pure moringa grown on my land in Penang. No fillers, no additives — just the leaf.
+          </p>
+          
+          <div style="margin-top: 32px;">
+            <a href="/morinvibes-official/en/shop.html" class="btn btn--primary btn--large">Shop Now — RM89</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Link -->
+    <section class="section section--sm">
+      <div class="container text-center">
+        <p style="color: var(--ink-soft);">Have more questions about moringa?</p>
+        <a href="/morinvibes-official/en/faq.html" class="btn btn--outline" style="margin-top: 16px;">Visit FAQ →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer - Consistent across all pages -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">
+            <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
+          </div>
+          <p class="footer__tagline">Farm-direct moringa from my land in Penang · Since 2019</p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener">f</a>
+            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener">📷</a>
+            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener">🎵</a>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener">📱</a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="footer__title">Navigate</h4>
+          <ul class="footer__links">
+            <li><a href="/morinvibes-official/en/farm.html">The Farm</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
+            <li><a href="/morinvibes-official/en/benefits.html">Benefits</a></li>
+            <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
+            <li><a href="/morinvibes-official/en/story.html">Our Story</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer__title">Trust</h4>
+          <ul class="footer__links">
+            <li><a href="/morinvibes-official/en/authentic.html">Authenticity</a></li>
+            <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
+            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+          </ul>
+          <div class="footer__badge">KKM Approved</div>
+        </div>
+        
+        <div>
+          <h4 class="footer__title">Contact</h4>
+          <ul class="footer__links">
+            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
+          </ul>
+          <p style="color: rgba(255,255,255,0.3); font-size: 0.85rem; margin-top: 20px;">
+            Bayan Lepas, Penang<br />Malaysia
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <div>© 2026 MorinVibes®. All rights reserved.</div>
+        <div>
+          <a href="/morinvibes-official/en/privacy.html">Privacy</a>
+          <a href="/morinvibes-official/en/terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <!-- Scripts -->
+  <script src="/morinvibes-official/assets/js/main.js"></script>
+  <script src="/morinvibes-official/assets/js/pixel.js"></script>
+</body>
+</html>
