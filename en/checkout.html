@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — MorinVibes®</title>
+  <meta name="description" content="Complete your order for farm-direct moringa capsules from Penang." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="/morinvibes-official/favicon/favicon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Italiana&display=swap" rel="stylesheet" />
+
+  <!-- Site globals -->
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/global.css" />
+
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --cream:       #faf7f2;
+      --parchment:   #f2ede3;
+      --bark:        #2c1f0e;
+      --forest:      #1a3a2a;
+      --leaf:        #2d6a4f;
+      --leaf-light:  #52b788;
+      --gold:        #b5832a;
+      --gold-light:  #e9c46a;
+      --border-warm: #e0d5c5;
+      --shadow-soft: 0 8px 40px rgba(44, 31, 14, 0.08);
+      --shadow-card: 0 24px 80px rgba(44, 31, 14, 0.12);
+      --radius-lg:   28px;
+      --radius-pill: 100px;
+      --ff-display:  'Italiana', 'Cormorant Garamond', serif;
+      --ff-serif:    'Cormorant Garamond', Georgia, serif;
+      --ff-body:     'DM Sans', system-ui, sans-serif;
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: var(--ff-body);
+      background-color: var(--cream);
+      color: var(--bark);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ─── BOTANICAL BACKGROUND ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 10% 20%, rgba(45, 106, 79, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 90% 80%, rgba(181, 131, 42, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* SVG leaf motifs */
+    .leaf-bg {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.04;
+    }
+    .leaf-bg--tl { top: -60px; left: -40px; width: 320px; transform: rotate(-20deg); }
+    .leaf-bg--br { bottom: -80px; right: -60px; width: 400px; transform: rotate(160deg); }
+
+    /* ─── TOPBAR ─── */
+    .topbar {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(250, 247, 242, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-warm);
+    }
+
+    .topbar__logo img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .topbar__logo-text {
+      font-family: var(--ff-display);
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      color: var(--forest);
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    .topbar__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--leaf);
+      text-decoration: none;
+      padding: 8px 18px;
+      border: 1.5px solid var(--leaf);
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.02em;
+      transition: all 0.25s var(--ease-smooth);
+    }
+    .topbar__back:hover {
+      background: var(--leaf);
+      color: #fff;
+      transform: translateX(-2px);
+    }
+    .topbar__back svg { transition: transform 0.25s var(--ease-smooth); }
+    .topbar__back:hover svg { transform: translateX(-3px); }
+
+    /* ─── STEP INDICATOR ─── */
+    .steps {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 28px 40px 0;
+      animation: fadeSlideDown 0.6s var(--ease-smooth) 0.1s both;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--ff-body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+
+    .step--active { color: var(--leaf); }
+    .step--done   { color: var(--gold); }
+
+    .step__dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      border: 2px solid currentColor;
+      background: transparent;
+      transition: all 0.3s;
+      flex-shrink: 0;
+    }
+    .step--active .step__dot {
+      background: var(--leaf);
+      border-color: var(--leaf);
+      color: #fff;
+      box-shadow: 0 0 0 4px rgba(45, 106, 79, 0.15);
+    }
+    .step--done .step__dot {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+    }
+
+    .step__line {
+      width: 48px;
+      height: 1.5px;
+      background: var(--border-warm);
+      margin: 0 4px;
+    }
+    .step__line--done { background: var(--gold); }
+
+    /* ─── MAIN WRAPPER ─── */
+    .checkout-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 24px 60px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    @media (max-width: 860px) {
+      .checkout-wrap { grid-template-columns: 1fr; }
+      .order-summary { order: -1; }
+    }
+
+    /* ─── MAIN CARD (iframe side) ─── */
+    .checkout-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-warm);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      animation: fadeSlideUp 0.7s var(--ease-smooth) 0.2s both;
+    }
+
+    .checkout-card__header {
+      padding: 32px 36px 24px;
+      border-bottom: 1px solid #f0ebe2;
+      background: linear-gradient(135deg, #fff 0%, #fdfaf5 100%);
+    }
+
+    .checkout-card__eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--leaf);
+      margin-bottom: 8px;
+    }
+
+    .checkout-card__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 400;
+      color: var(--forest);
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+    }
+
+    .checkout-card__sub {
+      margin-top: 6px;
+      font-size: 13.5px;
+      color: #888;
+      font-weight: 300;
+    }
+
+    /* ─── IFRAME CONTAINER ─── */
+    .iframe-shell {
+      position: relative;
+      min-height: 580px;
+      background: var(--cream);
+    }
+
+    /* Spinner */
+    .spinner-wrap {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      z-index: 2;
+      transition: opacity 0.4s var(--ease-smooth);
+    }
+    .spinner-wrap.hidden { opacity: 0; pointer-events: none; }
+
+    .spinner {
+      width: 44px;
+      height: 44px;
+      position: relative;
+    }
+    .spinner::before,
+    .spinner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2.5px solid transparent;
+    }
+    .spinner::before {
+      border-top-color: var(--leaf);
+      animation: spin 0.9s linear infinite;
+    }
+    .spinner::after {
+      border-bottom-color: var(--gold-light);
+      animation: spin 0.9s linear infinite reverse;
+      opacity: 0.5;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .spinner-text {
+      font-size: 13px;
+      color: #999;
+      letter-spacing: 0.04em;
+      font-weight: 300;
+    }
+
+    /* Iframe */
+    .checkout-iframe {
+      display: none;
+      width: 100%;
+      min-height: 580px;
+      border: none;
+      opacity: 0;
+      transition: opacity 0.5s var(--ease-smooth);
+    }
+    .checkout-iframe.loaded {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Fallback message */
+    .iframe-fallback {
+      display: none;
+      padding: 48px 36px;
+      text-align: center;
+      gap: 16px;
+      flex-direction: column;
+      align-items: center;
+    }
+    .iframe-fallback.show { display: flex; }
+
+    .iframe-fallback__icon {
+      width: 56px;
+      height: 56px;
+      background: #fff5e6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .iframe-fallback__title {
+      font-family: var(--ff-serif);
+      font-size: 20px;
+      color: var(--forest);
+      font-weight: 400;
+    }
+
+    .iframe-fallback__text {
+      font-size: 14px;
+      color: #888;
+      max-width: 340px;
+      line-height: 1.6;
+    }
+
+    .btn-direct {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--leaf);
+      color: #fff;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: all 0.25s var(--ease-spring);
+    }
+    .btn-direct:hover {
+      background: var(--forest);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(26, 58, 42, 0.25);
+    }
+
+    /* ─── TRUST BAR ─── */
+    .trust-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      padding: 16px 24px;
+      background: #fdfaf5;
+      border-top: 1px solid #f0ebe2;
+    }
+
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: #fff;
+      border: 1px solid var(--border-warm);
+      border-radius: var(--radius-pill);
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--bark);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .trust-pill__icon {
+      width: 16px;
+      height: 16px;
+      background: var(--leaf);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .trust-pill__icon svg { color: #fff; }
+
+    /* ─── ORDER SUMMARY SIDEBAR ─── */
+    .order-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      animation: fadeSlideUp 0.7s var(--ease-smooth) 0.35s both;
+    }
+
+    .summary-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-warm);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .summary-card__header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid #f0ebe2;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--leaf);
+    }
+
+    /* Product row */
+    .product-row {
+      padding: 20px 24px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .product-row__img {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #e8f5ee 0%, #d4edde 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 1px solid #c8e6d1;
+    }
+
+    .product-row__img img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+    }
+
+    /* Leaf placeholder SVG */
+    .product-row__img svg {
+      width: 32px;
+      height: 32px;
+      color: var(--leaf);
+      opacity: 0.6;
+    }
+
+    .product-row__info { flex: 1; min-width: 0; }
+
+    .product-row__brand {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--leaf);
+      margin-bottom: 2px;
+    }
+
+    .product-row__name {
+      font-family: var(--ff-serif);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--forest);
+      line-height: 1.3;
+      letter-spacing: 0.01em;
+    }
+
+    .product-row__sub {
+      font-size: 11.5px;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    .product-row__price {
+      font-family: var(--ff-serif);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--forest);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    /* Divider */
+    .summary-divider {
+      height: 1px;
+      background: #f0ebe2;
+      margin: 0 24px;
+    }
+
+    /* Totals */
+    .summary-totals {
+      padding: 16px 24px 20px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #888;
+      padding: 4px 0;
+    }
+    .summary-row--total {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--bark);
+      padding-top: 12px;
+      margin-top: 8px;
+      border-top: 1px dashed var(--border-warm);
+    }
+    .summary-row--total .val {
+      font-family: var(--ff-serif);
+      font-size: 22px;
+      color: var(--forest);
+    }
+
+    /* Badges */
+    .summary-badges {
+      padding: 0 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .badge-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12.5px;
+      color: #777;
+      font-weight: 400;
+    }
+
+    .badge-item__icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      background: #e8f5ee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Freshness promise */
+    .freshness-card {
+      padding: 20px 24px;
+      background: linear-gradient(135deg, #f0faf4 0%, #e8f5ee 100%);
+      border-radius: var(--radius-lg);
+      border: 1px solid #c8e6d1;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .freshness-card__icon {
+      width: 40px;
+      height: 40px;
+      background: var(--leaf);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .freshness-card__title {
+      font-family: var(--ff-serif);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .freshness-card__text {
+      font-size: 12px;
+      color: #5a7a65;
+      line-height: 1.5;
+    }
+
+    /* WhatsApp help */
+    .help-card {
+      padding: 18px 24px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .help-card__icon {
+      width: 36px;
+      height: 36px;
+      background: #e7f9ef;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .help-card__label {
+      font-size: 11px;
+      color: #aaa;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .help-card__link {
+      font-size: 13.5px;
+      color: var(--leaf);
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .help-card__link:hover { text-decoration: underline; }
+
+    /* ─── BACK LINK ─── */
+    .back-footer {
+      text-align: center;
+      padding: 8px 0 0;
+      animation: fadeSlideUp 0.7s var(--ease-smooth) 0.5s both;
+    }
+
+    .back-footer a {
+      font-size: 13px;
+      color: #bbb;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .back-footer a:hover { color: var(--leaf); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 600px) {
+      .topbar { padding: 16px 20px; }
+      .steps { padding: 20px 20px 0; gap: 0; }
+      .step__label { display: none; }
+      .checkout-wrap { padding: 20px 16px 48px; gap: 20px; }
+      .checkout-card__header { padding: 24px 20px 18px; }
+      .trust-strip { gap: 4px; padding: 12px 16px; }
+      .product-row { padding: 16px; }
+      .summary-totals { padding: 14px 16px 16px; }
+      .summary-badges { padding: 0 16px 16px; }
+      .summary-card__header { padding: 16px 16px 12px; }
+      .help-card { padding: 14px 16px; }
+      .freshness-card { padding: 16px; }
+    }
+
+    @media (max-width: 420px) {
+      .trust-pill:nth-child(n+4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── LEAF BACKGROUND MOTIFS ─── -->
+  <svg class="leaf-bg leaf-bg--tl" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M20 380 C20 380 160 300 280 20 C280 20 200 180 100 260 C60 295 20 380 20 380Z" fill="#2d6a4f"/>
+    <path d="M280 20 C280 20 180 100 100 260" stroke="#2d6a4f" stroke-width="2"/>
+    <path d="M280 20 C240 80 190 150 140 220" stroke="#2d6a4f" stroke-width="1.5" opacity="0.5"/>
+    <path d="M280 20 C250 100 210 170 160 240" stroke="#2d6a4f" stroke-width="1" opacity="0.3"/>
+  </svg>
+  <svg class="leaf-bg leaf-bg--br" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M20 380 C20 380 160 300 280 20 C280 20 200 180 100 260 C60 295 20 380 20 380Z" fill="#2d6a4f"/>
+    <path d="M280 20 C280 20 180 100 100 260" stroke="#2d6a4f" stroke-width="2"/>
+  </svg>
+
+  <!-- ─── TOPBAR ─── -->
+  <header class="topbar" role="banner">
+    <a href="/morinvibes-official/en/" class="topbar__logo-text" aria-label="MorinVibes — Return to homepage">
+      MorinVibes<sup style="font-size:0.55em;letter-spacing:0">®</sup>
+    </a>
+    <a href="/morinvibes-official/en/" class="topbar__back" aria-label="Return to home page">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2L4 7l5 5"/></svg>
+      Back
+    </a>
+  </header>
+
+  <!-- ─── STEP INDICATOR ─── -->
+  <nav class="steps" aria-label="Checkout progress">
+    <div class="step step--done" aria-label="Step 1: Cart - completed">
+      <div class="step__dot" aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      <span class="step__label">Cart</span>
+    </div>
+    <div class="step__line step__line--done" aria-hidden="true"></div>
+    <div class="step step--active" aria-current="step" aria-label="Step 2: Checkout - current">
+      <div class="step__dot" aria-hidden="true">2</div>
+      <span class="step__label">Checkout</span>
+    </div>
+    <div class="step__line" aria-hidden="true"></div>
+    <div class="step" aria-label="Step 3: Confirmation - upcoming">
+      <div class="step__dot" aria-hidden="true">3</div>
+      <span class="step__label">Confirmed</span>
+    </div>
+  </nav>
+
+  <!-- ─── MAIN LAYOUT ─── -->
+  <main class="checkout-wrap" id="main-content">
+
+    <!-- LEFT: Order form -->
+    <section aria-labelledby="checkout-title">
+      <div class="checkout-card">
+        <div class="checkout-card__header">
+          <p class="checkout-card__eyebrow">Step 2 of 3</p>
+          <h1 class="checkout-card__title" id="checkout-title">Complete Your Order</h1>
+          <p class="checkout-card__sub">Your fresh batch is prepared right after you order</p>
+        </div>
+
+        <div class="iframe-shell" role="region" aria-label="Secure order form">
+
+          <!-- Loading state -->
+          <div class="spinner-wrap" id="spinnerWrap" aria-live="polite" aria-label="Loading secure form…">
+            <div class="spinner" aria-hidden="true"></div>
+            <p class="spinner-text">Loading secure form…</p>
+          </div>
+
+          <!-- Iframe -->
+          <iframe
+            id="checkoutFrame"
+            class="checkout-iframe"
+            src="https://morinvibes.orderla.my/moringa-order"
+            title="Secure checkout form powered by orderla.my"
+            width="100%"
+            height="580"
+            frameborder="0"
+            loading="lazy"
+            sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
+            aria-label="Checkout form"
+          ></iframe>
+
+          <!-- Fallback (shown if iframe fails after 12s) -->
+          <div class="iframe-fallback" id="iframeFallback" role="alert" aria-live="assertive">
+            <div class="iframe-fallback__icon">🌿</div>
+            <p class="iframe-fallback__title">Form taking longer than usual</p>
+            <p class="iframe-fallback__text">No worries — you can complete your order directly on our secure checkout page.</p>
+            <a href="https://morinvibes.orderla.my/moringa-order" target="_blank" rel="noopener noreferrer" class="btn-direct">
+              Open Checkout
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3"/></svg>
+            </a>
+          </div>
+
+        </div><!-- /.iframe-shell -->
+
+        <!-- Trust strip -->
+        <div class="trust-strip" role="list" aria-label="Security and payment information">
+          <div class="trust-pill" role="listitem">
+            <span class="trust-pill__icon" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 3.5,8 8.5,2"/></svg>
+            </span>
+            Secure Payment
+          </div>
+          <div class="trust-pill" role="listitem">
+            <span class="trust-pill__icon" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 3.5,8 8.5,2"/></svg>
+            </span>
+            Bank Transfer
+          </div>
+          <div class="trust-pill" role="listitem">
+            <span class="trust-pill__icon" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 3.5,8 8.5,2"/></svg>
+            </span>
+            FPX
+          </div>
+          <div class="trust-pill" role="listitem">
+            <span class="trust-pill__icon" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 3.5,8 8.5,2"/></svg>
+            </span>
+            256-bit Encryption
+          </div>
+        </div>
+      </div><!-- /.checkout-card -->
+
+      <div class="back-footer">
+        <a href="/morinvibes-official/en/">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 2L3.5 6.5l5 4.5"/></svg>
+          Return to home
+        </a>
+      </div>
+    </section>
+
+    <!-- RIGHT: Order summary sidebar -->
+    <aside class="order-summary" aria-label="Order summary">
+
+      <!-- Product -->
+      <div class="summary-card">
+        <p class="summary-card__header">Your Order</p>
+        <div class="product-row">
+          <div class="product-row__img" aria-hidden="true">
+            <!-- Leaf icon placeholder — replace with product image -->
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 6C14 6 8 18 8 28C8 36 14 42 24 42C34 42 40 36 40 28C40 18 34 6 24 6Z" fill="#c8e6d1" stroke="#2d6a4f" stroke-width="1.5"/>
+              <path d="M24 6C24 6 24 24 16 34" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M24 14C24 14 30 20 32 28" stroke="#2d6a4f" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+              <path d="M24 20C24 20 18 26 16 34" stroke="#2d6a4f" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="product-row__info">
+            <p class="product-row__brand">MorinVibes®</p>
+            <p class="product-row__name">Moringa Leaf<br>Capsules</p>
+            <p class="product-row__sub">90 caps · 500mg each</p>
+          </div>
+          <p class="product-row__price">RM89</p>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-totals">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>RM89.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping (West MY)</span>
+            <span>RM7.00</span>
+          </div>
+          <div class="summary-row" style="color: var(--leaf); font-weight: 500;">
+            <span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-1px;margin-right:4px" aria-hidden="true"><polyline points="1,6 4,9 11,2"/></svg>
+              Farm Direct
+            </span>
+            <span>–RM0</span>
+          </div>
+          <div class="summary-row summary-row--total">
+            <span>Total</span>
+            <span class="val">RM96</span>
+          </div>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-badges">
+          <div class="badge-item">
+            <div class="badge-item__icon">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="#2d6a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 1.5L7.8 4.5H11L8.4 6.6L9.4 10L6.5 8.1L3.6 10L4.6 6.6L2 4.5H5.2Z"/></svg>
+            </div>
+            KKM Approved · GMP Certified
+          </div>
+          <div class="badge-item">
+            <div class="badge-item__icon">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="#2d6a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5"/><polyline points="6.5,4 6.5,6.5 8.5,8"/></svg>
+            </div>
+            Ships in 24–48 hours
+          </div>
+          <div class="badge-item">
+            <div class="badge-item__icon">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="#2d6a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6.5C2 4 4 2 6.5 2S11 4 11 6.5"/><path d="M6.5 9.5V11"/><circle cx="6.5" cy="8.5" r="1"/></svg>
+            </div>
+            Secure encrypted checkout
+          </div>
+        </div>
+      </div>
+
+      <!-- Freshness promise -->
+      <div class="freshness-card" role="note" aria-label="Freshness promise">
+        <div class="freshness-card__icon" aria-hidden="true">🌿</div>
+        <div>
+          <p class="freshness-card__title">Prepared After You Order</p>
+          <p class="freshness-card__text">No warehouse stock. Every batch is prepared fresh after your order — farm to capsule, direct to you.</p>
+        </div>
+      </div>
+
+      <!-- WhatsApp help -->
+      <div class="summary-card">
+        <div class="help-card">
+          <div class="help-card__icon" aria-hidden="true">💬</div>
+          <div>
+            <p class="help-card__label">Need help?</p>
+            <a href="https://wa.me/60XXXXXXXXX?text=Hi%20Jess%2C%20I%20need%20help%20with%20my%20order"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="help-card__link"
+               aria-label="Contact Jess on WhatsApp">
+              WhatsApp Jess directly →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <!-- ─── SCRIPTS ─── -->
+  <script src="/morinvibes-official/assets/js/pixel.js" defer></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const frame       = document.getElementById('checkoutFrame');
+      const spinnerWrap = document.getElementById('spinnerWrap');
+      const fallback    = document.getElementById('iframeFallback');
+
+      let frameLoaded = false;
+
+      // Show iframe, hide spinner
+      function onFrameLoaded() {
+        if (frameLoaded) return;
+        frameLoaded = true;
+
+        frame.classList.add('loaded');
+        spinnerWrap.classList.add('hidden');
+
+        // Remove spinner from DOM after transition ends
+        spinnerWrap.addEventListener('transitionend', () => spinnerWrap.remove(), { once: true });
+      }
+
+      frame.addEventListener('load', onFrameLoaded);
+
+      // Fallback: if iframe hasn't loaded after 12s, show direct link
+      const fallbackTimer = setTimeout(function () {
+        if (frameLoaded) return;
+        spinnerWrap.style.display = 'none';
+        fallback.classList.add('show');
+      }, 12000);
+
+      // Clean up timer on successful load
+      frame.addEventListener('load', function () {
+        clearTimeout(fallbackTimer);
+      }, { once: true });
+
+      // Dynamically set iframe height to match window on resize (mobile friendliness)
+      function fitFrame() {
+        const minH = window.innerWidth < 600 ? 520 : 600;
+        frame.style.minHeight = minH + 'px';
+      }
+      window.addEventListener('resize', fitFrame, { passive: true });
+      fitFrame();
+
+    }());
+  </script>
+</body>
+</html>
