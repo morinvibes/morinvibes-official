@@ -1,218 +1,100 @@
 /**
- * MORINVIBES® - MAIN JS (Core Functionality)
- * With special V element support
- * Version: 3.0 - Zero Lag, Optimized
- * 
- * Features:
- * - Mobile menu with V icons
- * - Active navigation highlight
- * - FAQ accordion with V toggles
- * - Smooth scroll
- * - Back to top button with V
- * - Copyright year update
- * - Touch device detection
- * - No memory leaks
+ * MorinVibes® — Main JavaScript v8.0
+ * GitHub Pages: /morinvibes-official/ base path
+ * Handles: mobile menu, scroll effects, animations, trust bar, popup, counters
  */
 
 (function() {
     'use strict';
 
-    // ===== CACHE DOM ELEMENTS =====
-    const dom = {
-        // Navigation
-        mobileToggle: document.querySelector('.mobile-toggle'),
-        navLinks: document.querySelector('.nav-links'),
-        navRight: document.querySelector('.nav-right'),
-        mobileBottom: document.querySelector('.mobile-bottom'),
-        
-        // FAQ
-        faqItems: document.querySelectorAll('.faq-item'),
-        
-        // Back to top
-        backToTop: document.querySelector('.back-to-top'),
-        
-        // Year
-        yearElements: document.querySelectorAll('.current-year'),
-        
-        // Body
-        body: document.body
-    };
+    // ===== DOM Elements =====
+    const nav = document.querySelector('.nav');
+    const hamburger = document.querySelector('.nav__hamburger');
+    const mobileMenu = document.querySelector('.nav__mobile');
+    const closeBtn = document.querySelector('.nav__mobile-close');
+    const scrollBtn = document.getElementById('scrollTop');
+    const trustBar = document.querySelector('.trust-bar');
+    const progressBar = document.getElementById('progressBar');
+    const langToggle = document.querySelector('.lang-drop__toggle');
+    const langDropdown = document.querySelector('.lang-drop');
 
-    // ===== MOBILE MENU with V icons =====
-    if (dom.mobileToggle && dom.navLinks && dom.navRight) {
-        // Create mobile menu container if not exists
-        let mobileMenu = document.querySelector('.mobile-menu');
-        
-        if (!mobileMenu) {
-            mobileMenu = document.createElement('div');
-            mobileMenu.className = 'mobile-menu';
-            mobileMenu.style.cssText = `
-                display: none;
-                position: fixed;
-                top: 80px;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: white;
-                z-index: 999;
-                padding: 32px 24px;
-                flex-direction: column;
-                gap: 24px;
-                overflow-y: auto;
-                border-top: 1px solid var(--border-light);
-                backdrop-filter: blur(10px);
-            `;
-            
-            // Clone navigation links and add V icons
-            const linksClone = dom.navLinks.cloneNode(true);
-            
-            // Add V icons to each link in mobile menu
-            linksClone.querySelectorAll('a').forEach(link => {
-                const vIcon = document.createElement('span');
-                vIcon.className = 'v-icon-small';
-                vIcon.style.marginRight = '12px';
-                link.prepend(vIcon);
-            });
-            
-            // Clone CTA and add V icon
-            const ctaClone = dom.navRight.cloneNode(true);
-            const ctaButton = ctaClone.querySelector('.nav-cta');
-            if (ctaButton) {
-                const vIcon = document.createElement('span');
-                vIcon.className = 'v-icon-small';
-                vIcon.style.background = 'white';
-                vIcon.style.marginRight = '8px';
-                ctaButton.prepend(vIcon);
-            }
-            
-            // Remove language dropdown from mobile menu
-            const langDropdown = ctaClone.querySelector('.lang-dropdown');
-            if (langDropdown) langDropdown.remove();
-            
-            mobileMenu.appendChild(linksClone);
-            mobileMenu.appendChild(ctaClone);
-            dom.body.appendChild(mobileMenu);
+    // ===== Mobile Menu =====
+    function initMobileMenu() {
+        if (!hamburger || !mobileMenu) return;
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            document.body.classList.add('menu-open');
+            document.body.style.overflow = 'hidden';
+            hamburger.setAttribute('aria-expanded', 'true');
         }
 
-        // Toggle menu
-        dom.mobileToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            
-            const isOpen = mobileMenu.style.display === 'flex';
-            
-            if (!isOpen) {
-                // Open menu
-                mobileMenu.style.display = 'flex';
-                dom.mobileToggle.innerHTML = '<span class="v-icon"></span>';
-                dom.body.style.overflow = 'hidden';
-            } else {
-                // Close menu
-                mobileMenu.style.display = 'none';
-                dom.mobileToggle.innerHTML = '☰';
-                dom.body.style.overflow = '';
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            document.body.classList.remove('menu-open');
+            document.body.style.overflow = '';
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+
+        hamburger.addEventListener('click', openMenu);
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeMenu);
+        }
+
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                closeMenu();
             }
         });
 
-        // Close on link click
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.style.display = 'none';
-                dom.mobileToggle.innerHTML = '☰';
-                dom.body.style.overflow = '';
-            });
-        });
-
-        // Close on resize (if going to desktop)
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768 && mobileMenu.style.display === 'flex') {
-                mobileMenu.style.display = 'none';
-                dom.mobileToggle.innerHTML = '☰';
-                dom.body.style.overflow = '';
+        // Close on backdrop click
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                closeMenu();
             }
         });
     }
 
-    // ===== ACTIVE NAVIGATION HIGHLIGHT =====
-    const setActiveNav = () => {
-        const currentPath = window.location.pathname;
-        const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
-        
-        navLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            link.classList.remove('active');
-            
-            // Skip if no href or it's the CTA button
-            if (!href || link.classList.contains('nav-cta')) return;
-            
-            // Check if current page matches link
-            if (currentPath.includes(href) && href !== 'index.html' && href !== './' && href !== '/') {
-                link.classList.add('active');
-            } else if (currentPath.endsWith('/') || currentPath.endsWith('index.html')) {
-                if (href === 'index.html' || href === './' || href === '/') {
-                    link.classList.add('active');
-                }
-            }
-        });
-    };
-    
-    setActiveNav();
+    // ===== Navbar Scroll Effect =====
+    function initNavScroll() {
+        if (!nav) return;
 
-    // ===== FAQ ACCORDION with V toggles =====
-    if (dom.faqItems.length) {
-        dom.faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            const answer = item.querySelector('.faq-answer');
-            const vIcon = question?.querySelector('.v-icon');
-            
-            if (question && answer) {
-                question.addEventListener('click', function() {
-                    const isOpen = answer.classList.contains('open');
-                    
-                    // Close other FAQs (optional - for better UX)
-                    dom.faqItems.forEach(otherItem => {
-                        if (otherItem !== item) {
-                            const otherAnswer = otherItem.querySelector('.faq-answer');
-                            const otherIcon = otherItem.querySelector('.faq-question .v-icon');
-                            if (otherAnswer) {
-                                otherAnswer.classList.remove('open');
-                                otherAnswer.style.maxHeight = null;
-                            }
-                            if (otherIcon) {
-                                otherIcon.style.transform = 'rotate(0deg)';
-                            }
-                        }
-                    });
-                    
-                    // Toggle current
-                    if (isOpen) {
-                        answer.classList.remove('open');
-                        answer.style.maxHeight = null;
-                        if (vIcon) {
-                            vIcon.style.transform = 'rotate(0deg)';
-                        }
-                    } else {
-                        answer.classList.add('open');
-                        answer.style.maxHeight = answer.scrollHeight + 'px';
-                        if (vIcon) {
-                            vIcon.style.transform = 'rotate(45deg)';
-                        }
-                    }
-                });
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
             }
         });
     }
 
-    // ===== BACK TO TOP BUTTON with V icon =====
-    if (dom.backToTop) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                dom.backToTop.classList.add('visible');
+    // ===== Scroll Progress Bar =====
+    function initProgressBar() {
+        if (!progressBar) return;
+
+        window.addEventListener('scroll', () => {
+            const winScroll = window.scrollY;
+            const height = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+    }
+
+    // ===== Scroll to Top Button =====
+    function initScrollTop() {
+        if (!scrollBtn) return;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollBtn.classList.add('visible');
             } else {
-                dom.backToTop.classList.remove('visible');
+                scrollBtn.classList.remove('visible');
             }
         });
 
-        dom.backToTop.addEventListener('click', function() {
+        scrollBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
@@ -220,159 +102,227 @@
         });
     }
 
-    // ===== SMOOTH SCROLL for anchor links =====
-    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            const target = document.querySelector(targetId);
-            
-            if (target) {
-                e.preventDefault();
-                
-                // Close mobile menu if open
-                const mobileMenu = document.querySelector('.mobile-menu');
-                if (mobileMenu && mobileMenu.style.display === 'flex') {
-                    mobileMenu.style.display = 'none';
-                    if (dom.mobileToggle) {
-                        dom.mobileToggle.innerHTML = '☰';
-                    }
-                    dom.body.style.overflow = '';
-                }
-                
-                // Smooth scroll
-                target.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start' 
-                });
+    // ===== Language Dropdown =====
+    function initLangDropdown() {
+        if (!langToggle || !langDropdown) return;
+
+        langToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('open');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!langDropdown.contains(e.target)) {
+                langDropdown.classList.remove('open');
             }
-        }, { passive: true });
-    });
-
-    // ===== UPDATE COPYRIGHT YEAR =====
-    if (dom.yearElements.length) {
-        const year = new Date().getFullYear();
-        dom.yearElements.forEach(el => {
-            el.textContent = year;
         });
     }
 
-    // ===== TOUCH DEVICE DETECTION =====
-    if ('ontouchstart' in window || navigator.maxTouchPoints) {
-        dom.body.classList.add('touch-device');
+    // ===== Scroll Animations (Intersection Observer) =====
+    function initScrollAnimations() {
+        const elements = document.querySelectorAll('.fade-up, .fade-in, .fade-left, .fade-right, .scale-in');
         
-        // Add touch feedback for buttons
-        document.querySelectorAll('.btn, .nav-links a, .mobile-bottom a, .stat-card').forEach(el => {
-            el.addEventListener('touchstart', function() {
-                this.style.opacity = '0.8';
-            }, { passive: true });
-            
-            el.addEventListener('touchend', function() {
-                this.style.opacity = '1';
-            }, { passive: true });
-        });
-    }
+        if (elements.length === 0) return;
 
-    // ===== LAZY LOAD IMAGES =====
-    if ('IntersectionObserver' in window) {
-        const lazyImages = document.querySelectorAll('img[data-src]');
-        
-        if (lazyImages.length) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.removeAttribute('data-src');
-                        imageObserver.unobserve(img);
-                    }
-                });
-            }, {
-                rootMargin: '100px',
-                threshold: 0.1
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Optional: unobserve after animation for performance
+                    // observer.unobserve(entry.target);
+                }
             });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
 
-            lazyImages.forEach(img => imageObserver.observe(img));
-        }
+        elements.forEach(el => observer.observe(el));
     }
 
-    // ===== DROPDOWN CLOSE ON ESC KEY =====
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            // Close language dropdown
-            const langOptions = document.querySelector('.lang-options.show');
-            if (langOptions) {
-                langOptions.classList.remove('show');
-            }
-            
-            // Close mobile menu
-            const mobileMenu = document.querySelector('.mobile-menu');
-            if (mobileMenu && mobileMenu.style.display === 'flex') {
-                mobileMenu.style.display = 'none';
-                if (dom.mobileToggle) {
-                    dom.mobileToggle.innerHTML = '☰';
-                }
-                dom.body.style.overflow = '';
-            }
-        }
-    });
-
-    // ===== STAT COUNTERS for Shopee stats =====
-    if ('IntersectionObserver' in window) {
-        const statNumbers = document.querySelectorAll('.stat-number');
+    // ===== Counter Animation =====
+    function initCounters() {
+        const counters = document.querySelectorAll('.stat__number[data-count]');
         
-        if (statNumbers.length) {
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const element = entry.target;
-                        const text = element.textContent;
-                        const number = parseInt(text.replace(/[^0-9]/g, ''));
-                        
-                        if (!isNaN(number)) {
-                            let current = 0;
-                            const increment = number / 50;
-                            const suffix = text.replace(/[0-9]/g, '');
-                            
-                            const updateCounter = () => {
-                                current += increment;
-                                if (current < number) {
-                                    element.textContent = Math.floor(current) + suffix;
-                                    requestAnimationFrame(updateCounter);
-                                } else {
-                                    element.textContent = number + suffix;
-                                }
-                            };
-                            
-                            updateCounter();
+        if (counters.length === 0) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.count || el.innerText.replace(/\D/g, ''), 10);
+                    const suffix = el.dataset.suffix || '';
+                    let current = 0;
+                    const increment = target / 50;
+                    
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            el.innerText = Math.floor(current) + suffix;
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            el.innerText = target + suffix;
                         }
-                        
-                        counterObserver.unobserve(element);
-                    }
-                });
-            }, {
-                threshold: 0.5
+                    };
+                    
+                    updateCounter();
+                    observer.unobserve(el);
+                }
             });
+        }, { threshold: 0.5 });
 
-            statNumbers.forEach(stat => counterObserver.observe(stat));
+        counters.forEach(counter => observer.observe(counter));
+    }
+
+    // ===== Community Popup (Exit Intent or 45s delay) =====
+    function initCommunityPopup() {
+        const popup = document.querySelector('.community-popup');
+        if (!popup) return;
+
+        // Check if already shown
+        if (localStorage.getItem('mv_popup_shown')) return;
+
+        function showPopup() {
+            popup.classList.add('show');
+            localStorage.setItem('mv_popup_shown', 'true');
+        }
+
+        // Show after 45 seconds
+        setTimeout(showPopup, 45000);
+
+        // Exit intent
+        document.addEventListener('mouseleave', (e) => {
+            if (e.clientY < 10 && !localStorage.getItem('mv_popup_shown')) {
+                showPopup();
+            }
+        });
+
+        // Close button
+        const closeBtn = popup.querySelector('.community-popup__close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                popup.classList.remove('show');
+            });
+        }
+
+        // Dismiss link
+        const dismiss = popup.querySelector('.popup-dismiss');
+        if (dismiss) {
+            dismiss.addEventListener('click', () => {
+                popup.classList.remove('show');
+            });
         }
     }
 
-    // ===== PREVENT BODY SCROLL WHEN MOBILE MENU OPEN =====
-    dom.body.addEventListener('touchmove', (e) => {
-        if (document.querySelector('.mobile-menu')?.style.display === 'flex') {
-            e.preventDefault();
-        }
-    }, { passive: false });
+    // ===== Trust Bar Pause on Hover =====
+    function initTrustBarHover() {
+        const track = document.querySelector('.trust-bar__track');
+        if (!track) return;
 
-    // ===== CLEANUP on page unload =====
-    window.addEventListener('beforeunload', () => {
-        if (window.imageObserver) {
-            window.imageObserver.disconnect();
-        }
-        if (window.counterObserver) {
-            window.counterObserver.disconnect();
-        }
-    });
+        track.addEventListener('mouseenter', () => {
+            track.style.animationPlayState = 'paused';
+        });
 
-    console.log('✅ MorinVibes® - Core functionality ready with V element');
+        track.addEventListener('mouseleave', () => {
+            track.style.animationPlayState = 'running';
+        });
+    }
+
+    // ===== Button Ripple Effect =====
+    function initButtonRipple() {
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    }
+
+    // Add ripple styles dynamically
+    function addRippleStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            .btn { position: relative; overflow: hidden; }
+            .ripple {
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background: rgba(255, 255, 255, 0.5);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s ease-out;
+                pointer-events: none;
+            }
+            @keyframes ripple {
+                to { transform: scale(30); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // ===== Card 3D Tilt Effect (Desktop only) =====
+    function initCardTilt() {
+        if (window.innerWidth < 768) return;
+        
+        document.querySelectorAll('.stat, .card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    }
+
+    // ===== Initialize Everything =====
+    function init() {
+        initMobileMenu();
+        initNavScroll();
+        initProgressBar();
+        initScrollTop();
+        initLangDropdown();
+        initScrollAnimations();
+        initCounters();
+        initCommunityPopup();
+        initTrustBarHover();
+        addRippleStyles();
+        initButtonRipple();
+        initCardTilt();
+
+        // Update copyright year
+        document.querySelectorAll('.current-year').forEach(el => {
+            el.textContent = new Date().getFullYear();
+        });
+    }
+
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 })();
