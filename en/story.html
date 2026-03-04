@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story — MorinVibes® · Founded 2019 by Jess</title>
+  <meta name="description" content="The story of MorinVibes: Founded in 2019 from a personal need. Jess's journey from weak body condition to farm-direct purpose." />
+  <meta property="og:title" content="Our Story — MorinVibes®" />
+  <meta property="og:description" content="The story of MorinVibes: Founded in 2019 from a personal need." />
+  <meta property="og:image" content="/morinvibes-official/images/founder-portrait.svg" />
+  <meta property="og:url" content="https://morinvibes.github.io/morinvibes-official/en/story.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href="/morinvibes-official/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/global.css" />
+  <style>
+    /* Story page specific styles */
+    .story-hero {
+      background: linear-gradient(135deg, var(--paper), white);
+      padding: var(--sp-64) 0;
+      text-align: center;
+    }
+    
+    .timeline-section {
+      background: var(--paper);
+      border-radius: 32px;
+      padding: var(--sp-64);
+      margin: var(--sp-64) 0;
+    }
+    
+    .story-timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .story-timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--teal), var(--teal-light));
+      opacity: 0.3;
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-left: 60px;
+      margin-bottom: var(--sp-48);
+    }
+    
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: 12px;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--teal);
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px var(--teal);
+      transition: transform 0.3s var(--ease-spring);
+    }
+    
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.5);
+    }
+    
+    .timeline-year {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      color: var(--teal);
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+    
+    .timeline-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    
+    .timeline-text {
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+    
+    .founder-quote-large {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.4;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: var(--sp-48) 0;
+    }
+    
+    .founder-quote-large span {
+      display: block;
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-style: normal;
+      color: var(--teal);
+      margin-top: 24px;
+      letter-spacing: 0.05em;
+    }
+    
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin: 48px 0;
+    }
+    
+    .value-card {
+      background: white;
+      padding: 40px 32px;
+      border-radius: 32px;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all 0.3s var(--ease);
+    }
+    
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal-soft);
+    }
+    
+    .value-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .value-card h3 {
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    
+    .value-card p {
+      color: var(--ink-soft);
+      margin-bottom: 0;
+    }
+    
+    .journey-stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 48px 0;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    
+    .journey-stat {
+      text-align: center;
+    }
+    
+    .journey-stat .number {
+      font-family: var(--serif);
+      font-size: 3rem;
+      color: var(--teal);
+      line-height: 1;
+    }
+    
+    .journey-stat .label {
+      color: var(--ink-soft);
+      margin-top: 8px;
+    }
+    
+    @media (max-width: 900px) {
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+      .timeline-section {
+        padding: var(--sp-32);
+      }
+      .founder-quote-large {
+        font-size: 1.5rem;
+        padding: var(--sp-24) 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation - Consistent across all pages -->
+  <nav class="nav">
+    <div class="nav__container">
+      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      
+      <a href="/morinvibes-official/en/" class="nav__logo">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
+      </a>
+      
+      <div class="nav__right">
+        <div class="lang-dropdown">
+          <button class="lang-btn">EN <span>▼</span></button>
+          <div class="lang-options">
+            <a href="/morinvibes-official/en/story.html" class="lang-option active">English</a>
+            <a href="/morinvibes-official/bm/story.html" class="lang-option">Bahasa Malaysia</a>
+            <a href="/morinvibes-official/zh/story.html" class="lang-option">中文</a>
+          </div>
+        </div>
+        <a href="/morinvibes-official/en/checkout.html" class="btn btn--small">Buy Now — RM89</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav__mobile" id="mobile-menu">
+    <div class="nav__mobile-left">
+      <div class="nav__mobile-logo">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
+      </div>
+      <button class="nav__mobile-close" aria-label="Close menu">✕</button>
+      
+      <div class="nav__mobile-lang">
+        <a href="/morinvibes-official/en/">EN</a>
+        <a href="/morinvibes-official/bm/">BM</a>
+        <a href="/morinvibes-official/zh/">中文</a>
+      </div>
+      
+      <a href="/morinvibes-official/en/" class="nav__mobile-link">Home</a>
+      <a href="/morinvibes-official/en/farm.html" class="nav__mobile-link">The Farm</a>
+      <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link">Quality</a>
+      <a href="/morinvibes-official/en/benefits.html" class="nav__mobile-link">Benefits</a>
+      <a href="/morinvibes-official/en/shop.html" class="nav__mobile-link">Shop</a>
+      <a href="/morinvibes-official/en/story.html" class="nav__mobile-link active">Our Story</a>
+      <a href="/morinvibes-official/en/authentic.html" class="nav__mobile-link">Authenticity</a>
+      <a href="/morinvibes-official/en/ethics.html" class="nav__mobile-link">Ethics</a>
+      <a href="/morinvibes-official/en/faq.html" class="nav__mobile-link">FAQ</a>
+      <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="nav__mobile-link" style="color: var(--teal);">WhatsApp</a>
+    </div>
+    
+    <div class="nav__mobile-right">
+      <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="nav__mobile-right-img" />
+      <div class="nav__mobile-right-price">RM89 <span>/ bottle</span></div>
+      <div class="nav__mobile-right-sub">90 capsules · 500mg pure moringa</div>
+      <a href="/morinvibes-official/en/checkout.html" class="btn">Buy Now — RM89</a>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="progressBar"></div>
+
+  <main>
+    <!-- Story Hero -->
+    <section class="story-hero">
+      <div class="container">
+        <span class="eyebrow">FOUNDED 2019 · PENANG</span>
+        <h1 style="max-width: 800px; margin: 0 auto;">From personal need to farm-direct purpose.</h1>
+      </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+      <div class="trust-bar__track">
+        <span>SINCE 2019</span><span class="dot">•</span>
+        <span>FARM DIRECT</span><span class="dot">•</span>
+        <span>GMP CERTIFIED</span><span class="dot">•</span>
+        <span>KKM APPROVED</span><span class="dot">•</span>
+        <span>VEGAN</span><span class="dot">•</span>
+        <span>MALAYSIA</span><span class="dot">•</span>
+        <span>90 CAPSULES</span><span class="dot">•</span>
+        <span>500MG EACH</span><span class="dot">•</span>
+        <!-- Duplicate for seamless loop -->
+        <span>SINCE 2019</span><span class="dot">•</span>
+        <span>FARM DIRECT</span><span class="dot">•</span>
+        <span>GMP CERTIFIED</span><span class="dot">•</span>
+        <span>KKM APPROVED</span><span class="dot">•</span>
+        <span>VEGAN</span><span class="dot">•</span>
+        <span>MALAYSIA</span><span class="dot">•</span>
+        <span>90 CAPSULES</span><span class="dot">•</span>
+        <span>500MG EACH</span><span class="dot">•</span>
+      </div>
+    </div>
+
+    <!-- Main Story -->
+    <section class="section">
+      <div class="container">
+        <div class="grid-2">
+          <div class="fade-up">
+            <span class="eyebrow">THE BEGINNING</span>
+            <h2>2019: A Personal Journey</h2>
+            <p class="lead" style="margin-bottom: 24px;">
+              My body was often weak. Discovering moringa changed my daily energy and became part of my life journey.
+            </p>
+            <p style="margin-bottom: 24px; color: var(--ink-soft);">
+              It started in my house compound, on my own land in Kampung Balik Pulau. I was struggling, and moringa became my lifeline. I grew it myself, harvested it myself, processed it myself — from A to Z, done by my own hands. It was difficult, but it gave me purpose.
+            </p>
+            <p style="color: var(--ink-soft);">
+              Today, I am still a farmer. I own the land. There are no middlemen. Every leaf is harvested by my hands, gently dried, and prepared with purpose. This is not a business built by investors — it's a life built by a farmer who found hope in a plant.
+            </p>
+          </div>
+          <div class="fade-up" data-delay="2">
+            <div class="cert-image">
+              <img src="/morinvibes-official/images/founder-portrait.svg" alt="Jess, founder of MorinVibes" style="width: 100%; border-radius: 24px;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder Quote -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="founder-quote-large">
+          "I started small, with one harvest and a simple goal — prepare moringa the way it deserves."
+          <span>— Jess, Founder</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Journey -->
+    <section class="section">
+      <div class="container">
+        <div class="grid-2">
+          <div class="fade-up">
+            <div class="cert-image">
+              <img src="/morinvibes-official/images/farm-hero.svg" alt="The farm in Balik Pulau" style="width: 100%; border-radius: 24px;" />
+            </div>
+          </div>
+          <div class="fade-up" data-delay="2">
+            <span class="eyebrow">THE JOURNEY</span>
+            <h2>From Garden to Farm</h2>
+            <p style="margin-bottom: 24px; color: var(--ink-soft);">
+              By 2020, what started as a backyard garden became my family farm in the hills of Balik Pulau. I tend the land myself, with no middlemen — just me, growing moringa the way it should be grown.
+            </p>
+            <p style="color: var(--ink-soft);">
+              Today, my farm supplies all our moringa directly. Every leaf is harvested by hand, dried with care, and prepared with purpose.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Journey Stats -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="journey-stats">
+          <div class="journey-stat fade-up">
+            <div class="number">2019</div>
+            <div class="label">First Harvest</div>
+          </div>
+          <div class="journey-stat fade-up" data-delay="1">
+            <div class="number">5</div>
+            <div class="label">Acres of Land</div>
+          </div>
+          <div class="journey-stat fade-up" data-delay="2">
+            <div class="number">100%</div>
+            <div class="label">By Hand</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section">
+      <div class="container">
+        <div class="timeline-section">
+          <div class="text-center" style="margin-bottom: 48px;">
+            <span class="eyebrow">OUR MILESTONES</span>
+            <h2>Six Years of Growth</h2>
+          </div>
+          
+          <div class="story-timeline">
+            <div class="timeline-item fade-up">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2019</div>
+              <div class="timeline-title">The First Harvest</div>
+              <div class="timeline-text">Started with a small garden harvest in my house compound. First Shopee store opened. Word spread through family and friends.</div>
+            </div>
+            
+            <div class="timeline-item fade-up" data-delay="1">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2020</div>
+              <div class="timeline-title">Family Farm in Balik Pulau</div>
+              <div class="timeline-text">Acquired my own land in Balik Pulau. No middlemen, no partners — just my land and my hands.</div>
+            </div>
+            
+            <div class="timeline-item fade-up" data-delay="2">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2022</div>
+              <div class="timeline-title">GMP Certification</div>
+              <div class="timeline-text">Facility upgraded to meet Good Manufacturing Practice standards. 1000+ reviews on Shopee.</div>
+            </div>
+            
+            <div class="timeline-item fade-up" data-delay="3">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2024</div>
+              <div class="timeline-title">5000+ Sales</div>
+              <div class="timeline-text">Reached 5000+ sales on Shopee. Continued commitment to quality and freshness.</div>
+            </div>
+            
+            <div class="timeline-item fade-up" data-delay="4">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2026</div>
+              <div class="timeline-title">Official Website Launch</div>
+              <div class="timeline-text">KKM Approved. Now serving you directly with fresher batches and better prices.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shopee Journey -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="shopee-proof fade-up">
+          <span class="eyebrow">6 YEARS ON SHOPEE</span>
+          <h2 style="margin-bottom: 16px;">From Shopee to Our Own Website</h2>
+          <p class="lead" style="max-width: 600px; margin: 0 auto;">
+            After six years serving you on Shopee, I built this website to give you fresher batches and better prices. Same trusted brand, now direct from my farm.
+          </p>
+          
+          <div class="shopee-stores">
+            <span class="shopee-store">MorinVibes</span>
+            <span class="shopee-store">moringa_morinvibes</span>
+          </div>
+          
+          <div class="rating-stars">★★★★★</div>
+          <p style="margin-top: 8px; color: var(--ink-soft);">1000+ 5-star reviews · 5000+ sales</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center" style="margin-bottom: 48px;">
+          <span class="eyebrow">OUR VALUES</span>
+          <h2>What Drives Me</h2>
+        </div>
+        
+        <div class="values-grid">
+          <div class="value-card fade-up">
+            <div class="value-icon">🌱</div>
+            <h3>Simple</h3>
+            <p>No complexity, no hidden ingredients. Just pure moringa from my land.</p>
+          </div>
+          <div class="value-card fade-up" data-delay="1">
+            <div class="value-icon">💧</div>
+            <h3>Pure</h3>
+            <p>No fillers, no additives. Every capsule contains exactly what nature intended.</p>
+          </div>
+          <div class="value-card fade-up" data-delay="2">
+            <div class="value-icon">🤝</div>
+            <h3>Honest</h3>
+            <p>No middlemen, no hidden practices. Just me, my farm, and my commitment to you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Nurse Behind It All -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="grid-2">
+          <div class="fade-up">
+            <span class="eyebrow">THE NURSE BEHIND IT ALL</span>
+            <h2>My Mother, The Nurse</h2>
+            <p style="margin-bottom: 24px; color: var(--ink-soft);">
+              My mother, a nurse for over 30 years, first introduced me to moringa. She saw its potential not as medicine, but as daily nutritional support.
+            </p>
+            <p style="color: var(--ink-soft);">
+              Her wisdom and care shape everything I do. This farm, this mission — it all started with her.
+            </p>
+          </div>
+          <div class="fade-up" data-delay="2">
+            <div class="cert-image">
+              <img src="/morinvibes-official/images/founder-mother.svg" alt="Jess with her mother" style="width: 100%; border-radius: 24px;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+      <div class="container">
+        <div class="whatsapp-section">
+          <div class="whatsapp-icon">🌱</div>
+          <h2 style="margin-bottom: 16px;">Experience My Farm's Freshness</h2>
+          <p style="max-width: 500px; margin: 0 auto 32px; color: var(--ink-soft);">
+            From my hands to yours — taste the difference of moringa grown with purpose.
+          </p>
+          <a href="/morinvibes-official/en/shop.html" class="btn btn--primary btn--large">Shop Now — RM89</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer - Consistent across all pages -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">
+            <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
+          </div>
+          <p class="footer__tagline">Farm-direct moringa from my land in Penang · Since 2019</p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener">f</a>
+            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener">📷</a>
+            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener">🎵</a>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener">📱</a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="footer__title">Navigate</h4>
+          <ul class="footer__links">
+            <li><a href="/morinvibes-official/en/farm.html">The Farm</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
+            <li><a href="/morinvibes-official/en/benefits.html">Benefits</a></li>
+            <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
+            <li><a href="/morinvibes-official/en/story.html">Our Story</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer__title">Trust</h4>
+          <ul class="footer__links">
+            <li><a href="/morinvibes-official/en/authentic.html">Authenticity</a></li>
+            <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
+            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+          </ul>
+          <div class="footer__badge">KKM Approved</div>
+        </div>
+        
+        <div>
+          <h4 class="footer__title">Contact</h4>
+          <ul class="footer__links">
+            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
+          </ul>
+          <p style="color: rgba(255,255,255,0.3); font-size: 0.85rem; margin-top: 20px;">
+            Bayan Lepas, Penang<br />Malaysia
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <div>© 2026 MorinVibes®. All rights reserved.</div>
+        <div>
+          <a href="/morinvibes-official/en/privacy.html">Privacy</a>
+          <a href="/morinvibes-official/en/terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <!-- Community Popup -->
+  <div class="community-popup" id="communityPopup">
+    <div class="popup-header">
+      <h4>Join Our Community</h4>
+      <p>Get updates, tips, and exclusive offers</p>
+      <button class="popup-close" aria-label="Close">✕</button>
+    </div>
+    <div class="popup-body">
+      <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="popup-link popup-link--wa">
+        <span class="popup-link__icon">📱</span>
+        <span>WhatsApp Community</span>
+      </a>
+      <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="popup-link popup-link--ig">
+        <span class="popup-link__icon">📸</span>
+        <span>Instagram</span>
+      </a>
+      <div class="popup-dismiss">No thanks, I'll browse</div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/morinvibes-official/assets/js/main.js"></script>
+  <script src="/morinvibes-official/assets/js/pixel.js"></script>
+</body>
+</html>
