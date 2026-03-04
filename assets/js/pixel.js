@@ -1,21 +1,20 @@
 /**
- * MorinVibes® — Meta Pixel Tracking v8.0
+ * MorinVibes® — Meta Pixel Tracking v6.0
  * Events: PageView, ViewContent, AddToCart, InitiateCheckout, Purchase, Lead
- * Pixel ID: Replace 'YOUR_PIXEL_ID' with actual ID
- * GitHub Pages: /morinvibes-official/ base path
+ * Replace 'YOUR_PIXEL_ID' with your actual Meta Pixel ID
  */
 
 (function() {
     'use strict';
 
     // ===== Configuration =====
-    const PIXEL_ID = 'YOUR_PIXEL_ID'; // REPLACE WITH YOUR ACTUAL PIXEL ID
+    const PIXEL_ID = 'YOUR_PIXEL_ID'; // ← REPLACE WITH YOUR ACTUAL ID
     const PRODUCT_PRICE = 89;
     const PRODUCT_CURRENCY = 'MYR';
     const PRODUCT_NAME = 'MorinVibes Moringa 90s';
     const PRODUCT_ID = 'moringa-90';
 
-    // ===== Load Pixel Script =====
+    // ===== Load Meta Pixel Script =====
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -25,14 +24,14 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
 
-    // Initialize
+    // Initialize Pixel
     fbq('init', PIXEL_ID);
     fbq('track', 'PageView');
+    console.log('✅ Meta Pixel initialized');
 
-    // ===== Track PageView on all pages =====
-    console.log('Meta Pixel: PageView tracked');
+    // ===== 1. Track PageView (already done) =====
 
-    // ===== Track ViewContent on product pages =====
+    // ===== 2. Track ViewContent on product pages =====
     if (window.location.pathname.includes('/shop') || 
         window.location.pathname.includes('/benefits')) {
         
@@ -45,13 +44,13 @@
                 value: PRODUCT_PRICE,
                 currency: PRODUCT_CURRENCY
             });
-            console.log('Meta Pixel: ViewContent tracked');
+            console.log('✅ ViewContent tracked');
         }, 2000);
     }
 
-    // ===== Track AddToCart on Buy Now clicks =====
+    // ===== 3. Track AddToCart on any Buy button click =====
     document.addEventListener('click', function(e) {
-        const buyButton = e.target.closest('.btn--primary, .btn--outline, [href*="checkout"], .nav__cta, .mobile-bottom a:last-child');
+        const buyButton = e.target.closest('.btn--primary, .btn--small, [href*="checkout"], .nav__mobile-right .btn');
         
         if (buyButton) {
             fbq('track', 'AddToCart', {
@@ -62,12 +61,13 @@
                 currency: PRODUCT_CURRENCY,
                 num_items: 1
             });
-            console.log('Meta Pixel: AddToCart tracked');
+            console.log('✅ AddToCart tracked');
         }
     });
 
-    // ===== Track InitiateCheckout on checkout page load =====
+    // ===== 4. Track InitiateCheckout on checkout page =====
     if (window.location.pathname.includes('/checkout')) {
+        // Fire immediately when page loads
         fbq('track', 'InitiateCheckout', {
             content_name: PRODUCT_NAME,
             content_ids: [PRODUCT_ID],
@@ -76,25 +76,27 @@
             currency: PRODUCT_CURRENCY,
             num_items: 1
         });
-        console.log('Meta Pixel: InitiateCheckout tracked');
+        console.log('✅ InitiateCheckout tracked');
     }
 
-    // ===== Track Purchase on thank-you page =====
+    // ===== 5. Track Purchase on thank-you page =====
     if (window.location.pathname.includes('/thankyou')) {
+        // Get quantity from URL parameter
         const urlParams = new URLSearchParams(window.location.search);
         const qty = parseInt(urlParams.get('qty') || '1', 10);
+        const total = qty * PRODUCT_PRICE;
         
         fbq('track', 'Purchase', {
-            value: qty * PRODUCT_PRICE,
+            value: total,
             currency: PRODUCT_CURRENCY,
             content_ids: [PRODUCT_ID],
             content_name: PRODUCT_NAME,
             num_items: qty
         });
-        console.log(`Meta Pixel: Purchase tracked (qty: ${qty})`);
+        console.log(`✅ Purchase tracked (${qty} bottle${qty > 1 ? 's' : ''})`);
     }
 
-    // ===== Track Lead on WhatsApp clicks =====
+    // ===== 6. Track Lead on WhatsApp clicks =====
     document.addEventListener('click', function(e) {
         const waLink = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
         
@@ -102,7 +104,25 @@
             fbq('track', 'Lead', {
                 content_name: 'WhatsApp Contact'
             });
-            console.log('Meta Pixel: Lead tracked');
+            console.log('✅ Lead tracked (WhatsApp)');
+        }
+    });
+
+    // ===== 7. Track external links (Shopee, Lazada) =====
+    document.addEventListener('click', function(e) {
+        const shopeeLink = e.target.closest('a[href*="shopee"]');
+        const lazadaLink = e.target.closest('a[href*="lazada"]');
+        
+        if (shopeeLink) {
+            fbq('trackCustom', 'ShopeeClick', {
+                destination: 'Shopee Store'
+            });
+        }
+        
+        if (lazadaLink) {
+            fbq('trackCustom', 'LazadaClick', {
+                destination: 'Lazada Store'
+            });
         }
     });
 
