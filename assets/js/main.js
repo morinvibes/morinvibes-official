@@ -1,7 +1,7 @@
 /**
- * MorinVibes® — Main JavaScript v8.0
- * GitHub Pages: /morinvibes-official/ base path
- * Handles: mobile menu, scroll effects, animations, trust bar, popup, counters
+ * MorinVibes® — Main JavaScript v6.0
+ * All interactions, animations, and UI enhancements
+ * Smooth, fast, no lag on any device
  */
 
 (function() {
@@ -13,12 +13,11 @@
     const mobileMenu = document.querySelector('.nav__mobile');
     const closeBtn = document.querySelector('.nav__mobile-close');
     const scrollBtn = document.getElementById('scrollTop');
-    const trustBar = document.querySelector('.trust-bar');
     const progressBar = document.getElementById('progressBar');
-    const langToggle = document.querySelector('.lang-drop__toggle');
-    const langDropdown = document.querySelector('.lang-drop');
+    const langBtn = document.querySelector('.lang-btn');
+    const langDropdown = document.querySelector('.lang-dropdown');
 
-    // ===== Mobile Menu =====
+    // ===== 1. Mobile Menu with smooth animation =====
     function initMobileMenu() {
         if (!hamburger || !mobileMenu) return;
 
@@ -57,7 +56,7 @@
         });
     }
 
-    // ===== Navbar Scroll Effect =====
+    // ===== 2. Navbar scroll effect (frosted glass) =====
     function initNavScroll() {
         if (!nav) return;
 
@@ -70,7 +69,7 @@
         });
     }
 
-    // ===== Scroll Progress Bar =====
+    // ===== 3. Scroll progress bar =====
     function initProgressBar() {
         if (!progressBar) return;
 
@@ -82,7 +81,7 @@
         });
     }
 
-    // ===== Scroll to Top Button =====
+    // ===== 4. Scroll to top button =====
     function initScrollTop() {
         if (!scrollBtn) return;
 
@@ -102,11 +101,11 @@
         });
     }
 
-    // ===== Language Dropdown =====
-    function initLangDropdown() {
-        if (!langToggle || !langDropdown) return;
+    // ===== 5. Language dropdown =====
+    function initLanguageDropdown() {
+        if (!langBtn || !langDropdown) return;
 
-        langToggle.addEventListener('click', (e) => {
+        langBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             langDropdown.classList.toggle('open');
         });
@@ -118,32 +117,29 @@
         });
     }
 
-    // ===== Scroll Animations (Intersection Observer) =====
+    // ===== 6. Fade-up animations on scroll (Intersection Observer) =====
     function initScrollAnimations() {
-        const elements = document.querySelectorAll('.fade-up, .fade-in, .fade-left, .fade-right, .scale-in');
+        const fadeElements = document.querySelectorAll('.fade-up');
         
-        if (elements.length === 0) return;
+        if (fadeElements.length === 0) return;
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    
-                    // Optional: unobserve after animation for performance
-                    // observer.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.1,
+            threshold: 0.2,
             rootMargin: '0px 0px -50px 0px'
         });
 
-        elements.forEach(el => observer.observe(el));
+        fadeElements.forEach(el => observer.observe(el));
     }
 
-    // ===== Counter Animation =====
+    // ===== 7. Counter animation for stats =====
     function initCounters() {
-        const counters = document.querySelectorAll('.stat__number[data-count]');
+        const counters = document.querySelectorAll('.farm-stat__number, .product-svg-stat-number');
         
         if (counters.length === 0) return;
 
@@ -151,18 +147,22 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const el = entry.target;
-                    const target = parseInt(el.dataset.count || el.innerText.replace(/\D/g, ''), 10);
-                    const suffix = el.dataset.suffix || '';
+                    const text = el.textContent;
+                    const target = parseInt(text.replace(/[^0-9]/g, ''), 10);
+                    
+                    if (isNaN(target)) return;
+                    
                     let current = 0;
                     const increment = target / 50;
+                    const suffix = text.replace(/[0-9]/g, '');
                     
                     const updateCounter = () => {
                         current += increment;
                         if (current < target) {
-                            el.innerText = Math.floor(current) + suffix;
+                            el.textContent = Math.floor(current) + suffix;
                             requestAnimationFrame(updateCounter);
                         } else {
-                            el.innerText = target + suffix;
+                            el.textContent = target + suffix;
                         }
                     };
                     
@@ -175,25 +175,25 @@
         counters.forEach(counter => observer.observe(counter));
     }
 
-    // ===== Community Popup (Exit Intent or 45s delay) =====
+    // ===== 8. Community popup (exit intent) =====
     function initCommunityPopup() {
         const popup = document.querySelector('.community-popup');
         if (!popup) return;
 
         // Check if already shown
-        if (localStorage.getItem('mv_popup_shown')) return;
+        if (sessionStorage.getItem('popupShown')) return;
 
         function showPopup() {
             popup.classList.add('show');
-            localStorage.setItem('mv_popup_shown', 'true');
+            sessionStorage.setItem('popupShown', 'true');
         }
 
-        // Show after 45 seconds
-        setTimeout(showPopup, 45000);
+        // Show after 30 seconds
+        setTimeout(showPopup, 30000);
 
         // Exit intent
         document.addEventListener('mouseleave', (e) => {
-            if (e.clientY < 10 && !localStorage.getItem('mv_popup_shown')) {
+            if (e.clientY < 10 && !sessionStorage.getItem('popupShown')) {
                 showPopup();
             }
         });
@@ -215,7 +215,7 @@
         }
     }
 
-    // ===== Trust Bar Pause on Hover =====
+    // ===== 9. Trust bar pause on hover =====
     function initTrustBarHover() {
         const track = document.querySelector('.trust-bar__track');
         if (!track) return;
@@ -229,7 +229,7 @@
         });
     }
 
-    // ===== Button Ripple Effect =====
+    // ===== 10. Button ripple effect =====
     function initButtonRipple() {
         document.querySelectorAll('.btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
@@ -251,7 +251,68 @@
         });
     }
 
-    // Add ripple styles dynamically
+    // ===== 11. Card hover tilt effect (desktop only) =====
+    function initCardTilt() {
+        if (window.innerWidth < 768) return;
+        
+        document.querySelectorAll('.benefit-card, .product-svg-card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 25;
+                const rotateY = (centerX - x) / 25;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    }
+
+    // ===== 12. Smooth scroll for anchor links =====
+    function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    }
+
+    // ===== 13. Image lazy loading =====
+    function initLazyLoading() {
+        if ('IntersectionObserver' in window) {
+            const images = document.querySelectorAll('img[data-src]');
+            
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        }
+    }
+
+    // ===== 14. Add ripple styles =====
     function addRippleStyles() {
         const style = document.createElement('style');
         style.textContent = `
@@ -273,50 +334,29 @@
         document.head.appendChild(style);
     }
 
-    // ===== Card 3D Tilt Effect (Desktop only) =====
-    function initCardTilt() {
-        if (window.innerWidth < 768) return;
-        
-        document.querySelectorAll('.stat, .card').forEach(card => {
-            card.addEventListener('mousemove', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                
-                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-            });
-        });
-    }
-
-    // ===== Initialize Everything =====
+    // ===== 15. Initialize everything =====
     function init() {
+        addRippleStyles();
         initMobileMenu();
         initNavScroll();
         initProgressBar();
         initScrollTop();
-        initLangDropdown();
+        initLanguageDropdown();
         initScrollAnimations();
         initCounters();
         initCommunityPopup();
         initTrustBarHover();
-        addRippleStyles();
         initButtonRipple();
         initCardTilt();
+        initSmoothScroll();
+        initLazyLoading();
 
         // Update copyright year
         document.querySelectorAll('.current-year').forEach(el => {
             el.textContent = new Date().getFullYear();
         });
+
+        console.log('✅ MorinVibes® — All animations ready');
     }
 
     // Run when DOM is ready
