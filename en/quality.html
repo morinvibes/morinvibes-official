@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quality — MorinVibes® · GMP · KKM Approved</title>
+  <meta name="description" content="KKM Approved. GMP Certified. 100% pure moringa leaf powder. No fillers, no additives. Tested for purity." />
+  <meta property="og:title" content="Quality — MorinVibes®" />
+  <meta property="og:description" content="KKM Approved. GMP Certified. 100% pure moringa." />
+  <meta property="og:image" content="/morinvibes-official/images/cert-gmp.svg" />
+  <meta property="og:url" content="https://morinvibes.github.io/morinvibes-official/en/quality.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href="/morinvibes-official/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/global.css" />
+  <style>
+    /* Quality page specific styles */
+    .quality-hero {
+      background: linear-gradient(135deg, var(--paper), white);
+      padding: var(--sp-64) 0;
+      text-align: center;
+    }
+    
+    .cert-badges {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+    
+    .cert-badge {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: white;
+      padding: 12px 24px 12px 16px;
+      border-radius: 60px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s var(--ease);
+    }
+    
+    .cert-badge:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal);
+    }
+    
+    .cert-badge__icon {
+      width: 48px;
+      height: 48px;
+      background: var(--teal-ghost);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--teal);
+    }
+    
+    .cert-badge__text {
+      text-align: left;
+    }
+    
+    .cert-badge__title {
+      font-weight: 600;
+      color: var(--ink);
+    }
+    
+    .cert-badge__sub {
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+    
+    .purity-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin: 60px 0;
+    }
+    
+    .purity-card {
+      background: white;
+      padding: 40px 24px;
+      border-radius: 32px;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all 0.3s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .purity-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      transform: scaleX(0);
+      transition: transform 0.3s var(--ease);
+    }
+    
+    .purity-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .purity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .purity-number {
+      font-family: var(--serif);
+      font-size: 3.5rem;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+    
+    .purity-label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .purity-desc {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    
+    .gmp-section {
+      background: var(--paper);
+      border-radius: 32px;
+      padding: 48px;
+      margin: 48px 0;
+    }
+    
+    .gmp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    
+    .gmp-list {
+      margin-top: 24px;
+    }
+    
+    .gmp-item {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    
+    .gmp-item:last-child {
+      border-bottom: none;
+    }
+    
+    .gmp-item__icon {
+      color: var(--teal);
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    .gmp-item__content h4 {
+      margin-bottom: 4px;
+      color: var(--ink);
+    }
+    
+    .gmp-item__content p {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+    
+    .cert-image {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+    
+    .kkm-section {
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      border-radius: 32px;
+      padding: 48px;
+      color: white;
+      text-align: center;
+      margin: 48px 0;
+    }
+    
+    .kkm-section h2 {
+      color: white;
+    }
+    
+    .kkm-section p {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .kkm-badge-large {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 60px;
+      padding: 12px 32px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin: 24px 0;
+      backdrop-filter: blur(5px);
+    }
+    
+    .capsule-process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin: 48px 0;
+    }
+    
+    .process-step-card {
+      background: white;
+      padding: 32px 16px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all 0.3s var(--ease);
+    }
+    
+    .process-step-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal);
+    }
+    
+    .process-step-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    
+    .process-step-title {
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    
+    .process-step-desc {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+    }
+    
+    @media (max-width: 900px) {
+      .purity-metrics {
+        grid-template-columns: 1fr;
+      }
+      .gmp-grid {
+        grid-template-columns: 1fr;
+      }
+      .capsule-process {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 500px) {
+      .capsule-process {
+        grid-template-columns: 1fr;
+      }
+      .cert-badge {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation - Consistent across all pages -->
+  <nav class="nav">
+    <div class="nav__container">
+      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      
+      <a href="/morinvibes-official/en/" class="nav__logo">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
+      </a>
+      
+      <div class="nav__right">
+        <div class="lang-dropdown">
+          <button class="lang-btn">EN <span>▼</span></button>
+          <div class="lang-options">
+            <a href="/morinvibes-official/en/quality.html" class="lang-option active">English</a>
+            <a href="/morinvibes-official/bm/quality.html" class="lang-option">Bahasa Malaysia</a>
+            <a href="/morinvibes-official/zh/quality.html" class="lang-option">中文</a>
+          </div>
+        </div>
+        <a href="/morinvibes-official/en/checkout.html" class="btn btn--small">Buy Now — RM89</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav__mobile" id="mobile-menu">
+    <div class="nav__mobile-left">
+      <div class="nav__mobile-logo">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
+      </div>
+      <button class="nav__mobile-close" aria-label="Close menu">✕</button>
+      
+      <div class="nav__mobile-lang">
+        <a href="/morinvibes-official/en/">EN</a>
+        <a href="/morinvibes-official/bm/">BM</a>
+        <a href="/morinvibes-official/zh/">中文</a>
+      </div>
+      
+      <a href="/morinvibes-official/en/" class="nav__mobile-link">Home</a>
+      <a href="/morinvibes-official/en/farm.html" class="nav__mobile-link">The Farm</a>
+      <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link active">Quality</a>
+      <a href="/morinvibes-official/en/benefits.html" class="nav__mobile-link">Benefits</a>
+      <a href="/morinvibes-official/en/shop.html" class="nav__mobile-link">Shop</a>
+      <a href="/morinvibes-official/en/story.html" class="nav__mobile-link">Our Story</a>
+      <a href="/morinvibes-official/en/authentic.html" class="nav__mobile-link">Authenticity</a>
+      <a href="/morinvibes-official/en/ethics.html" class="nav__mobile-link">Ethics</a>
+      <a href="/morinvibes-official/en/faq.html" class="nav__mobile-link">FAQ</a>
+      <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="nav__mobile-link" style="color: var(--teal);">WhatsApp</a>
+    </div>
+    
+    <div class="nav__mobile-right">
+      <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="nav__mobile-right-img" />
+      <div class="nav__mobile-right-price">RM89 <span>/ bottle</span></div>
+      <div class="nav__mobile-right-sub">90 capsules · 500mg pure moringa</div>
+      <a href="/morinvibes-official/en/checkout.html" class="btn">Buy Now — RM89</a>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="progressBar"></div>
+
+  <main>
+    <!-- Quality Hero -->
+    <section class="quality-hero">
+      <div class="container">
+        <span class="eyebrow">PURE · TRANSPARENT · CERTIFIED</span>
+        <h1 style="max-width: 800px; margin: 0 auto 24px;">Quality You Can Trace.<br />Purity You Can Trust.</h1>
+        
+        <div class="cert-badges fade-up">
+          <div class="cert-badge">
+            <div class="cert-badge__icon">✓</div>
+            <div class="cert-badge__text">
+              <div class="cert-badge__title">KKM Approved</div>
+              <div class="cert-badge__sub">Ministry of Health Malaysia</div>
+            </div>
+          </div>
+          <div class="cert-badge" data-delay="1">
+            <div class="cert-badge__icon">⚙️</div>
+            <div class="cert-badge__text">
+              <div class="cert-badge__title">GMP Certified</div>
+              <div class="cert-badge__sub">Good Manufacturing Practice</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+      <div class="trust-bar__track">
+        <span>SINCE 2019</span><span class="dot">•</span>
+        <span>FARM DIRECT</span><span class="dot">•</span>
+        <span>GMP CERTIFIED</span><span class="dot">•</span>
+        <span>KKM APPROVED</span><span class="dot">•</span>
+        <span>VEGAN</span><span class="dot">•</span>
+        <span>MALAYSIA</span><span class="dot">•</span>
+        <span>90 CAPSULES</span><span class="dot">•</span>
+        <span>500MG EACH</span><span class="dot">•</span>
+        <!-- Duplicate for seamless loop -->
+        <span>SINCE 2019</span><span class="dot">•</span>
+        <span>FARM DIRECT</span><span class="dot">•</span>
+        <span>GMP CERTIFIED</span><span class="dot">•</span>
+        <span>KKM APPROVED</span><span class="dot">•</span>
+        <span>VEGAN</span><span class="dot">•</span>
+        <span>MALAYSIA</span><span class="dot">•</span>
+        <span>90 CAPSULES</span><span class="dot">•</span>
+        <span>500MG EACH</span><span class="dot">•</span>
+      </div>
+    </div>
+
+    <!-- Purity Metrics -->
+    <section class="section">
+      <div class="container">
+        <div class="purity-metrics">
+          <div class="purity-card fade-up">
+            <div class="purity-number">100%</div>
+            <div class="purity-label">Pure Leaf Powder</div>
+            <p class="purity-desc">No stems, no branches — only the nutrient-rich leaf, finely milled.</p>
+          </div>
+          <div class="purity-card fade-up" data-delay="1">
+            <div class="purity-number">0</div>
+            <div class="purity-label">Fillers</div>
+            <p class="purity-desc">No rice flour, maltodextrin, or flow agents. Just pure moringa.</p>
+          </div>
+          <div class="purity-card fade-up" data-delay="2">
+            <div class="purity-number">0</div>
+            <div class="purity-label">Additives</div>
+            <p class="purity-desc">No preservatives, no artificial colors, no binders.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GMP Standards -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="gmp-grid">
+          <div class="fade-up">
+            <span class="eyebrow">GMP STANDARDS</span>
+            <h2>Good Manufacturing Practice</h2>
+            <p class="lead">My facility follows strict GMP guidelines to ensure every batch meets the highest standards of quality, consistency, and safety.</p>
+            
+            <div class="gmp-list">
+              <div class="gmp-item">
+                <div class="gmp-item__icon">✓</div>
+                <div class="gmp-item__content">
+                  <h4>Controlled Environment</h4>
+                  <p>Temperature and humidity monitored 24/7</p>
+                </div>
+              </div>
+              <div class="gmp-item">
+                <div class="gmp-item__icon">✓</div>
+                <div class="gmp-item__content">
+                  <h4>Batch Traceability</h4>
+                  <p>Every batch numbered and recorded</p>
+                </div>
+              </div>
+              <div class="gmp-item">
+                <div class="gmp-item__icon">✓</div>
+                <div class="gmp-item__content">
+                  <h4>Equipment Sanitation</h4>
+                  <p>Regular cleaning protocols</p>
+                </div>
+              </div>
+              <div class="gmp-item">
+                <div class="gmp-item__icon">✓</div>
+                <div class="gmp-item__content">
+                  <h4>Staff Training</h4>
+                  <p>Qualified personnel at every step</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="fade-up" data-delay="2">
+            <div class="cert-image">
+              <img src="/morinvibes-official/images/cert-gmp.svg" alt="GMP Certificate" style="width: 100%; display: block;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KKM Approved Section -->
+    <section class="section">
+      <div class="container">
+        <div class="kkm-section fade-up">
+          <span class="eyebrow" style="color: rgba(255,255,255,0.8);">REGULATORY COMPLIANCE</span>
+          <h2>KKM Approved</h2>
+          <p style="max-width: 600px; margin: 0 auto;">Registered with the Ministry of Health Malaysia. My facility and products meet all regulatory requirements.</p>
+          <div class="kkm-badge-large">✓ KKM Approved</div>
+          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <span class="process-badge" style="background: rgba(255,255,255,0.2); color: white;">NPRA Guidelines</span>
+            <span class="process-badge" style="background: rgba(255,255,255,0.2); color: white;">GMP Compliant</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Purity Promise -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="text-center" style="margin-bottom: 48px;">
+          <span class="eyebrow">PURITY PROMISE</span>
+          <h2>What's Inside Is All You Need</h2>
+        </div>
+        
+        <div class="grid-3">
+          <div class="purity-card fade-up">
+            <div class="purity-number">🌱</div>
+            <div class="purity-label">100% Pure</div>
+            <p class="purity-desc">100% pure moringa leaf powder. Nothing else. Tested, trusted, transparent.</p>
+          </div>
+          <div class="purity-card fade-up" data-delay="1">
+            <div class="purity-number">🚫</div>
+            <div class="purity-label">No Fillers</div>
+            <p class="purity-desc">No rice flour, maltodextrin, or flow agents. Just pure moringa.</p>
+          </div>
+          <div class="purity-card fade-up" data-delay="2">
+            <div class="purity-number">🧪</div>
+            <div class="purity-label">Lab Tested</div>
+            <p class="purity-desc">Each batch is sampled and tested to verify identity and purity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capsule Process -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center" style="margin-bottom: 48px;">
+          <span class="eyebrow">FROM POWDER TO CAPSULE</span>
+          <h2>The Capsule Process</h2>
+        </div>
+        
+        <div class="capsule-process">
+          <div class="process-step-card fade-up">
+            <div class="process-step-icon">🌱</div>
+            <div class="process-step-title">Vegetarian</div>
+            <div class="process-step-desc">Plant-based shells</div>
+          </div>
+          <div class="process-step-card fade-up" data-delay="1">
+            <div class="process-step-icon">⚖️</div>
+            <div class="process-step-title">500mg Each</div>
+            <div class="process-step-desc">Consistent dosage</div>
+          </div>
+          <div class="process-step-card fade-up" data-delay="2">
+            <div class="process-step-icon">🧼</div>
+            <div class="process-step-title">Sterile</div>
+            <div class="process-step-desc">Clean room filling</div>
+          </div>
+          <div class="process-step-card fade-up" data-delay="3">
+            <div class="process-step-icon">📦</div>
+            <div class="process-step-title">90 Capsules</div>
+            <div class="process-step-desc">One month supply</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shopee Connection -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="shopee-proof fade-up">
+          <span class="eyebrow">SAME QUALITY, TRUSTED SINCE 2019</span>
+          <h2 style="margin-bottom: 16px;">The Same Rigorous Standards</h2>
+          <p class="lead" style="max-width: 600px; margin: 0 auto;">
+            Whether on Shopee or my website — every batch meets the same quality standards. Now with fresher batches and better prices.
+          </p>
+          
+          <div class="shopee-stores">
+            <span class="shopee-store">MorinVibes</span>
+            <span class="shopee-store">moringa_morinvibes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+      <div class="container">
+        <div class="whatsapp-section">
+          <div class="whatsapp-icon">✨</div>
+          <h2 style="margin-bottom: 16px;">Pure. Simple. Trusted.</h2>
+          <p style="max-width: 500px; margin: 0 auto 32px; color: var(--ink-soft);">
+            100% pure moringa, KKM approved, GMP certified.
+          </p>
+          <a href="/morinvibes-official/en/shop.html" class="btn btn--primary btn--large">Shop Now — RM89</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer - Consistent across all pages -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">
+            <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
+          </div>
+          <p class="footer__tagline">Farm-direct moringa from my land in Penang · Since 2019</p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener">f</a>
+            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener">📷</a>
+            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener">🎵</a>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener">📱</a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="footer__title">Navigate</h4>
+          <ul class="footer__links">
+            <li><a href="/morinvibes-official/en/farm.html">The Farm</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
+            <li><a href="/morinvibes-official/en/benefits.html">Benefits</a></li>
+            <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
+            <li><a href="/morinvibes-official/en/story.html">Our Story</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer__title">Trust</h4>
+          <ul class="footer__links">
+            <li><a href="/morinvibes-official/en/authentic.html">Authenticity</a></li>
+            <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
+            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+          </ul>
+          <div class="footer__badge">KKM Approved</div>
+        </div>
+        
+        <div>
+          <h4 class="footer__title">Contact</h4>
+          <ul class="footer__links">
+            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
+          </ul>
+          <p style="color: rgba(255,255,255,0.3); font-size: 0.85rem; margin-top: 20px;">
+            Bayan Lepas, Penang<br />Malaysia
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <div>© 2026 MorinVibes®. All rights reserved.</div>
+        <div>
+          <a href="/morinvibes-official/en/privacy.html">Privacy</a>
+          <a href="/morinvibes-official/en/terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <!-- Scripts -->
+  <script src="/morinvibes-official/assets/js/main.js"></script>
+  <script src="/morinvibes-official/assets/js/pixel.js"></script>
+</body>
+</html>
