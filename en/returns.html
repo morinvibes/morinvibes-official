@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Returns & Refund Policy — MorinVibes®</title>
+  <meta name="description" content="MorinVibes® returns and refund policy. Learn about our 48-hour damage reporting policy and satisfaction guarantee." />
+  <link rel="canonical" href="https://morinvibes.com/en/returns.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Returns & Refund Policy — MorinVibes®" />
+  <meta property="og:description" content="Our commitment to your satisfaction and clear policy on returns and refunds." />
+  <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/images/returns-hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/morinvibes-official/favicon.svg" type="image/svg+xml" />
+  
+  <!-- CSS - EXTERNAL ONLY -->
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/global.css" />
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/components.css" />
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/style.css" />
+  
+  <!-- Meta Pixel - MINIMAL (initialization only) -->
+  <script>
+  var PIXEL_ID = 'YOUR_PIXEL_ID'; /* REPLACE BEFORE GOING LIVE */
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  if(PIXEL_ID!=='YOUR_PIXEL_ID'){fbq('init',PIXEL_ID);fbq('track','PageView');}
+  </script>
+</head>
+<body>
+
+<!-- Scroll progress bar -->
+<div class="scroll-progress" id="progressBar"></div>
+
+<!-- CHECKOUT MODAL -->
+<div class="co-overlay" id="coOverlay" role="dialog" aria-modal="true" aria-label="Secure checkout">
+  <div class="co-modal">
+    <div class="co-head">
+      <div class="co-head-brand">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" height="30" />
+        <div class="co-head-info">
+          <strong>Moringa Capsules · 90 caps · 500mg</strong><br />RM89 + shipping
+        </div>
+      </div>
+      <button class="co-close" id="coClose" aria-label="Close checkout">✕</button>
+    </div>
+    <div class="co-trust">
+      <span>✓ KKM Approved</span>
+      <span>✓ GMP Certified</span>
+      <span>🔒 Secure Payment</span>
+      <span>🚚 Ships from Penang</span>
+    </div>
+    <div class="co-body">
+      <div class="co-spinner" id="coSpinner">
+        <div class="co-spinner__ring"></div>
+        <div class="co-spinner__text">Loading secure checkout…</div>
+      </div>
+      <iframe
+        id="coIframe"
+        class="co-iframe"
+        src=""
+        data-src="https://morinvibes.orderla.my/moringa-order"
+        title="Secure checkout"
+        sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
+      ></iframe>
+    </div>
+    <div class="co-foot">
+      Same product as our Shopee &amp; Lazada store. Need help?
+      <a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
+  <div class="nav__wrap">
+    <button class="nav__ham" id="navHam" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="/morinvibes-official/en/" class="nav__logo" aria-label="MorinVibes® — Home">
+      <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" width="180" height="46" />
+    </a>
+    <div class="nav__right">
+      <div class="lang-drop" id="langDrop">
+        <button class="lang-btn" id="langBtn" aria-expanded="false" aria-label="Language">
+          EN <span class="lang-btn__chev">▾</span>
+        </button>
+        <div class="lang-opts" role="menu">
+          <a href="/morinvibes-official/en/" class="lang-opt active" role="menuitem">🇬🇧 English</a>
+          <a href="/morinvibes-official/bm/" class="lang-opt" role="menuitem">🇲🇾 Bahasa Malaysia</a>
+          <a href="/morinvibes-official/zh/" class="lang-opt" role="menuitem">🇨🇳 中文</a>
+        </div>
+      </div>
+      <button class="btn btn--primary btn--sm" id="navOrderBtn">Order — RM89</button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="m-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="m-left">
+    <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="m-logo-img" height="38" />
+    <button class="m-close" id="mClose" aria-label="Close menu">✕</button>
+    <div class="m-lang">
+      <a href="/morinvibes-official/en/">EN</a>
+      <a href="/morinvibes-official/bm/">BM</a>
+      <a href="/morinvibes-official/zh/">中文</a>
+    </div>
+    <a href="/morinvibes-official/en/" class="m-link">Home</a>
+    <a href="/morinvibes-official/en/farm.html" class="m-link">Farm</a>
+    <a href="/morinvibes-official/en/quality.html" class="m-link">Quality</a>
+    <a href="/morinvibes-official/en/wellness.html" class="m-link">Wellness</a>
+    <a href="/morinvibes-official/en/shop.html" class="m-link">Shop</a>
+    <a href="/morinvibes-official/en/about.html" class="m-link">Story</a>
+    <a href="/morinvibes-official/en/testimonials.html" class="m-link">Reviews</a>
+    <a href="/morinvibes-official/en/faq.html" class="m-link">FAQ</a>
+    <a href="/morinvibes-official/en/ethics.html" class="m-link">Ethics</a>
+    <a href="/morinvibes-official/en/returns.html" class="m-link active">Returns</a>
+    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="m-link m-link--hi">💬 WhatsApp</a>
+  </div>
+  <div class="m-right">
+    <div class="m-right-leaf" aria-hidden="true"></div>
+    <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="m-prod-img" />
+    <div class="m-price">RM89 <span>/ bottle</span></div>
+    <div class="m-sub">90 capsules · 500mg · 30-day supply</div>
+    <button class="btn btn--primary btn--full" id="mOrderBtn">Order Now — RM89</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ===== RETURNS HERO SECTION ===== -->
+<section class="section" aria-labelledby="returns-hero-h" style="padding-top: calc(72px + 60px);">
+  <!-- V-mark watermark -->
+  <div class="v-watermark v-watermark--hero" aria-hidden="true"></div>
+  
+  <!-- Leaf decoration -->
+  <div class="leaf-deco leaf-deco--hero-tr" aria-hidden="true"></div>
+  
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="eyebrow">RETURNS & REFUNDS</span>
+      <h1 id="returns-hero-h" style="margin-bottom: 20px;">Our Promise to You.</h1>
+      <p class="lead" style="max-width: 700px; margin: 0 auto;">We want you to be completely satisfied with your MorinVibes® purchase. Here's what you need to know about returns and refunds.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POLICY SUMMARY ===== -->
+<section class="section section--sm">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 900px; margin: 0 auto;">
+      <div style="text-align: center;">
+        <div style="font-size: 2.5rem; margin-bottom: 15px;">📦</div>
+        <h3 style="margin-bottom: 10px;">No Returns</h3>
+        <p style="font-size: 13px; color: var(--ink-muted);">Due to hygiene, we can't accept returns once shipped</p>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 2.5rem; margin-bottom: 15px;">⏱️</div>
+        <h3 style="margin-bottom: 10px;">48 Hours</h3>
+        <p style="font-size: 13px; color: var(--ink-muted);">Report damage within 48 hours of delivery</p>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 2.5rem; margin-bottom: 15px;">🔄</div>
+        <h3 style="margin-bottom: 10px;">Replace/Refund</h3>
+        <p style="font-size: 13px; color: var(--ink-muted);">Damaged orders replaced or refunded at our discretion</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FULL POLICY ===== -->
+<section class="section section--alt">
+  <div class="container">
+    <div style="max-width: 800px; margin: 0 auto; background: white; border-radius: var(--r-lg); padding: 50px; box-shadow: var(--sh-sm);">
+      
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">Return & Refund Policy</h2>
+        <p style="margin-bottom: 20px; font-size: 1.1rem; line-height: 1.8;">Due to the nature of our products as food supplements with hygiene considerations, we cannot accept returns or exchanges once shipped. This policy is in place to protect the safety and quality of our products for all customers.</p>
+      </div>
+      
+      <div style="margin-bottom: 40px;">
+        <h3 style="margin-bottom: 15px;">Damaged or Defective Orders</h3>
+        <p style="margin-bottom: 20px;">If your order arrives damaged or defective, here's what to do:</p>
+        
+        <div style="background: var(--teal-ghost); padding: 25px; border-radius: var(--r-md); margin-bottom: 20px;">
+          <div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
+            <div style="background: var(--teal); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">1</div>
+            <div>
+              <strong style="display: block; margin-bottom: 5px;">Contact us within 48 hours</strong>
+              <p style="margin: 0; font-size: 14px;">Reach out via WhatsApp or email within 48 hours of delivery.</p>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
+            <div style="background: var(--teal); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">2</div>
+            <div>
+              <strong style="display: block; margin-bottom: 5px;">Provide photos</strong>
+              <p style="margin: 0; font-size: 14px;">Send clear photos of the damage or defect. This helps us improve our packaging.</p>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 20px; align-items: flex-start;">
+            <div style="background: var(--teal); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">3</div>
+            <div>
+              <strong style="display: block; margin-bottom: 5px;">We'll make it right</strong>
+              <p style="margin: 0; font-size: 14px;">At our discretion, we'll either replace the item or issue a full refund, including shipping.</p>
+            </div>
+          </div>
+        </div>
+        
+        <p style="font-size: 14px; color: var(--ink-muted);"><strong>Note:</strong> "Damaged" means the product arrived physically broken or the seal was broken. Natural variations in colour (green shades) are not considered defects — they're signs of a natural product.</p>
+      </div>
+      
+      <div style="margin-bottom: 40px;">
+        <h3 style="margin-bottom: 15px;">Satisfaction Guarantee</h3>
+        <p style="margin-bottom: 20px;">We take quality seriously. If you are unsatisfied for any reason, reach out directly and we will do our best to make it right.</p>
+        <p>While we can't accept returns for opened products, we genuinely want you to be happy with your purchase. If something isn't working for you, talk to us. We might be able to offer advice, suggest a different usage approach, or find another solution.</p>
+      </div>
+      
+      <div style="background: var(--paper); padding: 25px; border-radius: var(--r-md); border-left: 4px solid var(--teal);">
+        <h4 style="margin-bottom: 10px;">Our Philosophy</h4>
+        <p style="margin: 0; font-style: italic;">"Customer satisfaction matters more to us than any single transaction. If you're unhappy, we want to know why and how we can fix it."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT FOR RETURNS ===== -->
+<section class="section" aria-labelledby="contact-returns-h">
+  <div class="container">
+    <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+      <span class="eyebrow">NEED TO REPORT AN ISSUE?</span>
+      <h2 id="contact-returns-h" style="margin-bottom: 20px;">Contact Us Immediately.</h2>
+      <p class="lead" style="margin-bottom: 40px;">Remember: you must report within 48 hours of delivery.</p>
+      
+      <div style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
+        <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="btn btn--primary btn--lg" style="min-width: 250px;">
+          <span style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span>💬</span> Report on WhatsApp
+          </span>
+        </a>
+        <a href="mailto:morinvibes2019@gmail.com?subject=Return%20Request&body=Order%20Number%3A%0ADate%20Received%3A%0ADescription%20of%20Issue%3A%0A%0A(Please%20attach%20photos)" class="btn btn--outline btn--lg" style="min-width: 250px;">
+          <span style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span>📧</span> Email Us
+          </span>
+        </a>
+      </div>
+      
+      <p style="margin-top: 30px; font-size: 13px; color: var(--ink-muted);">Please include your order number and photos if applicable. We respond within 1-2 hours during business days.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ MINI ===== -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>Common Questions About Returns</h2>
+    </div>
+    
+    <div class="faq-list" style="max-width: 700px; margin: 40px auto 0;">
+      <!-- Question 1 -->
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          <span class="faq-q__text">Can I return if I don't like the taste?</span>
+          <span class="faq-q__icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-ans">
+          <div class="faq-ans__in">
+            Moringa has a naturally earthy, slightly bitter taste — it's a sign of potency, not a defect. Because of hygiene regulations, we can't accept returns for opened products based on taste preference. However, if the taste seems off (e.g., stale or rancid), that could indicate a quality issue — please contact us.
+          </div>
+        </div>
+      </div>
+      
+      <!-- Question 2 -->
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          <span class="faq-q__text">What if my package was stolen?</span>
+          <span class="faq-q__icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-ans">
+          <div class="faq-ans__in">
+            Once the tracking shows "delivered," the package is the responsibility of the carrier. Please contact the courier directly to file a claim. If you have video evidence or a police report, we can assist in communicating with the courier.
+          </div>
+        </div>
+      </div>
+      
+      <!-- Question 3 -->
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          <span class="faq-q__text">Do you refund shipping costs?</span>
+          <span class="faq-q__icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-ans">
+          <div class="faq-ans__in">
+            If we determine the damage or defect was our fault, we will refund the full amount including shipping. If the issue is with the courier (e.g., lost package), we'll work with you to file a claim.
+          </div>
+        </div>
+      </div>
+      
+      <!-- Question 4 -->
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          <span class="faq-q__text">How long do refunds take?</span>
+          <span class="faq-q__icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-ans">
+          <div class="faq-ans__in">
+            Once approved, refunds are processed within 3-5 business days. Depending on your bank, it may take additional time to appear in your account.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SHOP WITH CONFIDENCE ===== -->
+<section class="section">
+  <div class="container">
+    <div class="cta-block fade-up" style="background: linear-gradient(145deg, #e3f8fa, white);">
+      <!-- V-mark watermark -->
+      <div class="v-watermark v-watermark--cta" aria-hidden="true"></div>
+      
+      <div class="cta-block__in">
+        <span class="eyebrow">SHOP WITH CONFIDENCE</span>
+        <h2 style="margin-bottom: 20px;">Ready to Try MorinVibes®?</h2>
+        <p class="lead cta-lead">Farm-direct. KKM Approved. GMP Certified.</p>
+        <div class="cta-btns">
+          <button class="btn btn--primary btn--lg" id="returnsCtaBtn">Order Now — RM89</button>
+          <a href="/morinvibes-official/en/faq.html" class="btn btn--outline btn--lg">View All FAQs →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER (NO NEWSLETTER) ===== -->
+<footer class="footer" aria-label="Site footer">
+  <div class="footer__main">
+    <div class="container">
+      <div class="ft-grid">
+        <!-- Brand column -->
+        <div>
+          <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="ft-logo" width="160" height="38" />
+          <p class="ft-tag">Farm-direct moringa from our own land<br />in Penang, Malaysia · Since 2019</p>
+          <div class="ft-social" aria-label="Follow us">
+            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Instagram">📷</a>
+            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="TikTok">▶</a>
+            <a href="https://www.threads.com/@moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Threads">@</a>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="ft-soc-a" aria-label="WhatsApp">💬</a>
+          </div>
+          <div class="ft-cert">✓ KKM Approved · GMP Certified</div>
+        </div>
+
+        <!-- Explore = page navigation ONLY -->
+        <div>
+          <p class="ft-col-h">Explore</p>
+          <ul class="ft-links">
+            <li><a href="/morinvibes-official/en/farm.html">Farm</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
+            <li><a href="/morinvibes-official/en/wellness.html">Wellness</a></li>
+            <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
+            <li><a href="/morinvibes-official/en/about.html">Story</a></li>
+            <li><a href="/morinvibes-official/en/testimonials.html">Reviews</a></li>
+            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+            <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
+            <li><a href="/morinvibes-official/en/returns.html">Returns</a></li>
+          </ul>
+        </div>
+
+        <!-- Trust = legal / policy ONLY -->
+        <div>
+          <p class="ft-col-h">Trust</p>
+          <ul class="ft-links">
+            <li><a href="/morinvibes-official/en/ethics.html">Our Ethics</a></li>
+            <li><a href="/morinvibes-official/en/returns.html">Returns Policy</a></li>
+            <li><a href="/morinvibes-official/en/privacy.html">Privacy Policy</a></li>
+            <li><a href="/morinvibes-official/en/terms.html">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <p class="ft-col-h">Contact &amp; Order</p>
+          <ul class="ft-links">
+            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
+            <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener">Shopee Store</a></li>
+            <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener">Lazada Store</a></li>
+          </ul>
+          <p class="ft-addr">Bayan Lepas, Penang<br />Malaysia</p>
+        </div>
+      </div>
+
+      <!-- Copyright bar — ONE LINE, zero links -->
+      <div class="ft-bottom">
+        © 2026 MorinVibes®. All rights reserved. · Grown &amp; produced in Penang, Malaysia.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top button -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+<!-- Community Popup -->
+<div class="community-popup" id="communityPopup" role="dialog" aria-label="Stay connected">
+  <div class="pop-head">
+    <h4>Stay in the loop 🌿</h4>
+    <p>Updates, tips &amp; exclusive offers</p>
+    <button class="pop-close" id="popClose" aria-label="Close">✕</button>
+  </div>
+  <div class="pop-body">
+    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="pop-link" id="popWa">
+      <span class="pop-link__ico" aria-hidden="true">💬</span>
+      <div><div class="pop-link__lbl">Chat on WhatsApp</div><div class="pop-link__sub">Direct line to our team</div></div>
+    </a>
+    <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="pop-link">
+      <span class="pop-link__ico" aria-hidden="true">📷</span>
+      <div><div class="pop-link__lbl">Instagram</div><div class="pop-link__sub">@moringa_morinvibes</div></div>
+    </a>
+    <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="pop-link">
+      <span class="pop-link__ico" aria-hidden="true">▶</span>
+      <div><div class="pop-link__lbl">TikTok</div><div class="pop-link__sub">@moringa_morinvibes</div></div>
+    </a>
+    <div class="pop-dismiss" id="popDismiss" role="button" tabindex="0">No thanks, I'll browse</div>
+  </div>
+</div>
+
+<!-- Domain Guard (commented until morinvibes.com is live) -->
+<script>
+/*
+(function(){
+  var h=window.location.hostname;
+  if(h!=='morinvibes.com'&&h!=='localhost'&&h!=='127.0.0.1'){
+    var p=window.location.pathname.replace('/morinvibes-official','')||'/';
+    window.location.replace('https://morinvibes.com'+p+window.location.search);
+  }
+})();
+*/
+</script>
+
+<!-- JS - EXTERNAL ONLY -->
+<script src="/morinvibes-official/assets/js/pixel.js"></script>
+<script src="/morinvibes-official/assets/js/animations.js"></script>
+<script src="/morinvibes-official/assets/js/main.js"></script>
+
+<!-- Returns page specific script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Bind returns page CTA button to checkout
+    const returnsCtaBtn = document.getElementById('returnsCtaBtn');
+    
+    if (returnsCtaBtn && typeof openCheckout === 'function') {
+      returnsCtaBtn.addEventListener('click', openCheckout);
+    }
+    
+    // Track ViewContent for returns page
+    if (typeof window.fbTrack === 'function') {
+      window.fbTrack('ViewContent', {
+        content_name: 'Returns Policy Page',
+        content_category: 'Policies',
+        value: 89,
+        currency: 'MYR'
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
