@@ -2,262 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  
+  <!-- Title & Meta -->
   <title>FAQ — MorinVibes® · Frequently Asked Questions</title>
-  <meta name="description" content="Find answers to common questions about MorinVibes moringa: KKM approval, shipping, Shopee vs website, usage, and more." />
-  <meta property="og:title" content="FAQ — MorinVibes®" />
-  <meta property="og:description" content="Frequently asked questions about MorinVibes moringa." />
-  <meta property="og:image" content="/morinvibes-official/images/hero-main.svg" />
+  <meta name="description" content="Find answers to common questions about MorinVibes moringa: KKM approval, shipping, returns, usage, and more." />
+  <meta name="keywords" content="moringa FAQ, MorinVibes questions, moringa capsules FAQ, KKM approved questions" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
   <meta property="og:url" content="https://morinvibes.github.io/morinvibes-official/en/faq.html" />
+  <meta property="og:title" content="FAQ — MorinVibes® · Frequently Asked Questions" />
+  <meta property="og:description" content="Answers to common questions about MorinVibes moringa." />
+  <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/images/hero-main.jpg" />
+  
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FAQ — MorinVibes®" />
+  <meta name="twitter:description" content="Answers to common questions about MorinVibes moringa." />
+  <meta name="twitter:image" content="https://morinvibes.github.io/morinvibes-official/images/hero-main.jpg" />
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://morinvibes.github.io/morinvibes-official/en/faq.html" />
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/morinvibes-official/images/favicon.svg" />
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/global.css" />
+  
+  <!-- Page Transitions -->
+  <script src="/morinvibes-official/assets/js/transitions.js" defer></script>
+  
   <style>
-    /* ─── BRAND TOKENS (same as checkout page) ──────────────────── */
-    :root {
-      --teal: #0097b2;
-      --teal-light: #61cad8;
-      --teal-soft: #e1f3f5;
-      --teal-ghost: #f0fbfc;
-      --white: #ffffff;
-      --paper: #f9fdfd;
-      --ink: #1e3a38;
-      --ink-soft: #4d6a68;
-      --ink-muted: #8aa9a6;
-      --border: #e9f0f0;
-      --border-soft: #f0f7f7;
-      --footer-gradient: linear-gradient(160deg, #004a45, #013840, #002e38);
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans: 'DM Sans', system-ui, sans-serif;
-      --shadow-sm: 0 2px 12px rgba(0,151,178,.06);
-      --shadow-md: 0 8px 32px rgba(0,151,178,.10);
-      --shadow-lg: 0 24px 64px rgba(0,151,178,.13);
-      --ease: cubic-bezier(.4,0,.2,1);
-    }
-
-    /* ─── RESET ─────────────────────────────────────────────────── */
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--ink);background:var(--paper);overflow-x:hidden;}
-    body.menu-open{overflow:hidden;}
-    img{display:block;max-width:100%;}
-    a{text-decoration:none;color:inherit;}
-    button{font-family:var(--sans);cursor:pointer;border:none;background:none;}
-    p{margin-bottom:0;color:var(--ink-soft);}
-
-    /* ─── SCROLL PROGRESS ───────────────────────────────────────── */
-    .scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal-light));width:0%;z-index:9999;transition:width .1s linear;}
-
-    /* ─── NAV (exact copy from checkout) ────────────────────────── */
-    .nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:68px;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:all .3s var(--ease);}
-    .nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.06);}
-    .nav__container{max-width:1200px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;position:relative;}
-    .nav__hamburger{display:flex;flex-direction:column;gap:5px;padding:8px;border-radius:8px;transition:background .2s;z-index:2;}
-    .nav__hamburger:hover{background:var(--teal-ghost);}
-    .nav__hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s var(--ease);}
-    .nav__logo{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;transition:opacity .3s;}
-    .nav__logo img{height:44px;width:auto;max-width:180px;}
-    body.menu-open .nav__logo{opacity:0;pointer-events:none;}
-    .nav__right{margin-left:auto;display:flex;align-items:center;gap:12px;}
-    .lang-dropdown{position:relative;}
-    .lang-btn{display:flex;align-items:center;gap:4px;background:none;border:1px solid var(--border);border-radius:40px;padding:7px 12px;font-size:13px;font-weight:500;color:var(--ink-soft);transition:all .2s;}
-    .lang-btn:hover{border-color:var(--teal);color:var(--teal);}
-    .lang-options{position:absolute;top:calc(100% + 8px);right:0;background:white;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-md);min-width:160px;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(-8px);transition:all .2s var(--ease);}
-    .lang-dropdown.open .lang-options{opacity:1;pointer-events:all;transform:translateY(0);}
-    .lang-option{display:block;padding:12px 16px;font-size:14px;color:var(--ink-soft);transition:background .15s;}
-    .lang-option:hover{background:var(--teal-ghost);color:var(--ink);}
-    .lang-option.active{color:var(--teal);font-weight:500;}
-    .btn-nav{display:inline-flex;align-items:center;padding:9px 20px;border-radius:100px;font-size:13px;font-weight:500;background:var(--teal);color:white;box-shadow:0 4px 14px rgba(0,151,178,.28);transition:all .3s var(--ease);}
-    .btn-nav:hover{background:#007d96;transform:translateY(-1px);}
-
-    /* ─── MOBILE MENU (exact copy from checkout) ────────────────── */
-    .nav__mobile{position:fixed;inset:0;z-index:1001;display:flex;transform:translateX(100%);transition:transform .4s var(--ease);}
-    .nav__mobile.open{transform:translateX(0);}
-    .nav__mobile-left{width:55%;background:white;padding:40px 32px;display:flex;flex-direction:column;overflow-y:auto;box-shadow:4px 0 40px rgba(0,0,0,.1);}
-    .nav__mobile-right{flex:1;background:var(--teal-ghost);padding:40px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;}
-    .nav__mobile-logo img{height:38px;width:auto;}
-    .nav__mobile-close{align-self:flex-end;margin-top:8px;font-size:22px;color:var(--ink-soft);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;z-index:1002;transition:background .2s;}
-    .nav__mobile-close:hover{background:var(--teal-soft);color:var(--teal);}
-    .nav__mobile-lang{display:flex;gap:16px;margin:24px 0;}
-    .nav__mobile-lang a{font-size:13px;font-weight:500;color:var(--ink-muted);transition:color .2s;}
-    .nav__mobile-lang a:hover{color:var(--teal);}
-    .nav__mobile-link{padding:14px 0;font-size:16px;color:var(--ink-soft);border-bottom:1px solid var(--border-soft);transition:color .2s;}
-    .nav__mobile-link:hover{color:var(--teal);}
-    .nav__mobile-right-img{width:130px;height:auto;}
-    .nav__mobile-right-price{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--ink);}
-    .nav__mobile-right-price span{font-size:1rem;color:var(--ink-soft);}
-    .nav__mobile-right-sub{font-size:13px;color:var(--ink-muted);}
-    .btn-mobile{display:inline-flex;align-items:center;padding:13px 28px;border-radius:100px;font-size:15px;font-weight:500;background:var(--teal);color:white;transition:all .3s var(--ease);}
-
-    /* ─── SCROLL TO TOP ─────────────────────────────────────────── */
-    .scroll-top{position:fixed;bottom:28px;right:28px;z-index:500;width:44px;height:44px;border-radius:50%;background:var(--teal);color:white;font-size:16px;box-shadow:0 4px 20px rgba(0,151,178,.35);display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(20px);transition:all .3s var(--ease);pointer-events:none;}
-    .scroll-top.visible{opacity:1;transform:translateY(0);pointer-events:all;}
-    .scroll-top:hover{background:#007d96;transform:translateY(-2px);}
-
-    /* ─── FOOTER (exact copy from checkout) ─────────────────────── */
-    .footer{background:var(--footer-gradient);padding:64px 0 32px;color:rgba(255,255,255,.7);}
-    .footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08);max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px;}
-    .footer__logo img{height:38px;width:auto;filter:brightness(0) invert(1);margin-bottom:14px;}
-    .footer__tagline{font-size:13px;color:rgba(255,255,255,.4);line-height:1.6;}
-    .footer__social{display:flex;gap:10px;margin-top:18px;}
-    .footer__social a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .2s;}
-    .footer__social a:hover{background:var(--teal);transform:translateY(-2px);}
-    .footer__title{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px;}
-    .footer__links{list-style:none;}
-    .footer__links li{margin-bottom:10px;}
-    .footer__links a{font-size:13px;color:rgba(255,255,255,.55);transition:color .2s;}
-    .footer__links a:hover{color:var(--teal-light);}
-    .footer__badge{display:inline-block;margin-top:18px;padding:5px 12px;border-radius:100px;background:rgba(97,202,216,.15);border:1px solid rgba(97,202,216,.3);font-size:11px;font-weight:600;color:var(--teal-light);letter-spacing:.05em;}
-    .footer__bottom{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.25);}
-    .footer__bottom a{color:rgba(255,255,255,.35);margin-left:18px;transition:color .2s;}
-    .footer__bottom a:hover{color:var(--teal-light);}
-
-    /* ════════════════════════════════════════════
-       FAQ PAGE SPECIFIC STYLES (matching checkout aesthetic)
-    ════════════════════════════════════════════ */
-
-    .faq-main {
-      padding-top: calc(68px + 40px);
-      padding-bottom: 80px;
-      min-height: 100vh;
+    /* FAQ page specific styles */
+    .faq-hero {
+      background: var(--gradient-hero);
+      padding: calc(72px + 80px) 0 80px;
+      text-align: center;
       position: relative;
       overflow: hidden;
     }
-
-    /* Soft ambient glow (same as checkout) */
-    .faq-main::before {
-      content: '';
-      position: absolute;
-      width: 700px; height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,151,178,.04) 0%, transparent 70%);
-      top: -200px; left: -200px;
-      pointer-events: none;
-    }
-    .faq-main::after {
-      content: '';
-      position: absolute;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(97,202,216,.05) 0%, transparent 70%);
-      bottom: 0; right: -100px;
-      pointer-events: none;
-    }
-
-    .faq-inner {
-      position: relative; z-index: 1;
+    
+    .faq-container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 0 24px;
     }
-
-    /* Hero section */
-    .faq-hero {
-      text-align: center;
-      margin-bottom: 40px;
-      animation: fadeUp .5s var(--ease) both;
-    }
-
-    .faq-hero__eyebrow {
-      display: block;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 12px;
-    }
-
-    .faq-hero__title {
-      font-family: var(--serif);
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
-      font-weight: 300;
-      color: var(--ink);
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-
-    .faq-hero__sub {
-      font-size: 15px;
-      color: var(--ink-muted);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Category cards */
-    .faq-category {
-      margin-bottom: 48px;
-      animation: fadeUp .6s var(--ease) .1s both;
-    }
-
-    .faq-category__header {
+    
+    .faq-search {
+      background: white;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      padding: 16px 24px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
+      margin-bottom: 48px;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .faq-search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: transparent;
+    }
+    
+    .faq-search input::placeholder {
+      color: var(--ink-muted);
+    }
+    
+    .faq-search button {
+      background: var(--teal);
+      color: white;
+      border: none;
+      border-radius: var(--radius-full);
+      padding: 10px 24px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s var(--ease);
+    }
+    
+    .faq-search button:hover {
+      background: #007d96;
+      transform: translateY(-2px);
+    }
+    
+    .faq-category {
+      margin-bottom: 48px;
+    }
+    
+    .faq-category h2 {
       margin-bottom: 24px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
-    }
-
-    .faq-category__icon {
-      width: 32px;
-      height: 32px;
-      background: var(--teal-ghost);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--teal);
-      font-size: 16px;
-      border: 1px solid var(--teal-soft);
-    }
-
-    .faq-category__title {
-      font-family: var(--serif);
-      font-size: 1.5rem;
-      font-weight: 400;
       color: var(--ink);
     }
-
-    /* FAQ items - accordion style matching checkout's clean design */
+    
     .faq-items {
       background: white;
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow-sm);
       overflow: hidden;
     }
-
+    
     .faq-item {
       border-bottom: 1px solid var(--border-soft);
     }
-
+    
     .faq-item:last-child {
       border-bottom: none;
     }
-
+    
     .faq-question {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 24px;
       cursor: pointer;
-      transition: all .2s var(--ease);
+      transition: all 0.2s var(--ease);
     }
-
+    
     .faq-question:hover {
       background: var(--teal-ghost);
+      padding-left: 28px;
     }
-
+    
     .faq-question__text {
-      font-size: 15px;
+      font-size: 1rem;
       font-weight: 500;
       color: var(--ink);
       padding-right: 16px;
     }
-
+    
     .faq-question__icon {
       width: 28px;
       height: 28px;
@@ -269,35 +154,37 @@
       color: var(--teal);
       font-size: 18px;
       flex-shrink: 0;
-      transition: all .3s var(--ease);
+      transition: all 0.3s var(--ease);
     }
-
+    
     .faq-item.open .faq-question__icon {
       background: var(--teal);
       color: white;
       transform: rotate(45deg);
     }
-
+    
     .faq-answer {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s var(--ease);
     }
-
+    
     .faq-answer__inner {
       padding: 0 24px 24px 24px;
       color: var(--ink-soft);
-      font-size: 14px;
+      font-size: 0.95rem;
       line-height: 1.7;
     }
-
-    /* Expand all button */
+    
     .faq-controls {
       display: flex;
-      justify-content: flex-end;
-      margin-bottom: 24px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
     }
-
+    
     .expand-all {
       display: inline-flex;
       align-items: center;
@@ -305,187 +192,153 @@
       padding: 8px 16px;
       background: white;
       border: 1px solid var(--border);
-      border-radius: 100px;
-      font-size: 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
       font-weight: 500;
       color: var(--ink-soft);
       cursor: pointer;
-      transition: all .2s var(--ease);
+      transition: all 0.2s var(--ease);
     }
-
+    
     .expand-all:hover {
       border-color: var(--teal);
       color: var(--teal);
       background: var(--teal-ghost);
     }
-
-    .expand-all__icon {
-      font-size: 16px;
-      transition: transform .3s var(--ease);
-    }
-
-    .expand-all.all-open .expand-all__icon {
-      transform: rotate(45deg);
-    }
-
-    /* Contact card (matching checkout's fresh promise style) */
-    .faq-contact {
-      margin-top: 60px;
-      animation: fadeUp .6s var(--ease) .2s both;
-    }
-
-    .contact-card {
-      background: linear-gradient(135deg, var(--teal-ghost), var(--teal-soft));
-      border-radius: 24px;
-      border: 1px solid var(--teal-soft);
-      padding: 40px 32px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-card::before {
-      content: '';
-      position: absolute;
-      width: 300px; height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,151,178,.05) 0%, transparent 70%);
-      top: -80px; right: -80px;
-      pointer-events: none;
-    }
-
-    .contact-card__icon {
-      width: 64px;
-      height: 64px;
-      background: var(--teal);
-      border-radius: 20px;
+    
+    .category-pills {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 24px;
-      color: white;
-      font-size: 28px;
-      box-shadow: 0 8px 20px rgba(0,151,178,.25);
+      gap: 12px;
+      flex-wrap: wrap;
     }
-
-    .contact-card__title {
-      font-family: var(--serif);
-      font-size: 1.8rem;
-      font-weight: 300;
-      color: var(--ink);
-      margin-bottom: 12px;
-    }
-
-    .contact-card__text {
-      font-size: 15px;
+    
+    .category-pill {
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      background: white;
+      border: 1px solid var(--border);
       color: var(--ink-soft);
-      max-width: 500px;
-      margin: 0 auto 24px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s var(--ease);
     }
-
-    .contact-card__btn {
+    
+    .category-pill:hover,
+    .category-pill.active {
+      background: var(--teal);
+      color: white;
+      border-color: var(--teal);
+    }
+    
+    .contact-card {
+      background: linear-gradient(135deg, var(--teal), #007d96);
+      border-radius: var(--radius-xl);
+      padding: 48px;
+      color: white;
+      text-align: center;
+      margin: 60px 0;
+    }
+    
+    .contact-card h2 {
+      color: white;
+      margin-bottom: 16px;
+    }
+    
+    .contact-card p {
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 500px;
+      margin: 0 auto 32px;
+    }
+    
+    .contact-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .contact-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 14px 32px;
-      background: var(--teal);
-      color: white;
-      border-radius: 100px;
-      font-size: 14px;
+      border-radius: var(--radius-full);
       font-weight: 500;
-      transition: all .3s var(--ease);
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
     }
-
-    .contact-card__btn:hover {
-      background: #007d96;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,151,178,.3);
-    }
-
-    /* Back link (same as checkout) */
-    .faq-back {
-      text-align: center;
-      margin-top: 32px;
-      animation: fadeUp .6s var(--ease) .3s both;
-    }
-
-    .faq-back a {
-      font-size: 13px;
-      color: var(--ink-muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color .2s;
-    }
-
-    .faq-back a:hover {
+    
+    .contact-btn--primary {
+      background: white;
       color: var(--teal);
     }
-
-    /* Animations */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
+    
+    .contact-btn--primary:hover {
+      background: var(--teal-ghost);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
-
-    /* Responsive */
+    
+    .contact-btn--outline {
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: white;
+    }
+    
+    .contact-btn--outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .faq-not-found {
+      text-align: center;
+      padding: 48px;
+      background: var(--paper);
+      border-radius: var(--radius-lg);
+      display: none;
+    }
+    
+    .faq-not-found.show {
+      display: block;
+    }
+    
+    .faq-not-found p {
+      margin-bottom: 24px;
+      color: var(--ink-soft);
+    }
+    
     @media (max-width: 600px) {
-      .faq-main {
-        padding-top: calc(68px + 24px);
-        padding-bottom: 56px;
+      .faq-search {
+        flex-direction: column;
+        align-items: stretch;
       }
-      
-      .faq-category__title {
-        font-size: 1.3rem;
-      }
-      
       .faq-question {
         padding: 16px 20px;
       }
-      
       .faq-question__text {
-        font-size: 14px;
+        font-size: 0.95rem;
       }
-      
-      .faq-answer__inner {
-        padding: 0 20px 20px 20px;
-        font-size: 13px;
-      }
-      
       .contact-card {
         padding: 32px 20px;
-      }
-      
-      .contact-card__title {
-        font-size: 1.5rem;
-      }
-      
-      .footer__grid {
-        grid-template-columns: 1fr 1fr;
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .footer__grid {
-        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Scroll Progress Bar -->
   <div class="scroll-progress" id="progressBar"></div>
 
-  <!-- NAV (exact copy from checkout) -->
+  <!-- Navigation -->
   <nav class="nav" id="mainNav">
     <div class="nav__container">
       <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
+      
       <a href="/morinvibes-official/en/" class="nav__logo">
         <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
       </a>
+      
       <div class="nav__right">
         <div class="lang-dropdown" id="langDropdown">
           <button class="lang-btn" id="langBtn">EN <span>▾</span></button>
@@ -495,460 +348,739 @@
             <a href="/morinvibes-official/zh/faq.html" class="lang-option">中文</a>
           </div>
         </div>
-        <a href="/morinvibes-official/en/checkout.html" class="btn-nav">Buy Now — RM89</a>
+        <a href="/morinvibes-official/en/checkout.html" class="btn btn--small btn--primary">Buy Now — RM89</a>
       </div>
     </div>
   </nav>
 
-  <!-- MOBILE MENU (exact copy from checkout) -->
+  <!-- Mobile Menu -->
   <div class="nav__mobile" id="mobileMenu">
     <div class="nav__mobile-left">
-      <div class="nav__mobile-logo"><img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" /></div>
+      <div class="nav__mobile-logo">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
+      </div>
       <button class="nav__mobile-close" id="menuClose" aria-label="Close menu">✕</button>
+      
       <div class="nav__mobile-lang">
         <a href="/morinvibes-official/en/">EN</a>
         <a href="/morinvibes-official/bm/">BM</a>
         <a href="/morinvibes-official/zh/">中文</a>
       </div>
+      
       <a href="/morinvibes-official/en/" class="nav__mobile-link">Home</a>
       <a href="/morinvibes-official/en/farm.html" class="nav__mobile-link">The Farm</a>
-      <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link">Quality</a>
-      <a href="/morinvibes-official/en/benefits.html" class="nav__mobile-link">Benefits</a>
+      <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link">Quality & Authenticity</a>
+      <a href="/morinvibes-official/en/benefits.html" class="nav__mobile-link">Benefits & Journal</a>
       <a href="/morinvibes-official/en/shop.html" class="nav__mobile-link">Shop</a>
-      <a href="/morinvibes-official/en/story.html" class="nav__mobile-link">Our Story</a>
-      <a href="/morinvibes-official/en/authentic.html" class="nav__mobile-link">Authenticity</a>
-      <a href="/morinvibes-official/en/ethics.html" class="nav__mobile-link">Ethics</a>
+      <a href="/morinvibes-official/en/about.html" class="nav__mobile-link">About Us</a>
+      <a href="/morinvibes-official/en/testimonials.html" class="nav__mobile-link">Testimonials</a>
       <a href="/morinvibes-official/en/faq.html" class="nav__mobile-link active">FAQ</a>
-      <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="nav__mobile-link" style="color:var(--teal);">WhatsApp Jess ↗</a>
+      <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="nav__mobile-link" style="color: var(--teal);">WhatsApp Us</a>
     </div>
+    
     <div class="nav__mobile-right">
       <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="nav__mobile-right-img" />
       <div class="nav__mobile-right-price">RM89 <span>/ bottle</span></div>
       <div class="nav__mobile-right-sub">90 capsules · 500mg pure moringa</div>
-      <a href="/morinvibes-official/en/checkout.html" class="btn-mobile">Buy Now — RM89</a>
+      <a href="/morinvibes-official/en/checkout.html" class="btn btn--primary" style="width: 100%;">Buy Now — RM89</a>
     </div>
   </div>
 
-  <!-- MAIN FAQ CONTENT -->
-  <main class="faq-main">
-    <div class="faq-inner">
-
-      <!-- Hero Section -->
-      <div class="faq-hero">
-        <span class="faq-hero__eyebrow">COMMON QUESTIONS</span>
-        <h1 class="faq-hero__title">Frequently Asked Questions</h1>
-        <p class="faq-hero__sub">Find answers about our farm, products, shipping, and more</p>
+  <main>
+    <!-- FAQ Hero -->
+    <section class="faq-hero">
+      <div class="container">
+        <span class="eyebrow">HAVE QUESTIONS?</span>
+        <h1 style="max-width: 700px; margin: 0 auto;">Frequently Asked Questions</h1>
+        <p class="lead" style="max-width: 600px; margin: 24px auto 0;">
+          Find answers about our farm, products, shipping, and more.
+        </p>
       </div>
+    </section>
 
-      <!-- Expand/Collapse All Button -->
-      <div class="faq-controls">
-        <div class="expand-all" id="expandAllBtn">
-          <span class="expand-all__icon">+</span>
-          <span id="expandAllText">Expand All</span>
-        </div>
-      </div>
-
-      <!-- FAQ Categories -->
-
-      <!-- Category 1: Product & Registration -->
-      <div class="faq-category">
-        <div class="faq-category__header">
-          <div class="faq-category__icon">🌿</div>
-          <h2 class="faq-category__title">Product & Registration</h2>
-        </div>
-        <div class="faq-items">
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">Is MorinVibes KKM approved?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Yes! MorinVibes is KKM Approved and GMP Certified. Our facility meets all regulatory requirements of the Ministry of Health Malaysia. Look for the KKM sticker on every bottle.</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">What is GMP certification?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Good Manufacturing Practice (GMP) ensures products are consistently produced and controlled according to quality standards. It covers all aspects of production from raw materials to finished products — guaranteeing you receive the highest quality moringa.</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">Are your capsules halal?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Our capsules are vegetarian (plant-based) and contain no animal products. We are in the process of obtaining halal certification.</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">Is your moringa organic?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Our moringa is grown naturally on my family farm without synthetic pesticides or fertilizers. I follow traditional farming practices that respect the land. While we're not formally certified organic, our practices align with organic principles.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Category 2: Suitability & Usage -->
-      <div class="faq-category">
-        <div class="faq-category__header">
-          <div class="faq-category__icon">💚</div>
-          <h2 class="faq-category__title">Suitability & Usage</h2>
-        </div>
-        <div class="faq-items">
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">Who is moringa suitable for?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Moringa is generally suitable for adults seeking daily nutritional support. If you are pregnant, nursing, taking medication, or have medical conditions, please consult your healthcare provider before use.</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">How many capsules per day?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">The recommended daily intake is 2 capsules (1g) with water. This can be taken at any time of day, with or without food. Each bottle contains 90 capsules — a 45-day supply.</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">Can children take moringa?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">We recommend moringa for adults. For children, please consult a pediatrician before use.</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">What is the shelf life?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Our capsules have a shelf life of 24 months from the production date. Each bottle shows the current batch date. Store in a cool, dry place away from direct sunlight.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Category 3: Shipping & Delivery -->
-      <div class="faq-category">
-        <div class="faq-category__header">
-          <div class="faq-category__icon">📦</div>
-          <h2 class="faq-category__title">Shipping & Delivery</h2>
-        </div>
-        <div class="faq-items">
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">Shipping to East Malaysia?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Yes, we ship to Sabah and Sarawak. Shipping is RM15 for East Malaysia. Delivery typically takes 3-5 business days for West Malaysia, 5-7 days for East Malaysia.</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">How much is shipping?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Shipping is RM7 for West Malaysia and RM15 for East Malaysia (Sabah/Sarawak). Free shipping for orders over RM150.</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">How soon do you ship?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">We prepare fresh batches upon order. Shipping within 24-48 hours of order confirmation. You'll receive a WhatsApp message with tracking once your order ships.</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">Do you ship internationally?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Currently, we only ship within Malaysia. We hope to offer international shipping in the future.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Category 4: Shopee & Official Store -->
-      <div class="faq-category">
-        <div class="faq-category__header">
-          <div class="faq-category__icon">🛒</div>
-          <h2 class="faq-category__title">Shopee & Official Store</h2>
-        </div>
-        <div class="faq-items">
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">Is this the same brand as on Shopee?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Yes! We are the same MorinVibes brand you've trusted on Shopee since 2019. Our website offers the same quality with fresher batches and better prices (no 20% commission).</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">What are your Shopee store IDs?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Our official Shopee stores are: <strong>MorinVibes</strong> and <strong>moringa_morinvibes</strong>. We also have a presence on Lazada.</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">Why is the price different on your website?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Shopee charges a 20% commission, which increases the price. On our website, we pass the savings directly to you — same quality, better price. Plus, website orders are fresher because they're prepared after you order.</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">Can I still buy from Shopee?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Absolutely! We maintain our Shopee stores for your convenience. However, for the freshest batches and best prices, we recommend our website.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Category 5: The Farm -->
-      <div class="faq-category">
-        <div class="faq-category__header">
-          <div class="faq-category__icon">🌱</div>
-          <h2 class="faq-category__title">The Farm</h2>
-        </div>
-        <div class="faq-items">
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">Can I visit the farm?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">For farm security and soil protection, visits are not open to the public. However, I share photos and updates regularly on Instagram and WhatsApp. You're welcome to follow along there!</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">Do you have partners or middlemen?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">No. I own the land in Bayan Lepas, Penang. I grow it myself, harvest it myself, and prepare it myself. From my hands to yours — no middlemen, no partners, no third parties.</div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <div class="faq-question">
-              <span class="faq-question__text">How do you dry the leaves?</span>
-              <span class="faq-question__icon">+</span>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">I gently dry the leaves at controlled temperatures to preserve nutrients. Every batch is handled with care to maintain quality. No harsh processing, just careful, traditional methods.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact Card (matching checkout's fresh promise style) -->
-      <div class="faq-contact">
-        <div class="contact-card">
-          <div class="contact-card__icon">💬</div>
-          <h2 class="contact-card__title">Still Have Questions?</h2>
-          <p class="contact-card__text">I'm here to help! Reach out to me directly for personalized support.</p>
-          <a href="https://wa.me/60102766095?text=Hi%20Jess%2C%20I%20have%20a%20question%20about..." target="_blank" rel="noopener noreferrer" class="contact-card__btn">
-            WhatsApp Me
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 4l3 3-3 3"/></svg>
-          </a>
-          <p style="margin-top: 16px; font-size: 13px; color: var(--ink-muted);">🐼 I usually respond within a few hours</p>
-        </div>
-      </div>
-
-      <!-- Back link (same as checkout) -->
-      <div class="faq-back">
-        <a href="/morinvibes-official/en/">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2L3 6.5 8 11"/></svg>
-          Return to home
-        </a>
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+      <div class="trust-bar__track">
+        <span>SINCE 2019</span><span class="dot">•</span>
+        <span>FARM DIRECT</span><span class="dot">•</span>
+        <span>GMP CERTIFIED</span><span class="dot">•</span>
+        <span>KKM APPROVED</span><span class="dot">•</span>
+        <span>VEGAN</span><span class="dot">•</span>
+        <span>PENANG</span><span class="dot">•</span>
+        <span>90 CAPSULES</span><span class="dot">•</span>
+        <span>500MG EACH</span><span class="dot">•</span>
+        <!-- Duplicate for seamless loop -->
+        <span>SINCE 2019</span><span class="dot">•</span>
+        <span>FARM DIRECT</span><span class="dot">•</span>
+        <span>GMP CERTIFIED</span><span class="dot">•</span>
+        <span>KKM APPROVED</span><span class="dot">•</span>
+        <span>VEGAN</span><span class="dot">•</span>
+        <span>PENANG</span><span class="dot">•</span>
+        <span>90 CAPSULES</span><span class="dot">•</span>
+        <span>500MG EACH</span><span class="dot">•</span>
       </div>
     </div>
+
+    <!-- FAQ Container -->
+    <div class="section">
+      <div class="container">
+        <div class="faq-container">
+          
+          <!-- Search & Filter Controls -->
+          <div class="faq-controls">
+            <div class="category-pills">
+              <span class="category-pill active" data-category="all">All Questions</span>
+              <span class="category-pill" data-category="product">Product</span>
+              <span class="category-pill" data-category="shipping">Shipping</span>
+              <span class="category-pill" data-category="orders">Orders</span>
+              <span class="category-pill" data-category="farm">The Farm</span>
+            </div>
+            
+            <div class="expand-all" id="expandAllBtn">
+              <span class="expand-all__icon">+</span>
+              <span id="expandAllText">Expand All</span>
+            </div>
+          </div>
+          
+          <!-- Search Box -->
+          <div class="faq-search">
+            <input type="text" id="faqSearch" placeholder="Search questions..." />
+            <button id="searchBtn">Search</button>
+          </div>
+
+          <!-- Category 1: Product & Registration -->
+          <div class="faq-category" data-category="product">
+            <h2>Product & Registration</h2>
+            <div class="faq-items">
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Is MorinVibes KKM approved?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Yes! MorinVibes is KKM Approved and GMP Certified by the Ministry of Health Malaysia. Look for the KKM sticker on every bottle.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">What is GMP certification?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Good Manufacturing Practice (GMP) ensures products are consistently produced and controlled according to quality standards. It covers all aspects of production from raw materials to finished products — guaranteeing you receive the highest quality moringa.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Are your capsules halal?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Our capsules are vegetarian (plant-based) and contain no animal products. We are in the process of obtaining halal certification.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Is your moringa organic?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Our moringa is grown naturally on our family farm without synthetic pesticides or fertilizers. We follow traditional farming practices that respect the land. While we're not formally certified organic, our practices align with organic principles.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Suitability & Usage -->
+          <div class="faq-category" data-category="product">
+            <h2>Suitability & Usage</h2>
+            <div class="faq-items">
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Who is moringa suitable for?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Moringa is generally suitable for adults seeking daily nutritional support. If you are pregnant, nursing, taking medication, or have medical conditions, please consult your healthcare provider before use.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">How many capsules per day?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">The recommended daily intake is 2 capsules (1g) with water. This can be taken at any time of day, with or without food. Each bottle contains 90 capsules — a 45-day supply.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Can children take moringa?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">We recommend moringa for adults. For children, please consult a pediatrician before use.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">What is the shelf life?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Our capsules have a shelf life of 24 months from the production date. Each bottle shows the current batch date. Store in a cool, dry place away from direct sunlight.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Can I take moringa with other supplements?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Yes, moringa can generally be taken alongside other supplements. However, we recommend consulting your healthcare provider for personalized advice.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Shipping & Delivery -->
+          <div class="faq-category" data-category="shipping">
+            <h2>Shipping & Delivery</h2>
+            <div class="faq-items">
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Shipping to East Malaysia?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Yes, we ship to Sabah and Sarawak. Shipping is RM15 for East Malaysia. Delivery typically takes 3-5 business days for West Malaysia, 5-7 days for East Malaysia.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">How much is shipping?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Shipping is RM7 for West Malaysia and RM15 for East Malaysia (Sabah/Sarawak). Free shipping for orders over RM150.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">How soon do you ship?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">We ship within 24-48 hours of order confirmation. You'll receive a WhatsApp message with tracking once your order ships.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Do you ship internationally?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Currently, we only ship within Malaysia. We hope to offer international shipping in the future.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Can I track my order?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Yes, you will receive a tracking number via WhatsApp once your order ships.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 4: Shopee & Official Store -->
+          <div class="faq-category" data-category="product">
+            <h2>Shopee & Official Store</h2>
+            <div class="faq-items">
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Is this the same brand as on Shopee?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Yes! We are the same MorinVibes brand you've trusted on Shopee since 2019. Our website offers the same quality with fresher batches and better prices (no platform fees).</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">What are your Shopee store IDs?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Our official Shopee stores are: <strong>MorinVibes</strong> and <strong>moringa_morinvibes</strong>. We also have a presence on Lazada.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Why is the price different on your website?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Shopee charges a 20% commission, which increases the price. On our website, we pass the savings directly to you — same quality, better price. Plus, website orders are from our freshest batch rotation.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Can I still buy from Shopee?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Absolutely! We maintain our Shopee stores for your convenience. However, for the best prices and freshest batches, we recommend our website.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 5: Orders & Returns -->
+          <div class="faq-category" data-category="orders">
+            <h2>Orders & Returns</h2>
+            <div class="faq-items">
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">What payment methods do you accept?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">We accept bank transfers, credit/debit cards, and FPX through our secure checkout.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Can I cancel or change my order?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Please contact us within 2 hours of placing your order if you need to make changes. Once preparation begins, changes may not be possible.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">What is your return policy?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Due to the nature of our products being food supplements with hygiene considerations, we cannot accept returns or exchanges once the product has been shipped. If your order arrives damaged or defective, please contact us within 48 hours with photos and we will make it right — either a replacement or refund at our discretion.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">How can I contact support?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">You can reach us directly via WhatsApp (fastest), email, or Instagram DM. We personally respond to all inquiries.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 6: The Farm -->
+          <div class="faq-category" data-category="farm">
+            <h2>The Farm</h2>
+            <div class="faq-items">
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Can I visit the farm?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">For farm security and soil protection, visits are not open to the public. However, we share photos and updates regularly on Instagram and WhatsApp. You're welcome to follow along there!</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Do you have partners or middlemen?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">No. We own the land in Bayan Lepas, Penang. We grow it ourselves, harvest it ourselves, and prepare it ourselves. From our hands to yours — no middlemen, no third parties.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">How do you dry the leaves?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">We gently dry the leaves at controlled temperatures to preserve nutrients. Every batch is handled with care to maintain quality. No harsh processing, just careful, traditional methods.</div>
+                </div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="faq-question__text">Where is the farm located?</span>
+                  <span class="faq-question__icon">+</span>
+                </div>
+                <div class="faq-answer">
+                  <div class="faq-answer__inner">Our farm is in Bayan Lepas, Penang, Malaysia. We've been cultivating moringa on this land since 2019.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- No Results Message -->
+          <div class="faq-not-found" id="noResults">
+            <p>No questions match your search. Try different keywords or browse categories above.</p>
+            <button class="btn btn--outline" id="clearSearch">Clear Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Card -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="contact-card fade-up">
+          <h2>Still Have Questions?</h2>
+          <p>We're here to help! Reach out to us directly for personalized support.</p>
+          <div class="contact-buttons">
+            <a href="https://wa.me/60102766095?text=Hi%20Jess%2C%20I%20have%20a%20question%20about..." target="_blank" rel="noopener" class="contact-btn contact-btn--primary">
+              <span>📱</span> WhatsApp Us
+            </a>
+            <a href="mailto:morinvibes2019@gmail.com" class="contact-btn contact-btn--outline">
+              <span>📧</span> Email Us
+            </a>
+          </div>
+          <p style="margin-top: 24px; font-size: 0.9rem; color: rgba(255,255,255,0.8);">🐼 Usually responds within a few hours</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-section fade-up">
+          <h2 class="cta-title">Ready to Try MorinVibes?</h2>
+          <p class="cta-text">100% pure moringa from our farm to your door.</p>
+          <div class="cta-buttons">
+            <a href="/morinvibes-official/en/shop.html" class="btn btn--primary btn--large">Shop Now — RM89</a>
+            <a href="/morinvibes-official/en/testimonials.html" class="btn btn--outline btn--large">Read Reviews</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- FOOTER (exact copy from checkout) -->
+  <!-- Footer -->
   <footer class="footer">
-    <div class="footer__grid">
-      <div>
-        <div class="footer__logo"><img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" /></div>
-        <p class="footer__tagline">Farm-direct moringa from my land in Penang · Since 2019</p>
-        <div class="footer__social">
-          <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener">f</a>
-          <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener">📷</a>
-          <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener">▶</a>
-          <a href="https://www.threads.com/@moringa_morinvibes" target="_blank" rel="noopener">@</a>
-          <a href="https://wa.me/60102766095" target="_blank" rel="noopener">💬</a>
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="footer__logo" />
+          <p class="footer__tagline">Farm-direct moringa from our own land in Penang, Malaysia · Since 2019</p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener">f</a>
+            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener">📷</a>
+            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener">▶</a>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener">💬</a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="footer__title">Navigate</h4>
+          <ul class="footer__links">
+            <li><a href="/morinvibes-official/en/farm.html">The Farm</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality & Authenticity</a></li>
+            <li><a href="/morinvibes-official/en/benefits.html">Benefits & Journal</a></li>
+            <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
+            <li><a href="/morinvibes-official/en/about.html">About Us</a></li>
+            <li><a href="/morinvibes-official/en/testimonials.html">Testimonials</a></li>
+            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer__title">Trust</h4>
+          <ul class="footer__links">
+            <li><a href="/morinvibes-official/en/authenticity.html">Authenticity</a></li>
+            <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
+            <li><a href="/morinvibes-official/en/returns.html">Returns Policy</a></li>
+            <li><a href="/morinvibes-official/en/privacy.html">Privacy Policy</a></li>
+            <li><a href="/morinvibes-official/en/terms.html">Terms</a></li>
+          </ul>
+          <div class="footer__badge">KKM Approved</div>
+        </div>
+        
+        <div>
+          <h4 class="footer__title">Contact</h4>
+          <ul class="footer__links">
+            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
+            <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener">Shopee Store</a></li>
+            <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener">Lazada Store</a></li>
+          </ul>
+          <p class="footer__address">Bayan Lepas, Penang<br />Malaysia</p>
         </div>
       </div>
-      <div>
-        <h3 class="footer__title">Navigate</h3>
-        <ul class="footer__links">
-          <li><a href="/morinvibes-official/en/farm.html">The Farm</a></li>
-          <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
-          <li><a href="/morinvibes-official/en/benefits.html">Benefits</a></li>
-          <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
-          <li><a href="/morinvibes-official/en/story.html">Our Story</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="footer__title">Trust</h3>
-        <ul class="footer__links">
-          <li><a href="/morinvibes-official/en/authentic.html">Authenticity</a></li>
-          <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
-          <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
-        </ul>
-        <div class="footer__badge">KKM Approved</div>
-      </div>
-      <div>
-        <h3 class="footer__title">Contact</h3>
-        <ul class="footer__links">
-          <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp Jess</a></li>
-          <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
-        </ul>
-        <p style="color:rgba(255,255,255,.25);font-size:13px;margin-top:18px;line-height:1.6;">Bayan Lepas, Penang<br>Malaysia</p>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div>© 2026 MorinVibes®. All rights reserved.</div>
-      <div>
-        <a href="/morinvibes-official/en/privacy.html">Privacy</a>
-        <a href="/morinvibes-official/en/terms.html">Terms</a>
+      
+      <div class="footer__bottom">
+        <div>© 2026 MorinVibes®. All rights reserved.</div>
+        <div>
+          <a href="/morinvibes-official/en/privacy.html">Privacy</a>
+          <a href="/morinvibes-official/en/terms.html">Terms</a>
+        </div>
       </div>
     </div>
   </footer>
 
+  <!-- Scroll to Top Button -->
   <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
 
-  <script src="/morinvibes-official/assets/js/pixel.js" defer></script>
+  <!-- Scripts -->
+  <script src="/morinvibes-official/assets/js/main.js"></script>
+  <script src="/morinvibes-official/assets/js/pixel.js"></script>
+  
   <script>
-    // ─── NAV + SCROLL ────────────────────────────────────────── //
-    const pb = document.getElementById('progressBar');
-    const st = document.getElementById('scrollTop');
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      const s = window.scrollY, d = document.documentElement.scrollHeight - window.innerHeight;
-      pb.style.width = (s / d * 100) + '%';
-      nav.classList.toggle('scrolled', s > 40);
-      st.classList.toggle('visible', s > 300);
-    }, { passive: true });
-    st.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // ─── MOBILE MENU ─────────────────────────────────────────── //
-    const ham = document.getElementById('hamburger');
-    const mm = document.getElementById('mobileMenu');
-    const mc = document.getElementById('menuClose');
-    const openM = () => { mm.classList.add('open'); document.body.classList.add('menu-open'); ham.setAttribute('aria-expanded', 'true'); };
-    const closeM = () => { mm.classList.remove('open'); document.body.classList.remove('menu-open'); ham.setAttribute('aria-expanded', 'false'); };
-    ham.addEventListener('click', openM);
-    mc.addEventListener('click', closeM);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeM(); });
-
-    // ─── LANG DROPDOWN ───────────────────────────────────────── //
-    const ld = document.getElementById('langDropdown');
-    document.getElementById('langBtn').addEventListener('click', e => { e.stopPropagation(); ld.classList.toggle('open'); });
-    document.addEventListener('click', () => ld.classList.remove('open'));
-
-    // ─── FAQ ACCORDION ───────────────────────────────────────── //
-    const faqItems = document.querySelectorAll('.faq-item');
-    const expandAllBtn = document.getElementById('expandAllBtn');
-    const expandAllText = document.getElementById('expandAllText');
-
-    // Open/close individual FAQ
-    faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      question.addEventListener('click', () => {
-        const isOpen = item.classList.contains('open');
-        const answer = item.querySelector('.faq-answer');
-        const icon = item.querySelector('.faq-question__icon');
-        
-        // Close all others (optional - remove if you want independent toggles)
-        // faqItems.forEach(otherItem => {
-        //   if (otherItem !== item && otherItem.classList.contains('open')) {
-        //     otherItem.classList.remove('open');
-        //     otherItem.querySelector('.faq-answer').style.maxHeight = null;
-        //     otherItem.querySelector('.faq-question__icon').textContent = '+';
-        //   }
-        // });
-        
-        if (isOpen) {
-          item.classList.remove('open');
-          answer.style.maxHeight = null;
-          icon.textContent = '+';
-        } else {
-          item.classList.add('open');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-          icon.textContent = '−';
-        }
-      });
-    });
-
-    // Expand/Collapse All
-    let allOpen = false;
-    expandAllBtn.addEventListener('click', () => {
-      allOpen = !allOpen;
+    (function() {
+      // Progress bar
+      const progressBar = document.getElementById('progressBar');
+      const scrollBtn = document.getElementById('scrollTop');
+      const nav = document.getElementById('mainNav');
       
-      faqItems.forEach(item => {
-        const answer = item.querySelector('.faq-answer');
-        const icon = item.querySelector('.faq-question__icon');
+      window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (scrollY / docHeight) * 100;
+        if (progressBar) progressBar.style.width = scrolled + '%';
         
-        if (allOpen) {
-          item.classList.add('open');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-          icon.textContent = '−';
-          expandAllText.textContent = 'Collapse All';
-          expandAllBtn.classList.add('all-open');
-        } else {
-          item.classList.remove('open');
-          answer.style.maxHeight = null;
-          icon.textContent = '+';
-          expandAllText.textContent = 'Expand All';
-          expandAllBtn.classList.remove('all-open');
+        nav.classList.toggle('scrolled', scrollY > 40);
+        if (scrollBtn) scrollBtn.classList.toggle('visible', scrollY > 400);
+      }, { passive: true });
+      
+      if (scrollBtn) {
+        scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      }
+      
+      // Mobile menu
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const closeBtn = document.getElementById('menuClose');
+      
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          mobileMenu.classList.add('open');
+          document.body.classList.add('menu-open');
+          hamburger.setAttribute('aria-expanded', 'true');
+        });
+        
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.classList.remove('menu-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          });
         }
+        
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            document.body.classList.remove('menu-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+      
+      // Language dropdown
+      const langBtn = document.getElementById('langBtn');
+      const langDropdown = document.getElementById('langDropdown');
+      
+      if (langBtn && langDropdown) {
+        langBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          langDropdown.classList.toggle('open');
+        });
+        
+        document.addEventListener('click', () => {
+          langDropdown.classList.remove('open');
+        });
+      }
+      
+      // Fade-up observer
+      const fadeElements = document.querySelectorAll('.fade-up');
+      if (fadeElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        
+        fadeElements.forEach(el => observer.observe(el));
+      }
+      
+      // FAQ Accordion
+      document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', function() {
+          const item = this.parentElement;
+          const answer = this.nextElementSibling;
+          const icon = this.querySelector('.faq-question__icon');
+          
+          item.classList.toggle('open');
+          
+          if (item.classList.contains('open')) {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            icon.textContent = '−';
+          } else {
+            answer.style.maxHeight = null;
+            icon.textContent = '+';
+          }
+        });
       });
-    });
+      
+      // Expand/Collapse All
+      const expandAllBtn = document.getElementById('expandAllBtn');
+      const expandAllText = document.getElementById('expandAllText');
+      
+      if (expandAllBtn) {
+        expandAllBtn.addEventListener('click', function() {
+          const allItems = document.querySelectorAll('.faq-item');
+          const anyOpen = Array.from(allItems).some(item => item.classList.contains('open'));
+          
+          allItems.forEach(item => {
+            const answer = item.querySelector('.faq-answer');
+            const icon = item.querySelector('.faq-question__icon');
+            
+            if (anyOpen) {
+              // Close all
+              item.classList.remove('open');
+              answer.style.maxHeight = null;
+              icon.textContent = '+';
+              expandAllText.textContent = 'Expand All';
+            } else {
+              // Open all
+              item.classList.add('open');
+              answer.style.maxHeight = answer.scrollHeight + 'px';
+              icon.textContent = '−';
+              expandAllText.textContent = 'Collapse All';
+            }
+          });
+        });
+      }
+      
+      // Category filtering
+      const categoryPills = document.querySelectorAll('.category-pill');
+      const faqCategories = document.querySelectorAll('.faq-category');
+      
+      categoryPills.forEach(pill => {
+        pill.addEventListener('click', function() {
+          const category = this.dataset.category;
+          
+          // Update active pill
+          categoryPills.forEach(p => p.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Show/hide categories
+          if (category === 'all') {
+            faqCategories.forEach(cat => cat.style.display = 'block');
+          } else {
+            faqCategories.forEach(cat => {
+              if (cat.dataset.category === category) {
+                cat.style.display = 'block';
+              } else {
+                cat.style.display = 'none';
+              }
+            });
+          }
+        });
+      });
+      
+      // Search functionality
+      const searchInput = document.getElementById('faqSearch');
+      const searchBtn = document.getElementById('searchBtn');
+      const noResults = document.getElementById('noResults');
+      const clearSearch = document.getElementById('clearSearch');
+      
+      function searchFAQ() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const faqItems = document.querySelectorAll('.faq-item');
+        let visibleCount = 0;
+        
+        if (searchTerm === '') {
+          // Show all categories and items
+          faqCategories.forEach(cat => cat.style.display = 'block');
+          faqItems.forEach(item => item.style.display = 'block');
+          noResults.classList.remove('show');
+          return;
+        }
+        
+        // Show all categories first
+        faqCategories.forEach(cat => cat.style.display = 'block');
+        
+        faqItems.forEach(item => {
+          const question = item.querySelector('.faq-question__text').textContent.toLowerCase();
+          const answer = item.querySelector('.faq-answer__inner').textContent.toLowerCase();
+          
+          if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+            item.style.display = 'block';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        
+        // Hide empty categories
+        faqCategories.forEach(cat => {
+          const visibleItems = cat.querySelectorAll('.faq-item[style="display: block"]').length;
+          if (visibleItems === 0) {
+            cat.style.display = 'none';
+          }
+        });
+        
+        if (visibleCount === 0) {
+          noResults.classList.add('show');
+        } else {
+          noResults.classList.remove('show');
+        }
+      }
+      
+      if (searchBtn) {
+        searchBtn.addEventListener('click', searchFAQ);
+      }
+      
+      if (searchInput) {
+        searchInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            searchFAQ();
+          }
+        });
+      }
+      
+      if (clearSearch) {
+        clearSearch.addEventListener('click', () => {
+          searchInput.value = '';
+          faqCategories.forEach(cat => cat.style.display = 'block');
+          document.querySelectorAll('.faq-item').forEach(item => item.style.display = 'block');
+          noResults.classList.remove('show');
+        });
+      }
+    })();
   </script>
 </body>
 </html>
