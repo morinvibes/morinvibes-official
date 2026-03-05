@@ -3,76 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-
-  <!-- Primary SEO -->
   <title>MorinVibes® — Farm-Direct Moringa Capsules · Penang, Malaysia · Since 2019</title>
-  <meta name="description" content="100% pure moringa capsules grown on our own land in Penang. KKM Approved. GMP Certified. Small-batch freshness you can taste. 90 capsules, 500mg each. RM89." />
-  <meta name="keywords" content="moringa capsules Malaysia, buy moringa Penang, organic moringa, KKM approved supplements, farm direct moringa, moringa Malaysia 2025" />
+  <meta name="description" content="100% pure moringa capsules grown on our own land in Penang. KKM Approved. GMP Certified. Small-batch freshness you can see in the colour. 90 capsules, 500mg. RM89." />
   <link rel="canonical" href="https://morinvibes.com/en/" />
-  <!-- NOTE: When morinvibes.com domain is live, update canonical here AND in all pages.
-       Also set Custom Domain in GitHub Pages: repo → Settings → Pages → Custom Domain → morinvibes.com
-       GitHub will automatically 301 redirect the old github.io URL. No other code needed. -->
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://morinvibes.com/en/" />
-  <meta property="og:title" content="MorinVibes® — Farm-Direct Moringa · Penang, Malaysia" />
-  <meta property="og:description" content="Grown on our land. KKM Approved. GMP Certified. Small-batch moringa capsules from Penang." />
+  <meta property="og:title" content="MorinVibes® — Farm-Direct Moringa · Penang" />
+  <meta property="og:description" content="Grown on our land. KKM Approved. GMP Certified. Small-batch moringa capsules from Penang, Malaysia." />
   <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/images/hero-main.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="MorinVibes® — Farm-Direct Moringa" />
-  <meta name="twitter:description" content="Grown on our land. KKM Approved. GMP Certified." />
-  <meta name="twitter:image" content="https://morinvibes.github.io/morinvibes-official/images/hero-main.jpg" />
-
-  <link rel="icon" type="image/svg+xml" href="/morinvibes-official/images/favicon.svg" />
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
 
-  <!-- Structured Data -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"LocalBusiness","name":"MorinVibes","image":"https://morinvibes.github.io/morinvibes-official/images/logo-full.svg","description":"Farm-direct moringa capsules from Penang, Malaysia. KKM Approved. GMP Certified.","address":{"@type":"PostalAddress","addressLocality":"Penang","addressCountry":"MY"},"foundingDate":"2019","url":"https://morinvibes.com/","sameAs":["https://www.facebook.com/profile.php?id=100063464474033","https://www.instagram.com/moringa_morinvibes","https://www.tiktok.com/@moringa_morinvibes","https://shopee.com.my/product/207561954/9803799226"]}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Product","name":"MorinVibes Moringa Capsules","description":"100% pure moringa leaf powder capsules. Farm-direct from Penang. 90 capsules, 500mg each.","brand":{"@type":"Brand","name":"MorinVibes"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"1000","bestRating":"5","worstRating":"1"},"offers":{"@type":"Offer","price":"89.00","priceCurrency":"MYR","availability":"https://schema.org/InStock","url":"https://morinvibes.com/en/shop.html"}}
+  {"@context":"https://schema.org","@type":"Product","name":"MorinVibes Moringa Capsules","description":"100% pure moringa leaf powder capsules. Farm-direct from Penang. 90 capsules, 500mg each.","brand":{"@type":"Brand","name":"MorinVibes"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"1000","bestRating":"5"},"offers":{"@type":"Offer","price":"89.00","priceCurrency":"MYR","availability":"https://schema.org/InStock"}}
   </script>
 
   <style>
-  /*
-  ═══════════════════════════════════════════════════════════════════
-  CSS ARCHITECTURE — MorinVibes®
-  ───────────────────────────────────────────────────────────────────
-  Current setup: Single <style> block in index.html (appropriate for
-  a single landing page with self-contained deployment on GitHub Pages).
+  /* ═══════════════════════════════════════════════════════
+     MorinVibes® CSS — v3
+     Single <style> block. Correct for GitHub Pages.
+     Zero inline style="" in HTML (photo-ph temp excluded).
+     JS only adds/removes class names — never sets .style.*
+  ═══════════════════════════════════════════════════════ */
 
-  When scaling to multiple pages, extract into:
-    /assets/css/global.css     ← tokens, reset, nav, footer, buttons (shared)
-    /assets/css/home.css       ← homepage-specific sections
-    /assets/css/[page].css     ← per page (farm, quality, benefits, etc.)
-
-  Then link in <head>:
-    <link rel="stylesheet" href="/assets/css/global.css" />
-    <link rel="stylesheet" href="/assets/css/home.css" />
-
-  DO NOT use inline style="" attributes in HTML — maintainability breaks
-  immediately. Every visual value should live in a named CSS class here.
-  ═══════════════════════════════════════════════════════════════════
-  */
-
-  /* ─── DESIGN TOKENS ──────────────────────────────────────────── */
+  /* ─── TOKENS ─────────────────────────────────────────── */
   :root {
-    /* Brand colours */
     --teal:        #0097b2;
     --teal-deep:   #007d96;
     --teal-light:  #61cad8;
     --teal-mid:    #00aecb;
     --teal-soft:   #e1f3f5;
     --teal-ghost:  #f0fbfc;
-    --teal-pale:   #f7fdfe;
-
-    /* Neutrals */
     --white:       #ffffff;
     --paper:       #f9fdfd;
     --ink:         #1e3a38;
@@ -80,506 +42,534 @@
     --ink-muted:   #8aa9a6;
     --border:      #e9f0f0;
     --border-soft: #f0f7f7;
-
-    /* Typography */
+    --fresh-green: #3d8c40;
+    --fresh-light: #e6f4e7;
     --serif: 'Cormorant Garamond', Georgia, serif;
     --sans:  'DM Sans', system-ui, sans-serif;
-
-    /* Shadows */
-    --shadow-xs: 0 1px 4px rgba(0,151,178,.05);
-    --shadow-sm: 0 2px 14px rgba(0,151,178,.07);
-    --shadow-md: 0 8px 32px rgba(0,151,178,.11);
-    --shadow-lg: 0 24px 64px rgba(0,151,178,.14);
-    --shadow-xl: 0 40px 80px rgba(0,151,178,.18);
-
-    /* Easing */
+    --sh-xs: 0 1px 4px rgba(0,151,178,.05);
+    --sh-sm: 0 2px 14px rgba(0,151,178,.07);
+    --sh-md: 0 8px 32px rgba(0,151,178,.11);
+    --sh-lg: 0 24px 64px rgba(0,151,178,.14);
+    --sh-xl: 0 40px 80px rgba(0,151,178,.18);
     --ease:        cubic-bezier(.4,0,.2,1);
-    --ease-out:    cubic-bezier(0,0,.2,1);
     --ease-spring: cubic-bezier(.34,1.56,.64,1);
-
-    /* Border radii */
-    --r-sm: 14px;
-    --r-md: 22px;
-    --r-lg: 32px;
-    --r-xl: 44px;
-
-    /* Footer */
-    --footer-bg: linear-gradient(160deg, #004a45, #013840, #002e38);
+    --r-sm: 14px; --r-md: 22px; --r-lg: 32px; --r-xl: 44px;
+    --footer-bg: linear-gradient(160deg,#004a45,#013840,#002e38);
   }
 
-  /* ─── RESET ──────────────────────────────────────────────────── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; font-size: 17px; -webkit-text-size-adjust: 100%; }
-  body { font-family: var(--sans); line-height: 1.65; color: var(--ink); background: var(--white); overflow-x: hidden; }
-  body.menu-open { overflow: hidden; }
-  img { display: block; max-width: 100%; height: auto; }
-  a { text-decoration: none; color: inherit; }
-  button { font-family: var(--sans); cursor: pointer; border: none; background: none; }
-  ul, ol { list-style: none; }
+  /* ─── RESET ──────────────────────────────────────────── */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;font-size:17px;-webkit-text-size-adjust:100%}
+  body{font-family:var(--sans);line-height:1.65;color:var(--ink);background:var(--white);overflow-x:hidden}
+  body.menu-open,body.checkout-open{overflow:hidden}
+  img{display:block;max-width:100%;height:auto}
+  a{text-decoration:none;color:inherit}
+  button{font-family:var(--sans);cursor:pointer;border:none;background:none}
+  ul,ol{list-style:none}
 
-  /* ─── TYPOGRAPHY ─────────────────────────────────────────────── */
-  h1, h2, h3 { font-family: var(--serif); line-height: 1.08; letter-spacing: -.01em; }
-  h4 { font-family: var(--sans); font-size: 1rem; font-weight: 600; line-height: 1.3; }
-  h1 { font-size: clamp(2.8rem, 5vw, 4.6rem); font-weight: 300; }
-  h2 { font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; }
-  h3 { font-size: clamp(1.1rem, 1.8vw, 1.4rem); font-weight: 400; }
-  p  { margin-bottom: 1.5rem; color: var(--ink-soft); }
-  p:last-child { margin-bottom: 0; }
+  /* ─── TYPE ───────────────────────────────────────────── */
+  h1,h2,h3{font-family:var(--serif);line-height:1.08;letter-spacing:-.01em}
+  h4{font-family:var(--sans);font-size:1rem;font-weight:600;line-height:1.3}
+  h1{font-size:clamp(2.8rem,5vw,4.6rem);font-weight:300}
+  h2{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300}
+  h3{font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:400}
+  p{margin-bottom:1.5rem;color:var(--ink-soft)}
+  p:last-child{margin-bottom:0}
+  .eyebrow{display:block;font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+  .lead{font-size:1.08rem;font-weight:300;line-height:1.85;color:var(--ink-soft)}
 
-  .eyebrow {
-    display: block; font-family: var(--sans); font-size: 10.5px; font-weight: 700;
-    letter-spacing: .18em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem;
+  /* ─── LAYOUT ─────────────────────────────────────────── */
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+  .section{padding:120px 0}
+  .section--alt{background:var(--paper)}
+  .section--sm{padding:72px 0}
+  .section-header{text-align:center;margin-bottom:64px}
+  .section-header h2{margin-top:10px;margin-bottom:18px}
+  .section-header .lead{max-width:560px;margin:0 auto}
+  .section-cta{text-align:center;margin-top:48px}
+  .grid-2c{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+
+  /* ─── BUTTONS ────────────────────────────────────────── */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:100px;font-family:var(--sans);font-size:15px;font-weight:500;transition:all .3s var(--ease);position:relative;overflow:hidden;cursor:pointer;white-space:nowrap;letter-spacing:.01em;border:none}
+  .btn--primary{background:var(--teal);color:white;box-shadow:0 4px 20px rgba(0,151,178,.28)}
+  .btn--primary:hover{background:var(--teal-deep);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,151,178,.38)}
+  .btn--outline{background:transparent;color:var(--teal);border:1.5px solid rgba(0,151,178,.4)}
+  .btn--outline:hover{border-color:var(--teal);background:var(--teal-ghost);transform:translateY(-2px)}
+  .btn--sm{padding:10px 20px;font-size:13px}
+  .btn--lg{padding:18px 44px;font-size:16px}
+  .btn--full{width:100%}
+  .btn--ghost{color:var(--teal);font-size:14px;font-weight:500;padding:0;background:none;box-shadow:none}
+  .btn--ghost:hover{opacity:.8;transform:none}
+  .btn .ripple{position:absolute;width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3);transform:scale(0);animation:ripple-anim .65s ease-out forwards;pointer-events:none}
+  @keyframes ripple-anim{to{transform:scale(36);opacity:0}}
+
+  /* ─── ANIMATIONS ─────────────────────────────────────── */
+  .fade-up{opacity:0;transform:translateY(36px);transition:opacity .72s var(--ease),transform .72s var(--ease)}
+  .fade-left{opacity:0;transform:translateX(-28px);transition:opacity .72s var(--ease),transform .72s var(--ease)}
+  .fade-right{opacity:0;transform:translateX(28px);transition:opacity .72s var(--ease),transform .72s var(--ease)}
+  .fade-up.visible,.fade-left.visible,.fade-right.visible{opacity:1;transform:translate(0)}
+  [data-delay="1"]{transition-delay:.1s}[data-delay="2"]{transition-delay:.2s}
+  [data-delay="3"]{transition-delay:.3s}[data-delay="4"]{transition-delay:.4s}
+  @keyframes hero-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes badge-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  @keyframes ring-pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.04);opacity:1}}
+  @keyframes glow-pulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.08);opacity:1}}
+  @keyframes shimmer{0%,100%{background-position:0% center}50%{background-position:100% center}}
+  @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @keyframes wa-pulse{0%{transform:scale(.94);opacity:.7}100%{transform:scale(1.22);opacity:0}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ─── SCROLL PROGRESS ────────────────────────────────── */
+  .scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--teal),var(--teal-light));width:0%;z-index:9999;transition:width .08s linear;border-radius:0 2px 2px 0}
+
+  /* ─── SCROLL TOP ─────────────────────────────────────── */
+  .scroll-top{position:fixed;bottom:32px;right:32px;z-index:500;width:44px;height:44px;border-radius:50%;background:var(--teal);color:white;font-size:16px;box-shadow:0 4px 20px rgba(0,151,178,.32);display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(20px);transition:all .3s var(--ease);pointer-events:none;cursor:pointer}
+  .scroll-top.visible{opacity:1;transform:translateY(0);pointer-events:all}
+  .scroll-top:hover{background:var(--teal-deep);transform:translateY(-4px)}
+
+  /* ═══════════════════════════════════════════════════════
+     CHECKOUT MODAL  (#1 fix)
+     ─────────────────────────────────────────────────────
+     Orderla iframe loads INSIDE the page when any Order
+     button is clicked — user never leaves morinvibes.com.
+
+     After successful payment, Orderla redirects to your
+     Success URL. Configure in Orderla Plus dashboard:
+       Dashboard → Settings → Success Redirect URL →
+       https://morinvibes.com/en/thankyou.html?qty=1
+
+     The iframe src is lazy-loaded (empty until first open)
+     so Orderla is NOT loaded on page load.
+  ═══════════════════════════════════════════════════════ */
+  .co-overlay{position:fixed;inset:0;z-index:2000;background:rgba(10,30,28,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s var(--ease);padding:20px}
+  .co-overlay.open{opacity:1;pointer-events:all}
+  .co-modal{background:white;border-radius:var(--r-lg);width:100%;max-width:620px;max-height:92vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.3);transform:translateY(32px) scale(.97);transition:transform .38s var(--ease-spring),opacity .35s var(--ease);opacity:0}
+  .co-overlay.open .co-modal{transform:translateY(0) scale(1);opacity:1}
+  .co-head{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--border);flex-shrink:0}
+  .co-head-brand{display:flex;align-items:center;gap:10px}
+  .co-head-brand img{height:30px;width:auto}
+  .co-head-info{font-size:12.5px;color:var(--ink-muted)}
+  .co-head-info strong{color:var(--ink);font-weight:600}
+  .co-close{width:36px;height:36px;border-radius:50%;background:var(--border-soft);border:1px solid var(--border);font-size:14px;color:var(--ink-soft);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;flex-shrink:0}
+  .co-close:hover{background:var(--teal);color:white;border-color:var(--teal);transform:rotate(90deg)}
+  .co-trust{display:flex;align-items:center;justify-content:center;gap:18px;padding:9px 22px;background:var(--teal-ghost);border-bottom:1px solid var(--teal-soft);font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.06em;flex-wrap:wrap;flex-shrink:0}
+  .co-body{flex:1;overflow:hidden;position:relative;min-height:500px}
+  .co-spinner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:var(--paper)}
+  .co-spinner__ring{width:40px;height:40px;border:3px solid var(--teal-soft);border-top-color:var(--teal);border-radius:50%;animation:spin .8s linear infinite}
+  .co-spinner__text{font-size:13px;color:var(--ink-muted)}
+  .co-iframe{width:100%;height:100%;border:none;display:none}
+  .co-iframe.ready{display:block}
+  .co-foot{padding:9px 20px;text-align:center;font-size:11.5px;color:var(--ink-muted);border-top:1px solid var(--border-soft);flex-shrink:0}
+  .co-foot a{color:var(--teal);font-weight:600}
+  @media(max-width:768px){
+    .co-overlay{align-items:flex-end;padding:0}
+    .co-modal{border-radius:var(--r-md) var(--r-md) 0 0;max-height:96vh}
   }
-  .lead { font-size: 1.08rem; font-weight: 300; line-height: 1.85; color: var(--ink-soft); }
-  .text-teal { color: var(--teal); }
-  .text-center { text-align: center; }
-  .text-ink { color: var(--ink); }
-  .text-muted { color: var(--ink-muted); }
-  .text-small { font-size: 12.5px; }
-  .text-serif { font-family: var(--serif); }
 
-  /* Stat number (serif large) */
-  .stat-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 300; color: var(--teal); line-height: 1; }
-  .stat-num--hero { font-size: 2rem; }
-  .stat-unit { font-family: var(--sans); font-size: .88rem; color: var(--ink-muted); font-weight: 400; }
-  .stat-label { font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); margin-top: 6px; }
+  /* ─── NAV ────────────────────────────────────────────── */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:72px;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(233,240,240,.6);transition:height .3s var(--ease),box-shadow .3s,background .3s}
+  .nav.scrolled{height:64px;box-shadow:0 2px 20px rgba(0,0,0,.05);background:rgba(255,255,255,.97);border-bottom-color:var(--border)}
+  .nav__wrap{max-width:1200px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;position:relative}
+  .nav__ham{display:flex;flex-direction:column;gap:5px;padding:10px;border-radius:10px;transition:background .2s;flex-shrink:0;z-index:2}
+  .nav__ham:hover{background:var(--teal-ghost)}
+  .nav__ham span{display:block;width:21px;height:1.5px;background:var(--ink);border-radius:2px;transition:all .3s var(--ease);transform-origin:center}
+  .nav__ham[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .nav__ham[aria-expanded="true"] span:nth-child(2){opacity:0;transform:scaleX(0)}
+  .nav__ham[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+  .nav__logo{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;transition:opacity .3s}
+  .nav__logo img{height:46px;width:auto;max-width:180px}
+  body.menu-open .nav__logo{opacity:0!important;pointer-events:none!important}
+  .nav__right{margin-left:auto;display:flex;align-items:center;gap:12px}
+  .lang-drop{position:relative}
+  .lang-btn{display:flex;align-items:center;gap:5px;background:none;border:1px solid var(--border);border-radius:40px;padding:8px 14px;font-size:12.5px;font-weight:600;color:var(--ink-soft);letter-spacing:.04em;transition:all .2s;cursor:pointer}
+  .lang-btn:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-ghost)}
+  .lang-btn__chev{font-size:9px;transition:transform .2s;display:inline-block}
+  .lang-drop.open .lang-btn__chev{transform:rotate(180deg)}
+  .lang-opts{position:absolute;top:calc(100% + 10px);right:0;background:white;border:1px solid var(--border);border-radius:16px;box-shadow:var(--sh-md);min-width:175px;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(-8px) scale(.97);transition:all .22s var(--ease);z-index:100}
+  .lang-drop.open .lang-opts{opacity:1;pointer-events:all;transform:translateY(0) scale(1)}
+  .lang-opt{display:flex;align-items:center;gap:10px;padding:12px 18px;font-size:13.5px;color:var(--ink-soft);transition:background .15s}
+  .lang-opt:hover{background:var(--teal-ghost);color:var(--ink)}
+  .lang-opt.active{color:var(--teal);font-weight:600}
 
-  /* ─── LAYOUT ─────────────────────────────────────────────────── */
-  .container    { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-  .container--sm { max-width: 840px; margin: 0 auto; padding: 0 24px; }
-  .section      { padding: 120px 0; }
-  .section--alt { background: var(--paper); }
-  .section--sm  { padding: 72px 0; }
-  .section-header { text-align: center; margin-bottom: 64px; }
-  .section-header h2 { margin-top: 10px; margin-bottom: 18px; }
-  .section-header .lead { max-width: 520px; margin: 0 auto; }
-  .section-cta { text-align: center; margin-top: 48px; }
-  .grid-2c { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-  .grid-3c { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .grid-4c { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  /* ─── MOBILE MENU ────────────────────────────────────── */
+  .m-menu{position:fixed;inset:0;z-index:1001;display:flex;transform:translateX(100%);transition:transform .42s var(--ease)}
+  .m-menu.open{transform:translateX(0)}
+  .m-left{width:56%;background:white;padding:48px 32px 32px;display:flex;flex-direction:column;overflow-y:auto;box-shadow:4px 0 48px rgba(0,0,0,.08);position:relative}
+  .m-right{flex:1;background:linear-gradient(160deg,var(--teal-ghost),#e5f9fb);padding:40px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
+  .m-logo img{height:38px;width:auto;margin-bottom:6px}
+  .m-close{position:absolute;top:18px;right:18px;width:42px;height:42px;border-radius:50%;background:var(--border-soft);border:1px solid var(--border);font-size:15px;display:flex;align-items:center;justify-content:center;z-index:1002;transition:all .2s;color:var(--ink);cursor:pointer}
+  .m-close:hover{background:var(--teal);color:white;border-color:var(--teal);transform:rotate(90deg)}
+  .m-lang{display:flex;gap:20px;margin:16px 0 24px}
+  .m-lang a{font-size:12px;font-weight:700;color:var(--ink-muted);letter-spacing:.06em;transition:color .2s}
+  .m-lang a.active,.m-lang a:hover{color:var(--teal)}
+  .m-link{display:block;padding:13px 0;font-size:15px;color:var(--ink-soft);border-bottom:1px solid var(--border-soft);transition:all .2s}
+  .m-link:hover,.m-link.active{color:var(--teal);padding-left:4px}
+  .m-link:last-of-type{border-bottom:none}
+  .m-link--hi{color:var(--teal);font-weight:600}
+  .m-prod-img{width:120px;filter:drop-shadow(0 16px 28px rgba(0,151,178,.18));animation:hero-float 5s ease-in-out infinite}
+  .m-price{font-family:var(--serif);font-size:2.4rem;font-weight:300;color:var(--ink);line-height:1}
+  .m-price span{font-family:var(--sans);font-size:.88rem;color:var(--ink-muted);font-weight:400}
+  .m-sub{font-size:12.5px;color:var(--ink-muted)}
+  @media(max-width:600px){.m-menu{flex-direction:column}.m-left{width:100%;padding-top:64px}.m-right{display:none}}
 
-  /* ─── BUTTONS ────────────────────────────────────────────────── */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 14px 28px; border-radius: 100px;
-    font-family: var(--sans); font-size: 15px; font-weight: 500;
-    transition: all .3s var(--ease); position: relative; overflow: hidden;
-    cursor: pointer; white-space: nowrap; letter-spacing: .01em; border: none;
+  /* ─── TRUST BAR ──────────────────────────────────────── */
+  .trust-bar{background:var(--teal-ghost);border-top:1px solid var(--teal-soft);border-bottom:1px solid var(--teal-soft);overflow:hidden;padding:13px 0}
+  .trust-bar__track{display:flex;white-space:nowrap;animation:marquee 36s linear infinite}
+  .trust-bar__track:hover{animation-play-state:paused}
+  .trust-bar__track span{display:inline-flex;align-items:center;padding:0 20px;font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--teal)}
+  .trust-bar__dot{padding:0 4px;opacity:.3}
+
+  /* ─── PHOTO PLACEHOLDER ──────────────────────────────── */
+  /* Replace: remove <div class="photo-ph …"> and swap with
+     <img src="images/your-photo.jpg" alt="…" class="photo-frame" /> */
+  .photo-ph{background:var(--paper);border:2px dashed var(--border);border-radius:var(--r-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;overflow:hidden}
+  .photo-ph__icon{font-size:2rem;opacity:.35;line-height:1}
+  .photo-ph__label{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-muted)}
+  .photo-ph__sub{font-size:12px;color:var(--border)}
+  .photo-ph--land{aspect-ratio:4/3;width:100%}
+  .photo-ph--sq{aspect-ratio:1/1;width:100%}
+  .photo-frame{width:100%;height:100%;object-fit:cover;border-radius:calc(var(--r-md) - 2px);display:block}
+
+  /* ─── HERO ───────────────────────────────────────────── */
+  .hero{padding:calc(72px + 96px) 0 100px;background:linear-gradient(158deg,var(--paper) 0%,#dff5f8 38%,#f5fdfe 70%,white 100%);position:relative;overflow:hidden;min-height:92vh;display:flex;align-items:center}
+  .hero__blob{position:absolute;border-radius:50%;pointer-events:none}
+  .hero__blob--a{width:680px;height:680px;top:-140px;right:-140px;background:radial-gradient(circle,rgba(0,151,178,.055) 0%,transparent 68%)}
+  .hero__blob--b{width:460px;height:460px;bottom:-80px;left:4%;background:radial-gradient(circle,rgba(97,202,216,.045) 0%,transparent 70%)}
+  .hero__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center;position:relative;z-index:1}
+  .hero__badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--teal) 0%,var(--teal-light) 100%);color:white;padding:9px 22px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:28px;box-shadow:0 4px 18px rgba(0,151,178,.3);animation:badge-float 3.5s ease-in-out infinite}
+  .hero__badge::before{content:'✦';font-size:9px;opacity:.8}
+  .hero__title{margin-bottom:22px}
+  .hero__title em{font-style:italic;display:block;background:linear-gradient(125deg,var(--teal) 0%,var(--teal-light) 45%,var(--teal-mid) 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s ease infinite}
+  @supports not (-webkit-background-clip:text){.hero__title em{color:var(--teal);-webkit-text-fill-color:unset;background:none}}
+  .hero__sub{font-size:1.05rem;line-height:1.88;color:var(--ink-soft);max-width:490px;margin-bottom:22px;font-weight:300}
+  .hero__certs{display:flex;align-items:center;gap:9px;margin-bottom:36px;flex-wrap:wrap}
+  .hero__cert{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.04em;background:white;border:1px solid rgba(0,151,178,.18);padding:5px 13px;border-radius:100px;box-shadow:var(--sh-xs)}
+  .hero__cert::before{content:'✓'}
+  .hero__ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .hero__vis{position:relative;display:flex;align-items:center;justify-content:center}
+  .hero__glow{position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(0,151,178,.08) 0%,transparent 70%);animation:glow-pulse 4.5s ease-in-out infinite}
+  .hero__ring{position:absolute;width:430px;height:430px;border-radius:50%;border:1px solid rgba(0,151,178,.1);animation:ring-pulse 4.5s ease-in-out infinite}
+  .hero__ring2{position:absolute;width:338px;height:338px;border-radius:50%;border:1px dashed rgba(0,151,178,.13);animation:ring-pulse 4.5s ease-in-out infinite .6s}
+  .hero__img{max-width:330px;width:100%;position:relative;z-index:2;filter:drop-shadow(0 28px 56px rgba(0,151,178,.2));animation:hero-float 5.5s ease-in-out infinite}
+  .hero__tag{position:absolute;z-index:3;background:white;border-radius:100px;box-shadow:var(--sh-md);display:flex;align-items:center;gap:8px;padding:10px 18px;font-size:12px;font-weight:700;color:var(--teal);border:1px solid var(--teal-soft)}
+  .hero__tag--a{top:12px;left:-12px;animation:badge-float 3s ease-in-out infinite .8s}
+  .hero__tag--b{bottom:8px;right:-12px;flex-direction:column;gap:2px;padding:14px 20px;border-radius:20px;animation:badge-float 3.8s ease-in-out infinite 1.2s;text-align:center}
+  .hero__tag--b .tstat{font-family:var(--serif);font-size:1.9rem;font-weight:400;color:var(--teal);line-height:1;display:block}
+  .hero__tag--b .tsub{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted)}
+  .hero__tag--c{top:48%;right:-16px;transform:translateY(-50%);animation:badge-float 4s ease-in-out infinite 2s}
+
+  /* ─── FARM STRIP ─────────────────────────────────────── */
+  .farm-strip{background:white;border-bottom:1px solid var(--border-soft);padding:56px 0}
+  .farm-strip__grid{display:grid;grid-template-columns:repeat(3,1fr)}
+  .farm-strip__item{display:flex;align-items:center;gap:20px;padding:0 40px;border-right:1px solid var(--border);transition:background .25s}
+  .farm-strip__item:last-child{border-right:none}
+  .farm-strip__item:hover{background:var(--teal-ghost)}
+  .farm-strip__icon{width:50px;height:50px;border-radius:14px;background:var(--teal-ghost);border:1px solid var(--teal-soft);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+  .farm-strip__title{display:block;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px}
+  .farm-strip__desc{display:block;font-size:13px;color:var(--ink-muted)}
+
+  /* ─── CONCERNS (#3 new section) ─────────────────────── */
+  .concerns{padding:120px 0;background:var(--paper)}
+  .concerns__grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .concerns__cloud{display:flex;flex-wrap:wrap;gap:10px}
+  .ctag{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;background:white;border:1.5px solid var(--border);border-radius:100px;font-size:14px;color:var(--ink-soft);transition:all .28s var(--ease);cursor:default}
+  .ctag:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-ghost);transform:translateY(-2px);box-shadow:var(--sh-sm)}
+  .ctag__dot{width:7px;height:7px;border-radius:50%;background:var(--teal-light);flex-shrink:0}
+  .concerns__copy h2{margin-bottom:20px}
+  .concerns__copy p{font-size:1.05rem;line-height:1.85}
+  .concerns__note{margin-top:20px;padding:14px 18px;background:white;border:1px solid var(--border-soft);border-radius:var(--r-md);font-size:12px;color:var(--ink-muted);line-height:1.7}
+  .concerns__note strong{color:var(--ink-soft)}
+
+  /* ─── WHY CARDS ──────────────────────────────────────── */
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .why-card{background:white;border:1px solid var(--border);border-radius:var(--r-lg);padding:36px 28px;text-align:center;transition:all .38s var(--ease);position:relative;overflow:hidden}
+  .why-card__bg{position:absolute;inset:0;background:linear-gradient(145deg,var(--teal-ghost),white);opacity:0;transition:opacity .35s;border-radius:var(--r-lg)}
+  .why-card__line{position:absolute;bottom:0;left:16px;right:16px;height:2.5px;background:linear-gradient(90deg,var(--teal),var(--teal-light));border-radius:2px;transform:scaleX(0);transition:transform .35s var(--ease);transform-origin:center}
+  .why-card:hover{transform:translateY(-7px);box-shadow:var(--sh-md);border-color:var(--teal-soft)}
+  .why-card:hover .why-card__bg{opacity:1}
+  .why-card:hover .why-card__line{transform:scaleX(1)}
+  .why-card__c{position:relative;z-index:1}
+  .why-card__icon{font-size:2.2rem;margin-bottom:20px;display:block;line-height:1}
+  .why-card__title{font-size:.98rem;font-weight:600;color:var(--ink);margin-bottom:10px}
+  .why-card__body{font-size:13.5px;color:var(--ink-muted);line-height:1.75;margin:0}
+
+  /* ─── PRODUCT SPOTLIGHT ──────────────────────────────── */
+  .prod-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:center;max-width:1000px;margin:0 auto}
+  .prod-card{background:white;border:1px solid var(--border);border-radius:var(--r-xl);padding:52px 44px;text-align:center;box-shadow:var(--sh-sm);position:relative;overflow:hidden;transform-style:preserve-3d;will-change:transform;transition:box-shadow .4s,transform .5s var(--ease)}
+  .prod-card__gt{position:absolute;top:-90px;right:-90px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(0,151,178,.055) 0%,transparent 70%);pointer-events:none}
+  .prod-card__gb{position:absolute;bottom:-60px;left:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(97,202,216,.04) 0%,transparent 70%);pointer-events:none}
+  .prod-card__in{position:relative;z-index:1}
+  .prod-brand{font-family:var(--serif);font-size:clamp(1.9rem,2.6vw,2.5rem);font-weight:300;color:var(--ink);letter-spacing:.1em;line-height:1;margin-bottom:4px}
+  .prod-brand__sub{display:block;font-family:var(--sans);font-size:.36em;letter-spacing:.3em;color:var(--teal);font-weight:700;text-transform:uppercase;margin-top:8px}
+  .prod-div{width:48px;height:1.5px;background:linear-gradient(90deg,var(--teal),var(--teal-light));margin:20px auto 16px;border-radius:2px}
+  .prod-type{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:4px}
+  .prod-grade{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:22px}
+  .prod-tags{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-bottom:7px}
+  .prod-tag{display:inline-block;padding:5px 13px;border:1px solid var(--border);border-radius:100px;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-muted);background:white;transition:all .2s}
+  .prod-tag:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-ghost)}
+  .prod-stats{display:flex;justify-content:center;margin:32px 0 28px;border:1px solid var(--border);border-radius:18px;overflow:hidden}
+  .prod-stat{flex:1;padding:18px 10px;text-align:center;border-right:1px solid var(--border)}
+  .prod-stat:last-child{border-right:none}
+  .prod-stat__n{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--teal);line-height:1}
+  .prod-stat__l{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);margin-top:5px}
+  .prod-qty{font-family:var(--serif);font-size:1.55rem;font-weight:300;color:var(--ink);margin:22px 0 4px}
+  .prod-qty-s{font-size:12.5px;color:var(--ink-muted);margin-bottom:28px}
+  .prod-price{font-family:var(--serif);font-size:3rem;font-weight:300;color:var(--teal);margin-bottom:30px;letter-spacing:-.02em}
+  .prod-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .prod-info-h{font-family:var(--serif);font-size:clamp(1.55rem,2.4vw,2.1rem);font-weight:300;color:var(--ink);line-height:1.2;margin-bottom:24px}
+  .prod-list{display:flex;flex-direction:column;gap:14px;margin-bottom:28px}
+  .prod-list li{display:flex;align-items:flex-start;gap:13px;font-size:14.5px;color:var(--ink-soft);line-height:1.65}
+  .prod-list li::before{content:'✦';color:var(--teal);font-size:9px;flex-shrink:0;margin-top:6px}
+  .prod-list strong{color:var(--ink);font-weight:600}
+  .prod-channels{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:20px}
+  .prod-ch-label{font-size:12.5px;color:var(--ink-muted)}
+  .ch-pill{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--teal);padding:5px 12px;border:1px solid rgba(0,151,178,.25);border-radius:100px;transition:all .2s}
+  .ch-pill:hover{background:var(--teal-ghost);border-color:var(--teal)}
+
+  /* ─── PHOTO STRIP ────────────────────────────────────── */
+  .photo-strip{padding:80px 0;background:var(--paper)}
+  .photo-strip__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .photo-strip__cap{text-align:center;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);margin-top:12px}
+
+  /* ─── COLOR TEST ─────────────────────────────────────── */
+  .color-test{padding:120px 0;background:white}
+  .ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:64px}
+  .ct-panel{border-radius:var(--r-lg);overflow:hidden;position:relative}
+  .ct-panel--ours{border:2px solid var(--fresh-green)}
+  .ct-panel--them{border:2px solid var(--border)}
+  .ct-badge{position:absolute;top:16px;left:16px;z-index:2;padding:6px 16px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  .ct-badge--g{background:var(--fresh-green);color:white}
+  .ct-badge--gr{background:#888;color:white}
+  .ct-info{padding:28px 32px}
+  .ct-panel--ours .ct-info{background:var(--fresh-light)}
+  .ct-panel--them .ct-info{background:#f5f5f5}
+  .ct-h{font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:10px;line-height:1.2}
+  .ct-panel--ours .ct-h{color:var(--fresh-green)}
+  .ct-panel--them .ct-h{color:#777}
+  .ct-p{font-size:13.5px;line-height:1.75;margin:0}
+  .ct-panel--ours .ct-p{color:#2e5e30}
+  .ct-panel--them .ct-p{color:#888}
+  .ct-list{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+  .ct-list li{font-size:13px;display:flex;align-items:center;gap:8px}
+  .ct-panel--ours .ct-list li{color:#2e5e30}
+  .ct-panel--them .ct-list li{color:#999}
+  .ct-list li::before{font-size:10px;flex-shrink:0;font-weight:700}
+  .ct-panel--ours .ct-list li::before{content:'✓';color:var(--fresh-green)}
+  .ct-panel--them .ct-list li::before{content:'✗';color:#aaa}
+  .ct-note{text-align:center;margin-top:40px;font-family:var(--serif);font-style:italic;font-size:1.15rem;font-weight:300;color:var(--ink-soft)}
+
+  /* ─── TIMELINE (#3 new section) ─────────────────────── */
+  .timeline{padding:120px 0;background:var(--paper)}
+  .timeline__grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
+  .timeline__copy h2{margin-bottom:18px}
+  .timeline__copy p{font-size:1.05rem;line-height:1.85}
+  .timeline__track{position:relative;padding-left:32px}
+  .timeline__track::before{content:'';position:absolute;left:9px;top:14px;bottom:14px;width:2px;background:linear-gradient(to bottom,var(--teal) 0%,var(--teal-light) 100%);border-radius:2px}
+  .tl-item{position:relative;padding-bottom:36px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-dot{position:absolute;left:-32px;top:5px;width:20px;height:20px;border-radius:50%;background:white;border:2.5px solid var(--teal);display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease-spring)}
+  .tl-dot::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--teal);transition:transform .3s var(--ease-spring)}
+  .tl-item:hover .tl-dot{background:var(--teal);border-color:var(--teal-light);transform:scale(1.2)}
+  .tl-item:hover .tl-dot::after{background:white;transform:scale(1.1)}
+  .tl-label{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:5px;display:block}
+  .tl-h{font-family:var(--sans);font-size:.98rem;font-weight:600;color:var(--ink);margin-bottom:5px}
+  .tl-p{font-size:13.5px;color:var(--ink-muted);line-height:1.7;margin:0}
+  .tl-note{margin-top:40px;padding:16px 20px;background:white;border:1px solid var(--border-soft);border-radius:var(--r-md);font-size:12px;color:var(--ink-muted);line-height:1.7}
+  .tl-note strong{color:var(--ink-soft)}
+
+  /* ─── BENEFITS ───────────────────────────────────────── */
+  .ben-list{display:flex;flex-direction:column;gap:16px}
+  .ben-item{display:flex;gap:18px;align-items:flex-start;padding:22px 24px;background:white;border:1px solid var(--border);border-radius:20px;transition:all .3s var(--ease)}
+  .ben-item:hover{border-color:var(--teal-soft);box-shadow:var(--sh-sm);transform:translateX(5px)}
+  .ben-icon{width:44px;height:44px;border-radius:13px;background:var(--teal-ghost);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+  .ben-item h4{margin-bottom:4px;font-size:.95rem;color:var(--ink)}
+  .ben-item p{font-size:13.5px;color:var(--ink-muted);margin:0;line-height:1.65}
+  .dosage-card{background:white;border:1px solid var(--border);border-radius:28px;padding:36px 32px;text-align:center;box-shadow:var(--sh-sm);margin-bottom:16px}
+  .dosage-row{display:flex;align-items:center;justify-content:center;gap:28px}
+  .dosage-num{font-family:var(--serif);font-size:4.8rem;font-weight:300;color:var(--teal);line-height:1}
+  .dosage-meta strong{display:block;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px}
+  .dosage-meta span{font-size:13px;color:var(--ink-muted)}
+  .dosage-sup{margin-top:16px;padding-top:16px;border-top:1px solid var(--border-soft);font-size:13px;color:var(--ink-muted)}
+  .dosage-sup strong{color:var(--teal);font-weight:700}
+  .legal-note{font-size:12px;color:var(--ink-muted);line-height:1.7;padding:16px 20px;background:var(--paper);border:1px solid var(--border-soft);border-radius:14px}
+  .legal-note strong{color:var(--ink-soft);font-weight:600}
+
+  /* ─── TESTIMONIALS ───────────────────────────────────── */
+  .soc-stats{display:grid;grid-template-columns:repeat(4,1fr);background:white;border:1px solid var(--border);border-radius:28px;overflow:hidden;margin-bottom:40px}
+  .soc-stat{padding:28px 20px;text-align:center;border-right:1px solid var(--border);transition:background .2s}
+  .soc-stat:last-child{border-right:none}
+  .soc-stat:hover{background:var(--teal-ghost)}
+  .soc-num{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:var(--teal);line-height:1}
+  .soc-lbl{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted);margin-top:6px}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:40px}
+  .testi-card{background:white;border:1px solid var(--border);border-radius:28px;padding:32px 28px;display:flex;flex-direction:column;gap:14px;transition:all .35s var(--ease);position:relative;overflow:hidden}
+  .testi-card::before{content:'"';position:absolute;top:14px;right:22px;font-family:var(--serif);font-size:5.5rem;color:var(--teal-soft);line-height:1;pointer-events:none}
+  .testi-card:hover{transform:translateY(-5px);box-shadow:var(--sh-md);border-color:var(--teal-soft)}
+  .testi-stars{color:var(--teal-light);font-size:1rem;letter-spacing:2px}
+  .testi-text{font-family:var(--serif);font-size:1.06rem;font-weight:300;font-style:italic;color:var(--ink);line-height:1.7;flex:1;margin:0}
+  .testi-meta{border-top:1px solid var(--border-soft);padding-top:14px}
+  .testi-author{font-size:13px;font-weight:600;color:var(--ink);margin:0 0 2px}
+  .testi-loc{font-size:12px;color:var(--ink-muted);margin:0}
+
+  /* ─── QUALITY ────────────────────────────────────────── */
+  .qual-row{display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap}
+  .qual-item{display:flex;flex-direction:column;align-items:center;gap:14px}
+  .qual-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
+  .qual-circle{width:86px;height:86px;border-radius:50%;border:1.5px solid var(--teal-soft);background:white;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh-sm);transition:all .3s var(--ease-spring)}
+  .qual-circle:hover{border-color:var(--teal);box-shadow:var(--sh-md);transform:translateY(-5px) scale(1.05)}
+  .qual-circle img{width:46px;height:46px;object-fit:contain}
+  .qual-circle--t{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--teal)}
+  .qual-circle--s{font-family:var(--serif);font-size:.95rem;letter-spacing:-.02em;color:var(--teal)}
+  .qual-circle--e{font-size:1.7rem}
+  .qual-div{width:1px;height:56px;background:var(--border)}
+
+  /* ─── CTA BLOCK ──────────────────────────────────────── */
+  .cta-block{background:linear-gradient(145deg,#e3f8fa,white,var(--teal-ghost));border:1px solid var(--teal-soft);border-radius:var(--r-xl);padding:88px 64px;text-align:center;position:relative;overflow:hidden}
+  .cta-block__ga{position:absolute;top:-100px;right:-100px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(0,151,178,.065) 0%,transparent 70%);pointer-events:none}
+  .cta-block__gb{position:absolute;bottom:-80px;left:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(97,202,216,.055) 0%,transparent 70%);pointer-events:none}
+  .cta-block__in{position:relative;z-index:1}
+  .cta-block h2{margin-bottom:14px}
+  .cta-lead{display:block;margin-bottom:40px;max-width:460px;margin-left:auto;margin-right:auto}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+  .wa-wrap{position:relative;display:inline-flex}
+  .wa-pulse{position:absolute;inset:-7px;border-radius:50px;border:2px solid rgba(0,151,178,.45);animation:wa-pulse 2.2s ease-out infinite;pointer-events:none}
+  .cta-channels{display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--ink-muted)}
+  .cta-channels strong{color:var(--ink-soft);font-weight:600}
+  .cta-channels a{color:var(--teal);font-weight:600;transition:color .2s}
+  .cta-channels a:hover{color:var(--teal-deep)}
+  .batch-note{display:inline-flex;align-items:center;gap:7px;background:white;border:1px solid var(--teal-soft);border-radius:100px;padding:6px 18px;font-size:12px;font-weight:700;color:var(--teal);letter-spacing:.06em;margin-bottom:28px}
+  .batch-note::before{content:'🌿';font-size:14px}
+
+  /* ─── FAQ ────────────────────────────────────────────── */
+  .faq-list{max-width:780px;margin:0 auto 48px}
+  .faq-item{border-bottom:1px solid var(--border-soft)}
+  .faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:16px;transition:color .2s}
+  .faq-q:hover{color:var(--teal)}
+  .faq-q__text{font-size:15.5px;font-weight:500}
+  .faq-q__icon{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(0,151,178,.3);color:var(--teal);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:300;transition:all .3s var(--ease);line-height:1}
+  .faq-item.open .faq-q__icon{transform:rotate(45deg);background:var(--teal);border-color:var(--teal);color:white}
+  .faq-ans{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+  .faq-ans__in{font-size:14.5px;color:var(--ink-soft);line-height:1.8;padding-bottom:22px}
+  .faq-ans__in a{color:var(--teal);font-weight:500}
+
+  /* ═══════════════════════════════════════════════════════
+     FOOTER  (#2 fix + #4 newsletter)
+     ─────────────────────────────────────────────────────
+     DEDUPLICATION RULES (strictly enforced):
+     • Explore col  = page links (Farm Quality Wellness Shop Story Reviews FAQ)
+     • Trust col    = legal ONLY (Ethics · Returns · Privacy · Terms)
+       "Authenticity" removed — it was a duplicate of Quality page
+     • Contact col  = WhatsApp · Email · Shopee · Lazada · Address
+     • Copyright bar = ONE line only, zero links
+
+     Newsletter strip added above columns (#4 decision: YES,
+     adds trust, grows owned audience, reduces ad dependence).
+  ═══════════════════════════════════════════════════════ */
+  .footer{background:var(--footer-bg)}
+  /* Newsletter strip */
+  .ft-news{padding:52px 0 0;background:var(--footer-bg)}
+  .ft-news__inner{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .ft-news__copy h3{font-family:var(--serif);font-size:clamp(1.5rem,2vw,2rem);font-weight:300;color:white;margin-bottom:10px;line-height:1.2}
+  .ft-news__copy p{font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:0}
+  .ft-news__form{display:flex;flex-direction:column;gap:12px}
+  .news-row{display:flex;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:100px;overflow:hidden;transition:border-color .2s}
+  .news-row:focus-within{border-color:var(--teal-light)}
+  .news-input{flex:1;background:transparent;border:none;outline:none;padding:14px 22px;font-family:var(--sans);font-size:14px;color:white}
+  .news-input::placeholder{color:rgba(255,255,255,.35)}
+  .news-btn{background:var(--teal);color:white;border:none;padding:14px 24px;font-family:var(--sans);font-size:13.5px;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap;letter-spacing:.02em;border-radius:0 100px 100px 0}
+  .news-btn:hover{background:var(--teal-deep)}
+  .news-consent{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:rgba(255,255,255,.35);line-height:1.55;cursor:pointer}
+  .news-consent input[type="checkbox"]{width:14px;height:14px;accent-color:var(--teal-light);flex-shrink:0;margin-top:1px;cursor:pointer}
+  .news-consent a{color:var(--teal-light)}
+  /* Columns */
+  .footer__main{padding:48px 0 40px}
+  .ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07)}
+  .ft-logo{height:38px;width:auto;filter:brightness(0) invert(1);margin-bottom:18px;opacity:.92}
+  .ft-tag{font-size:13.5px;color:rgba(255,255,255,.42);line-height:1.72;margin-bottom:0}
+  .ft-social{display:flex;gap:9px;margin-top:22px}
+  .ft-soc-a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .2s;color:rgba(255,255,255,.62)}
+  .ft-soc-a:hover{background:var(--teal);border-color:var(--teal);transform:translateY(-3px);color:white}
+  .ft-cert{display:inline-flex;align-items:center;gap:7px;margin-top:22px;padding:7px 16px;background:rgba(97,202,216,.09);border:1px solid rgba(97,202,216,.2);border-radius:100px;font-size:11.5px;font-weight:700;color:var(--teal-light);letter-spacing:.05em}
+  .ft-col-h{font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:22px}
+  .ft-links{display:flex;flex-direction:column;gap:12px}
+  .ft-links a{font-size:13.5px;color:rgba(255,255,255,.55);transition:color .2s}
+  .ft-links a:hover{color:var(--teal-light)}
+  .ft-addr{font-size:12.5px;color:rgba(255,255,255,.27);margin-top:20px;line-height:1.72}
+  /* Copyright bar — links must NOT appear here (they're in columns above) */
+  .ft-bottom{padding-top:28px;text-align:center;font-size:12px;color:rgba(255,255,255,.22)}
+
+  /* ═══════════════════════════════════════════════════════
+     COMMUNITY POPUP (#5 fix)
+     ─────────────────────────────────────────────────────
+     Uses localStorage (not sessionStorage).
+     localStorage persists until user clears browser data.
+     → Popup shows ONCE EVER per device/browser.
+     sessionStorage resets each tab session — would be
+     annoying for return visitors.
+  ═══════════════════════════════════════════════════════ */
+  .community-popup{position:fixed;bottom:32px;left:32px;z-index:800;background:white;border:1px solid var(--border);border-radius:24px;width:308px;box-shadow:var(--sh-xl);transform:translateY(140px);opacity:0;transition:all .4s var(--ease-spring);pointer-events:none}
+  .community-popup.show{transform:translateY(0);opacity:1;pointer-events:all}
+  .pop-head{padding:22px 22px 16px;border-bottom:1px solid var(--border-soft);position:relative}
+  .pop-head h4{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:4px}
+  .pop-head p{font-size:13px;color:var(--ink-muted);margin:0}
+  .pop-close{position:absolute;top:16px;right:16px;font-size:14px;color:var(--ink-muted);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s;cursor:pointer}
+  .pop-close:hover{background:var(--teal-ghost);color:var(--teal);transform:rotate(90deg)}
+  .pop-body{padding:16px 22px 20px;display:flex;flex-direction:column;gap:9px}
+  .pop-link{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:14px;border:1px solid var(--border);transition:all .2s}
+  .pop-link:hover{border-color:var(--teal-soft);background:var(--teal-ghost)}
+  .pop-link__ico{font-size:20px}
+  .pop-link__lbl{font-size:13.5px;font-weight:600;color:var(--ink)}
+  .pop-link__sub{font-size:11.5px;color:var(--ink-muted)}
+  .pop-dismiss{text-align:center;font-size:12px;color:var(--ink-muted);cursor:pointer;padding:4px 0;transition:color .2s}
+  .pop-dismiss:hover{color:var(--teal)}
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media(max-width:1024px){
+    .why-grid{grid-template-columns:repeat(2,1fr)}
+    .testi-grid{grid-template-columns:1fr 1fr}
+    .testi-grid .testi-card:last-child{display:none}
+    .prod-layout{grid-template-columns:1fr;gap:48px;max-width:540px}
+    .soc-stats{grid-template-columns:repeat(2,1fr)}
+    .soc-stat:nth-child(2){border-right:none}
+    .soc-stat:nth-child(3),.soc-stat:nth-child(4){border-top:1px solid var(--border)}
+    .ct-grid{grid-template-columns:1fr}
+    .concerns__grid{grid-template-columns:1fr}
+    .timeline__grid{grid-template-columns:1fr;gap:48px}
+    .ft-news__inner{grid-template-columns:1fr;gap:32px}
   }
-  .btn--primary {
-    background: var(--teal); color: white;
-    box-shadow: 0 4px 20px rgba(0,151,178,.28);
+  @media(max-width:900px){
+    .hero__grid{grid-template-columns:1fr;gap:56px}
+    .hero__vis{order:-1}
+    .hero__ring,.hero__ring2{width:290px;height:290px}
+    .hero__glow{width:270px;height:270px}
+    .hero__img{max-width:230px}
+    .grid-2c{grid-template-columns:1fr}
+    .ft-grid{grid-template-columns:1fr 1fr}
+    .cta-block{padding:56px 36px}
+    .farm-strip__grid{grid-template-columns:1fr}
+    .farm-strip__item{border-right:none;border-bottom:1px solid var(--border);padding:20px 24px}
+    .farm-strip__item:last-child{border-bottom:none}
   }
-  .btn--primary:hover {
-    background: var(--teal-deep); transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(0,151,178,.38);
+  @media(max-width:768px){
+    .section{padding:80px 0}
+    .testi-grid{grid-template-columns:1fr}
+    .testi-grid .testi-card:last-child{display:flex}
+    .photo-strip__grid{grid-template-columns:1fr;gap:16px}
+    .cta-block{padding:48px 28px}
+    .prod-card{padding:40px 28px}
   }
-  .btn--outline {
-    background: transparent; color: var(--teal);
-    border: 1.5px solid rgba(0,151,178,.4);
-  }
-  .btn--outline:hover { border-color: var(--teal); background: var(--teal-ghost); transform: translateY(-2px); }
-  .btn--sm   { padding: 10px 20px; font-size: 13px; }
-  .btn--lg   { padding: 18px 44px; font-size: 16px; }
-  .btn--full { width: 100%; }
-  .btn--ghost { color: var(--teal); font-size: 14px; font-weight: 500; gap: 6px; padding: 0; background: none; box-shadow: none; }
-  .btn--ghost:hover { gap: 10px; opacity: .8; transform: none; }
-  .btn--white { background: white; color: var(--teal); box-shadow: 0 4px 20px rgba(0,0,0,.08); }
-  .btn--white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.12); }
-  /* Ripple */
-  .btn .ripple { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.3); transform: scale(0); animation: ripple-anim .65s ease-out forwards; pointer-events: none; }
-  @keyframes ripple-anim { to { transform: scale(36); opacity: 0; } }
-
-  /* ─── ANIMATIONS ─────────────────────────────────────────────── */
-  .fade-up    { opacity: 0; transform: translateY(36px); transition: opacity .72s var(--ease), transform .72s var(--ease); }
-  .fade-left  { opacity: 0; transform: translateX(-28px); transition: opacity .72s var(--ease), transform .72s var(--ease); }
-  .fade-right { opacity: 0; transform: translateX(28px); transition: opacity .72s var(--ease), transform .72s var(--ease); }
-  .fade-up.visible, .fade-left.visible, .fade-right.visible { opacity: 1; transform: translate(0); }
-  [data-delay="1"] { transition-delay: .1s; }
-  [data-delay="2"] { transition-delay: .2s; }
-  [data-delay="3"] { transition-delay: .3s; }
-  [data-delay="4"] { transition-delay: .4s; }
-  [data-delay="5"] { transition-delay: .5s; }
-  @keyframes hero-float  { 0%,100% { transform: translateY(0); }    50% { transform: translateY(-14px); } }
-  @keyframes badge-float { 0%,100% { transform: translateY(0); }    50% { transform: translateY(-5px); } }
-  @keyframes ring-pulse  { 0%,100% { transform: scale(1); opacity:.5; } 50% { transform: scale(1.04); opacity:1; } }
-  @keyframes glow-pulse  { 0%,100% { transform: scale(1); opacity:.7; } 50% { transform: scale(1.08); opacity:1; } }
-  @keyframes shimmer     { 0%,100% { background-position: 0% center; } 50% { background-position:100% center; } }
-  @keyframes marquee     { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-  @keyframes wa-pulse    { 0% { transform: scale(.94); opacity:.7; } 100% { transform: scale(1.22); opacity:0; } }
-
-  /* ─── SCROLL PROGRESS ───────────────────────────────────────── */
-  .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--teal), var(--teal-light), var(--teal)); width: 0%; z-index: 9999; transition: width .08s linear; border-radius: 0 2px 2px 0; }
-
-  /* ─── SCROLL TO TOP ──────────────────────────────────────────── */
-  .scroll-top { position: fixed; bottom: 32px; right: 32px; z-index: 500; width: 44px; height: 44px; border-radius: 50%; background: var(--teal); color: white; font-size: 16px; box-shadow: 0 4px 20px rgba(0,151,178,.32); display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(20px); transition: all .3s var(--ease); pointer-events: none; cursor: pointer; border: none; }
-  .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
-  .scroll-top:hover { background: var(--teal-deep); transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,151,178,.4); }
-
-  /* ─── NAVIGATION ─────────────────────────────────────────────── */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    height: 72px; background: rgba(255,255,255,.9);
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(233,240,240,.6);
-    transition: height .3s var(--ease), box-shadow .3s, background .3s;
-  }
-  .nav.scrolled { height: 64px; box-shadow: 0 2px 20px rgba(0,0,0,.05); background: rgba(255,255,255,.97); border-bottom-color: var(--border); }
-  .nav__container { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; position: relative; }
-  .nav__hamburger { display: flex; flex-direction: column; gap: 5px; padding: 10px; border-radius: 10px; transition: background .2s; flex-shrink: 0; z-index: 2; }
-  .nav__hamburger:hover { background: var(--teal-ghost); }
-  .nav__hamburger span { display: block; width: 21px; height: 1.5px; background: var(--ink); border-radius: 2px; transition: all .3s var(--ease); transform-origin: center; }
-  .nav__hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .nav__hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .nav__hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-  .nav__logo { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; transition: opacity .3s; }
-  .nav__logo img { height: 46px; width: auto; max-width: 180px; }
-  body.menu-open .nav__logo { opacity: 0 !important; pointer-events: none !important; }
-  .nav__right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
-  /* Language */
-  .lang-dropdown { position: relative; }
-  .lang-btn { display: flex; align-items: center; gap: 5px; background: none; border: 1px solid var(--border); border-radius: 40px; padding: 8px 14px; font-size: 12.5px; font-weight: 600; color: var(--ink-soft); letter-spacing: .04em; transition: all .2s; cursor: pointer; }
-  .lang-btn:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-ghost); }
-  .lang-btn__chevron { font-size: 9px; transition: transform .2s; display: inline-block; }
-  .lang-dropdown.open .lang-btn__chevron { transform: rotate(180deg); }
-  .lang-options { position: absolute; top: calc(100% + 10px); right: 0; background: white; border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow-md); min-width: 175px; overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(-8px) scale(.97); transition: all .22s var(--ease); z-index: 100; }
-  .lang-dropdown.open .lang-options { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
-  .lang-option { display: flex; align-items: center; gap: 10px; padding: 12px 18px; font-size: 13.5px; color: var(--ink-soft); transition: background .15s; }
-  .lang-option:hover { background: var(--teal-ghost); color: var(--ink); }
-  .lang-option.active { color: var(--teal); font-weight: 600; }
-  .lang-option__flag { font-size: 15px; }
-
-  /* ─── MOBILE MENU ────────────────────────────────────────────── */
-  .nav__mobile { position: fixed; inset: 0; z-index: 1001; display: flex; transform: translateX(100%); transition: transform .42s var(--ease); }
-  .nav__mobile.open { transform: translateX(0); }
-  .nav__mobile-left { width: 56%; background: white; padding: 48px 32px 32px; display: flex; flex-direction: column; overflow-y: auto; box-shadow: 4px 0 48px rgba(0,0,0,.08); position: relative; }
-  .nav__mobile-right { flex: 1; background: linear-gradient(160deg, var(--teal-ghost), #e5f9fb); padding: 40px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; }
-  .nav__mobile-logo { margin-bottom: 6px; }
-  .nav__mobile-logo img { height: 38px; width: auto; }
-  .nav__mobile-close { position: absolute; top: 18px; right: 18px; width: 42px; height: 42px; border-radius: 50%; background: var(--border-soft); border: 1px solid var(--border); font-size: 15px; display: flex; align-items: center; justify-content: center; z-index: 1002; transition: all .2s; color: var(--ink); cursor: pointer; }
-  .nav__mobile-close:hover { background: var(--teal); color: white; border-color: var(--teal); transform: rotate(90deg); }
-  .nav__mobile-lang { display: flex; gap: 20px; margin: 16px 0 24px; }
-  .nav__mobile-lang a { font-size: 12px; font-weight: 700; color: var(--ink-muted); letter-spacing: .06em; transition: color .2s; }
-  .nav__mobile-lang a.active, .nav__mobile-lang a:hover { color: var(--teal); }
-  .nav__mobile-link { display: block; padding: 13px 0; font-size: 15px; color: var(--ink-soft); border-bottom: 1px solid var(--border-soft); transition: all .2s; }
-  .nav__mobile-link:hover, .nav__mobile-link.active { color: var(--teal); padding-left: 4px; }
-  .nav__mobile-link:last-of-type { border-bottom: none; }
-  .nav__mobile-link--highlight { color: var(--teal); font-weight: 600; }
-  .nav__mobile-product-img { width: 120px; height: auto; filter: drop-shadow(0 16px 28px rgba(0,151,178,.18)); animation: hero-float 5s ease-in-out infinite; }
-  .nav__mobile-price { font-family: var(--serif); font-size: 2.4rem; font-weight: 300; color: var(--ink); line-height: 1; }
-  .nav__mobile-price span { font-family: var(--sans); font-size: .88rem; color: var(--ink-muted); font-weight: 400; }
-  .nav__mobile-sub { font-size: 12.5px; color: var(--ink-muted); }
-  .nav__mobile-cta { width: 100%; margin-top: 4px; }
-  @media(max-width:600px) { .nav__mobile { flex-direction:column; } .nav__mobile-left { width:100%; padding-top:64px; } .nav__mobile-right { display:none; } }
-
-  /* ─── TRUST BAR ──────────────────────────────────────────────── */
-  .trust-bar { background: var(--teal-ghost); border-top: 1px solid var(--teal-soft); border-bottom: 1px solid var(--teal-soft); overflow: hidden; padding: 13px 0; }
-  .trust-bar__track { display: flex; white-space: nowrap; animation: marquee 36s linear infinite; }
-  .trust-bar__track:hover { animation-play-state: paused; }
-  .trust-bar__track span { display: inline-flex; align-items: center; padding: 0 20px; font-size: 10.5px; font-weight: 700; letter-spacing: .16em; color: var(--teal); }
-  .trust-bar__dot { padding: 0 4px; opacity: .3; }
-
-  /* ─── PHOTO PLACEHOLDERS ─────────────────────────────────────── */
-  /* Replace with real <img> tags when photos are ready.
-     Keep the wrapper div class — just swap inner content. */
-  .photo-ph {
-    background: var(--paper); border: 2px dashed var(--border);
-    border-radius: var(--r-md); display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 10px; overflow: hidden;
-  }
-  .photo-ph__icon { font-size: 2rem; opacity: .35; line-height: 1; }
-  .photo-ph__label { font-size: 10.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-muted); }
-  .photo-ph__sub { font-size: 12px; color: var(--border); }
-  /* Aspect ratio sizes */
-  .photo-ph--hero      { aspect-ratio: 4/5; max-width: 340px; width: 100%; }
-  .photo-ph--wide      { aspect-ratio: 21/9; width: 100%; }
-  .photo-ph--landscape { aspect-ratio: 4/3; width: 100%; }
-  .photo-ph--square    { aspect-ratio: 1/1; width: 100%; }
-  /* When a real img is placed inside, it fills the wrapper */
-  .photo-ph img { width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--r-md) - 2px); }
-
-  /* ─── HERO ───────────────────────────────────────────────────── */
-  .hero {
-    padding: calc(72px + 96px) 0 100px;
-    background: linear-gradient(158deg, var(--paper) 0%, #dff5f8 38%, #f5fdfe 70%, white 100%);
-    position: relative; overflow: hidden; min-height: 92vh; display: flex; align-items: center;
-  }
-  .hero__blob { position: absolute; border-radius: 50%; pointer-events: none; }
-  .hero__blob--a { width: 680px; height: 680px; top: -140px; right: -140px; background: radial-gradient(circle, rgba(0,151,178,.055) 0%, transparent 68%); }
-  .hero__blob--b { width: 460px; height: 460px; bottom: -80px; left: 4%; background: radial-gradient(circle, rgba(97,202,216,.045) 0%, transparent 70%); }
-  .hero__blob--c { width: 280px; height: 280px; top: 38%; left: 28%; background: radial-gradient(circle, rgba(0,174,203,.035) 0%, transparent 70%); }
-  .hero__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: center; position: relative; z-index: 1; }
-  /* Badge */
-  .hero__badge-top {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
-    color: white; padding: 9px 22px; border-radius: 100px;
-    font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
-    margin-bottom: 28px; box-shadow: 0 4px 18px rgba(0,151,178,.3);
-    animation: badge-float 3.5s ease-in-out infinite;
-  }
-  .hero__badge-top::before { content: '✦'; font-size: 9px; opacity: .8; }
-  /* Title */
-  .hero__title { margin-bottom: 22px; }
-  .hero__title em {
-    font-style: italic; display: block;
-    background: linear-gradient(125deg, var(--teal) 0%, var(--teal-light) 45%, var(--teal-mid) 100%);
-    background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent; animation: shimmer 5s ease infinite;
-  }
-  @supports not (-webkit-background-clip: text) { .hero__title em { color: var(--teal); -webkit-text-fill-color: unset; background: none; } }
-  .hero__subhead { font-size: 1.05rem; line-height: 1.88; color: var(--ink-soft); max-width: 490px; margin-bottom: 22px; font-weight: 300; }
-  /* Cert pills */
-  .hero__certs { display: flex; align-items: center; gap: 9px; margin-bottom: 36px; flex-wrap: wrap; }
-  .hero__cert-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: var(--teal); letter-spacing: .04em; background: white; border: 1px solid rgba(0,151,178,.18); padding: 5px 13px; border-radius: 100px; box-shadow: var(--shadow-xs); }
-  .hero__cert-pill::before { content: '✓'; }
-  .hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-  /* Visual */
-  .hero__visual { position: relative; display: flex; align-items: center; justify-content: center; }
-  .hero__visual-glow { position: absolute; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(0,151,178,.08) 0%, transparent 70%); animation: glow-pulse 4.5s ease-in-out infinite; }
-  .hero__visual-ring   { position: absolute; width: 430px; height: 430px; border-radius: 50%; border: 1px solid rgba(0,151,178,.1);  animation: ring-pulse 4.5s ease-in-out infinite; }
-  .hero__visual-ring-2 { position: absolute; width: 338px; height: 338px; border-radius: 50%; border: 1px dashed rgba(0,151,178,.13); animation: ring-pulse 4.5s ease-in-out infinite .6s; }
-  .hero__product-img { max-width: 330px; width: 100%; position: relative; z-index: 2; filter: drop-shadow(0 28px 56px rgba(0,151,178,.2)); animation: hero-float 5.5s ease-in-out infinite; }
-  /* Floating context tags */
-  .hero__tag {
-    position: absolute; z-index: 3; background: white; border-radius: 100px;
-    box-shadow: var(--shadow-md); display: flex; align-items: center; gap: 8px;
-    padding: 10px 18px; font-size: 12px; font-weight: 700; color: var(--teal);
-    border: 1px solid var(--teal-soft);
-  }
-  .hero__tag--cert  { top: 12px; left: -12px; animation: badge-float 3s ease-in-out infinite .8s; }
-  .hero__tag--cert::before { content: '✓'; font-size: 13px; }
-  .hero__tag--orders { bottom: 8px; right: -12px; flex-direction: column; gap: 2px; padding: 14px 20px; border-radius: 20px; animation: badge-float 3.8s ease-in-out infinite 1.2s; text-align: center; }
-  .hero__tag--orders .tag-stat { font-family: var(--serif); font-size: 1.9rem; font-weight: 400; color: var(--teal); line-height: 1; display: block; }
-  .hero__tag--orders .tag-sub { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
-  .hero__tag--years { top: 48%; right: -16px; transform: translateY(-50%); animation: badge-float 4s ease-in-out infinite 2s; }
-
-  /* ─── FARM STRIP ─────────────────────────────────────────────── */
-  .farm-strip { background: white; border-bottom: 1px solid var(--border-soft); padding: 56px 0; }
-  .farm-strip__grid { display: grid; grid-template-columns: repeat(3, 1fr); }
-  .farm-strip__item { display: flex; align-items: center; gap: 20px; padding: 0 40px; border-right: 1px solid var(--border); transition: background .25s; }
-  .farm-strip__item:last-child { border-right: none; }
-  .farm-strip__item:hover { background: var(--teal-ghost); }
-  .farm-strip__icon { width: 50px; height: 50px; border-radius: 14px; background: var(--teal-ghost); border: 1px solid var(--teal-soft); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
-  .farm-strip__title { display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
-  .farm-strip__desc  { display: block; font-size: 13px; color: var(--ink-muted); }
-
-  /* ─── WHY SECTION ────────────────────────────────────────────── */
-  .why-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .why-card {
-    background: white; border: 1px solid var(--border); border-radius: var(--r-lg); padding: 36px 28px;
-    text-align: center; transition: all .38s var(--ease); position: relative; overflow: hidden;
-  }
-  .why-card__bg { position: absolute; inset: 0; background: linear-gradient(145deg, var(--teal-ghost), white); opacity: 0; transition: opacity .35s; border-radius: var(--r-lg); }
-  .why-card__line { position: absolute; bottom: 0; left: 16px; right: 16px; height: 2.5px; background: linear-gradient(90deg, var(--teal), var(--teal-light)); border-radius: 2px; transform: scaleX(0); transition: transform .35s var(--ease); transform-origin: center; }
-  .why-card:hover { transform: translateY(-7px); box-shadow: var(--shadow-md); border-color: var(--teal-soft); }
-  .why-card:hover .why-card__bg   { opacity: 1; }
-  .why-card:hover .why-card__line { transform: scaleX(1); }
-  .why-card__content { position: relative; z-index: 1; }
-  .why-card__icon  { font-size: 2.2rem; margin-bottom: 20px; display: block; line-height: 1; }
-  .why-card__title { font-size: .98rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; font-family: var(--sans); }
-  .why-card__body  { font-size: 13.5px; color: var(--ink-muted); line-height: 1.75; margin: 0; }
-
-  /* ─── PRODUCT SPOTLIGHT ──────────────────────────────────────── */
-  .product-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; align-items: center; max-width: 1000px; margin: 0 auto; }
-  .product-card {
-    background: white; border: 1px solid var(--border); border-radius: var(--r-xl); padding: 52px 44px;
-    text-align: center; box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
-    transform-style: preserve-3d; will-change: transform; transition: box-shadow .4s, transform .5s var(--ease);
-  }
-  .product-card__glow-top    { position: absolute; top: -90px; right: -90px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(0,151,178,.055) 0%, transparent 70%); pointer-events: none; }
-  .product-card__glow-bottom { position: absolute; bottom: -60px; left: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(97,202,216,.04) 0%, transparent 70%); pointer-events: none; }
-  .product-card__inner { position: relative; z-index: 1; }
-  .product-brand { font-family: var(--serif); font-size: clamp(1.9rem, 2.6vw, 2.5rem); font-weight: 300; color: var(--ink); letter-spacing: .1em; line-height: 1; margin-bottom: 4px; }
-  .product-brand__sub { display: block; font-family: var(--sans); font-size: .36em; letter-spacing: .3em; color: var(--teal); font-weight: 700; text-transform: uppercase; margin-top: 8px; }
-  .product-divider { width: 48px; height: 1.5px; background: linear-gradient(90deg, var(--teal), var(--teal-light)); margin: 20px auto 16px; border-radius: 2px; }
-  .product-type    { font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
-  .product-grade   { font-size: 10.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); margin-bottom: 22px; }
-  .product-tags { display: flex; justify-content: center; gap: 7px; flex-wrap: wrap; margin-bottom: 7px; }
-  .product-tag { display: inline-block; padding: 5px 13px; border: 1px solid var(--border); border-radius: 100px; font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-muted); background: white; transition: all .2s; }
-  .product-tag:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-ghost); }
-  .product-stats { display: flex; justify-content: center; gap: 0; margin: 32px 0 28px; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
-  .product-stat { flex: 1; padding: 18px 10px; text-align: center; border-right: 1px solid var(--border); }
-  .product-stat:last-child { border-right: none; }
-  .product-stat__num   { font-family: var(--serif); font-size: 2.2rem; font-weight: 300; color: var(--teal); line-height: 1; }
-  .product-stat__label { font-size: 9.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-muted); margin-top: 5px; }
-  .product-qty    { font-family: var(--serif); font-size: 1.55rem; font-weight: 300; color: var(--ink); margin: 22px 0 4px; }
-  .product-qty-sub { font-size: 12.5px; color: var(--ink-muted); margin-bottom: 28px; }
-  .product-price  { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: var(--teal); margin-bottom: 30px; letter-spacing: -.02em; }
-  .product-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  /* Product right panel */
-  .product-info-headline { font-family: var(--serif); font-size: clamp(1.55rem, 2.4vw, 2.1rem); font-weight: 300; color: var(--ink); line-height: 1.2; margin-bottom: 24px; }
-  .product-detail-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
-  .product-detail-list li { display: flex; align-items: flex-start; gap: 13px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.65; }
-  .product-detail-list li::before { content: '✦'; color: var(--teal); font-size: 9px; flex-shrink: 0; margin-top: 6px; }
-  .product-detail-list strong { color: var(--ink); font-weight: 600; }
-  .product-channels { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; margin-top: 20px; }
-  .product-channels-label { font-size: 12.5px; color: var(--ink-muted); }
-  .channel-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; color: var(--teal); padding: 5px 12px; border: 1px solid rgba(0,151,178,.25); border-radius: 100px; transition: all .2s; }
-  .channel-pill:hover { background: var(--teal-ghost); border-color: var(--teal); }
-
-  /* ─── PHOTO STRIP (between product & benefits) ───────────────── */
-  /* Swap photo-ph divs for <img> when farm/factory photos are ready */
-  .photo-strip { padding: 80px 0; background: var(--paper); }
-  .photo-strip__eyebrow { text-align: center; margin-bottom: 40px; }
-  .photo-strip__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .photo-strip__caption { text-align: center; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-muted); margin-top: 12px; }
-
-  /* ─── BENEFITS ───────────────────────────────────────────────── */
-  .benefits-list { display: flex; flex-direction: column; gap: 16px; }
-  .benefit-item { display: flex; gap: 18px; align-items: flex-start; padding: 22px 24px; background: white; border: 1px solid var(--border); border-radius: 20px; transition: all .3s var(--ease); }
-  .benefit-item:hover { border-color: var(--teal-soft); box-shadow: var(--shadow-sm); transform: translateX(5px); }
-  .benefit-icon { width: 44px; height: 44px; border-radius: 13px; background: var(--teal-ghost); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
-  .benefit-item h4 { margin-bottom: 4px; font-size: .95rem; color: var(--ink); }
-  .benefit-item p { font-size: 13.5px; color: var(--ink-muted); margin: 0; line-height: 1.65; }
-  /* Dosage */
-  .dosage-card { background: white; border: 1px solid var(--border); border-radius: 28px; padding: 36px 32px; text-align: center; box-shadow: var(--shadow-sm); margin-bottom: 16px; }
-  .dosage-row { display: flex; align-items: center; justify-content: center; gap: 28px; }
-  .dosage-num { font-family: var(--serif); font-size: 4.8rem; font-weight: 300; color: var(--teal); line-height: 1; }
-  .dosage-meta strong { display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-  .dosage-meta span { font-size: 13px; color: var(--ink-muted); }
-  .dosage-supply { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-soft); font-size: 13px; color: var(--ink-muted); }
-  .dosage-supply strong { color: var(--teal); font-weight: 700; }
-  .legal-note { font-size: 12px; color: var(--ink-muted); line-height: 1.7; padding: 16px 20px; background: var(--paper); border: 1px solid var(--border-soft); border-radius: 14px; }
-  .legal-note strong { color: var(--ink-soft); font-weight: 600; }
-
-  /* ─── TESTIMONIALS ───────────────────────────────────────────── */
-  .social-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: white; border: 1px solid var(--border); border-radius: 28px; overflow: hidden; margin-bottom: 40px; }
-  .social-stat { padding: 28px 20px; text-align: center; border-right: 1px solid var(--border); transition: background .2s; }
-  .social-stat:last-child { border-right: none; }
-  .social-stat:hover { background: var(--teal-ghost); }
-  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
-  .testi-card { background: white; border: 1px solid var(--border); border-radius: 28px; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; transition: all .35s var(--ease); position: relative; overflow: hidden; }
-  .testi-card::before { content: '"'; position: absolute; top: 14px; right: 22px; font-family: var(--serif); font-size: 5.5rem; color: var(--teal-soft); line-height: 1; pointer-events: none; }
-  .testi-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--teal-soft); }
-  .testi-stars { color: var(--teal-light); font-size: 1rem; letter-spacing: 2px; }
-  .testi-text { font-family: var(--serif); font-size: 1.06rem; font-weight: 300; font-style: italic; color: var(--ink); line-height: 1.7; flex: 1; margin: 0; }
-  .testi-meta { border-top: 1px solid var(--border-soft); padding-top: 14px; }
-  .testi-author { font-size: 13px; font-weight: 600; color: var(--ink); margin: 0 0 2px; }
-  .testi-loc { font-size: 12px; color: var(--ink-muted); margin: 0; }
-
-  /* ─── QUALITY BADGES ─────────────────────────────────────────── */
-  .quality-row { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; }
-  .quality-item { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-  .quality-circle { width: 86px; height: 86px; border-radius: 50%; border: 1.5px solid var(--teal-soft); background: white; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); transition: all .3s var(--ease-spring); }
-  .quality-circle img { width: 46px; height: 46px; object-fit: contain; }
-  .quality-circle:hover { border-color: var(--teal); box-shadow: var(--shadow-md); transform: translateY(-5px) scale(1.05); }
-  .quality-circle--text { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; color: var(--teal); }
-  .quality-circle--sm   { font-family: var(--serif); font-size: .95rem; letter-spacing: -.02em; color: var(--teal); }
-  .quality-circle--emoji { font-size: 1.7rem; }
-  .section-header--flush { margin-bottom: 0; }
-  .quality-badges-wrap   { margin-top: 48px; } letter-spacing: .1em; text-transform: uppercase; color: var(--ink-muted); }
-  .quality-divider { width: 1px; height: 56px; background: var(--border); }
-
-  /* ─── CTA BLOCK ──────────────────────────────────────────────── */
-  .cta-block {
-    background: linear-gradient(145deg, #e3f8fa, white, var(--teal-ghost));
-    border: 1px solid var(--teal-soft); border-radius: var(--r-xl); padding: 88px 64px;
-    text-align: center; position: relative; overflow: hidden;
-  }
-  .cta-block__glow-a { position: absolute; top: -100px; right: -100px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(0,151,178,.065) 0%, transparent 70%); pointer-events: none; }
-  .cta-block__glow-b { position: absolute; bottom: -80px; left: -80px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(97,202,216,.055) 0%, transparent 70%); pointer-events: none; }
-  .cta-block__inner { position: relative; z-index: 1; }
-  .cta-block h2 { margin-bottom: 14px; }
-  .cta-block .cta-lead { margin-bottom: 40px; max-width: 460px; margin-left: auto; margin-right: auto; display: block; }
-  .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
-  .wa-wrap { position: relative; display: inline-flex; }
-  .wa-pulse { position: absolute; inset: -7px; border-radius: 50px; border: 2px solid rgba(0,151,178,.45); animation: wa-pulse 2.2s ease-out infinite; pointer-events: none; }
-  .cta-channels { display: flex; align-items: center; gap: 12px; justify-content: center; flex-wrap: wrap; font-size: 13px; color: var(--ink-muted); }
-  .cta-channels strong { color: var(--ink-soft); font-weight: 600; }
-  .cta-channels a { color: var(--teal); font-weight: 600; transition: color .2s; }
-  .cta-channels a:hover { color: var(--teal-deep); }
-
-  /* ─── FAQ ────────────────────────────────────────────────────── */
-  .faq-list { max-width: 780px; margin: 0 auto 48px; }
-  .faq-item { border-bottom: 1px solid var(--border-soft); }
-  .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; cursor: pointer; gap: 16px; transition: color .2s; }
-  .faq-q:hover { color: var(--teal); }
-  .faq-q__text { font-size: 15.5px; font-weight: 500; }
-  .faq-q__icon { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid rgba(0,151,178,.3); color: var(--teal); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 300; transition: all .3s var(--ease); line-height: 1; }
-  .faq-item.open .faq-q__icon { transform: rotate(45deg); background: var(--teal); border-color: var(--teal); color: white; }
-  .faq-answer { max-height: 0; overflow: hidden; transition: max-height .4s var(--ease); }
-  .faq-answer__inner { font-size: 14.5px; color: var(--ink-soft); line-height: 1.8; padding-bottom: 22px; }
-  .faq-answer__inner a { color: var(--teal); font-weight: 500; }
-
-  /* ─── FOOTER ─────────────────────────────────────────────────── */
-  .footer { background: var(--footer-bg); padding: 88px 0 40px; }
-  .footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr; gap: 48px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,.07); }
-  .footer__logo { height: 38px; width: auto; filter: brightness(0) invert(1); margin-bottom: 18px; opacity: .92; }
-  .footer__tagline { font-size: 13.5px; color: rgba(255,255,255,.42); line-height: 1.72; margin-bottom: 0; }
-  .footer__social { display: flex; gap: 9px; margin-top: 22px; }
-  .footer__social-link { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.09); display: flex; align-items: center; justify-content: center; font-size: 13px; transition: all .2s; color: rgba(255,255,255,.62); }
-  .footer__social-link:hover { background: var(--teal); border-color: var(--teal); transform: translateY(-3px); color: white; }
-  .footer__cert { display: inline-flex; align-items: center; gap: 7px; margin-top: 22px; padding: 7px 16px; background: rgba(97,202,216,.09); border: 1px solid rgba(97,202,216,.2); border-radius: 100px; font-size: 11.5px; font-weight: 700; color: var(--teal-light); letter-spacing: .05em; }
-  .footer__col-title { font-size: 10.5px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 22px; }
-  .footer__links { display: flex; flex-direction: column; gap: 12px; }
-  .footer__links a { font-size: 13.5px; color: rgba(255,255,255,.55); transition: color .2s; }
-  .footer__links a:hover { color: var(--teal-light); }
-  .footer__address { font-size: 12.5px; color: rgba(255,255,255,.27); margin-top: 20px; line-height: 1.72; }
-  /* Footer bottom: copyright only — Privacy & Terms already in Trust column above */
-  .footer__bottom { padding-top: 32px; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: rgba(255,255,255,.25); flex-wrap: wrap; gap: 12px; }
-
-  /* ─── COMMUNITY POPUP ────────────────────────────────────────── */
-  .community-popup { position: fixed; bottom: 32px; left: 32px; z-index: 800; background: white; border: 1px solid var(--border); border-radius: 24px; width: 308px; box-shadow: var(--shadow-xl); transform: translateY(140px); opacity: 0; transition: all .4s var(--ease-spring); pointer-events: none; }
-  .community-popup.show { transform: translateY(0); opacity: 1; pointer-events: all; }
-  .popup-header { padding: 22px 22px 16px; border-bottom: 1px solid var(--border-soft); position: relative; }
-  .popup-header h4 { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--ink); margin-bottom: 4px; }
-  .popup-header p { font-size: 13px; color: var(--ink-muted); margin: 0; }
-  .popup-close { position: absolute; top: 16px; right: 16px; font-size: 14px; color: var(--ink-muted); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all .2s; cursor: pointer; }
-  .popup-close:hover { background: var(--teal-ghost); color: var(--teal); transform: rotate(90deg); }
-  .popup-body { padding: 16px 22px 20px; display: flex; flex-direction: column; gap: 9px; }
-  .popup-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 14px; border: 1px solid var(--border); transition: all .2s; }
-  .popup-link:hover { border-color: var(--teal-soft); background: var(--teal-ghost); }
-  .popup-link__icon  { font-size: 20px; }
-  .popup-link__label { font-size: 13.5px; font-weight: 600; color: var(--ink); }
-  .popup-link__sub   { font-size: 11.5px; color: var(--ink-muted); }
-  .popup-dismiss { text-align: center; font-size: 12px; color: var(--ink-muted); cursor: pointer; padding: 4px 0; transition: color .2s; }
-  .popup-dismiss:hover { color: var(--teal); }
-
-  /* ─── RESPONSIVE ─────────────────────────────────────────────── */
-  @media (max-width: 1024px) {
-    .why-cards { grid-template-columns: repeat(2, 1fr); }
-    .testi-grid { grid-template-columns: 1fr 1fr; }
-    .testi-grid .testi-card:last-child { display: none; }
-    .product-layout { grid-template-columns: 1fr; gap: 48px; max-width: 540px; }
-    .social-stats { grid-template-columns: repeat(2, 1fr); }
-    .social-stat:nth-child(2) { border-right: none; }
-    .social-stat:nth-child(3), .social-stat:nth-child(4) { border-top: 1px solid var(--border); }
-    .photo-strip__grid { grid-template-columns: repeat(3, 1fr); }
-  }
-  @media (max-width: 900px) {
-    .hero__grid { grid-template-columns: 1fr; gap: 56px; }
-    .hero__visual { order: -1; }
-    .hero__visual-ring, .hero__visual-ring-2 { width: 290px; height: 290px; }
-    .hero__visual-glow { width: 270px; height: 270px; }
-    .hero__product-img { max-width: 230px; }
-    .grid-2c { grid-template-columns: 1fr; }
-    .footer__grid { grid-template-columns: 1fr 1fr; }
-    .cta-block { padding: 56px 36px; }
-    .farm-strip__grid { grid-template-columns: 1fr; }
-    .farm-strip__item { border-right: none; border-bottom: 1px solid var(--border); padding: 20px 24px; }
-    .farm-strip__item:last-child { border-bottom: none; }
-  }
-  @media (max-width: 768px) {
-    .section { padding: 80px 0; }
-    .testi-grid { grid-template-columns: 1fr; }
-    .testi-grid .testi-card:last-child { display: flex; }
-    .photo-strip__grid { grid-template-columns: 1fr; gap: 16px; }
-    .cta-block { padding: 48px 28px; }
-    .product-card { padding: 40px 28px; }
-    .social-stats { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 640px) {
-    .why-cards { grid-template-columns: 1fr; }
-    .hero__ctas { flex-direction: column; }
-    .hero__certs { gap: 8px; }
-    .footer__grid { grid-template-columns: 1fr; }
-    .quality-row { gap: 24px; }
-    .quality-divider { display: none; }
-    .cta-block { padding: 40px 20px; }
-    .cta-buttons { flex-direction: column; align-items: center; }
-    .community-popup { left: 12px; right: 12px; width: auto; bottom: 12px; }
-    .hero__tag--years { display: none; }
+  @media(max-width:640px){
+    .why-grid{grid-template-columns:1fr}
+    .hero__ctas{flex-direction:column}
+    .ft-grid{grid-template-columns:1fr}
+    .qual-row{gap:24px}
+    .qual-div{display:none}
+    .cta-block{padding:40px 20px}
+    .cta-btns{flex-direction:column;align-items:center}
+    .community-popup{left:12px;right:12px;width:auto;bottom:12px}
+    .hero__tag--c{display:none}
+    .news-row{flex-direction:column;border-radius:var(--r-md)}
+    .news-btn{border-radius:var(--r-md)}
   }
   </style>
 </head>
@@ -587,835 +577,987 @@
 
 <div class="scroll-progress" id="progressBar"></div>
 
-<!-- ════════════════════════════════════════
-     NAVIGATION
-════════════════════════════════════════ -->
+<!-- ════════════════════════════════════
+  FIX #1 — EMBEDDED CHECKOUT MODAL
+  Orderla iframe loads inside this overlay.
+  User never leaves morinvibes.com.
+
+  SETUP REQUIRED IN ORDERLA PLUS:
+  Dashboard → Settings → Success Redirect URL →
+  https://morinvibes.com/en/thankyou.html?qty=1
+
+  The iframe src loads lazily (empty on page load)
+  to avoid loading Orderla until the user clicks Order.
+════════════════════════════════════ -->
+<div class="co-overlay" id="coOverlay" role="dialog" aria-modal="true" aria-label="Secure checkout">
+  <div class="co-modal">
+    <div class="co-head">
+      <div class="co-head-brand">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
+        <div class="co-head-info">
+          <strong>Moringa Capsules · 90 caps · 500mg</strong><br />RM89 + shipping
+        </div>
+      </div>
+      <button class="co-close" id="coClose" aria-label="Close checkout">✕</button>
+    </div>
+    <div class="co-trust">
+      <span>✓ KKM Approved</span>
+      <span>✓ GMP Certified</span>
+      <span>🔒 Secure Payment</span>
+      <span>🚚 Ships from Penang</span>
+    </div>
+    <div class="co-body">
+      <div class="co-spinner" id="coSpinner">
+        <div class="co-spinner__ring"></div>
+        <div class="co-spinner__text">Loading secure checkout…</div>
+      </div>
+      <!--
+        Replace data-src with your actual Orderla order form URL.
+        e.g. https://morinvibes.orderla.my/moringa-order
+        sandbox allows form + scripts but prevents unwanted top-nav.
+        allow-top-navigation-by-user-activation lets Orderla redirect
+        the top window to your thankyou page after payment.
+      -->
+      <iframe
+        id="coIframe"
+        class="co-iframe"
+        src=""
+        data-src="https://morinvibes.orderla.my/moringa-order"
+        title="Secure checkout"
+        sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
+        style="height:600px"
+      ></iframe>
+    </div>
+    <div class="co-foot">
+      Same product as our Shopee &amp; Lazada store. Need help?
+      <a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
 <nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
-  <div class="nav__container">
-    <button class="nav__hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+  <div class="nav__wrap">
+    <button class="nav__ham" id="navHam" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
     <a href="/morinvibes-official/en/" class="nav__logo" aria-label="MorinVibes® — Home">
       <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" width="180" height="46" />
     </a>
     <div class="nav__right">
-      <div class="lang-dropdown" id="langDropdown">
-        <button class="lang-btn" id="langBtn" aria-label="Select language" aria-expanded="false">
-          EN <span class="lang-btn__chevron">▾</span>
+      <div class="lang-drop" id="langDrop">
+        <button class="lang-btn" id="langBtn" aria-expanded="false" aria-label="Language">
+          EN <span class="lang-btn__chev">▾</span>
         </button>
-        <div class="lang-options" role="menu">
-          <a href="/morinvibes-official/en/" class="lang-option active" role="menuitem"><span class="lang-option__flag">🇬🇧</span> English</a>
-          <a href="/morinvibes-official/bm/" class="lang-option" role="menuitem"><span class="lang-option__flag">🇲🇾</span> Bahasa Malaysia</a>
-          <a href="/morinvibes-official/zh/" class="lang-option" role="menuitem"><span class="lang-option__flag">🇨🇳</span> 中文</a>
+        <div class="lang-opts" role="menu">
+          <a href="/morinvibes-official/en/" class="lang-opt active" role="menuitem">🇬🇧 English</a>
+          <a href="/morinvibes-official/bm/" class="lang-opt" role="menuitem">🇲🇾 Bahasa Malaysia</a>
+          <a href="/morinvibes-official/zh/" class="lang-opt" role="menuitem">🇨🇳 中文</a>
         </div>
       </div>
-      <a href="https://morinvibes.orderla.my/moringa-order" target="_blank" rel="noopener" class="btn btn--primary btn--sm" id="navOrderBtn">Order Now — RM89</a>
+      <!-- This button opens the embedded checkout, NOT a new tab -->
+      <button class="btn btn--primary btn--sm" id="navOrderBtn">Order — RM89</button>
     </div>
   </div>
 </nav>
 
-<!-- ════════════════════════════════════════
-     MOBILE MENU
-════════════════════════════════════════ -->
-<div class="nav__mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
-  <div class="nav__mobile-left">
-    <div class="nav__mobile-logo">
-      <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" height="38" />
-    </div>
-    <button class="nav__mobile-close" id="menuClose" aria-label="Close menu">✕</button>
-    <div class="nav__mobile-lang">
+<!-- ══ MOBILE MENU ══ -->
+<div class="m-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="m-left">
+    <div class="m-logo"><img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" height="38" /></div>
+    <button class="m-close" id="mClose" aria-label="Close menu">✕</button>
+    <div class="m-lang">
       <a href="/morinvibes-official/en/" class="active">EN</a>
       <a href="/morinvibes-official/bm/">BM</a>
       <a href="/morinvibes-official/zh/">中文</a>
     </div>
-    <a href="/morinvibes-official/en/" class="nav__mobile-link active">Home</a>
-    <a href="/morinvibes-official/en/farm.html" class="nav__mobile-link">The Farm</a>
-    <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link">Quality &amp; Authenticity</a>
-    <a href="/morinvibes-official/en/benefits.html" class="nav__mobile-link">Benefits</a>
-    <a href="/morinvibes-official/en/shop.html" class="nav__mobile-link">Shop</a>
-    <a href="/morinvibes-official/en/about.html" class="nav__mobile-link">About Us</a>
-    <a href="/morinvibes-official/en/testimonials.html" class="nav__mobile-link">Testimonials</a>
-    <a href="/morinvibes-official/en/faq.html" class="nav__mobile-link">FAQ</a>
-    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="nav__mobile-link nav__mobile-link--highlight">💬 Chat with Us</a>
+    <a href="/morinvibes-official/en/"                  class="m-link active">Home</a>
+    <a href="/morinvibes-official/en/farm.html"          class="m-link">Farm</a>
+    <a href="/morinvibes-official/en/quality.html"       class="m-link">Quality</a>
+    <a href="/morinvibes-official/en/wellness.html"      class="m-link">Wellness</a>
+    <a href="/morinvibes-official/en/shop.html"          class="m-link">Shop</a>
+    <a href="/morinvibes-official/en/about.html"         class="m-link">Story</a>
+    <a href="/morinvibes-official/en/testimonials.html"  class="m-link">Reviews</a>
+    <a href="/morinvibes-official/en/faq.html"           class="m-link">FAQ</a>
+    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="m-link m-link--hi">💬 WhatsApp</a>
   </div>
-  <div class="nav__mobile-right">
-    <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="nav__mobile-product-img" />
-    <div class="nav__mobile-price">RM89 <span>/ bottle</span></div>
-    <div class="nav__mobile-sub">90 capsules · 500mg · 30-day supply</div>
-    <a href="https://morinvibes.orderla.my/moringa-order" target="_blank" rel="noopener" class="btn btn--primary nav__mobile-cta">Secure Your Supply</a>
+  <div class="m-right">
+    <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="m-prod-img" />
+    <div class="m-price">RM89 <span>/ bottle</span></div>
+    <div class="m-sub">90 capsules · 500mg · 30-day supply</div>
+    <button class="btn btn--primary btn--full" id="mOrderBtn" style="margin-top:8px">Order Now — RM89</button>
   </div>
 </div>
 
 <main>
 
-  <!-- ════════════════════════════════════════
-       SECTION 1: HERO
-  ════════════════════════════════════════ -->
-  <section class="hero" aria-label="Hero — MorinVibes Moringa Capsules">
-    <div class="hero__blob hero__blob--a" aria-hidden="true"></div>
-    <div class="hero__blob hero__blob--b" aria-hidden="true"></div>
-    <div class="hero__blob hero__blob--c" aria-hidden="true"></div>
-    <div class="container">
-      <div class="hero__grid">
-
-        <div class="fade-up">
-          <div class="hero__badge-top">Freshly Batched · Penang, Malaysia</div>
-          <h1 class="hero__title">
-            The Freshest Moringa.<br />
-            <em>Straight from the Source.</em>
-          </h1>
-          <p class="hero__subhead">
-            We grow it. We harvest it. We capsule it.<br />
-            100% pure moringa leaf powder — nothing added, nothing removed.
-          </p>
-          <div class="hero__certs">
-            <span class="hero__cert-pill">KKM Approved</span>
-            <span class="hero__cert-pill">GMP Certified</span>
-            <span class="hero__cert-pill">No Additives</span>
-            <span class="hero__cert-pill">Since 2019</span>
-          </div>
-          <div class="hero__ctas">
-            <a href="https://morinvibes.orderla.my/moringa-order" target="_blank" rel="noopener" class="btn btn--primary btn--lg" id="heroBuyBtn">Secure Your Bottle — RM89</a>
-            <a href="/morinvibes-official/en/benefits.html" class="btn btn--outline btn--lg">What's Inside →</a>
-          </div>
+<!-- ══ HERO ══ -->
+<section class="hero" aria-label="MorinVibes® — Farm-Direct Moringa Capsules">
+  <div class="hero__blob hero__blob--a" aria-hidden="true"></div>
+  <div class="hero__blob hero__blob--b" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero__grid">
+      <div class="fade-up">
+        <div class="hero__badge">Small-Batch · Penang Farm · Since 2019</div>
+        <h1 class="hero__title">
+          Grown Here.<br />
+          <em>Bottled Here. Delivered Fresh.</em>
+        </h1>
+        <p class="hero__sub">
+          We own the land. We harvest the leaves. We encapsulate in-house.<br />
+          100% pure moringa — no middlemen, no months in a warehouse.
+        </p>
+        <div class="hero__certs">
+          <span class="hero__cert">KKM Approved</span>
+          <span class="hero__cert">GMP Certified</span>
+          <span class="hero__cert">100% Pure</span>
+          <span class="hero__cert">Vegan · Non-GMO</span>
         </div>
-
-        <div class="hero__visual fade-up" data-delay="2">
-          <div class="hero__visual-glow"   aria-hidden="true"></div>
-          <div class="hero__visual-ring"   aria-hidden="true"></div>
-          <div class="hero__visual-ring-2" aria-hidden="true"></div>
-          <div class="hero__tag hero__tag--cert">Ministry Approved</div>
-          <!-- Product image — replace src when new bottle photo is ready -->
-          <img src="/morinvibes-official/images/hero-main.svg"
-               alt="MorinVibes® Moringa Capsules — 90 capsules, 500mg pure moringa leaf powder, KKM approved"
-               class="hero__product-img" />
-          <div class="hero__tag hero__tag--orders">
-            <span class="tag-stat" data-count="10000">0</span>
-            <span class="tag-sub">Orders Fulfilled</span>
-          </div>
-          <div class="hero__tag hero__tag--years">6+ Years</div>
+        <div class="hero__ctas">
+          <button class="btn btn--primary btn--lg" id="heroBuyBtn">Begin 30 Days — RM89</button>
+          <a href="/morinvibes-official/en/wellness.html" class="btn btn--outline btn--lg">What's Inside →</a>
         </div>
-
+      </div>
+      <div class="hero__vis fade-up" data-delay="2">
+        <div class="hero__glow"  aria-hidden="true"></div>
+        <div class="hero__ring"  aria-hidden="true"></div>
+        <div class="hero__ring2" aria-hidden="true"></div>
+        <div class="hero__tag hero__tag--a">KKM · GMP Certified</div>
+        <!-- PHOTO ZONE: Replace with new bottle photo
+             <img src="images/hero-bottle.png" alt="MorinVibes Moringa Capsules 90 caps 500mg" class="hero__img" /> -->
+        <img src="/morinvibes-official/images/hero-main.svg"
+             alt="MorinVibes® Moringa Capsules — 90 capsules, 500mg pure moringa"
+             class="hero__img" />
+        <div class="hero__tag hero__tag--b">
+          <span class="tstat" data-count="10000">0</span>
+          <span class="tsub">Orders Fulfilled</span>
+        </div>
+        <div class="hero__tag hero__tag--c">6+ Years</div>
       </div>
     </div>
-  </section>
-
-  <!-- ════════════════════════════════════════
-       SECTION 2: TRUST BAR
-  ════════════════════════════════════════ -->
-  <div class="trust-bar" aria-hidden="true">
-    <div class="trust-bar__track">
-      <span>SINCE 2019</span><span class="trust-bar__dot">•</span>
-      <span>OWN FARM IN PENANG</span><span class="trust-bar__dot">•</span>
-      <span>KKM APPROVED</span><span class="trust-bar__dot">•</span>
-      <span>GMP CERTIFIED</span><span class="trust-bar__dot">•</span>
-      <span>SMALL BATCH ONLY</span><span class="trust-bar__dot">•</span>
-      <span>VEGAN · NON-GMO</span><span class="trust-bar__dot">•</span>
-      <span>90 CAPSULES · 500MG</span><span class="trust-bar__dot">•</span>
-      <span>10,000+ ORDERS</span><span class="trust-bar__dot">•</span>
-      <span>1,000+ FIVE-STAR REVIEWS</span><span class="trust-bar__dot">•</span>
-      <span>SINCE 2019</span><span class="trust-bar__dot">•</span>
-      <span>OWN FARM IN PENANG</span><span class="trust-bar__dot">•</span>
-      <span>KKM APPROVED</span><span class="trust-bar__dot">•</span>
-      <span>GMP CERTIFIED</span><span class="trust-bar__dot">•</span>
-      <span>SMALL BATCH ONLY</span><span class="trust-bar__dot">•</span>
-      <span>VEGAN · NON-GMO</span><span class="trust-bar__dot">•</span>
-      <span>90 CAPSULES · 500MG</span><span class="trust-bar__dot">•</span>
-      <span>10,000+ ORDERS</span><span class="trust-bar__dot">•</span>
-      <span>1,000+ FIVE-STAR REVIEWS</span><span class="trust-bar__dot">•</span>
-    </div>
   </div>
+</section>
 
-  <!-- ════════════════════════════════════════
-       FARM STRIP — Three pillars
-  ════════════════════════════════════════ -->
-  <div class="farm-strip">
-    <div class="container">
-      <div class="farm-strip__grid">
-        <div class="farm-strip__item fade-up">
-          <div class="farm-strip__icon" aria-hidden="true">🌿</div>
-          <div>
-            <span class="farm-strip__title">We Own the Land</span>
-            <span class="farm-strip__desc">Grown, harvested, and capsulated in Penang — under one roof</span>
-          </div>
+<!-- ══ TRUST BAR ══ -->
+<div class="trust-bar" aria-hidden="true">
+  <div class="trust-bar__track">
+    <span>OWN FARM · PENANG</span><span class="trust-bar__dot">•</span>
+    <span>KKM APPROVED</span><span class="trust-bar__dot">•</span>
+    <span>GMP CERTIFIED</span><span class="trust-bar__dot">•</span>
+    <span>SMALL BATCH ONLY</span><span class="trust-bar__dot">•</span>
+    <span>100% PURE MORINGA</span><span class="trust-bar__dot">•</span>
+    <span>VEGAN · NON-GMO</span><span class="trust-bar__dot">•</span>
+    <span>90 CAPSULES · 500MG</span><span class="trust-bar__dot">•</span>
+    <span>10,000+ ORDERS</span><span class="trust-bar__dot">•</span>
+    <span>1,000+ FIVE-STAR REVIEWS</span><span class="trust-bar__dot">•</span>
+    <span>SINCE 2019</span><span class="trust-bar__dot">•</span>
+    <span>OWN FARM · PENANG</span><span class="trust-bar__dot">•</span>
+    <span>KKM APPROVED</span><span class="trust-bar__dot">•</span>
+    <span>GMP CERTIFIED</span><span class="trust-bar__dot">•</span>
+    <span>SMALL BATCH ONLY</span><span class="trust-bar__dot">•</span>
+    <span>100% PURE MORINGA</span><span class="trust-bar__dot">•</span>
+    <span>VEGAN · NON-GMO</span><span class="trust-bar__dot">•</span>
+    <span>90 CAPSULES · 500MG</span><span class="trust-bar__dot">•</span>
+    <span>10,000+ ORDERS</span><span class="trust-bar__dot">•</span>
+    <span>1,000+ FIVE-STAR REVIEWS</span><span class="trust-bar__dot">•</span>
+    <span>SINCE 2019</span><span class="trust-bar__dot">•</span>
+  </div>
+</div>
+
+<!-- ══ FARM STRIP ══ -->
+<div class="farm-strip">
+  <div class="container">
+    <div class="farm-strip__grid">
+      <div class="farm-strip__item fade-up">
+        <div class="farm-strip__icon" aria-hidden="true">🌿</div>
+        <div>
+          <span class="farm-strip__title">We Own the Land</span>
+          <span class="farm-strip__desc">Grown, harvested, and encapsulated in Penang — one source to your door</span>
         </div>
-        <div class="farm-strip__item fade-up" data-delay="1">
-          <div class="farm-strip__icon" aria-hidden="true">⚗️</div>
-          <div>
-            <span class="farm-strip__title">Small Batches Only</span>
-            <span class="farm-strip__desc">Never mass-produced — fresh stock rotated every batch</span>
-          </div>
+      </div>
+      <div class="farm-strip__item fade-up" data-delay="1">
+        <div class="farm-strip__icon" aria-hidden="true">⚗️</div>
+        <div>
+          <span class="farm-strip__title">Small-Batch Only</span>
+          <span class="farm-strip__desc">Never mass-produced — fresh stock rotated every batch, never warehoused for months</span>
         </div>
-        <div class="farm-strip__item fade-up" data-delay="2">
-          <div class="farm-strip__icon" aria-hidden="true">📋</div>
-          <div>
-            <span class="farm-strip__title">Ministry Certified</span>
-            <span class="farm-strip__desc">KKM Approved · GMP Certified · Fully traceable</span>
-          </div>
+      </div>
+      <div class="farm-strip__item fade-up" data-delay="2">
+        <div class="farm-strip__icon" aria-hidden="true">📋</div>
+        <div>
+          <span class="farm-strip__title">Ministry Certified</span>
+          <span class="farm-strip__desc">KKM Approved · GMP Certified — publicly verifiable on the MOH database</span>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- ════════════════════════════════════════
-       SECTION 3: NOT ALL MORINGA IS EQUAL
-  ════════════════════════════════════════ -->
-  <section class="section" aria-labelledby="why-heading">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="eyebrow">WHAT SETS US APART</span>
-        <h2 id="why-heading">Not All Moringa Is Equal.</h2>
-        <p class="lead">The difference is in how it's grown, handled, and delivered to you.</p>
+<!-- ════════════════════════════
+  FIX #3 — CONCERNS SECTION
+  Replaces generic "why moringa" intro.
+  Customer sees their own problem → emotional connection.
+════════════════════════════ -->
+<section class="concerns" aria-labelledby="concerns-h">
+  <div class="container">
+    <div class="concerns__grid">
+      <div class="fade-up">
+        <span class="eyebrow">DOES ANY OF THIS SOUND FAMILIAR?</span>
+        <div class="concerns__cloud">
+          <div class="ctag"><span class="ctag__dot"></span>Low energy</div>
+          <div class="ctag"><span class="ctag__dot"></span>Morning fatigue</div>
+          <div class="ctag"><span class="ctag__dot"></span>Hormonal imbalance</div>
+          <div class="ctag"><span class="ctag__dot"></span>Weak immunity</div>
+          <div class="ctag"><span class="ctag__dot"></span>Joint pain</div>
+          <div class="ctag"><span class="ctag__dot"></span>Body stiffness</div>
+          <div class="ctag"><span class="ctag__dot"></span>Low milk flow while breastfeeding</div>
+          <div class="ctag"><span class="ctag__dot"></span>Digestive discomfort</div>
+          <div class="ctag"><span class="ctag__dot"></span>Afternoon energy slump</div>
+          <div class="ctag"><span class="ctag__dot"></span>Poor sleep recovery</div>
+        </div>
       </div>
-      <div class="why-cards">
-        <div class="why-card fade-up">
-          <div class="why-card__bg" aria-hidden="true"></div>
-          <div class="why-card__line" aria-hidden="true"></div>
-          <div class="why-card__content">
-            <span class="why-card__icon" aria-hidden="true">🌱</span>
-            <div class="why-card__title">Source Transparency</div>
-            <p class="why-card__body">We own the land. No contract farms, no unknown origins — you know exactly where your moringa comes from.</p>
-          </div>
-        </div>
-        <div class="why-card fade-up" data-delay="1">
-          <div class="why-card__bg" aria-hidden="true"></div>
-          <div class="why-card__line" aria-hidden="true"></div>
-          <div class="why-card__content">
-            <span class="why-card__icon" aria-hidden="true">🏡</span>
-            <div class="why-card__title">Freshness Guarantee</div>
-            <p class="why-card__body">Limited small batches mean we never sit on old stock. What you receive was processed recently — not months ago.</p>
-          </div>
-        </div>
-        <div class="why-card fade-up" data-delay="2">
-          <div class="why-card__bg" aria-hidden="true"></div>
-          <div class="why-card__line" aria-hidden="true"></div>
-          <div class="why-card__content">
-            <span class="why-card__icon" aria-hidden="true">✅</span>
-            <div class="why-card__title">Verified, Not Claimed</div>
-            <p class="why-card__body">KKM Approved and GMP Certified — independently verified by the Ministry of Health Malaysia, not just a label we print.</p>
-          </div>
-        </div>
-        <div class="why-card fade-up" data-delay="3">
-          <div class="why-card__bg" aria-hidden="true"></div>
-          <div class="why-card__line" aria-hidden="true"></div>
-          <div class="why-card__content">
-            <span class="why-card__icon" aria-hidden="true">⭐</span>
-            <div class="why-card__title">Built by Track Record</div>
-            <p class="why-card__body">10,000+ orders and 6 years on the market. Trust isn't claimed here — it's earned, review by review.</p>
-          </div>
+      <div class="fade-right" data-delay="1">
+        <h2 id="concerns-h">Your Body Is Telling You Something.</h2>
+        <p>These aren't random complaints. They're often signals that your body is running short on the foundational nutrients it needs daily — iron, B-vitamins, amino acids, antioxidants, and minerals that modern diets frequently miss.</p>
+        <p>Moringa delivers all of these in a single whole-food source. Not isolated synthetics. Not fillers. Just the leaf — 90+ nutrients in their natural form.</p>
+        <button class="btn btn--primary" id="concernsBtn">Start with Day 1 — RM89</button>
+        <div class="concerns__note">
+          <strong>Notice:</strong> These statements have not been evaluated by the Ministry of Health Malaysia. Moringa is a food supplement, not intended to diagnose, treat, cure, or prevent any disease. Individual results vary.
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ════════════════════════════════════════
-       SECTION 4: THE PRODUCT
-  ════════════════════════════════════════ -->
-  <section class="section section--alt" aria-labelledby="product-heading">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="eyebrow">THE PRODUCT</span>
-        <h2 id="product-heading">One Bottle. Thirty Days. Pure Moringa.</h2>
-        <p class="lead">We make one product. We make it well. That's the whole promise.</p>
+<!-- ══ THE DIFFERENCE ══ -->
+<section class="section" aria-labelledby="why-h">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="eyebrow">THE DIFFERENCE</span>
+      <h2 id="why-h">Not All Moringa Is Equal.</h2>
+      <p class="lead">Source matters. Freshness matters. Certification matters.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="why-card__bg" aria-hidden="true"></div>
+        <div class="why-card__line" aria-hidden="true"></div>
+        <div class="why-card__c">
+          <span class="why-card__icon" aria-hidden="true">🌱</span>
+          <div class="why-card__title">Source Transparency</div>
+          <p class="why-card__body">Our own land, Bayan Lepas, Penang. Every leaf traceable to our field.</p>
+        </div>
       </div>
-      <div class="product-layout">
+      <div class="why-card fade-up" data-delay="1">
+        <div class="why-card__bg" aria-hidden="true"></div>
+        <div class="why-card__line" aria-hidden="true"></div>
+        <div class="why-card__c">
+          <span class="why-card__icon" aria-hidden="true">🍃</span>
+          <div class="why-card__title">Vivid Green = Fresh</div>
+          <p class="why-card__body">Deep green colour means chlorophyll intact. Imported bulk powder turns dull brown — visible sign of degraded potency.</p>
+        </div>
+      </div>
+      <div class="why-card fade-up" data-delay="2">
+        <div class="why-card__bg" aria-hidden="true"></div>
+        <div class="why-card__line" aria-hidden="true"></div>
+        <div class="why-card__c">
+          <span class="why-card__icon" aria-hidden="true">✅</span>
+          <div class="why-card__title">Verified, Not Claimed</div>
+          <p class="why-card__body">KKM Approved and GMP Certified — both independently issued by Malaysia's Ministry of Health.</p>
+        </div>
+      </div>
+      <div class="why-card fade-up" data-delay="3">
+        <div class="why-card__bg" aria-hidden="true"></div>
+        <div class="why-card__line" aria-hidden="true"></div>
+        <div class="why-card__c">
+          <span class="why-card__icon" aria-hidden="true">⭐</span>
+          <div class="why-card__title">Six Years of Proof</div>
+          <p class="why-card__body">10,000+ orders and 1,000+ five-star reviews since 2019. Consistency builds trust, not advertising.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- Product Card -->
-        <div class="fade-left">
-          <div class="product-card" id="productCard">
-            <div class="product-card__glow-top"    aria-hidden="true"></div>
-            <div class="product-card__glow-bottom" aria-hidden="true"></div>
-            <div class="product-card__inner">
-              <div class="product-brand">MORINVIBES<span class="product-brand__sub">MORINGA</span></div>
-              <div class="product-divider" aria-hidden="true"></div>
-              <div class="product-type">LEAF POWDER</div>
-              <div class="product-grade">100% ORGANIC</div>
-              <div class="product-tags">
-                <span class="product-tag">RAW</span>
-                <span class="product-tag">ORGANIC</span>
-                <span class="product-tag">SUPERFOOD</span>
-              </div>
-              <div class="product-tags">
-                <span class="product-tag">CAFFEINE-FREE</span>
-                <span class="product-tag">GLUTEN-FREE</span>
-              </div>
-              <div class="product-tags">
-                <span class="product-tag">NON-ADDITIVE</span>
-                <span class="product-tag">NON-GMO</span>
-                <span class="product-tag">VEGAN</span>
-              </div>
-              <div class="product-stats">
-                <div class="product-stat">
-                  <div class="product-stat__num">90+</div>
-                  <div class="product-stat__label">NUTRIENTS</div>
-                </div>
-                <div class="product-stat">
-                  <div class="product-stat__num">46</div>
-                  <div class="product-stat__label">ANTIOXIDANTS</div>
-                </div>
-                <div class="product-stat">
-                  <div class="product-stat__num">18</div>
-                  <div class="product-stat__label">AMINO ACIDS</div>
-                </div>
-              </div>
-              <div class="product-qty">90 CAPSULES</div>
-              <div class="product-qty-sub">500mg per capsule — pure moringa leaf powder</div>
-              <div class="product-price">RM89</div>
-              <div class="product-actions">
-                <a href="/morinvibes-official/en/shop.html" class="btn btn--outline">Full Specs</a>
-                <a href="https://morinvibes.orderla.my/moringa-order" target="_blank" rel="noopener" class="btn btn--primary" id="productBuyBtn">Add to Routine</a>
-              </div>
+<!-- ══ PRODUCT SPOTLIGHT ══ -->
+<section class="section section--alt" aria-labelledby="prod-h">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="eyebrow">THE PRODUCT</span>
+      <h2 id="prod-h">One Bottle. Thirty Days. Nothing Else.</h2>
+      <p class="lead">We make one product. We make it well. No range, no upsells.</p>
+    </div>
+    <div class="prod-layout">
+      <div class="fade-left">
+        <div class="prod-card" id="prodCard">
+          <div class="prod-card__gt" aria-hidden="true"></div>
+          <div class="prod-card__gb" aria-hidden="true"></div>
+          <div class="prod-card__in">
+            <div class="prod-brand">MORINVIBES<span class="prod-brand__sub">MORINGA</span></div>
+            <div class="prod-div" aria-hidden="true"></div>
+            <div class="prod-type">LEAF POWDER</div>
+            <div class="prod-grade">100% ORGANIC · FARM-DIRECT</div>
+            <div class="prod-tags">
+              <span class="prod-tag">RAW</span><span class="prod-tag">ORGANIC</span><span class="prod-tag">SUPERFOOD</span>
+            </div>
+            <div class="prod-tags">
+              <span class="prod-tag">CAFFEINE-FREE</span><span class="prod-tag">GLUTEN-FREE</span>
+            </div>
+            <div class="prod-tags">
+              <span class="prod-tag">NON-GMO</span><span class="prod-tag">VEGAN</span><span class="prod-tag">NO ADDITIVES</span>
+            </div>
+            <div class="prod-stats">
+              <div class="prod-stat"><div class="prod-stat__n">90+</div><div class="prod-stat__l">NUTRIENTS</div></div>
+              <div class="prod-stat"><div class="prod-stat__n">46</div><div class="prod-stat__l">ANTIOXIDANTS</div></div>
+              <div class="prod-stat"><div class="prod-stat__n">18</div><div class="prod-stat__l">AMINO ACIDS</div></div>
+            </div>
+            <div class="prod-qty">90 CAPSULES</div>
+            <div class="prod-qty-s">500mg per capsule — one ingredient only</div>
+            <div class="prod-price">RM89</div>
+            <div class="prod-actions">
+              <a href="/morinvibes-official/en/shop.html" class="btn btn--outline">Full Specs</a>
+              <button class="btn btn--primary" id="prodBuyBtn">Add to Routine</button>
             </div>
           </div>
         </div>
-
-        <!-- Info Panel -->
-        <div class="fade-right" data-delay="1">
-          <p class="product-info-headline">Nothing added.<br />Nothing removed.</p>
-          <ul class="product-detail-list">
-            <li><strong>One ingredient only</strong> — 100% moringa leaf powder, no excipients, binders, or flow agents</li>
-            <li><strong>Grown on our land in Penang</strong> — harvested at peak nutrition, dried and encapsulated in-house</li>
-            <li><strong>KKM Approved · GMP Certified</strong> — compliant with Malaysian Ministry of Health — registration verifiable</li>
-            <li><strong>3 capsules daily with water</strong> — 90 capsules = 30-day supply per bottle</li>
-            <li><strong>Vegan · Caffeine-free · Gluten-free · Non-GMO</strong></li>
-          </ul>
-          <a href="https://morinvibes.orderla.my/moringa-order" target="_blank" rel="noopener" class="btn btn--primary btn--lg" id="productBuyBtn2">Secure This Batch — RM89</a>
-          <div class="product-channels">
-            <span class="product-channels-label">Also on:</span>
-            <a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener" class="channel-pill" id="shopeeLink2">🛍 Shopee</a>
-            <a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener" class="channel-pill">🛒 Lazada</a>
-          </div>
+      </div>
+      <div class="fade-right" data-delay="1">
+        <p class="prod-info-h">One ingredient.<br />One source.<br />One promise.</p>
+        <ul class="prod-list">
+          <li><strong>100% moringa leaf powder</strong> — no excipients, fillers, or binders</li>
+          <li><strong>Grown on our land in Penang</strong> — harvested at peak nutrition, dried and encapsulated in-house</li>
+          <li><strong>KKM Approved · GMP Certified</strong> — registered with Malaysia's Ministry of Health, verifiable publicly</li>
+          <li><strong>3 capsules daily with water</strong> — 90 capsules = a precise 30-day cycle</li>
+          <li><strong>Vegan · Caffeine-free · Gluten-free · Non-GMO</strong></li>
+        </ul>
+        <button class="btn btn--primary btn--lg" id="prodBuyBtn2">Get This Batch — RM89</button>
+        <div class="prod-channels">
+          <span class="prod-ch-label">Also on:</span>
+          <a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener" class="ch-pill" id="shopeeA">🛍 Shopee</a>
+          <a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener" class="ch-pill" id="lazadaA">🛒 Lazada</a>
         </div>
-
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ════════════════════════════════════════
-       PHOTO STRIP — From Farm to Capsule
-       SWAP photo-ph divs for <img> when ready
-  ════════════════════════════════════════ -->
-  <div class="photo-strip">
-    <div class="container">
-      <div class="photo-strip__eyebrow">
-        <span class="eyebrow">FROM FARM TO CAPSULE</span>
+<!-- ══ PHOTO STRIP ══ -->
+<div class="photo-strip">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px"><span class="eyebrow">FROM OUR LAND TO YOUR HANDS</span></div>
+    <div class="photo-strip__grid">
+      <div>
+        <!-- PHOTO ZONE A: Farm field → replace with
+             <img src="images/farm-field.jpg" alt="MorinVibes moringa farm Penang" class="photo-frame" /> -->
+        <div class="photo-ph photo-ph--land">
+          <span class="photo-ph__icon" aria-hidden="true">🌿</span>
+          <span class="photo-ph__label">Our Farm Field</span>
+          <span class="photo-ph__sub">Penang · coming soon</span>
+        </div>
+        <p class="photo-strip__cap">The Farm — Bayan Lepas</p>
       </div>
-      <div class="photo-strip__grid">
-        <div>
-          <!-- PHOTO ZONE: Replace with <img src="images/farm-field.jpg" alt="..."> -->
-          <div class="photo-ph photo-ph--landscape">
+      <div>
+        <!-- PHOTO ZONE B: GMP factory / capsule machine → replace with
+             <img src="images/factory.jpg" alt="GMP-certified capsule machine" class="photo-frame" /> -->
+        <div class="photo-ph photo-ph--land">
+          <span class="photo-ph__icon" aria-hidden="true">⚗️</span>
+          <span class="photo-ph__label">GMP Factory</span>
+          <span class="photo-ph__sub">New machine · coming soon</span>
+        </div>
+        <p class="photo-strip__cap">Encapsulation Floor</p>
+      </div>
+      <div>
+        <!-- PHOTO ZONE C: New bottle + leaves → replace with
+             <img src="images/new-bottle.jpg" alt="New MorinVibes bottle design" class="photo-frame" /> -->
+        <div class="photo-ph photo-ph--land">
+          <span class="photo-ph__icon" aria-hidden="true">💊</span>
+          <span class="photo-ph__label">New Bottle</span>
+          <span class="photo-ph__sub">Design reveal · coming soon</span>
+        </div>
+        <p class="photo-strip__cap">New Bottle Design</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ COLOR TEST ══ -->
+<section class="color-test" aria-labelledby="ct-h">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="eyebrow">THE FRESHNESS TEST</span>
+      <h2 id="ct-h">Colour Tells the Truth.</h2>
+      <p class="lead">Fresh moringa is unmistakably vivid green — chlorophyll intact, nutrients preserved. Imported bulk powder loses that green long before it reaches you.</p>
+    </div>
+    <div class="ct-grid fade-up">
+      <div class="ct-panel ct-panel--ours">
+        <div style="position:relative">
+          <div class="ct-badge ct-badge--g">MorinVibes® — Penang Farm</div>
+          <!-- PHOTO ZONE: Vivid green powder macro — PRIORITY 1 SHOT
+               Replace: <img src="images/green-powder.jpg" alt="Fresh vivid green moringa powder" class="photo-frame" style="aspect-ratio:4/3" /> -->
+          <div class="photo-ph photo-ph--land" style="border-radius:0;border:none;background:#d4edda">
             <span class="photo-ph__icon" aria-hidden="true">🌿</span>
-            <span class="photo-ph__label">Our Farm</span>
-            <span class="photo-ph__sub">Photo coming soon</span>
+            <span class="photo-ph__label" style="color:#2e6b30">Vivid Green Powder</span>
+            <span class="photo-ph__sub" style="color:#6ab86e">Macro close-up · coming soon</span>
           </div>
-          <p class="photo-strip__caption">The Farm — Penang</p>
         </div>
-        <div>
-          <!-- PHOTO ZONE: Replace with <img src="images/factory-process.jpg" alt="..."> -->
-          <div class="photo-ph photo-ph--landscape">
-            <span class="photo-ph__icon" aria-hidden="true">⚗️</span>
-            <span class="photo-ph__label">The Process</span>
-            <span class="photo-ph__sub">Photo coming soon</span>
-          </div>
-          <p class="photo-strip__caption">GMP Factory</p>
+        <div class="ct-info">
+          <div class="ct-h">Vibrant Green.</div>
+          <p class="ct-p">Harvested in Penang, dried gently, encapsulated within hours. Chlorophyll preserved. Every nutrient intact.</p>
+          <ul class="ct-list">
+            <li>Grown on our land — zero transit time before processing</li>
+            <li>Small-batch only — never sitting in a warehouse</li>
+            <li>Deep green visible inside every capsule</li>
+            <li>Bright, slightly bitter flavour — a sign of potency</li>
+          </ul>
         </div>
-        <div>
-          <!-- PHOTO ZONE: Replace with <img src="images/new-bottle.jpg" alt="..."> -->
-          <div class="photo-ph photo-ph--landscape">
-            <span class="photo-ph__icon" aria-hidden="true">💊</span>
-            <span class="photo-ph__label">The Product</span>
-            <span class="photo-ph__sub">New bottle — coming soon</span>
+      </div>
+      <div class="ct-panel ct-panel--them">
+        <div style="position:relative">
+          <div class="ct-badge ct-badge--gr">Generic Imported Powder</div>
+          <!-- PHOTO ZONE: Brown dull powder comparison — PRIORITY 1 SHOT
+               Replace: <img src="images/brown-powder.jpg" alt="Dull brown imported moringa powder" class="photo-frame" style="aspect-ratio:4/3" /> -->
+          <div class="photo-ph photo-ph--land" style="border-radius:0;border:none;background:#ede8df">
+            <span class="photo-ph__icon" aria-hidden="true" style="opacity:.4">🟫</span>
+            <span class="photo-ph__label" style="color:#999">Dull Brown Powder</span>
+            <span class="photo-ph__sub" style="color:#bbb">Comparison · coming soon</span>
           </div>
-          <p class="photo-strip__caption">New Bottle Design</p>
+        </div>
+        <div class="ct-info">
+          <div class="ct-h">Dull and Brown.</div>
+          <p class="ct-p">Processed overseas, stored for months, shipped long-distance. Colour fades — nutritional value follows.</p>
+          <ul class="ct-list">
+            <li>Unknown origin, unknown processing date</li>
+            <li>Bulk production — high volume, low oversight</li>
+            <li>Colour degraded from heat, light, and transit time</li>
+            <li>Flat or stale flavour — typical of old stock</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="ct-note fade-up">"If your moringa isn't green, it isn't fresh."</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+  FIX #3 — WHAT TO EXPECT TIMELINE
+  Replaces generic features list.
+  Day-by-day sets realistic expectations → reduces refunds,
+  increases confidence to complete 30-day cycle.
+════════════════════════════ -->
+<section class="timeline section" aria-labelledby="tl-h">
+  <div class="container">
+    <div class="timeline__grid">
+      <div class="timeline__copy fade-left">
+        <span class="eyebrow">WHAT TO EXPECT</span>
+        <h2 id="tl-h">Everyone starts from a different baseline.</h2>
+        <p>Results depend on your nutritional state, lifestyle, and consistency. Most people notice changes in layers — energy first, then digestion, then deeper physical comfort. Give it at least 30 days for the full picture.</p>
+        <div class="tl-note">
+          <strong>Notice:</strong> These are general observations from our community. They are not medical claims. Individual results vary. Moringa is a food supplement, not a treatment for any condition.
+        </div>
+      </div>
+      <div class="fade-right" data-delay="1">
+        <div class="timeline__track">
+          <div class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <span class="tl-label">Day 1 – 3</span>
+            <div class="tl-h">Energy shifts first</div>
+            <p class="tl-p">A noticeable lift in baseline energy. Less heavy fatigue, more mental clarity. Iron and B-vitamins start working quickly.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <span class="tl-label">Day 4 – 6</span>
+            <div class="tl-h">Digestion improves</div>
+            <p class="tl-p">Many users report better digestion and reduced bloating as the gut responds to natural nutrient density and fibre.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <span class="tl-label">Day 7 – 10</span>
+            <div class="tl-h">Stiffness begins to ease</div>
+            <p class="tl-p">Joints feel more comfortable. Movement less laboured. Moringa's anti-inflammatory compounds build up over this window.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <span class="tl-label">Day 11 – 15</span>
+            <div class="tl-h">Focus and energy stabilise</div>
+            <p class="tl-p">Energy and concentration become more consistent throughout the day. The afternoon slump starts to reduce.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <span class="tl-label">Day 15 onwards</span>
+            <div class="tl-h">Deeper, sustained wellbeing</div>
+            <p class="tl-p">Improved physical resilience, more stable mood, and a stronger sense of daily function. This is where the full picture becomes clear.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ════════════════════════════════════════
-       SECTION 5: WHAT MORINGA DOES
-  ════════════════════════════════════════ -->
-  <section class="section" aria-labelledby="benefits-heading">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="eyebrow">DAILY NUTRITION</span>
-        <h2 id="benefits-heading">Why Moringa. Why Now.</h2>
-        <p class="lead">Nature packed 90+ nutrients into a single leaf. We simply kept them intact.</p>
-      </div>
-      <div class="grid-2c">
-        <div class="benefits-list">
-          <div class="benefit-item fade-up">
-            <div class="benefit-icon" aria-hidden="true">⚡</div>
-            <div>
-              <h4>Sustained Daily Energy</h4>
-              <p>Iron, B-vitamins, and a complete amino acid profile that your body recognises and absorbs — no caffeine crash, just steady fuel.</p>
-            </div>
-          </div>
-          <div class="benefit-item fade-up" data-delay="1">
-            <div class="benefit-icon" aria-hidden="true">🛡️</div>
-            <div>
-              <h4>46 Antioxidants, One Capsule</h4>
-              <p>Quercetin, chlorogenic acid, beta-carotene — moringa's antioxidant density rivals most dedicated supplements.</p>
-            </div>
-          </div>
-          <div class="benefit-item fade-up" data-delay="2">
-            <div class="benefit-icon" aria-hidden="true">💪</div>
-            <div>
-              <h4>A Complete Protein Source</h4>
-              <p>All 9 essential amino acids present — rare for a plant. Supports muscle repair, immune function, and tissue maintenance.</p>
-            </div>
-          </div>
-          <div class="benefit-item fade-up" data-delay="3">
-            <div class="benefit-icon" aria-hidden="true">🌿</div>
-            <div>
-              <h4>Whole-Food Micronutrients</h4>
-              <p>Calcium, iron, potassium, vitamins A, C, E and more — in naturally occurring form, not synthetic isolates.</p>
-            </div>
-          </div>
+<!-- ══ BENEFITS ══ -->
+<section class="section section--alt" aria-labelledby="ben-h">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="eyebrow">DAILY NUTRITION</span>
+      <h2 id="ben-h">Why Moringa. Why Daily.</h2>
+      <p class="lead">Nature packed 90+ nutrients into a single leaf. We simply kept them intact.</p>
+    </div>
+    <div class="grid-2c">
+      <div class="ben-list">
+        <div class="ben-item fade-up">
+          <div class="ben-icon" aria-hidden="true">⚡</div>
+          <div><h4>Sustained Daily Energy</h4><p>Iron, B-vitamins, and a complete amino acid profile. No caffeine, no crash. Just steady whole-food fuel.</p></div>
         </div>
-
-        <div class="fade-up" data-delay="2">
-          <div class="dosage-card">
-            <div class="dosage-row">
-              <div class="dosage-num" aria-label="3 capsules">3</div>
-              <div class="dosage-meta">
-                <strong>Capsules daily with water</strong>
-                <span>With or after meals — any time of day</span>
-              </div>
-            </div>
-            <div class="dosage-supply">
-              90 capsules = <strong>30-day supply</strong> per bottle
-            </div>
-          </div>
-          <div class="legal-note">
-            <strong>Notice:</strong> These statements have not been evaluated by the Ministry of Health Malaysia. This product is not intended to diagnose, treat, cure, or prevent any disease. Moringa is a traditional food source for daily nutritional support.
-          </div>
+        <div class="ben-item fade-up" data-delay="1">
+          <div class="ben-icon" aria-hidden="true">🛡️</div>
+          <div><h4>46 Antioxidants in One Capsule</h4><p>Quercetin, chlorogenic acid, beta-carotene — exceptionally dense for a single whole-food source.</p></div>
+        </div>
+        <div class="ben-item fade-up" data-delay="2">
+          <div class="ben-icon" aria-hidden="true">💪</div>
+          <div><h4>Complete Plant Protein</h4><p>All 9 essential amino acids — rare for a plant. Supports muscle maintenance and daily tissue repair.</p></div>
+        </div>
+        <div class="ben-item fade-up" data-delay="3">
+          <div class="ben-icon" aria-hidden="true">🌿</div>
+          <div><h4>Whole-Food Micronutrients</h4><p>Calcium, iron, potassium, vitamins A, C, E — naturally occurring form, not synthetic isolates.</p></div>
         </div>
       </div>
-      <div class="section-cta fade-up">
-        <a href="/morinvibes-official/en/benefits.html" class="btn btn--outline">Full Nutrition Guide →</a>
+      <div class="fade-up" data-delay="2">
+        <div class="dosage-card">
+          <div class="dosage-row">
+            <div class="dosage-num" aria-label="3 capsules">3</div>
+            <div class="dosage-meta">
+              <strong>Capsules daily with water</strong>
+              <span>With or after meals — any time of day</span>
+            </div>
+          </div>
+          <div class="dosage-sup">90 capsules = <strong>30-day supply</strong> per bottle</div>
+        </div>
+        <!-- PHOTO ZONE: Capsule macro → replace with
+             <img src="images/capsule-macro.jpg" alt="MorinVibes capsule showing vivid green powder inside" class="photo-frame" style="aspect-ratio:4/3;margin-bottom:16px" /> -->
+        <div class="photo-ph photo-ph--land" style="margin-bottom:16px">
+          <span class="photo-ph__icon" aria-hidden="true">💊</span>
+          <span class="photo-ph__label">Capsule Close-Up</span>
+          <span class="photo-ph__sub">Macro product photo · coming soon</span>
+        </div>
+        <div class="legal-note">
+          <strong>Notice:</strong> These statements have not been evaluated by the Ministry of Health Malaysia. This product is not intended to diagnose, treat, cure, or prevent any disease.
+        </div>
       </div>
     </div>
-  </section>
+    <div class="section-cta fade-up">
+      <a href="/morinvibes-official/en/wellness.html" class="btn btn--outline">Full Nutrition Guide →</a>
+    </div>
+  </div>
+</section>
 
-  <!-- ════════════════════════════════════════
-       SECTION 6: REAL REVIEWS
-  ════════════════════════════════════════ -->
-  <section class="section section--alt" aria-labelledby="reviews-heading">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="eyebrow">COMMUNITY RESULTS</span>
-        <h2 id="reviews-heading">10,000 Orders.<br />One Consistent Verdict.</h2>
+<!-- ══ REVIEWS ══ -->
+<section class="section" aria-labelledby="rev-h">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="eyebrow">COMMUNITY VERDICT</span>
+      <h2 id="rev-h">10,000 Orders.<br />One Consistent Verdict.</h2>
+    </div>
+    <div class="soc-stats fade-up">
+      <div class="soc-stat"><div class="soc-num" data-count="1000">0</div><p class="soc-lbl">5-Star Reviews</p></div>
+      <div class="soc-stat"><div class="soc-num" data-count="10000">0</div><p class="soc-lbl">Orders Fulfilled</p></div>
+      <div class="soc-stat"><div class="soc-num">6+</div><p class="soc-lbl">Years on Shopee</p></div>
+      <div class="soc-stat"><div class="soc-num">5.0</div><p class="soc-lbl">Average Rating</p></div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up" itemscope itemtype="https://schema.org/Review">
+        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+        <p class="testi-text" itemprop="reviewBody">"Three years, consistent quality every bottle. I can tell it's fresh from the colour the moment I open it — nothing else compares."</p>
+        <div class="testi-meta"><p class="testi-author" itemprop="author">Sarah</p><p class="testi-loc">Penang · March 2026</p></div>
       </div>
-
-      <div class="social-stats fade-up">
-        <div class="social-stat">
-          <div class="stat-num" data-count="1000">0</div>
-          <p class="stat-label">5-Star Reviews</p>
-        </div>
-        <div class="social-stat">
-          <div class="stat-num" data-count="10000">0</div>
-          <p class="stat-label">Orders Fulfilled</p>
-        </div>
-        <div class="social-stat">
-          <div class="stat-num">6+</div>
-          <p class="stat-label">Years on Shopee</p>
-        </div>
-        <div class="social-stat">
-          <div class="stat-num">5.0</div>
-          <p class="stat-label">Average Rating</p>
-        </div>
+      <div class="testi-card fade-up" data-delay="1" itemscope itemtype="https://schema.org/Review">
+        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+        <p class="testi-text" itemprop="reviewBody">"I verified the KKM number on the MOH database myself — confirmed. That's the only moringa I trust. No fillers, no guessing."</p>
+        <div class="testi-meta"><p class="testi-author" itemprop="author">Ahmad</p><p class="testi-loc">Kuala Lumpur · February 2026</p></div>
       </div>
-
-      <div class="testi-grid">
-        <div class="testi-card fade-up" itemscope itemtype="https://schema.org/Review">
-          <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <p class="testi-text" itemprop="reviewBody">"I've been taking these for over 3 years. Consistent quality, every bottle — I can tell the freshness from the colour alone."</p>
-          <div class="testi-meta">
-            <p class="testi-author" itemprop="author">Sarah</p>
-            <p class="testi-loc">Penang · March 2026</p>
-          </div>
-        </div>
-        <div class="testi-card fade-up" data-delay="1" itemscope itemtype="https://schema.org/Review">
-          <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <p class="testi-text" itemprop="reviewBody">"I checked the KKM registration myself — confirmed. That's why I trust this brand. No fillers, no guessing."</p>
-          <div class="testi-meta">
-            <p class="testi-author" itemprop="author">Ahmad</p>
-            <p class="testi-loc">Kuala Lumpur · February 2026</p>
-          </div>
-        </div>
-        <div class="testi-card fade-up" data-delay="2" itemscope itemtype="https://schema.org/Review">
-          <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <p class="testi-text" itemprop="reviewBody">"Tried three brands before this. Small-batch production is the difference — you notice it immediately."</p>
-          <div class="testi-meta">
-            <p class="testi-author" itemprop="author">Mei Ling</p>
-            <p class="testi-loc">Johor · January 2026</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-cta fade-up">
-        <a href="/morinvibes-official/en/testimonials.html" class="btn btn--outline">Read All Reviews →</a>
+      <div class="testi-card fade-up" data-delay="2" itemscope itemtype="https://schema.org/Review">
+        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+        <p class="testi-text" itemprop="reviewBody">"Tried three brands before this. Small-batch production is the real difference — you feel it within the first week."</p>
+        <div class="testi-meta"><p class="testi-author" itemprop="author">Mei Ling</p><p class="testi-loc">Johor · January 2026</p></div>
       </div>
     </div>
-  </section>
-
-  <!-- ════════════════════════════════════════
-       SECTION 7: QUALITY VERIFICATION
-  ════════════════════════════════════════ -->
-  <section class="section section--sm" aria-labelledby="quality-heading">
-    <div class="container">
-      <div class="section-header section-header--flush fade-up">
-        <span class="eyebrow">INDEPENDENTLY VERIFIED</span>
-        <h2 id="quality-heading">Certifications You Can Check.</h2>
-        <p class="lead">Our approvals are public record. We welcome you to verify.</p>
-      </div>
+    <div class="section-cta fade-up">
+      <a href="/morinvibes-official/en/testimonials.html" class="btn btn--outline">All Reviews →</a>
     </div>
-    <div class="container quality-badges-wrap">
-      <div class="quality-row fade-up">
-        <div class="quality-item">
-          <div class="quality-circle">
-            <img src="/morinvibes-official/images/cert-kkm.svg" alt="KKM — Ministry of Health Malaysia Approved" onerror="this.parentNode.innerHTML='KKM';" />
+  </div>
+</section>
+
+<!-- ══ CERTIFICATIONS ══ -->
+<section class="section section--alt section--sm" aria-labelledby="cert-h">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="eyebrow">INDEPENDENTLY VERIFIED</span>
+      <h2 id="cert-h">Certifications You Can Check.</h2>
+      <p class="lead">Our approvals are public record. We welcome you to verify them yourself on the MOH database.</p>
+    </div>
+    <div style="margin-top:48px">
+      <div class="qual-row fade-up">
+        <div class="qual-item">
+          <div class="qual-circle">
+            <img src="/morinvibes-official/images/cert-kkm.svg" alt="KKM Ministry of Health Malaysia Approved" onerror="this.parentNode.innerHTML='KKM';" />
           </div>
-          <span class="quality-label">KKM Approved</span>
+          <span class="qual-label">KKM Approved</span>
         </div>
-        <div class="quality-divider" aria-hidden="true"></div>
-        <div class="quality-item">
-          <div class="quality-circle">
+        <div class="qual-div" aria-hidden="true"></div>
+        <div class="qual-item">
+          <div class="qual-circle">
             <img src="/morinvibes-official/images/cert-gmp.svg" alt="GMP Certified Manufacturing" onerror="this.parentNode.innerHTML='GMP';" />
           </div>
-          <span class="quality-label">GMP Certified</span>
+          <span class="qual-label">GMP Certified</span>
         </div>
-        <div class="quality-divider" aria-hidden="true"></div>
-        <div class="quality-item">
-          <div class="quality-circle quality-circle--emoji" aria-label="100% Vegan">🌱</div>
-          <span class="quality-label">100% Vegan</span>
+        <div class="qual-div" aria-hidden="true"></div>
+        <div class="qual-item">
+          <div class="qual-circle qual-circle--e" aria-label="100% Vegan">🌱</div>
+          <span class="qual-label">100% Vegan</span>
         </div>
-        <div class="quality-divider" aria-hidden="true"></div>
-        <div class="quality-item">
-          <div class="quality-circle quality-circle--text" aria-label="6 plus years trusted">6+</div>
-          <span class="quality-label">Years Trusted</span>
+        <div class="qual-div" aria-hidden="true"></div>
+        <div class="qual-item">
+          <div class="qual-circle qual-circle--t" aria-label="6+ years trusted">6+</div>
+          <span class="qual-label">Years Trusted</span>
         </div>
-        <div class="quality-divider" aria-hidden="true"></div>
-        <div class="quality-item">
-          <div class="quality-circle quality-circle--sm" aria-label="1000 plus five-star reviews">1,000+</div>
-          <span class="quality-label">5★ Reviews</span>
+        <div class="qual-div" aria-hidden="true"></div>
+        <div class="qual-item">
+          <div class="qual-circle qual-circle--s" aria-label="1000+ five-star reviews">1,000+</div>
+          <span class="qual-label">5★ Reviews</span>
         </div>
       </div>
       <div class="section-cta fade-up">
         <a href="/morinvibes-official/en/quality.html" class="btn btn--ghost">Verify Our Certifications →</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ════════════════════════════════════════
-       SECTION 8: SECURE YOUR HARVEST
-  ════════════════════════════════════════ -->
-  <section class="section section--alt" aria-labelledby="cta-heading">
-    <div class="container">
-      <div class="cta-block fade-up">
-        <div class="cta-block__glow-a" aria-hidden="true"></div>
-        <div class="cta-block__glow-b" aria-hidden="true"></div>
-        <div class="cta-block__inner">
-          <span class="eyebrow">FRESH BATCH AVAILABLE NOW</span>
-          <h2 id="cta-heading">Secure Your Monthly Supply.</h2>
-          <p class="lead cta-lead">30-day supply. Small batch. Ministry approved. Shipped fresh from Penang.</p>
-          <div class="cta-buttons">
-            <a href="https://morinvibes.orderla.my/moringa-order" target="_blank" rel="noopener" class="btn btn--primary btn--lg" id="ctaBuyBtn">Reserve Your Harvest — RM89</a>
-            <div class="wa-wrap">
-              <div class="wa-pulse" aria-hidden="true"></div>
-              <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="btn btn--outline btn--lg" id="waBtn">💬 Ask Us Anything</a>
-            </div>
+<!-- ══ CTA BLOCK ══ -->
+<section class="section" aria-labelledby="cta-h">
+  <div class="container">
+    <div class="cta-block fade-up">
+      <div class="cta-block__ga" aria-hidden="true"></div>
+      <div class="cta-block__gb" aria-hidden="true"></div>
+      <div class="cta-block__in">
+        <span class="eyebrow">FRESH STOCK AVAILABLE NOW</span>
+        <div class="batch-note">Latest batch · Small quantity · Ships from Penang</div>
+        <h2 id="cta-h">Ready for Day One?</h2>
+        <p class="lead cta-lead">Farm-certified. Ministry-approved. 30 days of whole-food nutrition — just open the bottle and begin.</p>
+        <div class="cta-btns">
+          <button class="btn btn--primary btn--lg" id="ctaBuyBtn">Order Farm-Fresh — RM89</button>
+          <div class="wa-wrap">
+            <div class="wa-pulse" aria-hidden="true"></div>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="btn btn--outline btn--lg" id="waBtn">💬 Ask Us Anything</a>
           </div>
-          <div class="cta-channels">
-            <strong>Prefer a marketplace?</strong>
-            <a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener" id="shopeeLink">Shopee</a>
-            <span>·</span>
-            <a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener" id="lazadaLink">Lazada</a>
-            <span>— same fresh batch, same certified product.</span>
-          </div>
+        </div>
+        <div class="cta-channels">
+          <strong>Prefer a marketplace?</strong>
+          <a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener" id="shopeeB">Shopee</a>
+          <span>·</span>
+          <a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener" id="lazadaB">Lazada</a>
+          <span>— same certified product, same fresh batch.</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ════════════════════════════════════════
-       SECTION 9: BEFORE YOU ORDER
-  ════════════════════════════════════════ -->
-  <section class="section" aria-labelledby="faq-heading">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="eyebrow">BEFORE YOU ORDER</span>
-        <h2 id="faq-heading">Questions We Hear Often.</h2>
-        <p class="lead">Clear answers — no fluff.</p>
+<!-- ══ FAQ ══ -->
+<section class="section section--alt" aria-labelledby="faq-h">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="eyebrow">GOOD QUESTIONS</span>
+      <h2 id="faq-h">Before You Order.</h2>
+      <p class="lead">Clear answers — no spin.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          <span class="faq-q__text">How do I verify the KKM approval is real?</span>
+          <span class="faq-q__icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-ans"><div class="faq-ans__in">MorinVibes® holds a valid KKM registration and GMP certification from Malaysia's Ministry of Health — both on public record. Full registration numbers are on our <a href="/morinvibes-official/en/quality.html">Quality page</a>.</div></div>
       </div>
-      <div class="faq-list">
-
-        <div class="faq-item">
-          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
-            <span class="faq-q__text">How do I know this is genuinely KKM approved?</span>
-            <span class="faq-q__icon" aria-hidden="true">+</span>
-          </div>
-          <div class="faq-answer">
-            <div class="faq-answer__inner">MorinVibes® holds a valid KKM registration and GMP certification issued by the Ministry of Health Malaysia. Both are publicly verifiable — see our <a href="/morinvibes-official/en/quality.html">Quality &amp; Authenticity page</a> for registration numbers and documentation.</div>
-          </div>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          <span class="faq-q__text">How many capsules per day and how long does one bottle last?</span>
+          <span class="faq-q__icon" aria-hidden="true">+</span>
         </div>
-
-        <div class="faq-item">
-          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
-            <span class="faq-q__text">Dosage and how long does one bottle last?</span>
-            <span class="faq-q__icon" aria-hidden="true">+</span>
-          </div>
-          <div class="faq-answer">
-            <div class="faq-answer__inner">Recommended: 3 capsules daily (1.5g) with water, best taken with meals. Each bottle holds 90 capsules — a precise 30-day supply. Consistent daily use is where you'll notice a difference.</div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
-            <span class="faq-q__text">Do you ship to Sabah and Sarawak?</span>
-            <span class="faq-q__icon" aria-hidden="true">+</span>
-          </div>
-          <div class="faq-answer">
-            <div class="faq-answer__inner">Yes. East Malaysia shipping is RM15. West Malaysia is RM7. Buying 10 bottles? You get 1 free — <a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp us</a> to arrange.</div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
-            <span class="faq-q__text">Is buying direct different from Shopee or Lazada?</span>
-            <span class="faq-q__icon" aria-hidden="true">+</span>
-          </div>
-          <div class="faq-answer">
-            <div class="faq-answer__inner">Same certified product, same batch. Direct orders through our website go straight to us — no marketplace cut means we can offer better bundles and personalised service. Choose whatever channel you're most comfortable with.</div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
-            <span class="faq-q__text">Is moringa suitable for me?</span>
-            <span class="faq-q__icon" aria-hidden="true">+</span>
-          </div>
-          <div class="faq-answer">
-            <div class="faq-answer__inner">Generally suitable for adults as a daily food supplement. If you are pregnant, nursing, managing a medical condition, or on regular medication, consult your healthcare provider before starting any supplement.</div>
-          </div>
-        </div>
-
+        <div class="faq-ans"><div class="faq-ans__in">3 capsules daily (1.5g) with water, best taken with a meal. 90 capsules = 30-day supply. Consistent daily use is where the difference shows.</div></div>
       </div>
-      <div class="section-cta fade-up">
-        <a href="/morinvibes-official/en/faq.html" class="btn btn--outline">See All FAQs →</a>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          <span class="faq-q__text">Do you ship to Sabah and Sarawak?</span>
+          <span class="faq-q__icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-ans"><div class="faq-ans__in">Yes. West Malaysia: RM7. East Malaysia (Sabah &amp; Sarawak): RM15. Buy 10 bottles, get 1 free — <a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp us</a> to arrange.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          <span class="faq-q__text">Is moringa suitable for breastfeeding mothers?</span>
+          <span class="faq-q__icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-ans"><div class="faq-ans__in">Moringa has traditionally been used as a galactagogue (milk-flow support) across South and Southeast Asia. Please consult your doctor or lactation consultant before starting any supplement while breastfeeding.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          <span class="faq-q__text">Is this the same product as the Shopee store?</span>
+          <span class="faq-q__icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-ans"><div class="faq-ans__in">Identical product, identical batch. Direct orders mean no marketplace commission — which lets us offer better bundle deals and personal service. Buy wherever you are most comfortable.</div></div>
       </div>
     </div>
-  </section>
+    <div class="section-cta fade-up">
+      <a href="/morinvibes-official/en/faq.html" class="btn btn--outline">All FAQs →</a>
+    </div>
+  </div>
+</section>
 
 </main>
 
-<!-- ════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════ -->
+<!-- ════════════════════════════════════
+  FOOTER — FIX #2 (deduplication) + FIX #4 (newsletter)
+
+  COLUMN MAP (each link appears EXACTLY ONCE):
+  Explore  → Farm · Quality · Wellness · Shop · Story · Reviews · FAQ
+  Trust    → Ethics · Returns · Privacy · Terms
+  Contact  → WhatsApp · Email · Shopee · Lazada
+
+  "Authenticity" REMOVED from Trust — it was duplicating the
+  Quality page which already lives in Explore.
+  Privacy & Terms NOT in copyright bar — they're in Trust above.
+════════════════════════════════════ -->
 <footer class="footer" aria-label="Site footer">
-  <div class="container">
-    <div class="footer__grid">
 
-      <!-- Brand -->
-      <div>
-        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="footer__logo" width="160" height="38" />
-        <p class="footer__tagline">Farm-direct moringa from our own land<br />in Penang, Malaysia · Since 2019</p>
-        <div class="footer__social" aria-label="Follow us">
-          <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">f</a>
-          <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">📷</a>
-          <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="footer__social-link" aria-label="TikTok">▶</a>
-          <a href="https://www.threads.com/@moringa_morinvibes" target="_blank" rel="noopener" class="footer__social-link" aria-label="Threads">@</a>
-          <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="footer__social-link" aria-label="WhatsApp">💬</a>
+  <!-- FIX #4 — Newsletter strip, decision: YES, add it.
+       Rationale: owned audience reduces ad dependency long-term.
+       Tagline from your brief used verbatim. -->
+  <div class="ft-news">
+    <div class="container">
+      <div class="ft-news__inner">
+        <div class="ft-news__copy">
+          <h3>Stay Close to the Source.</h3>
+          <p>We elevate moringa into exceptional products — grown and crafted by us to deliver pure quality, complete transparency, and lasting well-being. Be first to know about new batches and offers.</p>
         </div>
-        <div class="footer__cert">✓ KKM Approved · GMP Certified</div>
+        <div class="ft-news__form">
+          <div class="news-row">
+            <input type="email" class="news-input" id="newsEmail" placeholder="your@email.com" aria-label="Email for newsletter" />
+            <button class="news-btn" id="newsBtn" type="button">Notify Me</button>
+          </div>
+          <label class="news-consent">
+            <input type="checkbox" id="newsConsent" />
+            I accept the <a href="/morinvibes-official/en/privacy.html">Privacy Policy</a> and agree to receive updates.
+          </label>
+        </div>
       </div>
-
-      <!-- Navigate -->
-      <div>
-        <p class="footer__col-title">Navigate</p>
-        <ul class="footer__links">
-          <li><a href="/morinvibes-official/en/farm.html">The Farm</a></li>
-          <li><a href="/morinvibes-official/en/quality.html">Quality &amp; Authenticity</a></li>
-          <li><a href="/morinvibes-official/en/benefits.html">Benefits</a></li>
-          <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
-          <li><a href="/morinvibes-official/en/about.html">About Us</a></li>
-          <li><a href="/morinvibes-official/en/testimonials.html">Testimonials</a></li>
-          <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
-          <li><a href="/morinvibes-official/en/journal/">Journal</a></li>
-        </ul>
-      </div>
-
-      <!-- Trust & Legal — Privacy/Terms live here ONLY (not duplicated in footer bottom) -->
-      <div>
-        <p class="footer__col-title">Trust &amp; Legal</p>
-        <ul class="footer__links">
-          <li><a href="/morinvibes-official/en/quality.html">Authenticity</a></li>
-          <li><a href="/morinvibes-official/en/ethics.html">Our Ethics</a></li>
-          <li><a href="/morinvibes-official/en/returns.html">Returns Policy</a></li>
-          <li><a href="/morinvibes-official/en/privacy.html">Privacy Policy</a></li>
-          <li><a href="/morinvibes-official/en/terms.html">Terms &amp; Conditions</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div>
-        <p class="footer__col-title">Contact &amp; Order</p>
-        <ul class="footer__links">
-          <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp Us</a></li>
-          <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
-          <li><a href="https://morinvibes.orderla.my/moringa-order" target="_blank" rel="noopener">Order Direct</a></li>
-          <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener">Shopee Store</a></li>
-          <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener">Lazada Store</a></li>
-        </ul>
-        <p class="footer__address">Bayan Lepas, Penang<br />Malaysia</p>
-      </div>
-
     </div>
-    <!-- Copyright only — Privacy & Terms already in Trust column above -->
-    <div class="footer__bottom">
-      <span>© 2026 MorinVibes®. All rights reserved.</span>
-      <span>Grown &amp; produced in Penang, Malaysia.</span>
+  </div>
+
+  <div class="footer__main">
+    <div class="container">
+      <div class="ft-grid">
+
+        <!-- Brand column -->
+        <div>
+          <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="ft-logo" width="160" height="38" />
+          <p class="ft-tag">Farm-direct moringa from our own land<br />in Penang, Malaysia · Since 2019</p>
+          <div class="ft-social" aria-label="Follow us">
+            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Instagram">📷</a>
+            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="TikTok">▶</a>
+            <a href="https://www.threads.com/@moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Threads">@</a>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="ft-soc-a" aria-label="WhatsApp">💬</a>
+          </div>
+          <div class="ft-cert">✓ KKM Approved · GMP Certified</div>
+        </div>
+
+        <!-- Explore = page navigation ONLY -->
+        <div>
+          <p class="ft-col-h">Explore</p>
+          <ul class="ft-links">
+            <li><a href="/morinvibes-official/en/farm.html">Farm</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
+            <li><a href="/morinvibes-official/en/wellness.html">Wellness</a></li>
+            <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
+            <li><a href="/morinvibes-official/en/about.html">Story</a></li>
+            <li><a href="/morinvibes-official/en/testimonials.html">Reviews</a></li>
+            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Trust = legal / policy ONLY.
+             "Authenticity" removed — it was duplicating the Quality page.
+             Privacy & Terms appear HERE and NOWHERE ELSE (not in copyright bar). -->
+        <div>
+          <p class="ft-col-h">Trust</p>
+          <ul class="ft-links">
+            <li><a href="/morinvibes-official/en/ethics.html">Our Ethics</a></li>
+            <li><a href="/morinvibes-official/en/returns.html">Returns Policy</a></li>
+            <li><a href="/morinvibes-official/en/privacy.html">Privacy Policy</a></li>
+            <li><a href="/morinvibes-official/en/terms.html">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <p class="ft-col-h">Contact &amp; Order</p>
+          <ul class="ft-links">
+            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
+            <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener">Shopee Store</a></li>
+            <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener">Lazada Store</a></li>
+          </ul>
+          <p class="ft-addr">Bayan Lepas, Penang<br />Malaysia</p>
+        </div>
+
+      </div>
+      <!-- Copyright bar — ONE LINE, zero links (Privacy/Terms already in Trust above) -->
+      <div class="ft-bottom">
+        © 2026 MorinVibes®. All rights reserved. · Grown &amp; produced in Penang, Malaysia.
+      </div>
     </div>
   </div>
 </footer>
 
-<!-- Scroll to Top -->
 <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
 
-<!-- Community Popup -->
-<div class="community-popup" id="communityPopup" role="dialog" aria-label="Stay connected with MorinVibes">
-  <div class="popup-header">
+<!-- ════════════════════════════
+  FIX #5 — POPUP SHOWS ONCE EVER
+  Uses localStorage. Persists until user clears browser data.
+  Answer to your question: YES — it only pops ONCE per device.
+  sessionStorage (old method) = once per tab session (annoying).
+  localStorage = once ever (correct, non-annoying).
+════════════════════════════ -->
+<div class="community-popup" id="communityPopup" role="dialog" aria-label="Stay connected">
+  <div class="pop-head">
     <h4>Stay in the loop 🌿</h4>
     <p>Updates, tips &amp; exclusive offers</p>
-    <button class="popup-close" id="popupClose" aria-label="Close">✕</button>
+    <button class="pop-close" id="popClose" aria-label="Close">✕</button>
   </div>
-  <div class="popup-body">
-    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="popup-link" id="popupWaLink">
-      <span class="popup-link__icon" aria-hidden="true">💬</span>
-      <div>
-        <div class="popup-link__label">Chat on WhatsApp</div>
-        <div class="popup-link__sub">Direct line to our team</div>
-      </div>
+  <div class="pop-body">
+    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="pop-link" id="popWa">
+      <span class="pop-link__ico" aria-hidden="true">💬</span>
+      <div><div class="pop-link__lbl">Chat on WhatsApp</div><div class="pop-link__sub">Direct line to our team</div></div>
     </a>
-    <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="popup-link">
-      <span class="popup-link__icon" aria-hidden="true">📷</span>
-      <div>
-        <div class="popup-link__label">Instagram</div>
-        <div class="popup-link__sub">@moringa_morinvibes</div>
-      </div>
+    <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="pop-link">
+      <span class="pop-link__ico" aria-hidden="true">📷</span>
+      <div><div class="pop-link__lbl">Instagram</div><div class="pop-link__sub">@moringa_morinvibes</div></div>
     </a>
-    <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="popup-link">
-      <span class="popup-link__icon" aria-hidden="true">▶</span>
-      <div>
-        <div class="popup-link__label">TikTok</div>
-        <div class="popup-link__sub">@moringa_morinvibes</div>
-      </div>
+    <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="pop-link">
+      <span class="pop-link__ico" aria-hidden="true">▶</span>
+      <div><div class="pop-link__lbl">TikTok</div><div class="pop-link__sub">@moringa_morinvibes</div></div>
     </a>
-    <div class="popup-dismiss" id="popupDismiss" role="button" tabindex="0">No thanks, I'll browse</div>
+    <div class="pop-dismiss" id="popDismiss" role="button" tabindex="0">No thanks, I'll browse</div>
   </div>
 </div>
 
-<!-- ════════════════════════════════════════
-     DOMAIN REDIRECT SCRIPT
-     Activate when morinvibes.com is live:
-     1. Set custom domain in GitHub Pages settings
-     2. Uncomment the redirect block below
-     GitHub will auto-301 the github.io URL —
-     your repo path will be invisible to visitors.
-════════════════════════════════════════ -->
+<!-- Domain Guard — uncomment when morinvibes.com is live -->
 <script>
 /*
-var MV_DOMAIN = 'https://morinvibes.com';
 (function(){
-  var host = window.location.hostname;
-  if(host !== 'morinvibes.com' && host !== 'localhost' && host !== '127.0.0.1'){
-    var path = window.location.pathname.replace('/morinvibes-official','') || '/';
-    window.location.replace(MV_DOMAIN + path + window.location.search);
+  var h=window.location.hostname;
+  if(h!=='morinvibes.com'&&h!=='localhost'&&h!=='127.0.0.1'){
+    var p=window.location.pathname.replace('/morinvibes-official','')||'/';
+    window.location.replace('https://morinvibes.com'+p+window.location.search);
   }
 })();
 */
 </script>
 
-<!-- Meta Pixel -->
+<!-- Meta Pixel — replace YOUR_PIXEL_ID before going live -->
 <script>
-var PIXEL_ID = 'YOUR_PIXEL_ID';
+var PIXEL_ID='YOUR_PIXEL_ID';
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-function trackEvent(n,d){if(typeof fbq!=='undefined'&&PIXEL_ID!=='YOUR_PIXEL_ID')fbq('track',n,d||{});}
+function fbTrack(n,d){if(typeof fbq!=='undefined'&&PIXEL_ID!=='YOUR_PIXEL_ID')fbq('track',n,d||{});}
 if(PIXEL_ID!=='YOUR_PIXEL_ID'){fbq('init',PIXEL_ID);fbq('track','PageView');}
-trackEvent('ViewContent',{content_name:'Homepage',value:89,currency:'MYR'});
+fbTrack('ViewContent',{content_name:'Homepage',value:89,currency:'MYR'});
 </script>
 
-<!-- Main JS — zero inline style="" usage; all visual state via CSS classes -->
+<!-- MAIN SCRIPT — For production: minify + obfuscate via terser or obfuscator.io -->
 <script>
-(function(){
-'use strict';
+(function(){'use strict';
 
-/* ── Scroll: progress bar + nav shrink + scroll-to-top ── */
+/* ── CHECKOUT MODAL (FIX #1) ──────────────────────────────
+   Opens embedded Orderla iframe. Never navigates away.
+   Iframe src loaded lazily — only on first open, not page load.
+   After payment, Orderla redirects parent window to:
+   https://morinvibes.com/en/thankyou.html?qty=1
+   (set this in Orderla Plus → Settings → Success Redirect URL)
+*/
+var coO=document.getElementById('coOverlay'),
+    coI=document.getElementById('coIframe'),
+    coSp=document.getElementById('coSpinner'),
+    coX=document.getElementById('coClose'),
+    iLoaded=false;
+
+function openCheckout(){
+  if(!coO)return;
+  coO.classList.add('open');
+  document.body.classList.add('checkout-open');
+  if(!iLoaded){
+    iLoaded=true;
+    coI.src=coI.dataset.src;
+    coI.addEventListener('load',function(){
+      if(coSp)coSp.style.display='none';
+      coI.classList.add('ready');
+    },{once:true});
+  }
+  fbTrack('AddToCart',{content_ids:['moringa-90s'],value:89,currency:'MYR',num_items:1});
+  fbTrack('InitiateCheckout',{value:89,currency:'MYR'});
+}
+function closeCheckout(){
+  if(!coO)return;
+  coO.classList.remove('open');
+  document.body.classList.remove('checkout-open');
+}
+if(coX)coX.addEventListener('click',closeCheckout);
+coO&&coO.addEventListener('click',function(e){if(e.target===coO)closeCheckout();});
+
+// All "Order" buttons → embedded checkout
+['navOrderBtn','heroBuyBtn','prodBuyBtn','prodBuyBtn2','ctaBuyBtn','concernsBtn','mOrderBtn'].forEach(function(id){
+  var el=document.getElementById(id);
+  if(el)el.addEventListener('click',openCheckout);
+});
+
+/* ── SCROLL ── */
 var pb=document.getElementById('progressBar'),
     nav=document.getElementById('mainNav'),
     st=document.getElementById('scrollTop'),
-    ticking=false;
+    stk=false;
 function onScroll(){
-  if(!ticking){
+  if(!stk){
     requestAnimationFrame(function(){
       var sy=window.scrollY,dh=document.documentElement.scrollHeight-window.innerHeight;
-      if(pb) pb.style.width=(dh>0?(sy/dh)*100:0)+'%';
-      if(nav) nav.classList.toggle('scrolled',sy>40);
-      if(st)  st.classList.toggle('visible',sy>480);
-      ticking=false;
-    });
-    ticking=true;
+      if(pb)pb.style.width=(dh>0?(sy/dh*100):0)+'%';
+      if(nav)nav.classList.toggle('scrolled',sy>40);
+      if(st)st.classList.toggle('visible',sy>480);
+      stk=false;
+    });stk=true;
   }
 }
 window.addEventListener('scroll',onScroll,{passive:true});
-if(st) st.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+if(st)st.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
 
-/* ── Language dropdown ── */
-var ld=document.getElementById('langDropdown'),lb=document.getElementById('langBtn');
-if(lb&&ld){
-  lb.addEventListener('click',function(e){
-    e.stopPropagation();
-    var o=ld.classList.toggle('open');
-    lb.setAttribute('aria-expanded',o?'true':'false');
-  });
-  document.addEventListener('click',function(){
-    if(ld){ld.classList.remove('open');if(lb)lb.setAttribute('aria-expanded','false');}
-  });
-}
-
-/* ── Mobile menu ── */
-var mm=document.getElementById('mobileMenu'),
-    ham=document.getElementById('hamburger'),
-    mc=document.getElementById('menuClose');
-function openMenu(){if(!mm)return;mm.classList.add('open');document.body.classList.add('menu-open');if(ham)ham.setAttribute('aria-expanded','true');if(mc)setTimeout(function(){mc.focus();},100);}
-function closeMenu(){if(!mm)return;mm.classList.remove('open');document.body.classList.remove('menu-open');if(ham){ham.setAttribute('aria-expanded','false');ham.focus();}}
-if(ham) ham.addEventListener('click',openMenu);
-if(mc)  mc.addEventListener('click',closeMenu);
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
-
-/* ── FAQ accordion ── */
-document.querySelectorAll('.faq-q').forEach(function(q){
-  function toggle(){
-    var item=q.parentElement,ans=q.nextElementSibling,icon=q.querySelector('.faq-q__icon'),wasOpen=item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(function(i){
-      i.classList.remove('open');
-      i.querySelector('.faq-answer').style.maxHeight=null;
-      i.querySelector('.faq-q__icon').textContent='+';
-      i.querySelector('.faq-q').setAttribute('aria-expanded','false');
-    });
-    if(!wasOpen){
-      item.classList.add('open');
-      ans.style.maxHeight=ans.scrollHeight+'px';
-      icon.textContent='×';
-      q.setAttribute('aria-expanded','true');
-    }
-  }
-  q.addEventListener('click',toggle);
-  q.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+/* ── ESC key ── */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){closeCheckout();closeMenu();}
 });
 
-/* ── Intersection observer: fade animations ── */
+/* ── LANGUAGE DROPDOWN ── */
+var ld=document.getElementById('langDrop'),lb=document.getElementById('langBtn');
+if(lb&&ld){
+  lb.addEventListener('click',function(e){e.stopPropagation();var o=ld.classList.toggle('open');lb.setAttribute('aria-expanded',o?'true':'false');});
+  document.addEventListener('click',function(){ld&&ld.classList.remove('open');lb&&lb.setAttribute('aria-expanded','false');});
+}
+
+/* ── MOBILE MENU ── */
+var mm=document.getElementById('mobileMenu'),
+    ham=document.getElementById('navHam'),
+    mc=document.getElementById('mClose');
+function openMenu(){mm&&mm.classList.add('open');document.body.classList.add('menu-open');ham&&ham.setAttribute('aria-expanded','true');}
+function closeMenu(){mm&&mm.classList.remove('open');document.body.classList.remove('menu-open');ham&&ham.setAttribute('aria-expanded','false');}
+if(ham)ham.addEventListener('click',openMenu);
+if(mc)mc.addEventListener('click',closeMenu);
+
+/* ── FADE SCROLL ANIMATIONS ── */
 var fadeEls=document.querySelectorAll('.fade-up,.fade-left,.fade-right');
 if('IntersectionObserver' in window){
   var fo=new IntersectionObserver(function(entries){
@@ -1424,70 +1566,115 @@ if('IntersectionObserver' in window){
   fadeEls.forEach(function(el){fo.observe(el);});
 }else{fadeEls.forEach(function(el){el.classList.add('visible');});}
 
-/* ── Counter animation ── */
+/* ── COUNTER ANIMATION ── */
 function animateCount(el,target){
-  var dur=2000,start=performance.now(),large=target>=1000;
+  var dur=2000,start=performance.now(),big=target>=1000;
   (function tick(now){
-    var p=Math.min((now-start)/dur,1),eased=1-Math.pow(1-p,3),val=Math.floor(eased*target);
-    el.textContent=(large?val.toLocaleString():val)+'+';
-    if(p<1) requestAnimationFrame(tick);
-    else el.textContent=(large?target.toLocaleString():target)+'+';
+    var p=Math.min((now-start)/dur,1),v=Math.floor((1-Math.pow(1-p,3))*target);
+    el.textContent=(big?v.toLocaleString():v)+'+';
+    if(p<1)requestAnimationFrame(tick);
+    else el.textContent=(big?target.toLocaleString():target)+'+';
   })(start);
 }
 var counted=false,countEls=document.querySelectorAll('[data-count]');
 if(countEls.length&&'IntersectionObserver' in window){
   var co=new IntersectionObserver(function(entries){
-    if(entries.some(function(e){return e.isIntersecting;})&&!counted){
-      counted=true;
-      countEls.forEach(function(el){animateCount(el,parseInt(el.dataset.count,10));});
+    if(!counted&&entries.some(function(e){return e.isIntersecting;})){
+      counted=true;countEls.forEach(function(el){animateCount(el,parseInt(el.dataset.count,10));});
     }
   },{threshold:0.25});
   countEls.forEach(function(el){co.observe(el);});
 }
 
-/* ── Button ripple ── */
+/* ── RIPPLE ── */
 document.querySelectorAll('.btn--primary,.btn--outline').forEach(function(btn){
   btn.addEventListener('click',function(e){
     var r=document.createElement('span');r.className='ripple';
-    var rect=btn.getBoundingClientRect();
-    r.style.left=(e.clientX-rect.left-5)+'px';r.style.top=(e.clientY-rect.top-5)+'px';
+    var rc=btn.getBoundingClientRect();
+    r.style.left=(e.clientX-rc.left-5)+'px';r.style.top=(e.clientY-rc.top-5)+'px';
     btn.appendChild(r);setTimeout(function(){r.remove();},700);
   });
 });
 
-/* ── 3D card tilt (pointer devices only) ── */
-var card=document.getElementById('productCard');
-if(card&&window.matchMedia('(hover:hover)').matches){
-  card.addEventListener('mousemove',function(e){
-    var r=card.getBoundingClientRect();
-    var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform='translateY(-8px) rotateY('+(x*7)+'deg) rotateX('+(-y*7)+'deg)';
-    card.style.boxShadow='0 24px 64px rgba(0,151,178,.18)';
+/* ── 3D CARD TILT ── */
+var pc=document.getElementById('prodCard');
+if(pc&&window.matchMedia('(hover:hover)').matches){
+  pc.addEventListener('mousemove',function(e){
+    var r=pc.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    pc.style.transform='translateY(-8px) rotateY('+(x*7)+'deg) rotateX('+(-y*7)+'deg)';
+    pc.style.boxShadow='0 24px 64px rgba(0,151,178,.18)';
   });
-  card.addEventListener('mouseleave',function(){card.style.transform='';card.style.boxShadow='';});
+  pc.addEventListener('mouseleave',function(){pc.style.transform='';pc.style.boxShadow='';});
 }
 
-/* ── Community popup: exit intent + 45s fallback ── */
-var popup=document.getElementById('communityPopup'),shown=sessionStorage.getItem('mv_popup');
-function showPopup(){if(popup&&!shown){popup.classList.add('show');shown=true;sessionStorage.setItem('mv_popup','1');}}
-if(!shown){
-  document.addEventListener('mouseleave',function(e){if(e.clientY<10)showPopup();});
+/* ── FAQ ACCORDION ── */
+document.querySelectorAll('.faq-q').forEach(function(q){
+  function toggle(){
+    var item=q.parentElement,ans=item.querySelector('.faq-ans'),icon=q.querySelector('.faq-q__icon'),wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(i){
+      i.classList.remove('open');i.querySelector('.faq-ans').style.maxHeight=null;
+      i.querySelector('.faq-q__icon').textContent='+';i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+    });
+    if(!wasOpen){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';icon.textContent='×';q.setAttribute('aria-expanded','true');}
+  }
+  q.addEventListener('click',toggle);
+  q.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+});
+
+/* ── NEWSLETTER ── */
+var nb=document.getElementById('newsBtn');
+if(nb){
+  nb.addEventListener('click',function(){
+    var em=document.getElementById('newsEmail'),cn=document.getElementById('newsConsent');
+    if(!em||!em.value.includes('@')){if(em)em.focus();return;}
+    if(!cn||!cn.checked){alert('Please accept the privacy policy to subscribe.');return;}
+    nb.textContent='✓ Subscribed!';nb.disabled=true;
+    fbTrack('Lead',{content_name:'Newsletter Signup'});
+    // TODO: connect to Mailchimp / Klaviyo / ConvertKit API
+  });
+}
+
+/* ── POPUP — ONCE EVER (FIX #5) ──────────────────────────
+   localStorage persists across sessions (correct behaviour).
+   sessionStorage resets on each tab close (annoying — old).
+   The key 'mv_popup_v1' version-stamps it so you can reset
+   all users by bumping to 'mv_popup_v2' in a future update.
+*/
+var popup=document.getElementById('communityPopup'),
+    PKEY='mv_popup_v1',
+    pShown=false;
+
+try{pShown=!!localStorage.getItem(PKEY);}catch(e){}
+
+function showPopup(){
+  if(popup&&!pShown){
+    popup.classList.add('show');pShown=true;
+    try{localStorage.setItem(PKEY,'1');}catch(e){}
+  }
+}
+function closePopup(){popup&&popup.classList.remove('show');}
+
+if(!pShown){
+  // Show on exit intent (mouse leaves top of viewport)
+  document.addEventListener('mouseleave',function(e){if(e.clientY<10)showPopup();},{once:true});
+  // Fallback: show after 45 seconds if user hasn't left
   setTimeout(showPopup,45000);
 }
-var pc=document.getElementById('popupClose'),pd=document.getElementById('popupDismiss');
-function closePopup(){if(popup)popup.classList.remove('show');}
-if(pc)pc.addEventListener('click',closePopup);
-if(pd){pd.addEventListener('click',closePopup);pd.addEventListener('keydown',function(e){if(e.key==='Enter')closePopup();});}
 
-/* ── Pixel event tracking ── */
-var cart={content_ids:['moringa-90s'],value:89,currency:'MYR',num_items:1};
-['navOrderBtn','heroBuyBtn','productBuyBtn','productBuyBtn2','ctaBuyBtn'].forEach(function(id){
-  var el=document.getElementById(id);if(el)el.addEventListener('click',function(){trackEvent('AddToCart',cart);});
-});
-var wa=document.getElementById('waBtn');if(wa)wa.addEventListener('click',function(){trackEvent('Lead',{content_name:'WhatsApp CTA'});});
-var sh=document.getElementById('shopeeLink');if(sh)sh.addEventListener('click',function(){trackEvent('CustomEvent',{name:'ShopeeClick'});});
-var la=document.getElementById('lazadaLink');if(la)la.addEventListener('click',function(){trackEvent('CustomEvent',{name:'LazadaClick'});});
-var pw=document.getElementById('popupWaLink');if(pw)pw.addEventListener('click',function(){trackEvent('Lead',{content_name:'WhatsApp Popup'});});
+var popCl=document.getElementById('popClose'),popDis=document.getElementById('popDismiss');
+if(popCl)popCl.addEventListener('click',closePopup);
+if(popDis){
+  popDis.addEventListener('click',closePopup);
+  popDis.addEventListener('keydown',function(e){if(e.key==='Enter')closePopup();});
+}
+
+/* ── PIXEL EVENTS ── */
+var popWa=document.getElementById('popWa');
+if(popWa)popWa.addEventListener('click',function(){fbTrack('Lead',{content_name:'WhatsApp Popup'});});
+var waBtn=document.getElementById('waBtn');
+if(waBtn)waBtn.addEventListener('click',function(){fbTrack('Lead',{content_name:'WhatsApp CTA'});});
+['shopeeA','shopeeB'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('click',function(){fbTrack('CustomEvent',{name:'ShopeeClick'});});});
+['lazadaA','lazadaB'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('click',function(){fbTrack('CustomEvent',{name:'LazadaClick'});});});
 
 }());
 </script>
