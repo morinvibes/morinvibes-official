@@ -2,35 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  
+  <!-- Title & Meta -->
   <title>Shop — MorinVibes® · 90 Capsules · RM89</title>
-  <meta name="description" content="100% pure moringa capsules. 90 capsules, 500mg each. KKM Approved. GMP Certified. Farm-direct from Penang." />
-  <meta property="og:title" content="Shop — MorinVibes® Moringa Capsules" />
-  <meta property="og:description" content="90 capsules · 500mg pure moringa · RM89" />
-  <meta property="og:image" content="/morinvibes-official/images/bottle-new.svg" />
+  <meta name="description" content="Buy farm-direct moringa capsules. 90 capsules, 500mg each. KKM Approved. GMP Certified. Small-batch freshness from Penang, Malaysia." />
+  <meta name="keywords" content="buy moringa Malaysia, moringa capsules Penang, organic moringa, KKM approved supplements" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="product" />
   <meta property="og:url" content="https://morinvibes.github.io/morinvibes-official/en/shop.html" />
+  <meta property="og:title" content="Shop — MorinVibes® · 90 Capsules · RM89" />
+  <meta property="og:description" content="Farm-direct moringa capsules. 90 capsules, 500mg each. KKM Approved. GMP Certified." />
+  <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/images/bottle-new.svg" />
   <meta property="product:price:amount" content="89" />
   <meta property="product:price:currency" content="MYR" />
+  
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shop — MorinVibes®" />
+  <meta name="twitter:description" content="Farm-direct moringa capsules. 90 capsules, RM89." />
+  <meta name="twitter:image" content="https://morinvibes.github.io/morinvibes-official/images/bottle-new.svg" />
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://morinvibes.github.io/morinvibes-official/en/shop.html" />
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/morinvibes-official/images/favicon.svg" />
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  
+  <!-- Global CSS -->
   <link rel="stylesheet" href="/morinvibes-official/assets/css/global.css" />
+  
+  <!-- Page Transitions -->
+  <script src="/morinvibes-official/assets/js/transitions.js" defer></script>
+  
   <style>
     /* Shop page specific styles */
     .shop-hero {
-      background: linear-gradient(135deg, var(--paper), white);
-      padding: var(--sp-48) 0 var(--sp-24);
+      background: var(--gradient-hero);
+      padding: calc(72px + 80px) 0 40px;
       text-align: center;
     }
     
     .product-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--sp-64);
+      gap: 64px;
       align-items: start;
-      margin: var(--sp-48) 0;
+      margin: 48px 0;
     }
     
     .product-gallery {
@@ -40,11 +64,11 @@
     
     .product-main-image {
       background: var(--teal-ghost);
-      border-radius: 32px;
-      padding: var(--sp-48);
+      border-radius: var(--radius-xl);
+      padding: 48px;
       text-align: center;
       border: 1px solid var(--border);
-      margin-bottom: var(--sp-24);
+      margin-bottom: 24px;
       transition: all 0.3s var(--ease);
     }
     
@@ -69,7 +93,7 @@
     .product-thumb {
       width: 80px;
       height: 80px;
-      border-radius: 16px;
+      border-radius: var(--radius-md);
       border: 1px solid var(--border);
       padding: 8px;
       cursor: pointer;
@@ -91,7 +115,7 @@
     }
     
     .product-info {
-      padding: var(--sp-24) 0;
+      padding: 24px 0;
     }
     
     .product-badges {
@@ -105,7 +129,7 @@
       background: var(--teal-ghost);
       color: var(--teal);
       padding: 6px 16px;
-      border-radius: 40px;
+      border-radius: var(--radius-full);
       font-size: 12px;
       font-weight: 500;
       border: 1px solid var(--teal-soft);
@@ -141,18 +165,6 @@
       color: var(--ink);
     }
     
-    .product-actions {
-      display: flex;
-      gap: 16px;
-      margin: 32px 0;
-      flex-wrap: wrap;
-    }
-    
-    .product-actions .btn {
-      flex: 1;
-      min-width: 200px;
-    }
-    
     .quantity-selector {
       display: flex;
       align-items: center;
@@ -169,6 +181,9 @@
       font-size: 20px;
       cursor: pointer;
       transition: all 0.2s var(--ease);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .quantity-btn:hover {
@@ -182,13 +197,25 @@
       height: 44px;
       text-align: center;
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: var(--radius-md);
       font-size: 16px;
       font-weight: 500;
     }
     
+    .product-actions {
+      display: flex;
+      gap: 16px;
+      margin: 32px 0;
+      flex-wrap: wrap;
+    }
+    
+    .product-actions .btn {
+      flex: 1;
+      min-width: 200px;
+    }
+    
     .tab-container {
-      margin: var(--sp-64) 0;
+      margin: 64px 0;
     }
     
     .tab-buttons {
@@ -266,7 +293,7 @@
     
     .shipping-table {
       background: var(--paper);
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       padding: 24px;
       margin: 24px 0;
     }
@@ -298,8 +325,12 @@
       text-align: center;
       padding: 12px;
       background: var(--teal-ghost);
-      border-radius: 40px;
+      border-radius: var(--radius-full);
       margin-top: 16px;
+    }
+    
+    .related-products {
+      margin: 64px 0;
     }
     
     @media (max-width: 900px) {
@@ -316,10 +347,13 @@
   </style>
 </head>
 <body>
-  <!-- Navigation - Consistent across all pages -->
-  <nav class="nav">
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="progressBar"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav">
     <div class="nav__container">
-      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       
@@ -328,26 +362,26 @@
       </a>
       
       <div class="nav__right">
-        <div class="lang-dropdown">
-          <button class="lang-btn">EN <span>▼</span></button>
+        <div class="lang-dropdown" id="langDropdown">
+          <button class="lang-btn" id="langBtn">EN <span>▾</span></button>
           <div class="lang-options">
             <a href="/morinvibes-official/en/shop.html" class="lang-option active">English</a>
             <a href="/morinvibes-official/bm/shop.html" class="lang-option">Bahasa Malaysia</a>
             <a href="/morinvibes-official/zh/shop.html" class="lang-option">中文</a>
           </div>
         </div>
-        <a href="/morinvibes-official/en/checkout.html" class="btn btn--small">Buy Now — RM89</a>
+        <a href="/morinvibes-official/en/checkout.html" class="btn btn--small btn--primary">Buy Now — RM89</a>
       </div>
     </div>
   </nav>
 
   <!-- Mobile Menu -->
-  <div class="nav__mobile" id="mobile-menu">
+  <div class="nav__mobile" id="mobileMenu">
     <div class="nav__mobile-left">
       <div class="nav__mobile-logo">
         <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
       </div>
-      <button class="nav__mobile-close" aria-label="Close menu">✕</button>
+      <button class="nav__mobile-close" id="menuClose" aria-label="Close menu">✕</button>
       
       <div class="nav__mobile-lang">
         <a href="/morinvibes-official/en/">EN</a>
@@ -357,26 +391,22 @@
       
       <a href="/morinvibes-official/en/" class="nav__mobile-link">Home</a>
       <a href="/morinvibes-official/en/farm.html" class="nav__mobile-link">The Farm</a>
-      <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link">Quality</a>
+      <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link">Quality & Authenticity</a>
       <a href="/morinvibes-official/en/benefits.html" class="nav__mobile-link">Benefits</a>
       <a href="/morinvibes-official/en/shop.html" class="nav__mobile-link active">Shop</a>
-      <a href="/morinvibes-official/en/story.html" class="nav__mobile-link">Our Story</a>
-      <a href="/morinvibes-official/en/authentic.html" class="nav__mobile-link">Authenticity</a>
-      <a href="/morinvibes-official/en/ethics.html" class="nav__mobile-link">Ethics</a>
+      <a href="/morinvibes-official/en/about.html" class="nav__mobile-link">About Us</a>
+      <a href="/morinvibes-official/en/testimonials.html" class="nav__mobile-link">Testimonials</a>
       <a href="/morinvibes-official/en/faq.html" class="nav__mobile-link">FAQ</a>
-      <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="nav__mobile-link" style="color: var(--teal);">WhatsApp</a>
+      <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="nav__mobile-link" style="color: var(--teal);">WhatsApp Us</a>
     </div>
     
     <div class="nav__mobile-right">
       <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="nav__mobile-right-img" />
       <div class="nav__mobile-right-price">RM89 <span>/ bottle</span></div>
       <div class="nav__mobile-right-sub">90 capsules · 500mg pure moringa</div>
-      <a href="/morinvibes-official/en/checkout.html" class="btn">Buy Now — RM89</a>
+      <a href="/morinvibes-official/en/checkout.html" class="btn btn--primary" style="width: 100%;">Buy Now — RM89</a>
     </div>
   </div>
-
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-progress" id="progressBar"></div>
 
   <main>
     <!-- Shop Hero -->
@@ -384,6 +414,9 @@
       <div class="container">
         <span class="eyebrow">90 CAPSULES · 500MG EACH</span>
         <h1>Farm-Direct Moringa Capsules</h1>
+        <p class="lead" style="max-width: 600px; margin: 24px auto 0;">
+          KKM Approved · GMP Certified · Small-batch freshness
+        </p>
       </div>
     </section>
 
@@ -395,7 +428,7 @@
         <span>GMP CERTIFIED</span><span class="dot">•</span>
         <span>KKM APPROVED</span><span class="dot">•</span>
         <span>VEGAN</span><span class="dot">•</span>
-        <span>MALAYSIA</span><span class="dot">•</span>
+        <span>PENANG</span><span class="dot">•</span>
         <span>90 CAPSULES</span><span class="dot">•</span>
         <span>500MG EACH</span><span class="dot">•</span>
         <!-- Duplicate for seamless loop -->
@@ -404,7 +437,7 @@
         <span>GMP CERTIFIED</span><span class="dot">•</span>
         <span>KKM APPROVED</span><span class="dot">•</span>
         <span>VEGAN</span><span class="dot">•</span>
-        <span>MALAYSIA</span><span class="dot">•</span>
+        <span>PENANG</span><span class="dot">•</span>
         <span>90 CAPSULES</span><span class="dot">•</span>
         <span>500MG EACH</span><span class="dot">•</span>
       </div>
@@ -426,7 +459,7 @@
               <div class="product-thumb" onclick="changeImage(this, '/morinvibes-official/images/bottle-angle.svg')">
                 <img src="/morinvibes-official/images/bottle-new.svg" alt="Angle view" />
               </div>
-              <div class="product-thumb" onclick="changeImage(this, '/morinvibes-official/images/bottle-with-kkm.svg')">
+              <div class="product-thumb" onclick="changeImage(this, '/morinvibes-official/images/bottle-with-kkm.jpg')">
                 <img src="/morinvibes-official/images/bottle-new.svg" alt="With KKM sticker" />
               </div>
             </div>
@@ -442,6 +475,7 @@
               <span class="product-badge">GMP Certified</span>
               <span class="product-badge">Vegan</span>
               <span class="product-badge">No Fillers</span>
+              <span class="product-badge">Non-GMO</span>
             </div>
             
             <div class="product-price-large">RM89</div>
@@ -475,19 +509,24 @@
             <!-- Action Buttons -->
             <div class="product-actions">
               <a href="/morinvibes-official/en/checkout.html" class="btn btn--primary" id="buyNowBtn">Buy Now — RM89</a>
-              <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="btn btn--outline">WhatsApp Questions</a>
+              <a href="https://wa.me/60102766095?text=Hi%20Jess%2C%20I%20have%20a%20question%20about%20your%20moringa%20capsules" target="_blank" rel="noopener" class="btn btn--outline">Questions? WhatsApp Us</a>
             </div>
             
             <!-- Shipping Note -->
             <div class="shipping-free">
               ✨ Free shipping for orders over RM150 · RM7 West Malaysia · RM15 East Malaysia
             </div>
+            
+            <!-- Multi-channel note -->
+            <p style="margin-top: 24px; font-size: 0.9rem; color: var(--ink-muted); text-align: center;">
+              Same fresh batches available on <a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" style="color: var(--teal);">Shopee</a> and <a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" style="color: var(--teal);">Lazada</a>
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Stats Grid (90+ nutrients, 46 antioxidants, 18 amino acids) -->
+    <!-- Stats Grid -->
     <section class="section section--alt">
       <div class="container">
         <div class="grid-3" style="margin: 0;">
@@ -520,10 +559,11 @@
           
           <!-- Description Tab -->
           <div id="description" class="tab-pane active">
-            <h3>From My Farm to Your Door</h3>
-            <p>MorinVibes Moringa capsules are exactly what the name suggests — pure moringa leaf powder from my farm in Bayan Lepas, Penang. I grow it myself, harvest it myself, and prepare it myself.</p>
+            <h3>From Our Farm to Your Door</h3>
+            <p>MorinVibes Moringa capsules are exactly what the name suggests — pure moringa leaf powder from our farm in Bayan Lepas, Penang. We grow it ourselves, harvest it ourselves, and prepare it ourselves.</p>
             <p>No extracts, no concentrates, no fillers. Just the leaf, gently dried, milled finely, and encapsulated with care.</p>
             <p>Each bottle contains 90 vegetarian capsules with 500mg of pure moringa powder per capsule. The recommended daily intake is 2 capsules (1g).</p>
+            <p><strong>Small-batch freshness:</strong> We produce in limited batches, not mass production. Fresh stock is rotated regularly to ensure optimal quality.</p>
           </div>
           
           <!-- Ingredients Tab -->
@@ -545,6 +585,10 @@
               <li>
                 <span class="spec-label">Allergens</span>
                 <span class="spec-value">None</span>
+              </li>
+              <li>
+                <span class="spec-label">Certifications</span>
+                <span class="spec-value">KKM Approved · GMP Certified</span>
               </li>
             </ul>
             <p style="color: var(--ink-muted); font-size: 0.9rem; margin-top: 16px;">*No preservatives, no artificial colors, no flow agents</p>
@@ -569,6 +613,7 @@
             </div>
             <p><strong>Delivery Times:</strong> West Malaysia 3-5 days, East Malaysia 5-7 days</p>
             <p><strong>Free Shipping:</strong> Orders over RM150</p>
+            <p style="margin-top: 16px; color: var(--ink-soft);">Same fresh batches — whether you order from our website, Shopee, or Lazada.</p>
           </div>
           
           <!-- FAQ Tab -->
@@ -581,7 +626,7 @@
                 <span class="faq-question__icon">+</span>
               </div>
               <div class="faq-answer" style="padding: 0 0 16px;">
-                Yes! Same brand, same quality. Website offers fresher batches and better prices.
+                Yes! Same brand, same quality. Website offers fresher batches and better prices (no platform fees).
               </div>
             </div>
             
@@ -591,7 +636,7 @@
                 <span class="faq-question__icon">+</span>
               </div>
               <div class="faq-answer" style="padding: 0 0 16px;">
-                90 vegetarian capsules, 500mg each — a one-month supply at 2 capsules per day.
+                90 vegetarian capsules, 500mg each — a 45-day supply at 2 capsules per day.
               </div>
             </div>
             
@@ -612,103 +657,91 @@
     <!-- Why Buy Direct (4 cards) -->
     <section class="section section--alt">
       <div class="container">
-        <div class="text-center" style="margin-bottom: 48px;">
+        <div class="section-header fade-up">
           <span class="eyebrow">WHY BUY DIRECT</span>
-          <h2>From My Farm to Your Door</h2>
+          <h2>From Our Farm to Your Door</h2>
         </div>
         
         <div class="benefit-cards">
           <div class="benefit-card fade-up">
             <div class="benefit-card__icon">🌱</div>
             <h3 class="benefit-card__title">Fresher Batches</h3>
-            <p class="benefit-card__text">Prepared after you order. No warehouse sitting.</p>
+            <p class="benefit-card__text">Small-batch production means fresh stock rotated regularly. No mass production, no warehouse sitting.</p>
           </div>
           <div class="benefit-card fade-up" data-delay="1">
             <div class="benefit-card__icon">💰</div>
             <h3 class="benefit-card__title">Better Price</h3>
-            <p class="benefit-card__text">No 20% commission means savings for you.</p>
+            <p class="benefit-card__text">No platform commissions (20% on Shopee) means we can offer better prices directly.</p>
           </div>
           <div class="benefit-card fade-up" data-delay="2">
             <div class="benefit-card__icon">💬</div>
             <h3 class="benefit-card__title">Direct Support</h3>
-            <p class="benefit-card__text">WhatsApp me — the person who made your capsules.</p>
+            <p class="benefit-card__text">WhatsApp us directly — real answers from the people who grow and prepare your capsules.</p>
           </div>
           <div class="benefit-card fade-up" data-delay="3">
             <div class="benefit-card__icon">🏆</div>
             <h3 class="benefit-card__title">100% Pure</h3>
-            <p class="benefit-card__text">No fillers, no additives. Just pure moringa.</p>
+            <p class="benefit-card__text">No fillers, no additives, no compromises. Just pure moringa leaf powder.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Shopee Comparison -->
+    <!-- Multi-channel CTA -->
     <section class="section">
       <div class="container">
         <div class="shopee-proof fade-up">
-          <span class="eyebrow">SHOPEE VS OFFICIAL WEBSITE</span>
-          <h2 style="margin-bottom: 32px;">Same Brand. Better Experience.</h2>
+          <span class="eyebrow">MULTI-CHANNEL AVAILABILITY</span>
+          <h2 style="margin-bottom: 16px;">Same Fresh Batches, Everywhere</h2>
+          <p class="lead" style="max-width: 600px; margin: 0 auto;">
+            Whether you buy from our website, Shopee, or Lazada — you're getting the same farm-direct moringa.
+          </p>
           
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0;">
-            <!-- Shopee Card -->
-            <div style="background: white; padding: 32px; border-radius: 24px; border: 1px solid var(--border);">
-              <div style="font-size: 2rem; margin-bottom: 16px;">🛒</div>
-              <h3 style="margin-bottom: 24px;">Shopee</h3>
-              <ul style="list-style: none;">
-                <li style="margin-bottom: 12px;">✅ Official store</li>
-                <li style="margin-bottom: 12px;">✅ 1000+ 5-star reviews</li>
-                <li style="margin-bottom: 12px;">❌ Warehouse stock</li>
-                <li style="margin-bottom: 12px;">❌ Higher price (+20% commission)</li>
-              </ul>
-            </div>
-            
-            <!-- Website Card -->
-            <div style="background: var(--teal-ghost); padding: 32px; border-radius: 24px; border: 1px solid var(--teal-soft);">
-              <div style="font-size: 2rem; margin-bottom: 16px;">🌱</div>
-              <h3 style="margin-bottom: 24px; color: var(--teal);">Official Website</h3>
-              <ul style="list-style: none;">
-                <li style="margin-bottom: 12px;">✅ Same official brand</li>
-                <li style="margin-bottom: 12px;">✅ Verified reviews</li>
-                <li style="margin-bottom: 12px;">✅ Fresher batches</li>
-                <li style="margin-bottom: 12px;">✅ Lower price</li>
-              </ul>
-            </div>
+          <div class="store-badges" style="margin-top: 32px;">
+            <a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener" class="store-badge">
+              <img src="/morinvibes-official/images/social/shopee-icon.svg" alt="Shopee" />
+              <span>Shopee: MorinVibes</span>
+            </a>
+            <a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener" class="store-badge">
+              <img src="/morinvibes-official/images/social/shopee-icon.svg" alt="Shopee" />
+              <span>Shopee: moringa_morinvibes</span>
+            </a>
+            <a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener" class="store-badge">
+              <img src="/morinvibes-official/images/social/lazada-icon.svg" alt="Lazada" />
+              <span>Lazada</span>
+            </a>
           </div>
-          
-          <p style="margin-top: 24px; font-size: 1.2rem; color: var(--teal);">Same trusted brand. Better experience.</p>
         </div>
       </div>
     </section>
 
-    <!-- WhatsApp CTA -->
-    <section class="section section--sm">
+    <!-- CTA Section -->
+    <section class="section section--alt">
       <div class="container">
-        <div class="whatsapp-section">
-          <div class="whatsapp-icon">🐼</div>
-          <h2 style="margin-bottom: 16px;">Questions?</h2>
-          <p style="max-width: 500px; margin: 0 auto 32px; color: var(--ink-soft);">
-            Reach out to me directly on WhatsApp — I'm here to help.
-          </p>
-          <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="btn btn--primary btn--large">WhatsApp Me</a>
+        <div class="cta-section fade-up">
+          <h2 class="cta-title">Ready to Experience Farm-Direct Freshness?</h2>
+          <p class="cta-text">90 capsules of pure moringa, KKM approved, GMP certified.</p>
+          <div class="cta-buttons">
+            <a href="/morinvibes-official/en/checkout.html" class="btn btn--primary btn--large">Buy Now — RM89</a>
+            <a href="/morinvibes-official/en/testimonials.html" class="btn btn--outline btn--large">Read Reviews</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer - Consistent across all pages -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div>
-          <div class="footer__logo">
-            <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
-          </div>
-          <p class="footer__tagline">Farm-direct moringa from my land in Penang · Since 2019</p>
+          <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="footer__logo" />
+          <p class="footer__tagline">Farm-direct moringa from our own land in Penang, Malaysia · Since 2019</p>
           <div class="footer__social">
             <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener">f</a>
             <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener">📷</a>
-            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener">🎵</a>
-            <a href="https://wa.me/60102766095" target="_blank" rel="noopener">📱</a>
+            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener">▶</a>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener">💬</a>
           </div>
         </div>
         
@@ -716,19 +749,24 @@
           <h4 class="footer__title">Navigate</h4>
           <ul class="footer__links">
             <li><a href="/morinvibes-official/en/farm.html">The Farm</a></li>
-            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality & Authenticity</a></li>
             <li><a href="/morinvibes-official/en/benefits.html">Benefits</a></li>
             <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
-            <li><a href="/morinvibes-official/en/story.html">Our Story</a></li>
+            <li><a href="/morinvibes-official/en/about.html">About Us</a></li>
+            <li><a href="/morinvibes-official/en/testimonials.html">Testimonials</a></li>
+            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+            <li><a href="/morinvibes-official/en/journal/">Journal</a></li>
           </ul>
         </div>
         
         <div>
           <h4 class="footer__title">Trust</h4>
           <ul class="footer__links">
-            <li><a href="/morinvibes-official/en/authentic.html">Authenticity</a></li>
+            <li><a href="/morinvibes-official/en/authenticity.html">Authenticity</a></li>
             <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
-            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+            <li><a href="/morinvibes-official/en/returns.html">Returns Policy</a></li>
+            <li><a href="/morinvibes-official/en/privacy.html">Privacy Policy</a></li>
+            <li><a href="/morinvibes-official/en/terms.html">Terms</a></li>
           </ul>
           <div class="footer__badge">KKM Approved</div>
         </div>
@@ -738,10 +776,10 @@
           <ul class="footer__links">
             <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
             <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
+            <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener">Shopee Store</a></li>
+            <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener">Lazada Store</a></li>
           </ul>
-          <p style="color: rgba(255,255,255,0.3); font-size: 0.85rem; margin-top: 20px;">
-            Bayan Lepas, Penang<br />Malaysia
-          </p>
+          <p class="footer__address">Bayan Lepas, Penang<br />Malaysia</p>
         </div>
       </div>
       
@@ -806,21 +844,101 @@
       document.getElementById(tabId).classList.add('active');
     }
     
-    // FAQ accordion (simple)
+    // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(q => {
       q.addEventListener('click', function() {
+        const item = this.parentElement;
         const answer = this.nextElementSibling;
         const icon = this.querySelector('.faq-question__icon');
         
-        if (answer.style.maxHeight) {
-          answer.style.maxHeight = null;
-          icon.textContent = '+';
-        } else {
+        item.classList.toggle('open');
+        
+        if (item.classList.contains('open')) {
           answer.style.maxHeight = answer.scrollHeight + 'px';
           icon.textContent = '−';
+        } else {
+          answer.style.maxHeight = null;
+          icon.textContent = '+';
         }
       });
     });
+    
+    // Progress bar
+    const progressBar = document.getElementById('progressBar');
+    const scrollBtn = document.getElementById('scrollTop');
+    const nav = document.getElementById('mainNav');
+    
+    window.addEventListener('scroll', function() {
+      const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (scrollY / docHeight) * 100;
+      if (progressBar) progressBar.style.width = scrolled + '%';
+      
+      nav.classList.toggle('scrolled', scrollY > 40);
+      if (scrollBtn) scrollBtn.classList.toggle('visible', scrollY > 400);
+    }, { passive: true });
+    
+    if (scrollBtn) {
+      scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+    
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('menuClose');
+    
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        mobileMenu.classList.add('open');
+        document.body.classList.add('menu-open');
+        hamburger.setAttribute('aria-expanded', 'true');
+      });
+      
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          document.body.classList.remove('menu-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      }
+      
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+          mobileMenu.classList.remove('open');
+          document.body.classList.remove('menu-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+    
+    // Language dropdown
+    const langBtn = document.getElementById('langBtn');
+    const langDropdown = document.getElementById('langDropdown');
+    
+    if (langBtn && langDropdown) {
+      langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langDropdown.classList.toggle('open');
+      });
+      
+      document.addEventListener('click', () => {
+        langDropdown.classList.remove('open');
+      });
+    }
+    
+    // Fade-up observer
+    const fadeElements = document.querySelectorAll('.fade-up');
+    if (fadeElements.length > 0) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      
+      fadeElements.forEach(el => observer.observe(el));
+    }
   </script>
 </body>
 </html>
