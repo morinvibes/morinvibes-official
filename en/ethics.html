@@ -2,571 +2,605 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Ethics — MorinVibes® · Sustainable Farming</title>
-  <meta name="description" content="Our commitment to ethical farming: no middlemen, sustainable practices, fair treatment of land, and pure, honest moringa." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Our Ethics — MorinVibes® Sustainable & Ethical Moringa</title>
+  <meta name="description" content="Learn about our ethical commitments: sustainable farming, fair labor practices, environmental responsibility, and complete transparency." />
+  <link rel="canonical" href="https://morinvibes.com/en/ethics.html" />
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="Our Ethics — MorinVibes®" />
-  <meta property="og:description" content="Our commitment to ethical farming and sustainable practices." />
-  <meta property="og:image" content="/morinvibes-official/images/farm-hero.svg" />
-  <meta property="og:url" content="https://morinvibes.github.io/morinvibes-official/en/ethics.html" />
+  <meta property="og:description" content="We believe in doing business differently. Learn about our ethical approach to farming, labor, and the environment." />
+  <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/images/ethics-hero.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" type="image/svg+xml" href="/morinvibes-official/images/favicon.svg" />
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/morinvibes-official/favicon.svg" type="image/svg+xml" />
+  
+  <!-- CSS - EXTERNAL ONLY -->
   <link rel="stylesheet" href="/morinvibes-official/assets/css/global.css" />
-  <style>
-    /* Ethics page specific styles */
-    .ethics-hero {
-      background: linear-gradient(135deg, var(--paper), white);
-      padding: var(--sp-64) 0;
-      text-align: center;
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/components.css" />
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/style.css" />
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Our Ethics",
+    "description": "MorinVibes® ethical commitments: sustainable farming, fair labor, environmental responsibility",
+    "url": "https://morinvibes.com/en/ethics.html",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "MorinVibes®",
+      "slogan": "Farm-direct moringa with integrity",
+      "ethics": [
+        "Sustainable farming practices",
+        "Fair labor and living wages",
+        "Environmental responsibility",
+        "Community involvement",
+        "Complete transparency"
+      ]
     }
-    
-    .ethics-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin: 60px 0;
-    }
-    
-    .ethics-card {
-      background: white;
-      padding: 48px 32px;
-      border-radius: 32px;
-      border: 1px solid var(--border);
-      text-align: center;
-      transition: all 0.3s var(--ease);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .ethics-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--teal), var(--teal-light));
-      transform: scaleX(0);
-      transition: transform 0.3s var(--ease);
-    }
-    
-    .ethics-card:hover::before {
-      transform: scaleX(1);
-    }
-    
-    .ethics-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .ethics-icon {
-      font-size: 3rem;
-      margin-bottom: 24px;
-    }
-    
-    .ethics-card h3 {
-      margin-bottom: 16px;
-      color: var(--ink);
-    }
-    
-    .ethics-card p {
-      color: var(--ink-soft);
-      line-height: 1.7;
-      margin-bottom: 0;
-    }
-    
-    .principle-list {
-      background: var(--paper);
-      border-radius: 32px;
-      padding: 48px;
-      margin: 48px 0;
-    }
-    
-    .principle-item {
-      display: flex;
-      gap: 24px;
-      margin-bottom: 32px;
-      align-items: flex-start;
-    }
-    
-    .principle-item:last-child {
-      margin-bottom: 0;
-    }
-    
-    .principle-check {
-      width: 32px;
-      height: 32px;
-      background: var(--teal);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      font-weight: 600;
-      flex-shrink: 0;
-    }
-    
-    .principle-content h3 {
-      margin-bottom: 8px;
-      color: var(--ink);
-    }
-    
-    .principle-content p {
-      color: var(--ink-soft);
-      margin-bottom: 0;
-    }
-    
-    .middleman-section {
-      background: linear-gradient(135deg, var(--teal), var(--teal-light));
-      border-radius: 32px;
-      padding: 60px;
-      color: white;
-      text-align: center;
-      margin: 48px 0;
-    }
-    
-    .middleman-section h2 {
-      color: white;
-    }
-    
-    .middleman-section p {
-      color: rgba(255, 255, 255, 0.9);
-      max-width: 600px;
-      margin: 24px auto;
-    }
-    
-    .middleman-highlight {
-      font-size: 2rem;
-      font-weight: 300;
-      font-family: var(--serif);
-      margin: 24px 0;
-    }
-    
-    .sustainability-stats {
-      display: flex;
-      justify-content: space-around;
-      margin: 48px 0;
-      flex-wrap: wrap;
-      gap: 32px;
-    }
-    
-    .sustainability-stat {
-      text-align: center;
-    }
-    
-    .sustainability-stat .number {
-      font-family: var(--serif);
-      font-size: 3rem;
-      color: var(--teal);
-      line-height: 1;
-    }
-    
-    .sustainability-stat .label {
-      color: var(--ink-soft);
-      margin-top: 8px;
-      font-size: 1rem;
-    }
-    
-    @media (max-width: 900px) {
-      .ethics-grid {
-        grid-template-columns: 1fr;
-      }
-      .principle-item {
-        flex-direction: column;
-        gap: 12px;
-      }
-      .middleman-section {
-        padding: 40px 24px;
-      }
-    }
-  </style>
+  }
+  </script>
+  
+  <!-- Meta Pixel - MINIMAL (initialization only) -->
+  <script>
+  var PIXEL_ID = 'YOUR_PIXEL_ID'; /* REPLACE BEFORE GOING LIVE */
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  if(PIXEL_ID!=='YOUR_PIXEL_ID'){fbq('init',PIXEL_ID);fbq('track','PageView');}
+  </script>
 </head>
 <body>
-  <!-- Navigation - Consistent across all pages -->
-  <nav class="nav">
-    <div class="nav__container">
-      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      
-      <a href="/morinvibes-official/en/" class="nav__logo">
-        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
-      </a>
-      
-      <div class="nav__right">
-        <div class="lang-dropdown">
-          <button class="lang-btn">EN <span>▼</span></button>
-          <div class="lang-options">
-            <a href="/morinvibes-official/en/ethics.html" class="lang-option active">English</a>
-            <a href="/morinvibes-official/bm/ethics.html" class="lang-option">Bahasa Malaysia</a>
-            <a href="/morinvibes-official/zh/ethics.html" class="lang-option">中文</a>
-          </div>
+
+<!-- Scroll progress bar -->
+<div class="scroll-progress" id="progressBar"></div>
+
+<!-- CHECKOUT MODAL -->
+<div class="co-overlay" id="coOverlay" role="dialog" aria-modal="true" aria-label="Secure checkout">
+  <div class="co-modal">
+    <div class="co-head">
+      <div class="co-head-brand">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" height="30" />
+        <div class="co-head-info">
+          <strong>Moringa Capsules · 90 caps · 500mg</strong><br />RM89 + shipping
         </div>
-        <a href="/morinvibes-official/en/checkout.html" class="btn btn--small">Buy Now — RM89</a>
+      </div>
+      <button class="co-close" id="coClose" aria-label="Close checkout">✕</button>
+    </div>
+    <div class="co-trust">
+      <span>✓ KKM Approved</span>
+      <span>✓ GMP Certified</span>
+      <span>🔒 Secure Payment</span>
+      <span>🚚 Ships from Penang</span>
+    </div>
+    <div class="co-body">
+      <div class="co-spinner" id="coSpinner">
+        <div class="co-spinner__ring"></div>
+        <div class="co-spinner__text">Loading secure checkout…</div>
+      </div>
+      <iframe
+        id="coIframe"
+        class="co-iframe"
+        src=""
+        data-src="https://morinvibes.orderla.my/moringa-order"
+        title="Secure checkout"
+        sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
+      ></iframe>
+    </div>
+    <div class="co-foot">
+      Same product as our Shopee &amp; Lazada store. Need help?
+      <a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
+  <div class="nav__wrap">
+    <button class="nav__ham" id="navHam" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="/morinvibes-official/en/" class="nav__logo" aria-label="MorinVibes® — Home">
+      <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" width="180" height="46" />
+    </a>
+    <div class="nav__right">
+      <div class="lang-drop" id="langDrop">
+        <button class="lang-btn" id="langBtn" aria-expanded="false" aria-label="Language">
+          EN <span class="lang-btn__chev">▾</span>
+        </button>
+        <div class="lang-opts" role="menu">
+          <a href="/morinvibes-official/en/" class="lang-opt active" role="menuitem">🇬🇧 English</a>
+          <a href="/morinvibes-official/bm/" class="lang-opt" role="menuitem">🇲🇾 Bahasa Malaysia</a>
+          <a href="/morinvibes-official/zh/" class="lang-opt" role="menuitem">🇨🇳 中文</a>
+        </div>
+      </div>
+      <button class="btn btn--primary btn--sm" id="navOrderBtn">Order — RM89</button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="m-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="m-left">
+    <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="m-logo-img" height="38" />
+    <button class="m-close" id="mClose" aria-label="Close menu">✕</button>
+    <div class="m-lang">
+      <a href="/morinvibes-official/en/">EN</a>
+      <a href="/morinvibes-official/bm/">BM</a>
+      <a href="/morinvibes-official/zh/">中文</a>
+    </div>
+    <a href="/morinvibes-official/en/" class="m-link">Home</a>
+    <a href="/morinvibes-official/en/farm.html" class="m-link">Farm</a>
+    <a href="/morinvibes-official/en/quality.html" class="m-link">Quality</a>
+    <a href="/morinvibes-official/en/wellness.html" class="m-link">Wellness</a>
+    <a href="/morinvibes-official/en/shop.html" class="m-link">Shop</a>
+    <a href="/morinvibes-official/en/about.html" class="m-link">Story</a>
+    <a href="/morinvibes-official/en/testimonials.html" class="m-link">Reviews</a>
+    <a href="/morinvibes-official/en/faq.html" class="m-link">FAQ</a>
+    <a href="/morinvibes-official/en/ethics.html" class="m-link active">Ethics</a>
+    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="m-link m-link--hi">💬 WhatsApp</a>
+  </div>
+  <div class="m-right">
+    <div class="m-right-leaf" aria-hidden="true"></div>
+    <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="m-prod-img" />
+    <div class="m-price">RM89 <span>/ bottle</span></div>
+    <div class="m-sub">90 capsules · 500mg · 30-day supply</div>
+    <button class="btn btn--primary btn--full" id="mOrderBtn">Order Now — RM89</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ===== ETHICS HERO SECTION ===== -->
+<section class="section" aria-labelledby="ethics-hero-h" style="padding-top: calc(72px + 60px);">
+  <!-- V-mark watermark -->
+  <div class="v-watermark v-watermark--hero" aria-hidden="true"></div>
+  
+  <!-- Leaf decoration -->
+  <div class="leaf-deco leaf-deco--hero-tr" aria-hidden="true"></div>
+  
+  <div class="container">
+    <div class="hero__grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="fade-up">
+        <span class="eyebrow">DOING BUSINESS DIFFERENTLY</span>
+        <h1 id="ethics-hero-h" style="margin-bottom: 20px;">Our Ethical Commitments.</h1>
+        <p class="lead" style="margin-bottom: 30px;">We believe that how you grow matters as much as what you grow. These are the principles that guide every decision we make.</p>
+        
+        <!-- Quick stats / principles -->
+        <div style="display: flex; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
+          <div class="ctag" style="background: var(--teal-ghost); border-color: var(--teal-soft);">🌱 Sustainable</div>
+          <div class="ctag" style="background: var(--teal-ghost); border-color: var(--teal-soft);">🤝 Fair Labor</div>
+          <div class="ctag" style="background: var(--teal-ghost); border-color: var(--teal-soft);">🌍 Eco-Conscious</div>
+          <div class="ctag" style="background: var(--teal-ghost); border-color: var(--teal-soft);">🔍 Transparent</div>
+        </div>
+      </div>
+      <div class="fade-right" data-delay="1">
+        <!-- REPLACE: <img src="/morinvibes-official/images/ethics-hero.jpg" alt="Ethical farming practices" class="photo-frame" style="border-radius: var(--r-lg);" /> -->
+        <div class="photo-ph photo-ph--land" style="border-radius: var(--r-lg);">
+          <span class="photo-ph__icon" aria-hidden="true">🌿</span>
+          <span class="photo-ph__label">Ethical Farming</span>
+          <span class="photo-ph__sub">Coming soon</span>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <!-- Mobile Menu -->
-  <div class="nav__mobile" id="mobile-menu">
-    <div class="nav__mobile-left">
-      <div class="nav__mobile-logo">
-        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
-      </div>
-      <button class="nav__mobile-close" aria-label="Close menu">✕</button>
-      
-      <div class="nav__mobile-lang">
-        <a href="/morinvibes-official/en/">EN</a>
-        <a href="/morinvibes-official/bm/">BM</a>
-        <a href="/morinvibes-official/zh/">中文</a>
-      </div>
-      
-      <a href="/morinvibes-official/en/" class="nav__mobile-link">Home</a>
-      <a href="/morinvibes-official/en/farm.html" class="nav__mobile-link">The Farm</a>
-      <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link">Quality</a>
-      <a href="/morinvibes-official/en/benefits.html" class="nav__mobile-link">Benefits</a>
-      <a href="/morinvibes-official/en/shop.html" class="nav__mobile-link">Shop</a>
-      <a href="/morinvibes-official/en/story.html" class="nav__mobile-link">Our Story</a>
-      <a href="/morinvibes-official/en/authentic.html" class="nav__mobile-link">Authenticity</a>
-      <a href="/morinvibes-official/en/ethics.html" class="nav__mobile-link active">Ethics</a>
-      <a href="/morinvibes-official/en/faq.html" class="nav__mobile-link">FAQ</a>
-      <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="nav__mobile-link" style="color: var(--teal);">WhatsApp</a>
+<!-- ===== OUR COMMITMENTS (5 PILLARS) ===== -->
+<section class="section section--alt" aria-labelledby="pillars-h">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="eyebrow">OUR FIVE PILLARS</span>
+      <h2 id="pillars-h">What We Stand For.</h2>
+      <p class="lead">These aren't marketing words — they're promises we keep every day.</p>
     </div>
     
-    <div class="nav__mobile-right">
-      <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="nav__mobile-right-img" />
-      <div class="nav__mobile-right-price">RM89 <span>/ bottle</span></div>
-      <div class="nav__mobile-right-sub">90 capsules · 500mg pure moringa</div>
-      <a href="/morinvibes-official/en/checkout.html" class="btn">Buy Now — RM89</a>
-    </div>
-  </div>
-
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-progress" id="progressBar"></div>
-
-  <main>
-    <!-- Ethics Hero -->
-    <section class="ethics-hero">
-      <div class="container">
-        <span class="eyebrow">FARMING WITH INTEGRITY</span>
-        <h1 style="max-width: 800px; margin: 0 auto 24px;">Our Commitment to Ethical Farming</h1>
-        <p class="lead" style="max-width: 600px; margin: 0 auto;">
-          From my hands to yours — grown with respect for the land, harvested with care, and shared with honesty.
-        </p>
-      </div>
-    </section>
-
-    <!-- Trust Bar -->
-    <div class="trust-bar">
-      <div class="trust-bar__track">
-        <span>SINCE 2019</span><span class="dot">•</span>
-        <span>FARM DIRECT</span><span class="dot">•</span>
-        <span>GMP CERTIFIED</span><span class="dot">•</span>
-        <span>KKM APPROVED</span><span class="dot">•</span>
-        <span>VEGAN</span><span class="dot">•</span>
-        <span>MALAYSIA</span><span class="dot">•</span>
-        <span>90 CAPSULES</span><span class="dot">•</span>
-        <span>500MG EACH</span><span class="dot">•</span>
-        <!-- Duplicate for seamless loop -->
-        <span>SINCE 2019</span><span class="dot">•</span>
-        <span>FARM DIRECT</span><span class="dot">•</span>
-        <span>GMP CERTIFIED</span><span class="dot">•</span>
-        <span>KKM APPROVED</span><span class="dot">•</span>
-        <span>VEGAN</span><span class="dot">•</span>
-        <span>MALAYSIA</span><span class="dot">•</span>
-        <span>90 CAPSULES</span><span class="dot">•</span>
-        <span>500MG EACH</span><span class="dot">•</span>
-      </div>
-    </div>
-
-    <!-- Core Ethics Cards -->
-    <section class="section">
-      <div class="container">
-        <div class="ethics-grid">
-          <div class="ethics-card fade-up">
-            <div class="ethics-icon">🌱</div>
-            <h3>No Middlemen</h3>
-            <p>I own my land. I grow it myself, harvest it myself, prepare it myself. From my hands directly to you — no third parties, no markups, no compromises.</p>
-          </div>
-          <div class="ethics-card fade-up" data-delay="1">
-            <div class="ethics-icon">🌿</div>
-            <h3>Sustainable Farming</h3>
-            <p>I treat my land with respect. Natural growing practices, no harsh chemicals, and careful harvesting that ensures the soil stays healthy for generations.</p>
-          </div>
-          <div class="ethics-card fade-up" data-delay="2">
-            <div class="ethics-icon">🤝</div>
-            <h3>Honest Practices</h3>
-            <p>What you see is what you get. No hidden ingredients, no misleading claims. Just pure moringa, prepared with integrity.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- No Middlemen Highlight -->
-    <section class="section">
-      <div class="container">
-        <div class="middleman-section fade-up">
-          <span class="eyebrow" style="color: rgba(255,255,255,0.8);">FROM MY HANDS TO YOURS</span>
-          <h2>No Middlemen. Ever.</h2>
-          <div class="middleman-highlight">I am the farmer, the harvester, the maker.</div>
-          <p>
-            Every capsule you receive passes through my hands. I don't buy from other farms. 
-            I don't outsource production. I don't have partners or investors. 
-            This is my land, my work, my promise to you.
-          </p>
-          <p style="margin-top: 24px;">
-            When you buy MorinVibes, you're supporting a real person, not a corporation.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Principles List -->
-    <section class="section section--alt">
-      <div class="container">
-        <div class="text-center" style="margin-bottom: 48px;">
-          <span class="eyebrow">OUR PRINCIPLES</span>
-          <h2>How I Farm</h2>
-        </div>
-        
-        <div class="principle-list">
-          <div class="principle-item fade-up">
-            <div class="principle-check">✓</div>
-            <div class="principle-content">
-              <h3>Grown on My Own Land</h3>
-              <p>My farm in Bayan Lepas is land I own. I know every inch of it, every tree, every season. This is not contract farming — it's personal.</p>
-            </div>
-          </div>
-          
-          <div class="principle-item fade-up" data-delay="1">
-            <div class="principle-check">✓</div>
-            <div class="principle-content">
-              <h3>Harvested by Hand</h3>
-              <p>No machines, no automation. Each leaf is picked by my hands at the right moment, ensuring only the best leaves make it to your bottle.</p>
-            </div>
-          </div>
-          
-          <div class="principle-item fade-up" data-delay="2">
-            <div class="principle-check">✓</div>
-            <div class="principle-content">
-              <h3>Natural Growing Practices</h3>
-              <p>I work with nature, not against it. No synthetic pesticides, no chemical fertilizers — just traditional farming that respects the land.</p>
-            </div>
-          </div>
-          
-          <div class="principle-item fade-up" data-delay="3">
-            <div class="principle-check">✓</div>
-            <div class="principle-content">
-              <h3>Minimal Processing</h3>
-              <p>The less done to the leaf, the better. Gentle drying, careful milling — I preserve what nature created, without over-processing.</p>
-            </div>
-          </div>
-          
-          <div class="principle-item fade-up" data-delay="4">
-            <div class="principle-check">✓</div>
-            <div class="principle-content">
-              <h3>Full Transparency</h3>
-              <p>Ask me anything about my farm, my process, my practices. I have nothing to hide.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sustainability Stats -->
-    <section class="section">
-      <div class="container">
-        <div class="sustainability-stats">
-          <div class="sustainability-stat fade-up">
-            <div class="number">5</div>
-            <div class="label">Acres of Land</div>
-          </div>
-          <div class="sustainability-stat fade-up" data-delay="1">
-            <div class="number">0</div>
-            <div class="label">Middlemen</div>
-          </div>
-          <div class="sustainability-stat fade-up" data-delay="2">
-            <div class="number">100%</div>
-            <div class="label">By Hand</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Farm Image with Ethics Statement -->
-    <section class="section section--alt">
-      <div class="container">
-        <div class="grid-2">
-          <div class="fade-up">
-            <span class="eyebrow">MY PROMISE</span>
-            <h2>Every Leaf, Every Capsule, Personal</h2>
-            <p style="margin-bottom: 24px; color: var(--ink-soft);">
-              This isn't a factory. This isn't a corporation. This is my farm, my hands, my life's work.
-            </p>
-            <p style="color: var(--ink-soft);">
-              I wake up every day and tend to my land. I know each tree, each season, each harvest. 
-              When you open a bottle of MorinVibes, you're holding something I made with my own hands.
-            </p>
-          </div>
-          <div class="fade-up" data-delay="2">
-            <div class="cert-image">
-              <img src="/morinvibes-official/images/farm-hero.svg" alt="My farm in Penang" style="width: 100%; border-radius: 24px;" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Environmental Commitment -->
-    <section class="section">
-      <div class="container">
-        <div class="shopee-proof fade-up">
-          <span class="eyebrow">FOR THE FUTURE</span>
-          <h2 style="margin-bottom: 16px;">Caring for the Land</h2>
-          <p class="lead" style="max-width: 600px; margin: 0 auto;">
-            I don't just farm for today — I farm for tomorrow. Sustainable practices ensure this land will continue to provide for generations.
-          </p>
-          
-          <div style="margin-top: 32px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-            <span class="process-badge">Soil conservation</span>
-            <span class="process-badge">Natural farming</span>
-            <span class="process-badge">No chemicals</span>
-            <span class="process-badge">Water preservation</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Jess's Personal Commitment -->
-    <section class="section section--alt">
-      <div class="container">
-        <div class="grid-2">
-          <div class="fade-up">
-            <div class="cert-image">
-              <img src="/morinvibes-official/images/founder-portrait.svg" alt="Jess, founder" style="width: 100%; border-radius: 24px;" />
-            </div>
-          </div>
-          <div class="fade-up" data-delay="2">
-            <span class="eyebrow">FROM MY HEART</span>
-            <h2>This is My Life's Work</h2>
-            <p style="margin-bottom: 24px; color: var(--ink-soft);">
-              I didn't start this business to get rich. I started it because moringa changed my life, and I wanted to share that with others.
-            </p>
-            <p style="margin-bottom: 24px; color: var(--ink-soft);">
-              Every bottle represents hours of work — from planting to harvesting to processing. It's personal. It's real. It's me.
-            </p>
-            <p style="color: var(--ink); font-weight: 500;">
-              — Jess, Farmer & Founder
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section">
-      <div class="container">
-        <div class="whatsapp-section">
-          <div class="whatsapp-icon">🌿</div>
-          <h2 style="margin-bottom: 16px;">Support Ethical Farming</h2>
-          <p style="max-width: 500px; margin: 0 auto 32px; color: var(--ink-soft);">
-            When you buy MorinVibes, you're supporting a real farmer, not a corporation.
-          </p>
-          <a href="/morinvibes-official/en/shop.html" class="btn btn--primary btn--large">Shop Now — RM89</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer - Consistent across all pages -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <div class="footer__logo">
-            <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
-          </div>
-          <p class="footer__tagline">Farm-direct moringa from my land in Penang · Since 2019</p>
-          <div class="footer__social">
-            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener">f</a>
-            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener">📷</a>
-            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener">🎵</a>
-            <a href="https://wa.me/60102766095" target="_blank" rel="noopener">📱</a>
-          </div>
-        </div>
-        
-        <div>
-          <h4 class="footer__title">Navigate</h4>
-          <ul class="footer__links">
-            <li><a href="/morinvibes-official/en/farm.html">The Farm</a></li>
-            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
-            <li><a href="/morinvibes-official/en/benefits.html">Benefits</a></li>
-            <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
-            <li><a href="/morinvibes-official/en/story.html">Our Story</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="footer__title">Trust</h4>
-          <ul class="footer__links">
-            <li><a href="/morinvibes-official/en/authentic.html">Authenticity</a></li>
-            <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
-            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
-          </ul>
-          <div class="footer__badge">KKM Approved</div>
-        </div>
-        
-        <div>
-          <h4 class="footer__title">Contact</h4>
-          <ul class="footer__links">
-            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
-            <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
-          </ul>
-          <p style="color: rgba(255,255,255,0.3); font-size: 0.85rem; margin-top: 20px;">
-            Bayan Lepas, Penang<br />Malaysia
-          </p>
+    <div class="why-grid" style="margin-top: 48px;">
+      <!-- Pillar 1: Sustainable Farming -->
+      <div class="why-card fade-up">
+        <div class="why-card__c">
+          <span class="why-card__icon" aria-hidden="true">🌱</span>
+          <div class="why-card__title">Sustainable Farming</div>
+          <p class="why-card__body">We farm in harmony with nature — no pesticides, no herbicides, no synthetic fertilizers. Our trees are rain-fed, not irrigated, and we rotate planting areas to let the soil regenerate.</p>
         </div>
       </div>
       
-      <div class="footer__bottom">
-        <div>© 2026 MorinVibes®. All rights reserved.</div>
-        <div>
-          <a href="/morinvibes-official/en/privacy.html">Privacy</a>
-          <a href="/morinvibes-official/en/terms.html">Terms</a>
+      <!-- Pillar 2: Fair Labor -->
+      <div class="why-card fade-up" data-delay="1">
+        <div class="why-card__c">
+          <span class="why-card__icon" aria-hidden="true">🤝</span>
+          <div class="why-card__title">Fair Labor</div>
+          <p class="why-card__body">Our small team earns living wages, not minimum wages. We believe that if our business succeeds, everyone who helps build it should share in that success.</p>
+        </div>
+      </div>
+      
+      <!-- Pillar 3: Environmental Responsibility -->
+      <div class="why-card fade-up" data-delay="2">
+        <div class="why-card__c">
+          <span class="why-card__icon" aria-hidden="true">🌍</span>
+          <div class="why-card__title">Environmental Responsibility</div>
+          <p class="why-card__body">We use minimal plastic in our packaging, compost all farm waste, and are working toward carbon-neutral shipping. Every decision considers the environmental impact.</p>
+        </div>
+      </div>
+      
+      <!-- Pillar 4: Community Involvement -->
+      <div class="why-card fade-up" data-delay="3">
+        <div class="why-card__c">
+          <span class="why-card__icon" aria-hidden="true">🏘️</span>
+          <div class="why-card__title">Community Involvement</div>
+          <p class="why-card__body">We source locally, hire locally, and give back locally. A portion of every sale supports community programs in Bayan Lepas.</p>
+        </div>
+      </div>
+      
+      <!-- Pillar 5: Transparency -->
+      <div class="why-card fade-up" data-delay="4" style="grid-column: span 4; max-width: 400px; margin: 0 auto;">
+        <div class="why-card__c">
+          <span class="why-card__icon" aria-hidden="true">🔍</span>
+          <div class="why-card__title">Complete Transparency</div>
+          <p class="why-card__body">We don't hide behind vague labels. You can visit our farm, verify our certifications, and trace every batch back to its harvest date.</p>
         </div>
       </div>
     </div>
-  </footer>
+    
+    <!-- Fix grid for last card -->
+    <style>
+      @media (min-width: 1025px) {
+        .why-card:last-child {
+          grid-column: 2 / span 2 !important;
+        }
+      }
+    </style>
+  </div>
+</section>
 
-  <!-- Scroll to Top Button -->
-  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
-
-  <!-- Community Popup -->
-  <div class="community-popup" id="communityPopup">
-    <div class="popup-header">
-      <h4>Join Our Community</h4>
-      <p>Get updates, tips, and exclusive offers</p>
-      <button class="popup-close" aria-label="Close">✕</button>
-    </div>
-    <div class="popup-body">
-      <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="popup-link popup-link--wa">
-        <span class="popup-link__icon">📱</span>
-        <span>WhatsApp Community</span>
-      </a>
-      <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="popup-link popup-link--ig">
-        <span class="popup-link__icon">📸</span>
-        <span>Instagram</span>
-      </a>
-      <div class="popup-dismiss">No thanks, I'll browse</div>
+<!-- ===== SUSTAINABLE FARMING (DETAIL) ===== -->
+<section class="section" aria-labelledby="sustainable-h">
+  <div class="container">
+    <div class="grid-2c" style="align-items: center;">
+      <div class="fade-left">
+        <!-- REPLACE: <img src="/morinvibes-official/images/sustainable-farming.jpg" alt="Sustainable moringa farming" class="photo-frame" style="border-radius: var(--r-lg);" /> -->
+        <div class="photo-ph photo-ph--land" style="border-radius: var(--r-lg);">
+          <span class="photo-ph__icon" aria-hidden="true">🌱</span>
+          <span class="photo-ph__label">Sustainable Farming</span>
+          <span class="photo-ph__sub">Coming soon</span>
+        </div>
+      </div>
+      <div class="fade-right" data-delay="1">
+        <span class="eyebrow">PILLAR ONE</span>
+        <h2 id="sustainable-h" style="margin-bottom: 20px;">Sustainable Farming.</h2>
+        <p style="margin-bottom: 20px;">We believe healthy soil grows healthy moringa. That's why we've never used pesticides, herbicides, or synthetic fertilizers on our land.</p>
+        <p style="margin-bottom: 20px;">Our trees are rain-fed — no irrigation systems. This encourages deeper root growth and more resilient trees. We also practice crop rotation, allowing sections of the farm to rest and regenerate naturally.</p>
+        <p><strong>The result?</strong> Nutrient-dense leaves, thriving ecosystems, and a farm that will be productive for generations.</p>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- Scripts -->
-  <script src="/morinvibes-official/assets/js/main.js"></script>
-  <script src="/morinvibes-official/assets/js/pixel.js"></script>
+<!-- ===== FAIR LABOR (DETAIL) ===== -->
+<section class="section section--alt" aria-labelledby="labor-h">
+  <div class="container">
+    <div class="grid-2c" style="align-items: center;">
+      <div class="fade-left">
+        <span class="eyebrow">PILLAR TWO</span>
+        <h2 id="labor-h" style="margin-bottom: 20px;">Fair Labor.</h2>
+        <p style="margin-bottom: 20px;">Our team isn't large — but every person is valued. We pay living wages, not just minimum wage, and ensure safe, comfortable working conditions.</p>
+        <p style="margin-bottom: 20px;">Harvesting moringa is skilled work. Knowing exactly when leaves are at peak nutrition, handling them gently, and processing them quickly — this expertise deserves fair compensation.</p>
+        <p>We also provide regular training, proper equipment, and a share in the company's success through profit-sharing.</p>
+      </div>
+      <div class="fade-right" data-delay="1">
+        <!-- REPLACE: <img src="/morinvibes-official/images/fair-labor.jpg" alt="Farm workers harvesting moringa" class="photo-frame" style="border-radius: var(--r-lg);" /> -->
+        <div class="photo-ph photo-ph--land" style="border-radius: var(--r-lg);">
+          <span class="photo-ph__icon" aria-hidden="true">👨‍🌾</span>
+          <span class="photo-ph__label">Our Team</span>
+          <span class="photo-ph__sub">Coming soon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ENVIRONMENTAL RESPONSIBILITY (DETAIL) ===== -->
+<section class="section" aria-labelledby="environment-h">
+  <div class="container">
+    <div class="grid-2c" style="align-items: center;">
+      <div class="fade-left">
+        <!-- REPLACE: <img src="/morinvibes-official/images/environment.jpg" alt="Eco-friendly practices" class="photo-frame" style="border-radius: var(--r-lg);" /> -->
+        <div class="photo-ph photo-ph--land" style="border-radius: var(--r-lg);">
+          <span class="photo-ph__icon" aria-hidden="true">🌍</span>
+          <span class="photo-ph__label">Eco-Friendly</span>
+          <span class="photo-ph__sub">Coming soon</span>
+        </div>
+      </div>
+      <div class="fade-right" data-delay="1">
+        <span class="eyebrow">PILLAR THREE</span>
+        <h2 id="environment-h" style="margin-bottom: 20px;">Environmental Responsibility.</h2>
+        <p style="margin-bottom: 20px;">We're small enough to make intentional choices. Our bottles are glass (infinitely recyclable). Our shipping boxes are recycled cardboard with minimal plastic.</p>
+        <p style="margin-bottom: 20px;">On the farm, we compost all plant waste, which becomes fertilizer for the next season. We're also planting native trees around the perimeter to support local biodiversity.</p>
+        <p>We're not perfect, but we're constantly looking for ways to reduce our footprint.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMMUNITY INVOLVEMENT (DETAIL) ===== -->
+<section class="section section--alt" aria-labelledby="community-h">
+  <div class="container">
+    <div class="grid-2c" style="align-items: center;">
+      <div class="fade-left">
+        <span class="eyebrow">PILLAR FOUR</span>
+        <h2 id="community-h" style="margin-bottom: 20px;">Community Involvement.</h2>
+        <p style="margin-bottom: 20px;">Bayan Lepas is our home. We hire locally, source locally, and believe in supporting the community that supports us.</p>
+        <p style="margin-bottom: 20px;">A portion of every sale goes toward local initiatives — school programs, community gardens, and environmental clean-ups. It's not a tax write-off; it's our way of giving back.</p>
+        <p>We also host open farm days where neighbors can visit, learn about moringa, and connect with where their food comes from.</p>
+      </div>
+      <div class="fade-right" data-delay="1">
+        <!-- REPLACE: <img src="/morinvibes-official/images/community.jpg" alt="Community involvement" class="photo-frame" style="border-radius: var(--r-lg);" /> -->
+        <div class="photo-ph photo-ph--land" style="border-radius: var(--r-lg);">
+          <span class="photo-ph__icon" aria-hidden="true">🏘️</span>
+          <span class="photo-ph__label">Community</span>
+          <span class="photo-ph__sub">Coming soon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRANSPARENCY (DETAIL) ===== -->
+<section class="section" aria-labelledby="transparency-h">
+  <div class="container">
+    <div class="grid-2c" style="align-items: center;">
+      <div class="fade-left">
+        <!-- REPLACE: <img src="/morinvibes-official/images/transparency.jpg" alt="Farm tour" class="photo-frame" style="border-radius: var(--r-lg);" /> -->
+        <div class="photo-ph photo-ph--land" style="border-radius: var(--r-lg);">
+          <span class="photo-ph__icon" aria-hidden="true">🔍</span>
+          <span class="photo-ph__label">Farm Tour</span>
+          <span class="photo-ph__sub">Coming soon</span>
+        </div>
+      </div>
+      <div class="fade-right" data-delay="1">
+        <span class="eyebrow">PILLAR FIVE</span>
+        <h2 id="transparency-h" style="margin-bottom: 20px;">Complete Transparency.</h2>
+        <p style="margin-bottom: 20px;">We have nothing to hide. Our farm is open to visitors (by appointment). Our certifications are public record. Every batch can be traced to its harvest date.</p>
+        <p style="margin-bottom: 20px;">If you have questions about how we do things, just ask. We'll give you an honest answer — even if it's not what you want to hear.</p>
+        <p><strong>That's the relationship we want to build:</strong> one based on trust, not marketing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OUR PLEDGE ===== -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="cta-block__in" style="background: white; padding: 50px; border-radius: var(--r-lg); border: 1px solid var(--border); text-align: center; max-width: 800px; margin: 0 auto;">
+      <span class="eyebrow">OUR PLEDGE TO YOU</span>
+      <h2 style="margin-bottom: 20px;">We Promise to Always:</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin: 40px 0; text-align: left;">
+        <div style="display: flex; gap: 15px; align-items: flex-start;">
+          <span style="color: var(--fresh-green); font-size: 1.5rem;">✓</span>
+          <div>
+            <strong>Grow without chemicals</strong>
+            <p style="font-size: 13px; color: var(--ink-muted); margin: 5px 0 0;">No pesticides, herbicides, or synthetic fertilizers</p>
+          </div>
+        </div>
+        
+        <div style="display: flex; gap: 15px; align-items: flex-start;">
+          <span style="color: var(--fresh-green); font-size: 1.5rem;">✓</span>
+          <div>
+            <strong>Pay fair wages</strong>
+            <p style="font-size: 13px; color: var(--ink-muted); margin: 5px 0 0;">Living wages, safe conditions, profit-sharing</p>
+          </div>
+        </div>
+        
+        <div style="display: flex; gap: 15px; align-items: flex-start;">
+          <span style="color: var(--fresh-green); font-size: 1.5rem;">✓</span>
+          <div>
+            <strong>Minimize our footprint</strong>
+            <p style="font-size: 13px; color: var(--ink-muted); margin: 5px 0 0;">Glass bottles, recycled packaging, composting</p>
+          </div>
+        </div>
+        
+        <div style="display: flex; gap: 15px; align-items: flex-start;">
+          <span style="color: var(--fresh-green); font-size: 1.5rem;">✓</span>
+          <div>
+            <strong>Give back locally</strong>
+            <p style="font-size: 13px; color: var(--ink-muted); margin: 5px 0 0;">Supporting Bayan Lepas community programs</p>
+          </div>
+        </div>
+        
+        <div style="display: flex; gap: 15px; align-items: flex-start;">
+          <span style="color: var(--fresh-green); font-size: 1.5rem;">✓</span>
+          <div>
+            <strong>Be transparent</strong>
+            <p style="font-size: 13px; color: var(--ink-muted); margin: 5px 0 0;">Open farm, traceable batches, honest answers</p>
+          </div>
+        </div>
+        
+        <div style="display: flex; gap: 15px; align-items: flex-start;">
+          <span style="color: var(--fresh-green); font-size: 1.5rem;">✓</span>
+          <div>
+            <strong>Never cut corners</strong>
+            <p style="font-size: 13px; color: var(--ink-muted); margin: 5px 0 0;">Quality over profit, always</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT OUR FARM ===== -->
+<section class="section">
+  <div class="container">
+    <div class="grid-2c" style="align-items: center; background: var(--teal-ghost); border-radius: var(--r-xl); padding: 60px;">
+      <div class="fade-left">
+        <h2 style="margin-bottom: 20px;">See It for Yourself.</h2>
+        <p style="margin-bottom: 30px; font-size: 1.1rem;">We welcome visitors to our farm in Bayan Lepas. See the trees, meet the team, and experience firsthand how your moringa is grown.</p>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+          <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="btn btn--primary">Schedule a Visit →</a>
+          <a href="/morinvibes-official/en/farm.html" class="btn btn--outline">Learn About Our Farm →</a>
+        </div>
+      </div>
+      <div class="fade-right" data-delay="1">
+        <!-- REPLACE: <img src="/morinvibes-official/images/farm-visit.jpg" alt="Visitors at the farm" class="photo-frame" style="border-radius: var(--r-lg);" /> -->
+        <div class="photo-ph photo-ph--land" style="border-radius: var(--r-lg);">
+          <span class="photo-ph__icon" aria-hidden="true">👥</span>
+          <span class="photo-ph__label">Farm Visits</span>
+          <span class="photo-ph__sub">By appointment · coming soon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ETHICS CTA ===== -->
+<section class="section section--sm">
+  <div class="container">
+    <div style="text-align: center;">
+      <p class="lead" style="margin-bottom: 20px;">Ethics aren't an afterthought — they're how we do business.</p>
+      <button class="btn btn--primary btn--lg" id="ethicsCtaBtn">Support Ethical Moringa — RM89</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER (NO NEWSLETTER) ===== -->
+<footer class="footer" aria-label="Site footer">
+  <div class="footer__main">
+    <div class="container">
+      <div class="ft-grid">
+        <!-- Brand column -->
+        <div>
+          <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="ft-logo" width="160" height="38" />
+          <p class="ft-tag">Farm-direct moringa from our own land<br />in Penang, Malaysia · Since 2019</p>
+          <div class="ft-social" aria-label="Follow us">
+            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Instagram">📷</a>
+            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="TikTok">▶</a>
+            <a href="https://www.threads.com/@moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Threads">@</a>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="ft-soc-a" aria-label="WhatsApp">💬</a>
+          </div>
+          <div class="ft-cert">✓ KKM Approved · GMP Certified</div>
+        </div>
+
+        <!-- Explore = page navigation ONLY -->
+        <div>
+          <p class="ft-col-h">Explore</p>
+          <ul class="ft-links">
+            <li><a href="/morinvibes-official/en/farm.html">Farm</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
+            <li><a href="/morinvibes-official/en/wellness.html">Wellness</a></li>
+            <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
+            <li><a href="/morinvibes-official/en/about.html">Story</a></li>
+            <li><a href="/morinvibes-official/en/testimonials.html">Reviews</a></li>
+            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+            <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
+          </ul>
+        </div>
+
+        <!-- Trust = legal / policy ONLY -->
+        <div>
+          <p class="ft-col-h">Trust</p>
+          <ul class="ft-links">
+            <li><a href="/morinvibes-official/en/ethics.html">Our Ethics</a></li>
+            <li><a href="/morinvibes-official/en/returns.html">Returns Policy</a></li>
+            <li><a href="/morinvibes-official/en/privacy.html">Privacy Policy</a></li>
+            <li><a href="/morinvibes-official/en/terms.html">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <p class="ft-col-h">Contact &amp; Order</p>
+          <ul class="ft-links">
+            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
+            <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener">Shopee Store</a></li>
+            <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener">Lazada Store</a></li>
+          </ul>
+          <p class="ft-addr">Bayan Lepas, Penang<br />Malaysia</p>
+        </div>
+      </div>
+
+      <!-- Copyright bar — ONE LINE, zero links -->
+      <div class="ft-bottom">
+        © 2026 MorinVibes®. All rights reserved. · Grown &amp; produced in Penang, Malaysia.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top button -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+<!-- Community Popup -->
+<div class="community-popup" id="communityPopup" role="dialog" aria-label="Stay connected">
+  <div class="pop-head">
+    <h4>Stay in the loop 🌿</h4>
+    <p>Updates, tips &amp; exclusive offers</p>
+    <button class="pop-close" id="popClose" aria-label="Close">✕</button>
+  </div>
+  <div class="pop-body">
+    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="pop-link" id="popWa">
+      <span class="pop-link__ico" aria-hidden="true">💬</span>
+      <div><div class="pop-link__lbl">Chat on WhatsApp</div><div class="pop-link__sub">Direct line to our team</div></div>
+    </a>
+    <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="pop-link">
+      <span class="pop-link__ico" aria-hidden="true">📷</span>
+      <div><div class="pop-link__lbl">Instagram</div><div class="pop-link__sub">@moringa_morinvibes</div></div>
+    </a>
+    <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="pop-link">
+      <span class="pop-link__ico" aria-hidden="true">▶</span>
+      <div><div class="pop-link__lbl">TikTok</div><div class="pop-link__sub">@moringa_morinvibes</div></div>
+    </a>
+    <div class="pop-dismiss" id="popDismiss" role="button" tabindex="0">No thanks, I'll browse</div>
+  </div>
+</div>
+
+<!-- Domain Guard (commented until morinvibes.com is live) -->
+<script>
+/*
+(function(){
+  var h=window.location.hostname;
+  if(h!=='morinvibes.com'&&h!=='localhost'&&h!=='127.0.0.1'){
+    var p=window.location.pathname.replace('/morinvibes-official','')||'/';
+    window.location.replace('https://morinvibes.com'+p+window.location.search);
+  }
+})();
+*/
+</script>
+
+<!-- JS - EXTERNAL ONLY -->
+<script src="/morinvibes-official/assets/js/pixel.js"></script>
+<script src="/morinvibes-official/assets/js/animations.js"></script>
+<script src="/morinvibes-official/assets/js/main.js"></script>
+
+<!-- Ethics page specific script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Bind ethics page CTA button to checkout
+    const ethicsCtaBtn = document.getElementById('ethicsCtaBtn');
+    
+    if (ethicsCtaBtn && typeof openCheckout === 'function') {
+      ethicsCtaBtn.addEventListener('click', openCheckout);
+    }
+    
+    // Track ViewContent for ethics page
+    if (typeof window.fbTrack === 'function') {
+      window.fbTrack('ViewContent', {
+        content_name: 'Ethics Page',
+        content_category: 'About',
+        value: 89,
+        currency: 'MYR'
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
