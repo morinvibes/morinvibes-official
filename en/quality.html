@@ -2,880 +2,713 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quality — MorinVibes® · GMP · KKM Approved · 100% Pure</title>
-  <meta name="description" content="KKM Approved. GMP Certified. 100% pure moringa leaf powder. No fillers, no additives, no compromises. Traceable from my farm in Penang." />
-  <meta property="og:title" content="Quality — MorinVibes®" />
-  <meta property="og:description" content="KKM Approved. GMP Certified. 100% pure moringa — traceable from my farm to your capsule." />
-  <meta property="og:image" content="/morinvibes-official/images/cert-gmp.svg" />
-  <meta property="og:url" content="https://morinvibes.github.io/morinvibes-official/en/quality.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  
+  <!-- Title & Meta -->
+  <title>Quality & Authenticity — MorinVibes® · KKM · GMP Certified</title>
+  <meta name="description" content="MorinVibes quality standards: KKM Approved, GMP Certified, 100% pure moringa leaf powder. Learn how to verify authentic products and our certifications." />
+  <meta name="keywords" content="KKM approved moringa, GMP certified supplements, authentic moringa Malaysia, verify moringa product" />
+  
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://morinvibes.github.io/morinvibes-official/en/quality.html" />
+  <meta property="og:title" content="Quality & Authenticity — MorinVibes®" />
+  <meta property="og:description" content="KKM Approved · GMP Certified · 100% pure moringa. Learn how to verify authentic products." />
+  <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/images/cert-kkm.svg" />
+  
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Quality & Authenticity — MorinVibes®" />
+  <meta name="twitter:description" content="KKM Approved · GMP Certified · 100% pure moringa." />
+  <meta name="twitter:image" content="https://morinvibes.github.io/morinvibes-official/images/cert-kkm.svg" />
+  
+  <!-- Canonical -->
   <link rel="canonical" href="https://morinvibes.github.io/morinvibes-official/en/quality.html" />
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/morinvibes-official/images/favicon.svg" />
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Italiana&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  
+  <!-- Global CSS -->
   <link rel="stylesheet" href="/morinvibes-official/assets/css/global.css" />
-
+  
   <style>
-    /* ──────────────────────────────────────
-       QUALITY PAGE — scoped under .ql- prefix
-    ────────────────────────────────────── */
-
-    /* ── HERO ── */
-    .ql-hero {
-      background: linear-gradient(160deg, var(--paper, #faf7f2) 0%, #fff 60%);
-      padding: var(--sp-80, 80px) 0 var(--sp-48, 48px);
+    /* Quality page specific styles */
+    .quality-hero {
+      background: var(--gradient-hero);
+      padding: calc(72px + 80px) 0 80px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    .ql-hero::before {
-      content: '';
-      position: absolute;
-      top: -120px; left: 50%;
-      transform: translateX(-50%);
-      width: 700px; height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(45,106,79,0.05) 0%, transparent 65%);
-      pointer-events: none;
+    
+    .cert-badges {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 40px 0;
+      flex-wrap: wrap;
     }
-
-    .ql-hero__eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.24em; text-transform: uppercase;
-      color: var(--teal, #2d6a4f); margin-bottom: 20px;
+    
+    .cert-badge-large {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: white;
+      padding: 16px 32px 16px 24px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s var(--ease);
     }
-    .ql-hero__eyebrow::before,
-    .ql-hero__eyebrow::after {
-      content: '';
-      display: block; width: 28px; height: 1.5px;
-      background: var(--teal, #2d6a4f);
-    }
-
-    .ql-hero__title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(34px, 5.5vw, 60px);
-      font-weight: 400; line-height: 1.1;
-      letter-spacing: -0.01em; color: var(--ink, #1a2e20);
-      max-width: 820px; margin: 0 auto 32px;
-    }
-    .ql-hero__title em {
-      font-style: italic; color: var(--teal, #2d6a4f);
-    }
-
-    /* Certification badges row */
-    .ql-certs {
-      display: flex; justify-content: center;
-      gap: 16px; flex-wrap: wrap;
-      margin-top: 40px;
-    }
-
-    .ql-cert {
-      display: flex; align-items: center; gap: 14px;
-      background: #fff;
-      padding: 14px 24px 14px 16px;
-      border-radius: 100px;
-      border: 1px solid var(--border, #e0d5c5);
-      box-shadow: 0 4px 20px rgba(44,31,14,0.07);
-      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-      cursor: default;
-    }
-    .ql-cert:hover {
+    
+    .cert-badge-large:hover {
       transform: translateY(-4px);
-      box-shadow: 0 14px 40px rgba(44,31,14,0.11);
-      border-color: var(--teal, #2d6a4f);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal);
     }
-
-    .ql-cert__icon {
-      width: 46px; height: 46px;
-      background: linear-gradient(135deg, #e8f5ee, #d4edde);
+    
+    .cert-badge-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--teal-ghost);
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; flex-shrink: 0;
-      border: 1px solid #c8e6d1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--teal);
     }
-    .ql-cert__title {
-      font-size: 14px; font-weight: 600;
-      color: var(--ink, #1a2e20); letter-spacing: 0.01em;
+    
+    .cert-badge-text {
+      text-align: left;
     }
-    .ql-cert__sub {
-      font-size: 12px; color: var(--ink-muted, #aaa);
-      margin-top: 1px;
+    
+    .cert-badge-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 4px;
     }
-
-    /* ── PURITY METRICS ── */
-    .ql-metrics {
+    
+    .cert-badge-sub {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+    
+    .purity-metrics {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 32px;
+      margin: 60px 0;
     }
-
-    .ql-metric {
-      background: #fff;
-      padding: 44px 28px 36px;
-      border-radius: 28px;
-      border: 1px solid var(--border, #e0d5c5);
+    
+    .purity-card {
+      background: white;
+      padding: 40px 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
       text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      transition: all 0.3s var(--ease);
     }
-    /* Accent top bar */
-    .ql-metric::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--teal, #2d6a4f), var(--leaf-light, #52b788));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
-    }
-    .ql-metric:hover::before { transform: scaleX(1); }
-    .ql-metric:hover {
+    
+    .purity-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 24px 64px rgba(44,31,14,0.10);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal-soft);
     }
-
-    .ql-metric__num {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 4rem; font-weight: 300;
-      color: var(--teal, #2d6a4f); line-height: 1;
-      margin-bottom: 14px; letter-spacing: -0.02em;
+    
+    .purity-number {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 16px;
     }
-    .ql-metric__label {
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--ink, #1a2e20); margin-bottom: 10px;
+    
+    .purity-label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
     }
-    .ql-metric__desc {
-      font-size: 13.5px; color: var(--ink-soft, #777);
-      line-height: 1.65; font-weight: 300;
+    
+    .purity-desc {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
-
-    /* ── GMP SECTION ── */
-    .ql-gmp {
-      background: var(--paper, #faf7f2);
-      border-radius: 32px;
-      padding: var(--sp-56, 56px) var(--sp-48, 48px);
-      border: 1px solid var(--border, #e0d5c5);
+    
+    .gmp-section {
+      background: var(--paper);
+      border-radius: var(--radius-xl);
+      padding: 60px;
+      margin: 60px 0;
     }
-
-    .ql-gmp__grid {
+    
+    .gmp-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--sp-56, 56px);
+      gap: 48px;
       align-items: center;
     }
-
-    .ql-gmp__list { margin-top: 28px; }
-
-    .ql-gmp__item {
-      display: flex; gap: 16px; align-items: flex-start;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border-soft, #f0ebe2);
+    
+    .gmp-list {
+      margin-top: 24px;
     }
-    .ql-gmp__item:last-child { border-bottom: none; }
-
-    .ql-gmp__check {
-      width: 28px; height: 28px;
-      background: linear-gradient(135deg, #e8f5ee, #d4edde);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; margin-top: 1px;
+    
+    .gmp-item {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-soft);
     }
-    .ql-gmp__check svg { color: var(--teal, #2d6a4f); }
-
-    .ql-gmp__item-title {
-      font-size: 14px; font-weight: 600;
-      color: var(--ink, #1a2e20); margin-bottom: 3px;
+    
+    .gmp-item:last-child {
+      border-bottom: none;
     }
-    .ql-gmp__item-desc {
-      font-size: 13px; color: var(--ink-soft, #777);
-      line-height: 1.55; font-weight: 300;
+    
+    .gmp-item__icon {
+      color: var(--teal);
+      font-size: 1.2rem;
+      font-weight: 600;
+      min-width: 28px;
     }
-
-    .ql-cert-img {
-      border-radius: 20px; overflow: hidden;
-      border: 1px solid var(--border, #e0d5c5);
-      box-shadow: 0 16px 56px rgba(44,31,14,0.10);
+    
+    .gmp-item__content h4 {
+      margin-bottom: 4px;
+      color: var(--ink);
     }
-    .ql-cert-img img { width: 100%; display: block; }
-
-    /* ── KKM BANNER ── */
-    .ql-kkm {
-      background: linear-gradient(135deg, var(--forest, #1a3a2a) 0%, #0f2418 100%);
-      border-radius: 32px;
-      padding: var(--sp-64, 64px) var(--sp-48, 48px);
+    
+    .gmp-item__content p {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+    
+    .kkm-section {
+      background: linear-gradient(135deg, var(--teal), #007d96);
+      border-radius: var(--radius-xl);
+      padding: 60px;
+      color: white;
       text-align: center;
-      position: relative;
-      overflow: hidden;
+      margin: 60px 0;
     }
-    .ql-kkm::before {
-      content: '';
-      position: absolute;
-      top: -100px; left: 50%;
-      transform: translateX(-50%);
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(45,106,79,0.28) 0%, transparent 65%);
-      pointer-events: none;
+    
+    .kkm-section h2 {
+      color: white;
     }
-
-    .ql-kkm__eyebrow {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.24em; text-transform: uppercase;
-      color: rgba(82,183,136,0.9); margin-bottom: 16px;
-      position: relative;
+    
+    .kkm-section p {
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      margin: 0 auto 32px;
     }
-    .ql-kkm__title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(28px, 4vw, 46px); font-weight: 400;
-      color: #fff; margin-bottom: 16px; line-height: 1.2;
-      position: relative;
+    
+    .kkm-badge-large {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: var(--radius-full);
+      padding: 12px 32px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 24px 0;
+      backdrop-filter: blur(5px);
     }
-    .ql-kkm__text {
-      font-size: 15px; color: rgba(255,255,255,0.65);
-      max-width: 580px; margin: 0 auto 32px;
-      line-height: 1.7; font-weight: 300; position: relative;
+    
+    .verify-steps {
+      background: var(--paper);
+      border-radius: var(--radius-xl);
+      padding: 60px;
+      margin: 60px 0;
     }
-
-    .ql-kkm__badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.22);
-      border-radius: 100px;
-      padding: 14px 32px;
-      font-size: 16px; font-weight: 500;
-      color: #fff; letter-spacing: 0.04em;
-      backdrop-filter: blur(8px);
-      margin-bottom: 28px;
-      position: relative;
-    }
-
-    .ql-kkm__pills {
-      display: flex; justify-content: center;
-      gap: 10px; flex-wrap: wrap; position: relative;
-    }
-    .ql-kkm__pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 7px 18px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 100px;
-      font-size: 12px; font-weight: 500;
-      color: rgba(255,255,255,0.8); letter-spacing: 0.04em;
-    }
-
-    /* ── WHAT'S INSIDE ── */
-    .ql-inside {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    
+    .step-item {
+      display: flex;
       gap: 24px;
+      margin-bottom: 32px;
+      align-items: flex-start;
     }
-
-    .ql-inside__yes, .ql-inside__no {
-      border-radius: 24px;
-      padding: 32px;
-      border: 1px solid;
-    }
-    .ql-inside__yes {
-      background: linear-gradient(135deg, #f0faf4, #e8f5ee);
-      border-color: #c8e6d1;
-    }
-    .ql-inside__no {
-      background: linear-gradient(135deg, #fff8f8, #fef0f0);
-      border-color: #f9d0d0;
-    }
-
-    .ql-inside__heading {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 20px; font-weight: 500;
-      margin-bottom: 20px; display: flex;
-      align-items: center; gap: 10px;
-    }
-    .ql-inside__yes .ql-inside__heading { color: var(--forest, #1a3a2a); }
-    .ql-inside__no  .ql-inside__heading { color: #8b1a1a; }
-
-    .ql-inside__row {
-      display: flex; align-items: center; gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      font-size: 14px;
-    }
-    .ql-inside__row:last-child { border-bottom: none; }
-    .ql-inside__yes .ql-inside__row { color: #2d5a3d; }
-    .ql-inside__no  .ql-inside__row { color: #7a3030; }
-
-    .ql-inside__dot-yes {
-      width: 20px; height: 20px;
-      background: var(--teal, #2d6a4f);
+    
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--teal);
+      color: white;
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 600;
       flex-shrink: 0;
     }
-    .ql-inside__dot-no {
-      width: 20px; height: 20px;
-      background: #e05252;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+    
+    .step-content h3 {
+      margin-bottom: 8px;
+      color: var(--ink);
     }
-
-    /* ── CAPSULE PROCESS ── */
-    .ql-capsule {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+    
+    .step-content p {
+      color: var(--ink-soft);
+      margin-bottom: 0;
     }
-
-    .ql-cap-card {
-      background: #fff;
-      padding: 36px 18px 28px;
-      border-radius: 24px;
-      border: 1px solid var(--border, #e0d5c5);
-      text-align: center;
-      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
-      position: relative;
-    }
-    .ql-cap-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 55px rgba(44,31,14,0.10);
-      border-color: var(--teal-soft, #a8d5b5);
-    }
-
-    /* Connecting arrow between cards */
-    .ql-cap-card + .ql-cap-card::before {
-      content: '→';
-      position: absolute;
-      left: -14px; top: 50%;
-      transform: translateY(-50%);
-      font-size: 18px; color: var(--teal-soft, #a8d5b5);
-      pointer-events: none;
-    }
-
-    .ql-cap-card__icon {
-      font-size: 2.4rem; margin-bottom: 14px; display: block;
-    }
-    .ql-cap-card__num {
-      position: absolute;
-      top: 14px; right: 16px;
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 13px; font-weight: 400;
-      color: var(--teal, #2d6a4f); opacity: 0.4;
-    }
-    .ql-cap-card__title {
-      font-size: 13.5px; font-weight: 600;
-      color: var(--ink, #1a2e20); margin-bottom: 5px;
-      letter-spacing: 0.01em;
-    }
-    .ql-cap-card__desc {
-      font-size: 12px; color: var(--ink-muted, #aaa);
-      line-height: 1.5;
-    }
-
-    /* ── SHOPEE ── */
-    .ql-shopee {
-      background: linear-gradient(135deg, #fff 0%, var(--paper, #faf7f2) 100%);
-      border: 1px solid var(--border, #e0d5c5);
-      border-radius: 32px;
-      padding: var(--sp-64, 64px) var(--sp-48, 48px);
+    
+    .warning-box {
+      background: #fff3e0;
+      border: 1px solid #ffe0b2;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 40px 0;
       text-align: center;
     }
-    .ql-shopee__stores {
-      display: flex; justify-content: center;
-      gap: 14px; flex-wrap: wrap; margin: 26px 0 20px;
+    
+    .warning-box strong {
+      color: #e65100;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
     }
-    .ql-shopee__pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 20px;
-      background: #fff3e0; border: 1px solid #ffd599;
-      border-radius: 100px;
-      font-size: 13px; font-weight: 600; color: #b35c00;
+    
+    .warning-box p {
+      color: #bf360c;
+      margin-bottom: 0;
     }
-
-    /* ── CTA ── */
-    .ql-cta {
-      background: linear-gradient(135deg, var(--forest, #1a3a2a) 0%, #0f2418 100%);
-      border-radius: 32px;
-      padding: var(--sp-64, 64px) var(--sp-48, 48px);
-      text-align: center;
-      position: relative; overflow: hidden;
+    
+    .store-badges {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 32px 0;
     }
-    .ql-cta::before {
-      content: '';
-      position: absolute;
-      bottom: -100px; right: -80px;
-      width: 400px; height: 400px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(45,106,79,0.22) 0%, transparent 70%);
-      pointer-events: none;
+    
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 12px 24px;
+      transition: all 0.2s var(--ease);
     }
-    .ql-cta__eyebrow {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.24em; text-transform: uppercase;
-      color: var(--leaf-light, #52b788); margin-bottom: 16px;
+    
+    .store-badge:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
     }
-    .ql-cta__title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(28px, 4vw, 44px); font-weight: 400;
-      color: #fff; margin-bottom: 16px; line-height: 1.2;
+    
+    .store-badge img {
+      height: 24px;
+      width: auto;
     }
-    .ql-cta__text {
-      font-size: 15px; color: rgba(255,255,255,0.6);
-      max-width: 480px; margin: 0 auto 36px;
-      line-height: 1.7; font-weight: 300;
-    }
-    .ql-btn-group {
-      display: flex; justify-content: center;
-      align-items: center; gap: 16px; flex-wrap: wrap;
-    }
-
-    /* ── SECTION HEAD ── */
-    .ql-head { text-align: center; margin-bottom: 52px; }
-    .ql-head .eyebrow { display: block; margin-bottom: 12px; }
-    .ql-head h2 { margin: 0; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .ql-metrics   { grid-template-columns: 1fr; }
-      .ql-gmp__grid { grid-template-columns: 1fr; }
-      .ql-inside    { grid-template-columns: 1fr; }
-      .ql-capsule   { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 600px) {
-      .ql-capsule { grid-template-columns: 1fr; }
-      .ql-cap-card + .ql-cap-card::before { display: none; }
-      .ql-gmp { padding: 32px 20px; }
-      .ql-kkm { padding: 48px 24px; border-radius: 24px; }
-      .ql-cta { padding: 48px 24px; border-radius: 24px; }
-      .ql-shopee { padding: 40px 24px; }
+    
+    @media (max-width: 768px) {
+      .purity-metrics {
+        grid-template-columns: 1fr;
+      }
+      .gmp-grid {
+        grid-template-columns: 1fr;
+      }
+      .gmp-section, .verify-steps, .kkm-section {
+        padding: 40px 24px;
+      }
+      .step-item {
+        flex-direction: column;
+        gap: 12px;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="progressBar"></div>
 
-  <!-- ══════════════ NAV ══════════════ -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav">
     <div class="nav__container">
-      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <a href="/morinvibes-official/en/" class="nav__logo" aria-label="MorinVibes home">
-        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" width="140" height="36" />
+      
+      <a href="/morinvibes-official/en/" class="nav__logo">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
       </a>
+      
       <div class="nav__right">
-        <div class="lang-dropdown">
-          <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false">
-            EN <span aria-hidden="true">▼</span>
-          </button>
-          <div class="lang-options" role="listbox">
-            <a href="/morinvibes-official/en/quality.html" class="lang-option active" role="option" aria-selected="true" hreflang="en">English</a>
-            <a href="/morinvibes-official/bm/quality.html" class="lang-option" role="option" hreflang="ms">Bahasa Malaysia</a>
-            <a href="/morinvibes-official/zh/quality.html" class="lang-option" role="option" hreflang="zh">中文</a>
+        <div class="lang-dropdown" id="langDropdown">
+          <button class="lang-btn" id="langBtn">EN <span>▾</span></button>
+          <div class="lang-options">
+            <a href="/morinvibes-official/en/quality.html" class="lang-option active">English</a>
+            <a href="/morinvibes-official/bm/quality.html" class="lang-option">Bahasa Malaysia</a>
+            <a href="/morinvibes-official/zh/quality.html" class="lang-option">中文</a>
           </div>
         </div>
-        <a href="/morinvibes-official/en/checkout.html" class="btn btn--small">Buy Now — RM89</a>
+        <a href="/morinvibes-official/en/checkout.html" class="btn btn--small btn--primary">Buy Now — RM89</a>
       </div>
     </div>
   </nav>
 
-  <!-- ══════════════ MOBILE MENU ══════════════ -->
-  <div class="nav__mobile" id="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <!-- Mobile Menu -->
+  <div class="nav__mobile" id="mobileMenu">
     <div class="nav__mobile-left">
       <div class="nav__mobile-logo">
-        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" width="120" height="32" />
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
       </div>
-      <button class="nav__mobile-close" aria-label="Close menu">✕</button>
+      <button class="nav__mobile-close" id="menuClose" aria-label="Close menu">✕</button>
+      
       <div class="nav__mobile-lang">
-        <a href="/morinvibes-official/en/" hreflang="en">EN</a>
-        <a href="/morinvibes-official/bm/" hreflang="ms">BM</a>
-        <a href="/morinvibes-official/zh/" hreflang="zh">中文</a>
+        <a href="/morinvibes-official/en/">EN</a>
+        <a href="/morinvibes-official/bm/">BM</a>
+        <a href="/morinvibes-official/zh/">中文</a>
       </div>
+      
       <a href="/morinvibes-official/en/" class="nav__mobile-link">Home</a>
       <a href="/morinvibes-official/en/farm.html" class="nav__mobile-link">The Farm</a>
-      <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link active" aria-current="page">Quality</a>
+      <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link active">Quality & Authenticity</a>
       <a href="/morinvibes-official/en/benefits.html" class="nav__mobile-link">Benefits</a>
       <a href="/morinvibes-official/en/shop.html" class="nav__mobile-link">Shop</a>
-      <a href="/morinvibes-official/en/story.html" class="nav__mobile-link">Our Story</a>
-      <a href="/morinvibes-official/en/authentic.html" class="nav__mobile-link">Authenticity</a>
-      <a href="/morinvibes-official/en/ethics.html" class="nav__mobile-link">Ethics</a>
+      <a href="/morinvibes-official/en/about.html" class="nav__mobile-link">About Us</a>
+      <a href="/morinvibes-official/en/testimonials.html" class="nav__mobile-link">Testimonials</a>
       <a href="/morinvibes-official/en/faq.html" class="nav__mobile-link">FAQ</a>
-      <a href="https://wa.me/60102766095" target="_blank" rel="noopener noreferrer" class="nav__mobile-link" style="color:var(--teal);">WhatsApp</a>
+      <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="nav__mobile-link" style="color: var(--teal);">WhatsApp Us</a>
     </div>
+    
     <div class="nav__mobile-right">
-      <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa 90 capsules" class="nav__mobile-right-img" width="160" height="200" />
+      <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="nav__mobile-right-img" />
       <div class="nav__mobile-right-price">RM89 <span>/ bottle</span></div>
       <div class="nav__mobile-right-sub">90 capsules · 500mg pure moringa</div>
-      <a href="/morinvibes-official/en/checkout.html" class="btn">Buy Now — RM89</a>
+      <a href="/morinvibes-official/en/checkout.html" class="btn btn--primary" style="width: 100%;">Buy Now — RM89</a>
     </div>
   </div>
 
-  <div class="scroll-progress" id="progressBar" role="progressbar" aria-hidden="true"></div>
-
-  <!-- ══════════════ MAIN ══════════════ -->
-  <main id="main-content">
-
-    <!-- ── HERO ── -->
-    <section class="ql-hero" aria-labelledby="quality-heading">
+  <main>
+    <!-- Quality Hero -->
+    <section class="quality-hero">
       <div class="container">
-        <p class="ql-hero__eyebrow">Pure · Transparent · Certified</p>
-        <h1 class="ql-hero__title" id="quality-heading">
-          Quality You Can Trace.<br><em>Purity You Can Trust.</em>
-        </h1>
-
-        <div class="ql-certs fade-up" role="list" aria-label="Certifications">
-          <div class="ql-cert" role="listitem">
-            <div class="ql-cert__icon" aria-hidden="true">✓</div>
-            <div>
-              <p class="ql-cert__title">KKM Approved</p>
-              <p class="ql-cert__sub">Ministry of Health Malaysia</p>
+        <span class="eyebrow">PURE · TRANSPARENT · CERTIFIED</span>
+        <h1 style="max-width: 800px; margin: 0 auto 24px;">Quality You Can Trace.<br />Authenticity You Can Verify.</h1>
+        
+        <div class="cert-badges fade-up">
+          <div class="cert-badge-large">
+            <div class="cert-badge-icon">✓</div>
+            <div class="cert-badge-text">
+              <div class="cert-badge-title">KKM Approved</div>
+              <div class="cert-badge-sub">Ministry of Health Malaysia</div>
             </div>
           </div>
-          <div class="ql-cert" role="listitem">
-            <div class="ql-cert__icon" aria-hidden="true">⚙️</div>
-            <div>
-              <p class="ql-cert__title">GMP Certified</p>
-              <p class="ql-cert__sub">Good Manufacturing Practice</p>
-            </div>
-          </div>
-          <div class="ql-cert" role="listitem">
-            <div class="ql-cert__icon" aria-hidden="true">🌱</div>
-            <div>
-              <p class="ql-cert__title">100% Pure</p>
-              <p class="ql-cert__sub">Zero fillers · Zero additives</p>
-            </div>
-          </div>
-          <div class="ql-cert" role="listitem">
-            <div class="ql-cert__icon" aria-hidden="true">🧪</div>
-            <div>
-              <p class="ql-cert__title">Batch Tested</p>
-              <p class="ql-cert__sub">Identity &amp; purity verified</p>
+          <div class="cert-badge-large" data-delay="1">
+            <div class="cert-badge-icon">⚙️</div>
+            <div class="cert-badge-text">
+              <div class="cert-badge-title">GMP Certified</div>
+              <div class="cert-badge-sub">Good Manufacturing Practice</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── TRUST BAR ── -->
-    <div class="trust-bar" role="marquee" aria-label="Certifications and trust signals">
+    <!-- Trust Bar -->
+    <div class="trust-bar">
       <div class="trust-bar__track">
-        <span>SINCE 2019</span><span class="dot" aria-hidden="true">•</span>
-        <span>FARM DIRECT</span><span class="dot" aria-hidden="true">•</span>
-        <span>GMP CERTIFIED</span><span class="dot" aria-hidden="true">•</span>
-        <span>KKM APPROVED</span><span class="dot" aria-hidden="true">•</span>
-        <span>VEGAN</span><span class="dot" aria-hidden="true">•</span>
-        <span>MALAYSIA</span><span class="dot" aria-hidden="true">•</span>
-        <span>90 CAPSULES</span><span class="dot" aria-hidden="true">•</span>
-        <span>500MG EACH</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">SINCE 2019</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">FARM DIRECT</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">GMP CERTIFIED</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">KKM APPROVED</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">VEGAN</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">MALAYSIA</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">90 CAPSULES</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">500MG EACH</span><span class="dot" aria-hidden="true">•</span>
+        <span>SINCE 2019</span><span class="dot">•</span>
+        <span>FARM DIRECT</span><span class="dot">•</span>
+        <span>GMP CERTIFIED</span><span class="dot">•</span>
+        <span>KKM APPROVED</span><span class="dot">•</span>
+        <span>VEGAN</span><span class="dot">•</span>
+        <span>PENANG</span><span class="dot">•</span>
+        <span>90 CAPSULES</span><span class="dot">•</span>
+        <span>500MG EACH</span><span class="dot">•</span>
+        <!-- Duplicate for seamless loop -->
+        <span>SINCE 2019</span><span class="dot">•</span>
+        <span>FARM DIRECT</span><span class="dot">•</span>
+        <span>GMP CERTIFIED</span><span class="dot">•</span>
+        <span>KKM APPROVED</span><span class="dot">•</span>
+        <span>VEGAN</span><span class="dot">•</span>
+        <span>PENANG</span><span class="dot">•</span>
+        <span>90 CAPSULES</span><span class="dot">•</span>
+        <span>500MG EACH</span><span class="dot">•</span>
       </div>
     </div>
 
-    <!-- ── PURITY METRICS ── -->
-    <section class="section" aria-labelledby="metrics-heading">
+    <!-- Purity Metrics -->
+    <section class="section">
       <div class="container">
-        <div class="ql-head">
-          <span class="eyebrow">The Numbers</span>
-          <h2 id="metrics-heading">Nothing Hidden. Nothing Added.</h2>
-        </div>
-        <div class="ql-metrics" role="list">
-          <div class="ql-metric fade-up" role="listitem">
-            <p class="ql-metric__num">100%</p>
-            <p class="ql-metric__label">Pure Leaf Powder</p>
-            <p class="ql-metric__desc">No stems, no branches — only the nutrient-dense leaf, finely milled from my farm.</p>
+        <div class="purity-metrics">
+          <div class="purity-card fade-up">
+            <div class="purity-number">100%</div>
+            <div class="purity-label">Pure Leaf Powder</div>
+            <p class="purity-desc">No stems, no branches — only the nutrient-rich leaf, finely milled.</p>
           </div>
-          <div class="ql-metric fade-up" data-delay="1" role="listitem">
-            <p class="ql-metric__num">0</p>
-            <p class="ql-metric__label">Fillers</p>
-            <p class="ql-metric__desc">No rice flour, no maltodextrin, no anti-caking agents. Your capsule is 100% moringa.</p>
+          <div class="purity-card fade-up" data-delay="1">
+            <div class="purity-number">0</div>
+            <div class="purity-label">Fillers</div>
+            <p class="purity-desc">No rice flour, maltodextrin, or flow agents. Just pure moringa.</p>
           </div>
-          <div class="ql-metric fade-up" data-delay="2" role="listitem">
-            <p class="ql-metric__num">0</p>
-            <p class="ql-metric__label">Additives</p>
-            <p class="ql-metric__desc">No preservatives, no artificial colours, no binders, no flow aids. Pure is pure.</p>
+          <div class="purity-card fade-up" data-delay="2">
+            <div class="purity-number">0</div>
+            <div class="purity-label">Additives</div>
+            <p class="purity-desc">No preservatives, no artificial colors, no binders.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── WHAT'S INSIDE ── -->
-    <section class="section section--alt" aria-labelledby="inside-heading">
+    <!-- GMP Standards -->
+    <section class="section section--alt">
       <div class="container">
-        <div class="ql-head">
-          <span class="eyebrow">Label Transparency</span>
-          <h2 id="inside-heading">What's Inside Each Capsule</h2>
-        </div>
-        <div class="ql-inside">
-
-          <div class="ql-inside__yes fade-up" role="region" aria-label="What is in the capsule">
-            <h3 class="ql-inside__heading">
-              <span aria-hidden="true">✅</span> What's Inside
-            </h3>
-            <div class="ql-inside__row">
-              <span class="ql-inside__dot-yes" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>
-              Moringa oleifera leaf powder (500mg)
-            </div>
-            <div class="ql-inside__row">
-              <span class="ql-inside__dot-yes" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>
-              Vegetarian capsule shell (HPMC)
-            </div>
-            <div class="ql-inside__row">
-              <span class="ql-inside__dot-yes" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>
-              That's it. Two ingredients.
-            </div>
-          </div>
-
-          <div class="ql-inside__no fade-up" data-delay="1" role="region" aria-label="What is not in the capsule">
-            <h3 class="ql-inside__heading">
-              <span aria-hidden="true">🚫</span> What's Not Inside
-            </h3>
-            <div class="ql-inside__row">
-              <span class="ql-inside__dot-no" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="2" x2="8" y2="8"/><line x1="8" y1="2" x2="2" y2="8"/></svg></span>
-              Rice flour or maltodextrin
-            </div>
-            <div class="ql-inside__row">
-              <span class="ql-inside__dot-no" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="2" x2="8" y2="8"/><line x1="8" y1="2" x2="2" y2="8"/></svg></span>
-              Magnesium stearate
-            </div>
-            <div class="ql-inside__row">
-              <span class="ql-inside__dot-no" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="2" x2="8" y2="8"/><line x1="8" y1="2" x2="2" y2="8"/></svg></span>
-              Silicon dioxide (flow aids)
-            </div>
-            <div class="ql-inside__row">
-              <span class="ql-inside__dot-no" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="2" x2="8" y2="8"/><line x1="8" y1="2" x2="2" y2="8"/></svg></span>
-              Artificial colours or flavours
-            </div>
-            <div class="ql-inside__row">
-              <span class="ql-inside__dot-no" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="2" x2="8" y2="8"/><line x1="8" y1="2" x2="2" y2="8"/></svg></span>
-              Preservatives or binders
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── GMP SECTION ── -->
-    <section class="section" aria-labelledby="gmp-heading">
-      <div class="container">
-        <div class="ql-gmp">
-          <div class="ql-gmp__grid">
-            <div class="fade-up">
-              <span class="eyebrow">GMP Standards</span>
-              <h2 id="gmp-heading">Good Manufacturing Practice</h2>
-              <p class="lead">My facility follows strict GMP guidelines to ensure every batch meets the highest standards of quality, consistency, and food safety.</p>
-
-              <div class="ql-gmp__list" role="list">
-                <div class="ql-gmp__item" role="listitem">
-                  <div class="ql-gmp__check" aria-hidden="true">
-                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="#2d6a4f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,6.5 5,10 11.5,2.5"/></svg>
-                  </div>
-                  <div>
-                    <p class="ql-gmp__item-title">Controlled Environment</p>
-                    <p class="ql-gmp__item-desc">Temperature and humidity monitored to protect active compounds throughout production.</p>
-                  </div>
+        <div class="gmp-grid">
+          <div class="fade-up">
+            <span class="eyebrow">GMP STANDARDS</span>
+            <h2>Good Manufacturing Practice</h2>
+            <p class="lead">Our facility follows strict GMP guidelines to ensure every batch meets the highest standards of quality, consistency, and safety.</p>
+            
+            <div class="gmp-list">
+              <div class="gmp-item">
+                <div class="gmp-item__icon">✓</div>
+                <div class="gmp-item__content">
+                  <h4>Controlled Environment</h4>
+                  <p>Temperature and humidity monitored 24/7</p>
                 </div>
-                <div class="ql-gmp__item" role="listitem">
-                  <div class="ql-gmp__check" aria-hidden="true">
-                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="#2d6a4f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,6.5 5,10 11.5,2.5"/></svg>
-                  </div>
-                  <div>
-                    <p class="ql-gmp__item-title">Batch Traceability</p>
-                    <p class="ql-gmp__item-desc">Every batch is numbered, dated, and recorded — fully traceable from harvest to bottle.</p>
-                  </div>
+              </div>
+              <div class="gmp-item">
+                <div class="gmp-item__icon">✓</div>
+                <div class="gmp-item__content">
+                  <h4>Batch Traceability</h4>
+                  <p>Every batch numbered and recorded</p>
                 </div>
-                <div class="ql-gmp__item" role="listitem">
-                  <div class="ql-gmp__check" aria-hidden="true">
-                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="#2d6a4f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,6.5 5,10 11.5,2.5"/></svg>
-                  </div>
-                  <div>
-                    <p class="ql-gmp__item-title">Equipment Sanitation</p>
-                    <p class="ql-gmp__item-desc">All surfaces and equipment cleaned and sanitised before each production run.</p>
-                  </div>
+              </div>
+              <div class="gmp-item">
+                <div class="gmp-item__icon">✓</div>
+                <div class="gmp-item__content">
+                  <h4>Equipment Sanitation</h4>
+                  <p>Regular cleaning protocols</p>
                 </div>
-                <div class="ql-gmp__item" role="listitem">
-                  <div class="ql-gmp__check" aria-hidden="true">
-                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="#2d6a4f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,6.5 5,10 11.5,2.5"/></svg>
-                  </div>
-                  <div>
-                    <p class="ql-gmp__item-title">Documented Procedures</p>
-                    <p class="ql-gmp__item-desc">Standard operating procedures followed at every stage. No guesswork, no shortcuts.</p>
-                  </div>
+              </div>
+              <div class="gmp-item">
+                <div class="gmp-item__icon">✓</div>
+                <div class="gmp-item__content">
+                  <h4>Staff Training</h4>
+                  <p>Qualified personnel at every step</p>
                 </div>
               </div>
             </div>
-
-            <div class="fade-up" data-delay="2">
-              <div class="ql-cert-img">
-                <img src="/morinvibes-official/images/cert-gmp.svg" alt="GMP Certificate for MorinVibes" loading="lazy" width="520" height="440" />
-              </div>
+          </div>
+          
+          <div class="fade-up" data-delay="2">
+            <div class="img-zoom">
+              <img src="/morinvibes-official/images/factory-machine.jpg" alt="GMP certified facility" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);" />
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── KKM BANNER ── -->
-    <section class="section section--sm" aria-labelledby="kkm-heading">
+    <!-- KKM Approved Section -->
+    <section class="section">
       <div class="container">
-        <div class="ql-kkm fade-up">
-          <p class="ql-kkm__eyebrow">Regulatory Compliance</p>
-          <h2 class="ql-kkm__title" id="kkm-heading">KKM Approved</h2>
-          <p class="ql-kkm__text">
-            Registered with Kementerian Kesihatan Malaysia (KKM) — the Ministry of Health.
-            My product meets all regulatory requirements for safety, labelling, and manufacturing standards.
-          </p>
-          <div class="ql-kkm__badge" aria-label="KKM Approved certification">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,9 7,14 16,4"/></svg>
-            KKM Approved
-          </div>
-          <div class="ql-kkm__pills" role="list" aria-label="Compliance details">
-            <span class="ql-kkm__pill" role="listitem">NPRA Guidelines</span>
-            <span class="ql-kkm__pill" role="listitem">GMP Compliant</span>
-            <span class="ql-kkm__pill" role="listitem">Penang, Malaysia</span>
-            <span class="ql-kkm__pill" role="listitem">Since 2019</span>
+        <div class="kkm-section fade-up">
+          <span class="eyebrow" style="color: rgba(255,255,255,0.8);">REGULATORY COMPLIANCE</span>
+          <h2>KKM Approved</h2>
+          <p>Registered with the Ministry of Health Malaysia. Our facility and products meet all regulatory requirements.</p>
+          <div class="kkm-badge-large">✓ KKM Approved</div>
+          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <span class="process-badge" style="background: rgba(255,255,255,0.2); color: white;">Ministry of Health Malaysia</span>
+            <span class="process-badge" style="background: rgba(255,255,255,0.2); color: white;">NPRA Guidelines</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── CAPSULE PROCESS ── -->
-    <section class="section section--alt" aria-labelledby="capsule-heading">
+    <!-- How to Verify Authenticity -->
+    <section class="section section--alt">
       <div class="container">
-        <div class="ql-head">
-          <span class="eyebrow">From Powder to Capsule</span>
-          <h2 id="capsule-heading">The Encapsulation Process</h2>
+        <div class="section-header fade-up">
+          <span class="eyebrow">VERIFICATION GUIDE</span>
+          <h2>How to Spot Genuine MorinVibes</h2>
+          <p class="lead">Protect yourself from counterfeit products. Follow these simple steps to verify authenticity.</p>
         </div>
-        <div class="ql-capsule" role="list">
-          <div class="ql-cap-card fade-up" role="listitem">
-            <span class="ql-cap-card__num" aria-hidden="true">01</span>
-            <span class="ql-cap-card__icon" aria-hidden="true">🌱</span>
-            <p class="ql-cap-card__title">Vegetarian Shell</p>
-            <p class="ql-cap-card__desc">HPMC plant-based capsule — suitable for all diets</p>
+        
+        <div class="verify-steps">
+          <div class="step-item fade-up">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Check the KKM Sticker</h3>
+              <p>All genuine bottles have a KKM approval sticker on the packaging. If the sticker is missing or looks different, it may be counterfeit.</p>
+            </div>
           </div>
-          <div class="ql-cap-card fade-up" data-delay="1" role="listitem">
-            <span class="ql-cap-card__num" aria-hidden="true">02</span>
-            <span class="ql-cap-card__icon" aria-hidden="true">⚖️</span>
-            <p class="ql-cap-card__title">500mg Each</p>
-            <p class="ql-cap-card__desc">Consistent, precise fill weight per capsule</p>
+          
+          <div class="step-item fade-up" data-delay="1">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Verify the Store ID</h3>
+              <p>On Shopee, only purchase from our official stores: <strong>MorinVibes</strong> or <strong>moringa_morinvibes</strong>. Check the seller name carefully.</p>
+            </div>
           </div>
-          <div class="ql-cap-card fade-up" data-delay="2" role="listitem">
-            <span class="ql-cap-card__num" aria-hidden="true">03</span>
-            <span class="ql-cap-card__icon" aria-hidden="true">🧼</span>
-            <p class="ql-cap-card__title">Sterile Filling</p>
-            <p class="ql-cap-card__desc">Clean-room environment, no cross-contamination</p>
+          
+          <div class="step-item fade-up" data-delay="2">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Look for the Logo</h3>
+              <p>Our bottles feature the full "MORINVIBES" logo with consistent, high-quality printing. Poor print quality indicates counterfeit.</p>
+            </div>
           </div>
-          <div class="ql-cap-card fade-up" data-delay="3" role="listitem">
-            <span class="ql-cap-card__num" aria-hidden="true">04</span>
-            <span class="ql-cap-card__icon" aria-hidden="true">📦</span>
-            <p class="ql-cap-card__title">90 Capsules</p>
-            <p class="ql-cap-card__desc">~3 month supply at recommended daily dose</p>
+          
+          <div class="step-item fade-up" data-delay="3">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Check the Capsule Count</h3>
+              <p>Genuine MorinVibes contains exactly 90 capsules per bottle. Different counts may be counterfeit.</p>
+            </div>
+          </div>
+          
+          <div class="step-item fade-up" data-delay="4">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h3>When in Doubt, Ask Us</h3>
+              <p>If you're unsure about a product, WhatsApp us directly. We'll help you verify if it's genuine.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Warning Box -->
+    <div class="container">
+      <div class="warning-box fade-up">
+        <strong>⚠️ Beware of Counterfeits</strong>
+        <p>Only purchase MorinVibes from our official stores listed below. We are not responsible for products purchased from unauthorized sellers.</p>
+      </div>
+    </div>
+
+    <!-- Official Stores -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span class="eyebrow">OFFICIAL STORES</span>
+          <h2>Where to Buy Authentic MorinVibes</h2>
+        </div>
+        
+        <div class="store-badges">
+          <a href="/morinvibes-official/en/shop.html" class="store-badge">
+            <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes" style="height: 24px;" />
+            <span>Official Website</span>
+          </a>
+          <a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener" class="store-badge">
+            <img src="/morinvibes-official/images/social/shopee-icon.svg" alt="Shopee" />
+            <span>Shopee: MorinVibes</span>
+          </a>
+          <a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener" class="store-badge">
+            <img src="/morinvibes-official/images/social/shopee-icon.svg" alt="Shopee" />
+            <span>Shopee: moringa_morinvibes</span>
+          </a>
+          <a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener" class="store-badge">
+            <img src="/morinvibes-official/images/social/lazada-icon.svg" alt="Lazada" />
+            <span>Lazada</span>
+          </a>
+        </div>
+        
+        <p class="text-center" style="margin-top: 24px; color: var(--ink-soft);">Same fresh batches across all channels — buy wherever you're most comfortable.</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="grid-2">
+          <div class="fade-up">
+            <span class="eyebrow">STILL UNSURE?</span>
+            <h2>Contact Us Directly</h2>
+            <p class="lead" style="margin-bottom: 24px;">If you have any doubts about a product's authenticity, reach out to us personally.</p>
+            <p style="color: var(--ink-soft); margin-bottom: 32px;">We'll help you verify and guide you to the right place to buy authentic MorinVibes.</p>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="btn btn--primary btn--large">WhatsApp Us</a>
+          </div>
+          <div class="fade-up" data-delay="2">
+            <div class="img-zoom">
+              <img src="/morinvibes-official/images/bottle-with-kkm.jpg" alt="Bottle with KKM sticker" style="width: 100%; border-radius: var(--radius-lg);" />
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── SHOPEE ── -->
-    <section class="section" aria-labelledby="shopee-heading">
+    <!-- CTA Section -->
+    <section class="section">
       <div class="container">
-        <div class="ql-shopee fade-up">
-          <span class="eyebrow">Same Quality, Trusted Since 2019</span>
-          <h2 id="shopee-heading" style="margin-bottom:14px;">The Same Rigorous Standards</h2>
-          <p class="lead" style="max-width:580px;margin:0 auto;">
-            Whether on Shopee or direct from my website — every capsule meets the same quality benchmarks.
-            Now with fresher batches and better prices when you order direct.
-          </p>
-          <div class="ql-shopee__stores" aria-label="Shopee store names">
-            <span class="ql-shopee__pill">🟠 MorinVibes</span>
-            <span class="ql-shopee__pill">🟠 moringa_morinvibes</span>
-          </div>
-          <div style="font-size:22px;color:#f4a020;letter-spacing:2px;margin-bottom:6px;" aria-label="5-star rating">★★★★★</div>
-          <p style="font-size:13.5px;color:var(--ink-muted);">1,000+ verified 5-star reviews</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── CTA ── -->
-    <section class="section section--sm">
-      <div class="container">
-        <div class="ql-cta fade-up" role="complementary" aria-labelledby="cta-heading">
-          <p class="ql-cta__eyebrow">Pure. Simple. Trusted.</p>
-          <h2 class="ql-cta__title" id="cta-heading">KKM Approved.<br>GMP Certified.<br><em style="font-style:italic;color:var(--leaf-light,#52b788);">Farm Direct.</em></h2>
-          <p class="ql-cta__text">
-            Every capsule traceable to a single farm in Penang.
-            No warehouse. No shortcuts. Just 100% pure moringa.
-          </p>
-          <div class="ql-btn-group">
+        <div class="cta-section fade-up">
+          <h2 class="cta-title">Buy with Confidence</h2>
+          <p class="cta-text">Purchase directly from our official website for guaranteed authenticity and freshest batches.</p>
+          <div class="cta-buttons">
             <a href="/morinvibes-official/en/checkout.html" class="btn btn--primary btn--large">Shop Now — RM89</a>
-            <a href="https://wa.me/60102766095" target="_blank" rel="noopener noreferrer"
-               class="btn btn--outline btn--large"
-               style="border-color:rgba(255,255,255,0.3);color:#fff;"
-               aria-label="WhatsApp Jess">
-              💬 Ask Jess
-            </a>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- ══════════════ FOOTER ══════════════ -->
-  <footer class="footer" role="contentinfo">
+  <!-- Footer -->
+  <footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div>
-          <div class="footer__logo">
-            <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" width="140" height="36" />
-          </div>
-          <p class="footer__tagline">Farm-direct moringa from my land in Penang · Since 2019</p>
-          <div class="footer__social" aria-label="Social media">
-            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
-            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
-            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener noreferrer" aria-label="TikTok">🎵</a>
-            <a href="https://wa.me/60102766095" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">📱</a>
+          <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="footer__logo" />
+          <p class="footer__tagline">Farm-direct moringa from our own land in Penang, Malaysia · Since 2019</p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener">f</a>
+            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener">📷</a>
+            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener">▶</a>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener">💬</a>
           </div>
         </div>
+        
         <div>
-          <h3 class="footer__title">Navigate</h3>
+          <h4 class="footer__title">Navigate</h4>
           <ul class="footer__links">
             <li><a href="/morinvibes-official/en/farm.html">The Farm</a></li>
-            <li><a href="/morinvibes-official/en/quality.html" aria-current="page">Quality</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality & Authenticity</a></li>
             <li><a href="/morinvibes-official/en/benefits.html">Benefits</a></li>
             <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
-            <li><a href="/morinvibes-official/en/story.html">Our Story</a></li>
+            <li><a href="/morinvibes-official/en/about.html">About Us</a></li>
+            <li><a href="/morinvibes-official/en/testimonials.html">Testimonials</a></li>
+            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+            <li><a href="/morinvibes-official/en/journal/">Journal</a></li>
           </ul>
         </div>
+        
         <div>
-          <h3 class="footer__title">Trust</h3>
+          <h4 class="footer__title">Trust</h4>
           <ul class="footer__links">
-            <li><a href="/morinvibes-official/en/authentic.html">Authenticity</a></li>
+            <li><a href="/morinvibes-official/en/authenticity.html">Authenticity</a></li>
             <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
-            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+            <li><a href="/morinvibes-official/en/returns.html">Returns Policy</a></li>
+            <li><a href="/morinvibes-official/en/privacy.html">Privacy Policy</a></li>
+            <li><a href="/morinvibes-official/en/terms.html">Terms</a></li>
           </ul>
           <div class="footer__badge">KKM Approved</div>
         </div>
+        
         <div>
-          <h3 class="footer__title">Contact</h3>
+          <h4 class="footer__title">Contact</h4>
           <ul class="footer__links">
-            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
             <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
+            <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener">Shopee Store</a></li>
+            <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener">Lazada Store</a></li>
           </ul>
-          <p style="color:rgba(255,255,255,0.3);font-size:0.85rem;margin-top:20px;line-height:1.6;">
-            Bayan Lepas, Penang<br>Malaysia
-          </p>
+          <p class="footer__address">Bayan Lepas, Penang<br />Malaysia</p>
         </div>
       </div>
+      
       <div class="footer__bottom">
-        <div>© <span class="current-year">2026</span> MorinVibes®. All rights reserved.</div>
+        <div>© 2026 MorinVibes®. All rights reserved.</div>
         <div>
           <a href="/morinvibes-official/en/privacy.html">Privacy</a>
           <a href="/morinvibes-official/en/terms.html">Terms</a>
@@ -884,29 +717,92 @@
     </div>
   </footer>
 
+  <!-- Scroll to Top Button -->
   <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
 
-  <!-- Community popup -->
-  <div class="community-popup" id="communityPopup" role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-hidden="true">
-    <div class="popup-header">
-      <h4 id="popup-title">Join Our Community</h4>
-      <p>Get updates, tips, and exclusive offers</p>
-      <button class="popup-close" aria-label="Close popup">✕</button>
-    </div>
-    <div class="popup-body">
-      <a href="https://wa.me/60102766095" target="_blank" rel="noopener noreferrer" class="popup-link popup-link--wa">
-        <span class="popup-link__icon" aria-hidden="true">📱</span>
-        <span>WhatsApp Community</span>
-      </a>
-      <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener noreferrer" class="popup-link popup-link--ig">
-        <span class="popup-link__icon" aria-hidden="true">📸</span>
-        <span>Instagram</span>
-      </a>
-      <button class="popup-dismiss">No thanks, I'll browse</button>
-    </div>
-  </div>
-
-  <script src="/morinvibes-official/assets/js/main.js" defer></script>
-  <script src="/morinvibes-official/assets/js/pixel.js" defer></script>
+  <!-- Scripts -->
+  <script src="/morinvibes-official/assets/js/main.js"></script>
+  <script src="/morinvibes-official/assets/js/pixel.js"></script>
+  
+  <script>
+    (function() {
+      // Progress bar
+      const progressBar = document.getElementById('progressBar');
+      const scrollBtn = document.getElementById('scrollTop');
+      const nav = document.getElementById('mainNav');
+      
+      window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (scrollY / docHeight) * 100;
+        if (progressBar) progressBar.style.width = scrolled + '%';
+        
+        nav.classList.toggle('scrolled', scrollY > 40);
+        if (scrollBtn) scrollBtn.classList.toggle('visible', scrollY > 400);
+      }, { passive: true });
+      
+      if (scrollBtn) {
+        scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      }
+      
+      // Mobile menu
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const closeBtn = document.getElementById('menuClose');
+      
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          mobileMenu.classList.add('open');
+          document.body.classList.add('menu-open');
+          hamburger.setAttribute('aria-expanded', 'true');
+        });
+        
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.classList.remove('menu-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          });
+        }
+        
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            document.body.classList.remove('menu-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+      
+      // Language dropdown
+      const langBtn = document.getElementById('langBtn');
+      const langDropdown = document.getElementById('langDropdown');
+      
+      if (langBtn && langDropdown) {
+        langBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          langDropdown.classList.toggle('open');
+        });
+        
+        document.addEventListener('click', () => {
+          langDropdown.classList.remove('open');
+        });
+      }
+      
+      // Fade-up observer
+      const fadeElements = document.querySelectorAll('.fade-up');
+      if (fadeElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        
+        fadeElements.forEach(el => observer.observe(el));
+      }
+    })();
+  </script>
 </body>
 </html>
