@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>The Science Behind Moringa's 46 Antioxidants | MorinVibes® Journal</title>
+  <meta name="description" content="Discover how moringa's 46 antioxidants including quercetin, chlorogenic acid, and beta-carotene work synergistically to support your health. Learn the science behind nature's most nutrient-dense plant." />
+  <link rel="canonical" href="https://morinvibes.com/en/wellness/journal/antioxidants.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Science Behind Moringa's 46 Antioxidants" />
+  <meta property="og:description" content="How quercetin, chlorogenic acid & beta-carotene work together in moringa." />
+  <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/images/journal/antioxidants.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/morinvibes-official/favicon.svg" type="image/svg+xml" />
+  
+  <!-- CSS - EXTERNAL ONLY -->
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/global.css" />
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/components.css" />
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/style.css" />
+  
+  <!-- Article-specific styles -->
+  <style>
+    .journal-hero {
+      padding-top: calc(72px + 60px);
+      padding-bottom: 40px;
+    }
+    
+    .journal-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      color: var(--ink-muted);
+      font-size: 14px;
+    }
+    
+    .journal-meta-divider {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--ink-muted);
+    }
+    
+    .journal-content {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--ink-soft);
+    }
+    
+    .journal-content h2 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      margin: 50px 0 20px;
+      color: var(--ink);
+    }
+    
+    .journal-content h3 {
+      font-family: var(--sans);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin: 40px 0 15px;
+      color: var(--ink);
+    }
+    
+    .journal-content p {
+      margin-bottom: 25px;
+    }
+    
+    .journal-content ul, 
+    .journal-content ol {
+      margin-bottom: 25px;
+      padding-left: 25px;
+    }
+    
+    .journal-content li {
+      margin-bottom: 10px;
+    }
+    
+    .journal-content blockquote {
+      margin: 40px 0;
+      padding: 25px 30px;
+      background: var(--teal-ghost);
+      border-left: 4px solid var(--teal);
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--ink);
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+    }
+    
+    .journal-content .highlight-box {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 30px;
+      margin: 40px 0;
+    }
+    
+    .journal-content .highlight-box h4 {
+      color: var(--teal);
+      margin-bottom: 15px;
+    }
+    
+    .related-posts {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    
+    .related-posts h3 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    
+    .related-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s;
+    }
+    
+    .related-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--sh-md);
+    }
+    
+    .related-card img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    
+    .related-card-content {
+      padding: 20px;
+    }
+    
+    .related-card h4 {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    
+    .related-card p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-bottom: 15px;
+    }
+    
+    .related-card .btn--ghost {
+      font-size: 13px;
+      padding: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  
+  <!-- Meta Pixel - MINIMAL (initialization only) -->
+  <script>
+  var PIXEL_ID = 'YOUR_PIXEL_ID'; /* REPLACE BEFORE GOING LIVE */
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  if(PIXEL_ID!=='YOUR_PIXEL_ID'){fbq('init',PIXEL_ID);fbq('track','PageView');}
+  </script>
+</head>
+<body>
+
+<!-- Scroll progress bar -->
+<div class="scroll-progress" id="progressBar"></div>
+
+<!-- CHECKOUT MODAL -->
+<div class="co-overlay" id="coOverlay" role="dialog" aria-modal="true" aria-label="Secure checkout">
+  <div class="co-modal">
+    <div class="co-head">
+      <div class="co-head-brand">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" height="30" />
+        <div class="co-head-info">
+          <strong>Moringa Capsules · 90 caps · 500mg</strong><br />RM89 + shipping
+        </div>
+      </div>
+      <button class="co-close" id="coClose" aria-label="Close checkout">✕</button>
+    </div>
+    <div class="co-trust">
+      <span>✓ KKM Approved</span>
+      <span>✓ GMP Certified</span>
+      <span>🔒 Secure Payment</span>
+      <span>🚚 Ships from Penang</span>
+    </div>
+    <div class="co-body">
+      <div class="co-spinner" id="coSpinner">
+        <div class="co-spinner__ring"></div>
+        <div class="co-spinner__text">Loading secure checkout…</div>
+      </div>
+      <iframe
+        id="coIframe"
+        class="co-iframe"
+        src=""
+        data-src="https://morinvibes.orderla.my/moringa-order"
+        title="Secure checkout"
+        sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
+      ></iframe>
+    </div>
+    <div class="co-foot">
+      Same product as our Shopee &amp; Lazada store. Need help?
+      <a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
+  <div class="nav__wrap">
+    <button class="nav__ham" id="navHam" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="/morinvibes-official/en/" class="nav__logo" aria-label="MorinVibes® — Home">
+      <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" width="180" height="46" />
+    </a>
+    <div class="nav__right">
+      <div class="lang-drop" id="langDrop">
+        <button class="lang-btn" id="langBtn" aria-expanded="false" aria-label="Language">
+          EN <span class="lang-btn__chev">▾</span>
+        </button>
+        <div class="lang-opts" role="menu">
+          <a href="/morinvibes-official/en/" class="lang-opt active" role="menuitem">🇬🇧 English</a>
+          <a href="/morinvibes-official/bm/" class="lang-opt" role="menuitem">🇲🇾 Bahasa Malaysia</a>
+          <a href="/morinvibes-official/zh/" class="lang-opt" role="menuitem">🇨🇳 中文</a>
+        </div>
+      </div>
+      <button class="btn btn--primary btn--sm" id="navOrderBtn">Order — RM89</button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="m-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="m-left">
+    <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="m-logo-img" height="38" />
+    <button class="m-close" id="mClose" aria-label="Close menu">✕</button>
+    <div class="m-lang">
+      <a href="/morinvibes-official/en/">EN</a>
+      <a href="/morinvibes-official/bm/">BM</a>
+      <a href="/morinvibes-official/zh/">中文</a>
+    </div>
+    <a href="/morinvibes-official/en/" class="m-link">Home</a>
+    <a href="/morinvibes-official/en/farm.html" class="m-link">Farm</a>
+    <a href="/morinvibes-official/en/quality.html" class="m-link">Quality</a>
+    <a href="/morinvibes-official/en/wellness.html" class="m-link">Wellness</a>
+    <a href="/morinvibes-official/en/shop.html" class="m-link">Shop</a>
+    <a href="/morinvibes-official/en/about.html" class="m-link">Story</a>
+    <a href="/morinvibes-official/en/testimonials.html" class="m-link">Reviews</a>
+    <a href="/morinvibes-official/en/faq.html" class="m-link">FAQ</a>
+    <a href="/morinvibes-official/en/ethics.html" class="m-link">Ethics</a>
+    <a href="/morinvibes-official/en/returns.html" class="m-link">Returns</a>
+    <a href="/morinvibes-official/en/privacy.html" class="m-link">Privacy</a>
+    <a href="/morinvibes-official/en/terms.html" class="m-link">Terms</a>
+    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="m-link m-link--hi">💬 WhatsApp</a>
+  </div>
+  <div class="m-right">
+    <div class="m-right-leaf" aria-hidden="true"></div>
+    <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="m-prod-img" />
+    <div class="m-price">RM89 <span>/ bottle</span></div>
+    <div class="m-sub">90 capsules · 500mg · 30-day supply</div>
+    <button class="btn btn--primary btn--full" id="mOrderBtn">Order Now — RM89</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ===== JOURNAL HERO ===== -->
+<section class="journal-hero">
+  <div class="container">
+    <!-- Breadcrumb -->
+    <div style="margin-bottom: 30px; font-size: 14px; color: var(--ink-muted);">
+      <a href="/morinvibes-official/en/wellness.html" style="color: var(--teal);">Wellness Journal</a> / The Science Behind Moringa's 46 Antioxidants
+    </div>
+    
+    <!-- Article Header -->
+    <div class="section-header fade-up" style="margin-bottom: 20px;">
+      <h1 style="font-size: clamp(2.5rem, 4vw, 3.5rem);">The Science Behind Moringa's 46 Antioxidants</h1>
+      <p class="lead" style="max-width: 600px; margin: 20px auto;">How quercetin, chlorogenic acid & beta-carotene work together in nature's most nutrient-dense plant.</p>
+    </div>
+    
+    <!-- Meta Information -->
+    <div class="journal-meta fade-up" data-delay="1" style="justify-content: center;">
+      <span>📅 March 15, 2026</span>
+      <span class="journal-meta-divider"></span>
+      <span>👩‍🔬 By MorinVibes Wellness Team</span>
+      <span class="journal-meta-divider"></span>
+      <span>📖 8 min read</span>
+    </div>
+    
+    <!-- Featured Image -->
+    <div class="fade-up" data-delay="2" style="margin-top: 40px;">
+      <!-- REPLACE: <img src="/morinvibes-official/images/journal/antioxidants-hero.jpg" alt="Moringa leaves and antioxidants molecular structure" style="width: 100%; max-height: 500px; object-fit: cover; border-radius: var(--r-lg);" /> -->
+      <div class="photo-ph photo-ph--land" style="border-radius: var(--r-lg); max-height: 500px;">
+        <span class="photo-ph__icon" aria-hidden="true">🌿</span>
+        <span class="photo-ph__label">Moringa Antioxidants</span>
+        <span class="photo-ph__sub">Scientific illustration · coming soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ARTICLE CONTENT ===== -->
+<section class="section">
+  <div class="container">
+    <div class="journal-content fade-up">
+      
+      <!-- Introduction -->
+      <p>When we say moringa contains 46 antioxidants, it's easy to glaze over the number. But what does that actually mean for your health? Why does quantity matter — and more importantly, why does the <em>combination</em> of these antioxidants matter even more?</p>
+      
+      <p>In this deep dive, we'll explore three of moringa's most studied antioxidants: <strong>quercetin, chlorogenic acid, and beta-carotene</strong>. You'll learn how they work individually and, more importantly, how they work together in what scientists call the "ensemble effect."</p>
+      
+      <!-- What Are Antioxidants -->
+      <h2>What Are Antioxidants, Really?</h2>
+      
+      <p>Imagine your body's cells as a kitchen. Every day, normal metabolic processes create "free radicals" — think of them as tiny sparks. A few sparks are normal and manageable. But too many sparks can start fires (oxidative stress), damaging cells and contributing to aging and disease.</p>
+      
+      <p>Antioxidants are the fire extinguishers. They neutralize free radicals before they can cause damage. The more diverse your antioxidant "fire department," the better equipped your body is to handle different types of threats.</p>
+      
+      <div class="highlight-box">
+        <h4>Key Concept: The Antioxidant Network</h4>
+        <p style="margin-bottom: 0;">Different antioxidants work in different parts of the cell and against different types of free radicals. Having a single antioxidant is like having only one type of fire extinguisher. Having 46 is like having a fully equipped fire station.</p>
+      </div>
+      
+      <!-- Quercetin -->
+      <h2>Quercetin: The Cellular Protector</h2>
+      
+      <!-- REPLACE: <img src="/morinvibes-official/images/journal/quercetin.jpg" alt="Quercetin molecular structure" style="width: 100%; border-radius: var(--r-md); margin: 30px 0;" /> -->
+      <div class="photo-ph photo-ph--land" style="border-radius: var(--r-md); margin: 30px 0;">
+        <span class="photo-ph__icon" aria-hidden="true">🧪</span>
+        <span class="photo-ph__label">Quercetin Molecule</span>
+        <span class="photo-ph__sub">Scientific illustration · coming soon</span>
+      </div>
+      
+      <p>Quercetin is a flavonoid found in many plants, but moringa contains particularly high concentrations. It's known for three primary actions:</p>
+      
+      <ul>
+        <li><strong>Anti-inflammatory:</strong> Quercetin inhibits the production of inflammatory molecules, helping to calm chronic low-grade inflammation.</li>
+        <li><strong>Antihistamine:</strong> It stabilizes mast cells, reducing allergic responses — one reason some people report fewer seasonal allergies with moringa.</li>
+        <li><strong>Mitochondrial support:</strong> Recent research suggests quercetin helps mitochondria (your cells' power plants) function more efficiently.</li>
+      </ul>
+      
+      <p>What makes moringa's quercetin special? It's not isolated — it comes packaged with other flavonoids that enhance its absorption and effectiveness. This is something you can't get from a supplement bottle of isolated quercetin.</p>
+      
+      <!-- Chlorogenic Acid -->
+      <h2>Chlorogenic Acid: The Metabolic Regulator</h2>
+      
+      <p>If you've heard of chlorogenic acid before, it's probably in the context of coffee. It's one of the main active compounds in coffee beans, linked to blood sugar regulation and weight management. But moringa contains it too — in significant amounts.</p>
+      
+      <p>Chlorogenic acid works by:</p>
+      
+      <ul>
+        <li><strong>Slowing carbohydrate absorption:</strong> It inhibits an enzyme that breaks down carbs, leading to more gradual blood sugar spikes after meals.</li>
+        <li><strong>Activating AMPK:</strong> This is often called the "metabolic master switch." When activated, it tells your body to burn fat for fuel and improve insulin sensitivity.</li>
+        <li><strong>Protecting neurons:</strong> Emerging research shows chlorogenic acid may cross the blood-brain barrier and protect brain cells from oxidative damage.</li>
+      </ul>
+      
+      <blockquote>
+        "The combination of quercetin and chlorogenic acid in moringa creates a synergistic effect that neither compound achieves alone. They work together to regulate inflammation and metabolism in ways that isolated compounds cannot."
+        <footer style="margin-top: 10px; font-size: 14px;">— Dr. Aminah Yusof, Nutritional Biochemist</footer>
+      </blockquote>
+      
+      <!-- Beta-Carotene -->
+      <h2>Beta-Carotene: The Vitamin A Precursor</h2>
+      
+      <p>Beta-carotene is probably the most familiar name on this list. It's what gives carrots and sweet potatoes their orange color. In moringa, it's present in high concentrations — one of the reasons the leaves are so nutrient-dense.</p>
+      
+      <p>Your body converts beta-carotene into vitamin A as needed. Unlike preformed vitamin A supplements, which can be toxic in high doses, your body only converts as much beta-carotene as it needs. The rest acts as a fat-soluble antioxidant, protecting cell membranes.</p>
+      
+      <p>Key functions include:</p>
+      
+      <ul>
+        <li><strong>Eye health:</strong> Vitamin A is essential for vision, particularly night vision.</li>
+        <li><strong>Immune function:</strong> Supports the mucous membranes that act as your body's first line of defense.</li>
+        <li><strong>Skin health:</strong> Protects skin cells from UV damage and supports collagen production.</li>
+      </ul>
+      
+      <!-- The Ensemble Effect -->
+      <h2>The Ensemble Effect: Why 46 > 46</h2>
+      
+      <p>Here's where it gets interesting. These 46 antioxidants don't work in isolation. They form a network — what researchers call the "ensemble effect."</p>
+      
+      <p>Think of it like an orchestra. A single violin playing alone is beautiful, but a full orchestra playing together creates something far more powerful. Each instrument supports the others, filling in gaps and creating harmonies.</p>
+      
+      <p>In moringa:</p>
+      
+      <ul>
+        <li><strong>Quercetin</strong> works in the watery parts of cells</li>
+        <li><strong>Beta-carotene</strong> works in fatty membranes</li>
+        <li><strong>Chlorogenic acid</strong> works in the bloodstream</li>
+      </ul>
+      
+      <p>Together, they provide comprehensive coverage. When one antioxidant neutralizes a free radical, it might become a free radical itself — but another antioxidant can regenerate it. This recycling effect means the whole antioxidant network is greater than the sum of its parts.</p>
+      
+      <div class="highlight-box">
+        <h4>The Problem with Isolated Antioxidant Supplements</h4>
+        <p>Many studies have shown that taking high doses of isolated antioxidants (like vitamin E or beta-carotene supplements) doesn't work as expected — and in some cases, may even be harmful. Why? Because they disrupt the natural balance of the antioxidant network.</p>
+        <p style="margin-bottom: 0;">Whole-food sources like moringa deliver antioxidants in the ratios nature intended, with all the cofactors needed for proper function.</p>
+      </div>
+      
+      <!-- Moringa vs Other Sources -->
+      <h2>How Moringa Compares to Other Antioxidant Sources</h2>
+      
+      <p>Let's put this in perspective. Here's how moringa's antioxidant profile stacks up against other well-known sources:</p>
+      
+      <ul>
+        <li><strong>Green tea:</strong> Rich in catechins, but limited range of antioxidant types.</li>
+        <li><strong>Blueberries:</strong> High in anthocyanins, but lower overall diversity.</li>
+        <li><strong>Dark chocolate:</strong> Good flavonoid content, but comes with sugar and fat.</li>
+        <li><strong>Moringa:</strong> 46 identified antioxidants spanning multiple classes — flavonoids, phenolic acids, carotenoids, vitamin C, vitamin E, and more.</li>
+      </ul>
+      
+      <p>It's not that other foods aren't valuable — they are. But moringa offers a breadth of antioxidant coverage that's rare in the plant kingdom.</p>
+      
+      <!-- Practical Takeaways -->
+      <h2>What This Means for You</h2>
+      
+      <p>Understanding the science is interesting, but how does it translate to your daily life?</p>
+      
+      <p><strong>Consistency matters.</strong> Antioxidants don't stockpile in your body indefinitely. They're used up as they neutralize free radicals. Daily intake is key to maintaining your antioxidant defense system.</p>
+      
+      <p><strong>Whole food beats isolates.</strong> The research is clear: getting antioxidants from whole foods is more effective than from supplements. Moringa isn't a "natural supplement" — it's a whole food, just in a convenient capsule form.</p>
+      
+      <p><strong>Diversity is protective.</strong> Having 46 different antioxidants means your body is prepared for many types of oxidative stress. It's like having a well-stocked first aid kit versus just a bandage.</p>
+      
+      <!-- Conclusion -->
+      <h2>The Bottom Line</h2>
+      
+      <p>Moringa's 46 antioxidants aren't just a marketing number. They represent a sophisticated, evolved defense system that protects the moringa plant in harsh conditions — and can protect you too, when you make it part of your daily routine.</p>
+      
+      <p>The combination of quercetin, chlorogenic acid, beta-carotene, and 43 other compounds creates a synergistic effect that no isolated supplement can replicate. It's a reminder that nature's intelligence often exceeds our ability to manufacture imitations.</p>
+      
+      <div style="background: var(--teal); color: white; padding: 40px; border-radius: var(--r-lg); text-align: center; margin: 60px 0;">
+        <h3 style="color: white; margin-bottom: 20px;">Ready to Experience the Benefits Yourself?</h3>
+        <p style="color: rgba(255,255,255,0.9); margin-bottom: 30px;">Our farm-direct moringa capsules deliver all 46 antioxidants in their natural form — nothing added, nothing removed.</p>
+        <button class="btn btn--outline" id="journalCtaBtn" style="border-color: white; color: white; background: transparent; font-size: 1.1rem; padding: 15px 40px;">Order Farm-Direct Moringa →</button>
+      </div>
+      
+      <!-- References -->
+      <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); font-size: 14px; color: var(--ink-muted);">
+        <p><strong>References:</strong></p>
+        <ul style="font-size: 13px;">
+          <li>Vergara-Jimenez, M., et al. (2017). Bioactive Components in Moringa Oleifera Leaves Protect against Chronic Disease. Antioxidants, 6(4), 91.</li>
+          <li>Leone, A., et al. (2015). Cultivation, Genetic, Ethnopharmacology, Phytochemistry and Pharmacology of Moringa oleifera Leaves. International Journal of Molecular Sciences, 16(6), 12791-12835.</li>
+          <li>Sreelatha, S., & Padma, P. R. (2009). Antioxidant activity and total phenolic content of Moringa oleifera leaves in two stages of maturity. Plant Foods for Human Nutrition, 64(4), 303-311.</li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELATED POSTS ===== -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="related-posts">
+      <h3>You Might Also Like</h3>
+      
+      <div class="related-grid">
+        <!-- Post 2 -->
+        <div class="related-card fade-up">
+          <!-- REPLACE: <img src="/morinvibes-official/images/journal/recipes-thumb.jpg" alt="Moringa recipes" /> -->
+          <div class="photo-ph" style="aspect-ratio: 16/9; border-radius: var(--r-lg) var(--r-lg) 0 0;">
+            <span class="photo-ph__icon">🍵</span>
+          </div>
+          <div class="related-card-content">
+            <h4>5 Easy Ways to Add Moringa to Your Diet</h4>
+            <p>Smoothies, soups, and simple morning routines — moringa is more versatile than you think.</p>
+            <a href="/morinvibes-official/en/wellness/journal/recipes.html" class="btn btn--ghost">Read More →</a>
+          </div>
+        </div>
+        
+        <!-- Post 3 -->
+        <div class="related-card fade-up" data-delay="1">
+          <!-- REPLACE: <img src="/morinvibes-official/images/journal/stories-thumb.jpg" alt="Community stories" /> -->
+          <div class="photo-ph" style="aspect-ratio: 16/9; border-radius: var(--r-lg) var(--r-lg) 0 0;">
+            <span class="photo-ph__icon">👥</span>
+          </div>
+          <div class="related-card-content">
+            <h4>How Moringa Changed My Energy: 5 Real Stories</h4>
+            <p>Community members share their experiences with daily moringa use.</p>
+            <a href="/morinvibes-official/en/wellness/journal/stories.html" class="btn btn--ghost">Read More →</a>
+          </div>
+        </div>
+        
+        <!-- Post 4 (placeholder) -->
+        <div class="related-card fade-up" data-delay="2">
+          <!-- REPLACE: <img src="/morinvibes-official/images/journal/freshness-thumb.jpg" alt="Moringa freshness guide" /> -->
+          <div class="photo-ph" style="aspect-ratio: 16/9; border-radius: var(--r-lg) var(--r-lg) 0 0;">
+            <span class="photo-ph__icon">🍃</span>
+          </div>
+          <div class="related-card-content">
+            <h4>The Freshness Test: Why Colour Matters</h4>
+            <p>How to tell if your moringa is truly fresh — and why it matters for potency.</p>
+            <a href="/morinvibes-official/en/wellness/journal/freshness.html" class="btn btn--ghost">Read More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BACK TO JOURNAL ===== -->
+<section class="section section--sm">
+  <div class="container">
+    <div style="text-align: center;">
+      <a href="/morinvibes-official/en/wellness.html" class="btn btn--outline">← Back to Wellness Journal</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER (NO NEWSLETTER) ===== -->
+<footer class="footer" aria-label="Site footer">
+  <div class="footer__main">
+    <div class="container">
+      <div class="ft-grid">
+        <!-- Brand column -->
+        <div>
+          <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="ft-logo" width="160" height="38" />
+          <p class="ft-tag">Farm-direct moringa from our own land<br />in Penang, Malaysia · Since 2019</p>
+          <div class="ft-social" aria-label="Follow us">
+            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Instagram">📷</a>
+            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="TikTok">▶</a>
+            <a href="https://www.threads.com/@moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Threads">@</a>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="ft-soc-a" aria-label="WhatsApp">💬</a>
+          </div>
+          <div class="ft-cert">✓ KKM Approved · GMP Certified</div>
+        </div>
+
+        <!-- Explore = page navigation ONLY -->
+        <div>
+          <p class="ft-col-h">Explore</p>
+          <ul class="ft-links">
+            <li><a href="/morinvibes-official/en/farm.html">Farm</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
+            <li><a href="/morinvibes-official/en/wellness.html">Wellness</a></li>
+            <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
+            <li><a href="/morinvibes-official/en/about.html">Story</a></li>
+            <li><a href="/morinvibes-official/en/testimonials.html">Reviews</a></li>
+            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+            <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
+            <li><a href="/morinvibes-official/en/returns.html">Returns</a></li>
+            <li><a href="/morinvibes-official/en/privacy.html">Privacy</a></li>
+            <li><a href="/morinvibes-official/en/terms.html">Terms</a></li>
+          </ul>
+        </div>
+
+        <!-- Trust = legal / policy ONLY -->
+        <div>
+          <p class="ft-col-h">Trust</p>
+          <ul class="ft-links">
+            <li><a href="/morinvibes-official/en/ethics.html">Our Ethics</a></li>
+            <li><a href="/morinvibes-official/en/returns.html">Returns Policy</a></li>
+            <li><a href="/morinvibes-official/en/privacy.html">Privacy Policy</a></li>
+            <li><a href="/morinvibes-official/en/terms.html">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <p class="ft-col-h">Contact &amp; Order</p>
+          <ul class="ft-links">
+            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
+            <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener">Shopee Store</a></li>
+            <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener">Lazada Store</a></li>
+          </ul>
+          <p class="ft-addr">Bayan Lepas, Penang<br />Malaysia</p>
+        </div>
+      </div>
+
+      <!-- Copyright bar — ONE LINE, zero links -->
+      <div class="ft-bottom">
+        © 2026 MorinVibes®. All rights reserved. · Grown &amp; produced in Penang, Malaysia.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top button -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+<!-- Community Popup -->
+<div class="community-popup" id="communityPopup" role="dialog" aria-label="Stay connected">
+  <div class="pop-head">
+    <h4>Stay in the loop 🌿</h4>
+    <p>Updates, tips &amp; exclusive offers</p>
+    <button class="pop-close" id="popClose" aria-label="Close">✕</button>
+  </div>
+  <div class="pop-body">
+    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="pop-link" id="popWa">
+      <span class="pop-link__ico" aria-hidden="true">💬</span>
+      <div><div class="pop-link__lbl">Chat on WhatsApp</div><div class="pop-link__sub">Direct line to our team</div></div>
+    </a>
+    <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="pop-link">
+      <span class="pop-link__ico" aria-hidden="true">📷</span>
+      <div><div class="pop-link__lbl">Instagram</div><div class="pop-link__sub">@moringa_morinvibes</div></div>
+    </a>
+    <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="pop-link">
+      <span class="pop-link__ico" aria-hidden="true">▶</span>
+      <div><div class="pop-link__lbl">TikTok</div><div class="pop-link__sub">@moringa_morinvibes</div></div>
+    </a>
+    <div class="pop-dismiss" id="popDismiss" role="button" tabindex="0">No thanks, I'll browse</div>
+  </div>
+</div>
+
+<!-- Domain Guard (commented until morinvibes.com is live) -->
+<script>
+/*
+(function(){
+  var h=window.location.hostname;
+  if(h!=='morinvibes.com'&&h!=='localhost'&&h!=='127.0.0.1'){
+    var p=window.location.pathname.replace('/morinvibes-official','')||'/';
+    window.location.replace('https://morinvibes.com'+p+window.location.search);
+  }
+})();
+*/
+</script>
+
+<!-- JS - EXTERNAL ONLY -->
+<script src="/morinvibes-official/assets/js/pixel.js"></script>
+<script src="/morinvibes-official/assets/js/animations.js"></script>
+<script src="/morinvibes-official/assets/js/main.js"></script>
+
+<!-- Journal page specific script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Bind journal CTA button to checkout
+    const journalCtaBtn = document.getElementById('journalCtaBtn');
+    
+    if (journalCtaBtn && typeof openCheckout === 'function') {
+      journalCtaBtn.addEventListener('click', openCheckout);
+    }
+    
+    // Track ViewContent for journal article
+    if (typeof window.fbTrack === 'function') {
+      window.fbTrack('ViewContent', {
+        content_name: 'Journal: Antioxidants Article',
+        content_category: 'Wellness Journal',
+        value: 89,
+        currency: 'MYR'
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
