@@ -2,360 +2,513 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>Privacy Policy — MorinVibes®</title>
-  <meta name="description" content="Privacy policy for MorinVibes®. Learn how we collect, use, and protect your personal information." />
-  <meta name="robots" content="noindex, follow" />
-  <link rel="icon" type="image/svg+xml" href="/morinvibes-official/images/favicon.svg" />
+  <meta name="description" content="MorinVibes® privacy policy. Learn how we collect, use, and protect your personal information." />
+  <link rel="canonical" href="https://morinvibes.com/en/privacy.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Privacy Policy — MorinVibes®" />
+  <meta property="og:description" content="Your privacy matters to us. Read our policy on data collection and protection." />
+  <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/images/privacy-hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/morinvibes-official/favicon.svg" type="image/svg+xml" />
+  
+  <!-- CSS - EXTERNAL ONLY -->
   <link rel="stylesheet" href="/morinvibes-official/assets/css/global.css" />
-  <style>
-    /* Legal pages specific styles */
-    .legal-hero {
-      background: linear-gradient(135deg, var(--paper), white);
-      padding: var(--sp-48) 0;
-      text-align: center;
-    }
-    
-    .legal-content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: var(--sp-48) 0;
-    }
-    
-    .legal-content h2 {
-      margin: 40px 0 16px;
-      color: var(--ink);
-    }
-    
-    .legal-content h3 {
-      margin: 32px 0 12px;
-      color: var(--ink);
-    }
-    
-    .legal-content p {
-      color: var(--ink-soft);
-      margin-bottom: 16px;
-      line-height: 1.7;
-    }
-    
-    .legal-content ul {
-      list-style: disc;
-      margin-left: 24px;
-      margin-bottom: 24px;
-    }
-    
-    .legal-content li {
-      color: var(--ink-soft);
-      margin-bottom: 8px;
-      line-height: 1.6;
-    }
-    
-    .legal-content strong {
-      color: var(--ink);
-    }
-    
-    .legal-date {
-      margin-top: 48px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      color: var(--ink-muted);
-      font-size: 0.9rem;
-      text-align: right;
-    }
-    
-    .back-link {
-      display: inline-block;
-      margin-top: 32px;
-      color: var(--teal);
-      text-decoration: none;
-    }
-    
-    .back-link:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/components.css" />
+  <link rel="stylesheet" href="/morinvibes-official/assets/css/style.css" />
+  
+  <!-- Meta Pixel - MINIMAL (initialization only) -->
+  <script>
+  var PIXEL_ID = 'YOUR_PIXEL_ID'; /* REPLACE BEFORE GOING LIVE */
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  if(PIXEL_ID!=='YOUR_PIXEL_ID'){fbq('init',PIXEL_ID);fbq('track','PageView');}
+  </script>
 </head>
 <body>
-  <!-- Navigation - Consistent across all pages -->
-  <nav class="nav">
-    <div class="nav__container">
-      <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      
-      <a href="/morinvibes-official/en/" class="nav__logo">
-        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
-      </a>
-      
-      <div class="nav__right">
-        <div class="lang-dropdown">
-          <button class="lang-btn">EN <span>▼</span></button>
-          <div class="lang-options">
-            <a href="/morinvibes-official/en/privacy.html" class="lang-option active">English</a>
-            <a href="/morinvibes-official/bm/privacy.html" class="lang-option">Bahasa Malaysia</a>
-            <a href="/morinvibes-official/zh/privacy.html" class="lang-option">中文</a>
-          </div>
-        </div>
-        <a href="/morinvibes-official/en/checkout.html" class="btn btn--small">Buy Now — RM89</a>
-      </div>
-    </div>
-  </nav>
 
-  <!-- Mobile Menu -->
-  <div class="nav__mobile" id="mobile-menu">
-    <div class="nav__mobile-left">
-      <div class="nav__mobile-logo">
-        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
+<!-- Scroll progress bar -->
+<div class="scroll-progress" id="progressBar"></div>
+
+<!-- CHECKOUT MODAL -->
+<div class="co-overlay" id="coOverlay" role="dialog" aria-modal="true" aria-label="Secure checkout">
+  <div class="co-modal">
+    <div class="co-head">
+      <div class="co-head-brand">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" height="30" />
+        <div class="co-head-info">
+          <strong>Moringa Capsules · 90 caps · 500mg</strong><br />RM89 + shipping
+        </div>
       </div>
-      <button class="nav__mobile-close" aria-label="Close menu">✕</button>
-      
-      <div class="nav__mobile-lang">
-        <a href="/morinvibes-official/en/">EN</a>
-        <a href="/morinvibes-official/bm/">BM</a>
-        <a href="/morinvibes-official/zh/">中文</a>
-      </div>
-      
-      <a href="/morinvibes-official/en/" class="nav__mobile-link">Home</a>
-      <a href="/morinvibes-official/en/farm.html" class="nav__mobile-link">The Farm</a>
-      <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link">Quality</a>
-      <a href="/morinvibes-official/en/benefits.html" class="nav__mobile-link">Benefits</a>
-      <a href="/morinvibes-official/en/shop.html" class="nav__mobile-link">Shop</a>
-      <a href="/morinvibes-official/en/story.html" class="nav__mobile-link">Our Story</a>
-      <a href="/morinvibes-official/en/authentic.html" class="nav__mobile-link">Authenticity</a>
-      <a href="/morinvibes-official/en/ethics.html" class="nav__mobile-link">Ethics</a>
-      <a href="/morinvibes-official/en/faq.html" class="nav__mobile-link">FAQ</a>
-      <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="nav__mobile-link" style="color: var(--teal);">WhatsApp</a>
+      <button class="co-close" id="coClose" aria-label="Close checkout">✕</button>
     </div>
-    
-    <div class="nav__mobile-right">
-      <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="nav__mobile-right-img" />
-      <div class="nav__mobile-right-price">RM89 <span>/ bottle</span></div>
-      <div class="nav__mobile-right-sub">90 capsules · 500mg pure moringa</div>
-      <a href="/morinvibes-official/en/checkout.html" class="btn">Buy Now — RM89</a>
+    <div class="co-trust">
+      <span>✓ KKM Approved</span>
+      <span>✓ GMP Certified</span>
+      <span>🔒 Secure Payment</span>
+      <span>🚚 Ships from Penang</span>
+    </div>
+    <div class="co-body">
+      <div class="co-spinner" id="coSpinner">
+        <div class="co-spinner__ring"></div>
+        <div class="co-spinner__text">Loading secure checkout…</div>
+      </div>
+      <iframe
+        id="coIframe"
+        class="co-iframe"
+        src=""
+        data-src="https://morinvibes.orderla.my/moringa-order"
+        title="Secure checkout"
+        sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
+      ></iframe>
+    </div>
+    <div class="co-foot">
+      Same product as our Shopee &amp; Lazada store. Need help?
+      <a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp us</a>
     </div>
   </div>
+</div>
 
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-progress" id="progressBar"></div>
-
-  <main>
-    <!-- Privacy Hero -->
-    <section class="legal-hero">
-      <div class="container">
-        <span class="eyebrow">LEGAL</span>
-        <h1>Privacy Policy</h1>
-        <p class="lead" style="max-width: 600px; margin: 0 auto;">
-          How we collect, use, and protect your personal information
-        </p>
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
+  <div class="nav__wrap">
+    <button class="nav__ham" id="navHam" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="/morinvibes-official/en/" class="nav__logo" aria-label="MorinVibes® — Home">
+      <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" width="180" height="46" />
+    </a>
+    <div class="nav__right">
+      <div class="lang-drop" id="langDrop">
+        <button class="lang-btn" id="langBtn" aria-expanded="false" aria-label="Language">
+          EN <span class="lang-btn__chev">▾</span>
+        </button>
+        <div class="lang-opts" role="menu">
+          <a href="/morinvibes-official/en/" class="lang-opt active" role="menuitem">🇬🇧 English</a>
+          <a href="/morinvibes-official/bm/" class="lang-opt" role="menuitem">🇲🇾 Bahasa Malaysia</a>
+          <a href="/morinvibes-official/zh/" class="lang-opt" role="menuitem">🇨🇳 中文</a>
+        </div>
       </div>
-    </section>
-
-    <!-- Trust Bar -->
-    <div class="trust-bar">
-      <div class="trust-bar__track">
-        <span>SINCE 2019</span><span class="dot">•</span>
-        <span>FARM DIRECT</span><span class="dot">•</span>
-        <span>GMP CERTIFIED</span><span class="dot">•</span>
-        <span>KKM APPROVED</span><span class="dot">•</span>
-        <span>VEGAN</span><span class="dot">•</span>
-        <span>MALAYSIA</span><span class="dot">•</span>
-        <span>90 CAPSULES</span><span class="dot">•</span>
-        <span>500MG EACH</span><span class="dot">•</span>
-        <!-- Duplicate for seamless loop -->
-        <span>SINCE 2019</span><span class="dot">•</span>
-        <span>FARM DIRECT</span><span class="dot">•</span>
-        <span>GMP CERTIFIED</span><span class="dot">•</span>
-        <span>KKM APPROVED</span><span class="dot">•</span>
-        <span>VEGAN</span><span class="dot">•</span>
-        <span>MALAYSIA</span><span class="dot">•</span>
-        <span>90 CAPSULES</span><span class="dot">•</span>
-        <span>500MG EACH</span><span class="dot">•</span>
-      </div>
+      <button class="btn btn--primary btn--sm" id="navOrderBtn">Order — RM89</button>
     </div>
+  </div>
+</nav>
 
-    <!-- Privacy Content -->
-    <div class="container">
-      <div class="legal-content">
-        <h2>Introduction</h2>
-        <p>At MorinVibes®, I take your privacy seriously. This policy explains how I collect, use, and protect your personal information when you visit my website or make a purchase.</p>
-        <p>I am Jess, the founder and sole operator of MorinVibes. When you share your information with me, you're sharing it with a real person who cares about your trust.</p>
-        
-        <h2>Information I Collect</h2>
-        <h3>Personal Information</h3>
-        <p>When you make a purchase or contact me, I may collect:</p>
-        <ul>
-          <li>Name</li>
-          <li>Email address</li>
-          <li>Phone number (for WhatsApp delivery updates)</li>
-          <li>Shipping address</li>
-          <li>Payment information (processed securely through Orderla.my — I never see your full payment details)</li>
-        </ul>
-        
-        <h3>Automatically Collected Information</h3>
-        <p>When you visit my website, I may automatically collect:</p>
-        <ul>
-          <li>IP address</li>
-          <li>Browser type and version</li>
-          <li>Pages you visit</li>
-          <li>Time and date of your visit</li>
-          <li>Referring website</li>
-        </ul>
-        <p>This information helps me understand how visitors use my site and improve your experience.</p>
-        
-        <h2>How I Use Your Information</h2>
-        <p>I use your information to:</p>
-        <ul>
-          <li>Process and fulfill your orders</li>
-          <li>Send you order updates via WhatsApp or email</li>
-          <li>Respond to your questions and messages</li>
-          <li>Improve my website and products</li>
-          <li>Comply with legal obligations</li>
-        </ul>
-        <p>I do not sell, rent, or trade your personal information to third parties.</p>
-        
-        <h2>Meta Pixel & Tracking</h2>
-        <p>My website uses Meta Pixel to understand how visitors interact with my site and to measure the effectiveness of my advertising. This helps me show relevant ads to people who may be interested in MorinVibes.</p>
-        <p>The Meta Pixel collects information about:</p>
-        <ul>
-          <li>Pages you visit on my site</li>
-          <li>Actions you take (like adding to cart or purchasing)</li>
-          <li>Device information</li>
-        </ul>
-        <p>You can learn more about how Meta uses data in the <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener" style="color: var(--teal);">Facebook Privacy Policy</a>.</p>
-        
-        <h2>Cookies</h2>
-        <p>My website uses cookies to:</p>
-        <ul>
-          <li>Remember your language preference</li>
-          <li>Understand how you use my site</li>
-          <li>Improve your browsing experience</li>
-        </ul>
-        <p>You can disable cookies in your browser settings, but this may affect how my website functions.</p>
-        
-        <h2>Third-Party Services</h2>
-        <p>I use the following third-party services to run my website:</p>
-        <ul>
-          <li><strong>GitHub Pages</strong> — hosts my website</li>
-          <li><strong>Orderla.my</strong> — processes payments (they have their own privacy policy)</li>
-          <li><strong>Meta Pixel</strong> — tracks website usage for advertising</li>
-          <li><strong>WhatsApp</strong> — for customer communication</li>
-        </ul>
-        <p>Each of these services has its own privacy policy. I recommend reviewing them if you have concerns.</p>
-        
-        <h2>Data Security</h2>
-        <p>I take reasonable measures to protect your information:</p>
-        <ul>
-          <li>My website uses HTTPS encryption</li>
-          <li>I never store your full payment details</li>
-          <li>I limit access to personal information</li>
-          <li>I regularly update my security practices</li>
-        </ul>
-        <p>However, no method of transmission over the internet is 100% secure. I cannot guarantee absolute security.</p>
-        
-        <h2>Your Rights</h2>
-        <p>You have the right to:</p>
-        <ul>
-          <li>Access the personal information I hold about you</li>
-          <li>Request correction of inaccurate information</li>
-          <li>Request deletion of your information</li>
-          <li>Opt out of marketing communications</li>
-          <li>Withdraw consent at any time</li>
-        </ul>
-        <p>To exercise these rights, please contact me directly via WhatsApp or email.</p>
-        
-        <h2>Data Retention</h2>
-        <p>I retain your information for as long as necessary to fulfill orders and comply with legal obligations. Order information is typically kept for 7 years for tax and accounting purposes.</p>
-        
-        <h2>Children's Privacy</h2>
-        <p>My website is not intended for children under 18. I do not knowingly collect information from children.</p>
-        
-        <h2>Changes to This Policy</h2>
-        <p>I may update this privacy policy from time to time. Any changes will be posted on this page with an updated effective date.</p>
-        
-        <h2>Contact Me</h2>
-        <p>If you have questions about this privacy policy or your personal information, please contact me:</p>
-        <ul>
-          <li><strong>WhatsApp:</strong> <a href="https://wa.me/60102766095" target="_blank" rel="noopener" style="color: var(--teal);">+60 10-276 6095</a></li>
-          <li><strong>Email:</strong> <a href="mailto:morinvibes2019@gmail.com" style="color: var(--teal);">morinvibes2019@gmail.com</a></li>
-        </ul>
-        
-        <div class="legal-date">
-          <p>Effective Date: March 2026</p>
-        </div>
-        
-        <a href="/morinvibes-official/en/" class="back-link">← Return to Home</a>
-      </div>
+<!-- MOBILE MENU -->
+<div class="m-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="m-left">
+    <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="m-logo-img" height="38" />
+    <button class="m-close" id="mClose" aria-label="Close menu">✕</button>
+    <div class="m-lang">
+      <a href="/morinvibes-official/en/">EN</a>
+      <a href="/morinvibes-official/bm/">BM</a>
+      <a href="/morinvibes-official/zh/">中文</a>
     </div>
-  </main>
+    <a href="/morinvibes-official/en/" class="m-link">Home</a>
+    <a href="/morinvibes-official/en/farm.html" class="m-link">Farm</a>
+    <a href="/morinvibes-official/en/quality.html" class="m-link">Quality</a>
+    <a href="/morinvibes-official/en/wellness.html" class="m-link">Wellness</a>
+    <a href="/morinvibes-official/en/shop.html" class="m-link">Shop</a>
+    <a href="/morinvibes-official/en/about.html" class="m-link">Story</a>
+    <a href="/morinvibes-official/en/testimonials.html" class="m-link">Reviews</a>
+    <a href="/morinvibes-official/en/faq.html" class="m-link">FAQ</a>
+    <a href="/morinvibes-official/en/ethics.html" class="m-link">Ethics</a>
+    <a href="/morinvibes-official/en/returns.html" class="m-link">Returns</a>
+    <a href="/morinvibes-official/en/privacy.html" class="m-link active">Privacy</a>
+    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="m-link m-link--hi">💬 WhatsApp</a>
+  </div>
+  <div class="m-right">
+    <div class="m-right-leaf" aria-hidden="true"></div>
+    <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="m-prod-img" />
+    <div class="m-price">RM89 <span>/ bottle</span></div>
+    <div class="m-sub">90 capsules · 500mg · 30-day supply</div>
+    <button class="btn btn--primary btn--full" id="mOrderBtn">Order Now — RM89</button>
+  </div>
+</div>
 
-  <!-- Footer - Consistent across all pages -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <div class="footer__logo">
-            <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
-          </div>
-          <p class="footer__tagline">Farm-direct moringa from my land in Penang · Since 2019</p>
-          <div class="footer__social">
-            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener">f</a>
-            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener">📷</a>
-            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener">🎵</a>
-            <a href="https://wa.me/60102766095" target="_blank" rel="noopener">📱</a>
-          </div>
-        </div>
-        
-        <div>
-          <h4 class="footer__title">Navigate</h4>
-          <ul class="footer__links">
-            <li><a href="/morinvibes-official/en/farm.html">The Farm</a></li>
-            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
-            <li><a href="/morinvibes-official/en/benefits.html">Benefits</a></li>
-            <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
-            <li><a href="/morinvibes-official/en/story.html">Our Story</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="footer__title">Trust</h4>
-          <ul class="footer__links">
-            <li><a href="/morinvibes-official/en/authentic.html">Authenticity</a></li>
-            <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
-            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
-          </ul>
-          <div class="footer__badge">KKM Approved</div>
-        </div>
-        
-        <div>
-          <h4 class="footer__title">Contact</h4>
-          <ul class="footer__links">
-            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
-            <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
-          </ul>
-          <p style="color: rgba(255,255,255,0.3); font-size: 0.85rem; margin-top: 20px;">
-            Bayan Lepas, Penang<br />Malaysia
-          </p>
-        </div>
+<main>
+
+<!-- ===== PRIVACY HERO SECTION ===== -->
+<section class="section" aria-labelledby="privacy-hero-h" style="padding-top: calc(72px + 60px);">
+  <!-- V-mark watermark -->
+  <div class="v-watermark v-watermark--hero" aria-hidden="true"></div>
+  
+  <!-- Leaf decoration -->
+  <div class="leaf-deco leaf-deco--hero-tr" aria-hidden="true"></div>
+  
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="eyebrow">YOUR PRIVACY MATTERS</span>
+      <h1 id="privacy-hero-h" style="margin-bottom: 20px;">Privacy Policy.</h1>
+      <p class="lead" style="max-width: 700px; margin: 0 auto;">We're committed to protecting your personal information and being transparent about what we collect and why.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LAST UPDATED ===== -->
+<section class="section section--sm">
+  <div class="container">
+    <div style="text-align: center; color: var(--ink-muted);">
+      <p>Last Updated: March 1, 2026</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRIVACY POLICY CONTENT ===== -->
+<section class="section section--alt">
+  <div class="container">
+    <div style="max-width: 800px; margin: 0 auto; background: white; border-radius: var(--r-lg); padding: 60px; box-shadow: var(--sh-sm);">
+      
+      <!-- 1. Introduction -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">1. Introduction</h2>
+        <p style="margin-bottom: 15px;">MorinVibes® ("we," "our," or "us") respects your privacy and is committed to protecting your personal data. This privacy policy explains how we collect, use, disclose, and safeguard your information when you visit our website or make a purchase.</p>
+        <p>Please read this policy carefully. By using our website, you consent to the practices described in this policy.</p>
       </div>
       
-      <div class="footer__bottom">
-        <div>© 2026 MorinVibes®. All rights reserved.</div>
-        <div>
-          <a href="/morinvibes-official/en/privacy.html">Privacy</a>
-          <a href="/morinvibes-official/en/terms.html">Terms</a>
+      <!-- 2. Information We Collect -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">2. Information We Collect</h2>
+        
+        <h3 style="margin-bottom: 10px; font-size: 1.2rem;">Personal Information</h3>
+        <p style="margin-bottom: 15px;">When you place an order or interact with our website, we may collect:</p>
+        <ul style="margin-bottom: 20px; padding-left: 20px; color: var(--ink-soft);">
+          <li style="margin-bottom: 8px;">• Name and contact information (email, phone number, shipping address)</li>
+          <li style="margin-bottom: 8px;">• Payment information (processed securely through Orderla — we do not store credit card details)</li>
+          <li style="margin-bottom: 8px;">• Order history and preferences</li>
+          <li style="margin-bottom: 8px;">• Communications with us (emails, WhatsApp messages)</li>
+        </ul>
+        
+        <h3 style="margin-bottom: 10px; font-size: 1.2rem;">Automatically Collected Information</h3>
+        <ul style="margin-bottom: 20px; padding-left: 20px; color: var(--ink-soft);">
+          <li style="margin-bottom: 8px;">• IP address and browser type</li>
+          <li style="margin-bottom: 8px;">• Device information (operating system, screen size)</li>
+          <li style="margin-bottom: 8px;">• Browsing behavior (pages visited, time on site)</li>
+          <li style="margin-bottom: 8px;">• Referral source (how you found our site)</li>
+        </ul>
+        
+        <h3 style="margin-bottom: 10px; font-size: 1.2rem;">Cookies and Similar Technologies</h3>
+        <p>We use cookies and similar tracking technologies to improve your browsing experience, analyze site traffic, and understand where our visitors come from. You can control cookies through your browser settings.</p>
+      </div>
+      
+      <!-- 3. How We Use Your Information -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">3. How We Use Your Information</h2>
+        <p style="margin-bottom: 15px;">We use the information we collect to:</p>
+        <ul style="margin-bottom: 20px; padding-left: 20px; color: var(--ink-soft);">
+          <li style="margin-bottom: 8px;">• Process and fulfill your orders</li>
+          <li style="margin-bottom: 8px;">• Communicate with you about your order (shipping updates, questions)</li>
+          <li style="margin-bottom: 8px;">• Send you marketing communications (only if you opt in)</li>
+          <li style="margin-bottom: 8px;">• Improve our website and customer experience</li>
+          <li style="margin-bottom: 8px;">• Comply with legal obligations</li>
+          <li style="margin-bottom: 8px;">• Prevent fraudulent transactions</li>
+        </ul>
+        <p><strong>Note:</strong> We will never sell your personal information to third parties.</p>
+      </div>
+      
+      <!-- 4. Legal Basis for Processing -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">4. Legal Basis for Processing</h2>
+        <p style="margin-bottom: 15px;">Under applicable data protection laws, our legal basis for collecting and using your personal information includes:</p>
+        <ul style="margin-bottom: 20px; padding-left: 20px; color: var(--ink-soft);">
+          <li style="margin-bottom: 8px;">• <strong>Contract performance:</strong> To fulfill your orders</li>
+          <li style="margin-bottom: 8px;">• <strong>Legitimate interests:</strong> To improve our services and prevent fraud</li>
+          <li style="margin-bottom: 8px;">• <strong>Consent:</strong> For marketing communications (you can withdraw anytime)</li>
+          <li style="margin-bottom: 8px;">• <strong>Legal compliance:</strong> To meet regulatory requirements</li>
+        </ul>
+      </div>
+      
+      <!-- 5. Data Sharing and Disclosure -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">5. Data Sharing and Disclosure</h2>
+        <p style="margin-bottom: 15px;">We may share your information with:</p>
+        <ul style="margin-bottom: 20px; padding-left: 20px; color: var(--ink-soft);">
+          <li style="margin-bottom: 8px;">• <strong>Orderla:</strong> Our payment processor (they handle transactions, we don't see your payment details)</li>
+          <li style="margin-bottom: 8px;">• <strong>Shipping carriers:</strong> To deliver your orders (Pos Malaysia, etc.)</li>
+          <li style="margin-bottom: 8px;">• <strong>Service providers:</strong> Website hosting, email communications</li>
+          <li style="margin-bottom: 8px;">• <strong>Legal authorities:</strong> When required by law</li>
+        </ul>
+        <p>All third-party service providers are contractually obligated to protect your data and use it only for the services they provide to us.</p>
+      </div>
+      
+      <!-- 6. Data Security -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">6. Data Security</h2>
+        <p style="margin-bottom: 15px;">We implement appropriate technical and organizational measures to protect your personal information, including:</p>
+        <ul style="margin-bottom: 20px; padding-left: 20px; color: var(--ink-soft);">
+          <li style="margin-bottom: 8px;">• SSL encryption on our website</li>
+          <li style="margin-bottom: 8px;">• Secure payment processing through Orderla</li>
+          <li style="margin-bottom: 8px;">• Limited access to personal data within our organization</li>
+          <li style="margin-bottom: 8px;">• Regular security assessments</li>
+        </ul>
+        <p>While we strive to protect your data, no method of transmission over the Internet is 100% secure. We cannot guarantee absolute security.</p>
+      </div>
+      
+      <!-- 7. Data Retention -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">7. Data Retention</h2>
+        <p style="margin-bottom: 15px;">We retain your personal information only as long as necessary to fulfill the purposes for which it was collected, including:</p>
+        <ul style="margin-bottom: 20px; padding-left: 20px; color: var(--ink-soft);">
+          <li style="margin-bottom: 8px;">• Order information: Retained for 7 years for tax and legal compliance</li>
+          <li style="margin-bottom: 8px;">• Marketing preferences: Until you unsubscribe</li>
+          <li style="margin-bottom: 8px;">• Website analytics: Aggregated and anonymized after 26 months</li>
+        </ul>
+      </div>
+      
+      <!-- 8. Your Rights -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">8. Your Rights</h2>
+        <p style="margin-bottom: 15px;">Depending on your location, you may have the following rights regarding your personal data:</p>
+        <ul style="margin-bottom: 20px; padding-left: 20px; color: var(--ink-soft);">
+          <li style="margin-bottom: 8px;">• <strong>Access:</strong> Request a copy of the information we hold about you</li>
+          <li style="margin-bottom: 8px;">• <strong>Correction:</strong> Update inaccurate or incomplete information</li>
+          <li style="margin-bottom: 8px;">• <strong>Deletion:</strong> Request deletion of your data (subject to legal obligations)</li>
+          <li style="margin-bottom: 8px;">• <strong>Restriction:</strong> Limit how we use your data</li>
+          <li style="margin-bottom: 8px;">• <strong>Portability:</strong> Receive your data in a machine-readable format</li>
+          <li style="margin-bottom: 8px;">• <strong>Objection:</strong> Object to certain processing (e.g., marketing)</li>
+          <li style="margin-bottom: 8px;">• <strong>Withdraw consent:</strong> Anytime for consent-based processing</li>
+        </ul>
+        <p>To exercise any of these rights, please contact us using the information below.</p>
+      </div>
+      
+      <!-- 9. Cookies Policy -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">9. Cookies Policy</h2>
+        <p style="margin-bottom: 15px;">Our website uses cookies to enhance your experience. Cookies are small text files stored on your device. We use:</p>
+        <ul style="margin-bottom: 20px; padding-left: 20px; color: var(--ink-soft);">
+          <li style="margin-bottom: 8px;">• <strong>Essential cookies:</strong> Required for website functionality (cart, checkout)</li>
+          <li style="margin-bottom: 8px;">• <strong>Analytics cookies:</strong> To understand how visitors use our site</li>
+          <li style="margin-bottom: 8px;">• <strong>Marketing cookies:</strong> Meta Pixel for retargeting (only if you consent)</li>
+        </ul>
+        <p>You can manage cookie preferences through your browser settings. Disabling cookies may affect site functionality.</p>
+      </div>
+      
+      <!-- 10. Third-Party Links -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">10. Third-Party Links</h2>
+        <p>Our website may contain links to third-party websites (Shopee, Lazada, etc.). This privacy policy does not apply to those sites. We encourage you to read their privacy policies.</p>
+      </div>
+      
+      <!-- 11. Children's Privacy -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">11. Children's Privacy</h2>
+        <p>Our website is not intended for children under 18. We do not knowingly collect information from children. If you believe a child has provided us with personal information, please contact us.</p>
+      </div>
+      
+      <!-- 12. International Data Transfers -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">12. International Data Transfers</h2>
+        <p>We are based in Malaysia. If you access our website from outside Malaysia, your information may be transferred to and processed in Malaysia. By using our site, you consent to this transfer.</p>
+      </div>
+      
+      <!-- 13. Changes to This Policy -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">13. Changes to This Policy</h2>
+        <p>We may update this privacy policy from time to time. We will notify you of significant changes by posting the new policy on this page with an updated effective date.</p>
+      </div>
+      
+      <!-- 14. Contact Us -->
+      <div style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 20px;">14. Contact Us</h2>
+        <p style="margin-bottom: 15px;">If you have questions about this privacy policy or how we handle your data, please contact us:</p>
+        <ul style="margin-bottom: 20px; padding-left: 20px; color: var(--ink-soft);">
+          <li style="margin-bottom: 8px;">• <strong>Email:</strong> <a href="mailto:morinvibes2019@gmail.com" style="color: var(--teal);">morinvibes2019@gmail.com</a></li>
+          <li style="margin-bottom: 8px;">• <strong>WhatsApp:</strong> <a href="https://wa.me/60102766095" target="_blank" rel="noopener" style="color: var(--teal);">+60 10-276 6095</a></li>
+          <li style="margin-bottom: 8px;">• <strong>Mail:</strong> MorinVibes®, Bayan Lepas, Penang, Malaysia</li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT FOR PRIVACY CONCERNS ===== -->
+<section class="section">
+  <div class="container">
+    <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+      <span class="eyebrow">HAVE PRIVACY QUESTIONS?</span>
+      <h2 style="margin-bottom: 20px;">We're Here to Help.</h2>
+      <p class="lead" style="margin-bottom: 40px;">If you have concerns about your data or want to exercise your rights, reach out directly.</p>
+      
+      <div style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
+        <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="btn btn--primary btn--lg" style="min-width: 250px;">
+          <span style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span>💬</span> WhatsApp Us
+          </span>
+        </a>
+        <a href="mailto:morinvibes2019@gmail.com?subject=Privacy%20Question" class="btn btn--outline btn--lg" style="min-width: 250px;">
+          <span style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span>📧</span> Email Us
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SHOP CTA ===== -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="cta-block fade-up">
+      <!-- V-mark watermark -->
+      <div class="v-watermark v-watermark--cta" aria-hidden="true"></div>
+      
+      <div class="cta-block__in">
+        <span class="eyebrow">TRUSTED BY 1,000+ CUSTOMERS</span>
+        <h2 style="margin-bottom: 20px;">Experience the MorinVibes® Difference.</h2>
+        <p class="lead cta-lead">Farm-direct. KKM Approved. GMP Certified.</p>
+        <div class="cta-btns">
+          <button class="btn btn--primary btn--lg" id="privacyCtaBtn">Order Now — RM89</button>
+          <a href="/morinvibes-official/en/faq.html" class="btn btn--outline btn--lg">View FAQs →</a>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <!-- Scroll to Top Button -->
-  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+</main>
 
-  <!-- Scripts -->
-  <script src="/morinvibes-official/assets/js/main.js"></script>
-  <script src="/morinvibes-official/assets/js/pixel.js"></script>
+<!-- ===== FOOTER (NO NEWSLETTER) ===== -->
+<footer class="footer" aria-label="Site footer">
+  <div class="footer__main">
+    <div class="container">
+      <div class="ft-grid">
+        <!-- Brand column -->
+        <div>
+          <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="ft-logo" width="160" height="38" />
+          <p class="ft-tag">Farm-direct moringa from our own land<br />in Penang, Malaysia · Since 2019</p>
+          <div class="ft-social" aria-label="Follow us">
+            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Instagram">📷</a>
+            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="TikTok">▶</a>
+            <a href="https://www.threads.com/@moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Threads">@</a>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="ft-soc-a" aria-label="WhatsApp">💬</a>
+          </div>
+          <div class="ft-cert">✓ KKM Approved · GMP Certified</div>
+        </div>
+
+        <!-- Explore = page navigation ONLY -->
+        <div>
+          <p class="ft-col-h">Explore</p>
+          <ul class="ft-links">
+            <li><a href="/morinvibes-official/en/farm.html">Farm</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
+            <li><a href="/morinvibes-official/en/wellness.html">Wellness</a></li>
+            <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
+            <li><a href="/morinvibes-official/en/about.html">Story</a></li>
+            <li><a href="/morinvibes-official/en/testimonials.html">Reviews</a></li>
+            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+            <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
+            <li><a href="/morinvibes-official/en/returns.html">Returns</a></li>
+            <li><a href="/morinvibes-official/en/privacy.html">Privacy</a></li>
+          </ul>
+        </div>
+
+        <!-- Trust = legal / policy ONLY -->
+        <div>
+          <p class="ft-col-h">Trust</p>
+          <ul class="ft-links">
+            <li><a href="/morinvibes-official/en/ethics.html">Our Ethics</a></li>
+            <li><a href="/morinvibes-official/en/returns.html">Returns Policy</a></li>
+            <li><a href="/morinvibes-official/en/privacy.html">Privacy Policy</a></li>
+            <li><a href="/morinvibes-official/en/terms.html">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <p class="ft-col-h">Contact &amp; Order</p>
+          <ul class="ft-links">
+            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
+            <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener">Shopee Store</a></li>
+            <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener">Lazada Store</a></li>
+          </ul>
+          <p class="ft-addr">Bayan Lepas, Penang<br />Malaysia</p>
+        </div>
+      </div>
+
+      <!-- Copyright bar — ONE LINE, zero links -->
+      <div class="ft-bottom">
+        © 2026 MorinVibes®. All rights reserved. · Grown &amp; produced in Penang, Malaysia.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top button -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+<!-- Community Popup -->
+<div class="community-popup" id="communityPopup" role="dialog" aria-label="Stay connected">
+  <div class="pop-head">
+    <h4>Stay in the loop 🌿</h4>
+    <p>Updates, tips &amp; exclusive offers</p>
+    <button class="pop-close" id="popClose" aria-label="Close">✕</button>
+  </div>
+  <div class="pop-body">
+    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="pop-link" id="popWa">
+      <span class="pop-link__ico" aria-hidden="true">💬</span>
+      <div><div class="pop-link__lbl">Chat on WhatsApp</div><div class="pop-link__sub">Direct line to our team</div></div>
+    </a>
+    <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="pop-link">
+      <span class="pop-link__ico" aria-hidden="true">📷</span>
+      <div><div class="pop-link__lbl">Instagram</div><div class="pop-link__sub">@moringa_morinvibes</div></div>
+    </a>
+    <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="pop-link">
+      <span class="pop-link__ico" aria-hidden="true">▶</span>
+      <div><div class="pop-link__lbl">TikTok</div><div class="pop-link__sub">@moringa_morinvibes</div></div>
+    </a>
+    <div class="pop-dismiss" id="popDismiss" role="button" tabindex="0">No thanks, I'll browse</div>
+  </div>
+</div>
+
+<!-- Domain Guard (commented until morinvibes.com is live) -->
+<script>
+/*
+(function(){
+  var h=window.location.hostname;
+  if(h!=='morinvibes.com'&&h!=='localhost'&&h!=='127.0.0.1'){
+    var p=window.location.pathname.replace('/morinvibes-official','')||'/';
+    window.location.replace('https://morinvibes.com'+p+window.location.search);
+  }
+})();
+*/
+</script>
+
+<!-- JS - EXTERNAL ONLY -->
+<script src="/morinvibes-official/assets/js/pixel.js"></script>
+<script src="/morinvibes-official/assets/js/animations.js"></script>
+<script src="/morinvibes-official/assets/js/main.js"></script>
+
+<!-- Privacy page specific script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Bind privacy page CTA button to checkout
+    const privacyCtaBtn = document.getElementById('privacyCtaBtn');
+    
+    if (privacyCtaBtn && typeof openCheckout === 'function') {
+      privacyCtaBtn.addEventListener('click', openCheckout);
+    }
+    
+    // Track ViewContent for privacy page
+    if (typeof window.fbTrack === 'function') {
+      window.fbTrack('ViewContent', {
+        content_name: 'Privacy Policy Page',
+        content_category: 'Policies',
+        value: 89,
+        currency: 'MYR'
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
