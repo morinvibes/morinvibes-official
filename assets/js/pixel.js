@@ -1,412 +1,347 @@
 /**
- * MorinVibes® — Meta Pixel Tracking v8.0
+ * MorinVibes® — Meta Pixel Tracking v10.0
  * ================================================================
- * Events: PageView · ViewContent · AddToCart · InitiateCheckout
- *         Purchase · Lead · ScrollDepth · ShopeeClick · LazadaClick
- *         SocialClick · TimeOnPage · VideoEngagement
- *
- * Improvements over v7:
- *  ✦ Event deduplication via eventID (server-side API ready)
- *  ✦ Consent guard — respects cookie consent before firing
- *  ✦ Scroll listener throttled (no more per-pixel firing)
- *  ✦ Pixel load failure handled gracefully
- *  ✦ All click handlers merged into ONE delegated listener
- *  ✦ Time-on-page milestone tracking
- *  ✦ ViewContent fires via IntersectionObserver, not setTimeout
- *  ✦ Custom event queue — fires missed events after late consent
- *  ✦ Debug mode via ?mv_debug=1 URL param
- *
- * ► Replace PIXEL_ID before going live.
+ * Complete tracking for all user actions
+ * Events: PageView, ViewContent, AddToCart, InitiateCheckout, Purchase, Lead
+ * Replace 'YOUR_PIXEL_ID' with your actual Meta Pixel ID
  * ================================================================
  */
 
-(function () {
-  'use strict';
+(function() {
+    'use strict';
 
-  // ─────────────────────────────────────────────
-  // CONFIGURATION
-  // ─────────────────────────────────────────────
-  const CONFIG = {
-    PIXEL_ID: 'YOUR_PIXEL_ID',       // ← REPLACE with your actual Meta Pixel ID
-    PRODUCT: {
-      id:       'moringa-90',
-      name:     'MorinVibes Moringa 90s',
-      category: 'Moringa Capsules',
-      price:    89,
-      currency: 'MYR',
-    },
-    // Pathnames that count as "product/content" pages
-    CONTENT_PATHS: ['/shop', '/benefits', '/product'],
-    CHECKOUT_PATHS: ['/checkout'],
-    THANKYOU_PATHS: ['/thankyou', '/thank-you', '/order-confirmed'],
-    // Consent cookie name. Set to null to disable consent check.
-    CONSENT_COOKIE: 'mv_cookie_consent',
-    // Debug: also enable via ?mv_debug=1
-    DEBUG: false,
-  };
+    // ===== Configuration =====
+    const PIXEL_ID = 'YOUR_PIXEL_ID'; // ← REPLACE WITH YOUR ACTUAL META PIXEL ID
+    const PRODUCT_PRICE = 89;
+    const PRODUCT_CURRENCY = 'MYR';
+    const PRODUCT_NAME = 'MorinVibes Moringa 90s';
+    const PRODUCT_ID = 'moringa-90';
 
-  // ─────────────────────────────────────────────
-  // UTILITIES
-  // ─────────────────────────────────────────────
+    // Skip if no pixel ID (development)
+    if (PIXEL_ID === 'YOUR_PIXEL_ID') {
+        console.log('⚠️ Meta Pixel: Please set your Pixel ID in pixel.js');
+        return;
+    }
 
-  /** Throttle a function using RAF. */
-  function throttle(fn, limit) {
-    let last = 0, raf;
-    return function () {
-      const now = Date.now();
-      if (now - last >= limit) {
-        last = now;
-        if (raf) cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => fn.apply(this, arguments));
-      }
+    // ===== Load Meta Pixel Script =====
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    // Initialize Pixel
+    fbq('init', PIXEL_ID);
+    fbq('track', 'PageView');
+    console.log('✅ Meta Pixel initialized with ID:', PIXEL_ID);
+
+    // ===== 1. Track PageView (already done) =====
+
+    // ===== 2. Track ViewContent on product pages =====
+    if (window.location.pathname.includes('/shop') || 
+        window.location.pathname.includes('/benefits') ||
+        window.location.pathname.includes('/product')) {
+        
+        setTimeout(() => {
+            fbq('track', 'ViewContent', {
+                content_name: PRODUCT_NAME,
+                content_category: 'Moringa Capsules',
+                content_ids: [PRODUCT_ID],
+                content_type: 'product',
+                value: PRODUCT_PRICE,
+                currency: PRODUCT_CURRENCY
+            });
+            console.log('✅ ViewContent tracked');
+        }, 2000);
+    }
+
+    // ===== 3. Track AddToCart on any Buy button click =====
+    document.addEventListener('click', function(e) {
+        const buyButton = e.target.closest(
+            '.btn--primary, .btn--small, [href*="checkout"], ' +
+            '.nav__mobile-right .btn, .product-actions .btn--primary, ' +
+            '.cta-buttons .btn--primary, .hero__ctas .btn--primary'
+        );
+        
+        if (buyButton) {
+            fbq('track', 'AddToCart', {
+                content_ids: [PRODUCT_ID],
+                content_name: PRODUCT_NAME,
+                content_type: 'product',
+                value: PRODUCT_PRICE,
+                currency: PRODUCT_CURRENCY,
+                num_items: 1
+            });
+            console.log('✅ AddToCart tracked');
+        }
+    });
+
+    // ===== 4. Track InitiateCheckout on checkout page =====
+    if (window.location.pathname.includes('/checkout')) {
+        // Fire immediately when page loads
+        fbq('track', 'InitiateCheckout', {
+            content_name: PRODUCT_NAME,
+            content_ids: [PRODUCT_ID],
+            content_type: 'product',
+            value: PRODUCT_PRICE,
+            currency: PRODUCT_CURRENCY,
+            num_items: 1
+        });
+        console.log('✅ InitiateCheckout tracked');
+    }
+
+    // ===== 5. Track Purchase on thank-you page =====
+    if (window.location.pathname.includes('/thankyou')) {
+        // Get quantity from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const qty = parseInt(urlParams.get('qty') || '1', 10);
+        const total = qty * PRODUCT_PRICE;
+        
+        fbq('track', 'Purchase', {
+            value: total,
+            currency: PRODUCT_CURRENCY,
+            content_ids: [PRODUCT_ID],
+            content_name: PRODUCT_NAME,
+            num_items: qty
+        });
+        console.log(`✅ Purchase tracked (${qty} bottle${qty > 1 ? 's' : ''})`);
+    }
+
+    // ===== 6. Track Lead on WhatsApp clicks =====
+    document.addEventListener('click', function(e) {
+        const waLink = e.target.closest(
+            'a[href*="wa.me"], a[href*="whatsapp"], ' +
+            '.btn--whatsapp, .footer__social a[href*="wa.me"], ' +
+            '.nav__mobile-link[href*="wa.me"]'
+        );
+        
+        if (waLink) {
+            fbq('track', 'Lead', {
+                content_name: 'WhatsApp Contact'
+            });
+            console.log('✅ Lead tracked (WhatsApp)');
+        }
+    });
+
+    // ===== 7. Track external links (Shopee, Lazada) =====
+    document.addEventListener('click', function(e) {
+        const shopeeLink = e.target.closest('a[href*="shopee"]');
+        const lazadaLink = e.target.closest('a[href*="lazada"]');
+        
+        if (shopeeLink) {
+            fbq('trackCustom', 'ShopeeClick', {
+                destination: 'Shopee Store',
+                content_name: 'Shopee Referral'
+            });
+            console.log('✅ Shopee click tracked');
+        }
+        
+        if (lazadaLink) {
+            fbq('trackCustom', 'LazadaClick', {
+                destination: 'Lazada Store',
+                content_name: 'Lazada Referral'
+            });
+            console.log('✅ Lazada click tracked');
+        }
+    });
+
+    // ===== 8. Track social media clicks =====
+    document.addEventListener('click', function(e) {
+        const facebookLink = e.target.closest('a[href*="facebook"]');
+        const instagramLink = e.target.closest('a[href*="instagram"]');
+        const tiktokLink = e.target.closest('a[href*="tiktok"]');
+        const threadsLink = e.target.closest('a[href*="threads"]');
+        
+        if (facebookLink) {
+            fbq('trackCustom', 'SocialClick', {
+                platform: 'Facebook'
+            });
+        }
+        
+        if (instagramLink) {
+            fbq('trackCustom', 'SocialClick', {
+                platform: 'Instagram'
+            });
+        }
+        
+        if (tiktokLink) {
+            fbq('trackCustom', 'SocialClick', {
+                platform: 'TikTok'
+            });
+        }
+        
+        if (threadsLink) {
+            fbq('trackCustom', 'SocialClick', {
+                platform: 'Threads'
+            });
+        }
+    });
+
+    // ===== 9. Track scroll depth (25%, 50%, 75%, 100%) =====
+    let scrollTracked = {
+        25: false,
+        50: false,
+        75: false,
+        100: false
     };
-  }
 
-  /** Generate a short random event ID for deduplication. */
-  function genEventId() {
-    return `mv_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 7)}`;
-  }
-
-  /** Check if current pathname matches any of the given patterns. */
-  function pathMatches(patterns) {
-    const path = window.location.pathname.toLowerCase();
-    return patterns.some((p) => path.includes(p));
-  }
-
-  /** Read a cookie value by name. */
-  function getCookie(name) {
-    const match = document.cookie.match(new RegExp(`(?:^|;\\s*)${name}=([^;]*)`));
-    return match ? decodeURIComponent(match[1]) : null;
-  }
-
-  /** URL params helper. */
-  const param = (key) => new URLSearchParams(window.location.search).get(key);
-
-  /** Debug logger — only logs when debug mode is active. */
-  const isDebug = CONFIG.DEBUG || param('mv_debug') === '1';
-  function log(...args) {
-    if (isDebug) console.log('%c[MorinVibes Pixel]', 'color:#1877f2;font-weight:bold', ...args);
-  }
-
-  // ─────────────────────────────────────────────
-  // CONSENT GUARD
-  // ─────────────────────────────────────────────
-  let consentGranted = false;
-  const pendingQueue = [];
-
-  function hasConsent() {
-    if (!CONFIG.CONSENT_COOKIE) return true; // consent check disabled
-    return getCookie(CONFIG.CONSENT_COOKIE) === '1';
-  }
-
-  /**
-   * Call this when the user accepts cookies.
-   * Flushes the pending event queue.
-   */
-  window.MorinVibesPixelConsent = function grantConsent() {
-    consentGranted = true;
-    log('Consent granted — flushing queue', pendingQueue.length, 'events');
-    while (pendingQueue.length) {
-      const { name, params } = pendingQueue.shift();
-      fire(name, params);
-    }
-  };
-
-  // ─────────────────────────────────────────────
-  // META PIXEL LOADER
-  // ─────────────────────────────────────────────
-  let pixelReady = false;
-
-  function loadPixel() {
-    return new Promise((resolve, reject) => {
-      if (window.fbq) { resolve(); return; }
-
-      /* eslint-disable */
-      !function(f,b,e,v,n,t,s){
-        if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s);
-        t.onload = resolve;
-        t.onerror = reject;
-      }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      /* eslint-enable */
-    });
-  }
-
-  // ─────────────────────────────────────────────
-  // CORE FIRE FUNCTION
-  // ─────────────────────────────────────────────
-
-  /**
-   * Fire a pixel event — respects consent, deduplicates via eventID.
-   * @param {'track'|'trackCustom'} method
-   * @param {string} eventName
-   * @param {object} [params]
-   */
-  function fire(eventName, params = {}, method = 'track') {
-    if (!consentGranted) {
-      pendingQueue.push({ name: eventName, params });
-      log('Queued (no consent yet):', eventName, params);
-      return;
-    }
-
-    if (!window.fbq) {
-      log('fbq not loaded yet — queuing:', eventName);
-      pendingQueue.push({ name: eventName, params });
-      return;
-    }
-
-    const eventId = genEventId();
-    const options = { eventID: eventId }; // Enables Conversions API deduplication
-
-    fbq(method, eventName, params, options);
-    log(`✓ ${method}('${eventName}')`, params, '→ eventID:', eventId);
-  }
-
-  function fireCustom(eventName, params = {}) {
-    fire(eventName, params, 'trackCustom');
-  }
-
-  // ─────────────────────────────────────────────
-  // PRODUCT PAYLOAD HELPER
-  // ─────────────────────────────────────────────
-  function productPayload(overrides = {}) {
-    return Object.assign(
-      {
-        content_ids:      [CONFIG.PRODUCT.id],
-        content_name:     CONFIG.PRODUCT.name,
-        content_category: CONFIG.PRODUCT.category,
-        content_type:     'product',
-        value:            CONFIG.PRODUCT.price,
-        currency:         CONFIG.PRODUCT.currency,
-      },
-      overrides
-    );
-  }
-
-  // ─────────────────────────────────────────────
-  // 1. PAGE VIEW
-  // ─────────────────────────────────────────────
-  function trackPageView() {
-    fbq('init', CONFIG.PIXEL_ID);
-    fire('PageView');
-    log('PageView fired for:', window.location.pathname);
-  }
-
-  // ─────────────────────────────────────────────
-  // 2. VIEW CONTENT — fires when product section enters viewport
-  // ─────────────────────────────────────────────
-  function trackViewContent() {
-    if (!pathMatches(CONFIG.CONTENT_PATHS)) return;
-
-    // Try to observe the product card/section; fallback to body
-    const target =
-      document.querySelector('.product-svg-card, .product-section, #shop, #product') ||
-      document.body;
-
-    let fired = false;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (fired || !entries[0].isIntersecting) return;
-        fired = true;
-        fire('ViewContent', productPayload());
-        observer.disconnect();
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(target);
-  }
-
-  // ─────────────────────────────────────────────
-  // 3. INITIATE CHECKOUT
-  // ─────────────────────────────────────────────
-  function trackInitiateCheckout() {
-    if (!pathMatches(CONFIG.CHECKOUT_PATHS)) return;
-    fire('InitiateCheckout', productPayload({ num_items: 1 }));
-  }
-
-  // ─────────────────────────────────────────────
-  // 4. PURCHASE — reads qty from URL param
-  // ─────────────────────────────────────────────
-  function trackPurchase() {
-    if (!pathMatches(CONFIG.THANKYOU_PATHS)) return;
-
-    const qty = Math.max(1, parseInt(param('qty') || '1', 10));
-    const orderId = param('order_id') || genEventId(); // use order_id if available
-    const total = parseFloat((qty * CONFIG.PRODUCT.price).toFixed(2));
-
-    fire(
-      'Purchase',
-      productPayload({
-        value:     total,
-        num_items: qty,
-        order_id:  orderId,
-      })
-    );
-  }
-
-  // ─────────────────────────────────────────────
-  // 5. SCROLL DEPTH — throttled, fires each milestone once
-  // ─────────────────────────────────────────────
-  function trackScrollDepth() {
-    const milestones = [25, 50, 75, 100];
-    const fired = new Set();
-
-    function check() {
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      if (total <= 0) return;
-      const pct = Math.round((window.scrollY / total) * 100);
-
-      milestones.forEach((m) => {
-        if (pct >= m && !fired.has(m)) {
-          fired.add(m);
-          fireCustom('ScrollDepth', { depth: m, page: window.location.pathname });
+    function trackScrollDepth() {
+        const winScroll = window.scrollY;
+        const height = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (winScroll / height) * 100;
+        
+        if (scrolled > 25 && !scrollTracked[25]) {
+            fbq('trackCustom', 'ScrollDepth', { depth: 25, page: window.location.pathname });
+            scrollTracked[25] = true;
+            console.log('✅ Scroll depth 25% tracked');
         }
-      });
-
-      // Stop observing once all milestones hit
-      if (fired.size === milestones.length) {
-        window.removeEventListener('scroll', scrollHandler);
-      }
+        if (scrolled > 50 && !scrollTracked[50]) {
+            fbq('trackCustom', 'ScrollDepth', { depth: 50, page: window.location.pathname });
+            scrollTracked[50] = true;
+            console.log('✅ Scroll depth 50% tracked');
+        }
+        if (scrolled > 75 && !scrollTracked[75]) {
+            fbq('trackCustom', 'ScrollDepth', { depth: 75, page: window.location.pathname });
+            scrollTracked[75] = true;
+            console.log('✅ Scroll depth 75% tracked');
+        }
+        if (scrolled >= 98 && !scrollTracked[100]) {
+            fbq('trackCustom', 'ScrollDepth', { depth: 100, page: window.location.pathname });
+            scrollTracked[100] = true;
+            console.log('✅ Scroll depth 100% tracked');
+        }
     }
 
-    const scrollHandler = throttle(check, 300);
-    window.addEventListener('scroll', scrollHandler, { passive: true });
-  }
-
-  // ─────────────────────────────────────────────
-  // 6. TIME ON PAGE — milestones at 15s, 30s, 60s, 120s
-  // ─────────────────────────────────────────────
-  function trackTimeOnPage() {
-    const milestones = [15, 30, 60, 120]; // seconds
-    milestones.forEach((seconds) => {
-      setTimeout(() => {
-        fireCustom('TimeOnPage', { seconds, page: window.location.pathname });
-      }, seconds * 1000);
-    });
-  }
-
-  // ─────────────────────────────────────────────
-  // 7. UNIFIED CLICK DELEGATE
-  //    One listener handles: Buy · WhatsApp · Shopee · Lazada · Social
-  // ─────────────────────────────────────────────
-  function trackClicks() {
-    document.addEventListener('click', (e) => {
-
-      // — AddToCart: Buy buttons —
-      if (e.target.closest('.btn--primary, .btn--small, [href*="checkout"], .nav__mobile-right .btn, .product-svg-card .btn--primary')) {
-        fire('AddToCart', productPayload({ num_items: 1 }));
-        return;
-      }
-
-      // — Lead: WhatsApp —
-      if (e.target.closest('a[href*="wa.me"], a[href*="whatsapp"], .btn-whatsapp, .popup-link--wa')) {
-        fire('Lead', { content_name: 'WhatsApp Contact', lead_source: 'WhatsApp' });
-        return;
-      }
-
-      // — Custom: Shopee —
-      if (e.target.closest('a[href*="shopee"]')) {
-        fireCustom('ShopeeClick', { destination: 'Shopee', content_name: 'Shopee Referral' });
-        return;
-      }
-
-      // — Custom: Lazada —
-      if (e.target.closest('a[href*="lazada"]')) {
-        fireCustom('LazadaClick', { destination: 'Lazada', content_name: 'Lazada Referral' });
-        return;
-      }
-
-      // — Custom: Social media —
-      const platforms = {
-        facebook:  'a[href*="facebook.com"]',
-        instagram: 'a[href*="instagram.com"]',
-        tiktok:    'a[href*="tiktok.com"]',
-        youtube:   'a[href*="youtube.com"]',
-      };
-      for (const [platform, selector] of Object.entries(platforms)) {
-        if (e.target.closest(selector)) {
-          fireCustom('SocialClick', { platform });
-          return;
+    // Throttled scroll listener for depth tracking
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                trackScrollDepth();
+                ticking = false;
+            });
+            ticking = true;
         }
-      }
-
     }, { passive: true });
-  }
 
-  // ─────────────────────────────────────────────
-  // 8. VIDEO ENGAGEMENT — tracks play / 50% / complete
-  // ─────────────────────────────────────────────
-  function trackVideoEngagement() {
-    const videos = document.querySelectorAll('video');
-    if (!videos.length) return;
-
-    videos.forEach((video) => {
-      const label = video.dataset.trackLabel || video.src || 'video';
-      let firedMid = false;
-
-      video.addEventListener('play', () => {
-        fireCustom('VideoPlay', { video: label });
-      });
-
-      video.addEventListener('timeupdate', () => {
-        if (!firedMid && video.duration && video.currentTime / video.duration >= 0.5) {
-          firedMid = true;
-          fireCustom('VideoMidpoint', { video: label });
+    // ===== 10. Track time on page =====
+    let timeTracked = false;
+    setTimeout(() => {
+        if (!timeTracked) {
+            fbq('trackCustom', 'TimeOnPage', {
+                seconds: 30,
+                page: window.location.pathname
+            });
+            timeTracked = true;
+            console.log('✅ Time on page (30s) tracked');
         }
-      });
+    }, 30000); // 30 seconds
 
-      video.addEventListener('ended', () => {
-        fireCustom('VideoComplete', { video: label });
-      });
+    // ===== 11. Track search (if you add search later) =====
+
+    // ===== 12. Track email newsletter signup (if you add newsletter) =====
+
+    // ===== 13. Track form submissions (contact form) =====
+    document.addEventListener('submit', function(e) {
+        const form = e.target;
+        if (form.classList.contains('contact-form') || form.id === 'contactForm') {
+            fbq('track', 'Lead', {
+                content_name: 'Contact Form',
+                content_category: 'Form Submission'
+            });
+            console.log('✅ Contact form submission tracked');
+        }
     });
-  }
 
-  // ─────────────────────────────────────────────
-  // BOOT — load pixel then initialise all tracking
-  // ─────────────────────────────────────────────
-  function boot() {
-    // Check consent on init
-    consentGranted = hasConsent();
-
-    loadPixel()
-      .then(() => {
-        pixelReady = true;
-
-        // If consent already given, fire everything immediately.
-        // Otherwise, only PageView fires; rest queue until consent granted.
-        if (consentGranted) {
-          trackPageView();
-        } else {
-          // PageView fires without consent (standard practice for basic analytics)
-          fbq('init', CONFIG.PIXEL_ID);
-          fbq('track', 'PageView');
-          log('PageView fired (pre-consent). Other events queued.');
+    // ===== 14. Track phone number clicks =====
+    document.addEventListener('click', function(e) {
+        const phoneLink = e.target.closest('a[href^="tel:"]');
+        if (phoneLink) {
+            fbq('trackCustom', 'PhoneClick', {
+                phone_number: phoneLink.getAttribute('href')
+            });
+            console.log('✅ Phone click tracked');
         }
+    });
 
-        trackViewContent();
-        trackInitiateCheckout();
-        trackPurchase();
-        trackScrollDepth();
-        trackTimeOnPage();
-        trackClicks();
-        trackVideoEngagement();
+    // ===== 15. Track email clicks =====
+    document.addEventListener('click', function(e) {
+        const emailLink = e.target.closest('a[href^="mailto:"]');
+        if (emailLink) {
+            fbq('trackCustom', 'EmailClick', {
+                email: emailLink.getAttribute('href').replace('mailto:', '')
+            });
+            console.log('✅ Email click tracked');
+        }
+    });
 
-        log('Pixel v8.0 ready | Pixel ID:', CONFIG.PIXEL_ID);
-      })
-      .catch((err) => {
-        // Pixel failed to load (ad blocker, network issue) — fail silently
-        log('Pixel failed to load:', err.message || err);
-      });
-  }
+    // ===== 16. Track FAQ interactions =====
+    document.addEventListener('click', function(e) {
+        const faqQuestion = e.target.closest('.faq-question');
+        if (faqQuestion) {
+            const questionText = faqQuestion.querySelector('.faq-question__text')?.textContent || 'Unknown question';
+            fbq('trackCustom', 'FAQInteraction', {
+                question: questionText.substring(0, 50)
+            });
+            console.log('✅ FAQ interaction tracked');
+        }
+    });
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
-  }
+    // ===== 17. Track testimonial interactions =====
+    document.addEventListener('click', function(e) {
+        const testimonialCard = e.target.closest('.testimonial-card');
+        if (testimonialCard) {
+            fbq('trackCustom', 'TestimonialView', {
+                location: 'testimonials_preview'
+            });
+            console.log('✅ Testimonial interaction tracked');
+        }
+    });
 
+    // ===== 18. Track journal/blog post views =====
+    if (window.location.pathname.includes('/journal/') && 
+        !window.location.pathname.endsWith('/journal/') &&
+        !window.location.pathname.endsWith('/journal/index.html')) {
+        
+        setTimeout(() => {
+            const postTitle = document.querySelector('h1')?.textContent || 'Unknown post';
+            fbq('trackCustom', 'JournalView', {
+                post_title: postTitle.substring(0, 50)
+            });
+            console.log('✅ Journal post view tracked');
+        }, 2000);
+    }
+
+    // ===== 19. Track video engagement (if you add videos) =====
+
+    // ===== 20. Track outbound link clicks (already covered by Shopee/Lazada) =====
+
+    // ===== Expose for debugging if needed =====
+    window.MorinVibesPixel = {
+        trackPurchase: (qty = 1) => {
+            fbq('track', 'Purchase', {
+                value: qty * PRODUCT_PRICE,
+                currency: PRODUCT_CURRENCY,
+                content_ids: [PRODUCT_ID],
+                content_name: PRODUCT_NAME,
+                num_items: qty
+            });
+            console.log('✅ Manual Purchase tracked');
+        },
+        trackCustom: (event, params) => {
+            fbq('trackCustom', event, params);
+            console.log(`✅ Custom event "${event}" tracked`);
+        },
+        getConfig: () => ({
+            pixelId: PIXEL_ID,
+            price: PRODUCT_PRICE,
+            currency: PRODUCT_CURRENCY,
+            productName: PRODUCT_NAME
+        })
+    };
+
+    console.log('✅ Meta Pixel — All events ready');
 })();
