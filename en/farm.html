@@ -2,1048 +2,581 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Farm — MorinVibes® · Bayan Lepas, Penang</title>
-  <meta name="description" content="My family farm in Bayan Lepas, Penang where I grow moringa by hand. No middlemen. Gently dried. Farm-direct since 2019." />
-  <meta property="og:title" content="The Farm — MorinVibes®" />
-  <meta property="og:description" content="My family farm in Bayan Lepas, Penang where I grow moringa by hand. No middlemen, no shortcuts." />
-  <meta property="og:image" content="/morinvibes-official/images/farm-hero.svg" />
-  <meta property="og:url" content="https://morinvibes.github.io/morinvibes-official/en/farm.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  
+  <!-- Title & Meta -->
+  <title>Our Farm — MorinVibes® · Penang, Malaysia</title>
+  <meta name="description" content="Our family farm in Bayan Lepas, Penang where we grow moringa on our own land. Farm-direct, no middlemen, small-batch freshness since 2019." />
+  <meta name="keywords" content="moringa farm Penang, moringa plantation Malaysia, farm-direct moringa, Bayan Lepas farm" />
+  
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://morinvibes.github.io/morinvibes-official/en/farm.html" />
+  <meta property="og:title" content="Our Farm — MorinVibes® · Penang, Malaysia" />
+  <meta property="og:description" content="Our family farm in Bayan Lepas, Penang where we grow moringa on our own land since 2019." />
+  <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/images/farm-hero.jpg" />
+  
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Our Farm — MorinVibes®" />
+  <meta name="twitter:description" content="Farm-direct moringa from our own land in Penang." />
+  <meta name="twitter:image" content="https://morinvibes.github.io/morinvibes-official/images/farm-hero.jpg" />
+  
+  <!-- Canonical -->
   <link rel="canonical" href="https://morinvibes.github.io/morinvibes-official/en/farm.html" />
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/morinvibes-official/images/favicon.svg" />
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Italiana&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  
+  <!-- Global CSS -->
   <link rel="stylesheet" href="/morinvibes-official/assets/css/global.css" />
-
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Farm",
+    "name": "MorinVibes Farm",
+    "description": "Family-owned moringa farm in Bayan Lepas, Penang, Malaysia since 2019.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bayan Lepas, Penang",
+      "addressCountry": "MY"
+    },
+    "telephone": "+60102766095",
+    "email": "morinvibes2019@gmail.com",
+    "sameAs": [
+      "https://www.instagram.com/moringa_morinvibes",
+      "https://www.facebook.com/profile.php?id=100063464474033"
+    ]
+  }
+  </script>
+  
   <style>
-    /* ──────────────────────────────────────
-       FARM PAGE — scoped under .fm- prefix
-    ────────────────────────────────────── */
-
-    /* ── HERO ── */
-    .fm-hero {
-      background: linear-gradient(160deg, var(--paper, #faf7f2) 0%, #fff 100%);
-      padding: var(--sp-80, 80px) 0 var(--sp-64, 64px);
+    /* Farm page specific styles */
+    .farm-hero {
+      background: var(--gradient-hero);
+      padding: calc(72px + 80px) 0 80px;
       position: relative;
       overflow: hidden;
     }
-
-    /* Corner leaf decoration */
-    .fm-hero::after {
-      content: '';
-      position: absolute;
-      top: -80px; right: -80px;
-      width: 420px; height: 420px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(45,106,79,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .fm-hero__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--sp-64, 64px);
-      align-items: center;
-    }
-
-    .fm-hero__eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--teal, #2d6a4f);
-      margin-bottom: 20px;
-    }
-    .fm-hero__eyebrow::before {
-      content: '';
-      display: block;
-      width: 24px; height: 1.5px;
-      background: var(--teal, #2d6a4f);
-    }
-
-    .fm-hero__title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(34px, 5vw, 56px);
-      font-weight: 400;
-      line-height: 1.12;
-      letter-spacing: -0.01em;
-      color: var(--ink, #1a2e20);
-      margin-bottom: 24px;
-    }
-    .fm-hero__title em {
-      font-style: italic;
-      color: var(--teal, #2d6a4f);
-    }
-
-    .fm-hero__lead {
-      font-size: 16.5px;
-      line-height: 1.75;
-      color: var(--ink-soft, #5a7060);
-      margin-bottom: 20px;
-      font-weight: 300;
-    }
-
-    .fm-hero__note {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12.5px;
-      color: var(--ink-muted, #aaa);
-      background: var(--paper, #faf7f2);
-      border: 1px solid var(--border, #e0d5c5);
-      border-radius: 100px;
-      padding: 7px 16px;
-      margin-top: 8px;
-    }
-
-    .fm-hero__img-wrap {
-      position: relative;
-    }
-    .fm-hero__img-wrap::before {
-      content: '';
-      position: absolute;
-      inset: -12px;
-      border: 1.5px solid var(--teal-soft, #a8d5b5);
-      border-radius: 32px;
-      opacity: 0.4;
-      pointer-events: none;
-    }
-    .fm-hero__img {
-      width: 100%;
-      border-radius: 24px;
-      box-shadow: var(--shadow-lg, 0 24px 80px rgba(26,46,32,0.14));
-      display: block;
-    }
-
-    /* Origin badge overlapping image */
-    .fm-hero__badge {
-      position: absolute;
-      bottom: -18px;
-      left: 28px;
-      background: #fff;
-      border: 1px solid var(--border, #e0d5c5);
-      border-radius: 18px;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 8px 32px rgba(44,31,14,0.10);
-      z-index: 2;
-    }
-    .fm-hero__badge-icon {
-      width: 36px; height: 36px;
-      background: linear-gradient(135deg, #e8f5ee, #d4edde);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px; flex-shrink: 0;
-    }
-    .fm-hero__badge-label {
-      font-size: 9.5px; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--teal, #2d6a4f); margin-bottom: 2px;
-    }
-    .fm-hero__badge-val {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 15px; font-weight: 500;
-      color: var(--ink, #1a2e20); line-height: 1;
-    }
-
-    /* ── STATS ── */
-    .fm-stats {
+    
+    .farm-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--sp-24, 24px);
+      gap: 32px;
+      margin: 60px 0;
     }
-
-    .fm-stat {
-      background: #fff;
-      padding: 32px 28px;
-      border-radius: 24px;
-      border: 1px solid var(--border, #e0d5c5);
+    
+    .farm-stat-card {
+      background: white;
+      padding: 40px 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
       text-align: center;
-      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
-      position: relative;
-      overflow: hidden;
+      transition: all 0.3s var(--ease);
     }
-    .fm-stat::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent 0%, rgba(45,106,79,0.03) 100%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .fm-stat:hover {
+    
+    .farm-stat-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(44,31,14,0.10);
-      border-color: var(--teal-soft, #a8d5b5);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal-soft);
     }
-    .fm-stat:hover::before { opacity: 1; }
-
-    .fm-stat__num {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 2.8rem; font-weight: 400;
-      color: var(--teal, #2d6a4f);
-      line-height: 1; margin-bottom: 8px;
-      letter-spacing: -0.01em;
+    
+    .farm-stat-number {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 8px;
     }
-    .fm-stat__label {
-      font-size: 9.5px; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--ink-muted, #aaa); margin-bottom: 12px;
+    
+    .farm-stat-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
     }
-    .fm-stat__desc {
-      font-size: 13.5px;
-      color: var(--ink-soft, #777);
-      line-height: 1.5;
+    
+    .farm-process {
+      margin: 60px 0;
     }
-
-    /* ── PROCESS TIMELINE ── */
-    .fm-process {
-      position: relative;
-    }
-
-    /* Vertical spine */
-    .fm-process::before {
-      content: '';
-      position: absolute;
-      left: 28px; top: 32px;
-      bottom: 32px; width: 1.5px;
-      background: linear-gradient(to bottom, var(--teal-soft, #a8d5b5), transparent);
-      pointer-events: none;
-    }
-
-    .fm-step {
-      display: grid;
-      grid-template-columns: 68px 1fr;
-      gap: var(--sp-32, 32px);
-      padding: 36px 0;
-      border-bottom: 1px solid var(--border-soft, #f0ebe2);
-      position: relative;
-    }
-    .fm-step:last-child { border-bottom: none; }
-
-    .fm-step__num {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 2.2rem; font-weight: 300;
-      color: var(--teal, #2d6a4f);
-      opacity: 0.25; line-height: 1;
-      position: relative; z-index: 1;
-    }
-
-    /* Node on the spine */
-    .fm-step::after {
-      content: '';
-      position: absolute;
-      left: 22px; top: 44px;
-      width: 13px; height: 13px;
-      background: var(--teal, #2d6a4f);
-      border-radius: 50%;
-      border: 2.5px solid #fff;
-      box-shadow: 0 0 0 3px rgba(45,106,79,0.18);
-      z-index: 2;
-    }
-
-    .fm-step__body {}
-
-    .fm-step__title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 26px; font-weight: 500;
-      color: var(--ink, #1a2e20);
-      margin-bottom: 10px; letter-spacing: 0.01em;
-    }
-
-    .fm-step__text {
-      font-size: 14.5px; line-height: 1.7;
-      color: var(--ink-soft, #6a7c70);
-      margin-bottom: 16px; font-weight: 300;
-    }
-
-    .fm-step__tags {
-      display: flex; flex-wrap: wrap; gap: 8px;
-    }
-
-    .fm-tag {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 14px;
-      background: var(--teal-ghost, #f0faf4);
-      color: var(--teal, #2d6a4f);
-      border: 1px solid var(--teal-soft, #a8d5b5);
-      border-radius: 100px;
-      font-size: 11.5px; font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-    .fm-tag::before {
-      content: '';
-      width: 5px; height: 5px;
-      background: var(--teal, #2d6a4f);
-      border-radius: 50%;
-    }
-
-    /* ── FRESHNESS TIMELINE ── */
-    .fm-timeline {
+    
+    .process-step {
       display: flex;
-      flex-direction: column;
-      gap: 0;
+      gap: 40px;
+      margin-bottom: 40px;
+      padding: 24px;
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      transition: all 0.3s var(--ease);
     }
-
-    .fm-tl-item {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      padding: 16px 0;
-      position: relative;
+    
+    .process-step:hover {
+      transform: translateX(8px);
+      border-color: var(--teal-soft);
+      box-shadow: var(--shadow-sm);
     }
-
-    .fm-tl-left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex-shrink: 0;
-      width: 16px;
+    
+    .process-number {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--teal);
+      opacity: 0.3;
+      min-width: 80px;
     }
-
-    .fm-tl-dot {
-      width: 14px; height: 14px;
-      border-radius: 50%;
-      background: var(--teal, #2d6a4f);
-      border: 2.5px solid #fff;
-      box-shadow: 0 0 0 2.5px var(--teal-soft, #a8d5b5);
-      flex-shrink: 0;
-      margin-top: 3px;
+    
+    .process-content {
+      flex: 1;
     }
-
-    .fm-tl-line {
-      flex: 1; width: 1.5px;
-      background: var(--border, #e0d5c5);
-      min-height: 28px;
+    
+    .process-content h3 {
+      margin-bottom: 8px;
+      color: var(--ink);
     }
-
-    .fm-tl-item:last-child .fm-tl-line { display: none; }
-
-    .fm-tl-body {}
-    .fm-tl-day {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--teal, #2d6a4f); margin-bottom: 2px;
-    }
-    .fm-tl-desc {
-      font-size: 13.5px; color: var(--ink-soft, #666);
-      line-height: 1.5;
-    }
-
-    /* ── FRESHNESS PROMISE CARD ── */
-    .fm-promise {
-      background: linear-gradient(135deg, #f0faf4, #e4f5eb);
-      border: 1px solid #c8e6d1;
-      border-radius: 28px;
-      padding: var(--sp-48, 48px) var(--sp-40, 40px);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .fm-promise::before {
-      content: '🌿';
-      position: absolute;
-      top: -20px; right: -10px;
-      font-size: 100px;
-      opacity: 0.06;
-      pointer-events: none;
-    }
-
-    .fm-promise__icon {
-      font-size: 2.4rem; margin-bottom: 16px; display: block;
-    }
-    .fm-promise__title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 24px; font-weight: 400;
-      color: var(--forest, #1a3a2a);
-      margin-bottom: 14px;
-    }
-    .fm-promise__text {
-      font-size: 14.5px; line-height: 1.7;
-      color: #4e7a5e; font-weight: 300; margin-bottom: 22px;
-    }
-
-    /* ── GALLERY ── */
-    .fm-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--sp-20, 20px);
-    }
-
-    .fm-gallery__item {
-      border-radius: 22px;
-      overflow: hidden;
-      aspect-ratio: 1 / 1;
-      border: 1px solid var(--border, #e0d5c5);
-      background: var(--paper, #faf7f2);
-      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-      position: relative;
-    }
-    .fm-gallery__item:hover {
-      transform: scale(1.025);
-      box-shadow: 0 20px 55px rgba(44,31,14,0.13);
-      border-color: var(--teal, #2d6a4f);
-    }
-    .fm-gallery__item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
-      display: block;
-    }
-    .fm-gallery__item:hover img { transform: scale(1.08); }
-
-    .fm-gallery__caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 32px 18px 16px;
-      background: linear-gradient(to top, rgba(26,46,32,0.65) 0%, transparent 100%);
-      color: #fff;
-      font-size: 12.5px; font-weight: 500;
-      letter-spacing: 0.04em;
-      opacity: 0;
-      transform: translateY(6px);
-      transition: all 0.3s ease;
-    }
-    .fm-gallery__item:hover .fm-gallery__caption {
-      opacity: 1; transform: translateY(0);
-    }
-
-    /* ── LOCATION ── */
-    .fm-location__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--sp-64, 64px);
-      align-items: center;
-    }
-
-    .fm-location__note {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      background: var(--paper, #faf7f2);
-      border: 1px solid var(--border, #e0d5c5);
-      border-radius: 18px;
-      padding: 16px 18px;
-      margin-top: 28px;
-    }
-    .fm-location__note-icon {
-      font-size: 18px; flex-shrink: 0; margin-top: 1px;
-    }
-    .fm-location__note-text {
-      font-size: 13px; color: var(--ink-muted, #aaa); line-height: 1.6;
-    }
-
-    /* ── SHOPEE PROOF ── */
-    .fm-shopee {
-      background: linear-gradient(135deg, #fff 0%, var(--paper, #faf7f2) 100%);
-      border: 1px solid var(--border, #e0d5c5);
-      border-radius: 32px;
-      padding: var(--sp-64, 64px) var(--sp-48, 48px);
-      text-align: center;
-    }
-
-    .fm-shopee__stores {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin: 28px 0 20px;
-    }
-
-    .fm-shopee__pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 20px;
-      background: #fff3e0;
-      border: 1px solid #ffd599;
-      border-radius: 100px;
-      font-size: 13px; font-weight: 600;
-      color: #b35c00; letter-spacing: 0.02em;
-    }
-
-    .fm-shopee__stars {
-      font-size: 22px; color: #f4a020;
-      letter-spacing: 2px; margin-bottom: 6px;
-    }
-
-    .fm-shopee__reviews {
-      font-size: 13.5px; color: var(--ink-muted, #aaa);
-    }
-
-    /* ── CTA ── */
-    .fm-cta {
-      background: linear-gradient(135deg, var(--forest, #1a3a2a) 0%, #0f2418 100%);
-      border-radius: 32px;
-      padding: var(--sp-64, 64px) var(--sp-48, 48px);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .fm-cta::before {
-      content: '';
-      position: absolute;
-      top: -100px; right: -100px;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(45,106,79,0.25) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .fm-cta__eyebrow {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.24em; text-transform: uppercase;
-      color: var(--leaf-light, #52b788);
+    
+    .process-content p {
+      color: var(--ink-soft);
       margin-bottom: 16px;
     }
-    .fm-cta__title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 400; color: #fff;
-      margin-bottom: 16px; line-height: 1.2;
+    
+    .process-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--teal-ghost);
+      color: var(--teal);
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid var(--teal-soft);
     }
-    .fm-cta__text {
-      font-size: 15px; color: rgba(255,255,255,0.6);
-      max-width: 500px; margin: 0 auto 36px;
-      line-height: 1.7; font-weight: 300;
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 48px 0;
     }
-
-    .fm-btn-group {
-      display: flex; justify-content: center;
-      align-items: center; gap: 16px; flex-wrap: wrap;
+    
+    .gallery-item {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 1/1;
     }
-
-    /* ── SECTION TITLES (reusable) ── */
-    .fm-section-head {
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s var(--ease);
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .location-note {
+      background: var(--teal-ghost);
+      border: 1px solid var(--teal-soft);
+      border-radius: var(--radius-lg);
+      padding: 32px;
       text-align: center;
-      margin-bottom: 52px;
+      max-width: 700px;
+      margin: 48px auto;
     }
-    .fm-section-head .eyebrow { margin-bottom: 12px; display: block; }
-    .fm-section-head h2 { margin: 0; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 860px) {
-      .fm-hero__grid { grid-template-columns: 1fr; gap: 48px; }
-      .fm-hero__img-wrap { margin-bottom: 32px; }
-      .fm-stats { grid-template-columns: 1fr; gap: 16px; }
-      .fm-gallery { grid-template-columns: 1fr; }
-      .fm-location__grid { grid-template-columns: 1fr; gap: 40px; }
-    }
-
-    @media (max-width: 600px) {
-      .fm-step { grid-template-columns: 1fr; gap: 12px; }
-      .fm-process::before { display: none; }
-      .fm-step::after { display: none; }
-      .fm-step__num { opacity: 0.15; font-size: 1.6rem; }
-      .fm-gallery { grid-template-columns: repeat(2, 1fr); }
-      .fm-shopee { padding: 40px 24px; }
-      .fm-cta { padding: 48px 24px; border-radius: 24px; }
+    
+    @media (max-width: 768px) {
+      .farm-stats {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .process-step {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .process-number {
+        min-width: auto;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="progressBar"></div>
 
-  <!-- ══════════════ NAV ══════════════ -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav">
     <div class="nav__container">
-      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <a href="/morinvibes-official/en/" class="nav__logo" aria-label="MorinVibes home">
-        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" width="140" height="36" />
+      
+      <a href="/morinvibes-official/en/" class="nav__logo">
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
       </a>
+      
       <div class="nav__right">
-        <div class="lang-dropdown">
-          <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false">
-            EN <span aria-hidden="true">▼</span>
-          </button>
-          <div class="lang-options" role="listbox">
-            <a href="/morinvibes-official/en/farm.html" class="lang-option active" role="option" aria-selected="true" hreflang="en">English</a>
-            <a href="/morinvibes-official/bm/farm.html" class="lang-option" role="option" hreflang="ms">Bahasa Malaysia</a>
-            <a href="/morinvibes-official/zh/farm.html" class="lang-option" role="option" hreflang="zh">中文</a>
+        <div class="lang-dropdown" id="langDropdown">
+          <button class="lang-btn" id="langBtn">EN <span>▾</span></button>
+          <div class="lang-options">
+            <a href="/morinvibes-official/en/farm.html" class="lang-option active">English</a>
+            <a href="/morinvibes-official/bm/farm.html" class="lang-option">Bahasa Malaysia</a>
+            <a href="/morinvibes-official/zh/farm.html" class="lang-option">中文</a>
           </div>
         </div>
-        <a href="/morinvibes-official/en/checkout.html" class="btn btn--small">Buy Now — RM89</a>
+        <a href="/morinvibes-official/en/checkout.html" class="btn btn--small btn--primary">Buy Now — RM89</a>
       </div>
     </div>
   </nav>
 
-  <!-- ══════════════ MOBILE MENU ══════════════ -->
-  <div class="nav__mobile" id="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <!-- Mobile Menu -->
+  <div class="nav__mobile" id="mobileMenu">
     <div class="nav__mobile-left">
       <div class="nav__mobile-logo">
-        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" width="120" height="32" />
+        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" />
       </div>
-      <button class="nav__mobile-close" aria-label="Close menu">✕</button>
+      <button class="nav__mobile-close" id="menuClose" aria-label="Close menu">✕</button>
+      
       <div class="nav__mobile-lang">
-        <a href="/morinvibes-official/en/" hreflang="en">EN</a>
-        <a href="/morinvibes-official/bm/" hreflang="ms">BM</a>
-        <a href="/morinvibes-official/zh/" hreflang="zh">中文</a>
+        <a href="/morinvibes-official/en/">EN</a>
+        <a href="/morinvibes-official/bm/">BM</a>
+        <a href="/morinvibes-official/zh/">中文</a>
       </div>
+      
       <a href="/morinvibes-official/en/" class="nav__mobile-link">Home</a>
-      <a href="/morinvibes-official/en/farm.html" class="nav__mobile-link active" aria-current="page">The Farm</a>
-      <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link">Quality</a>
+      <a href="/morinvibes-official/en/farm.html" class="nav__mobile-link active">The Farm</a>
+      <a href="/morinvibes-official/en/quality.html" class="nav__mobile-link">Quality & Authenticity</a>
       <a href="/morinvibes-official/en/benefits.html" class="nav__mobile-link">Benefits</a>
       <a href="/morinvibes-official/en/shop.html" class="nav__mobile-link">Shop</a>
-      <a href="/morinvibes-official/en/story.html" class="nav__mobile-link">Our Story</a>
-      <a href="/morinvibes-official/en/authentic.html" class="nav__mobile-link">Authenticity</a>
-      <a href="/morinvibes-official/en/ethics.html" class="nav__mobile-link">Ethics</a>
+      <a href="/morinvibes-official/en/about.html" class="nav__mobile-link">About Us</a>
+      <a href="/morinvibes-official/en/testimonials.html" class="nav__mobile-link">Testimonials</a>
       <a href="/morinvibes-official/en/faq.html" class="nav__mobile-link">FAQ</a>
-      <a href="https://wa.me/60102766095" target="_blank" rel="noopener noreferrer" class="nav__mobile-link" style="color:var(--teal);">WhatsApp</a>
+      <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="nav__mobile-link" style="color: var(--teal);">WhatsApp Us</a>
     </div>
+    
     <div class="nav__mobile-right">
-      <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa 90 capsules" class="nav__mobile-right-img" width="160" height="200" />
+      <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="nav__mobile-right-img" />
       <div class="nav__mobile-right-price">RM89 <span>/ bottle</span></div>
       <div class="nav__mobile-right-sub">90 capsules · 500mg pure moringa</div>
-      <a href="/morinvibes-official/en/checkout.html" class="btn">Buy Now — RM89</a>
+      <a href="/morinvibes-official/en/checkout.html" class="btn btn--primary" style="width: 100%;">Buy Now — RM89</a>
     </div>
   </div>
 
-  <!-- Scroll progress -->
-  <div class="scroll-progress" id="progressBar" role="progressbar" aria-hidden="true"></div>
-
-  <!-- ══════════════ MAIN ══════════════ -->
-  <main id="main-content">
-
-    <!-- ── HERO ── -->
-    <section class="fm-hero" aria-labelledby="farm-heading">
+  <main>
+    <!-- Farm Hero -->
+    <section class="farm-hero">
       <div class="container">
-        <div class="fm-hero__grid">
-
+        <div class="grid-2">
           <div class="fade-up">
-            <p class="fm-hero__eyebrow">My Land, My Hands</p>
-            <h1 class="fm-hero__title" id="farm-heading">
-              Not Warehouse<br>Stock. <em>Real Harvest.</em>
-            </h1>
-            <p class="fm-hero__lead">
-              My moringa comes from my own land in Bayan Lepas, Penang.
-              I bought this land from the kampung — it's mine. No middlemen.
-              No partners. Just me and my farm.
-            </p>
-            <div class="fm-hero__note" aria-label="Farm visit policy">
-              <span aria-hidden="true">🔒</span>
-              For farm security and soil protection, visits are not open to the public.
-            </div>
-          </div>
-
-          <div class="fade-up" data-delay="2">
-            <div class="fm-hero__img-wrap img-zoom">
-              <img
-                class="fm-hero__img"
-                src="/morinvibes-official/images/farm-hero.svg"
-                alt="Jess's moringa farm at sunrise in Bayan Lepas, Penang"
-                width="600" height="480"
-              />
-              <div class="fm-hero__badge" aria-hidden="true">
-                <div class="fm-hero__badge-icon">🌿</div>
-                <div>
-                  <p class="fm-hero__badge-label">Location</p>
-                  <p class="fm-hero__badge-val">Bayan Lepas, Penang</p>
-                </div>
+            <span class="eyebrow">OUR LAND, OUR HANDS</span>
+            <h1>Grown on Our Own Farm in Penang</h1>
+            <p class="lead">Since 2019, we've been cultivating moringa on our own land in Bayan Lepas — no middlemen, no third parties, just pure farm-direct quality.</p>
+            <div class="hero-founder-badge" style="margin-top: 32px;">
+              <div class="hero-founder-avatar">🌱</div>
+              <div>
+                <div class="hero-founder-name">Family-Owned Farm</div>
+                <div class="hero-founder-title">Bayan Lepas, Penang · Since 2019</div>
               </div>
             </div>
           </div>
-
+          <div class="fade-up" data-delay="2">
+            <div class="img-zoom">
+              <img src="/morinvibes-official/images/farm-hero.jpg" alt="Our farm in Bayan Lepas, Penang" style="width: 100%; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg);" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ── TRUST BAR ── -->
-    <div class="trust-bar" role="marquee" aria-label="Trust certifications">
+    <!-- Trust Bar -->
+    <div class="trust-bar">
       <div class="trust-bar__track">
-        <span>SINCE 2019</span><span class="dot" aria-hidden="true">•</span>
-        <span>FARM DIRECT</span><span class="dot" aria-hidden="true">•</span>
-        <span>GMP CERTIFIED</span><span class="dot" aria-hidden="true">•</span>
-        <span>KKM APPROVED</span><span class="dot" aria-hidden="true">•</span>
-        <span>VEGAN</span><span class="dot" aria-hidden="true">•</span>
-        <span>MALAYSIA</span><span class="dot" aria-hidden="true">•</span>
-        <span>90 CAPSULES</span><span class="dot" aria-hidden="true">•</span>
-        <span>500MG EACH</span><span class="dot" aria-hidden="true">•</span>
+        <span>SINCE 2019</span><span class="dot">•</span>
+        <span>FARM DIRECT</span><span class="dot">•</span>
+        <span>GMP CERTIFIED</span><span class="dot">•</span>
+        <span>KKM APPROVED</span><span class="dot">•</span>
+        <span>VEGAN</span><span class="dot">•</span>
+        <span>PENANG</span><span class="dot">•</span>
+        <span>90 CAPSULES</span><span class="dot">•</span>
+        <span>500MG EACH</span><span class="dot">•</span>
         <!-- Duplicate for seamless loop -->
-        <span aria-hidden="true">SINCE 2019</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">FARM DIRECT</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">GMP CERTIFIED</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">KKM APPROVED</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">VEGAN</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">MALAYSIA</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">90 CAPSULES</span><span class="dot" aria-hidden="true">•</span>
-        <span aria-hidden="true">500MG EACH</span><span class="dot" aria-hidden="true">•</span>
+        <span>SINCE 2019</span><span class="dot">•</span>
+        <span>FARM DIRECT</span><span class="dot">•</span>
+        <span>GMP CERTIFIED</span><span class="dot">•</span>
+        <span>KKM APPROVED</span><span class="dot">•</span>
+        <span>VEGAN</span><span class="dot">•</span>
+        <span>PENANG</span><span class="dot">•</span>
+        <span>90 CAPSULES</span><span class="dot">•</span>
+        <span>500MG EACH</span><span class="dot">•</span>
       </div>
     </div>
 
-    <!-- ── FARM STATS ── -->
-    <section class="section section--sm" aria-labelledby="stats-heading">
+    <!-- Farm Stats -->
+    <section class="section">
       <div class="container">
-        <div class="fm-section-head">
-          <span class="eyebrow">By the Numbers</span>
-          <h2 id="stats-heading" class="sr-only">Farm Statistics</h2>
-        </div>
-        <div class="fm-stats" role="list">
-          <div class="fm-stat fade-up" role="listitem">
-            <p class="fm-stat__num farm-stat__number">2019</p>
-            <p class="fm-stat__label">First Harvest</p>
-            <p class="fm-stat__desc">Started in my house compound before acquiring farm land</p>
+        <div class="farm-stats">
+          <div class="farm-stat-card fade-up">
+            <div class="farm-stat-number">5</div>
+            <div class="farm-stat-label">Acres</div>
+            <p>Our own agricultural land in Bayan Lepas</p>
           </div>
-          <div class="fm-stat fade-up" data-delay="1" role="listitem">
-            <p class="fm-stat__num farm-stat__number">5</p>
-            <p class="fm-stat__label">Acres</p>
-            <p class="fm-stat__desc">My own land in Bayan Lepas, purchased from the kampung</p>
+          <div class="farm-stat-card fade-up" data-delay="1">
+            <div class="farm-stat-number">2019</div>
+            <div class="farm-stat-label">Established</div>
+            <p>Growing moringa since day one</p>
           </div>
-          <div class="fm-stat fade-up" data-delay="2" role="listitem">
-            <p class="fm-stat__num">100%</p>
-            <p class="fm-stat__label">By Hand</p>
-            <p class="fm-stat__desc">No machines — every leaf harvested the way it should be</p>
+          <div class="farm-stat-card fade-up" data-delay="2">
+            <div class="farm-stat-number">0</div>
+            <div class="farm-stat-label">Middlemen</div>
+            <p>Direct from our farm to you</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── THE PROCESS ── -->
-    <section class="section" aria-labelledby="process-heading">
+    <!-- The Process -->
+    <section class="section section--alt">
       <div class="container">
-        <div class="fm-section-head">
-          <span class="eyebrow">From My Hands to Yours</span>
-          <h2 id="process-heading">The Process</h2>
+        <div class="section-header fade-up">
+          <span class="eyebrow">FROM SEED TO CAPSULE</span>
+          <h2>Our Growing Process</h2>
+          <p class="lead">Every step is handled with care, from our soil to your hands.</p>
         </div>
-
-        <div class="fm-process" role="list">
-
-          <div class="fm-step fade-up" role="listitem">
-            <p class="fm-step__num" aria-hidden="true">01</p>
-            <div class="fm-step__body">
-              <h3 class="fm-step__title">Harvest</h3>
-              <p class="fm-step__text">
-                I harvest at sunrise when moringa leaves are at their peak nutrient density.
-                Leaves are stripped from stems by hand and processed the same morning —
-                no cold storage, no delays between picking and processing.
-              </p>
-              <div class="fm-step__tags">
-                <span class="fm-tag">6:00 AM harvest</span>
-                <span class="fm-tag">Same-day processing</span>
-                <span class="fm-tag">Hand-picked</span>
-              </div>
+        
+        <div class="farm-process">
+          <!-- Step 1: Growing -->
+          <div class="process-step fade-up">
+            <div class="process-number">01</div>
+            <div class="process-content">
+              <h3>Growing</h3>
+              <p>Our moringa is grown naturally on our own land in Bayan Lepas. No harsh chemicals, no synthetic pesticides — just traditional farming practices that respect the soil.</p>
+              <span class="process-badge">Natural farming</span>
+              <span class="process-badge">No chemicals</span>
             </div>
           </div>
-
-          <div class="fm-step fade-up" data-delay="1" role="listitem">
-            <p class="fm-step__num" aria-hidden="true">02</p>
-            <div class="fm-step__body">
-              <h3 class="fm-step__title">Dry</h3>
-              <p class="fm-step__text">
-                Leaves are dried using a gentle low-temperature method that protects the natural
-                phytonutrients, enzymes, and chlorophyll. This step is what separates quality moringa
-                from mass-produced powder — no high heat, no shortcuts.
-              </p>
-              <div class="fm-step__tags">
-                <span class="fm-tag">Low-temperature</span>
-                <span class="fm-tag">Nutrient preserved</span>
-              </div>
+          
+          <!-- Step 2: Harvesting -->
+          <div class="process-step fade-up" data-delay="1">
+            <div class="process-number">02</div>
+            <div class="process-content">
+              <h3>Harvesting</h3>
+              <p>Leaves are hand-picked at peak freshness, early in the morning when nutrient density is highest. Same-day processing ensures nothing is lost.</p>
+              <span class="process-badge">Hand-picked</span>
+              <span class="process-badge">Morning harvest</span>
             </div>
           </div>
-
-          <div class="fm-step fade-up" data-delay="2" role="listitem">
-            <p class="fm-step__num" aria-hidden="true">03</p>
-            <div class="fm-step__body">
-              <h3 class="fm-step__title">Mill</h3>
-              <p class="fm-step__text">
-                Dried leaves are milled at low speed into a fine, silky powder.
-                Nothing added. No fillers, no anti-caking agents, no flow aids —
-                just pure moringa leaf at its most natural state.
-              </p>
-              <div class="fm-step__tags">
-                <span class="fm-tag">Fine powder</span>
-                <span class="fm-tag">Zero additives</span>
-              </div>
+          
+          <!-- Step 3: Drying -->
+          <div class="process-step fade-up" data-delay="2">
+            <div class="process-number">03</div>
+            <div class="process-content">
+              <h3>Drying</h3>
+              <p>Gently dried at controlled temperatures to preserve natural compounds. Our careful drying process maintains the leaf's integrity while ensuring safety.</p>
+              <span class="process-badge">Gentle drying</span>
+              <span class="process-badge">Temperature controlled</span>
             </div>
           </div>
-
-          <div class="fm-step fade-up" data-delay="3" role="listitem">
-            <p class="fm-step__num" aria-hidden="true">04</p>
-            <div class="fm-step__body">
-              <h3 class="fm-step__title">Capsule</h3>
-              <p class="fm-step__text">
-                Pure powder is filled into vegetarian capsules — 500mg each, 90 per bottle.
-                No binders, no stearates, no silica. Just moringa leaf and a plant-based capsule shell.
-                Sealed and labelled by hand before shipping.
-              </p>
-              <div class="fm-step__tags">
-                <span class="fm-tag">500mg each</span>
-                <span class="fm-tag">90 capsules</span>
-                <span class="fm-tag">Vegetarian shell</span>
-                <span class="fm-tag">KKM Approved</span>
-              </div>
+          
+          <!-- Step 4: Milling -->
+          <div class="process-step fade-up" data-delay="3">
+            <div class="process-number">04</div>
+            <div class="process-content">
+              <h3>Milling</h3>
+              <p>The dried leaves are milled into a fine powder. Nothing is added — just pure moringa leaf powder, ready for encapsulation.</p>
+              <span class="process-badge">Fine powder</span>
+              <span class="process-badge">No additives</span>
             </div>
           </div>
-
+          
+          <!-- Step 5: Encapsulation -->
+          <div class="process-step fade-up" data-delay="4">
+            <div class="process-number">05</div>
+            <div class="process-content">
+              <h3>Encapsulation</h3>
+              <p>Each capsule is filled with exactly 500mg of pure moringa powder in our clean facility. Vegetarian capsules, nothing else.</p>
+              <span class="process-badge">500mg each</span>
+              <span class="process-badge">Vegetarian capsules</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ── FRESHNESS TIMELINE ── -->
-    <section class="section section--alt" aria-labelledby="freshness-heading">
+    <!-- Freshness Timeline -->
+    <section class="section">
       <div class="container">
-        <div class="fm-section-head">
-          <span class="eyebrow">From Farm to You</span>
-          <h2 id="freshness-heading">Freshness Timeline</h2>
+        <div class="section-header fade-up">
+          <span class="eyebrow">SMALL-BATCH FRESHNESS</span>
+          <h2>From Farm to You</h2>
         </div>
-
+        
         <div class="grid-2">
-
           <div class="fade-up">
-            <div class="fm-timeline" role="list" aria-label="Farm to door timeline">
-
-              <div class="fm-tl-item" role="listitem">
-                <div class="fm-tl-left">
-                  <div class="fm-tl-dot" aria-hidden="true"></div>
-                  <div class="fm-tl-line" aria-hidden="true"></div>
-                </div>
-                <div class="fm-tl-body">
-                  <p class="fm-tl-day">Day 1 · 6 AM</p>
-                  <p class="fm-tl-desc">Morning harvest — leaves picked at peak freshness</p>
-                </div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-year">DAY 1</div>
+                <div class="timeline-title">Morning Harvest</div>
+                <p class="timeline-text">Leaves picked at peak freshness, transported immediately for processing.</p>
               </div>
-
-              <div class="fm-tl-item" role="listitem">
-                <div class="fm-tl-left">
-                  <div class="fm-tl-dot" aria-hidden="true"></div>
-                  <div class="fm-tl-line" aria-hidden="true"></div>
-                </div>
-                <div class="fm-tl-body">
-                  <p class="fm-tl-day">Day 1 – 2</p>
-                  <p class="fm-tl-desc">Gentle low-temperature drying, nutrients preserved</p>
-                </div>
+              <div class="timeline-item">
+                <div class="timeline-year">DAY 1-2</div>
+                <div class="timeline-title">Gentle Drying</div>
+                <p class="timeline-text">Controlled temperature drying preserves nutrients.</p>
               </div>
-
-              <div class="fm-tl-item" role="listitem">
-                <div class="fm-tl-left">
-                  <div class="fm-tl-dot" aria-hidden="true"></div>
-                  <div class="fm-tl-line" aria-hidden="true"></div>
-                </div>
-                <div class="fm-tl-body">
-                  <p class="fm-tl-day">Day 2 – 3</p>
-                  <p class="fm-tl-desc">Milling into fine powder and encapsulation</p>
-                </div>
+              <div class="timeline-item">
+                <div class="timeline-year">DAY 2-3</div>
+                <div class="timeline-title">Milling & Encapsulation</div>
+                <p class="timeline-text">Fine powder created and filled into vegetarian capsules.</p>
               </div>
-
-              <div class="fm-tl-item" role="listitem">
-                <div class="fm-tl-left">
-                  <div class="fm-tl-dot" aria-hidden="true"></div>
-                  <div class="fm-tl-line" aria-hidden="true"></div>
-                </div>
-                <div class="fm-tl-body">
-                  <p class="fm-tl-day">Day 3</p>
-                  <p class="fm-tl-desc">Quality check, labelling, and sealed for shipping</p>
-                </div>
+              <div class="timeline-item">
+                <div class="timeline-year">DAY 3</div>
+                <div class="timeline-title">Quality Check</div>
+                <p class="timeline-text">Every batch is inspected before release.</p>
               </div>
-
-              <div class="fm-tl-item" role="listitem">
-                <div class="fm-tl-left">
-                  <div class="fm-tl-dot" style="background:var(--gold,#b5832a);box-shadow:0 0 0 2.5px rgba(181,131,42,0.3)" aria-hidden="true"></div>
-                </div>
-                <div class="fm-tl-body">
-                  <p class="fm-tl-day" style="color:var(--gold,#b5832a)">Day 4 – 5</p>
-                  <p class="fm-tl-desc">Shipped and delivered to your door 🎉</p>
-                </div>
+              <div class="timeline-item">
+                <div class="timeline-year">DAY 4-5</div>
+                <div class="timeline-title">Shipped to You</div>
+                <p class="timeline-text">Fresh from our farm to your door.</p>
               </div>
-
             </div>
           </div>
-
+          
           <div class="fade-up" data-delay="2">
-            <div class="fm-promise" role="note" aria-label="Freshness guarantee">
-              <span class="fm-promise__icon" aria-hidden="true">🌿</span>
-              <h3 class="fm-promise__title">Freshness Guarantee</h3>
-              <p class="fm-promise__text">
-                Unlike mass-produced supplements that sit in warehouses for months,
-                I prepare each batch after your order. From my farm to your door
-                in days — not months. You'll notice the difference in colour, smell,
-                and how you feel.
-              </p>
-              <span class="fm-tag" style="font-size:12.5px;padding:7px 18px;">Prepared after your order</span>
+            <div class="location-note">
+              <span style="font-size: 2.5rem; display: block; margin-bottom: 16px;">🌱</span>
+              <h3 style="margin-bottom: 16px;">Farm-Direct Promise</h3>
+              <p>We grow it, harvest it, and prepare it ourselves — no middlemen, no third parties. From our hands to yours, every capsule is personal.</p>
+              <p style="margin-top: 24px; font-size: 0.9rem; color: var(--ink-muted);">Bayan Lepas, Penang · For farm security, visits are not open to the public.</p>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ── GALLERY ── -->
-    <section class="section" aria-labelledby="gallery-heading">
+    <!-- Gallery -->
+    <section class="section section--alt">
       <div class="container">
-        <div class="fm-section-head">
-          <span class="eyebrow">Farm Life</span>
-          <h2 id="gallery-heading">Moments from My Land</h2>
+        <div class="section-header fade-up">
+          <span class="eyebrow">FARM LIFE</span>
+          <h2>Moments from Our Land</h2>
         </div>
-
-        <div class="fm-gallery" role="list">
-          <div class="fm-gallery__item fade-up" role="listitem">
-            <img
-              src="/morinvibes-official/images/farm-harvest.svg"
-              alt="Morning harvest — picking moringa leaves at sunrise"
-              loading="lazy" width="480" height="480"
-            />
-            <div class="fm-gallery__caption" aria-hidden="true">Morning harvest</div>
+        
+        <div class="gallery-grid">
+          <div class="gallery-item img-zoom fade-up">
+            <img src="/morinvibes-official/images/farm-harvest.jpg" alt="Harvesting moringa leaves" />
           </div>
-          <div class="fm-gallery__item fade-up" data-delay="1" role="listitem">
-            <img
-              src="/morinvibes-official/images/farm-drying.svg"
-              alt="Gentle drying process — preserving nutrients"
-              loading="lazy" width="480" height="480"
-            />
-            <div class="fm-gallery__caption" aria-hidden="true">Gentle drying</div>
+          <div class="gallery-item img-zoom fade-up" data-delay="1">
+            <img src="/morinvibes-official/images/farm-drying.jpg" alt="Drying process" />
           </div>
-          <div class="fm-gallery__item fade-up" data-delay="2" role="listitem">
-            <img
-              src="/morinvibes-official/images/farm-milling.svg"
-              alt="Milling into fine moringa powder"
-              loading="lazy" width="480" height="480"
-            />
-            <div class="fm-gallery__caption" aria-hidden="true">Milling process</div>
+          <div class="gallery-item img-zoom fade-up" data-delay="2">
+            <img src="/morinvibes-official/images/farm-milling.jpg" alt="Milling equipment" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── LOCATION ── -->
-    <section class="section section--alt" aria-labelledby="location-heading">
+    <!-- Farm Location -->
+    <section class="section">
       <div class="container">
-        <div class="fm-location__grid">
-
+        <div class="grid-2">
           <div class="fade-up">
-            <span class="eyebrow">My Land</span>
-            <h2 id="location-heading">Bayan Lepas, Penang</h2>
-            <p class="lead">
-              My farm sits on agricultural land in Bayan Lepas, Penang —
-              land I bought from the kampung. This is where it all started,
-              from a small house compound to the farm it is today.
-            </p>
-            <div class="fm-location__note" role="note" aria-label="Farm visit policy">
-              <span class="fm-location__note-icon" aria-hidden="true">🔒</span>
-              <p class="fm-location__note-text">
-                For farm security and soil protection, farm visits are not open to the public.
-                Thank you for understanding.
-              </p>
-            </div>
+            <span class="eyebrow">OUR LAND</span>
+            <h2>Bayan Lepas, Penang</h2>
+            <p class="lead">Our farm sits on agricultural land in Bayan Lepas, Penang — land we've cultivated since 2019. This is where our moringa grows, naturally and carefully.</p>
+            <p style="color: var(--ink-soft);">The rich soil and tropical climate of Penang provide ideal conditions for moringa to thrive. We work with the land, not against it.</p>
           </div>
-
           <div class="fade-up" data-delay="2">
             <div class="img-zoom">
-              <img
-                src="/morinvibes-official/images/farm-landscape.svg"
-                alt="Aerial view of the moringa farm in Bayan Lepas, Penang"
-                style="width:100%;border-radius:24px;box-shadow:var(--shadow-lg);"
-                loading="lazy" width="580" height="440"
-              />
+              <img src="/morinvibes-official/images/farm-landscape.jpg" alt="Farm landscape in Penang" style="width: 100%; border-radius: var(--radius-lg);" />
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ── SHOPEE PROOF ── -->
-    <section class="section" aria-labelledby="shopee-heading">
+    <!-- CTA Section -->
+    <section class="section section--alt">
       <div class="container">
-        <div class="fm-shopee fade-up">
-          <span class="eyebrow">Same Farm, Same Brand</span>
-          <h2 id="shopee-heading" style="margin-bottom:14px;">Trusted on Shopee Since 2019</h2>
-          <p class="lead" style="max-width:580px;margin:0 auto;">
-            The same moringa from my farm — now available directly through my website.
-            Fresher batches, better prices, direct support from me.
-          </p>
-
-          <div class="fm-shopee__stores" aria-label="Shopee store names">
-            <span class="fm-shopee__pill">🟠 MorinVibes</span>
-            <span class="fm-shopee__pill">🟠 moringa_morinvibes</span>
-          </div>
-
-          <div class="fm-shopee__stars" aria-label="5 star rating">★★★★★</div>
-          <p class="fm-shopee__reviews">1,000+ verified 5-star reviews</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── CTA ── -->
-    <section class="section section--sm">
-      <div class="container">
-        <div class="fm-cta fade-up" role="complementary" aria-labelledby="cta-heading">
-          <p class="fm-cta__eyebrow">Ready to experience it?</p>
-          <h2 class="fm-cta__title" id="cta-heading">From My Farm.<br>To Your Daily Life.</h2>
-          <p class="fm-cta__text">
-            Taste the freshness of moringa grown on my own land,
-            harvested by my hands, and prepared with care.
-            No warehouse. No shortcuts. Just farm-direct goodness.
-          </p>
-          <div class="fm-btn-group">
-            <a href="/morinvibes-official/en/checkout.html" class="btn btn--primary btn--large">
-              Shop Now — RM89
-            </a>
-            <a href="https://wa.me/60102766095" target="_blank" rel="noopener noreferrer"
-               class="btn btn--outline btn--large"
-               style="border-color:rgba(255,255,255,0.3);color:#fff;"
-               aria-label="WhatsApp Jess">
-              💬 WhatsApp Jess
-            </a>
+        <div class="cta-section fade-up">
+          <h2 class="cta-title">Experience Farm-Direct Freshness</h2>
+          <p class="cta-text">From our land to your door — pure moringa, nothing else.</p>
+          <div class="cta-buttons">
+            <a href="/morinvibes-official/en/shop.html" class="btn btn--primary btn--large">Shop Now — RM89</a>
+            <a href="/morinvibes-official/en/quality.html" class="btn btn--outline btn--large">View Quality Standards</a>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- ══════════════ FOOTER ══════════════ -->
-  <footer class="footer" role="contentinfo">
+  <!-- Footer -->
+  <footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div>
-          <div class="footer__logo">
-            <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" width="140" height="36" />
-          </div>
-          <p class="footer__tagline">Farm-direct moringa from my land in Penang · Since 2019</p>
-          <div class="footer__social" aria-label="Social media">
-            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
-            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
-            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener noreferrer" aria-label="TikTok">🎵</a>
-            <a href="https://wa.me/60102766095" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">📱</a>
+          <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="footer__logo" />
+          <p class="footer__tagline">Farm-direct moringa from our own land in Penang, Malaysia · Since 2019</p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener">f</a>
+            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener">📷</a>
+            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener">▶</a>
+            <a href="https://wa.me/60102766095" target="_blank" rel="noopener">💬</a>
           </div>
         </div>
+        
         <div>
-          <h3 class="footer__title">Navigate</h3>
+          <h4 class="footer__title">Navigate</h4>
           <ul class="footer__links">
-            <li><a href="/morinvibes-official/en/farm.html" aria-current="page">The Farm</a></li>
-            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
+            <li><a href="/morinvibes-official/en/farm.html">The Farm</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality & Authenticity</a></li>
             <li><a href="/morinvibes-official/en/benefits.html">Benefits</a></li>
             <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
-            <li><a href="/morinvibes-official/en/story.html">Our Story</a></li>
+            <li><a href="/morinvibes-official/en/about.html">About Us</a></li>
+            <li><a href="/morinvibes-official/en/testimonials.html">Testimonials</a></li>
+            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+            <li><a href="/morinvibes-official/en/journal/">Journal</a></li>
           </ul>
         </div>
+        
         <div>
-          <h3 class="footer__title">Trust</h3>
+          <h4 class="footer__title">Trust</h4>
           <ul class="footer__links">
-            <li><a href="/morinvibes-official/en/authentic.html">Authenticity</a></li>
+            <li><a href="/morinvibes-official/en/authenticity.html">Authenticity</a></li>
             <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
-            <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
+            <li><a href="/morinvibes-official/en/returns.html">Returns Policy</a></li>
+            <li><a href="/morinvibes-official/en/privacy.html">Privacy Policy</a></li>
+            <li><a href="/morinvibes-official/en/terms.html">Terms</a></li>
           </ul>
           <div class="footer__badge">KKM Approved</div>
         </div>
+        
         <div>
-          <h3 class="footer__title">Contact</h3>
+          <h4 class="footer__title">Contact</h4>
           <ul class="footer__links">
-            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
             <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
+            <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener">Shopee Store</a></li>
+            <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener">Lazada Store</a></li>
           </ul>
-          <p style="color:rgba(255,255,255,0.3);font-size:0.85rem;margin-top:20px;line-height:1.6;">
-            Bayan Lepas, Penang<br>Malaysia
-          </p>
+          <p class="footer__address">Bayan Lepas, Penang<br />Malaysia</p>
         </div>
       </div>
+      
       <div class="footer__bottom">
-        <div>© <span class="current-year">2026</span> MorinVibes®. All rights reserved.</div>
+        <div>© 2026 MorinVibes®. All rights reserved.</div>
         <div>
           <a href="/morinvibes-official/en/privacy.html">Privacy</a>
           <a href="/morinvibes-official/en/terms.html">Terms</a>
@@ -1052,31 +585,92 @@
     </div>
   </footer>
 
-  <!-- Scroll to top -->
+  <!-- Scroll to Top Button -->
   <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
 
-  <!-- Community popup -->
-  <div class="community-popup" id="communityPopup" role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-hidden="true">
-    <div class="popup-header">
-      <h4 id="popup-title">Join Our Community</h4>
-      <p>Get updates, tips, and exclusive offers</p>
-      <button class="popup-close" aria-label="Close community popup">✕</button>
-    </div>
-    <div class="popup-body">
-      <a href="https://wa.me/60102766095" target="_blank" rel="noopener noreferrer" class="popup-link popup-link--wa">
-        <span class="popup-link__icon" aria-hidden="true">📱</span>
-        <span>WhatsApp Community</span>
-      </a>
-      <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener noreferrer" class="popup-link popup-link--ig">
-        <span class="popup-link__icon" aria-hidden="true">📸</span>
-        <span>Instagram</span>
-      </a>
-      <button class="popup-dismiss">No thanks, I'll browse</button>
-    </div>
-  </div>
-
   <!-- Scripts -->
-  <script src="/morinvibes-official/assets/js/main.js" defer></script>
-  <script src="/morinvibes-official/assets/js/pixel.js" defer></script>
+  <script src="/morinvibes-official/assets/js/main.js"></script>
+  <script src="/morinvibes-official/assets/js/pixel.js"></script>
+  
+  <script>
+    (function() {
+      // Progress bar
+      const progressBar = document.getElementById('progressBar');
+      const scrollBtn = document.getElementById('scrollTop');
+      const nav = document.getElementById('mainNav');
+      
+      window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (scrollY / docHeight) * 100;
+        if (progressBar) progressBar.style.width = scrolled + '%';
+        
+        nav.classList.toggle('scrolled', scrollY > 40);
+        if (scrollBtn) scrollBtn.classList.toggle('visible', scrollY > 400);
+      }, { passive: true });
+      
+      if (scrollBtn) {
+        scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      }
+      
+      // Mobile menu
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const closeBtn = document.getElementById('menuClose');
+      
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          mobileMenu.classList.add('open');
+          document.body.classList.add('menu-open');
+          hamburger.setAttribute('aria-expanded', 'true');
+        });
+        
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.classList.remove('menu-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          });
+        }
+        
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            document.body.classList.remove('menu-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+      
+      // Language dropdown
+      const langBtn = document.getElementById('langBtn');
+      const langDropdown = document.getElementById('langDropdown');
+      
+      if (langBtn && langDropdown) {
+        langBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          langDropdown.classList.toggle('open');
+        });
+        
+        document.addEventListener('click', () => {
+          langDropdown.classList.remove('open');
+        });
+      }
+      
+      // Fade-up observer
+      const fadeElements = document.querySelectorAll('.fade-up');
+      if (fadeElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        
+        fadeElements.forEach(el => observer.observe(el));
+      }
+    })();
+  </script>
 </body>
 </html>
