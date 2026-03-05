@@ -1,486 +1,506 @@
-/**
- * MorinVibes® — Main JavaScript v10.0
- * ================================================================
- * All interactions, animations, and UI enhancements
- * 21+ smooth animations · Zero lag · Mobile optimized
- * Professional · Fresh · SEO-Optimized
- * ================================================================
- */
+/* ===== MORINVIBES® — MAIN.JS ===== */
+/* Version: 16.0 · March 2026 */
+/* External JS — Core functionality */
+/* Path: /morinvibes-official/assets/js/main.js */
 
 (function() {
-    'use strict';
+  'use strict';
 
-    // ===== DOM Elements =====
-    const nav = document.getElementById('mainNav');
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const closeBtn = document.getElementById('menuClose');
-    const scrollBtn = document.getElementById('scrollTop');
-    const progressBar = document.getElementById('progressBar');
-    const langBtn = document.getElementById('langBtn');
-    const langDropdown = document.getElementById('langDropdown');
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    const fadeElements = document.querySelectorAll('.fade-up');
-    const counters = document.querySelectorAll('.quality-badge-circle[data-count], .stat-number[data-count]');
-    const images = document.querySelectorAll('img[data-src]');
-    const yearElements = document.querySelectorAll('.current-year');
-    const trustTrack = document.querySelector('.trust-bar__track');
-    const expandAllBtn = document.getElementById('expandAllBtn');
+  /* ------------------------------------ */
+  /* CHECKOUT MODAL — Orderla iframe     */
+  /* ------------------------------------ */
 
-    // ===== 1. Mobile Menu with smooth animation =====
-    function initMobileMenu() {
-        if (!hamburger || !mobileMenu) return;
+  const coOverlay = document.getElementById('coOverlay');
+  const coIframe = document.getElementById('coIframe');
+  const coSpinner = document.getElementById('coSpinner');
+  const coClose = document.getElementById('coClose');
+  let iframeLoaded = false;
 
-        function openMenu() {
-            mobileMenu.classList.add('open');
-            document.body.classList.add('menu-open');
-            hamburger.setAttribute('aria-expanded', 'true');
-            // Prevent body scroll
-            document.body.style.overflow = 'hidden';
+  // Fallback element (create if not exists in HTML)
+  let coFallback = document.getElementById('coFallback');
+  if (!coFallback && coOverlay) {
+    coFallback = document.createElement('div');
+    coFallback.id = 'coFallback';
+    coFallback.className = 'co-fallback';
+    coFallback.innerHTML = '<p>Having trouble loading the checkout?</p><a href="https://morinvibes.orderla.my/moringa-order" target="_blank" class="btn btn--primary" rel="noopener">Open checkout directly →</a>';
+    document.querySelector('.co-body')?.appendChild(coFallback);
+  }
+
+  function openCheckout() {
+    if (!coOverlay) return;
+    
+    coOverlay.classList.add('open');
+    document.body.classList.add('checkout-open');
+    
+    // Lazy load iframe on first open only
+    if (!iframeLoaded && coIframe) {
+      iframeLoaded = true;
+      coIframe.src = coIframe.dataset.src;
+      
+      coIframe.addEventListener('load', function() {
+        if (coSpinner) coSpinner.style.display = 'none';
+        coIframe.classList.add('ready');
+        // Hide fallback if visible
+        if (coFallback) coFallback.classList.remove('show');
+      }, { once: true });
+      
+      // 6-second fallback
+      setTimeout(function() {
+        if (!coIframe.classList.contains('ready')) {
+          if (coSpinner) coSpinner.style.display = 'none';
+          if (coFallback) coFallback.classList.add('show');
         }
-
-        function closeMenu() {
-            mobileMenu.classList.remove('open');
-            document.body.classList.remove('menu-open');
-            hamburger.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
-        }
-
-        hamburger.addEventListener('click', openMenu);
-
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeMenu);
-        }
-
-        // 20. ESC key closes mobile menu
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-                closeMenu();
-            }
-        });
-
-        // Close on backdrop click (click outside left panel)
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target === mobileMenu) {
-                closeMenu();
-            }
-        });
+      }, 6000);
     }
-
-    // ===== 2. Navbar scroll effect (frosted glass) =====
-    function initNavScroll() {
-        if (!nav) return;
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 40) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        }, { passive: true });
+    
+    // Track pixel events
+    if (typeof fbTrack === 'function') {
+      fbTrack('AddToCart', {
+        content_ids: ['moringa-90s'],
+        value: 89,
+        currency: 'MYR',
+        num_items: 1
+      });
+      fbTrack('InitiateCheckout', {
+        content_name: 'MorinVibes Moringa Capsules 90s',
+        value: 89,
+        currency: 'MYR'
+      });
     }
+  }
 
-    // ===== 3. Scroll progress bar =====
-    function initProgressBar() {
-        if (!progressBar) return;
+  function closeCheckout() {
+    if (!coOverlay) return;
+    coOverlay.classList.remove('open');
+    document.body.classList.remove('checkout-open');
+  }
 
-        window.addEventListener('scroll', () => {
-            const winScroll = window.scrollY;
-            const height = document.documentElement.scrollHeight - window.innerHeight;
-            const scrolled = (winScroll / height) * 100;
-            progressBar.style.width = scrolled + '%';
-        }, { passive: true });
+  // Bind all 7 order buttons
+  const orderButtonIds = [
+    'navOrderBtn',
+    'heroBuyBtn',
+    'prodBuyBtn',
+    'prodBuyBtn2',
+    'ctaBuyBtn',
+    'concernsBtn',
+    'mOrderBtn'
+  ];
+
+  orderButtonIds.forEach(function(id) {
+    const btn = document.getElementById(id);
+    if (btn) {
+      btn.addEventListener('click', openCheckout);
     }
+  });
 
-    // ===== 4. Scroll to top button =====
-    function initScrollTop() {
-        if (!scrollBtn) return;
+  // Close modal events
+  if (coClose) {
+    coClose.addEventListener('click', closeCheckout);
+  }
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                scrollBtn.classList.add('visible');
-            } else {
-                scrollBtn.classList.remove('visible');
-            }
-        }, { passive: true });
+  if (coOverlay) {
+    coOverlay.addEventListener('click', function(e) {
+      if (e.target === coOverlay) closeCheckout();
+    });
+  }
 
-        scrollBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+  /* ------------------------------------ */
+  /* MOBILE MENU                          */
+  /* ------------------------------------ */
+
+  const mobileMenu = document.getElementById('mobileMenu');
+  const navHam = document.getElementById('navHam');
+  const mClose = document.getElementById('mClose');
+
+  function openMenu() {
+    if (!mobileMenu || !navHam) return;
+    mobileMenu.classList.add('open');
+    document.body.classList.add('menu-open');
+    navHam.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu() {
+    if (!mobileMenu || !navHam) return;
+    mobileMenu.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    navHam.setAttribute('aria-expanded', 'false');
+  }
+
+  if (navHam) {
+    navHam.addEventListener('click', openMenu);
+  }
+
+  if (mClose) {
+    mClose.addEventListener('click', closeMenu);
+  }
+
+  /* ------------------------------------ */
+  /* ESC KEY — Close modal and menu       */
+  /* ------------------------------------ */
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeCheckout();
+      closeMenu();
     }
+  });
 
-    // ===== 5. Language dropdown =====
-    function initLanguageDropdown() {
-        if (!langBtn || !langDropdown) return;
+  /* ------------------------------------ */
+  /* SCROLL EFFECTS                       */
+  /* ------------------------------------ */
 
-        langBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langDropdown.classList.toggle('open');
-        });
+  const progressBar = document.getElementById('progressBar');
+  const nav = document.getElementById('mainNav');
+  const scrollTop = document.getElementById('scrollTop');
+  let ticking = false;
 
-        document.addEventListener('click', () => {
-            langDropdown.classList.remove('open');
-        });
-    }
-
-    // ===== 6. Fade-up animations on scroll (Intersection Observer) =====
-    function initScrollAnimations() {
-        if (fadeElements.length === 0) return;
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    
-                    // Optional: unobserve after animation for performance
-                    // observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -40px 0px'
-        });
-
-        fadeElements.forEach(el => observer.observe(el));
-    }
-
-    // ===== 7. Counter animation for stats =====
-    function initCounters() {
-        if (counters.length === 0) return;
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    const text = el.textContent;
-                    const target = parseInt(text.replace(/[^0-9]/g, ''), 10);
-                    
-                    if (isNaN(target)) return;
-                    
-                    let current = 0;
-                    const increment = target / 50;
-                    const suffix = text.replace(/[0-9]/g, '');
-                    
-                    const updateCounter = () => {
-                        current += increment;
-                        if (current < target) {
-                            el.textContent = Math.floor(current) + suffix;
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            el.textContent = target + suffix;
-                        }
-                    };
-                    
-                    updateCounter();
-                    observer.unobserve(el);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        counters.forEach(counter => observer.observe(counter));
-    }
-
-    // ===== 8. Community popup (exit intent + timer) — OPTIONAL =====
-    function initCommunityPopup() {
-        const popup = document.querySelector('.community-popup');
-        if (!popup) return;
-
-        // Check if already shown
-        if (sessionStorage.getItem('popupShown')) return;
-
-        function showPopup() {
-            popup.classList.add('show');
-            sessionStorage.setItem('popupShown', 'true');
-        }
-
-        // Show after 45 seconds
-        setTimeout(showPopup, 45000);
-
-        // Exit intent
-        document.addEventListener('mouseleave', (e) => {
-            if (e.clientY < 10 && !sessionStorage.getItem('popupShown')) {
-                showPopup();
-            }
-        });
-
-        // Close button
-        const closeBtn = popup.querySelector('.popup-close');
-        if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                popup.classList.remove('show');
-            });
-        }
-
-        // Dismiss link
-        const dismiss = popup.querySelector('.popup-dismiss');
-        if (dismiss) {
-            dismiss.addEventListener('click', () => {
-                popup.classList.remove('show');
-            });
-        }
-    }
-
-    // ===== 9. Trust bar pause on hover =====
-    function initTrustBarHover() {
-        if (!trustTrack) return;
-
-        trustTrack.addEventListener('mouseenter', () => {
-            trustTrack.style.animationPlayState = 'paused';
-        });
-
-        trustTrack.addEventListener('mouseleave', () => {
-            trustTrack.style.animationPlayState = 'running';
-        });
-    }
-
-    // ===== 10. FAQ accordion smooth expand =====
-    function initFaqAccordion() {
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', function() {
-                const faqItem = this.parentElement;
-                const answer = this.nextElementSibling;
-                const icon = this.querySelector('.faq-question__icon');
-                
-                // Toggle current
-                faqItem.classList.toggle('open');
-                
-                if (faqItem.classList.contains('open')) {
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                    if (icon) icon.textContent = '−';
-                } else {
-                    answer.style.maxHeight = null;
-                    if (icon) icon.textContent = '+';
-                }
-            });
-        });
-    }
-
-    // ===== 11. Expand/Collapse All FAQs =====
-    function initExpandAll() {
-        if (!expandAllBtn) return;
-
-        expandAllBtn.addEventListener('click', function() {
-            const allFaqItems = document.querySelectorAll('.faq-item');
-            const expandText = document.getElementById('expandAllText');
-            const isAnyOpen = Array.from(allFaqItems).some(item => item.classList.contains('open'));
-            
-            allFaqItems.forEach(item => {
-                const answer = item.querySelector('.faq-answer');
-                const icon = item.querySelector('.faq-question__icon');
-                
-                if (isAnyOpen) {
-                    // Close all
-                    item.classList.remove('open');
-                    answer.style.maxHeight = null;
-                    if (icon) icon.textContent = '+';
-                    if (expandText) expandText.textContent = 'Expand All';
-                } else {
-                    // Open all
-                    item.classList.add('open');
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                    if (icon) icon.textContent = '−';
-                    if (expandText) expandText.textContent = 'Collapse All';
-                }
-            });
-        });
-    }
-
-    // ===== 12. Button ripple effect =====
-    function initButtonRipple() {
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const ripple = document.createElement('span');
-                ripple.className = 'ripple';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        });
-    }
-
-    // ===== 13. Card hover scale effect (handled by CSS, but we add class for compatibility) =====
-    function initCardHover() {
-        // CSS handles this, but we ensure no conflicts
-    }
-
-    // ===== 14. Card tilt effect (desktop only) =====
-    function initCardTilt() {
-        if (window.innerWidth < 768) return;
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        const scrollY = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         
-        document.querySelectorAll('.benefit-card, .product-svg-card').forEach(card => {
-            card.addEventListener('mousemove', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 25;
-                const rotateY = (centerX - x) / 25;
-                
-                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-            });
-        });
-    }
-
-    // ===== 15. Image lazy loading =====
-    function initLazyLoading() {
-        if ('IntersectionObserver' in window && images.length > 0) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                        }
-                        imageObserver.unobserve(img);
-                    }
-                });
-            }, {
-                rootMargin: '100px',
-                threshold: 0.1
-            });
-
-            images.forEach(img => imageObserver.observe(img));
+        // Progress bar
+        if (progressBar) {
+          const progress = docHeight > 0 ? (scrollY / docHeight * 100) : 0;
+          progressBar.style.width = progress + '%';
         }
-    }
-
-    // ===== 16. Image hover zoom (handled by CSS) =====
-    function initImageZoom() {
-        // CSS handles this with .img-zoom class
-    }
-
-    // ===== 17. Social icon hover (handled by CSS) =====
-    function initSocialHover() {
-        // CSS handles this
-    }
-
-    // ===== 18. WhatsApp pulse animation (handled by CSS) =====
-    function initWhatsAppPulse() {
-        // CSS handles this with .wa-section__icon
-    }
-
-    // ===== 19. Parallax hero effect (subtle) =====
-    function initParallax() {
-        const heroVisual = document.querySelector('.hero__visual');
-        if (!heroVisual) return;
-
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            if (scrolled < window.innerHeight) {
-                heroVisual.style.transform = `translateY(${scrolled * 0.05}px)`;
-            }
-        }, { passive: true });
-    }
-
-    // ===== 20. Staggered card reveals (handled by CSS data-delay) =====
-
-    // ===== 21. Loading spinner for checkout (handled in checkout page) =====
-
-    // ===== Add ripple styles dynamically =====
-    function addRippleStyles() {
-        // Check if styles already exist
-        if (document.querySelector('#ripple-styles')) return;
         
-        const style = document.createElement('style');
-        style.id = 'ripple-styles';
-        style.textContent = `
-            .btn { position: relative; overflow: hidden; }
-            .ripple {
-                position: absolute;
-                width: 10px;
-                height: 10px;
-                background: rgba(255, 255, 255, 0.5);
-                border-radius: 50%;
-                transform: scale(0);
-                animation: ripple 0.6s ease-out;
-                pointer-events: none;
-                z-index: 5;
-            }
-            @keyframes ripple {
-                to { transform: scale(30); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-    }
-
-    // ===== Update copyright year =====
-    function updateCopyrightYear() {
-        const year = new Date().getFullYear();
-        yearElements.forEach(el => {
-            el.textContent = year;
-        });
-    }
-
-    // ===== Handle touch devices (remove hover effects) =====
-    function detectTouchDevice() {
-        if ('ontouchstart' in window || navigator.maxTouchPoints) {
-            document.documentElement.classList.add('touch-device');
+        // Nav shrink
+        if (nav) {
+          nav.classList.toggle('scrolled', scrollY > 40);
         }
+        
+        // Scroll to top button visibility
+        if (scrollTop) {
+          scrollTop.classList.toggle('visible', scrollY > 480);
+        }
+        
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Scroll to top
+  if (scrollTop) {
+    scrollTop.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  /* ------------------------------------ */
+  /* LANGUAGE DROPDOWN                    */
+  /* ------------------------------------ */
+
+  const langDrop = document.getElementById('langDrop');
+  const langBtn = document.getElementById('langBtn');
+
+  if (langBtn && langDrop) {
+    langBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isOpen = langDrop.classList.toggle('open');
+      langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+      langDrop.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', 'false');
+    });
+
+    // Prevent closing when clicking inside dropdown
+    langDrop.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  /* ------------------------------------ */
+  /* FAQ ACCORDION                        */
+  /* ------------------------------------ */
+
+  const faqQuestions = document.querySelectorAll('.faq-q');
+
+  faqQuestions.forEach(function(question) {
+    function toggleFaq() {
+      const item = question.parentElement;
+      const answer = item.querySelector('.faq-ans');
+      const icon = question.querySelector('.faq-q__icon');
+      const wasOpen = item.classList.contains('open');
+      
+      // Close all other FAQs
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          const openAnswer = openItem.querySelector('.faq-ans');
+          const openIcon = openItem.querySelector('.faq-q__icon');
+          if (openAnswer) openAnswer.style.maxHeight = null;
+          if (openIcon) openIcon.textContent = '+';
+          openItem.querySelector('.faq-q')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      
+      // Toggle current FAQ
+      if (!wasOpen) {
+        item.classList.add('open');
+        if (answer) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+        if (icon) icon.textContent = '×';
+        question.setAttribute('aria-expanded', 'true');
+      } else {
+        item.classList.remove('open');
+        if (answer) answer.style.maxHeight = null;
+        if (icon) icon.textContent = '+';
+        question.setAttribute('aria-expanded', 'false');
+      }
     }
 
-    // ===== Smooth scroll for anchor links =====
-    function initSmoothScroll() {
-        document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                const target = document.querySelector(href);
-                
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
+    question.addEventListener('click', toggleFaq);
+    
+    // Keyboard support (Enter or Space)
+    question.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleFaq();
+      }
+    });
+  });
+
+  /* ------------------------------------ */
+  /* RIPPLE EFFECT ON BUTTONS             */
+  /* ------------------------------------ */
+
+  const rippleButtons = document.querySelectorAll('.btn--primary, .btn--outline');
+
+  rippleButtons.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.left = (x - 5) + 'px';
+      ripple.style.top = (y - 5) + 'px';
+      
+      btn.appendChild(ripple);
+      
+      setTimeout(function() {
+        ripple.remove();
+      }, 700);
+    });
+  });
+
+  /* ------------------------------------ */
+  /* 3D CARD TILT (desktop only)          */
+  /* ------------------------------------ */
+
+  const prodCard = document.getElementById('prodCard');
+
+  if (prodCard && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let ticking = false;
+    
+    prodCard.addEventListener('mousemove', function(e) {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          const rect = prodCard.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          
+          prodCard.style.transform = 'translateY(-8px) rotateY(' + (x * 7) + 'deg) rotateX(' + (-y * 7) + 'deg)';
+          prodCard.style.boxShadow = '0 24px 64px rgba(0,151,178,0.18)';
+          
+          ticking = false;
         });
-    }
+        ticking = true;
+      }
+    });
+    
+    prodCard.addEventListener('mouseleave', function() {
+      prodCard.style.transform = '';
+      prodCard.style.boxShadow = '';
+    });
+  }
 
-    // ===== Initialize everything =====
-    function init() {
-        addRippleStyles();
-        detectTouchDevice();
-        initMobileMenu();
-        initNavScroll();
-        initProgressBar();
-        initScrollTop();
-        initLanguageDropdown();
-        initScrollAnimations();
-        initCounters();
-        initCommunityPopup();
-        initTrustBarHover();
-        initFaqAccordion();
-        initExpandAll();
-        initButtonRipple();
-        initCardTilt();
-        initLazyLoading();
-        initParallax();
-        initSmoothScroll();
-        updateCopyrightYear();
+  /* ------------------------------------ */
+  /* COMMUNITY POPUP — Once ever          */
+  /* ------------------------------------ */
 
-        console.log('✅ MorinVibes® — All 21+ animations ready');
-    }
+  const popup = document.getElementById('communityPopup');
+  const POPUP_KEY = 'mv_popup_v1';
+  let popupShown = false;
 
-    // Run when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
+  // Check if popup has been shown before
+  try {
+    popupShown = !!localStorage.getItem(POPUP_KEY);
+  } catch (e) {
+    console.warn('localStorage not available');
+  }
+
+  function showPopup() {
+    if (popup && !popupShown) {
+      popup.classList.add('show');
+      popupShown = true;
+      try {
+        localStorage.setItem(POPUP_KEY, '1');
+      } catch (e) {}
     }
+  }
+
+  function closePopup() {
+    if (popup) {
+      popup.classList.remove('show');
+    }
+  }
+
+  if (!popupShown && popup) {
+    // Exit intent (mouse leaves top of viewport)
+    document.addEventListener('mouseleave', function(e) {
+      if (e.clientY < 10) {
+        showPopup();
+      }
+    }, { once: true });
+    
+    // Time fallback — 45 seconds
+    setTimeout(showPopup, 45000);
+  }
+
+  // Close handlers
+  const popClose = document.getElementById('popClose');
+  const popDismiss = document.getElementById('popDismiss');
+
+  if (popClose) {
+    popClose.addEventListener('click', closePopup);
+  }
+
+  if (popDismiss) {
+    popDismiss.addEventListener('click', closePopup);
+    popDismiss.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') closePopup();
+    });
+  }
+
+  /* ------------------------------------ */
+  /* NEWSLETTER SIGNUP (commented out)    */
+  /* ------------------------------------ */
+
+  /*
+  const newsBtn = document.getElementById('newsBtn');
+  if (newsBtn) {
+    newsBtn.addEventListener('click', function() {
+      const email = document.getElementById('newsEmail');
+      const consent = document.getElementById('newsConsent');
+      
+      // Basic validation
+      if (!email || !email.value || !email.value.includes('@')) {
+        alert('Please enter a valid email address.');
+        if (email) email.focus();
+        return;
+      }
+      
+      if (!consent || !consent.checked) {
+        alert('Please accept the privacy policy to subscribe.');
+        return;
+      }
+      
+      // TODO: Connect to Mailchimp / Klaviyo / ConvertKit API
+      
+      // Success feedback
+      newsBtn.textContent = '✓ Subscribed!';
+      newsBtn.disabled = true;
+      
+      // Track pixel event
+      if (typeof fbTrack === 'function') {
+        fbTrack('Lead', { content_name: 'Newsletter Signup' });
+      }
+      
+      // Reset after 3 seconds
+      setTimeout(function() {
+        newsBtn.textContent = 'Notify Me';
+        newsBtn.disabled = false;
+        if (email) email.value = '';
+        if (consent) consent.checked = false;
+      }, 3000);
+    });
+  }
+  */
+
+  /* ------------------------------------ */
+  /* PIXEL TRACKING FOR EXTERNAL LINKS    */
+  /* ------------------------------------ */
+
+  // WhatsApp button in CTA block
+  const waBtn = document.getElementById('waBtn');
+  if (waBtn) {
+    waBtn.addEventListener('click', function() {
+      if (typeof fbTrack === 'function') {
+        fbTrack('Lead', { content_name: 'WhatsApp CTA' });
+      }
+    });
+  }
+
+  // WhatsApp in popup
+  const popWa = document.getElementById('popWa');
+  if (popWa) {
+    popWa.addEventListener('click', function() {
+      if (typeof fbTrack === 'function') {
+        fbTrack('Lead', { content_name: 'WhatsApp Popup' });
+      }
+    });
+  }
+
+  // Shopee links
+  ['shopeeA', 'shopeeB'].forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('click', function() {
+        if (typeof fbTrack === 'function') {
+          fbTrack('CustomEvent', { name: 'ShopeeClick' });
+        }
+      });
+    }
+  });
+
+  // Lazada links
+  ['lazadaA', 'lazadaB'].forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('click', function() {
+        if (typeof fbTrack === 'function') {
+          fbTrack('CustomEvent', { name: 'LazadaClick' });
+        }
+      });
+    }
+  });
+
+  /* ------------------------------------ */
+  /* INITIALIZATION ON PAGE LOAD          */
+  /* ------------------------------------ */
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Set active nav link based on current page
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.m-link');
+    
+    navLinks.forEach(function(link) {
+      const href = link.getAttribute('href');
+      if (href && currentPath.includes(href) && href !== '/morinvibes-official/en/') {
+        link.classList.add('active');
+      } else if (href === '/morinvibes-official/en/' && 
+                 (currentPath === '/morinvibes-official/en/' || 
+                  currentPath === '/morinvibes-official/en/index.html')) {
+        link.classList.add('active');
+      }
+    });
+    
+    // Log that main.js is loaded (for debugging)
+    console.log('MorinVibes® main.js loaded');
+  });
+
 })();
