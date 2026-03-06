@@ -1,6 +1,5 @@
 /* ===== MORINVIBES® — ANIMATIONS.JS ===== */
-/* Version: 16.0 · March 2026 */
-/* External JS — Scroll-based animations, counters, IntersectionObserver */
+/* Version: 17.0 · March 2026 · Mobile-First */
 /* Path: /morinvibes-official/assets/js/animations.js */
 
 (function() {
@@ -12,12 +11,15 @@
 
   // Select all elements with fade classes
   const fadeElements = document.querySelectorAll(
-    '.fade-up, .fade-left, .fade-right, .fade-in'
+    '.fade-up, .fade-left, .fade-right'
   );
 
   if (fadeElements.length > 0) {
     // Check if IntersectionObserver is supported
     if ('IntersectionObserver' in window) {
+      // Mobile needs lower threshold for better UX
+      const isMobile = window.innerWidth < 768;
+      
       const fadeObserver = new IntersectionObserver(
         function(entries) {
           entries.forEach(function(entry) {
@@ -29,8 +31,8 @@
           });
         },
         {
-          threshold: 0.08,
-          rootMargin: '0px 0px -36px 0px', // Trigger slightly before element enters viewport
+          threshold: isMobile ? 0.05 : 0.1, // Lower threshold on mobile
+          rootMargin: isMobile ? '0px 0px -20px 0px' : '0px 0px -50px 0px',
           root: null // Use viewport as root
         }
       );
@@ -48,108 +50,129 @@
   }
 
   /* ------------------------------------ */
-  /* COUNTER ANIMATION — Stats numbers    */
-  /* ------------------------------------ */
-
-  const countElements = document.querySelectorAll('[data-count]');
-  let counted = false;
-
-  if (countElements.length > 0 && 'IntersectionObserver' in window) {
-    const counterObserver = new IntersectionObserver(
-      function(entries) {
-        // Check if any stats section is visible
-        const shouldCount = entries.some(function(entry) {
-          return entry.isIntersecting;
-        });
-
-        if (shouldCount && !counted) {
-          counted = true;
-          
-          // Animate each counter
-          countElements.forEach(function(el) {
-            const targetValue = parseInt(el.dataset.count, 10);
-            if (!isNaN(targetValue)) {
-              animateCounter(el, targetValue);
-            }
-          });
-
-          // Unobserve all stats elements after animation starts
-          entries.forEach(function(entry) {
-            if (entry.target.classList.contains('soc-stats') || 
-                entry.target.classList.contains('soc-stat')) {
-              counterObserver.unobserve(entry.target);
-            }
-          });
-        }
-      },
-      {
-        threshold: 0.25,
-        rootMargin: '0px'
-      }
-    );
-
-    // Observe the stats container and individual stat elements
-    const statsContainer = document.querySelector('.soc-stats');
-    if (statsContainer) {
-      counterObserver.observe(statsContainer);
-    } else {
-      // Fallback: observe each stat element individually
-      countElements.forEach(function(el) {
-        counterObserver.observe(el);
-      });
-    }
-  }
-
-  /**
-   * Animate a counter from 0 to target value
-   * @param {HTMLElement} element - The element to update
-   * @param {number} target - Target value
-   */
-  function animateCounter(element, target) {
-    const duration = 2000; // 2 seconds
-    const startTime = performance.now();
-    const isLargeNumber = target >= 1000;
-
-    function updateCounter(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      
-      // Easing function: cubic-out (slow then fast then slow at end)
-      // Using 1 - (1 - t)^3 for smooth deceleration
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
-      const currentValue = Math.floor(easedProgress * target);
-      
-      // Format number with commas for thousands
-      if (isLargeNumber) {
-        element.textContent = currentValue.toLocaleString() + '+';
-      } else {
-        element.textContent = currentValue + '+';
-      }
-      
-      if (progress < 1) {
-        requestAnimationFrame(updateCounter);
-      } else {
-        // Ensure final value is exact
-        if (isLargeNumber) {
-          element.textContent = target.toLocaleString() + '+';
-        } else {
-          element.textContent = target + '+';
-        }
-      }
-    }
-
-    // Start animation
-    requestAnimationFrame(updateCounter);
-  }
-
-  /* ------------------------------------ */
-  /* STAGGERED CARD REVEALS               */
+  /* STAGGERED CARD REVEALS              */
   /* ------------------------------------ */
 
   // This works in conjunction with fade animations
   // data-delay attributes are already applied in HTML
   // No additional code needed, but we ensure they work with IntersectionObserver
 
-  // Log that animations.js is loaded (for debugging)
-  console.log('MorinVibes® animations.js loaded');
+  // Add a small utility to handle any elements that might need
+  // manual triggering (e.g., elements that become visible after user interaction)
+  const manuallyTriggeredElements = document.querySelectorAll('[data-trigger]');
+  
+  manuallyTriggeredElements.forEach(function(el) {
+    const triggerEvent = el.dataset.trigger || 'click';
+    
+    el.addEventListener(triggerEvent, function() {
+      const targetId = el.dataset.target;
+      if (targetId) {
+        const target = document.getElementById(targetId);
+        if (target && !target.classList.contains('visible')) {
+          target.classList.add('visible');
+        }
+      }
+    });
+  });
+
+  /* ------------------------------------ */
+  /* SCROLL-BASED HIGHLIGHTING           */
+  /* ------------------------------------ */
+
+  // Optional: Highlight current section in view (for future use)
+  const sections = document.querySelectorAll('section[id]');
+  
+  if (sections.length > 0 && 'IntersectionObserver' in window) {
+    const sectionObserver = new IntersectionObserver(
+      function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            // Could be used for active nav highlighting if needed
+            // Currently not implemented, but kept for future enhancement
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '-80px 0px 0px 0px' // Account for fixed header
+      }
+    );
+
+    sections.forEach(function(section) {
+      sectionObserver.observe(section);
+    });
+  }
+
+  /* ------------------------------------ */
+  /* LAZY LOAD IMAGES (if any)           */
+  /* ------------------------------------ */
+
+  // Simple lazy loading for images with data-src
+  const lazyImages = document.querySelectorAll('img[data-src]');
+  
+  if (lazyImages.length > 0 && 'IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver(
+      function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.add('loaded');
+            imageObserver.unobserve(img);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '100px 0px' // Load images 100px before they enter viewport
+      }
+    );
+
+    lazyImages.forEach(function(img) {
+      imageObserver.observe(img);
+    });
+  }
+
+  /* ------------------------------------ */
+  /* RESPONSIVE ANIMATION ADJUSTMENTS    */
+  /* ------------------------------------ */
+
+  // Reduce animations on low-power devices or when prefers-reduced-motion is set
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  if (prefersReducedMotion) {
+    // Disable all fade animations
+    fadeElements.forEach(function(el) {
+      el.classList.add('visible');
+      el.style.transition = 'none';
+    });
+    
+    // Disable marquee animation
+    const marquees = document.querySelectorAll('.trust-bar__track');
+    marquees.forEach(function(marquee) {
+      marquee.style.animation = 'none';
+    });
+  }
+
+  // Detect low-end mobile devices (optional)
+  const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory < 4;
+  
+  if (isLowEndDevice) {
+    // Simplify animations for low-end devices
+    fadeElements.forEach(function(el) {
+      el.style.transitionDuration = '0.4s'; // Faster animation
+    });
+  }
+
+  /* ------------------------------------ */
+  /* DEBUGGING (development only)        */
+  /* ------------------------------------ */
+
+  if (window.location.hostname === 'localhost' || 
+      window.location.hostname === '127.0.0.1') {
+    console.log('MorinVibes® animations.js v17 loaded');
+    console.log('Mobile mode:', window.innerWidth < 768);
+    console.log('Reduced motion:', prefersReducedMotion);
+  }
+
 })();
