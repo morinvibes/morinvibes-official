@@ -1,30 +1,20 @@
 /* ===== MORINVIBES® — MAIN.JS ===== */
-/* Version: 16.0 · March 2026 */
-/* External JS — Core functionality */
+/* Version: 17.0 · March 2026 · Mobile-First */
 /* Path: /morinvibes-official/assets/js/main.js */
 
 (function() {
   'use strict';
 
   /* ------------------------------------ */
-  /* CHECKOUT MODAL — Orderla iframe     */
+  /* CHECKOUT MODAL — Embedded Orderla   */
   /* ------------------------------------ */
 
   const coOverlay = document.getElementById('coOverlay');
   const coIframe = document.getElementById('coIframe');
   const coSpinner = document.getElementById('coSpinner');
   const coClose = document.getElementById('coClose');
+  const coFallback = document.getElementById('coFallback');
   let iframeLoaded = false;
-
-  // Fallback element (create if not exists in HTML)
-  let coFallback = document.getElementById('coFallback');
-  if (!coFallback && coOverlay) {
-    coFallback = document.createElement('div');
-    coFallback.id = 'coFallback';
-    coFallback.className = 'co-fallback';
-    coFallback.innerHTML = '<p>Having trouble loading the checkout?</p><a href="https://morinvibes.orderla.my/moringa-order" target="_blank" class="btn btn--primary" rel="noopener">Open checkout directly →</a>';
-    document.querySelector('.co-body')?.appendChild(coFallback);
-  }
 
   function openCheckout() {
     if (!coOverlay) return;
@@ -40,7 +30,6 @@
       coIframe.addEventListener('load', function() {
         if (coSpinner) coSpinner.style.display = 'none';
         coIframe.classList.add('ready');
-        // Hide fallback if visible
         if (coFallback) coFallback.classList.remove('show');
       }, { once: true });
       
@@ -54,18 +43,8 @@
     }
     
     // Track pixel events
-    if (typeof fbTrack === 'function') {
-      fbTrack('AddToCart', {
-        content_ids: ['moringa-90s'],
-        value: 89,
-        currency: 'MYR',
-        num_items: 1
-      });
-      fbTrack('InitiateCheckout', {
-        content_name: 'MorinVibes Moringa Capsules 90s',
-        value: 89,
-        currency: 'MYR'
-      });
+    if (typeof window.fbTrack === 'function') {
+      window.fbTrack('InitiateCheckout');
     }
   }
 
@@ -105,7 +84,7 @@
   }
 
   /* ------------------------------------ */
-  /* MOBILE MENU                          */
+  /* MOBILE MENU                         */
   /* ------------------------------------ */
 
   const mobileMenu = document.getElementById('mobileMenu');
@@ -134,8 +113,14 @@
     mClose.addEventListener('click', closeMenu);
   }
 
+  // Close menu when clicking on a link (for single-page navigation)
+  const menuLinks = document.querySelectorAll('.m-link');
+  menuLinks.forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+
   /* ------------------------------------ */
-  /* ESC KEY — Close modal and menu       */
+  /* ESC KEY — Close modal and menu      */
   /* ------------------------------------ */
 
   document.addEventListener('keydown', function(e) {
@@ -146,7 +131,7 @@
   });
 
   /* ------------------------------------ */
-  /* SCROLL EFFECTS                       */
+  /* SCROLL EFFECTS                      */
   /* ------------------------------------ */
 
   const progressBar = document.getElementById('progressBar');
@@ -173,7 +158,7 @@
         
         // Scroll to top button visibility
         if (scrollTop) {
-          scrollTop.classList.toggle('visible', scrollY > 480);
+          scrollTop.classList.toggle('visible', scrollY > 300);
         }
         
         ticking = false;
@@ -195,7 +180,7 @@
   }
 
   /* ------------------------------------ */
-  /* LANGUAGE DROPDOWN                    */
+  /* LANGUAGE DROPDOWN                   */
   /* ------------------------------------ */
 
   const langDrop = document.getElementById('langDrop');
@@ -221,7 +206,7 @@
   }
 
   /* ------------------------------------ */
-  /* FAQ ACCORDION                        */
+  /* FAQ ACCORDION                       */
   /* ------------------------------------ */
 
   const faqQuestions = document.querySelectorAll('.faq-q');
@@ -230,7 +215,7 @@
     function toggleFaq() {
       const item = question.parentElement;
       const answer = item.querySelector('.faq-ans');
-      const icon = question.querySelector('.faq-q__icon');
+      const icon = question.querySelector('.faq-icon');
       const wasOpen = item.classList.contains('open');
       
       // Close all other FAQs
@@ -238,10 +223,7 @@
         if (openItem !== item) {
           openItem.classList.remove('open');
           const openAnswer = openItem.querySelector('.faq-ans');
-          const openIcon = openItem.querySelector('.faq-q__icon');
           if (openAnswer) openAnswer.style.maxHeight = null;
-          if (openIcon) openIcon.textContent = '+';
-          openItem.querySelector('.faq-q')?.setAttribute('aria-expanded', 'false');
         }
       });
       
@@ -251,12 +233,10 @@
         if (answer) {
           answer.style.maxHeight = answer.scrollHeight + 'px';
         }
-        if (icon) icon.textContent = '×';
         question.setAttribute('aria-expanded', 'true');
       } else {
         item.classList.remove('open');
         if (answer) answer.style.maxHeight = null;
-        if (icon) icon.textContent = '+';
         question.setAttribute('aria-expanded', 'false');
       }
     }
@@ -273,7 +253,7 @@
   });
 
   /* ------------------------------------ */
-  /* RIPPLE EFFECT ON BUTTONS             */
+  /* RIPPLE EFFECT ON BUTTONS            */
   /* ------------------------------------ */
 
   const rippleButtons = document.querySelectorAll('.btn--primary, .btn--outline');
@@ -293,43 +273,12 @@
       
       setTimeout(function() {
         ripple.remove();
-      }, 700);
+      }, 600);
     });
   });
 
   /* ------------------------------------ */
-  /* 3D CARD TILT (desktop only)          */
-  /* ------------------------------------ */
-
-  const prodCard = document.getElementById('prodCard');
-
-  if (prodCard && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    let ticking = false;
-    
-    prodCard.addEventListener('mousemove', function(e) {
-      if (!ticking) {
-        window.requestAnimationFrame(function() {
-          const rect = prodCard.getBoundingClientRect();
-          const x = (e.clientX - rect.left) / rect.width - 0.5;
-          const y = (e.clientY - rect.top) / rect.height - 0.5;
-          
-          prodCard.style.transform = 'translateY(-8px) rotateY(' + (x * 7) + 'deg) rotateX(' + (-y * 7) + 'deg)';
-          prodCard.style.boxShadow = '0 24px 64px rgba(0,151,178,0.18)';
-          
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
-    
-    prodCard.addEventListener('mouseleave', function() {
-      prodCard.style.transform = '';
-      prodCard.style.boxShadow = '';
-    });
-  }
-
-  /* ------------------------------------ */
-  /* COMMUNITY POPUP — Once ever          */
+  /* COMMUNITY POPUP — Once ever         */
   /* ------------------------------------ */
 
   const popup = document.getElementById('communityPopup');
@@ -367,7 +316,7 @@
       }
     }, { once: true });
     
-    // Time fallback — 45 seconds
+    // Time fallback — 45 seconds (increased from 30 for better UX)
     setTimeout(showPopup, 45000);
   }
 
@@ -387,60 +336,15 @@
   }
 
   /* ------------------------------------ */
-  /* NEWSLETTER SIGNUP (commented out)    */
-  /* ------------------------------------ */
-
-  /*
-  const newsBtn = document.getElementById('newsBtn');
-  if (newsBtn) {
-    newsBtn.addEventListener('click', function() {
-      const email = document.getElementById('newsEmail');
-      const consent = document.getElementById('newsConsent');
-      
-      // Basic validation
-      if (!email || !email.value || !email.value.includes('@')) {
-        alert('Please enter a valid email address.');
-        if (email) email.focus();
-        return;
-      }
-      
-      if (!consent || !consent.checked) {
-        alert('Please accept the privacy policy to subscribe.');
-        return;
-      }
-      
-      // TODO: Connect to Mailchimp / Klaviyo / ConvertKit API
-      
-      // Success feedback
-      newsBtn.textContent = '✓ Subscribed!';
-      newsBtn.disabled = true;
-      
-      // Track pixel event
-      if (typeof fbTrack === 'function') {
-        fbTrack('Lead', { content_name: 'Newsletter Signup' });
-      }
-      
-      // Reset after 3 seconds
-      setTimeout(function() {
-        newsBtn.textContent = 'Notify Me';
-        newsBtn.disabled = false;
-        if (email) email.value = '';
-        if (consent) consent.checked = false;
-      }, 3000);
-    });
-  }
-  */
-
-  /* ------------------------------------ */
-  /* PIXEL TRACKING FOR EXTERNAL LINKS    */
+  /* PIXEL TRACKING FOR EXTERNAL LINKS   */
   /* ------------------------------------ */
 
   // WhatsApp button in CTA block
   const waBtn = document.getElementById('waBtn');
   if (waBtn) {
     waBtn.addEventListener('click', function() {
-      if (typeof fbTrack === 'function') {
-        fbTrack('Lead', { content_name: 'WhatsApp CTA' });
+      if (typeof window.fbTrack === 'function') {
+        window.fbTrack('Lead', { content_name: 'WhatsApp CTA' });
       }
     });
   }
@@ -449,38 +353,49 @@
   const popWa = document.getElementById('popWa');
   if (popWa) {
     popWa.addEventListener('click', function() {
-      if (typeof fbTrack === 'function') {
-        fbTrack('Lead', { content_name: 'WhatsApp Popup' });
+      if (typeof window.fbTrack === 'function') {
+        window.fbTrack('Lead', { content_name: 'WhatsApp Popup' });
       }
     });
   }
 
   // Shopee links
-  ['shopeeA', 'shopeeB'].forEach(function(id) {
-    const el = document.getElementById(id);
-    if (el) {
-      el.addEventListener('click', function() {
-        if (typeof fbTrack === 'function') {
-          fbTrack('CustomEvent', { name: 'ShopeeClick' });
-        }
-      });
-    }
+  const shopeeLinks = document.querySelectorAll('[href*="shopee.com.my"]');
+  shopeeLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof window.fbTrack === 'function') {
+        window.fbTrack('CustomEvent', { name: 'ShopeeClick' });
+      }
+    });
   });
 
   // Lazada links
-  ['lazadaA', 'lazadaB'].forEach(function(id) {
-    const el = document.getElementById(id);
-    if (el) {
-      el.addEventListener('click', function() {
-        if (typeof fbTrack === 'function') {
-          fbTrack('CustomEvent', { name: 'LazadaClick' });
-        }
-      });
-    }
+  const lazadaLinks = document.querySelectorAll('[href*="lazada.com.my"]');
+  lazadaLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof window.fbTrack === 'function') {
+        window.fbTrack('CustomEvent', { name: 'LazadaClick' });
+      }
+    });
   });
 
   /* ------------------------------------ */
-  /* INITIALIZATION ON PAGE LOAD          */
+  /* TOUCH OPTIMIZATIONS                 */
+  /* ------------------------------------ */
+
+  // Prevent double-tap zoom on buttons (optional)
+  if ('ontouchstart' in window) {
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(function(btn) {
+      btn.addEventListener('touchstart', function(e) {
+        // Prevent default only if needed
+        // This helps with responsive touch feedback
+      }, { passive: true });
+    });
+  }
+
+  /* ------------------------------------ */
+  /* INITIALIZATION ON PAGE LOAD         */
   /* ------------------------------------ */
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -500,7 +415,7 @@
     });
     
     // Log that main.js is loaded (for debugging)
-    console.log('MorinVibes® main.js loaded');
+    console.log('MorinVibes® main.js v17 loaded');
   });
 
 })();
