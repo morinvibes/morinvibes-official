@@ -1,272 +1,289 @@
-/* ═══════════════════════════════════════════════════════════
-   MORINVIBES® — animations.js
-   Scroll-Reveal · Scroll-Top Visibility · Nav Scroll ·
-   Counter Animation · Parallax Leaves
-   v1.0 · March 2026
-═══════════════════════════════════════════════════════════ */
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
+/* ============================================================
+   MORINVIBES® — animations.js
+   Scroll-reveal · Counter animation · Parallax
+   Hero bottle tilt · Magnetic buttons
+   ============================================================ */
 
-  /* ═══════════════════════════════════════
-     SCROLL-REVEAL (IntersectionObserver)
-  ═══════════════════════════════════════ */
-  var revealClasses = ['.fade-up', '.fade-left', '.fade-right', '.scale-in', '.clip-in'];
-  var revealEls = document.querySelectorAll(revealClasses.join(','));
+(function () {
 
-  if (revealEls.length > 0 && 'IntersectionObserver' in window) {
-    var revealObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
-    });
+  // ── Scroll reveal ─────────────────────────────────────────
+  var revealElements = [];
 
-    revealEls.forEach(function(el) {
-      revealObserver.observe(el);
-    });
-  } else {
-    /* Fallback for browsers without IntersectionObserver */
-    revealEls.forEach(function(el) {
-      el.classList.add('visible');
+  function collectRevealElements() {
+    var selectors = '.fade-up, .fade-left, .fade-right, .scale-in';
+    var found = document.querySelectorAll(selectors);
+    revealElements = Array.prototype.slice.call(found);
+  }
+
+  function checkReveal() {
+    var vh = window.innerHeight;
+    revealElements.forEach(function (el) {
+      if (el.classList.contains('visible')) return;
+      var rect = el.getBoundingClientRect();
+      if (rect.top < vh * 0.92) {
+        el.classList.add('visible');
+      }
     });
   }
 
+  // ── Counter animation ──────────────────────────────────────
+  var countersStarted = false;
 
-  /* ═══════════════════════════════════════
-     SCROLL-TO-TOP VISIBILITY
-  ═══════════════════════════════════════ */
-  var scrollTopBtn = document.getElementById('scrollTop');
+  function animateCounters() {
+    if (countersStarted) return;
+    var counters = document.querySelectorAll('[data-count]');
+    if (!counters.length) return;
 
-  if (scrollTopBtn) {
-    var scrollTopHandler = function() {
-      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
-    };
-    window.addEventListener('scroll', scrollTopHandler, { passive: true });
-    /* Run once on load in case page is already scrolled */
-    scrollTopHandler();
-  }
+    var allVisible = true;
+    counters.forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.top > window.innerHeight) allVisible = false;
+    });
+    if (!allVisible) return;
 
+    countersStarted = true;
+    counters.forEach(function (el) {
+      var target   = parseFloat(el.getAttribute('data-count')) || 0;
+      var duration = 1600;
+      var start    = null;
+      var startVal = 0;
+      var suffix   = el.getAttribute('data-suffix') || '';
+      var prefix   = el.getAttribute('data-prefix') || '';
+      var decimals = (String(target).split('.')[1] || '').length;
 
-  /* ═══════════════════════════════════════
-     NAV: SHRINK + SHADOW ON SCROLL
-  ═══════════════════════════════════════ */
-  var nav = document.getElementById('mainNav');
-
-  if (nav) {
-    var navScrollHandler = function() {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    };
-    window.addEventListener('scroll', navScrollHandler, { passive: true });
-    navScrollHandler();
-  }
-
-
-  /* ═══════════════════════════════════════
-     MOBILE STICKY CTA — show after hero exits
-  ═══════════════════════════════════════ */
-  var stickyCta = document.getElementById('stickyCta');
-  var heroSection = document.getElementById('hero');
-
-  if (stickyCta && heroSection && 'IntersectionObserver' in window) {
-    /* Only on mobile — CSS hides on desktop */
-    var heroObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (!entry.isIntersecting) {
-          stickyCta.classList.add('visible');
-          stickyCta.setAttribute('aria-hidden', 'false');
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        // ease-out cubic
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = startVal + (target - startVal) * eased;
+        el.textContent = prefix + current.toFixed(decimals) + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(step);
         } else {
-          stickyCta.classList.remove('visible');
-          stickyCta.setAttribute('aria-hidden', 'true');
+          el.textContent = prefix + target.toFixed(decimals) + suffix;
         }
-      });
-    }, { threshold: 0 });
-
-    heroObserver.observe(heroSection);
-  }
-
-
-  /* ═══════════════════════════════════════
-     COUNTER ANIMATION
-     Usage: <span class="count-up" data-target="1000" data-suffix="+">0</span>
-  ═══════════════════════════════════════ */
-  var counters = document.querySelectorAll('.count-up');
-
-  if (counters.length > 0 && 'IntersectionObserver' in window) {
-    var counterObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          counterObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    counters.forEach(function(counter) {
-      counterObserver.observe(counter);
+      }
+      requestAnimationFrame(step);
     });
   }
 
-  function animateCounter(el) {
-    var target  = parseInt(el.dataset.target, 10) || 0;
-    var suffix  = el.dataset.suffix || '';
-    var prefix  = el.dataset.prefix || '';
-    var duration= 1600; /* ms */
-    var start   = 0;
-    var startTime = null;
+  // ── Timeline grow animation (Our Story) ───────────────────
+  function initTimelineAnimation() {
+    var timeline = document.querySelector('.story__timeline');
+    if (!timeline) return;
 
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      var progress = Math.min((timestamp - startTime) / duration, 1);
-      /* Ease out cubic */
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var current = Math.floor(eased * target);
-      el.textContent = prefix + current.toLocaleString() + suffix;
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        el.textContent = prefix + target.toLocaleString() + suffix;
+    var line = document.createElement('div');
+    line.className = 'story__timeline-line';
+    line.style.cssText = [
+      'position:absolute',
+      'top:20px',
+      'left:0',
+      'height:1px',
+      'background:rgba(255,255,255,.2)',
+      'width:0',
+      'transition:width 1.2s cubic-bezier(0,0,.2,1)',
+      'pointer-events:none'
+    ].join(';');
+    timeline.style.position = 'relative';
+
+    var triggered = false;
+    function checkTimeline() {
+      if (triggered) return;
+      var rect = timeline.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.85) {
+        triggered = true;
+        timeline.appendChild(line);
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            line.style.width = '100%';
+          });
+        });
       }
     }
-    requestAnimationFrame(step);
+    window.addEventListener('scroll', checkTimeline, { passive: true });
+    checkTimeline();
   }
 
+  // ── Hero bottle 3D tilt ────────────────────────────────────
+  function initHeroTilt() {
+    var bottle = document.querySelector('.hero__bottle.js-tilt');
+    if (!bottle) return;
 
-  /* ═══════════════════════════════════════
-     PARALLAX — HERO LEAVES
-     Uses requestAnimationFrame + scroll
-  ═══════════════════════════════════════ */
-  var parallaxEls = document.querySelectorAll('.parallax-el');
-  var ticking = false;
+    var visual = bottle.closest('.hero__visual');
+    if (!visual) return;
 
-  if (parallaxEls.length > 0) {
-    window.addEventListener('scroll', function() {
-      if (!ticking) {
-        requestAnimationFrame(function() {
-          var scrollY = window.scrollY;
-          parallaxEls.forEach(function(el) {
-            var speed = parseFloat(el.dataset.parallax) || 0.15;
-            el.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
-          });
-          ticking = false;
+    var isTouchDevice = window.matchMedia('(hover: none)').matches;
+    if (isTouchDevice) return;
+
+    visual.addEventListener('mousemove', function (e) {
+      var rect  = visual.getBoundingClientRect();
+      var cx    = rect.left + rect.width / 2;
+      var cy    = rect.top  + rect.height / 2;
+      var dx    = (e.clientX - cx) / (rect.width  / 2);
+      var dy    = (e.clientY - cy) / (rect.height / 2);
+      var rotX  = -dy * 10;
+      var rotY  =  dx * 10;
+      bottle.style.transform = [
+        'translateY(0)',
+        'perspective(800px)',
+        'rotateX(' + rotX + 'deg)',
+        'rotateY(' + rotY + 'deg)'
+      ].join(' ');
+      bottle.style.transition = 'transform .1s linear';
+    });
+
+    visual.addEventListener('mouseleave', function () {
+      bottle.style.transform = '';
+      bottle.style.transition = 'transform .6s cubic-bezier(.34,1.56,.64,1)';
+      setTimeout(function () {
+        bottle.style.transition = '';
+      }, 600);
+    });
+  }
+
+  // ── Product card 3D tilt ───────────────────────────────────
+  function initCardTilt() {
+    var cards = document.querySelectorAll('.js-tilt-card');
+    if (!cards.length) return;
+
+    var isTouchDevice = window.matchMedia('(hover: none)').matches;
+    if (isTouchDevice) return;
+
+    cards.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var cx   = rect.left + rect.width  / 2;
+        var cy   = rect.top  + rect.height / 2;
+        var dx   = (e.clientX - cx) / (rect.width  / 2);
+        var dy   = (e.clientY - cy) / (rect.height / 2);
+        var rotX = -dy * 14;
+        var rotY =  dx * 14;
+        card.style.transform = [
+          'perspective(800px)',
+          'rotateX(' + rotX + 'deg)',
+          'rotateY(' + rotY + 'deg)',
+          'translateZ(8px)'
+        ].join(' ');
+        card.style.transition = 'transform .08s linear';
+        card.style.boxShadow  = '0 32px 80px rgba(0,151,178,.22)';
+      });
+
+      card.addEventListener('mouseleave', function () {
+        card.style.transform  = '';
+        card.style.transition = 'transform .5s cubic-bezier(.34,1.56,.64,1), box-shadow .4s';
+        card.style.boxShadow  = '';
+        setTimeout(function () { card.style.transition = ''; }, 500);
+      });
+    });
+  }
+
+  // ── Magnetic buttons ───────────────────────────────────────
+  function initMagneticButtons() {
+    var btns = document.querySelectorAll('.btn--primary, .btn--inverted, .btn--green');
+    if (!btns.length) return;
+
+    var isTouchDevice = window.matchMedia('(hover: none)').matches;
+    if (isTouchDevice) return;
+
+    btns.forEach(function (btn) {
+      btn.addEventListener('mousemove', function (e) {
+        var rect  = btn.getBoundingClientRect();
+        var cx    = rect.left + rect.width  / 2;
+        var cy    = rect.top  + rect.height / 2;
+        var dx    = (e.clientX - cx) / (rect.width  / 2);
+        var dy    = (e.clientY - cy) / (rect.height / 2);
+        btn.style.transform  = 'translate(' + (dx * 6) + 'px, ' + (dy * 6) + 'px)';
+        btn.style.transition = 'transform .2s cubic-bezier(.34,1.56,.64,1)';
+      });
+
+      btn.addEventListener('mouseleave', function () {
+        btn.style.transform  = '';
+        btn.style.transition = 'transform .4s cubic-bezier(.34,1.56,.64,1)';
+      });
+    });
+  }
+
+  // ── Benefit card sibling dim on hover ─────────────────────
+  function initBenefitHover() {
+    var grid = document.querySelector('.benefits__grid');
+    if (!grid) return;
+
+    var cards = grid.querySelectorAll('.benefit-card');
+    if (!cards.length) return;
+
+    cards.forEach(function (card) {
+      card.addEventListener('mouseenter', function () {
+        cards.forEach(function (c) {
+          if (c !== card) c.classList.add('is-dimmed');
         });
-        ticking = true;
-      }
+      });
+      card.addEventListener('mouseleave', function () {
+        cards.forEach(function (c) { c.classList.remove('is-dimmed'); });
+      });
+    });
+  }
+
+  // ── Proof stats number roll (if data-count attrs present) ──
+  function initStatRoll() {
+    var statValues = document.querySelectorAll('.proof__stat-value');
+    if (!statValues.length) return;
+
+    var triggered = false;
+    function tryTrigger() {
+      if (triggered) return;
+      statValues.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.9) {
+          triggered = true;
+          animateCounters();
+        }
+      });
+    }
+    window.addEventListener('scroll', tryTrigger, { passive: true });
+    tryTrigger();
+  }
+
+  // ── Parallax for hero mesh background ─────────────────────
+  function initParallax() {
+    var mesh = document.querySelector('.hero__mesh');
+    if (!mesh) return;
+
+    var isMobile = window.matchMedia('(max-width: 767px)').matches;
+    if (isMobile) return;
+
+    window.addEventListener('scroll', function () {
+      var y = window.scrollY;
+      mesh.style.transform = 'translateY(' + (y * 0.18) + 'px)';
     }, { passive: true });
   }
 
+  // ── Init all ──────────────────────────────────────────────
+  function init() {
+    collectRevealElements();
+    checkReveal();
 
-  /* ═══════════════════════════════════════
-     HERO BOTTLE 3D TILT (subtle)
-  ═══════════════════════════════════════ */
-  var heroBottle = document.getElementById('heroBottle');
+    window.addEventListener('scroll', checkReveal, { passive: true });
+    window.addEventListener('resize', function () {
+      collectRevealElements();
+      checkReveal();
+    }, { passive: true });
 
-  if (heroBottle) {
-    var heroVisual = heroBottle.closest('.hero__visual');
-    if (heroVisual) {
-      heroVisual.addEventListener('mousemove', function(e) {
-        var rect = heroVisual.getBoundingClientRect();
-        var centerX = rect.left + rect.width / 2;
-        var centerY = rect.top  + rect.height / 2;
-        var rotX = ((e.clientY - centerY) / rect.height) * -10;
-        var rotY = ((e.clientX - centerX) / rect.width)  *  10;
-        heroBottle.style.transform =
-          'translateY(var(--float-offset, 0px)) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)';
-      });
-      heroVisual.addEventListener('mouseleave', function() {
-        heroBottle.style.transform = '';
-      });
-    }
+    initHeroTilt();
+    initCardTilt();
+    initMagneticButtons();
+    initBenefitHover();
+    initStatRoll();
+    initTimelineAnimation();
+    initParallax();
   }
 
-
-  /* ═══════════════════════════════════════
-     FAQ — ANIMATE SCROLL HIGHLIGHT
-     Highlights the currently open FAQ item
-     with a subtle border glow after opening
-  ═══════════════════════════════════════ */
-  /* (Actual FAQ open/close logic is in main.js) */
-
-
-  /* ═══════════════════════════════════════
-     COMPARISON TABLE — STAGGERED ROW REVEAL
-  ═══════════════════════════════════════ */
-  var compareTable = document.querySelector('.compare-table');
-  if (compareTable && 'IntersectionObserver' in window) {
-    var tableObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          var rows = entry.target.querySelectorAll('tbody tr');
-          rows.forEach(function(row, i) {
-            row.style.opacity = '0';
-            row.style.transform = 'translateX(-12px)';
-            row.style.transition = 'opacity .45s ease, transform .45s ease';
-            row.style.transitionDelay = (i * 0.09) + 's';
-            /* Trigger reflow */
-            row.getBoundingClientRect();
-            row.style.opacity = '1';
-            row.style.transform = 'translateX(0)';
-          });
-          tableObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    tableObserver.observe(compareTable);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 
-
-  /* ═══════════════════════════════════════
-     BENEFIT CARDS — stagger already handled
-     by data-delay in scroll-reveal above.
-     This adds a hover glow effect via JS
-     for browsers that don't support :has()
-  ═══════════════════════════════════════ */
-  var benefitCards = document.querySelectorAll('.benefit-card');
-  benefitCards.forEach(function(card) {
-    card.addEventListener('mouseenter', function() {
-      benefitCards.forEach(function(other) {
-        if (other !== card) {
-          other.style.opacity = '.72';
-        }
-      });
-    });
-    card.addEventListener('mouseleave', function() {
-      benefitCards.forEach(function(other) {
-        other.style.opacity = '';
-      });
-    });
-  });
-
-
-  /* ═══════════════════════════════════════
-     JOURNEY TIMELINE — animate line draw
-  ═══════════════════════════════════════ */
-  var timeline = document.querySelector('.journey__timeline');
-  if (timeline && 'IntersectionObserver' in window) {
-    var timelineObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('timeline-animated');
-          /* Animate the ::before line via a custom property trick */
-          var pseudoStyle = document.getElementById('timeline-anim-style');
-          if (!pseudoStyle) {
-            var s = document.createElement('style');
-            s.id = 'timeline-anim-style';
-            s.textContent = '.timeline-animated::before { animation: timeline-grow 1.2s ease forwards; }';
-            document.head.appendChild(s);
-          }
-          timelineObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.4 });
-
-    timelineObserver.observe(timeline);
-  }
-
-}); /* end DOMContentLoaded */
+}());
