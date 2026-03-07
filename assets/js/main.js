@@ -1,330 +1,322 @@
-/* ═══════════════════════════════════════════════════════════
-   MORINVIBES® — main.js
-   FAQ Accordion · Social Tab · Scroll-Top Click ·
-   Sticky CTA · Ripple · Magnetic Hover · Product Tilt ·
-   Benefit Tab Filter · AddToCart Pixel
-   v1.0 · March 2026
-═══════════════════════════════════════════════════════════ */
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
+/* ============================================================
+   MORINVIBES® — main.js
+   FAQ accordion · Social tab · Scroll-to-top · Sticky CTA
+   Ripple · Benefit tab filter · Pixel events · Smooth scroll
+   ============================================================ */
 
-  /* ═══════════════════════════════════════
-     SCROLL-TO-TOP — CLICK HANDLER
-  ═══════════════════════════════════════ */
-  var scrollTopBtn = document.getElementById('scrollTop');
-  if (scrollTopBtn) {
-    scrollTopBtn.addEventListener('click', function() {
+(function () {
+
+  // ── FAQ accordion ─────────────────────────────────────────
+  function initFAQ() {
+    var items = document.querySelectorAll('.faq__item');
+    if (!items.length) return;
+
+    items.forEach(function (item) {
+      var btn    = item.querySelector('.faq__question');
+      var answer = item.querySelector('.faq__answer');
+      if (!btn || !answer) return;
+
+      btn.addEventListener('click', function () {
+        var isOpen = item.classList.contains('is-open');
+
+        // Close all
+        items.forEach(function (i) {
+          i.classList.remove('is-open');
+          var q = i.querySelector('.faq__question');
+          var a = i.querySelector('.faq__answer');
+          if (q) q.setAttribute('aria-expanded', 'false');
+          if (a) a.style.maxHeight = '0px';
+        });
+
+        // Open clicked (unless it was already open)
+        if (!isOpen) {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+  }
+
+  // ── Social tab ────────────────────────────────────────────
+  function initSocialTab() {
+    var tab     = document.getElementById('socialTab');
+    var trigger = document.getElementById('socialTabTrigger');
+    var close   = document.getElementById('socialTabClose');
+    var panel   = document.getElementById('socialTabPanel');
+
+    if (!tab) return;
+
+    function openTab() {
+      tab.classList.add('is-open');
+      if (panel)   panel.setAttribute('aria-hidden', 'false');
+      if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      setTimeout(function () { if (close) close.focus(); }, 380);
+    }
+
+    function closeTab() {
+      tab.classList.remove('is-open');
+      if (panel)   panel.setAttribute('aria-hidden', 'true');
+      if (trigger) {
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.focus();
+      }
+    }
+
+    if (trigger) trigger.addEventListener('click', openTab);
+    if (close)   close.addEventListener('click', closeTab);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && tab.classList.contains('is-open')) closeTab();
+    });
+
+    // Click outside to close
+    document.addEventListener('click', function (e) {
+      if (tab.classList.contains('is-open') && !tab.contains(e.target)) {
+        closeTab();
+      }
+    });
+
+    // Pixel events — social links
+    var links = document.querySelectorAll('.social-tab__link');
+    links.forEach(function (link) {
+      link.addEventListener('click', function () {
+        var platform = this.getAttribute('data-platform') || '';
+        if (typeof window.fbTrack === 'function') {
+          window.fbTrack('Lead', { content_name: 'Social Tab ' + platform });
+        }
+      });
+    });
+
+    // WhatsApp from social panel
+    var waBtn = document.getElementById('socialTabWA');
+    if (waBtn) {
+      waBtn.addEventListener('click', function () {
+        if (typeof window.fbTrack === 'function') {
+          window.fbTrack('Lead', { content_name: 'Social Tab WhatsApp' });
+        }
+      });
+    }
+  }
+
+  // ── Scroll-to-top button ──────────────────────────────────
+  function initScrollTop() {
+    var btn = document.getElementById('scrollTop');
+    if (!btn) return;
+
+    function updateVisibility() {
+      if (window.scrollY > 400) {
+        btn.classList.add('is-visible');
+        btn.setAttribute('aria-hidden', 'false');
+      } else {
+        btn.classList.remove('is-visible');
+        btn.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    window.addEventListener('scroll', updateVisibility, { passive: true });
+    updateVisibility();
+
+    btn.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
+  // ── Mobile sticky CTA ─────────────────────────────────────
+  function initStickyCta() {
+    var bar = document.getElementById('stickyCta');
+    if (!bar) return;
 
-  /* ═══════════════════════════════════════
-     FAQ ACCORDION
-  ═══════════════════════════════════════ */
-  var faqItems = document.querySelectorAll('.faq__item');
+    // Show after hero exits viewport
+    var hero = document.getElementById('hero');
 
-  faqItems.forEach(function(item) {
-    var question = item.querySelector('.faq__question');
-    var answer   = item.querySelector('.faq__answer');
+    function updateCta() {
+      var threshold = hero
+        ? hero.offsetTop + hero.offsetHeight
+        : 400;
 
-    if (!question || !answer) return;
-
-    question.addEventListener('click', function() {
-      var isOpen = item.classList.contains('is-open');
-
-      /* Close all other items */
-      faqItems.forEach(function(other) {
-        if (other !== item && other.classList.contains('is-open')) {
-          other.classList.remove('is-open');
-          var otherAnswer = other.querySelector('.faq__answer');
-          var otherBtn    = other.querySelector('.faq__question');
-          if (otherAnswer) otherAnswer.style.maxHeight = '0';
-          if (otherBtn)    otherBtn.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      /* Toggle current */
-      if (isOpen) {
-        item.classList.remove('is-open');
-        answer.style.maxHeight = '0';
-        question.setAttribute('aria-expanded', 'false');
+      if (window.scrollY > threshold - 100) {
+        bar.classList.add('is-visible');
+        bar.setAttribute('aria-hidden', 'false');
       } else {
-        item.classList.add('is-open');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-        question.setAttribute('aria-expanded', 'true');
-
-        /* Smooth scroll into view after opening */
-        setTimeout(function() {
-          var rect   = item.getBoundingClientRect();
-          var navH   = 80;
-          var offset = window.scrollY + rect.top - navH - 16;
-          if (rect.top < navH + 20) {
-            window.scrollTo({ top: offset, behavior: 'smooth' });
-          }
-        }, 100);
+        bar.classList.remove('is-visible');
+        bar.setAttribute('aria-hidden', 'true');
       }
-    });
-
-    /* Allow keyboard activation */
-    question.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        question.click();
-      }
-    });
-  });
-
-
-  /* ═══════════════════════════════════════
-     LEFT-SIDE SOCIAL TAB
-  ═══════════════════════════════════════ */
-  var socialTab      = document.getElementById('socialTab');
-  var socialToggle   = document.getElementById('socialTabToggle');
-  var socialClose    = document.getElementById('socialTabClose');
-  var socialPanel    = document.getElementById('socialTabPanel');
-  var socialTabWA    = document.getElementById('socialTabWA');
-
-  function openSocialTab() {
-    if (!socialTab) return;
-    socialTab.classList.add('is-open');
-    if (socialPanel) socialPanel.setAttribute('aria-hidden', 'false');
-    /* Trap focus to close button */
-    if (socialClose) {
-      setTimeout(function() { socialClose.focus(); }, 360);
     }
+
+    window.addEventListener('scroll', updateCta, { passive: true });
+    updateCta();
   }
 
-  function closeSocialTab() {
-    if (!socialTab) return;
-    socialTab.classList.remove('is-open');
-    if (socialPanel) socialPanel.setAttribute('aria-hidden', 'true');
-    if (socialToggle) socialToggle.focus();
-  }
-
-  if (socialToggle) socialToggle.addEventListener('click', openSocialTab);
-  if (socialClose)  socialClose.addEventListener('click', closeSocialTab);
-
-  /* Escape key closes tab */
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && socialTab && socialTab.classList.contains('is-open')) {
-      closeSocialTab();
-    }
-  });
-
-  /* Pixel events on social link clicks */
-  var socialLinks = document.querySelectorAll('.social-tab__link');
-  socialLinks.forEach(function(link) {
-    link.addEventListener('click', function() {
-      var platform = this.dataset.platform || 'Unknown';
-      window.fbTrack('Lead', { content_name: 'Social Tab ' + platform });
-    });
-  });
-
-  if (socialTabWA) {
-    socialTabWA.addEventListener('click', function() {
-      window.fbTrack('Lead', { content_name: 'Social Tab WhatsApp' });
+  // ── Ripple effect on buttons ──────────────────────────────
+  function initRipple() {
+    var btns = document.querySelectorAll('.btn');
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        var rect   = btn.getBoundingClientRect();
+        var size   = Math.max(rect.width, rect.height) * 2;
+        var x      = e.clientX - rect.left - size / 2;
+        var y      = e.clientY - rect.top  - size / 2;
+        var ripple = document.createElement('span');
+        ripple.className     = 'ripple';
+        ripple.style.cssText = [
+          'width:'  + size + 'px',
+          'height:' + size + 'px',
+          'left:'   + x    + 'px',
+          'top:'    + y    + 'px'
+        ].join(';');
+        btn.appendChild(ripple);
+        setTimeout(function () {
+          if (ripple.parentNode) ripple.parentNode.removeChild(ripple);
+        }, 600);
+      });
     });
   }
 
+  // ── Benefit tab filter ────────────────────────────────────
+  function initBenefitTabs() {
+    var tabs  = document.querySelectorAll('.benefits__tab');
+    var cards = document.querySelectorAll('.benefit-card');
+    if (!tabs.length || !cards.length) return;
 
-  /* ═══════════════════════════════════════
-     WHATSAPP BUTTON — PIXEL
-  ═══════════════════════════════════════ */
-  var waBtn = document.getElementById('waBtn');
-  if (waBtn) {
-    waBtn.addEventListener('click', function() {
-      window.fbTrack('Lead', { content_name: 'WhatsApp CTA' });
-    });
-  }
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        // Update active tab
+        tabs.forEach(function (t) {
+          t.classList.remove('is-active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
 
+        var filter = tab.getAttribute('data-filter');
 
-  /* ═══════════════════════════════════════
-     BENEFIT TAB FILTER (mobile)
-  ═══════════════════════════════════════ */
-  var benefitTabs  = document.querySelectorAll('.benefits__tab');
-  var benefitCards = document.querySelectorAll('.benefit-card');
-
-  if (benefitTabs.length > 0) {
-    benefitTabs.forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        var filter = this.dataset.filter;
-
-        /* Update active tab */
-        benefitTabs.forEach(function(t) { t.classList.remove('is-active'); });
-        this.classList.add('is-active');
-
-        /* Show/hide cards */
-        benefitCards.forEach(function(card) {
-          if (filter === 'all' || card.dataset.category === filter) {
-            card.classList.remove('hidden');
+        cards.forEach(function (card) {
+          var cat = card.getAttribute('data-category') || '';
+          if (filter === 'all' || cat === filter) {
+            card.classList.remove('is-hidden');
+            // Re-trigger reveal
+            setTimeout(function () { card.classList.add('visible'); }, 10);
           } else {
-            card.classList.add('hidden');
+            card.classList.add('is-hidden');
           }
         });
       });
     });
   }
 
-
-  /* ═══════════════════════════════════════
-     RIPPLE EFFECT
-     On .btn--primary, .btn--green, .btn--outline
-  ═══════════════════════════════════════ */
-  var rippleButtons = document.querySelectorAll('.btn--primary, .btn--green, .btn--outline');
-
-  rippleButtons.forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      /* Remove existing ripples */
-      var oldRipple = btn.querySelector('.ripple');
-      if (oldRipple) oldRipple.remove();
-
-      var rect   = btn.getBoundingClientRect();
-      var size   = Math.max(rect.width, rect.height);
-      var x      = e.clientX - rect.left - size / 2;
-      var y      = e.clientY - rect.top  - size / 2;
-
-      var ripple = document.createElement('span');
-      ripple.classList.add('ripple');
-      ripple.style.width  = size + 'px';
-      ripple.style.height = size + 'px';
-      ripple.style.left   = x + 'px';
-      ripple.style.top    = y + 'px';
-      btn.appendChild(ripple);
-
-      ripple.addEventListener('animationend', function() {
-        ripple.remove();
-      });
-    });
-  });
-
-
-  /* ═══════════════════════════════════════
-     MAGNETIC HOVER EFFECT
-     On .btn--primary, .btn--green, .btn--outline
-  ═══════════════════════════════════════ */
-  var magneticBtns = document.querySelectorAll('.btn--primary, .btn--green, .btn--outline');
-  var MAX_TILT = 6; /* px */
-
-  magneticBtns.forEach(function(btn) {
-    btn.addEventListener('mousemove', function(e) {
-      var rect    = btn.getBoundingClientRect();
-      var centerX = rect.left + rect.width  / 2;
-      var centerY = rect.top  + rect.height / 2;
-      var dx = ((e.clientX - centerX) / rect.width)  * MAX_TILT;
-      var dy = ((e.clientY - centerY) / rect.height) * MAX_TILT;
-      btn.style.transform = 'translate(' + dx + 'px, ' + dy + 'px)';
-    });
-
-    btn.addEventListener('mouseleave', function() {
-      btn.style.transform = '';
-    });
-  });
-
-
-  /* ═══════════════════════════════════════
-     PRODUCT CARD 3D TILT
-  ═══════════════════════════════════════ */
-  var prodCard = document.getElementById('prodCard');
-
-  if (prodCard) {
-    prodCard.addEventListener('mousemove', function(e) {
-      var rect    = prodCard.getBoundingClientRect();
-      var centerX = rect.left + rect.width  / 2;
-      var centerY = rect.top  + rect.height / 2;
-      var rotX = ((e.clientY - centerY) / rect.height) * -14;
-      var rotY = ((e.clientX - centerX) / rect.width)  *  14;
-      prodCard.style.transform =
-        'perspective(800px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) scale(1.02)';
-    });
-
-    prodCard.addEventListener('mouseleave', function() {
-      prodCard.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
-    });
-  }
-
-
-  /* ═══════════════════════════════════════
-     META PIXEL — ADD TO CART
-     Fire before navigating to checkout
-  ═══════════════════════════════════════ */
-  var checkoutLinks = document.querySelectorAll('a[href*="checkout.html"]');
-  checkoutLinks.forEach(function(link) {
-    link.addEventListener('click', function() {
-      window.fbTrack('AddToCart', {
-        value: 89,
-        currency: 'MYR',
-        content_name: 'MorinVibes Moringa Leaf 500mg Capsule'
-      });
-    });
-  });
-
-
-  /* ═══════════════════════════════════════
-     META PIXEL — VIEW CONTENT
-     Fire when #the-product enters viewport
-  ═══════════════════════════════════════ */
-  var productSection = document.getElementById('the-product');
-  if (productSection && 'IntersectionObserver' in window) {
-    var vcFired = false;
-    var vcObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting && !vcFired) {
-          vcFired = true;
-          window.fbTrack('ViewContent', {
-            content_name: 'MorinVibes Moringa Leaf 500mg Capsule',
-            content_type: 'product',
-            value: 89,
-            currency: 'MYR'
-          });
-          vcObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.35 });
-
-    vcObserver.observe(productSection);
-  }
-
-
-  /* ═══════════════════════════════════════
-     SMOOTH SCROLL FOR IN-PAGE ANCHOR HREFS
-     (e.g. "See What's Inside ↓" → #the-product)
-  ═══════════════════════════════════════ */
-  var anchorLinks = document.querySelectorAll('a[href^="#"]');
-  anchorLinks.forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      var target = document.querySelector(this.getAttribute('href'));
-      if (target) {
+  // ── Smooth scroll for in-page anchor buttons ──────────────
+  function initSmoothScroll() {
+    var anchors = document.querySelectorAll('.js-smooth-scroll');
+    anchors.forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        var targetId = el.getAttribute('data-target');
+        if (!targetId) return;
+        var target = document.querySelector(targetId);
+        if (!target) return;
         e.preventDefault();
-        var navH   = parseInt(getComputedStyle(document.documentElement)
-                              .getPropertyValue('--nav-h'), 10) || 72;
-        var offset = target.getBoundingClientRect().top + window.scrollY - navH - 8;
-        window.scrollTo({ top: offset, behavior: 'smooth' });
+        var navH   = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+        var top    = target.getBoundingClientRect().top + window.scrollY - navH;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+  }
+
+  // ── WhatsApp float — pixel event ─────────────────────────
+  function initWaFloat() {
+    var wa = document.getElementById('waBtn');
+    if (!wa) return;
+    wa.addEventListener('click', function () {
+      if (typeof window.fbTrack === 'function') {
+        window.fbTrack('Lead', { content_name: 'WhatsApp CTA' });
       }
     });
-  });
+  }
 
+  // ── Pixel: ViewContent on #the-product entering viewport ──
+  function initProductPixel() {
+    var productSection = document.getElementById('the-product');
+    if (!productSection) return;
 
-  /* ═══════════════════════════════════════
-     WHERE TO BUY — PLATFORM CARD HOVER
-     Gently dims sibling cards on hover
-  ═══════════════════════════════════════ */
-  var platformCards = document.querySelectorAll('.platform-card');
-  platformCards.forEach(function(card) {
-    card.addEventListener('mouseenter', function() {
-      platformCards.forEach(function(other) {
-        if (other !== card) {
-          other.style.opacity = '.72';
-          other.style.transition = 'opacity .22s ease';
+    var fired = false;
+    function checkProduct() {
+      if (fired) return;
+      var rect = productSection.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.85) {
+        fired = true;
+        if (typeof window.fbTrack === 'function') {
+          window.fbTrack('ViewContent', {
+            content_name: 'MorinVibes Moringa Leaf 500mg Capsule',
+            content_category: 'Supplement',
+            currency: 'MYR',
+            value: 89
+          });
+        }
+      }
+    }
+    window.addEventListener('scroll', checkProduct, { passive: true });
+    checkProduct();
+  }
+
+  // ── Pixel: AddToCart on any checkout.html link click ─────
+  function initCheckoutPixel() {
+    var checkoutLinks = document.querySelectorAll('a[href*="checkout.html"]');
+    checkoutLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (typeof window.fbTrack === 'function') {
+          window.fbTrack('AddToCart', {
+            content_name: 'MorinVibes Moringa Leaf 500mg Capsule',
+            currency: 'MYR',
+            value: 89
+          });
         }
       });
     });
-    card.addEventListener('mouseleave', function() {
-      platformCards.forEach(function(other) {
-        other.style.opacity = '';
-      });
-    });
-  });
+  }
 
-}); /* end DOMContentLoaded */
+  // ── Pixel: InitiateCheckout (checkout.html only) ──────────
+  function initCheckoutPagePixel() {
+    if (window.location.pathname.indexOf('checkout.html') !== -1) {
+      if (typeof window.fbTrack === 'function') {
+        window.fbTrack('InitiateCheckout', {});
+      }
+    }
+  }
+
+  // ── Pixel: Purchase (thankyou.html only) ─────────────────
+  function initPurchasePixel() {
+    if (window.location.pathname.indexOf('thankyou.html') !== -1) {
+      if (typeof window.fbTrack === 'function') {
+        window.fbTrack('Purchase', {
+          currency: 'MYR',
+          value: 89
+        });
+      }
+    }
+  }
+
+  // ── Init all ──────────────────────────────────────────────
+  function init() {
+    initFAQ();
+    initSocialTab();
+    initScrollTop();
+    initStickyCta();
+    initRipple();
+    initBenefitTabs();
+    initSmoothScroll();
+    initWaFloat();
+    initProductPixel();
+    initCheckoutPixel();
+    initCheckoutPagePixel();
+    initPurchasePixel();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+}());
