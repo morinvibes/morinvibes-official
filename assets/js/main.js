@@ -1,433 +1,321 @@
+// ==========================================================================
+// main.js — MorinVibes® v22.0
+// All interactions: menu, FAQ, social popup, scroll-top click, ripple,
+// magnetic buttons, 3D tilt, mobile tabs, ESC key, pixel events for popup,
+// and more. Must be loaded after components.js and animations.js.
+// ==========================================================================
 'use strict';
 
-/* ═══════════════════════════════════════════════════════════════
-   MORINVIBES® — main.js
-   Checkout modal · Mobile menu · FAQ accordion
-   Community popup · Scroll progress · ESC key
-   Ripple effect · 3D tilt · WhatsApp pixel
-   NOTE: No scroll-to-top logic — omitted per spec
-   ═══════════════════════════════════════════════════════════════ */
+(function() {
+  // Ensure DOM is fully loaded (including injected components)
+  document.addEventListener('DOMContentLoaded', function() {
 
-document.addEventListener('DOMContentLoaded', function() {
-
-  /* ════════════════════════════════════════
-     CHECKOUT MODAL
-  ════════════════════════════════════════ */
-  var ORDERLA_URL = '[ORDERLA_IFRAME_URL]'; // ← Replace with Orderla embed URL
-  var coOverlay   = null;
-  var coIframe    = null;
-  var coSpinner   = null;
-  var iframeLoaded = false;
-
-  /**
-   * Open the checkout modal.
-   * Lazy-loads the Orderla iframe on first open only.
-   */
-  window.openCheckout = function() {
-    coOverlay = coOverlay || document.getElementById('coOverlay');
-    coIframe  = coIframe  || document.getElementById('coIframe');
-    coSpinner = coSpinner || document.getElementById('coSpinner');
-
-    if (!coOverlay) return;
-
-    // Show overlay
-    coOverlay.classList.add('open');
-    coOverlay.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('menu-open');
-
-    // Lazy-load iframe on first open
-    if (!iframeLoaded && coIframe && ORDERLA_URL !== '[ORDERLA_IFRAME_URL]') {
-      if (coSpinner) coSpinner.classList.remove('hidden');
-      coIframe.src = ORDERLA_URL;
-      coIframe.addEventListener('load', function() {
-        iframeLoaded = true;
-        if (coSpinner) coSpinner.classList.add('hidden');
-        coIframe.classList.add('loaded');
-      }, { once: true });
-    } else if (iframeLoaded && coIframe) {
-      if (coSpinner) coSpinner.classList.add('hidden');
-      coIframe.classList.add('loaded');
-    }
-
-    // Pixel event
-    if (typeof fbTrack === 'function') {
-      fbTrack('InitiateCheckout', {
-        content_name: 'MorinVibes Moringa Capsules',
-        value: 89,
-        currency: 'MYR'
+    // --------------------------------------------------------------------
+    // 1. SCROLL-TO-TOP CLICK HANDLER
+    // --------------------------------------------------------------------
+    const scrollTopBtn = document.getElementById('scrollTop');
+    if (scrollTopBtn) {
+      scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
 
-    // Focus trap — focus the close button
-    var closeBtn = document.getElementById('coClose');
-    if (closeBtn) {
-      setTimeout(function() { closeBtn.focus(); }, 50);
+    // --------------------------------------------------------------------
+    // 2. MOBILE MENU TOGGLE
+    // --------------------------------------------------------------------
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuClose = document.getElementById('menuClose');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const body = document.body;
+
+    function openMenu() {
+      if (mobileMenu) mobileMenu.classList.add('open');
+      if (menuOverlay) menuOverlay.classList.add('active');
+      body.classList.add('menu-open');
     }
-  };
 
-  /**
-   * Close the checkout modal.
-   */
-  window.closeCheckout = function() {
-    coOverlay = coOverlay || document.getElementById('coOverlay');
-    if (!coOverlay) return;
+    function closeMenu() {
+      if (mobileMenu) mobileMenu.classList.remove('open');
+      if (menuOverlay) menuOverlay.classList.remove('active');
+      body.classList.remove('menu-open');
+    }
 
-    coOverlay.classList.remove('open');
-    coOverlay.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('menu-open');
-  };
-
-  // Click outside modal to close
-  var overlay = document.getElementById('coOverlay');
-  if (overlay) {
-    overlay.addEventListener('click', function(e) {
-      if (e.target === overlay) {
-        window.closeCheckout();
-      }
-    });
-  }
-
-  /* ════════════════════════════════════════
-     MOBILE MENU
-  ════════════════════════════════════════ */
-  var mMenu      = null;
-  var hamburger  = null;
-  var menuClose  = null;
-
-  /**
-   * Open mobile menu.
-   */
-  window.openMenu = function() {
-    mMenu     = mMenu     || document.getElementById('mobileMenu');
-    hamburger = hamburger || document.getElementById('navHamburger');
-
-    if (!mMenu) return;
-
-    mMenu.classList.add('open');
-    mMenu.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('menu-open');
-    if (hamburger) hamburger.setAttribute('aria-expanded', 'true');
-
-    // Focus first link
-    var firstLink = mMenu.querySelector('.m-menu__link');
-    if (firstLink) setTimeout(function() { firstLink.focus(); }, 100);
-  };
-
-  /**
-   * Close mobile menu.
-   */
-  window.closeMenu = function() {
-    mMenu     = mMenu     || document.getElementById('mobileMenu');
-    hamburger = hamburger || document.getElementById('navHamburger');
-
-    if (!mMenu) return;
-
-    mMenu.classList.remove('open');
-    mMenu.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('menu-open');
-    if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
-  };
-
-  // Hamburger click — bind after components.js has injected the nav
-  function bindMenuEvents() {
-    hamburger = document.getElementById('navHamburger');
-    menuClose = document.getElementById('menuClose');
-
-    if (hamburger) {
-      hamburger.addEventListener('click', window.openMenu);
+    if (menuToggle) {
+      menuToggle.addEventListener('click', openMenu);
     }
     if (menuClose) {
-      menuClose.addEventListener('click', window.closeMenu);
+      menuClose.addEventListener('click', closeMenu);
     }
-  }
+    if (menuOverlay) {
+      menuOverlay.addEventListener('click', closeMenu);
+    }
 
-  // Retry binding after a short delay to allow components.js injection
-  setTimeout(bindMenuEvents, 0);
+    // --------------------------------------------------------------------
+    // 3. FAQ ACCORDION (maxHeight expand/collapse, ARIA states)
+    // --------------------------------------------------------------------
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    accordionItems.forEach(item => {
+      const question = item.querySelector('.accordion-question');
+      const answer = item.querySelector('.accordion-answer');
+      if (!question || !answer) return;
 
-  /* ════════════════════════════════════════
-     FAQ ACCORDION
-  ════════════════════════════════════════ */
-  function initFAQ() {
-    var faqItems = document.querySelectorAll('.faq-item__q');
-    faqItems.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var expanded = btn.getAttribute('aria-expanded') === 'true';
-        var targetId = btn.getAttribute('aria-controls');
-        var answer   = targetId ? document.getElementById(targetId) : null;
+      // Initially closed
+      item.removeAttribute('open');
+      answer.style.maxHeight = '0';
 
-        // Collapse all other open items
-        faqItems.forEach(function(otherBtn) {
-          if (otherBtn !== btn) {
-            otherBtn.setAttribute('aria-expanded', 'false');
-            var otherId = otherBtn.getAttribute('aria-controls');
-            var otherEl = otherId ? document.getElementById(otherId) : null;
-            if (otherEl) otherEl.style.maxHeight = null;
-          }
-        });
-
-        // Toggle current
-        if (expanded) {
-          btn.setAttribute('aria-expanded', 'false');
-          if (answer) answer.style.maxHeight = null;
+      question.addEventListener('click', () => {
+        const isOpen = item.hasAttribute('open');
+        // Close all others? We'll keep simple: just toggle current
+        if (isOpen) {
+          item.removeAttribute('open');
+          answer.style.maxHeight = '0';
         } else {
-          btn.setAttribute('aria-expanded', 'true');
-          if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+          item.setAttribute('open', '');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+        // ARIA
+        question.setAttribute('aria-expanded', !isOpen);
+      });
+
+      // Set initial ARIA
+      question.setAttribute('aria-expanded', 'false');
+    });
+
+    // --------------------------------------------------------------------
+    // 4. BENEFITS TAB SWITCHER (mobile)
+    // --------------------------------------------------------------------
+    const benefitsTabs = document.querySelectorAll('.benefits-tab');
+    const benefitsCards = document.querySelectorAll('.benefit-card');
+    if (benefitsTabs.length && benefitsCards.length) {
+      // Initially show all (active tab "All")
+      benefitsTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const filter = tab.getAttribute('data-filter');
+          // Update active tab
+          benefitsTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+
+          // Filter cards (simple hide/show)
+          benefitsCards.forEach(card => {
+            const categories = card.getAttribute('data-categories')?.split(' ') || [];
+            if (filter === 'all' || categories.includes(filter)) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+
+    // --------------------------------------------------------------------
+    // 5. SOCIAL FOLLOW POPUP (exit-intent + 45s fallback, localStorage)
+    // --------------------------------------------------------------------
+    const popupOverlay = document.getElementById('socialPopupOverlay');
+    const popupLater = document.getElementById('popupLater');
+    const popupClose = document.querySelector('.popup-close');
+    const socialLinks = document.querySelectorAll('.social-link, .btn--green[data-popup-channel]');
+
+    if (popupOverlay) {
+      const STORAGE_KEY = 'mv_social_v1';
+      let popupShown = false;
+
+      function showPopup() {
+        if (popupShown) return;
+        // Check localStorage
+        try {
+          if (localStorage.getItem(STORAGE_KEY) === 'seen') return;
+        } catch (e) {}
+
+        popupOverlay.classList.add('active');
+        popupOverlay.removeAttribute('hidden');
+        popupShown = true;
+
+        // Mark as seen after showing (but we want to mark only after close or click)
+        // Actually, we mark after any social click OR if user clicks "maybe later".
+        // We'll handle in close.
+      }
+
+      function hidePopup() {
+        popupOverlay.classList.remove('active');
+        popupOverlay.setAttribute('hidden', '');
+      }
+
+      // Exit intent
+      document.addEventListener('mouseleave', (e) => {
+        if (e.clientY <= 0 && !popupShown) {
+          showPopup();
         }
       });
-    });
-  }
 
-  initFAQ();
+      // Fallback timer (45 seconds)
+      setTimeout(() => {
+        if (!popupShown) showPopup();
+      }, 45000);
 
-  /* ════════════════════════════════════════
-     COMMUNITY POPUP
-     exit-intent + 45s fallback
-     localStorage key: mv_popup_v1
-  ════════════════════════════════════════ */
-  var POPUP_KEY = 'mv_popup_v1';
-  var popupShown = false;
-
-  function getPopupSeen() {
-    try {
-      return localStorage.getItem(POPUP_KEY) === '1';
-    } catch (e) {
-      return false; // iOS private mode
-    }
-  }
-
-  function setPopupSeen() {
-    try {
-      localStorage.setItem(POPUP_KEY, '1');
-    } catch (e) {
-      // Silently fail — iOS private mode
-    }
-  }
-
-  function showPopup() {
-    if (popupShown || getPopupSeen()) return;
-    popupShown = true;
-
-    var po = document.getElementById('popupOverlay');
-    if (!po) return;
-
-    po.classList.add('open');
-    po.setAttribute('aria-hidden', 'false');
-
-    // Focus close button
-    var closeBtn = document.getElementById('popupClose');
-    if (closeBtn) setTimeout(function() { closeBtn.focus(); }, 50);
-  }
-
-  function hidePopup() {
-    var po = document.getElementById('popupOverlay');
-    if (!po) return;
-
-    po.classList.remove('open');
-    po.setAttribute('aria-hidden', 'true');
-    setPopupSeen();
-  }
-
-  // Only run popup logic if not already seen
-  if (!getPopupSeen()) {
-
-    // Exit intent — mouse leaves top of viewport
-    document.addEventListener('mouseleave', function(e) {
-      if (e.clientY <= 0) {
-        showPopup();
+      // "Maybe later" click
+      if (popupLater) {
+        popupLater.addEventListener('click', () => {
+          try { localStorage.setItem(STORAGE_KEY, 'seen'); } catch (e) {}
+          hidePopup();
+        });
       }
-    });
 
-    // Fallback — 45 seconds after load
-    var popupTimer = setTimeout(showPopup, 45000);
-
-    // Bind popup dismiss/close buttons
-    function bindPopupEvents() {
-      var popupClose   = document.getElementById('popupClose');
-      var popupDismiss = document.getElementById('popupDismiss');
-      var popupWaBtn   = document.getElementById('popupWaBtn');
-      var popupOverlay = document.getElementById('popupOverlay');
-
+      // Close button
       if (popupClose) {
-        popupClose.addEventListener('click', function() {
+        popupClose.addEventListener('click', () => {
+          try { localStorage.setItem(STORAGE_KEY, 'seen'); } catch (e) {}
           hidePopup();
-          clearTimeout(popupTimer);
         });
       }
 
-      if (popupDismiss) {
-        popupDismiss.addEventListener('click', function() {
-          hidePopup();
-          clearTimeout(popupTimer);
-        });
-      }
-
-      // WhatsApp click in popup fires Lead pixel event
-      if (popupWaBtn) {
-        popupWaBtn.addEventListener('click', function() {
-          if (typeof fbTrack === 'function') {
-            fbTrack('Lead', { content_name: 'Community Popup WhatsApp' });
+      // Social link clicks: fire pixel, then set localStorage and close after delay
+      socialLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const channel = this.getAttribute('data-popup-channel') || 
+                          (this.classList.contains('btn--green') ? 'WhatsApp' : 'Social');
+          // Pixel event
+          if (typeof window.fbTrack === 'function') {
+            window.fbTrack('Lead', { content_name: `Social Popup ${channel}` });
           }
-          hidePopup();
-        });
-      }
 
-      // Click outside popup to dismiss
-      if (popupOverlay) {
-        popupOverlay.addEventListener('click', function(e) {
-          if (e.target === popupOverlay) {
-            hidePopup();
-            clearTimeout(popupTimer);
-          }
+          // Mark as seen, close after 800ms
+          try { localStorage.setItem(STORAGE_KEY, 'seen'); } catch (e) {}
+          setTimeout(hidePopup, 800);
         });
-      }
+      });
+
+      // ESC key closes popup
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
+          hidePopup();
+        }
+      });
     }
 
-    bindPopupEvents();
-  }
+    // --------------------------------------------------------------------
+    // 6. RIPPLE EFFECT ON .btn--primary, .btn--green, .btn--outline
+    // --------------------------------------------------------------------
+    const rippleButtons = document.querySelectorAll('.btn--primary, .btn--green, .btn--outline');
+    rippleButtons.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        const rect = btn.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = e.clientX - rect.left - size/2 + 'px';
+        ripple.style.top = e.clientY - rect.top - size/2 + 'px';
+        btn.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 500);
+      });
+    });
 
-  /* ════════════════════════════════════════
-     WHATSAPP BUTTON — PIXEL EVENT
-  ════════════════════════════════════════ */
-  function bindWaButton() {
-    var waBtn = document.getElementById('waBtn');
-    if (waBtn) {
+    // --------------------------------------------------------------------
+    // 7. MAGNETIC BUTTON EFFECT (.btn--primary, .btn--green)
+    // --------------------------------------------------------------------
+    const magneticBtns = document.querySelectorAll('.btn--primary, .btn--green');
+    magneticBtns.forEach(btn => {
+      btn.addEventListener('mousemove', function(e) {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width/2;
+        const y = e.clientY - rect.top - rect.height/2;
+        const maxDist = 6;
+        const dist = Math.sqrt(x*x + y*y);
+        if (dist < rect.width/2) {
+          const moveX = (x / (rect.width/2)) * maxDist;
+          const moveY = (y / (rect.height/2)) * maxDist;
+          btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        } else {
+          btn.style.transform = '';
+        }
+      });
+      btn.addEventListener('mouseleave', function() {
+        btn.style.transform = '';
+      });
+    });
+
+    // --------------------------------------------------------------------
+    // 8. 3D TILT ON #prodCard (desktop hover)
+    // --------------------------------------------------------------------
+    const prodCard = document.getElementById('prodCard');
+    if (prodCard && window.innerWidth > 768) {
+      prodCard.addEventListener('mousemove', function(e) {
+        const rect = prodCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateY = ((x - centerX) / centerX) * 8; // max ±8deg
+        const rotateX = ((centerY - y) / centerY) * 8;
+        prodCard.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+      prodCard.addEventListener('mouseleave', function() {
+        prodCard.style.transform = 'perspective(800px) rotateX(0) rotateY(0)';
+      });
+    }
+
+    // --------------------------------------------------------------------
+    // 9. MOBILE STICKY CTA BAR SHOW/HIDE (already in animations.js, but we can add an extra guard)
+    //    Not needed here – handled in animations.js.
+    // --------------------------------------------------------------------
+
+    // --------------------------------------------------------------------
+    // 10. PIXEL EVENTS: WhatsApp clicks, Order Now (AddToCart already in animations.js)
+    //     WhatsApp clicks
+    // --------------------------------------------------------------------
+    const waBtn = document.getElementById('waBtn');
+    if (waBtn && typeof window.fbTrack === 'function') {
       waBtn.addEventListener('click', function() {
-        if (typeof fbTrack === 'function') {
-          fbTrack('Lead', { content_name: 'WhatsApp CTA' });
-        }
+        window.fbTrack('Lead', { content_name: 'WhatsApp CTA' });
       });
     }
-    // Also bind footer WA links
-    var footerWaLinks = document.querySelectorAll('.footer__wa-link');
-    footerWaLinks.forEach(function(link) {
-      link.addEventListener('click', function() {
-        if (typeof fbTrack === 'function') {
-          fbTrack('Lead', { content_name: 'WhatsApp CTA' });
-        }
+
+    // Also track WhatsApp from mobile menu right panel
+    const waSmall = document.querySelector('.wa-small');
+    if (waSmall && typeof window.fbTrack === 'function') {
+      waSmall.addEventListener('click', function() {
+        window.fbTrack('Lead', { content_name: 'WhatsApp Mobile Menu' });
       });
-    });
-  }
-
-  // Bind after components injected
-  setTimeout(bindWaButton, 100);
-
-  /* ════════════════════════════════════════
-     ORDER NOW — PIXEL EVENT (AddToCart)
-  ════════════════════════════════════════ */
-  document.addEventListener('click', function(e) {
-    var btn = e.target.closest('button, a');
-    if (!btn) return;
-
-    // Any button/link that calls openCheckout()
-    var onclick = btn.getAttribute('onclick') || '';
-    if (onclick.includes('openCheckout')) {
-      if (typeof fbTrack === 'function') {
-        fbTrack('AddToCart', {
-          content_name: 'MorinVibes Moringa Capsules',
-          value: 89,
-          currency: 'MYR'
-        });
-      }
     }
-  });
 
-  /* ════════════════════════════════════════
-     ESC KEY — close modal / menu
-  ════════════════════════════════════════ */
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' || e.keyCode === 27) {
-      window.closeCheckout();
-      window.closeMenu();
-
-      var po = document.getElementById('popupOverlay');
-      if (po && po.classList.contains('open')) {
-        hidePopup();
-      }
+    // --------------------------------------------------------------------
+    // 11. HORIZONTAL SCROLL HINT (mobile review carousel) – simple pulse on .scroll-hint
+    // --------------------------------------------------------------------
+    const scrollHint = document.querySelector('.scroll-hint');
+    if (scrollHint) {
+      // Could add a pulse animation, but we'll rely on CSS keyframes.
+      // If not present, we can add a class.
     }
-  });
 
-  /* ════════════════════════════════════════
-     RIPPLE EFFECT — .btn--primary and .btn--outline
-  ════════════════════════════════════════ */
-  document.addEventListener('click', function(e) {
-    var btn = e.target.closest('.btn--primary, .btn--outline');
-    if (!btn) return;
+    // --------------------------------------------------------------------
+    // 12. IMAGE LAZY PRELOAD (above the fold) – optional, but we can add a simple preload
+    //     For now, rely on browser lazy loading.
+    // --------------------------------------------------------------------
 
-    var ripple = document.createElement('span');
-    ripple.classList.add('ripple');
-
-    var rect   = btn.getBoundingClientRect();
-    var size   = Math.max(rect.width, rect.height);
-    var x      = e.clientX - rect.left - size / 2;
-    var y      = e.clientY - rect.top  - size / 2;
-
-    ripple.style.cssText = [
-      'width:'  + size + 'px',
-      'height:' + size + 'px',
-      'left:'   + x    + 'px',
-      'top:'    + y    + 'px'
-    ].join(';');
-
-    btn.appendChild(ripple);
-
-    setTimeout(function() {
-      if (ripple.parentNode) ripple.parentNode.removeChild(ripple);
-    }, 600);
-  });
-
-  /* ════════════════════════════════════════
-     3D TILT — #prodCard on desktop hover
-  ════════════════════════════════════════ */
-  var prodCard = document.getElementById('prodCard');
-
-  if (prodCard && window.matchMedia('(hover: hover)').matches) {
-
-    prodCard.addEventListener('mousemove', function(e) {
-      var rect   = prodCard.getBoundingClientRect();
-      var x      = e.clientX - rect.left;
-      var y      = e.clientY - rect.top;
-      var cx     = rect.width  / 2;
-      var cy     = rect.height / 2;
-      var rotX   = ((y - cy) / cy) * -8;  // max ±8deg
-      var rotY   = ((x - cx) / cx) *  8;
-
-      prodCard.style.transform =
-        'perspective(800px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)';
-    });
-
-    prodCard.addEventListener('mouseleave', function() {
-      prodCard.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
-    });
-  }
-
-  /* ════════════════════════════════════════
-     NEWSLETTER FORM (if present on page)
-  ════════════════════════════════════════ */
-  var newsletterForm = document.getElementById('newsletterForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      var emailInput = newsletterForm.querySelector('input[type="email"]');
-      var email = emailInput ? emailInput.value.trim() : '';
-
-      if (!email || !email.includes('@')) {
-        var err = newsletterForm.querySelector('.form-error');
-        if (err) err.textContent = 'Please enter a valid email address.';
-        return;
+    // --------------------------------------------------------------------
+    // 13. ESC KEY CLOSE OVERLAYS (already handled for popup, but also for menu if open)
+    // --------------------------------------------------------------------
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (mobileMenu && mobileMenu.classList.contains('open')) {
+          closeMenu();
+        }
+        // popup already handled
       }
-
-      // Pixel Lead event
-      if (typeof fbTrack === 'function') {
-        fbTrack('Lead', {
-          content_name: 'Newsletter Signup',
-          content_category: 'Email'
-        });
-      }
-
-      // Show success state
-      newsletterForm.innerHTML = '<p style="color:var(--teal);font-weight:500;">Thank you! You\'re on the list.</p>';
     });
-  }
 
-});
+    // --------------------------------------------------------------------
+    // 14. NO CHECKOUT MODAL (ensuring no remnants)
+    // --------------------------------------------------------------------
+    // Just a safety check: remove any leftover modal elements if they exist
+    const oldModal = document.querySelector('.co-overlay');
+    if (oldModal) oldModal.remove();
+
+    // --------------------------------------------------------------------
+    // 15. Ensure all "Order Now" links are plain <a> (already are)
+    // --------------------------------------------------------------------
+
+  }); // DOMContentLoaded
+})();
