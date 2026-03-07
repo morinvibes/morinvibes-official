@@ -1,65 +1,64 @@
+// ==========================================================================
+// transitions.js — MorinVibes® v22.0
+// Page fade in/out transitions. Handles internal link clicks to fade out
+// before navigation, and fade in on page load. Restores on back/forward.
+// ==========================================================================
 'use strict';
 
-/* ═══════════════════════════════════════════════════════════════
-   MORINVIBES® — transitions.js
-   Page-exit fade on internal link clicks
-   Page-enter fade on load
-   ═══════════════════════════════════════════════════════════════ */
-
 (function() {
+  // Fade out duration (must match CSS transition)
+  const FADE_DURATION = 200; // ms, same as in global.css main transition
 
-  var BASE = '/morinvibes-official/';
+  // Get main element
+  const mainElement = document.querySelector('main');
 
-  /* ─── PAGE ENTER — fade in on load ─── */
-  document.addEventListener('DOMContentLoaded', function() {
-    var main = document.querySelector('main');
-    if (main) {
-      main.classList.add('page-transition-enter');
-    }
-  });
+  if (!mainElement) return; // no main, abort
 
-  /* ─── PAGE EXIT — fade out on internal link click ─── */
+  // On page load, ensure main is visible (in case of back/forward cache)
+  mainElement.classList.remove('fade-out');
+  mainElement.style.opacity = '1'; // redundant but safe
+
+  // Handle all internal link clicks
   document.addEventListener('click', function(e) {
-    var link = e.target.closest('a[href]');
+    // Find closest anchor
+    const link = e.target.closest('a');
     if (!link) return;
 
-    var href = link.getAttribute('href') || '';
+    // Only handle internal links that lead to another page on this site
+    const href = link.getAttribute('href');
+    if (!href) return;
 
-    // Only intercept internal same-origin links (not anchors, not external, not JS)
-    var isInternal = (
-      href.indexOf(BASE) === 0 &&
-      href.indexOf('#') === -1 &&
-      !link.hasAttribute('target') &&
-      !e.ctrlKey &&
-      !e.metaKey &&
-      !e.shiftKey
-    );
+    // Skip if it's an external link, anchor link, or has target="_blank"
+    if (link.target === '_blank') return;
+    if (href.startsWith('http') && !href.includes(window.location.hostname)) return;
+    if (href.startsWith('#')) return;
+    if (href.startsWith('javascript:')) return;
+    if (link.hasAttribute('download')) return;
 
-    if (!isInternal) return;
+    // Also skip if it's the WhatsApp button or any link with specific class
+    if (link.classList.contains('whatsapp-btn') || link.classList.contains('wa-small') || link.classList.contains('footer__wa-link')) return;
 
+    // Prevent default navigation
     e.preventDefault();
 
-    var main = document.querySelector('main');
-    if (main) {
-      main.style.opacity = '0';
-      main.style.transition = 'opacity .22s ease';
-    }
+    // Fade out main
+    mainElement.classList.add('fade-out');
+    mainElement.style.opacity = '0';
 
+    // Navigate after fade
     setTimeout(function() {
       window.location.href = href;
-    }, 240);
+    }, FADE_DURATION);
   });
 
-  /* ─── BACK/FORWARD — restore fade on popstate ─── */
-  window.addEventListener('pageshow', function(e) {
-    if (e.persisted) {
-      var main = document.querySelector('main');
-      if (main) {
-        main.style.opacity = '';
-        main.style.transition = '';
-        main.classList.add('page-transition-enter');
-      }
+  // Handle back/forward cache (pageshow event)
+  window.addEventListener('pageshow', function(event) {
+    // If the page is loaded from cache (bfcache), ensure main is visible
+    if (event.persisted) {
+      mainElement.classList.remove('fade-out');
+      mainElement.style.opacity = '1';
     }
   });
 
+  // On initial page load, ensure main is visible (already done)
 })();
