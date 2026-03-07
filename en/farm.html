@@ -3,19 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>Our Moringa Farm in Penang — Grown by Us, For You | MorinVibes®</title>
-  <meta name="description" content="Visit our moringa farm in Bayan Lepas, Penang. We grow, harvest, and encapsulate our moringa on our own land — full traceability from soil to bottle." />
+  <title>Our Farm — MorinVibes® · Penang, Malaysia</title>
+  <meta name="description" content="Visit our moringa farm in Penang. Watch the harvest, see the land, meet the team — no middlemen, just our own farm." />
   <link rel="canonical" href="https://morinvibes.com/en/farm.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Our Moringa Farm in Penang — MorinVibes®" />
-  <meta property="og:description" content="We own the land. We grow the trees. We harvest the leaves. Farm-direct moringa from Penang, Malaysia." />
-  <meta property="og:image" content="https://morinvibes.github.io/morinvibes-official/images/farm-hero.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   
   <!-- Favicon -->
   <link rel="icon" href="/morinvibes-official/favicon.svg" type="image/svg+xml" />
@@ -25,33 +20,9 @@
   <link rel="stylesheet" href="/morinvibes-official/assets/css/components.css" />
   <link rel="stylesheet" href="/morinvibes-official/assets/css/style.css" />
   
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "MorinVibes Farm",
-    "description": "Our moringa farm in Bayan Lepas, Penang, Malaysia",
-    "url": "https://morinvibes.com/en/farm.html",
-    "mainEntity": {
-      "@type": "Farm",
-      "name": "MorinVibes Moringa Farm",
-      "location": {
-        "@type": "Place",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Bayan Lepas",
-          "addressRegion": "Penang",
-          "addressCountry": "Malaysia"
-        }
-      }
-    }
-  }
-  </script>
-  
-  <!-- Meta Pixel - MINIMAL (initialization only) -->
+  <!-- Meta Pixel - MINIMAL -->
   <script>
-  var PIXEL_ID = 'YOUR_PIXEL_ID'; /* REPLACE BEFORE GOING LIVE */
+  var PIXEL_ID = 'YOUR_PIXEL_ID';
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
   if(PIXEL_ID!=='YOUR_PIXEL_ID'){fbq('init',PIXEL_ID);fbq('track','PageView');}
   </script>
@@ -61,63 +32,22 @@
 <!-- Scroll progress bar -->
 <div class="scroll-progress" id="progressBar"></div>
 
-<!-- CHECKOUT MODAL -->
-<div class="co-overlay" id="coOverlay" role="dialog" aria-modal="true" aria-label="Secure checkout">
-  <div class="co-modal">
-    <div class="co-head">
-      <div class="co-head-brand">
-        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" height="30" />
-        <div class="co-head-info">
-          <strong>Moringa Capsules · 90 caps · 500mg</strong><br />RM89 + shipping
-        </div>
-      </div>
-      <button class="co-close" id="coClose" aria-label="Close checkout">✕</button>
-    </div>
-    <div class="co-trust">
-      <span>✓ KKM Approved</span>
-      <span>✓ GMP Certified</span>
-      <span>🔒 Secure Payment</span>
-      <span>🚚 Ships from Penang</span>
-    </div>
-    <div class="co-body">
-      <div class="co-spinner" id="coSpinner">
-        <div class="co-spinner__ring"></div>
-        <div class="co-spinner__text">Loading secure checkout…</div>
-      </div>
-      <iframe
-        id="coIframe"
-        class="co-iframe"
-        src=""
-        data-src="https://morinvibes.orderla.my/moringa-order"
-        title="Secure checkout"
-        sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
-      ></iframe>
-    </div>
-    <div class="co-foot">
-      Same product as our Shopee &amp; Lazada store. Need help?
-      <a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp us</a>
-    </div>
-  </div>
-</div>
-
-<!-- NAVIGATION -->
-<nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
+<!-- NAVIGATION (SAME AS INDEX.HTML) -->
+<nav class="nav" id="mainNav">
   <div class="nav__wrap">
-    <button class="nav__ham" id="navHam" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <button class="nav__ham" id="navHam" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
-    <a href="/morinvibes-official/en/" class="nav__logo" aria-label="MorinVibes® — Home">
-      <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" width="180" height="46" />
+    <a href="/morinvibes-official/en/" class="nav__logo">
+      <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" width="160" height="46">
     </a>
     <div class="nav__right">
       <div class="lang-drop" id="langDrop">
-        <button class="lang-btn" id="langBtn" aria-expanded="false" aria-label="Language">
-          EN <span class="lang-btn__chev">▾</span>
-        </button>
-        <div class="lang-opts" role="menu">
-          <a href="/morinvibes-official/en/" class="lang-opt active" role="menuitem">🇬🇧 English</a>
-          <a href="/morinvibes-official/bm/" class="lang-opt" role="menuitem">🇲🇾 Bahasa Malaysia</a>
-          <a href="/morinvibes-official/zh/" class="lang-opt" role="menuitem">🇨🇳 中文</a>
+        <button class="lang-btn" id="langBtn">EN <span>▾</span></button>
+        <div class="lang-opts">
+          <a href="/morinvibes-official/en/" class="lang-opt active">🇬🇧 English</a>
+          <a href="/morinvibes-official/bm/" class="lang-opt">🇲🇾 Bahasa</a>
+          <a href="/morinvibes-official/zh/" class="lang-opt">🇨🇳 中文</a>
         </div>
       </div>
       <button class="btn btn--primary btn--sm" id="navOrderBtn">Order — RM89</button>
@@ -126,288 +56,245 @@
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="m-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+<div class="m-menu" id="mobileMenu">
   <div class="m-left">
-    <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="m-logo-img" height="38" />
-    <button class="m-close" id="mClose" aria-label="Close menu">✕</button>
+    <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="m-logo-img" height="38">
+    <button class="m-close" id="mClose">✕</button>
     <div class="m-lang">
-      <a href="/morinvibes-official/en/">EN</a>
+      <a href="/morinvibes-official/en/" class="active">EN</a>
       <a href="/morinvibes-official/bm/">BM</a>
       <a href="/morinvibes-official/zh/">中文</a>
     </div>
     <a href="/morinvibes-official/en/" class="m-link">Home</a>
-    <a href="/morinvibes-official/en/farm.html" class="m-link active">Farm</a>
-    <a href="/morinvibes-official/en/quality.html" class="m-link">Quality</a>
-    <a href="/morinvibes-official/en/wellness.html" class="m-link">Wellness</a>
-    <a href="/morinvibes-official/en/shop.html" class="m-link">Shop</a>
-    <a href="/morinvibes-official/en/about.html" class="m-link">Story</a>
+    <a href="/morinvibes-official/en/farm.html" class="m-link active">Our Farm</a>
+    <a href="/morinvibes-official/en/quality.html" class="m-link">Quality & Safety</a>
+    <a href="/morinvibes-official/en/wellness.html" class="m-link">Journal</a>
+    <a href="/morinvibes-official/en/shop.html" class="m-link">The Product</a>
+    <a href="/morinvibes-official/en/about.html" class="m-link">About Us</a>
     <a href="/morinvibes-official/en/testimonials.html" class="m-link">Reviews</a>
     <a href="/morinvibes-official/en/faq.html" class="m-link">FAQ</a>
-    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="m-link m-link--hi">💬 WhatsApp</a>
+    <a href="https://wa.me/60102766095" target="_blank" class="m-link m-link--hi">💬 WhatsApp</a>
   </div>
   <div class="m-right">
     <div class="m-right-leaf" aria-hidden="true"></div>
-    <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="m-prod-img" />
+    <img src="/morinvibes-official/images/bottle-new.svg" alt="Moringa Capsules" class="m-prod-img">
     <div class="m-price">RM89 <span>/ bottle</span></div>
-    <div class="m-sub">90 capsules · 500mg · 30-day supply</div>
+    <div class="m-sub">90 caps · 500mg · 30-day supply</div>
     <button class="btn btn--primary btn--full" id="mOrderBtn">Order Now — RM89</button>
   </div>
 </div>
 
 <main>
 
-<!-- ===== FARM HERO SECTION ===== -->
-<section class="section" aria-labelledby="farm-hero-h" style="padding-top: calc(72px + 60px);">
+<!-- ===== FARM HERO — VIDEO FIRST ===== -->
+<section class="farm-hero">
   <!-- V-mark watermark -->
   <div class="v-watermark v-watermark--hero" aria-hidden="true"></div>
   
-  <!-- Leaf decoration -->
-  <div class="leaf-deco leaf-deco--hero-bl" aria-hidden="true"></div>
-  
+  <div class="farm-hero__video-container">
+    <!-- VIDEO: Farm tour (autoplay, mute, loop, playsinline for mobile) -->
+    <!-- UPLOAD YOUR VIDEO TO: /images/farm/farm-tour.mp4 -->
+    <video class="farm-hero__video" autoplay muted loop playsinline poster="/images/farm/farm-poster.jpg">
+      <source src="/images/farm/farm-tour.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    
+    <!-- Fallback image if video doesn't load -->
+    <img src="/images/farm/farm-field.jpg" alt="Our moringa farm in Penang" class="farm-hero__fallback">
+    
+    <!-- Overlay text - minimal -->
+    <div class="farm-hero__overlay">
+      <span class="eyebrow">OUR FARM · PENANG</span>
+      <h1 class="farm-hero__title">Where It Grows.</h1>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FARM STORY — MINIMAL TEXT ===== -->
+<section class="section">
   <div class="container">
-    <div class="grid-2c" style="align-items: center;">
-      <div class="fade-up">
-        <span class="eyebrow">OUR FARM · BAYAN LEPAS, PENANG</span>
-        <h1 id="farm-hero-h" style="margin-bottom: 20px;">Where Our Moringa Grows.</h1>
-        <p class="lead" style="margin-bottom: 30px;">We don't buy from middlemen. We don't import bulk powder. Every leaf in every capsule comes from trees we planted on our own land.</p>
-        <div class="farm-strip__item" style="padding: 0; border: none; margin-bottom: 20px;">
-          <div class="farm-strip__icon" aria-hidden="true">🌱</div>
-          <div>
-            <span class="farm-strip__title">6+ Years of Cultivation</span>
-            <span class="farm-strip__desc">Our trees are mature, deep-rooted, and thriving in Penang's tropical climate</span>
+    <div class="farm-story__grid">
+      <!-- Left: Short text (2 lines max) -->
+      <div class="farm-story__text fade-up">
+        <h2>From Our Land to Your Door.</h2>
+        <p class="lead">We don't buy from middlemen. Every leaf comes from trees we planted on our own land in Penang.</p>
+      </div>
+      
+      <!-- Right: Thumbnail grid linking to videos/photos -->
+      <div class="farm-story__media-grid fade-up" data-delay="1">
+        
+        <a href="/images/farm/harvest.mp4" class="farm-media__item" data-video>
+          <!-- REPLACE: <video src="/images/farm/harvest-thumb.mp4" poster="/images/farm/harvest-poster.jpg"></video> -->
+          <div class="farm-media__placeholder">
+            <span class="farm-media__icon">🌿</span>
+            <span class="farm-media__label">Harvest</span>
+            <span class="farm-media__play">▶</span>
           </div>
-        </div>
-        <div class="farm-strip__item" style="padding: 0; border: none; margin-bottom: 30px;">
-          <div class="farm-strip__icon" aria-hidden="true">🌿</div>
-          <div>
-            <span class="farm-strip__title">Chemical-Free Growing</span>
-            <span class="farm-strip__desc">No pesticides, no herbicides — just healthy soil and clean rainwater</span>
+        </a>
+        
+        <a href="/images/farm/trees.jpg" class="farm-media__item" data-image>
+          <div class="farm-media__placeholder">
+            <span class="farm-media__icon">🌳</span>
+            <span class="farm-media__label">The Trees</span>
           </div>
-        </div>
-        <a href="#farm-story" class="btn btn--outline">Explore Our Farm →</a>
-      </div>
-      <div class="fade-right" data-delay="1">
-        <!-- REPLACE: <img src="/morinvibes-official/images/farm-hero.jpg" alt="MorinVibes moringa farm in Penang" class="photo-frame" style="border-radius: var(--r-lg);" /> -->
-        <div class="photo-ph photo-ph--land" style="border-radius: var(--r-lg);">
-          <span class="photo-ph__icon" aria-hidden="true">🌿</span>
-          <span class="photo-ph__label">Our Farm</span>
-          <span class="photo-ph__sub">Bayan Lepas · coming soon</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FARM STATS ===== -->
-<section class="section section--sm" style="background: var(--teal-ghost);">
-  <div class="container">
-    <div class="farm-strip__grid" style="grid-template-columns: repeat(4, 1fr); gap: 20px;">
-      <div class="soc-stat" style="background: white; border-radius: var(--r-md);">
-        <div class="soc-num">6+</div>
-        <p class="soc-lbl">Years Growing</p>
-      </div>
-      <div class="soc-stat" style="background: white; border-radius: var(--r-md);">
-        <div class="soc-num">2.5</div>
-        <p class="soc-lbl">Acres · and expanding</p>
-      </div>
-      <div class="soc-stat" style="background: white; border-radius: var(--r-md);">
-        <div class="soc-num">1,200+</div>
-        <p class="soc-lbl">Moringa Trees</p>
-      </div>
-      <div class="soc-stat" style="background: white; border-radius: var(--r-md);">
-        <div class="soc-num">100%</div>
-        <p class="soc-lbl">Our Land, Our Trees</p>
+        </a>
+        
+        <a href="/images/farm/facility.jpg" class="farm-media__item" data-image>
+          <div class="farm-media__placeholder">
+            <span class="farm-media__icon">🏭</span>
+            <span class="farm-media__label">Facility</span>
+          </div>
+        </a>
+        
+        <a href="/images/farm/team.mp4" class="farm-media__item" data-video>
+          <div class="farm-media__placeholder">
+            <span class="farm-media__icon">👥</span>
+            <span class="farm-media__label">Our Team</span>
+            <span class="farm-media__play">▶</span>
+          </div>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== FARM STORY ===== -->
-<section id="farm-story" class="section" aria-labelledby="story-h">
-  <div class="container">
-    <div class="section-header fade-up">
-      <div class="v-accent" aria-hidden="true"></div>
-      <span class="eyebrow">OUR LAND, OUR TREES</span>
-      <h2 id="story-h">From Soil to Supplement.</h2>
-      <p class="lead">We believe traceability isn't optional — it's the only way to guarantee purity.</p>
-    </div>
-    
-    <div class="grid-2c" style="margin-top: 48px;">
-      <div class="fade-left">
-        <!-- REPLACE: <img src="/morinvibes-official/images/farm-field-wide.jpg" alt="Wide view of MorinVibes moringa farm" class="photo-frame" style="border-radius: var(--r-lg);" /> -->
-        <div class="photo-ph photo-ph--land" style="border-radius: var(--r-lg);">
-          <span class="photo-ph__icon" aria-hidden="true">🌱</span>
-          <span class="photo-ph__label">Farm Field</span>
-          <span class="photo-ph__sub">Wide view · coming soon</span>
-        </div>
-      </div>
-      <div class="fade-right" data-delay="1">
-        <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Bayan Lepas, Penang</h3>
-        <p style="margin-bottom: 20px;">Our farm sits on 2.5 acres of land in Bayan Lepas, Penang — a stone's throw from our encapsulation facility. This proximity is deliberate: leaves go from branch to bottle in hours, not days or weeks.</p>
-        <p style="margin-bottom: 20px;">We planted the first moringa trees in 2019. Today, over 1,200 trees thrive here, their roots deep in Malaysian soil, their leaves harvested at peak nutrition.</p>
-        <p><strong>No middlemen. No imported powder. No warehouse stock sitting for months.</strong> Just our land, our trees, our harvest.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== GROWING PRACTICES ===== -->
-<section class="section section--alt" aria-labelledby="practices-h">
-  <div class="container">
-    <div class="section-header fade-up">
-      <span class="eyebrow">HOW WE GROW</span>
-      <h2 id="practices-h">Chemical-Free, Always.</h2>
-      <p class="lead">Healthy soil grows nutrient-dense leaves. It's that simple.</p>
-    </div>
-    
-    <div class="why-grid" style="margin-top: 48px;">
-      <div class="why-card fade-up">
-        <div class="why-card__c">
-          <span class="why-card__icon" aria-hidden="true">💧</span>
-          <div class="why-card__title">Rain-Fed Only</div>
-          <p class="why-card__body">No irrigation systems — our trees drink only natural rainwater, deepening their root systems.</p>
-        </div>
-      </div>
-      <div class="why-card fade-up" data-delay="1">
-        <div class="why-card__c">
-          <span class="why-card__icon" aria-hidden="true">🌱</span>
-          <div class="why-card__title">No Chemicals</div>
-          <p class="why-card__body">Zero pesticides, herbicides, or synthetic fertilisers. Just compost and natural soil health.</p>
-        </div>
-      </div>
-      <div class="why-card fade-up" data-delay="2">
-        <div class="why-card__c">
-          <span class="why-card__icon" aria-hidden="true">🌿</span>
-          <div class="why-card__title">Hand-Harvested</div>
-          <p class="why-card__body">Every leaf is hand-picked at peak maturity — machines damage leaves and reduce nutrient density.</p>
-        </div>
-      </div>
-      <div class="why-card fade-up" data-delay="3">
-        <div class="why-card__c">
-          <span class="why-card__icon" aria-hidden="true">🌞</span>
-          <div class="why-card__title">Morning Harvest</div>
-          <p class="why-card__body">Leaves picked at dawn when nutrient and moisture content is highest — processed within hours.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== HARVEST TO BOTTLE ===== -->
-<section class="section" aria-labelledby="process-h">
-  <div class="container">
-    <div class="section-header fade-up">
-      <span class="eyebrow">FROM TREE TO CAPSULE</span>
-      <h2 id="process-h">The Same Day.</h2>
-      <p class="lead">Harvest. Clean. Dry. Encapsulate. All within hours — not weeks or months.</p>
-    </div>
-    
-    <div class="timeline__track" style="max-width: 800px; margin: 48px auto 0; padding-left: 0;">
-      <div class="tl-item" style="display: flex; gap: 30px; align-items: flex-start; padding-bottom: 40px;">
-        <div class="tl-dot" style="position: static; flex-shrink: 0;"></div>
-        <div>
-          <span class="tl-label">STEP 1 · DAWN</span>
-          <div class="tl-h">Hand Harvest</div>
-          <p class="tl-p">Leaves are hand-picked at first light, selecting only the most mature, nutrient-dense foliage.</p>
-        </div>
-      </div>
-      <div class="tl-item" style="display: flex; gap: 30px; align-items: flex-start; padding-bottom: 40px;">
-        <div class="tl-dot" style="position: static; flex-shrink: 0;"></div>
-        <div>
-          <span class="tl-label">STEP 2 · MORNING</span>
-          <div class="tl-h">Gentle Washing</div>
-          <p class="tl-p">Leaves are rinsed in cool, filtered water to remove any natural debris — no chemicals, no heat.</p>
-        </div>
-      </div>
-      <div class="tl-item" style="display: flex; gap: 30px; align-items: flex-start; padding-bottom: 40px;">
-        <div class="tl-dot" style="position: static; flex-shrink: 0;"></div>
-        <div>
-          <span class="tl-label">STEP 3 · MIDDAY</span>
-          <div class="tl-h">Low-Temperature Drying</div>
-          <p class="tl-p">Dried at temperatures below 40°C to preserve chlorophyll, enzymes, and delicate nutrients.</p>
-        </div>
-      </div>
-      <div class="tl-item" style="display: flex; gap: 30px; align-items: flex-start; padding-bottom: 40px;">
-        <div class="tl-dot" style="position: static; flex-shrink: 0;"></div>
-        <div>
-          <span class="tl-label">STEP 4 · AFTERNOON</span>
-          <div class="tl-h">Stone-Ground Milling</div>
-          <p class="tl-p">Dried leaves are ground into fine powder using traditional stone mills — no heat generation.</p>
-        </div>
-      </div>
-      <div class="tl-item" style="display: flex; gap: 30px; align-items: flex-start;">
-        <div class="tl-dot" style="position: static; flex-shrink: 0;"></div>
-        <div>
-          <span class="tl-label">STEP 5 · EVENING</span>
-          <div class="tl-h">Encapsulation</div>
-          <p class="tl-p">Fresh powder is encapsulated in our GMP-certified facility — sealed in bottles the same day.</p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="section-cta fade-up" style="margin-top: 60px;">
-      <p class="lead" style="margin-bottom: 30px;">From our farm to your door — one origin, one ingredient, one promise.</p>
-      <button class="btn btn--primary btn--lg" id="farmCtaBtn">Order Farm-Fresh — RM89</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PHOTO GALLERY ===== -->
+<!-- ===== FARM GALLERY — PURE VISUALS ===== -->
 <section class="section section--alt">
   <div class="container">
     <div class="section-header fade-up">
-      <span class="eyebrow">FARM GALLERY</span>
-      <h2>A Walk Through Our Land.</h2>
-      <p class="lead">See where your moringa comes from.</p>
+      <span class="eyebrow">LIFE ON THE FARM</span>
+      <h2>A Glimpse Inside.</h2>
     </div>
     
-    <div class="photo-strip__grid" style="margin-top: 48px;">
-      <div>
-        <!-- REPLACE: <img src="/morinvibes-official/images/farm-trees.jpg" alt="Moringa trees at MorinVibes farm" class="photo-frame" style="aspect-ratio: 4/3;" /> -->
-        <div class="photo-ph photo-ph--land">
-          <span class="photo-ph__icon" aria-hidden="true">🌳</span>
-          <span class="photo-ph__label">Moringa Trees</span>
-          <span class="photo-ph__sub">Coming soon</span>
+    <div class="farm-gallery__grid">
+      <!-- Row 1 -->
+      <div class="farm-gallery__item fade-up">
+        <!-- REPLACE: <img src="/images/farm/moringa-trees.jpg" alt="Moringa trees"> -->
+        <div class="farm-gallery__placeholder">
+          <span class="farm-gallery__icon">🌱</span>
+          <span class="farm-gallery__label">Moringa Trees</span>
         </div>
       </div>
-      <div>
-        <!-- REPLACE: <img src="/morinvibes-official/images/farm-harvest.jpg" alt="Hand harvesting moringa leaves" class="photo-frame" style="aspect-ratio: 4/3;" /> -->
-        <div class="photo-ph photo-ph--land">
-          <span class="photo-ph__icon" aria-hidden="true">✋</span>
-          <span class="photo-ph__label">Hand Harvest</span>
-          <span class="photo-ph__sub">Coming soon</span>
+      
+      <div class="farm-gallery__item fade-up" data-delay="1">
+        <!-- REPLACE: <img src="/images/farm/leaves-closeup.jpg" alt="Fresh moringa leaves"> -->
+        <div class="farm-gallery__placeholder">
+          <span class="farm-gallery__icon">🍃</span>
+          <span class="farm-gallery__label">Fresh Leaves</span>
         </div>
       </div>
-      <div>
-        <!-- REPLACE: <img src="/morinvibes-official/images/farm-leaves.jpg" alt="Fresh moringa leaves close-up" class="photo-frame" style="aspect-ratio: 4/3;" /> -->
-        <div class="photo-ph photo-ph--land">
-          <span class="photo-ph__icon" aria-hidden="true">🍃</span>
-          <span class="photo-ph__label">Fresh Leaves</span>
-          <span class="photo-ph__sub">Coming soon</span>
+      
+      <div class="farm-gallery__item fade-up" data-delay="2">
+        <!-- REPLACE: <img src="/images/farm/hand-harvest.jpg" alt="Hand harvesting"> -->
+        <div class="farm-gallery__placeholder">
+          <span class="farm-gallery__icon">✋</span>
+          <span class="farm-gallery__label">Hand Harvest</span>
+        </div>
+      </div>
+      
+      <!-- Row 2 -->
+      <div class="farm-gallery__item fade-up">
+        <!-- REPLACE: <img src="/images/farm/sunrise.jpg" alt="Sunrise at the farm"> -->
+        <div class="farm-gallery__placeholder">
+          <span class="farm-gallery__icon">🌅</span>
+          <span class="farm-gallery__label">Sunrise</span>
+        </div>
+      </div>
+      
+      <div class="farm-gallery__item fade-up" data-delay="1">
+        <!-- REPLACE: <img src="/images/farm/rainy-season.jpg" alt="Rainy season"> -->
+        <div class="farm-gallery__placeholder">
+          <span class="farm-gallery__icon">☔</span>
+          <span class="farm-gallery__label">Rainy Season</span>
+        </div>
+      </div>
+      
+      <div class="farm-gallery__item fade-up" data-delay="2">
+        <!-- REPLACE: <img src="/images/farm/team-photo.jpg" alt="Our farm team"> -->
+        <div class="farm-gallery__placeholder">
+          <span class="farm-gallery__icon">👥</span>
+          <span class="farm-gallery__label">The Team</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== FARM TO BOTTLE CTA ===== -->
+<!-- ===== FROM FARM TO BOTTLE (Visual Journey) ===== -->
 <section class="section">
   <div class="container">
-    <div class="cta-block fade-up" style="background: linear-gradient(145deg, #e3f8fa, white, var(--teal-ghost));">
-      <!-- V-mark watermark -->
-      <div class="v-watermark v-watermark--cta" aria-hidden="true"></div>
-      
-      <!-- Leaf decoration -->
-      <div class="leaf-deco leaf-deco--cta" aria-hidden="true"></div>
-      
-      <div class="cta-block__in">
-        <span class="eyebrow">TRACEABLE · FRESH · PURE</span>
-        <h2 style="margin-bottom: 20px;">From Our Land to Your Door.</h2>
-        <p class="lead cta-lead">One farm. One ingredient. Nothing removed. Nothing added.</p>
-        <div class="cta-btns">
-          <button class="btn btn--primary btn--lg" id="farmCtaBtn2">Order Farm-Direct — RM89</button>
-          <a href="/morinvibes-official/en/shop.html" class="btn btn--outline btn--lg">Shop All Products →</a>
+    <div class="section-header fade-up">
+      <span class="eyebrow">FROM FARM TO BOTTLE</span>
+      <h2>The Same Day.</h2>
+      <p class="lead">Harvested, dried, encapsulated — all within hours.</p>
+    </div>
+    
+    <div class="journey-grid">
+      <div class="journey-item fade-up">
+        <div class="journey-icon">🌿</div>
+        <div class="journey-line"></div>
+        <div class="journey-content">
+          <h3>1. Harvest</h3>
+          <p>Hand-picked at dawn</p>
+          <!-- REPLACE VIDEO: /images/farm/harvest-short.mp4 -->
+          <div class="journey-media__placeholder">▶ Harvest video</div>
         </div>
+      </div>
+      
+      <div class="journey-item fade-up" data-delay="1">
+        <div class="journey-icon">💧</div>
+        <div class="journey-line"></div>
+        <div class="journey-content">
+          <h3>2. Wash</h3>
+          <p>Gentle, filtered water</p>
+          <div class="journey-media__placeholder">▶ Wash video</div>
+        </div>
+      </div>
+      
+      <div class="journey-item fade-up" data-delay="2">
+        <div class="journey-icon">☀️</div>
+        <div class="journey-line"></div>
+        <div class="journey-content">
+          <h3>3. Dry</h3>
+          <p>Low-temp, preserves nutrients</p>
+          <div class="journey-media__placeholder">▶ Drying video</div>
+        </div>
+      </div>
+      
+      <div class="journey-item fade-up" data-delay="3">
+        <div class="journey-icon">⚙️</div>
+        <div class="journey-line"></div>
+        <div class="journey-content">
+          <h3>4. Mill</h3>
+          <p>Stone-ground into powder</p>
+          <div class="journey-media__placeholder">▶ Milling video</div>
+        </div>
+      </div>
+      
+      <div class="journey-item fade-up" data-delay="4">
+        <div class="journey-icon">💊</div>
+        <div class="journey-content">
+          <h3>5. Capsule</h3>
+          <p>Encapsulated, bottled, sealed</p>
+          <div class="journey-media__placeholder">▶ Capsule video</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FARM CTA ===== -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="cta-block farm-cta">
+      <div class="v-watermark v-watermark--cta" aria-hidden="true"></div>
+      <div class="leaf-deco leaf-deco--cta" aria-hidden="true"></div>
+      <span class="eyebrow">FROM OUR FARM</span>
+      <h2>Experience the Difference.</h2>
+      <p class="cta-text">One farm. One ingredient. Nothing removed.</p>
+      <div class="cta-buttons">
+        <button class="btn btn--primary btn--lg" id="farmCtaBtn">Order Farm-Direct — RM89</button>
+        <a href="/morinvibes-official/en/shop.html" class="btn btn--outline btn--lg">See The Product →</a>
       </div>
     </div>
   </div>
@@ -415,131 +302,98 @@
 
 </main>
 
-<!-- ===== FOOTER (NO NEWSLETTER) ===== -->
-<footer class="footer" aria-label="Site footer">
+<!-- ===== FOOTER (SAME AS INDEX.HTML) ===== -->
+<footer class="footer">
   <div class="footer__main">
     <div class="container">
-      <div class="ft-grid">
-        <!-- Brand column -->
-        <div>
-          <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="ft-logo" width="160" height="38" />
-          <p class="ft-tag">Farm-direct moringa from our own land<br />in Penang, Malaysia · Since 2019</p>
-          <div class="ft-social" aria-label="Follow us">
-            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Facebook">f</a>
-            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Instagram">📷</a>
-            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="TikTok">▶</a>
-            <a href="https://www.threads.com/@moringa_morinvibes" target="_blank" rel="noopener" class="ft-soc-a" aria-label="Threads">@</a>
-            <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="ft-soc-a" aria-label="WhatsApp">💬</a>
+      <div class="footer-grid">
+        
+        <!-- Brand Column -->
+        <div class="footer-col">
+          <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="footer-logo" width="140" height="35">
+          <p class="footer-tagline">Farm-direct moringa from our own land in Penang · Since 2019</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" aria-label="Instagram">📷</a>
+            <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" aria-label="TikTok">▶</a>
+            <a href="https://wa.me/60102766095" target="_blank" aria-label="WhatsApp">💬</a>
           </div>
-          <div class="ft-cert">✓ KKM Approved · GMP Certified</div>
+          <div class="footer-cert">✓ KKM · GMP Certified</div>
         </div>
-
-        <!-- Explore = page navigation ONLY -->
-        <div>
-          <p class="ft-col-h">Explore</p>
-          <ul class="ft-links">
-            <li><a href="/morinvibes-official/en/farm.html">Farm</a></li>
-            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
-            <li><a href="/morinvibes-official/en/wellness.html">Wellness</a></li>
-            <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
-            <li><a href="/morinvibes-official/en/about.html">Story</a></li>
+        
+        <!-- Explore Column -->
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="/morinvibes-official/en/">Home</a></li>
+            <li><a href="/morinvibes-official/en/farm.html">Our Farm</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality & Safety</a></li>
+            <li><a href="/morinvibes-official/en/wellness.html">Journal</a></li>
+            <li><a href="/morinvibes-official/en/shop.html">The Product</a></li>
+            <li><a href="/morinvibes-official/en/about.html">About Us</a></li>
             <li><a href="/morinvibes-official/en/testimonials.html">Reviews</a></li>
             <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
           </ul>
         </div>
-
-        <!-- Trust = legal / policy ONLY -->
-        <div>
-          <p class="ft-col-h">Trust</p>
-          <ul class="ft-links">
-            <li><a href="/morinvibes-official/en/ethics.html">Our Ethics</a></li>
-            <li><a href="/morinvibes-official/en/returns.html">Returns Policy</a></li>
-            <li><a href="/morinvibes-official/en/privacy.html">Privacy Policy</a></li>
-            <li><a href="/morinvibes-official/en/terms.html">Terms &amp; Conditions</a></li>
+        
+        <!-- Trust & Policies Column -->
+        <div class="footer-col">
+          <h4>Trust & Policies</h4>
+          <ul>
+            <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
+            <li><a href="/morinvibes-official/en/returns.html">Returns</a></li>
+            <li><a href="/morinvibes-official/en/privacy.html">Privacy</a></li>
+            <li><a href="/morinvibes-official/en/terms.html">Terms</a></li>
           </ul>
         </div>
-
-        <!-- Contact -->
-        <div>
-          <p class="ft-col-h">Contact &amp; Order</p>
-          <ul class="ft-links">
-            <li><a href="https://wa.me/60102766095" target="_blank" rel="noopener">WhatsApp</a></li>
-            <li><a href="mailto:morinvibes2019@gmail.com">morinvibes2019@gmail.com</a></li>
-            <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank" rel="noopener">Shopee Store</a></li>
-            <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank" rel="noopener">Lazada Store</a></li>
+        
+        <!-- Contact Column -->
+        <div class="footer-col">
+          <h4>Contact & Order</h4>
+          <ul>
+            <li><a href="https://wa.me/60102766095" target="_blank">WhatsApp (fastest)</a></li>
+            <li><a href="mailto:morinvibes2019@gmail.com">Email</a></li>
+            <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank">Shopee Store</a></li>
+            <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank">Lazada Store</a></li>
           </ul>
-          <p class="ft-addr">Bayan Lepas, Penang<br />Malaysia</p>
+          <p class="footer-addr">Bayan Lepas, Penang<br>Malaysia</p>
         </div>
       </div>
-
-      <!-- Copyright bar — ONE LINE, zero links -->
-      <div class="ft-bottom">
-        © 2026 MorinVibes®. All rights reserved. · Grown &amp; produced in Penang, Malaysia.
+      
+      <!-- Copyright -->
+      <div class="footer-bottom">
+        © 2026 MorinVibes® · Grown in Penang, Malaysia
       </div>
     </div>
   </div>
 </footer>
 
-<!-- Scroll to top button -->
+<!-- Scroll to top -->
 <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
 
 <!-- Community Popup -->
-<div class="community-popup" id="communityPopup" role="dialog" aria-label="Stay connected">
+<div class="community-popup" id="communityPopup">
   <div class="pop-head">
-    <h4>Stay in the loop 🌿</h4>
-    <p>Updates, tips &amp; exclusive offers</p>
-    <button class="pop-close" id="popClose" aria-label="Close">✕</button>
+    <h4>Stay connected 🌿</h4>
+    <button class="pop-close" id="popClose">✕</button>
   </div>
   <div class="pop-body">
-    <a href="https://wa.me/60102766095" target="_blank" rel="noopener" class="pop-link" id="popWa">
-      <span class="pop-link__ico" aria-hidden="true">💬</span>
-      <div><div class="pop-link__lbl">Chat on WhatsApp</div><div class="pop-link__sub">Direct line to our team</div></div>
-    </a>
-    <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" rel="noopener" class="pop-link">
-      <span class="pop-link__ico" aria-hidden="true">📷</span>
-      <div><div class="pop-link__lbl">Instagram</div><div class="pop-link__sub">@moringa_morinvibes</div></div>
-    </a>
-    <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" rel="noopener" class="pop-link">
-      <span class="pop-link__ico" aria-hidden="true">▶</span>
-      <div><div class="pop-link__lbl">TikTok</div><div class="pop-link__sub">@moringa_morinvibes</div></div>
-    </a>
-    <div class="pop-dismiss" id="popDismiss" role="button" tabindex="0">No thanks, I'll browse</div>
+    <a href="https://wa.me/60102766095" target="_blank" class="pop-link">💬 WhatsApp</a>
+    <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" class="pop-link">📷 Instagram</a>
+    <a href="https://www.tiktok.com/@moringa_morinvibes" target="_blank" class="pop-link">▶ TikTok</a>
+    <div class="pop-dismiss" id="popDismiss">No thanks</div>
   </div>
 </div>
 
-<!-- Domain Guard (commented until morinvibes.com is live) -->
-<script>
-/*
-(function(){
-  var h=window.location.hostname;
-  if(h!=='morinvibes.com'&&h!=='localhost'&&h!=='127.0.0.1'){
-    var p=window.location.pathname.replace('/morinvibes-official','')||'/';
-    window.location.replace('https://morinvibes.com'+p+window.location.search);
-  }
-})();
-*/
-</script>
-
-<!-- JS - EXTERNAL ONLY (NO language.js) -->
+<!-- JS -->
 <script src="/morinvibes-official/assets/js/pixel.js"></script>
 <script src="/morinvibes-official/assets/js/animations.js"></script>
 <script src="/morinvibes-official/assets/js/main.js"></script>
-<script src="/morinvibes-official/assets/js/transitions.js"></script>
 
-<!-- Additional farm page script for CTA buttons -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Bind farm page CTA buttons to checkout
-    const farmCtaBtn = document.getElementById('farmCtaBtn');
-    const farmCtaBtn2 = document.getElementById('farmCtaBtn2');
-    
-    if (farmCtaBtn && typeof openCheckout === 'function') {
-      farmCtaBtn.addEventListener('click', openCheckout);
-    }
-    
-    if (farmCtaBtn2 && typeof openCheckout === 'function') {
-      farmCtaBtn2.addEventListener('click', openCheckout);
-    }
+  // Order button redirects to checkout.html
+  document.getElementById('farmCtaBtn')?.addEventListener('click', function() {
+    window.location.href = '/morinvibes-official/en/checkout.html';
   });
 </script>
 
