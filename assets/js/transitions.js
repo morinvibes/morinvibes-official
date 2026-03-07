@@ -1,64 +1,73 @@
-// ==========================================================================
-// transitions.js — MorinVibes® v22.0
-// Page fade in/out transitions. Handles internal link clicks to fade out
-// before navigation, and fade in on page load. Restores on back/forward.
-// ==========================================================================
+/* ═══════════════════════════════════════════════════════════
+   MORINVIBES® — transitions.js
+   Page Fade In · Page Fade Out on Navigation
+   v1.0 · March 2026
+═══════════════════════════════════════════════════════════ */
 'use strict';
 
 (function() {
-  // Fade out duration (must match CSS transition)
-  const FADE_DURATION = 200; // ms, same as in global.css main transition
 
-  // Get main element
-  const mainElement = document.querySelector('main');
+  /* ─── FADE IN on load ─── */
+  /* body starts at opacity:0 (set in global.css)
+     Adding .loaded triggers opacity:1 transition */
+  function fadeIn() {
+    document.body.classList.add('loaded');
+  }
 
-  if (!mainElement) return; // no main, abort
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      requestAnimationFrame(fadeIn);
+    });
+  } else {
+    requestAnimationFrame(fadeIn);
+  }
 
-  // On page load, ensure main is visible (in case of back/forward cache)
-  mainElement.classList.remove('fade-out');
-  mainElement.style.opacity = '1'; // redundant but safe
 
-  // Handle all internal link clicks
+  /* ─── FADE OUT on navigation ─── */
+  /* Intercepts all internal link clicks, fades page out,
+     then follows the href — creates smooth page transitions */
   document.addEventListener('click', function(e) {
-    // Find closest anchor
-    const link = e.target.closest('a');
-    if (!link) return;
+    /* Walk up from click target to find an <a> */
+    var el = e.target;
+    while (el && el.tagName !== 'A') {
+      el = el.parentElement;
+    }
+    if (!el) return;
 
-    // Only handle internal links that lead to another page on this site
-    const href = link.getAttribute('href');
+    var href = el.getAttribute('href');
     if (!href) return;
 
-    // Skip if it's an external link, anchor link, or has target="_blank"
-    if (link.target === '_blank') return;
-    if (href.startsWith('http') && !href.includes(window.location.hostname)) return;
-    if (href.startsWith('#')) return;
-    if (href.startsWith('javascript:')) return;
-    if (link.hasAttribute('download')) return;
+    /* Skip: external links, hash anchors, new tab, special protocols */
+    var isExternal   = el.target === '_blank';
+    var isHash       = href.charAt(0) === '#';
+    var isSpecial    = /^(mailto:|tel:|javascript:)/.test(href);
+    var isSameDomain = href.indexOf('http') === -1 ||
+                       href.indexOf(window.location.hostname) !== -1;
 
-    // Also skip if it's the WhatsApp button or any link with specific class
-    if (link.classList.contains('whatsapp-btn') || link.classList.contains('wa-small') || link.classList.contains('footer__wa-link')) return;
+    if (isExternal || isHash || isSpecial || !isSameDomain) return;
 
-    // Prevent default navigation
+    /* Don't intercept if modifier keys held (open in new tab, etc.) */
+    if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+
     e.preventDefault();
 
-    // Fade out main
-    mainElement.classList.add('fade-out');
-    mainElement.style.opacity = '0';
+    /* Fade out */
+    document.body.classList.remove('loaded');
 
-    // Navigate after fade
+    /* Navigate after transition completes */
+    var delay = 350; /* matches transition duration in global.css */
     setTimeout(function() {
       window.location.href = href;
-    }, FADE_DURATION);
+    }, delay);
   });
 
-  // Handle back/forward cache (pageshow event)
-  window.addEventListener('pageshow', function(event) {
-    // If the page is loaded from cache (bfcache), ensure main is visible
-    if (event.persisted) {
-      mainElement.classList.remove('fade-out');
-      mainElement.style.opacity = '1';
+
+  /* ─── HANDLE BACK/FORWARD (bfcache) ─── */
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      /* Page restored from bfcache — fade in again */
+      requestAnimationFrame(fadeIn);
     }
   });
 
-  // On initial page load, ensure main is visible (already done)
 })();
