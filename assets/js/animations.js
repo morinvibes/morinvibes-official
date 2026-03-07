@@ -1,204 +1,272 @@
-// ==========================================================================
-// animations.js — MorinVibes® v22.0
-// Scroll‑reveal, counters, parallax, nav scroll class, scroll progress bar,
-// ViewContent pixel, sticky CTA, scroll‑to‑top visibility.
-// All IntersectionObserver logic.
-// ==========================================================================
+/* ═══════════════════════════════════════════════════════════
+   MORINVIBES® — animations.js
+   Scroll-Reveal · Scroll-Top Visibility · Nav Scroll ·
+   Counter Animation · Parallax Leaves
+   v1.0 · March 2026
+═══════════════════════════════════════════════════════════ */
 'use strict';
 
-(function() {
-  // Wait for DOM and components to be injected (nav/footer)
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
 
-    // ------------------------------------------------------------------------
-    // 1. NAV SCROLL CLASS (.scrolled)
-    // ------------------------------------------------------------------------
-    const nav = document.querySelector('.nav');
-    if (nav) {
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 10) {
-          nav.classList.add('scrolled');
-        } else {
-          nav.classList.remove('scrolled');
+  /* ═══════════════════════════════════════
+     SCROLL-REVEAL (IntersectionObserver)
+  ═══════════════════════════════════════ */
+  var revealClasses = ['.fade-up', '.fade-left', '.fade-right', '.scale-in', '.clip-in'];
+  var revealEls = document.querySelectorAll(revealClasses.join(','));
+
+  if (revealEls.length > 0 && 'IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
         }
-      }, { passive: true });
-    }
-
-    // ------------------------------------------------------------------------
-    // 2. SCROLL PROGRESS BAR (#scrollProgress)
-    // ------------------------------------------------------------------------
-    const progressBar = document.getElementById('scrollProgress');
-    if (progressBar) {
-      window.addEventListener('scroll', function() {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        progressBar.style.width = scrolled + '%';
-      }, { passive: true });
-    }
-
-    // ------------------------------------------------------------------------
-    // 3. SCROLL‑TO‑TOP BUTTON VISIBILITY (show > 400px)
-    // ------------------------------------------------------------------------
-    const scrollTopBtn = document.getElementById('scrollTop');
-    if (scrollTopBtn) {
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 400) {
-          scrollTopBtn.classList.add('visible');
-        } else {
-          scrollTopBtn.classList.remove('visible');
-        }
-      }, { passive: true });
-    }
-
-    // ------------------------------------------------------------------------
-    // 4. STICKY CTA VISIBILITY (mobile only, when #hero exits viewport)
-    // ------------------------------------------------------------------------
-    const stickyCta = document.getElementById('stickyCta');
-    const hero = document.querySelector('.hero');
-    if (stickyCta && hero && window.innerWidth < 768) {
-      const observerSticky = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            // If hero is NOT intersecting (i.e., exited viewport), show CTA
-            if (!entry.isIntersecting) {
-              stickyCta.classList.add('visible');
-            } else {
-              stickyCta.classList.remove('visible');
-            }
-          });
-        },
-        { threshold: 0 } // trigger as soon as even 1px leaves
-      );
-      observerSticky.observe(hero);
-    }
-
-    // ------------------------------------------------------------------------
-    // 5. ViewContent PIXEL EVENT (when #product enters viewport)
-    // ------------------------------------------------------------------------
-    const productSection = document.getElementById('product');
-    if (productSection && typeof window.fbTrack === 'function') {
-      const observerPixel = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              window.fbTrack('ViewContent', {
-                content_name: 'MorinVibes Moringa Leaf 500mg Capsule',
-                content_type: 'product',
-                value: 89,
-                currency: 'MYR'
-              });
-              observerPixel.unobserve(productSection); // fire only once
-            }
-          });
-        },
-        { threshold: 0.3 }
-      );
-      observerPixel.observe(productSection);
-    }
-
-    // ------------------------------------------------------------------------
-    // 6. SCROLL‑REVEAL (fade-up, fade-left, fade-right, scale-in, clip-in)
-    // ------------------------------------------------------------------------
-    const revealElements = document.querySelectorAll(
-      '.fade-up, .fade-left, .fade-right, .scale-in, .clip-in'
-    );
-
-    if (revealElements.length > 0) {
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              // Optionally unobserve after reveal (if you want only once)
-              // revealObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.2, rootMargin: '0px 0px -50px 0px' }
-      );
-
-      revealElements.forEach(el => revealObserver.observe(el));
-    }
-
-    // ------------------------------------------------------------------------
-    // 7. COUNTER ANIMATION ([data-count] elements)
-    // ------------------------------------------------------------------------
-    const counterElements = document.querySelectorAll('[data-count]');
-    if (counterElements.length > 0) {
-      const counterObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const el = entry.target;
-              const target = parseFloat(el.getAttribute('data-count'));
-              const suffix = el.getAttribute('data-suffix') || '';
-              const duration = 1500; // ms
-              const startTime = performance.now();
-
-              function updateCounter(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                // easeOutCubic
-                const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-                const currentVal = target * easeOutCubic;
-                if (Number.isInteger(target)) {
-                  el.textContent = Math.floor(currentVal) + suffix;
-                } else {
-                  el.textContent = currentVal.toFixed(1) + suffix;
-                }
-                if (progress < 1) {
-                  requestAnimationFrame(updateCounter);
-                } else {
-                  el.textContent = target + suffix; // ensure exact final
-                }
-              }
-              requestAnimationFrame(updateCounter);
-              counterObserver.unobserve(el); // count only once
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-      counterElements.forEach(el => counterObserver.observe(el));
-    }
-
-    // ------------------------------------------------------------------------
-    // 8. PARALLAX (.parallax-el with data-parallax-speed)
-    // ------------------------------------------------------------------------
-    const parallaxElements = document.querySelectorAll('.parallax-el');
-    if (parallaxElements.length > 0) {
-      window.addEventListener('scroll', function() {
-        const scrollY = window.scrollY;
-        parallaxElements.forEach(el => {
-          const speed = parseFloat(el.getAttribute('data-parallax-speed')) || 0.2;
-          const yPos = -(scrollY * speed);
-          el.style.transform = `translateY(${yPos}px)`;
-        });
-      }, { passive: true });
-    }
-
-    // ------------------------------------------------------------------------
-    // 9. ADD TO CART PIXEL ON ALL "ORDER NOW" LINKS (AddToCart)
-    //    (Note: this is also in main.js, but per prompt AddToCart is triggered on click.
-    //     We'll place it here to keep pixel events together, but it's fine.)
-    //    However, the master prompt lists AddToCart in Part 16, and says fire before navigation.
-    //    We'll include it here, but careful not to duplicate if also in main.js.
-    //    Let's include it in animations.js as a convenience.
-    // ------------------------------------------------------------------------
-    const orderNowLinks = document.querySelectorAll('a[href*="checkout.html"]');
-    orderNowLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        if (typeof window.fbTrack === 'function') {
-          window.fbTrack('AddToCart', {
-            value: 89,
-            currency: 'MYR',
-            content_name: 'MorinVibes Moringa Leaf 500mg Capsule'
-          });
-        }
-        // Navigation happens normally (no preventDefault)
       });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
     });
 
-  }); // DOMContentLoaded
-})();
+    revealEls.forEach(function(el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    /* Fallback for browsers without IntersectionObserver */
+    revealEls.forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+
+
+  /* ═══════════════════════════════════════
+     SCROLL-TO-TOP VISIBILITY
+  ═══════════════════════════════════════ */
+  var scrollTopBtn = document.getElementById('scrollTop');
+
+  if (scrollTopBtn) {
+    var scrollTopHandler = function() {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    };
+    window.addEventListener('scroll', scrollTopHandler, { passive: true });
+    /* Run once on load in case page is already scrolled */
+    scrollTopHandler();
+  }
+
+
+  /* ═══════════════════════════════════════
+     NAV: SHRINK + SHADOW ON SCROLL
+  ═══════════════════════════════════════ */
+  var nav = document.getElementById('mainNav');
+
+  if (nav) {
+    var navScrollHandler = function() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    };
+    window.addEventListener('scroll', navScrollHandler, { passive: true });
+    navScrollHandler();
+  }
+
+
+  /* ═══════════════════════════════════════
+     MOBILE STICKY CTA — show after hero exits
+  ═══════════════════════════════════════ */
+  var stickyCta = document.getElementById('stickyCta');
+  var heroSection = document.getElementById('hero');
+
+  if (stickyCta && heroSection && 'IntersectionObserver' in window) {
+    /* Only on mobile — CSS hides on desktop */
+    var heroObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) {
+          stickyCta.classList.add('visible');
+          stickyCta.setAttribute('aria-hidden', 'false');
+        } else {
+          stickyCta.classList.remove('visible');
+          stickyCta.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }, { threshold: 0 });
+
+    heroObserver.observe(heroSection);
+  }
+
+
+  /* ═══════════════════════════════════════
+     COUNTER ANIMATION
+     Usage: <span class="count-up" data-target="1000" data-suffix="+">0</span>
+  ═══════════════════════════════════════ */
+  var counters = document.querySelectorAll('.count-up');
+
+  if (counters.length > 0 && 'IntersectionObserver' in window) {
+    var counterObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(function(counter) {
+      counterObserver.observe(counter);
+    });
+  }
+
+  function animateCounter(el) {
+    var target  = parseInt(el.dataset.target, 10) || 0;
+    var suffix  = el.dataset.suffix || '';
+    var prefix  = el.dataset.prefix || '';
+    var duration= 1600; /* ms */
+    var start   = 0;
+    var startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      /* Ease out cubic */
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = Math.floor(eased * target);
+      el.textContent = prefix + current.toLocaleString() + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = prefix + target.toLocaleString() + suffix;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+
+  /* ═══════════════════════════════════════
+     PARALLAX — HERO LEAVES
+     Uses requestAnimationFrame + scroll
+  ═══════════════════════════════════════ */
+  var parallaxEls = document.querySelectorAll('.parallax-el');
+  var ticking = false;
+
+  if (parallaxEls.length > 0) {
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          var scrollY = window.scrollY;
+          parallaxEls.forEach(function(el) {
+            var speed = parseFloat(el.dataset.parallax) || 0.15;
+            el.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+
+  /* ═══════════════════════════════════════
+     HERO BOTTLE 3D TILT (subtle)
+  ═══════════════════════════════════════ */
+  var heroBottle = document.getElementById('heroBottle');
+
+  if (heroBottle) {
+    var heroVisual = heroBottle.closest('.hero__visual');
+    if (heroVisual) {
+      heroVisual.addEventListener('mousemove', function(e) {
+        var rect = heroVisual.getBoundingClientRect();
+        var centerX = rect.left + rect.width / 2;
+        var centerY = rect.top  + rect.height / 2;
+        var rotX = ((e.clientY - centerY) / rect.height) * -10;
+        var rotY = ((e.clientX - centerX) / rect.width)  *  10;
+        heroBottle.style.transform =
+          'translateY(var(--float-offset, 0px)) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)';
+      });
+      heroVisual.addEventListener('mouseleave', function() {
+        heroBottle.style.transform = '';
+      });
+    }
+  }
+
+
+  /* ═══════════════════════════════════════
+     FAQ — ANIMATE SCROLL HIGHLIGHT
+     Highlights the currently open FAQ item
+     with a subtle border glow after opening
+  ═══════════════════════════════════════ */
+  /* (Actual FAQ open/close logic is in main.js) */
+
+
+  /* ═══════════════════════════════════════
+     COMPARISON TABLE — STAGGERED ROW REVEAL
+  ═══════════════════════════════════════ */
+  var compareTable = document.querySelector('.compare-table');
+  if (compareTable && 'IntersectionObserver' in window) {
+    var tableObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var rows = entry.target.querySelectorAll('tbody tr');
+          rows.forEach(function(row, i) {
+            row.style.opacity = '0';
+            row.style.transform = 'translateX(-12px)';
+            row.style.transition = 'opacity .45s ease, transform .45s ease';
+            row.style.transitionDelay = (i * 0.09) + 's';
+            /* Trigger reflow */
+            row.getBoundingClientRect();
+            row.style.opacity = '1';
+            row.style.transform = 'translateX(0)';
+          });
+          tableObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    tableObserver.observe(compareTable);
+  }
+
+
+  /* ═══════════════════════════════════════
+     BENEFIT CARDS — stagger already handled
+     by data-delay in scroll-reveal above.
+     This adds a hover glow effect via JS
+     for browsers that don't support :has()
+  ═══════════════════════════════════════ */
+  var benefitCards = document.querySelectorAll('.benefit-card');
+  benefitCards.forEach(function(card) {
+    card.addEventListener('mouseenter', function() {
+      benefitCards.forEach(function(other) {
+        if (other !== card) {
+          other.style.opacity = '.72';
+        }
+      });
+    });
+    card.addEventListener('mouseleave', function() {
+      benefitCards.forEach(function(other) {
+        other.style.opacity = '';
+      });
+    });
+  });
+
+
+  /* ═══════════════════════════════════════
+     JOURNEY TIMELINE — animate line draw
+  ═══════════════════════════════════════ */
+  var timeline = document.querySelector('.journey__timeline');
+  if (timeline && 'IntersectionObserver' in window) {
+    var timelineObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('timeline-animated');
+          /* Animate the ::before line via a custom property trick */
+          var pseudoStyle = document.getElementById('timeline-anim-style');
+          if (!pseudoStyle) {
+            var s = document.createElement('style');
+            s.id = 'timeline-anim-style';
+            s.textContent = '.timeline-animated::before { animation: timeline-grow 1.2s ease forwards; }';
+            document.head.appendChild(s);
+          }
+          timelineObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    timelineObserver.observe(timeline);
+  }
+
+}); /* end DOMContentLoaded */
