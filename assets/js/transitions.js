@@ -1,73 +1,119 @@
-/* ═══════════════════════════════════════════════════════════
-   MORINVIBES® — transitions.js
-   Page Fade In · Page Fade Out on Navigation
-   v1.0 · March 2026
-═══════════════════════════════════════════════════════════ */
 'use strict';
 
-(function() {
+/* ============================================================
+   MORINVIBES® — transitions.js
+   Page fade-in on load · Fade-out before navigation
+   ============================================================ */
 
-  /* ─── FADE IN on load ─── */
-  /* body starts at opacity:0 (set in global.css)
-     Adding .loaded triggers opacity:1 transition */
+(function () {
+
+  // ── Inject transition overlay ─────────────────────────────
+  var overlay = document.createElement('div');
+  overlay.id = 'page-transition';
+  overlay.setAttribute('aria-hidden', 'true');
+  overlay.style.cssText = [
+    'position:fixed',
+    'inset:0',
+    'background:var(--white, #fff)',
+    'z-index:9999',
+    'pointer-events:none',
+    'opacity:1',
+    'transition:opacity .38s cubic-bezier(0,0,.2,1)'
+  ].join(';');
+
+  // Append as early as possible
+  function appendOverlay() {
+    if (document.body && !document.getElementById('page-transition')) {
+      document.body.appendChild(overlay);
+    }
+  }
+
+  if (document.body) {
+    appendOverlay();
+  } else {
+    document.addEventListener('DOMContentLoaded', appendOverlay);
+  }
+
+  // ── Fade in on page load ──────────────────────────────────
   function fadeIn() {
-    document.body.classList.add('loaded');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        overlay.style.opacity = '0';
+        overlay.style.pointerEvents = 'none';
+      });
+    });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-      requestAnimationFrame(fadeIn);
-    });
+    document.addEventListener('DOMContentLoaded', fadeIn);
   } else {
-    requestAnimationFrame(fadeIn);
+    fadeIn();
   }
 
+  // ── Fade out before navigating away ──────────────────────
+  function handleLinkClick(e) {
+    var link = e.currentTarget;
+    if (!link) return;
 
-  /* ─── FADE OUT on navigation ─── */
-  /* Intercepts all internal link clicks, fades page out,
-     then follows the href — creates smooth page transitions */
-  document.addEventListener('click', function(e) {
-    /* Walk up from click target to find an <a> */
-    var el = e.target;
-    while (el && el.tagName !== 'A') {
-      el = el.parentElement;
-    }
-    if (!el) return;
-
-    var href = el.getAttribute('href');
+    var href = link.getAttribute('href');
     if (!href) return;
 
-    /* Skip: external links, hash anchors, new tab, special protocols */
-    var isExternal   = el.target === '_blank';
-    var isHash       = href.charAt(0) === '#';
-    var isSpecial    = /^(mailto:|tel:|javascript:)/.test(href);
-    var isSameDomain = href.indexOf('http') === -1 ||
-                       href.indexOf(window.location.hostname) !== -1;
-
-    if (isExternal || isHash || isSpecial || !isSameDomain) return;
-
-    /* Don't intercept if modifier keys held (open in new tab, etc.) */
-    if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+    // Skip: external, new tab, anchors, tel, mailto, javascript
+    if (
+      link.target === '_blank' ||
+      href.charAt(0) === '#'   ||
+      href.indexOf('tel:')        === 0 ||
+      href.indexOf('mailto:')     === 0 ||
+      href.indexOf('javascript:') === 0 ||
+      href.indexOf('wa.me')       !== -1 ||
+      e.ctrlKey || e.metaKey || e.shiftKey
+    ) {
+      return;
+    }
 
     e.preventDefault();
+    overlay.style.pointerEvents = 'all';
+    overlay.style.opacity = '1';
 
-    /* Fade out */
-    document.body.classList.remove('loaded');
-
-    /* Navigate after transition completes */
-    var delay = 350; /* matches transition duration in global.css */
-    setTimeout(function() {
+    setTimeout(function () {
       window.location.href = href;
-    }, delay);
-  });
+    }, 380);
+  }
 
+  function bindLinks() {
+    var links = document.querySelectorAll('a[href]');
+    links.forEach(function (link) {
+      var href = link.getAttribute('href') || '';
+      if (
+        link.target !== '_blank' &&
+        href.charAt(0) !== '#'   &&
+        href.indexOf('tel:')        !== 0 &&
+        href.indexOf('mailto:')     !== 0 &&
+        href.indexOf('javascript:') !== 0 &&
+        href.indexOf('wa.me')       === -1
+      ) {
+        link.removeEventListener('click', handleLinkClick);
+        link.addEventListener('click', handleLinkClick);
+      }
+    });
+  }
 
-  /* ─── HANDLE BACK/FORWARD (bfcache) ─── */
-  window.addEventListener('pageshow', function(e) {
+  // Bind now and after components inject nav/footer
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindLinks);
+  } else {
+    bindLinks();
+  }
+
+  // Re-bind after a short delay (nav/footer injected by components.js)
+  setTimeout(bindLinks, 300);
+
+  // ── Handle back/forward (bfcache) ─────────────────────────
+  window.addEventListener('pageshow', function (e) {
     if (e.persisted) {
-      /* Page restored from bfcache — fade in again */
-      requestAnimationFrame(fadeIn);
+      overlay.style.opacity = '0';
+      overlay.style.pointerEvents = 'none';
     }
   });
 
-})();
+}());
