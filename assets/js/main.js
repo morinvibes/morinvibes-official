@@ -1,21 +1,73 @@
-/* ===== MORINVIBES® — MAIN.JS v18.0 ===== */
-/* Version: 18.0 · March 2026 · Mobile-First */
+/* ===== MORINVIBES® — MAIN.JS v19.0 ===== */
+/* Version: 19.0 · March 2026 · Professional Edition */
 /* Path: /morinvibes-official/assets/js/main.js */
 
 (function() {
   'use strict';
 
   /* ------------------------------------ */
-  /* GLOBAL VARIABLES & CONFIG           */
+  /* CONFIGURATION                        */
   /* ------------------------------------ */
 
   const CONFIG = {
+    // URLs
     checkoutUrl: '/morinvibes-official/en/checkout.html',
+    
+    // Popup settings
     popupKey: 'mv_popup_v1',
     popupDelay: 45000, // 45 seconds
-    scrollThreshold: 300,
-    navShrinkThreshold: 40
+    exitIntentThreshold: 10, // pixels from top
+    
+    // Scroll settings
+    scrollThreshold: 300, // show scroll button after 300px
+    navShrinkThreshold: 40, // shrink nav after 40px
+    
+    // Animation settings
+    rippleDuration: 600, // ms
+    faqAnimationDuration: 300, // ms
+    
+    // Debug mode
+    debug: window.location.hostname === 'localhost' || 
+           window.location.hostname === '127.0.0.1'
   };
+
+  /* ------------------------------------ */
+  /* UTILITY FUNCTIONS                    */
+  /* ------------------------------------ */
+
+  /**
+   * Safe console logging (only in debug mode)
+   */
+  function log(...args) {
+    if (CONFIG.debug) {
+      console.log('[MorinVibes]', ...args);
+    }
+  }
+
+  /**
+   * Check if element exists
+   */
+  function elementExists(selector) {
+    if (typeof selector === 'string') {
+      return document.querySelector(selector) !== null;
+    }
+    return selector !== null && selector !== undefined;
+  }
+
+  /**
+   * Debounce function for performance
+   */
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
 
   /* ------------------------------------ */
   /* ORDER BUTTONS — Redirect to Checkout */
@@ -23,9 +75,9 @@
 
   /**
    * Redirect user to checkout page
-   * All order buttons across the site use this function
    */
   function goToCheckout() {
+    log('Redirecting to checkout');
     window.location.href = CONFIG.checkoutUrl;
     
     // Track click if pixel is available
@@ -39,10 +91,8 @@
 
   /**
    * Initialize all order buttons
-   * Finds buttons by ID and attaches click handlers
    */
   function initOrderButtons() {
-    // Complete list of all order button IDs across all pages
     const orderButtonIds = [
       // Global navigation
       'navOrderBtn',
@@ -86,16 +136,17 @@
         btn.addEventListener('click', goToCheckout);
         buttonsFound++;
         
-        // Add touch-friendly class for mobile
+        // Ensure touch target size
         btn.classList.add('touch-target');
+        
+        // Add ARIA label if missing
+        if (!btn.hasAttribute('aria-label')) {
+          btn.setAttribute('aria-label', 'Proceed to checkout');
+        }
       }
     });
 
-    // Debug log in development
-    if (window.location.hostname === 'localhost' || 
-        window.location.hostname === '127.0.0.1') {
-      console.log(`[Main.js] Initialized ${buttonsFound} order buttons`);
-    }
+    log(`Initialized ${buttonsFound} order buttons`);
   }
 
   /* ------------------------------------ */
@@ -116,8 +167,12 @@
     document.body.classList.add('menu-open');
     navHam.setAttribute('aria-expanded', 'true');
     
-    // Prevent body scrolling when menu is open
+    // Prevent body scrolling
     document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    
+    log('Mobile menu opened');
   }
 
   /**
@@ -132,15 +187,22 @@
     
     // Restore body scrolling
     document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+    
+    log('Mobile menu closed');
   }
 
   /**
-   * Initialize mobile menu event listeners
+   * Initialize mobile menu
    */
   function initMobileMenu() {
-    if (navHam) {
-      navHam.addEventListener('click', openMenu);
+    if (!mobileMenu || !navHam) {
+      log('Mobile menu elements not found');
+      return;
     }
+
+    navHam.addEventListener('click', openMenu);
 
     if (mClose) {
       mClose.addEventListener('click', closeMenu);
@@ -157,33 +219,19 @@
     if (mRight) {
       mRight.addEventListener('click', closeMenu);
     }
+
+    // Handle escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        closeMenu();
+      }
+    });
+
+    log('Mobile menu initialized');
   }
 
   /* ------------------------------------ */
-  /* ESC KEY HANDLER                      */
-  /* ------------------------------------ */
-
-  /**
-   * Handle Escape key press
-   * Closes mobile menu and any open modals
-   */
-  function handleEscKey(e) {
-    if (e.key === 'Escape') {
-      closeMenu();
-      
-      // Close any other open elements (for future use)
-      const openElements = document.querySelectorAll('.open');
-      openElements.forEach(function(el) {
-        if (el.classList.contains('m-menu')) return; // Already handled
-        el.classList.remove('open');
-      });
-    }
-  }
-
-  document.addEventListener('keydown', handleEscKey);
-
-  /* ------------------------------------ */
-  /* SCROLL EFFECTS — Progress Bar, Nav Shrink, Scroll Top */
+  /* SCROLL EFFECTS                      */
   /* ------------------------------------ */
 
   const progressBar = document.getElementById('progressBar');
@@ -192,7 +240,7 @@
   let ticking = false;
 
   /**
-   * Handle scroll events with requestAnimationFrame for performance
+   * Handle scroll events with requestAnimationFrame
    */
   function onScroll() {
     if (!ticking) {
@@ -200,20 +248,30 @@
         const scrollY = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         
-        // Update progress bar width
+        // Update progress bar
         if (progressBar) {
           const progress = docHeight > 0 ? (scrollY / docHeight * 100) : 0;
           progressBar.style.width = progress + '%';
         }
         
-        // Shrink navigation on scroll
+        // Shrink navigation
         if (nav) {
-          nav.classList.toggle('scrolled', scrollY > CONFIG.navShrinkThreshold);
+          if (scrollY > CONFIG.navShrinkThreshold) {
+            nav.classList.add('scrolled');
+          } else {
+            nav.classList.remove('scrolled');
+          }
         }
         
         // Show/hide scroll-to-top button
         if (scrollTop) {
-          scrollTop.classList.toggle('visible', scrollY > CONFIG.scrollThreshold);
+          if (scrollY > CONFIG.scrollThreshold) {
+            scrollTop.classList.add('visible');
+            scrollTop.setAttribute('aria-hidden', 'false');
+          } else {
+            scrollTop.classList.remove('visible');
+            scrollTop.setAttribute('aria-hidden', 'true');
+          }
         }
         
         ticking = false;
@@ -222,24 +280,32 @@
     }
   }
 
-  // Add scroll listener with passive option for better performance
-  window.addEventListener('scroll', onScroll, { passive: true });
-
   /**
    * Smooth scroll to top
    */
   function scrollToTop() {
+    log('Scrolling to top');
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   }
 
-  if (scrollTop) {
-    scrollTop.addEventListener('click', scrollToTop);
-    
-    // Ensure button has proper touch target size
-    scrollTop.classList.add('touch-target');
+  /**
+   * Initialize scroll effects
+   */
+  function initScrollEffects() {
+    // Add scroll listener with passive option
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Scroll to top button
+    if (scrollTop) {
+      scrollTop.addEventListener('click', scrollToTop);
+      scrollTop.classList.add('touch-target');
+      scrollTop.setAttribute('aria-label', 'Scroll to top');
+    }
+
+    log('Scroll effects initialized');
   }
 
   /* ------------------------------------ */
@@ -253,23 +319,30 @@
    * Initialize language dropdown
    */
   function initLanguageDropdown() {
-    if (!langBtn || !langDrop) return;
+    if (!langBtn || !langDrop) {
+      log('Language dropdown elements not found');
+      return;
+    }
 
     langBtn.addEventListener('click', function(e) {
       e.stopPropagation();
-      const isOpen = langDrop.classList.toggle('open');
-      langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      const isOpen = langDrop.classList.contains('open');
+      
+      if (isOpen) {
+        langDrop.classList.remove('open');
+        langBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        langDrop.classList.add('open');
+        langBtn.setAttribute('aria-expanded', 'true');
+      }
     });
 
     // Close dropdown when clicking outside
-    document.addEventListener('click', function() {
-      langDrop.classList.remove('open');
-      langBtn.setAttribute('aria-expanded', 'false');
-    });
-
-    // Prevent closing when clicking inside dropdown
-    langDrop.addEventListener('click', function(e) {
-      e.stopPropagation();
+    document.addEventListener('click', function(e) {
+      if (!langDrop.contains(e.target)) {
+        langDrop.classList.remove('open');
+        langBtn.setAttribute('aria-expanded', 'false');
+      }
     });
 
     // Keyboard navigation
@@ -277,10 +350,13 @@
     langOpts.forEach(function(opt) {
       opt.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
           window.location.href = this.getAttribute('href');
         }
       });
     });
+
+    log('Language dropdown initialized');
   }
 
   /* ------------------------------------ */
@@ -290,13 +366,25 @@
   const faqQuestions = document.querySelectorAll('.faq-q');
 
   /**
-   * Initialize FAQ accordion functionality
+   * Initialize FAQ accordion
    */
   function initFaqAccordion() {
-    if (!faqQuestions.length) return;
+    if (!faqQuestions.length) {
+      log('No FAQ elements found');
+      return;
+    }
 
-    faqQuestions.forEach(function(question) {
-      // Ensure each FAQ has proper ARIA attributes
+    faqQuestions.forEach(function(question, index) {
+      // Set unique ID for accessibility
+      const answerId = `faq-answer-${index}`;
+      const answer = question.nextElementSibling;
+      
+      if (answer && answer.classList.contains('faq-ans')) {
+        answer.id = answerId;
+        question.setAttribute('aria-controls', answerId);
+      }
+
+      // Set ARIA attributes
       question.setAttribute('role', 'button');
       question.setAttribute('tabindex', '0');
       
@@ -304,29 +392,25 @@
         question.setAttribute('aria-expanded', 'false');
       }
 
-      function toggleFaq() {
-        const item = question.parentElement;
+      function toggleFaq(e) {
+        e.preventDefault();
+        
+        const item = question.closest('.faq-item');
         const answer = item.querySelector('.faq-ans');
         const icon = question.querySelector('.faq-icon');
-        const wasOpen = item.classList.contains('open');
+        const isOpen = item.classList.contains('open');
         
         // Close all other FAQs
         document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
           if (openItem !== item) {
             openItem.classList.remove('open');
             const openAnswer = openItem.querySelector('.faq-ans');
-            const openIcon = openItem.querySelector('.faq-icon');
+            const openQuestion = openItem.querySelector('.faq-q');
             
             if (openAnswer) {
               openAnswer.style.maxHeight = null;
             }
             
-            if (openIcon) {
-              openIcon.textContent = '+';
-              openIcon.setAttribute('aria-hidden', 'false');
-            }
-            
-            const openQuestion = openItem.querySelector('.faq-q');
             if (openQuestion) {
               openQuestion.setAttribute('aria-expanded', 'false');
             }
@@ -334,13 +418,14 @@
         });
         
         // Toggle current FAQ
-        if (!wasOpen) {
+        if (!isOpen) {
           item.classList.add('open');
           if (answer) {
             answer.style.maxHeight = answer.scrollHeight + 'px';
           }
           if (icon) {
             icon.textContent = '×';
+            icon.setAttribute('aria-label', 'Collapse');
           }
           question.setAttribute('aria-expanded', 'true');
         } else {
@@ -350,6 +435,7 @@
           }
           if (icon) {
             icon.textContent = '+';
+            icon.setAttribute('aria-label', 'Expand');
           }
           question.setAttribute('aria-expanded', 'false');
         }
@@ -357,23 +443,24 @@
 
       question.addEventListener('click', toggleFaq);
       
-      // Keyboard support (Enter or Space)
+      // Keyboard support
       question.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          toggleFaq();
+          toggleFaq(e);
         }
       });
     });
+
+    log(`Initialized ${faqQuestions.length} FAQ items`);
   }
 
   /* ------------------------------------ */
-  /* RIPPLE EFFECT ON BUTTONS            */
+  /* RIPPLE EFFECT                        */
   /* ------------------------------------ */
 
   /**
    * Create ripple effect on button click
-   * @param {Event} e - Click event
    */
   function createRipple(e) {
     const btn = e.currentTarget;
@@ -391,22 +478,24 @@
     // Remove ripple after animation
     setTimeout(function() {
       ripple.remove();
-    }, 600);
+    }, CONFIG.rippleDuration);
   }
 
   /**
-   * Initialize ripple effect on buttons
+   * Initialize ripple effect
    */
   function initRippleEffect() {
-    const rippleButtons = document.querySelectorAll('.btn--primary, .btn--outline');
+    const rippleButtons = document.querySelectorAll('.btn--primary, .btn--outline, .btn--ghost');
     
     rippleButtons.forEach(function(btn) {
       btn.addEventListener('click', createRipple);
     });
+
+    log(`Initialized ripple effect on ${rippleButtons.length} buttons`);
   }
 
   /* ------------------------------------ */
-  /* COMMUNITY POPUP — Once Ever         */
+  /* COMMUNITY POPUP                      */
   /* ------------------------------------ */
 
   const popup = document.getElementById('communityPopup');
@@ -418,8 +507,9 @@
   function checkPopupStorage() {
     try {
       popupShown = !!localStorage.getItem(CONFIG.popupKey);
+      log(`Popup previously shown: ${popupShown}`);
     } catch (e) {
-      console.warn('localStorage not available');
+      log('localStorage not available');
       popupShown = true; // Don't show if storage is unavailable
     }
   }
@@ -431,11 +521,14 @@
     if (!popup || popupShown) return;
     
     popup.classList.add('show');
+    popup.setAttribute('aria-hidden', 'false');
     popupShown = true;
     
     try {
       localStorage.setItem(CONFIG.popupKey, '1');
     } catch (e) {}
+    
+    log('Community popup shown');
     
     // Track popup view
     if (typeof window.fbTrack === 'function') {
@@ -451,27 +544,39 @@
    */
   function closePopup() {
     if (!popup) return;
+    
     popup.classList.remove('show');
+    popup.setAttribute('aria-hidden', 'true');
+    log('Community popup closed');
   }
 
   /**
-   * Initialize community popup triggers
+   * Initialize popup triggers
    */
   function initPopup() {
-    if (!popup) return;
-    
+    if (!popup) {
+      log('Popup element not found');
+      return;
+    }
+
     checkPopupStorage();
     
     if (!popupShown) {
       // Exit intent (mouse leaves top of viewport)
       document.addEventListener('mouseleave', function(e) {
-        if (e.clientY < 10) {
+        if (e.clientY < CONFIG.exitIntentThreshold) {
+          log('Exit intent detected');
           showPopup();
         }
       }, { once: true });
       
       // Time fallback
-      setTimeout(showPopup, CONFIG.popupDelay);
+      setTimeout(function() {
+        if (!popupShown) {
+          log('Popup timeout reached');
+          showPopup();
+        }
+      }, CONFIG.popupDelay);
     }
 
     // Close handlers
@@ -510,20 +615,17 @@
   function initVideoHandling() {
     const videoItems = document.querySelectorAll('[data-video]');
     
+    if (!videoItems.length) {
+      return;
+    }
+
     videoItems.forEach(function(item) {
       item.addEventListener('click', function(e) {
         e.preventDefault();
         const videoSrc = this.getAttribute('href');
         
-        // Check if it's a video file
-        if (videoSrc.match(/\.(mp4|webm|ogg)$/i)) {
-          // Create video modal or lightbox
-          // For now, open in new tab
-          window.open(videoSrc, '_blank');
-        } else {
-          // Assume it's an image
-          window.open(videoSrc, '_blank');
-        }
+        // Open video in new tab (can be enhanced with lightbox)
+        window.open(videoSrc, '_blank');
         
         // Track video view
         if (typeof window.fbTrack === 'function') {
@@ -534,7 +636,7 @@
         }
       });
       
-      // Make video items keyboard accessible
+      // Make keyboard accessible
       item.setAttribute('role', 'button');
       item.setAttribute('tabindex', '0');
       
@@ -545,6 +647,8 @@
         }
       });
     });
+
+    log(`Initialized ${videoItems.length} video placeholders`);
   }
 
   /* ------------------------------------ */
@@ -552,31 +656,44 @@
   /* ------------------------------------ */
 
   /**
-   * Initialize product tabs on shop page
+   * Initialize product tabs
    */
   function initProductTabs() {
     const tabBtns = document.querySelectorAll('.tab-btn');
     
-    if (!tabBtns.length) return;
-    
+    if (!tabBtns.length) {
+      return;
+    }
+
     tabBtns.forEach(function(btn) {
       btn.addEventListener('click', function() {
         const tabId = this.dataset.tab;
         
         // Remove active class from all tabs
-        tabBtns.forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+        tabBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        
+        document.querySelectorAll('.tab-pane').forEach(p => {
+          p.classList.remove('active');
+          p.setAttribute('aria-hidden', 'true');
+        });
         
         // Add active class to current tab
         this.classList.add('active');
+        this.setAttribute('aria-selected', 'true');
         
         const targetPane = document.getElementById(tabId);
         if (targetPane) {
           targetPane.classList.add('active');
+          targetPane.setAttribute('aria-hidden', 'false');
         }
       });
       
-      // Ensure touch target size
+      // Set ARIA attributes
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-selected', 'false');
       btn.classList.add('touch-target');
     });
     
@@ -584,82 +701,8 @@
     if (tabBtns.length > 0 && !document.querySelector('.tab-btn.active')) {
       tabBtns[0].click();
     }
-  }
 
-  /* ------------------------------------ */
-  /* TOUCH OPTIMIZATIONS                 */
-  /* ------------------------------------ */
-
-  /**
-   * Add touch-friendly classes and prevent double-tap zoom
-   */
-  function initTouchOptimizations() {
-    // Add touch-target class to all interactive elements
-    const interactiveSelectors = [
-      '.btn',
-      '.nav__ham',
-      '.m-close',
-      '.pop-close',
-      '.pop-dismiss',
-      '.lang-btn',
-      '.lang-opt',
-      '.footer-social a',
-      '.scroll-top',
-      '.tag',
-      '.farm-media__item',
-      '.pagination-item',
-      '.tab-btn'
-    ];
-    
-    interactiveSelectors.forEach(function(selector) {
-      document.querySelectorAll(selector).forEach(function(el) {
-        el.classList.add('touch-target');
-      });
-    });
-    
-    // Prevent double-tap zoom on touch devices
-    if ('ontouchstart' in window) {
-      document.querySelectorAll('a, button').forEach(function(el) {
-        el.addEventListener('touchstart', function(e) {
-          // Passive listener for performance
-        }, { passive: true });
-      });
-    }
-  }
-
-  /* ------------------------------------ */
-  /* ACTIVE NAVIGATION LINK              */
-  /* ------------------------------------ */
-
-  /**
-   * Set active state in navigation based on current URL
-   */
-  function setActiveNavLink() {
-    const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll('.m-link');
-    
-    navLinks.forEach(function(link) {
-      const href = link.getAttribute('href');
-      
-      // Remove any existing active class
-      link.classList.remove('active');
-      
-      // Check if current path matches link
-      if (href) {
-        // Handle homepage
-        if (href === '/morinvibes-official/en/' && 
-            (currentPath === '/morinvibes-official/en/' || 
-             currentPath === '/morinvibes-official/en/index.html')) {
-          link.classList.add('active');
-        }
-        // Handle other pages
-        else if (href !== '/morinvibes-official/en/' && 
-                 currentPath.includes(href) && 
-                 href.length > 0) {
-          link.classList.add('active');
-        }
-      }
-    });
+    log(`Initialized ${tabBtns.length} product tabs`);
   }
 
   /* ------------------------------------ */
@@ -667,7 +710,7 @@
   /* ------------------------------------ */
 
   /**
-   * Initialize tracking for external links
+   * Initialize external link tracking
    */
   function initExternalLinkTracking() {
     // WhatsApp links
@@ -697,35 +740,99 @@
       });
     });
 
-    // Instagram links
-    document.querySelectorAll('[href*="instagram.com"]').forEach(function(link) {
-      link.addEventListener('click', function() {
-        if (typeof window.fbTrack === 'function') {
-          window.fbTrack('CustomEvent', { event_name: 'InstagramClick' });
-        }
-      });
-    });
-
-    // TikTok links
-    document.querySelectorAll('[href*="tiktok.com"]').forEach(function(link) {
-      link.addEventListener('click', function() {
-        if (typeof window.fbTrack === 'function') {
-          window.fbTrack('CustomEvent', { event_name: 'TikTokClick' });
-        }
-      });
-    });
+    log('External link tracking initialized');
   }
 
   /* ------------------------------------ */
-  /* IMAGE LAZY LOADING (FALLBACK)       */
+  /* ACTIVE NAVIGATION LINK              */
   /* ------------------------------------ */
 
   /**
-   * Fallback lazy loading for browsers without IntersectionObserver
+   * Set active navigation link based on URL
    */
-  function initLazyLoading() {
-    if ('IntersectionObserver' in window) return;
+  function setActiveNavLink() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.m-link');
     
+    navLinks.forEach(function(link) {
+      const href = link.getAttribute('href');
+      
+      // Remove existing active class
+      link.classList.remove('active');
+      
+      if (href) {
+        // Handle homepage
+        if (href === '/morinvibes-official/en/' && 
+            (currentPath === '/morinvibes-official/en/' || 
+             currentPath === '/morinvibes-official/en/index.html')) {
+          link.classList.add('active');
+        }
+        // Handle other pages
+        else if (href !== '/morinvibes-official/en/' && 
+                 currentPath.includes(href) && 
+                 href.length > 0) {
+          link.classList.add('active');
+        }
+      }
+    });
+
+    log('Active navigation link set');
+  }
+
+  /* ------------------------------------ */
+  /* TOUCH OPTIMIZATIONS                 */
+  /* ------------------------------------ */
+
+  /**
+   * Add touch-friendly classes and prevent double-tap zoom
+   */
+  function initTouchOptimizations() {
+    // Add touch-target class to all interactive elements
+    const interactiveSelectors = [
+      '.btn',
+      '.nav__ham',
+      '.m-close',
+      '.pop-close',
+      '.pop-dismiss',
+      '.lang-btn',
+      '.lang-opt',
+      '.footer-social a',
+      '.scroll-top',
+      '.tag',
+      '.farm-media__item',
+      '.pagination-item',
+      '.tab-btn',
+      '.faq-q'
+    ];
+    
+    interactiveSelectors.forEach(function(selector) {
+      document.querySelectorAll(selector).forEach(function(el) {
+        el.classList.add('touch-target');
+      });
+    });
+    
+    // Prevent double-tap zoom on touch devices
+    if ('ontouchstart' in window) {
+      document.querySelectorAll('a, button').forEach(function(el) {
+        el.addEventListener('touchstart', function(e) {
+          // Passive listener for performance
+        }, { passive: true });
+      });
+    }
+
+    log('Touch optimizations applied');
+  }
+
+  /* ------------------------------------ */
+  /* LAZY LOADING FALLBACK                */
+  /* ------------------------------------ */
+
+  /**
+   * Fallback lazy loading for older browsers
+   */
+  function initLazyLoadingFallback() {
+    if ('IntersectionObserver' in window) return;
+
     const lazyImages = document.querySelectorAll('img[loading="lazy"]');
     
     function lazyLoad() {
@@ -742,38 +849,68 @@
     window.addEventListener('scroll', lazyLoad, { passive: true });
     window.addEventListener('resize', lazyLoad, { passive: true });
     lazyLoad(); // Initial check
+
+    log('Lazy loading fallback initialized');
   }
 
   /* ------------------------------------ */
-  /* INITIALIZATION — RUN ON PAGE LOAD   */
+  /* RESIZE HANDLER                       */
   /* ------------------------------------ */
 
   /**
-   * Initialize all modules when DOM is ready
+   * Handle window resize events
+   */
+  function initResizeHandler() {
+    const handleResize = debounce(function() {
+      const width = window.innerWidth;
+      log(`Window resized to ${width}px`);
+      
+      // Close mobile menu on desktop
+      if (width >= 768 && mobileMenu && mobileMenu.classList.contains('open')) {
+        closeMenu();
+      }
+    }, 250);
+
+    window.addEventListener('resize', handleResize);
+  }
+
+  /* ------------------------------------ */
+  /* INITIALIZATION                       */
+  /* ------------------------------------ */
+
+  /**
+   * Initialize all modules
    */
   function init() {
+    log('Initializing MorinVibes® v19.0');
+    
     // Core functionality
     initOrderButtons();
     initMobileMenu();
+    initScrollEffects();
     initLanguageDropdown();
     initFaqAccordion();
     initRippleEffect();
     initPopup();
     initVideoHandling();
     initProductTabs();
-    initTouchOptimizations();
     initExternalLinkTracking();
-    initLazyLoading();
+    initTouchOptimizations();
+    initLazyLoadingFallback();
+    initResizeHandler();
     
     // Set active navigation
     setActiveNavLink();
     
-    // Debug log
-    if (window.location.hostname === 'localhost' || 
-        window.location.hostname === '127.0.0.1') {
-      console.log('✅ MorinVibes® main.js v18 initialized');
-      console.log('📱 Mobile mode:', window.innerWidth < 768);
-      console.log('🔄 Checkout URL:', CONFIG.checkoutUrl);
+    // Log device info
+    if (CONFIG.debug) {
+      console.log('📱 Device Info:', {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        mobile: window.innerWidth < 768,
+        touch: 'ontouchstart' in window,
+        language: navigator.language
+      });
     }
   }
 
@@ -781,7 +918,6 @@
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
-    // DOM already loaded, run immediately
     init();
   }
 
@@ -789,8 +925,7 @@
   /* PUBLIC API (for debugging)          */
   /* ------------------------------------ */
 
-  if (window.location.hostname === 'localhost' || 
-      window.location.hostname === '127.0.0.1') {
+  if (CONFIG.debug) {
     window.MorinVibes = {
       goToCheckout,
       openMenu,
@@ -800,6 +935,7 @@
       closePopup,
       CONFIG
     };
+    log('Debug API exposed as window.MorinVibes');
   }
 
 })();
