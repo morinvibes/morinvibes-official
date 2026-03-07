@@ -49,42 +49,7 @@
 <!-- Scroll progress bar -->
 <div class="scroll-progress" id="progressBar"></div>
 
-<!-- CHECKOUT MODAL - Embedded Orderla iframe -->
-<div class="co-overlay" id="coOverlay" role="dialog" aria-modal="true" aria-label="Secure checkout">
-  <div class="co-modal">
-    <div class="co-head">
-      <div class="co-head-brand">
-        <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" height="30" />
-        <div class="co-head-info">
-          <strong>Moringa Capsules · 90 caps · 500mg</strong><br />RM89 + shipping
-        </div>
-      </div>
-      <button class="co-close" id="coClose" aria-label="Close checkout">✕</button>
-    </div>
-    <div class="co-trust">
-      <span>✓ KKM Approved</span>
-      <span>✓ GMP Certified</span>
-      <span>🔒 Secure Payment</span>
-      <span>🚚 Ships from Penang</span>
-    </div>
-    <div class="co-body">
-      <div class="co-spinner" id="coSpinner">
-        <div class="co-spinner__ring"></div>
-        <p>Loading secure checkout…</p>
-      </div>
-      <iframe id="coIframe" class="co-iframe" src="" data-src="https://morinvibes.orderla.my/moringa-order" sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation" title="MorinVibes® Checkout"></iframe>
-      <div class="co-fallback" id="coFallback">
-        <p>Having trouble?</p>
-        <a href="https://morinvibes.orderla.my/moringa-order" target="_blank" class="btn btn--primary">Open checkout directly →</a>
-      </div>
-    </div>
-    <div class="co-foot">
-      Same product as Shopee & Lazada · <a href="https://wa.me/60102766095" target="_blank">WhatsApp us</a>
-    </div>
-  </div>
-</div>
-
-<!-- NAVIGATION -->
+<!-- NAVIGATION (7 items max + WhatsApp) -->
 <nav class="nav" id="mainNav">
   <div class="nav__wrap">
     <button class="nav__ham" id="navHam" aria-label="Menu">
@@ -107,7 +72,7 @@
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
+<!-- MOBILE MENU (Full navigation) -->
 <div class="m-menu" id="mobileMenu">
   <div class="m-left">
     <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="m-logo-img" height="38">
@@ -118,11 +83,11 @@
       <a href="/morinvibes-official/zh/">中文</a>
     </div>
     <a href="/morinvibes-official/en/" class="m-link active">Home</a>
-    <a href="/morinvibes-official/en/farm.html" class="m-link">Farm</a>
-    <a href="/morinvibes-official/en/quality.html" class="m-link">Quality</a>
-    <a href="/morinvibes-official/en/wellness.html" class="m-link">Wellness</a>
-    <a href="/morinvibes-official/en/shop.html" class="m-link">Shop</a>
-    <a href="/morinvibes-official/en/about.html" class="m-link">Story</a>
+    <a href="/morinvibes-official/en/farm.html" class="m-link">Our Farm</a>
+    <a href="/morinvibes-official/en/quality.html" class="m-link">Quality & Safety</a>
+    <a href="/morinvibes-official/en/wellness.html" class="m-link">Journal</a>
+    <a href="/morinvibes-official/en/shop.html" class="m-link">The Product</a>
+    <a href="/morinvibes-official/en/about.html" class="m-link">About Us</a>
     <a href="/morinvibes-official/en/testimonials.html" class="m-link">Reviews</a>
     <a href="/morinvibes-official/en/faq.html" class="m-link">FAQ</a>
     <a href="https://wa.me/60102766095" target="_blank" class="m-link m-link--hi">💬 WhatsApp</a>
@@ -160,7 +125,7 @@
         </div>
         <div class="hero__ctas">
           <button class="btn btn--primary btn--lg" id="heroBuyBtn">Begin 30 Days — RM89</button>
-          <a href="/morinvibes-official/en/wellness.html" class="btn btn--outline btn--lg">What's Inside →</a>
+          <a href="/morinvibes-official/en/wellness.html" class="btn btn--outline btn--lg">Learn About Benefits →</a>
         </div>
       </div>
       <div class="hero__vis fade-up" data-delay="1">
@@ -178,7 +143,7 @@
   </div>
 </section>
 
-<!-- ===== TRUST BAR (No Numbers) ===== -->
+<!-- ===== TRUST BAR (Marquee) ===== -->
 <div class="trust-bar">
   <div class="trust-bar__track">
     <span>OWN FARM · PENANG</span><span class="trust-bar__dot">•</span>
@@ -192,20 +157,10 @@
     <span>FAMILY-OWNED</span><span class="trust-bar__dot">•</span>
     <span>SINCE 2019</span><span class="trust-bar__dot">•</span>
     <!-- Duplicate for seamless loop -->
-    <span>OWN FARM · PENANG</span><span class="trust-bar__dot">•</span>
-    <span>KKM APPROVED</span><span class="trust-bar__dot">•</span>
-    <span>GMP CERTIFIED</span><span class="trust-bar__dot">•</span>
-    <span>SMALL BATCH</span><span class="trust-bar__dot">•</span>
-    <span>100% PURE</span><span class="trust-bar__dot">•</span>
-    <span>VEGAN</span><span class="trust-bar__dot">•</span>
-    <span>NON-GMO</span><span class="trust-bar__dot">•</span>
-    <span>90 CAPS · 500MG</span><span class="trust-bar__dot">•</span>
-    <span>FAMILY-OWNED</span><span class="trust-bar__dot">•</span>
-    <span>SINCE 2019</span><span class="trust-bar__dot">•</span>
   </div>
 </div>
 
-<!-- ===== STATS BAR (Trust Phrases, No Numbers) ===== -->
+<!-- ===== STATS BAR (Trust Phrases) ===== -->
 <div class="stats-bar">
   <div class="container">
     <div class="stats-grid">
@@ -229,36 +184,38 @@
   </div>
 </div>
 
-<!-- ===== FARM STRIP ===== -->
+<!-- ===== FARM STRIP (Links to Our Farm page) ===== -->
 <div class="farm-strip">
   <div class="container">
-    <div class="farm-strip__grid">
-      <div class="farm-strip__item">
-        <div class="farm-strip__icon">🌿</div>
-        <div>
-          <div class="farm-strip__title">Our Land</div>
-          <div class="farm-strip__desc">Grown in Penang, not imported</div>
+    <a href="/morinvibes-official/en/farm.html" class="farm-strip__link">
+      <div class="farm-strip__grid">
+        <div class="farm-strip__item">
+          <div class="farm-strip__icon">🌿</div>
+          <div>
+            <div class="farm-strip__title">Our Land, Penang</div>
+            <div class="farm-strip__desc">See where it grows →</div>
+          </div>
+        </div>
+        <div class="farm-strip__item">
+          <div class="farm-strip__icon">⚗️</div>
+          <div>
+            <div class="farm-strip__title">Small-Batch Only</div>
+            <div class="farm-strip__desc">Fresh, not mass-produced</div>
+          </div>
+        </div>
+        <div class="farm-strip__item">
+          <div class="farm-strip__icon">📋</div>
+          <div>
+            <div class="farm-strip__title">KKM · GMP Certified</div>
+            <div class="farm-strip__desc">Verified quality →</div>
+          </div>
         </div>
       </div>
-      <div class="farm-strip__item">
-        <div class="farm-strip__icon">⚗️</div>
-        <div>
-          <div class="farm-strip__title">Small-Batch</div>
-          <div class="farm-strip__desc">Fresh, not mass-produced</div>
-        </div>
-      </div>
-      <div class="farm-strip__item">
-        <div class="farm-strip__icon">📋</div>
-        <div>
-          <div class="farm-strip__title">Certified</div>
-          <div class="farm-strip__desc">KKM · GMP Approved</div>
-        </div>
-      </div>
-    </div>
+    </a>
   </div>
 </div>
 
-<!-- ===== CONCERNS SECTION ===== -->
+<!-- ===== CONCERNS SECTION (Links to Journal) ===== -->
 <section class="concerns">
   <div class="leaf-deco leaf-deco--concerns" aria-hidden="true"></div>
   <div class="container">
@@ -281,16 +238,16 @@
       <div class="concerns__copy">
         <h2>Your Body Is Talking.</h2>
         <p>90+ nutrients. 46 antioxidants. All in one leaf — not isolated synthetics.</p>
-        <button class="btn btn--primary" id="concernsBtn">Start with Day 1 — RM89</button>
+        <a href="/morinvibes-official/en/wellness.html" class="btn btn--outline">Read the Journal →</a>
         <div class="legal-note">
-          <strong>Notice:</strong> Food supplement. Individual results vary.
+          Food supplement. Individual results vary.
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== THE DIFFERENCE ===== -->
+<!-- ===== THE DIFFERENCE (Links to Quality page) ===== -->
 <section class="section">
   <div class="container">
     <div class="section-header">
@@ -298,97 +255,55 @@
       <span class="eyebrow">THE DIFFERENCE</span>
       <h2>Not All Moringa Is Equal.</h2>
     </div>
-    <div class="diff-grid">
-      <div class="diff-card">
-        <div class="diff-icon">🌱</div>
-        <h3>Source</h3>
-        <p>Our land, Penang</p>
+    <a href="/morinvibes-official/en/quality.html" class="diff-grid-link">
+      <div class="diff-grid">
+        <div class="diff-card">
+          <div class="diff-icon">🌱</div>
+          <h3>Our Land</h3>
+          <p>Penang, not imported</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon">🍃</div>
+          <h3>Freshness</h3>
+          <p>Green = Fresh</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon">✅</div>
+          <h3>KKM · GMP</h3>
+          <p>Government certified</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon">⭐</div>
+          <h3>Since 2019</h3>
+          <p>Proven track record</p>
+        </div>
       </div>
-      <div class="diff-card">
-        <div class="diff-icon">🍃</div>
-        <h3>Freshness</h3>
-        <p>Green = Fresh</p>
-      </div>
-      <div class="diff-card">
-        <div class="diff-icon">✅</div>
-        <h3>Verified</h3>
-        <p>KKM · GMP</p>
-      </div>
-      <div class="diff-card">
-        <div class="diff-icon">⭐</div>
-        <h3>Proven</h3>
-        <p>Since 2019</p>
-      </div>
+    </a>
+    <div class="section-cta">
+      <a href="/morinvibes-official/en/quality.html" class="btn btn--ghost">See Our Certifications →</a>
     </div>
   </div>
 </section>
 
-<!-- ===== PRODUCT SPOTLIGHT ===== -->
+<!-- ===== PRODUCT SPOTLIGHT (Links to Shop page - NO specs here) ===== -->
 <section class="section section--alt">
   <div class="container">
     <div class="product-grid">
       <div class="product-card">
         <img src="/morinvibes-official/images/bottle-new.svg" alt="MorinVibes Moringa Capsules" class="product-img">
-        <div class="product-stats">
-          <div class="product-stat">90 caps</div>
-          <div class="product-stat">500mg</div>
-          <div class="product-stat">1 ingredient</div>
-        </div>
-        <div class="product-price">RM89</div>
+        <div class="product-badge">Farm-Direct</div>
       </div>
       <div class="product-info">
         <h2>One Ingredient.<br>One Source.</h2>
-        <ul class="product-list">
-          <li>✓ 100% pure moringa leaf</li>
-          <li>✓ Farm-direct from Penang</li>
-          <li>✓ KKM · GMP certified</li>
-          <li>✓ 30-day supply</li>
-        </ul>
-        <button class="btn btn--primary btn--lg" id="prodBuyBtn">Get This Batch — RM89</button>
+        <p class="product-description">Pure moringa leaf powder. Nothing else. Grown on our land, encapsulated here.</p>
+        <a href="/morinvibes-official/en/shop.html" class="btn btn--primary btn--lg">See Full Details →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== TIMELINE (Condensed for Mobile) ===== -->
+<!-- ===== BENEFITS (Links to Journal) ===== -->
 <section class="section">
-  <div class="leaf-deco leaf-deco--timeline" aria-hidden="true"></div>
-  <div class="container">
-    <div class="section-header">
-      <div class="v-accent" aria-hidden="true"></div>
-      <span class="eyebrow">WHAT TO EXPECT</span>
-      <h2>Your 30-Day Journey</h2>
-    </div>
-    <div class="timeline-grid">
-      <div class="timeline-item">
-        <span class="timeline-day">Day 1-3</span>
-        <span class="timeline-desc">Energy lifts</span>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-day">Day 4-6</span>
-        <span class="timeline-desc">Digestion eases</span>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-day">Day 7-10</span>
-        <span class="timeline-desc">Stiffness fades</span>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-day">Day 11-15</span>
-        <span class="timeline-desc">Focus sharpens</span>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-day">Day 15+</span>
-        <span class="timeline-desc">Deep wellness</span>
-      </div>
-    </div>
-    <div class="legal-note timeline-note">
-      Individual results vary. Food supplement.
-    </div>
-  </div>
-</section>
-
-<!-- ===== BENEFITS ===== -->
-<section class="section section--alt">
   <div class="leaf-deco leaf-deco--benefits" aria-hidden="true"></div>
   <div class="container">
     <div class="section-header">
@@ -396,33 +311,34 @@
       <span class="eyebrow">DAILY NUTRITION</span>
       <h2>Why Moringa?</h2>
     </div>
-    <div class="benefits-grid">
-      <div class="benefit-item">
-        <span class="benefit-icon">⚡</span>
-        <span class="benefit-title">Steady Energy</span>
-        <span class="benefit-desc">No caffeine, no crash</span>
+    <a href="/morinvibes-official/en/wellness.html" class="benefits-grid-link">
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <span class="benefit-icon">⚡</span>
+          <span class="benefit-title">Steady Energy</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-icon">🛡️</span>
+          <span class="benefit-title">46 Antioxidants</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-icon">💪</span>
+          <span class="benefit-title">Complete Protein</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-icon">🌿</span>
+          <span class="benefit-title">Whole Food</span>
+        </div>
       </div>
-      <div class="benefit-item">
-        <span class="benefit-icon">🛡️</span>
-        <span class="benefit-title">46 Antioxidants</span>
-        <span class="benefit-desc">In one leaf</span>
-      </div>
-      <div class="benefit-item">
-        <span class="benefit-icon">💪</span>
-        <span class="benefit-title">Complete Protein</span>
-        <span class="benefit-desc">All 9 essentials</span>
-      </div>
-      <div class="benefit-item">
-        <span class="benefit-icon">🌿</span>
-        <span class="benefit-title">Whole Food</span>
-        <span class="benefit-desc">Not synthetic</span>
-      </div>
+    </a>
+    <div class="section-cta">
+      <a href="/morinvibes-official/en/wellness.html" class="btn btn--ghost">Read the Journal →</a>
     </div>
   </div>
 </section>
 
-<!-- ===== REVIEWS ===== -->
-<section class="section">
+<!-- ===== REVIEWS (Links to Testimonials page) ===== -->
+<section class="section section--alt">
   <div class="container">
     <div class="section-header">
       <div class="v-accent" aria-hidden="true"></div>
@@ -446,10 +362,13 @@
         <p class="review-author">— Mei Ling, Johor</p>
       </div>
     </div>
+    <div class="section-cta">
+      <a href="/morinvibes-official/en/testimonials.html" class="btn btn--ghost">Read All Reviews →</a>
+    </div>
   </div>
 </section>
 
-<!-- ===== CTA BLOCK ===== -->
+<!-- ===== CTA BLOCK (Links to Shop) ===== -->
 <section class="section">
   <div class="container">
     <div class="cta-block">
@@ -466,41 +385,45 @@
   </div>
 </section>
 
-<!-- ===== FAQ ===== -->
+<!-- ===== FAQ PREVIEW (Links to FAQ page) ===== -->
 <section class="section section--alt">
   <div class="container">
     <div class="section-header">
       <span class="eyebrow">COMMON QUESTIONS</span>
       <h2>Quick Answers</h2>
     </div>
-    <div class="faq-list">
+    <div class="faq-preview">
       <div class="faq-item">
         <div class="faq-q">How to verify KKM? <span class="faq-icon">+</span></div>
-        <div class="faq-ans">Check our Quality page for registration numbers.</div>
+        <div class="faq-ans">Check our <a href="/morinvibes-official/en/quality.html">Quality page</a> for registration numbers.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">How many per day? <span class="faq-icon">+</span></div>
-        <div class="faq-ans">3 capsules = 30-day supply.</div>
+        <div class="faq-ans">3 capsules = 30-day supply. Full details on <a href="/morinvibes-official/en/shop.html">product page</a>.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Ship to East Malaysia? <span class="faq-icon">+</span></div>
-        <div class="faq-ans">Yes. RM15, free over RM150.</div>
+        <div class="faq-ans">Yes. RM15, free over RM150. See <a href="/morinvibes-official/en/shop.html">shipping info</a>.</div>
       </div>
+    </div>
+    <div class="section-cta">
+      <a href="/morinvibes-official/en/faq.html" class="btn btn--ghost">View All FAQs →</a>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER (Mobile-First, Clear Hierarchy) ===== -->
 <footer class="footer">
   <div class="footer__main">
     <div class="container">
       <div class="footer-grid">
-        <!-- Brand -->
+        
+        <!-- Brand Column -->
         <div class="footer-col">
           <img src="/morinvibes-official/images/logo-full.svg" alt="MorinVibes®" class="footer-logo" width="140" height="35">
-          <p class="footer-tagline">Farm-direct moringa from our land in Penang · Since 2019</p>
+          <p class="footer-tagline">Farm-direct moringa from our own land in Penang · Since 2019</p>
           <div class="footer-social">
             <a href="https://www.facebook.com/profile.php?id=100063464474033" target="_blank" aria-label="Facebook">f</a>
             <a href="https://www.instagram.com/moringa_morinvibes" target="_blank" aria-label="Instagram">📷</a>
@@ -510,23 +433,24 @@
           <div class="footer-cert">✓ KKM · GMP Certified</div>
         </div>
         
-        <!-- Explore -->
+        <!-- Explore Column -->
         <div class="footer-col">
           <h4>Explore</h4>
           <ul>
-            <li><a href="/morinvibes-official/en/farm.html">Farm</a></li>
-            <li><a href="/morinvibes-official/en/quality.html">Quality</a></li>
-            <li><a href="/morinvibes-official/en/wellness.html">Wellness</a></li>
-            <li><a href="/morinvibes-official/en/shop.html">Shop</a></li>
-            <li><a href="/morinvibes-official/en/about.html">Story</a></li>
+            <li><a href="/morinvibes-official/en/">Home</a></li>
+            <li><a href="/morinvibes-official/en/farm.html">Our Farm</a></li>
+            <li><a href="/morinvibes-official/en/quality.html">Quality & Safety</a></li>
+            <li><a href="/morinvibes-official/en/wellness.html">Journal</a></li>
+            <li><a href="/morinvibes-official/en/shop.html">The Product</a></li>
+            <li><a href="/morinvibes-official/en/about.html">About Us</a></li>
             <li><a href="/morinvibes-official/en/testimonials.html">Reviews</a></li>
             <li><a href="/morinvibes-official/en/faq.html">FAQ</a></li>
           </ul>
         </div>
         
-        <!-- Trust -->
+        <!-- Trust & Policies Column -->
         <div class="footer-col">
-          <h4>Trust</h4>
+          <h4>Trust & Policies</h4>
           <ul>
             <li><a href="/morinvibes-official/en/ethics.html">Ethics</a></li>
             <li><a href="/morinvibes-official/en/returns.html">Returns</a></li>
@@ -535,16 +459,16 @@
           </ul>
         </div>
         
-        <!-- Contact -->
+        <!-- Contact Column -->
         <div class="footer-col">
-          <h4>Contact</h4>
+          <h4>Contact & Order</h4>
           <ul>
-            <li><a href="https://wa.me/60102766095" target="_blank">WhatsApp</a></li>
+            <li><a href="https://wa.me/60102766095" target="_blank">WhatsApp (fastest)</a></li>
             <li><a href="mailto:morinvibes2019@gmail.com">Email</a></li>
-            <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank">Shopee</a></li>
-            <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank">Lazada</a></li>
+            <li><a href="https://shopee.com.my/product/207561954/9803799226" target="_blank">Shopee Store</a></li>
+            <li><a href="https://www.lazada.com.my/products/pdp-i4190870194-s23744987666.html" target="_blank">Lazada Store</a></li>
           </ul>
-          <p class="footer-addr">Bayan Lepas, Penang</p>
+          <p class="footer-addr">Bayan Lepas, Penang<br>Malaysia</p>
         </div>
       </div>
       
@@ -588,6 +512,15 @@
 <script src="/morinvibes-official/assets/js/pixel.js"></script>
 <script src="/morinvibes-official/assets/js/animations.js"></script>
 <script src="/morinvibes-official/assets/js/main.js"></script>
+
+<script>
+  // Order buttons redirect to checkout.html (NOT popup)
+  document.querySelectorAll('#navOrderBtn, #heroBuyBtn, #ctaBuyBtn, #mOrderBtn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      window.location.href = '/morinvibes-official/en/checkout.html';
+    });
+  });
+</script>
 
 </body>
 </html>
